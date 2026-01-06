@@ -1,7 +1,8 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-finance.jpg";
 const Hero = () => {
-  return <section className="relative min-h-screen bg-hero-gradient pt-24 pb-16 overflow-hidden">
+  return (
+    <section className="relative min-h-screen bg-hero-gradient pt-24 pb-16 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -left-20 top-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
@@ -18,14 +19,16 @@ const Hero = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
-              Reprenez le contrôle de vos finances avec{" "}
-              <span className="text-gradient">simplicité</span>
+              Reprenez le contrôle de vos finances avec <span className="text-gradient">simplicité</span>
             </h1>
 
-            <p className="text-lg text-muted-foreground max-w-xl">Aligne tes comportements d’achats avec tes objectifs de vie : Pilote tes finances en cultivant régularité, simplicité et cohérence.</p>
+            <p className="text-lg text-muted-foreground max-w-xl">
+              Aligne tes comportements d’achats avec tes objectifs de vie : Pilote tes finances en cultivant régularité,
+              simplicité et cohérence.
+            </p>
 
             <button className="btn-primary group">
-              Commencer gratuitement
+              Je m’inscris à la liste d’attente
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </button>
 
@@ -50,11 +53,16 @@ const Hero = () => {
           <div className="relative lg:pl-8">
             <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl transform rotate-6 scale-105" />
-              <img src={heroImage} alt="Finances calmes et claires" className="relative rounded-3xl shadow-image w-full object-cover aspect-[4/3]" />
+              <img
+                src={heroImage}
+                alt="Finances calmes et claires"
+                className="relative rounded-3xl shadow-image w-full object-cover aspect-[4/3]"
+              />
             </div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 export default Hero;
