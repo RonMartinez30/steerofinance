@@ -117,7 +117,7 @@ const FAQ = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-42 pb-16 bg-hero-gradient">
+      <main className="pt-32 pb-16 bg-hero-gradient">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
