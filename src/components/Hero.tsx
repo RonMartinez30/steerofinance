@@ -1,8 +1,7 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-finance.jpg";
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen bg-hero-gradient pt-24 pb-16 overflow-hidden">
+  return <section className="relative min-h-screen bg-hero-gradient pt-24 pb-16 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -left-20 top-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
@@ -35,16 +34,16 @@ const Hero = () => {
             {/* Value props */}
             <div className="flex flex-wrap gap-8 pt-8 border-t border-border/50">
               <div>
-                <h3 className="text-primary font-semibold text-lg">Simple</h3>
-                <p className="text-sm text-muted-foreground">Pas d'automatisation complexe</p>
+                <h3 className="text-primary font-semibold text-lg">Simplicité</h3>
+                <p className="text-sm text-muted-foreground">Pas d'automatisation ou de suivi complexe </p>
               </div>
               <div>
-                <h3 className="text-primary font-semibold text-lg">Clair</h3>
-                <p className="text-sm text-muted-foreground">Comprenez chaque décision</p>
+                <h3 className="text-primary font-semibold text-lg">Clarté</h3>
+                <p className="text-sm text-muted-foreground">Comprends chaque décision </p>
               </div>
               <div>
-                <h3 className="text-foreground font-semibold text-lg">Serein</h3>
-                <p className="text-sm text-muted-foreground">À votre propre rythme</p>
+                <h3 className="text-foreground font-semibold text-lg">Serenité</h3>
+                <p className="text-sm text-muted-foreground">Avance à ton rythme</p>
               </div>
             </div>
           </div>
@@ -53,16 +52,11 @@ const Hero = () => {
           <div className="relative lg:pl-8">
             <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl transform rotate-6 scale-105" />
-              <img
-                src={heroImage}
-                alt="Finances calmes et claires"
-                className="relative rounded-3xl shadow-image w-full object-cover aspect-[4/3]"
-              />
+              <img src={heroImage} alt="Finances calmes et claires" className="relative rounded-3xl shadow-image w-full object-cover aspect-[4/3]" />
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
 export default Hero;
