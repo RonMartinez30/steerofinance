@@ -10,7 +10,7 @@ const features = [{
 }, {
   icon: TrendingUp,
   title: "Ritualiser : adopter un rythme qui transforme ton quotidien",
-  description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. Les recherches sur les habitudes montrent que la répétition consciente est un facteur clé du changement durable, et que les micro-rituels réguliers sont bien plus efficaces que des bilans occasionnels et automatisés.
+  description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. Les recherches sur les habitudes montrent que la répétition consciente est un facteur clé du changement durable, et que les micro-rituels réguliers sont bien plus efficaces que des bilans occasionnels et automatisés."
 }];
 const Features = () => {
   return <section className="py-24 bg-card">
