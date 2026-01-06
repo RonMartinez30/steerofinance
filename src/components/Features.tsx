@@ -1,16 +1,16 @@
 import { Circle, Settings, TrendingUp } from "lucide-react";
 const features = [{
   icon: Circle,
-  title: "Une roue fluide qui avance à votre rythme",
-  description: "Noria vous guide pour comprendre, ajuster et ritualiser vos décisions financières. Comme une roue fluide, vous avancez pas à pas, sans stress."
+  title: "Budgétiser : aligner tes comportements avec des objectifs clairs et quantifiés",
+  description: "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l’avenir. Définissons ensemble ce cadre essentiel à l’aide de budgets clairs, conçus pour t’aider à avancer vers ta destination."
 }, {
   icon: Settings,
-  title: "Pas d'automatisation à votre place",
-  description: "Contrairement aux autres applications, Noria ne fait pas à votre place. Elle vous aide à comprendre et à prendre vos propres décisions éclairées."
+  title: "Traquer : suivre les transactions qui impactent ta trésorerie",
+  description: "Contrairement à d’autres applications, Steero ne fait pas à ta place. La saisie manuelle crée un lien émotionnel : elle rend le coût psychologiquement réel, ce qui améliore significativement l’autorégulation… et donc la qualité de tes décisions financières."
 }, {
   icon: TrendingUp,
-  title: "Construisez, lisez et faites grandir votre patrimoine",
-  description: "Avec clarté et sérénité, visualisez votre patrimoine, comprenez-le et faites-le grandir selon vos objectifs de vie."
+  title: "Ritualiser : adopter un rythme qui transforme ton quotidien",
+  description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. Les recherches sur les habitudes montrent que la répétition consciente est un facteur clé du changement durable, et que les micro-rituels réguliers sont bien plus efficaces que des bilans occasionnels et automatisés.
 }];
 const Features = () => {
   return <section className="py-24 bg-card">
