@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
             <svg
               className="w-5 h-5 text-primary-foreground"
@@ -19,8 +20,17 @@ const Header = () => {
               <path d="M12 6v6l4 2" />
             </svg>
           </div>
-          <span className="text-xl font-semibold text-foreground">Noria</span>
-        </div>
+          <span className="text-xl font-semibold text-foreground">Steero</span>
+        </Link>
+
+        <nav className="hidden md:flex items-center gap-6">
+          <Link to="/pourquoi-steero" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            Pourquoi Steero
+          </Link>
+          <Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            FAQ
+          </Link>
+        </nav>
 
         <div className="flex items-center gap-4">
           <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-md border border-border text-sm text-muted-foreground">

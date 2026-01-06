@@ -3,7 +3,7 @@ const steps = [
     number: "01",
     title: "Observez vos habitudes",
     description:
-      "Comprenez où va votre argent sans jugement. Noria vous aide à visualiser vos flux financiers avec clarté.",
+      "Comprenez où va votre argent sans jugement. Steero vous aide à visualiser vos flux financiers avec clarté.",
   },
   {
     number: "02",
