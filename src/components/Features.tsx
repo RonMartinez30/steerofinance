@@ -30,8 +30,8 @@ const Features = () => {
               <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center">
                 <feature.icon className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed text-left font-thin">{feature.description}</p>
+              <h3 className="text-xl font-semibold mb-3 text-left text-primary">{feature.title}</h3>
+              <p className="leading-relaxed text-left font-normal text-secondary-foreground font-[serif] text-base">{feature.description}</p>
             </div>)}
         </div>
       </div>
