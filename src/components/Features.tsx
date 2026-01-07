@@ -31,7 +31,7 @@ const Features = () => {
                 <feature.icon className="w-7 h-7 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-left text-primary">{feature.title}</h3>
-              <p className="leading-relaxed text-left font-normal text-secondary-foreground font-[serif] text-base">{feature.description}</p>
+              <p className="leading-relaxed text-left text-base text-[#65758b] font-light font-[serif]">{feature.description}</p>
             </div>)}
         </div>
       </div>
