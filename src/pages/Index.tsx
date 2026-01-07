@@ -15,6 +15,7 @@ const Index = () => {
       <Features />
       <HowItWorks />
       <NextSteps />
+      <CTA />
       <section className="py-16 bg-card">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-foreground text-center mb-8">
@@ -25,7 +26,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-      <CTA />
       <Footer />
     </div>
   );
