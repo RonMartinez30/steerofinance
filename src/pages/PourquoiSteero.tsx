@@ -40,7 +40,6 @@ const advantages = [{
   description: "10 minutes par semaine suffisent pour transformer votre rapport à l'argent.",
   icon: TrendingUp
 }];
-
 const behavioralElements = [{
   icon: Brain,
   title: "La compréhension naît de l'effort cognitif",
@@ -135,8 +134,8 @@ const PourquoiSteero = () => {
                 <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center">
                   <adv.icon className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">{adv.title}</h3>
-                <p className="text-muted-foreground">{adv.description}</p>
+                <h3 className="font-semibold text-foreground mb-3 font-sans text-lg">{adv.title}</h3>
+                <p className="text-muted-foreground text-left text-base font-thin">{adv.description}</p>
               </div>)}
           </div>
         </div>
@@ -155,8 +154,7 @@ const PourquoiSteero = () => {
               </p>
             </div>
             <div className="space-y-6">
-              {behavioralElements.map((element, index) => (
-                <div key={index} className="bg-background rounded-2xl p-6 shadow-card border border-border/50">
+              {behavioralElements.map((element, index) => <div key={index} className="bg-background rounded-2xl p-6 shadow-card border border-border/50">
                   <div className="flex items-start gap-5">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <element.icon className="w-6 h-6 text-primary" />
@@ -172,8 +170,7 @@ const PourquoiSteero = () => {
                       </p>
                     </div>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
@@ -194,7 +191,7 @@ const PourquoiSteero = () => {
       {/* Témoignages */}
       <section className="py-16 bg-hero-gradient">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-foreground text-center mb-12">Ce qu'on aimerait que nos utilisateurs disent</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-primary">Ce qu'on aimerait que nos utilisateurs disent de Steero</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => <div key={index} className="bg-card rounded-2xl p-6 shadow-card">
                 <div className="flex gap-1 mb-4">
