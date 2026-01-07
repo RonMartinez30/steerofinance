@@ -6,19 +6,17 @@ import NextSteps from "@/components/NextSteps";
 import Countdown from "@/components/Countdown";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
       <Hero />
       <Features />
       <HowItWorks />
       <NextSteps />
       <CTA />
-      <section className="py-16 bg-card">
+      <section className="py-16 bg-orange-50">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-foreground text-center mb-8">
+          <h2 className="text-3xl font-bold text-center mb-8 text-primary">
             Le compte à rebours est lancé
           </h2>
           <div className="max-w-2xl mx-auto">
@@ -27,8 +25,6 @@ const Index = () => {
         </div>
       </section>
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;

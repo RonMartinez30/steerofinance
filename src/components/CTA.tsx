@@ -14,7 +14,7 @@ const CTA = () => {
           <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Users className="w-5 h-5 text-primary" />
-              <span>Rejoignez des milliers d'utilisateurs sereins</span>
+              <span>Gratuit pour commencer</span>
             </div>
             <div className="flex items-center gap-2">
               <Zap className="w-5 h-5 text-primary" />
