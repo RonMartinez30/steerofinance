@@ -1,19 +1,27 @@
 import { Circle, Settings, TrendingUp } from "lucide-react";
-const features = [{
-  icon: Circle,
-  title: "Budgétiser",
-  description: "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l’avenir. Définissons ensemble ce cadre essentiel à l’aide de budgets clairs, conçus pour t’aider à avancer vers ta destination."
-}, {
-  icon: Settings,
-  title: "Traquer",
-  description: "Contrairement à d’autres applications, Steero ne fait pas à ta place. La saisie manuelle crée un lien émotionnel : elle rend le coût psychologiquement réel, ce qui améliore significativement l’autorégulation… et donc la qualité de tes décisions financières."
-}, {
-  icon: TrendingUp,
-  title: "Ritualiser",
-  description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. Les recherches sur les habitudes montrent que la répétition consciente est un facteur clé du changement durable, et que les micro-rituels réguliers sont bien plus efficaces que des bilans occasionnels et automatisés."
-}];
+const features = [
+  {
+    icon: Circle,
+    title: "Budgétiser",
+    description:
+      "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l’avenir. Bien les définir est essentiel. Créé des budgets clairs, grâce à la trajectoire, notre outil intuitif qui t’accompagne pour définir ta destination.",
+  },
+  {
+    icon: Settings,
+    title: "Saisir",
+    description:
+      "Contrairement à d’autres applications, Steero ne fait pas à ta place. La saisie manuelle crée un lien émotionnel : ce qui améliore significativement l’autorégulation… Nous l'avons amélioré grâce au Niveau - La jauge budgétaire qui indique le consommé, consommé avec la dépense saisie et le restant",
+  },
+  {
+    icon: TrendingUp,
+    title: "Ritualiser",
+    description:
+      "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. La répétition consciente est un facteur clé du changement durable, les rituels t'indiquent quoi faire, quoi regarder, quelles questions te poser et comment préparer la suite.",
+  },
+];
 const Features = () => {
-  return <section className="py-24 bg-card">
+  return (
+    <section className="py-24 bg-card">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -26,15 +34,20 @@ const Features = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => <div key={index} className="card-feature text-center text-primary-foreground bg-slate-50">
+          {features.map((feature, index) => (
+            <div key={index} className="card-feature text-center text-primary-foreground bg-slate-50">
               <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center">
                 <feature.icon className="w-7 h-7 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-left text-primary">{feature.title}</h3>
-              <p className="leading-relaxed text-left text-base text-[#65758b] font-light font-[serif]">{feature.description}</p>
-            </div>)}
+              <p className="leading-relaxed text-left text-base text-[#65758b] font-light font-[serif]">
+                {feature.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 export default Features;
