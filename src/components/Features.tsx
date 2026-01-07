@@ -26,7 +26,7 @@ const Features = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => <div key={index} className="card-feature text-center">
+          {features.map((feature, index) => <div key={index} className="card-feature text-center text-primary">
               <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center">
                 <feature.icon className="w-7 h-7 text-primary" />
               </div>
