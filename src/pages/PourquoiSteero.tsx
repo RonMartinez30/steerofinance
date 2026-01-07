@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight, Check, Star, TrendingUp, Target, Heart } from "lucide-react";
+import { ArrowRight, Check, Star, TrendingUp, Target, Heart, Brain, Eye, RefreshCw, Pencil, BookOpen } from "lucide-react";
 const stats = [{
   value: "10K+",
   label: "Utilisateurs actifs"
@@ -39,6 +39,38 @@ const advantages = [{
   title: "Micro-rituels efficaces",
   description: "10 minutes par semaine suffisent pour transformer votre rapport à l'argent.",
   icon: TrendingUp
+}];
+
+const behavioralElements = [{
+  icon: Brain,
+  title: "La compréhension naît de l'effort cognitif",
+  subtitle: "Pas de la simple exposition à l'information",
+  description: "Le cerveau apprend durablement lorsqu'il est actif, pas passif. L'enregistrement manuel oblige à identifier la dépense, la catégoriser, la comparer à une intention et l'assumer consciemment. Automatiser supprime l'effort cognitif, donc la compréhension profonde.",
+  reference: "Chi et Wylie – The ICAP Framework"
+}, {
+  icon: Eye,
+  title: "L'automatisation crée une illusion de contrôle",
+  subtitle: "Sans maîtrise réelle",
+  description: "\"Mes comptes sont connectés\", \"Mes dépenses sont catégorisées\"… Mais l'utilisateur ne sait pas expliquer où va son argent, ni pourquoi il dévie de ses objectifs. L'automatisation déplace la responsabilité vers l'outil, pas vers l'utilisateur.",
+  reference: "Parasuraman & Riley – Humans and Automation"
+}, {
+  icon: RefreshCw,
+  title: "Le rituel transforme la finance en comportement",
+  subtitle: "Pas en donnée",
+  description: "Ritualiser permet d'ancrer une routine consciente, de créer un point de contact régulier avec la réalité financière et de transformer une contrainte abstraite en pratique tangible. Les micro-rituels sont plus efficaces que les bilans occasionnels automatisés.",
+  reference: "BJ Fogg – Behavior Model"
+}, {
+  icon: Pencil,
+  title: "L'enregistrement manuel crée un lien émotionnel",
+  subtitle: "Clé de la décision",
+  description: "Une dépense enregistrée manuellement déclenche une micro-évaluation émotionnelle, rend le coût psychologiquement réel et renforce la mémoire de la décision. Sans friction minimale, il n'y a ni prise de conscience, ni arbitrage réel.",
+  reference: "Baumeister & Vohs – Self-regulation"
+}, {
+  icon: BookOpen,
+  title: "Automatiser trop tôt empêche l'apprentissage",
+  subtitle: "Erreur classique des apps financières",
+  description: "L'automatisation est utile après la compréhension, pas avant. Dans la majorité des apps, l'utilisateur est bombardé de données sans cadre mental ni pédagogie. Résultat : abandon rapide, consultation passive, aucune progression réelle.",
+  reference: "Sweller – Cognitive Load Theory"
 }];
 const PourquoiSteero = () => {
   return <div className="min-h-screen">
@@ -106,6 +138,43 @@ const PourquoiSteero = () => {
                 <h3 className="text-xl font-semibold text-foreground mb-3">{adv.title}</h3>
                 <p className="text-muted-foreground">{adv.description}</p>
               </div>)}
+          </div>
+        </div>
+      </section>
+
+      {/* Éléments comportementaux */}
+      <section className="py-16 bg-card">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                Les fondements comportementaux de Steero
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Steero aide chacun à piloter consciemment sa trajectoire financière, plutôt que de la subir.
+              </p>
+            </div>
+            <div className="space-y-6">
+              {behavioralElements.map((element, index) => (
+                <div key={index} className="bg-background rounded-2xl p-6 shadow-card border border-border/50">
+                  <div className="flex items-start gap-5">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <element.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-foreground mb-1">
+                        {index + 1}. {element.title}
+                      </h3>
+                      <p className="text-sm text-primary font-medium mb-3">{element.subtitle}</p>
+                      <p className="text-muted-foreground leading-relaxed mb-3">{element.description}</p>
+                      <p className="text-xs text-muted-foreground/70 italic">
+                        📚 Référence : {element.reference}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
