@@ -1,9 +1,9 @@
 const steps = [
   {
     number: "01",
-    title: "Observez vos habitudes",
+    title: "Observe tes habitudes",
     description:
-      "Comprenez où va votre argent sans jugement. Steero vous aide à visualiser vos flux financiers avec clarté.",
+      "Comprends où va ton argent sans jugement. Steero t'aide à visualiser, à chaque saisie, ce que tu as déjà consommé et ce qu'il te reste dans ton budget",
   },
   {
     number: "02",
