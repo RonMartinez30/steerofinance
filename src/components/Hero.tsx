@@ -1,5 +1,5 @@
 import { ArrowRight, Sparkles } from "lucide-react";
-import heroImage from "@/assets/hero-finance.jpg";
+import heroImage from "@/assets/hero-dashboard.webp";
 const Hero = () => {
   return <section className="relative min-h-screen bg-hero-gradient pt-24 pb-16 overflow-hidden">
       {/* Decorative elements */}
