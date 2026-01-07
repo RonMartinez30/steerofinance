@@ -13,9 +13,9 @@ const steps = [
   },
   {
     number: "03",
-    title: "Faites grandir votre patrimoine",
+    title: "Avance vers tes objectifs",
     description:
-      "Avancez à votre rythme. Chaque petite décision s'accumule pour construire votre avenir financier avec sérénité.",
+      "Chaque petite décision s'accumule pour construire un avenir financier avec sérénité vers tes objectifs : Bâtir un patrimoine, voyager..",
   },
 ];
 const HowItWorks = () => {
