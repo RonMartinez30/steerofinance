@@ -14,6 +14,18 @@ const Header = () => {
           <Link to="/pourquoi-steero" className="text-sm text-muted-foreground hover:text-primary transition-colors">
             Pourquoi Steero
           </Link>
+          <a 
+            href="/#prochaines-etapes" 
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            onClick={(e) => {
+              if (window.location.pathname === '/') {
+                e.preventDefault();
+                document.getElementById('prochaines-etapes')?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            Prochaines étapes
+          </a>
           <Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">
             FAQ
           </Link>
