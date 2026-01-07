@@ -7,7 +7,7 @@ const steps = [
   },
   {
     number: "02",
-    title: "Ritualisez vos décisions",
+    title: "Ritualise ton suivi",
     description:
       "Avec des rituels financiers réguliers conçus pour t'accompagner, prend un moment une fois par semaine, mois ou trimestre pour comprendre, ajuster et planifier..",
   },
