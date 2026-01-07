@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight, Check, Star, TrendingUp, Users, Target, Heart } from "lucide-react";
+import Countdown from "@/components/Countdown";
+import { ArrowRight, Check, Star, TrendingUp, Target, Heart } from "lucide-react";
 
 const stats = [
   { value: "10K+", label: "Utilisateurs actifs" },
@@ -159,8 +160,20 @@ const PourquoiSteero = () => {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Countdown */}
       <section className="py-16 bg-card">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-foreground text-center mb-8">
+            Le compte à rebours est lancé
+          </h2>
+          <div className="max-w-2xl mx-auto">
+            <Countdown />
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-hero-gradient">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">
             Prêt à transformer votre relation à l'argent ?
