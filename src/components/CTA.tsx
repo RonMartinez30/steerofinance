@@ -1,7 +1,7 @@
 import { ArrowRight, Shield, Users, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 
-const targetDate = new Date("2026-04-01T00:00:00");
+const targetDate = new Date("2026-03-20T12:00:00+01:00");
 
 const CTA = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
@@ -45,7 +45,7 @@ const CTA = () => {
             Inscris toi à la liste d'attente pour recevoir des nouvelles de l'avancement du projet, profiter d'un accès anticipé et d'une offre de bienvenue*.
           </p>
 
-          <button className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group">
+          <button className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group mb-12">
             Je m'inscris à la liste d'attente
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </button>
@@ -53,7 +53,7 @@ const CTA = () => {
           {/* Countdown intégré */}
           <div className="mb-10 p-6 rounded-2xl bg-primary-foreground/10 backdrop-blur-sm">
             <p className="text-primary-foreground/80 mb-4 text-sm">
-              Lancement prévu le <span className="font-semibold text-primary-foreground">1er avril 2026</span>
+              Lancement prévu le <span className="font-semibold text-primary-foreground">20 mars 2026 à 12h</span>
             </p>
             <div className="flex justify-center gap-3 md:gap-6">
               {timeUnits.map((unit, index) => (
