@@ -8,6 +8,7 @@ import FAQ from "./pages/FAQ";
 import PourquoiSteero from "./pages/PourquoiSteero";
 import MentionsLegales from "./pages/MentionsLegales";
 import CGS from "./pages/CGS";
+import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/pourquoi-steero" element={<PourquoiSteero />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/cgs" element={<CGS />} />
+          <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
