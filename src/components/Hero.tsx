@@ -1,4 +1,4 @@
-import { Sparkles } from "lucide-react";
+import { Sparkles, Timer, Eye, ShieldCheck } from "lucide-react";
 import heroImage from "@/assets/hero-dashboard.webp";
 
 const Hero = () => {
@@ -31,24 +31,24 @@ const Hero = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
               <div className="group relative p-5 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                  <span className="text-xl">✨</span>
+                  <Timer className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="text-primary font-semibold text-base mb-1">Simplicité</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">Pas d'automatisation ou de suivi complexe</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">Un rituel de suivi en moins de 2 minutes par jour</p>
               </div>
               <div className="group relative p-5 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                  <span className="text-xl">💡</span>
+                  <Eye className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="text-primary font-semibold text-base mb-1">Clarté</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">Comprends chaque décision</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">Tu sais exactement pourquoi tu dépenses et où tu vas</p>
               </div>
               <div className="group relative p-5 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                  <span className="text-xl">🧘</span>
+                  <ShieldCheck className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="text-primary font-semibold text-base mb-1">Sérénité</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">Avance à ton rythme</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">Plus de surprises en fin de mois</p>
               </div>
             </div>
           </div>
