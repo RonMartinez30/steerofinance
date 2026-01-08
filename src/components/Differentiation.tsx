@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
 import featureBudgetiser from "@/assets/feature-budgetiser.webp";
 import featureSaisir from "@/assets/feature-saisir.webp";
 import featureRitualiser from "@/assets/feature-ritualiser.webp";
+
 const advantages = [{
   title: "Budgétiser",
   description: "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l'avenir. Bien les définir est essentiel. Crée des budgets clairs, grâce à la trajectoire, notre outil intuitif qui t'accompagne pour définir ta destination.",
@@ -14,10 +16,18 @@ const advantages = [{
   description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. La répétition consciente est un facteur clé du changement durable, les rituels t'indiquent quoi faire, quoi regarder, quelles questions te poser et comment préparer la suite.",
   image: featureRitualiser
 }];
+
 const Differentiation = () => {
-  return <section className="py-20 bg-hero-gradient bg-secondary-foreground">
+  return (
+    <section className="py-20 bg-hero-gradient bg-secondary-foreground">
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Pas d'automatisation qui te transforme en simple spectateur
           </h2>
@@ -27,31 +37,60 @@ const Differentiation = () => {
             <br className="hidden md:block" /> pour atteindre la destination que
             tu as choisie.
           </p>
-        </div>
+        </motion.div>
         <div className="max-w-6xl mx-auto space-y-20">
           {advantages.map((adv, index) => {
-          const isReversed = index % 2 === 1;
-          return <div key={index} className={`flex flex-col ${isReversed ? "md:flex-row-reverse" : "md:flex-row"} gap-8 md:gap-16 items-center`}>
+            const isReversed = index % 2 === 1;
+            return (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, x: isReversed ? 50 : -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className={`flex flex-col ${isReversed ? "md:flex-row-reverse" : "md:flex-row"} gap-8 md:gap-16 items-center`}
+              >
                 {/* Image */}
-                <div className="w-full md:w-1/2">
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="w-full md:w-1/2"
+                >
                   <div className="rounded-2xl overflow-hidden shadow-lg bg-muted/30">
                     <img src={adv.image} alt={adv.title} className="w-full h-auto object-cover" />
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Content */}
                 <div className="w-full md:w-1/2">
-                  <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="text-2xl md:text-3xl font-bold text-primary mb-4"
+                  >
                     {adv.title}
-                  </h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
+                  </motion.h3>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="text-muted-foreground text-lg leading-relaxed"
+                  >
                     {adv.description}
-                  </p>
+                  </motion.p>
                 </div>
-              </div>;
-        })}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Differentiation;
