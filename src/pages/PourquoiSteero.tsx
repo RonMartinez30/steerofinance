@@ -151,6 +151,20 @@ const PourquoiSteero = () => {
       {/* Comparaison alternatives */}
       <section className="py-16 bg-hero-gradient">
         <div className="container mx-auto px-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              Tu as peut-être déjà essayé...
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Des solutions qui promettent beaucoup, mais qui ne changent pas vraiment tes habitudes.
+            </p>
+          </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {alternatives.map((alt, index) => (
               <motion.div 
