@@ -17,6 +17,9 @@ const Footer = () => {
             <Link to="/cgs" className="hover:text-primary transition-colors">
               CGS
             </Link>
+            <Link to="/politique-confidentialite" className="hover:text-primary transition-colors">
+              Politique de confidentialité
+            </Link>
             <Link to="/faq" className="hover:text-primary transition-colors">
               FAQ
             </Link>
