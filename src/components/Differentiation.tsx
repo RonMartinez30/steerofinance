@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import featureBudgetiser from "@/assets/feature-budgetiser.webp";
 import featureSaisir from "@/assets/feature-saisir.webp";
 import featureRitualiser from "@/assets/feature-ritualiser.webp";
@@ -18,9 +19,30 @@ const advantages = [{
 }];
 
 const Differentiation = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const decorY1 = useTransform(scrollYProgress, [0, 1], [-30, 80]);
+  const decorY2 = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
   return (
-    <section className="py-20 bg-hero-gradient bg-secondary-foreground">
-      <div className="container mx-auto px-6">
+    <section ref={sectionRef} className="py-20 bg-hero-gradient bg-secondary-foreground relative overflow-hidden">
+      {/* Decorative parallax elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div 
+          style={{ y: decorY1 }}
+          className="absolute -left-32 top-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl" 
+        />
+        <motion.div 
+          style={{ y: decorY2 }}
+          className="absolute -right-32 bottom-1/3 w-96 h-96 bg-primary/3 rounded-full blur-3xl" 
+        />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
