@@ -1,6 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight, Check, Star, TrendingUp, Target, Heart, Brain, Eye, RefreshCw, Pencil, BookOpen } from "lucide-react";
+import { ArrowRight, Check, Star, TrendingUp, Target, Brain, Eye, RefreshCw, Pencil, BookOpen } from "lucide-react";
+import featureBudgetiser from "@/assets/feature-budgetiser.webp";
+import featureSaisir from "@/assets/feature-saisir.webp";
+import featureRitualiser from "@/assets/feature-ritualiser.webp";
 const stats = [{
   value: "10K+",
   label: "Utilisateurs actifs"
@@ -30,15 +33,15 @@ const testimonials = [{
 const advantages = [{
   title: "Budgétiser",
   description: "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l'avenir. Bien les définir est essentiel. Crée des budgets clairs, grâce à la trajectoire, notre outil intuitif qui t'accompagne pour définir ta destination.",
-  icon: Target
+  image: featureBudgetiser
 }, {
   title: "Saisir",
   description: "Contrairement à d'autres applications, Steero ne fait pas à ta place. La saisie manuelle crée un lien émotionnel : ce qui améliore significativement l'autorégulation… Nous l'avons amélioré grâce au Niveau - La jauge budgétaire qui indique le consommé, consommé avec la dépense saisie et le restant.",
-  icon: Pencil
+  image: featureSaisir
 }, {
   title: "Ritualiser",
   description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. La répétition consciente est un facteur clé du changement durable, les rituels t'indiquent quoi faire, quoi regarder, quelles questions te poser et comment préparer la suite.",
-  icon: TrendingUp
+  image: featureRitualiser
 }];
 const behavioralElements = [{
   icon: Brain,
@@ -135,25 +138,33 @@ const PourquoiSteero = () => {
               <br className="hidden md:block" /> pour atteindre la destination que tu as choisie.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {advantages.map((adv, index) => (
-              <div 
-                key={index} 
-                className="group relative bg-card rounded-2xl p-8 shadow-card border border-border/50 hover:border-primary/20 transition-all duration-300 hover:shadow-lg"
-              >
-                {/* Icon container */}
-                <div className="w-14 h-14 mb-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
-                  <adv.icon className="w-6 h-6 text-primary" />
+          <div className="max-w-6xl mx-auto space-y-20">
+            {advantages.map((adv, index) => {
+              const isReversed = index % 2 === 1;
+              return (
+                <div 
+                  key={index} 
+                  className={`flex flex-col ${isReversed ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-16 items-center`}
+                >
+                  {/* Image */}
+                  <div className="w-full md:w-1/2">
+                    <div className="rounded-2xl overflow-hidden shadow-lg bg-muted/30">
+                      <img 
+                        src={adv.image} 
+                        alt={adv.title}
+                        className="w-full h-auto object-cover"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="w-full md:w-1/2">
+                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4">{adv.title}</h3>
+                    <p className="text-muted-foreground text-lg leading-relaxed">{adv.description}</p>
+                  </div>
                 </div>
-                
-                {/* Content */}
-                <h3 className="text-xl font-bold text-primary mb-4">{adv.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{adv.description}</p>
-                
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-8 right-8 h-1 bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
