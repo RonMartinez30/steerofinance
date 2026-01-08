@@ -1,23 +1,46 @@
 import { Sparkles, Timer, Eye, ShieldCheck } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import heroImage from "@/assets/hero-dashboard.webp";
 
 const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+
+  const decorY1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const decorY2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const decorScale1 = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const decorScale2 = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+
   return (
-    <section className="relative min-h-screen bg-hero-gradient pt-24 pb-16 overflow-hidden">
-      {/* Decorative elements */}
+    <section ref={sectionRef} className="relative min-h-screen bg-hero-gradient pt-24 pb-16 overflow-hidden">
+      {/* Decorative elements with parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
+          style={{ y: decorY1, scale: decorScale1 }}
           className="absolute -left-20 top-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl" 
         />
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+          style={{ y: decorY2, scale: decorScale2 }}
           className="absolute -right-20 bottom-1/4 w-80 h-80 rounded-full bg-primary/5 blur-3xl" 
+        />
+        {/* Additional subtle floating element */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 80]) }}
+          className="absolute left-1/3 top-1/3 w-64 h-64 rounded-full bg-primary/3 blur-3xl" 
         />
       </div>
 
@@ -77,11 +100,12 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right image */}
+          {/* Right image with parallax */}
           <motion.div 
             initial={{ opacity: 0, x: 50, rotate: 6 }}
             animate={{ opacity: 1, x: 0, rotate: 3 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            style={{ y: imageY }}
             className="relative lg:pl-8"
           >
             <div className="relative transform hover:rotate-0 transition-transform duration-500">
