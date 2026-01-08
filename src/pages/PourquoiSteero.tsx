@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, Check, Star, Brain, Eye, RefreshCw, Pencil, BookOpen } from "lucide-react";
+import { motion } from "framer-motion";
 const alternatives = [{
   icon: "❌",
   title: "Excel dispersé",
@@ -152,8 +153,16 @@ const PourquoiSteero = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {alternatives.map((alt, index) => (
-              <div 
-                key={index} 
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: index * 0.15,
+                  ease: "easeOut"
+                }}
                 className={`text-center p-6 rounded-2xl transition-all ${
                   alt.highlight 
                     ? 'bg-primary text-primary-foreground shadow-lg scale-105' 
@@ -167,7 +176,7 @@ const PourquoiSteero = () => {
                 <p className={`text-sm ${alt.highlight ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>
                   {alt.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
