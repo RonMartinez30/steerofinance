@@ -45,7 +45,7 @@ const CTA = () => {
             Inscris toi à la liste d'attente pour recevoir des nouvelles de l'avancement du projet, profiter d'un accès anticipé et d'une offre de bienvenue*.
           </p>
 
-          <button className="btn-primary bg-background text-primary hover:bg-background/90 group mb-10">
+          <button className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group">
             Je m'inscris à la liste d'attente
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </button>
