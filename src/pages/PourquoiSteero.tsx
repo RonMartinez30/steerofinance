@@ -204,8 +204,8 @@ const PourquoiSteero = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-hero-gradient bg-primary-foreground border-primary-foreground">
-        <div className="container mx-auto px-6 text-center bg-primary-foreground">
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">Prêt à transformer votre relation à l'argent ?</h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
             Rejoignez des milliers d'utilisateurs qui ont choisi une approche différente.
