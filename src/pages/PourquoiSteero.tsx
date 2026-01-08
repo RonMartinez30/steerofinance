@@ -141,52 +141,6 @@ const PourquoiSteero = () => {
         </div>
       </section>
 
-      {/* Éléments comportementaux */}
-      <section className="py-16 bg-card">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold text-foreground mb-4">Les fondements comportementaux de Steero</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Steero aide chacun à piloter consciemment sa trajectoire financière, plutôt que de la subir.
-              </p>
-            </motion.div>
-            <div className="space-y-6">
-              {behavioralElements.map((element, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-background rounded-2xl p-6 shadow-card border border-border/50"
-                >
-                  <div className="flex items-start gap-5">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <element.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-foreground mb-1">
-                        {index + 1}. {element.title}
-                      </h3>
-                      <p className="text-sm text-primary font-medium mb-3">{element.subtitle}</p>
-                      <p className="text-muted-foreground leading-relaxed mb-3">{element.description}</p>
-                      <p className="text-xs text-muted-foreground/70 italic">📚 Référence : {element.reference}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Comparaison alternatives */}
       <section className="py-16 bg-hero-gradient">
         <div className="container mx-auto px-6">
@@ -231,6 +185,52 @@ const PourquoiSteero = () => {
                 </p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Éléments comportementaux */}
+      <section className="py-16 bg-card">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-bold text-foreground mb-4">Les fondements comportementaux de Steero</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Steero aide chacun à piloter consciemment sa trajectoire financière, plutôt que de la subir.
+              </p>
+            </motion.div>
+            <div className="space-y-6">
+              {behavioralElements.map((element, index) => (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-background rounded-2xl p-6 shadow-card border border-border/50"
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <element.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-foreground mb-1">
+                        {index + 1}. {element.title}
+                      </h3>
+                      <p className="text-sm text-primary font-medium mb-3">{element.subtitle}</p>
+                      <p className="text-muted-foreground leading-relaxed mb-3">{element.description}</p>
+                      <p className="text-xs text-muted-foreground/70 italic">📚 Référence : {element.reference}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
