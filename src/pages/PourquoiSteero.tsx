@@ -1,18 +1,23 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, Check, Star, Brain, Eye, RefreshCw, Pencil, BookOpen } from "lucide-react";
-const stats = [{
-  value: "10K+",
-  label: "Utilisateurs actifs"
+const alternatives = [{
+  icon: "❌",
+  title: "Excel dispersé",
+  description: "Formules cassées, suivi irrégulier."
 }, {
-  value: "95%",
-  label: "Taux de satisfaction"
+  icon: "❌",
+  title: "Apps bancaires",
+  description: "Beaucoup de données, peu de décisions."
 }, {
-  value: "30%",
-  label: "Économies moyennes"
+  icon: "❌",
+  title: "Notion bricolé",
+  description: "Puissant mais fragile."
 }, {
-  value: "2min",
-  label: "Par jour en moyenne"
+  icon: "✅",
+  title: "Steero",
+  description: "Un cadre simple, pensé pour durer.",
+  highlight: true
 }];
 const testimonials = [{
   quote: "Steero m'a permis de comprendre enfin où partait mon argent. En 3 mois, j'ai économisé plus que jamais.",
@@ -142,14 +147,28 @@ const PourquoiSteero = () => {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 bg-card">
+      {/* Comparaison alternatives */}
+      <section className="py-16 bg-hero-gradient">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {stats.map((stat, index) => <div key={index} className="text-center">
-                <p className="text-4xl font-bold text-primary mb-2">{stat.value}</p>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
-              </div>)}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {alternatives.map((alt, index) => (
+              <div 
+                key={index} 
+                className={`text-center p-6 rounded-2xl transition-all ${
+                  alt.highlight 
+                    ? 'bg-primary text-primary-foreground shadow-lg scale-105' 
+                    : 'bg-card border border-border/50'
+                }`}
+              >
+                <span className="text-3xl mb-3 block">{alt.icon}</span>
+                <h3 className={`font-semibold mb-2 ${alt.highlight ? 'text-primary-foreground' : 'text-foreground'}`}>
+                  {alt.title}
+                </h3>
+                <p className={`text-sm ${alt.highlight ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>
+                  {alt.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
