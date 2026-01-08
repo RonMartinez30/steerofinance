@@ -28,16 +28,16 @@ const testimonials = [{
   role: "Enseignante"
 }];
 const advantages = [{
-  title: "Pas d'automatisation aveugle",
-  description: "Vous restez maître de chaque décision, pas spectateur de vos finances.",
+  title: "Budgétiser",
+  description: "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l'avenir. Bien les définir est essentiel. Crée des budgets clairs, grâce à la trajectoire, notre outil intuitif qui t'accompagne pour définir ta destination.",
   icon: Target
 }, {
-  title: "Approche comportementale",
-  description: "Basée sur les recherches en psychologie du changement et des habitudes.",
-  icon: Heart
+  title: "Saisir",
+  description: "Contrairement à d'autres applications, Steero ne fait pas à ta place. La saisie manuelle crée un lien émotionnel : ce qui améliore significativement l'autorégulation… Nous l'avons amélioré grâce au Niveau - La jauge budgétaire qui indique le consommé, consommé avec la dépense saisie et le restant.",
+  icon: Pencil
 }, {
-  title: "Des rituels efficaces",
-  description: "Quelques minutes par semaine suffisent pour transformer votre rapport à vos finances.",
+  title: "Ritualiser",
+  description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. La répétition consciente est un facteur clé du changement durable, les rituels t'indiquent quoi faire, quoi regarder, quelles questions te poser et comment préparer la suite.",
   icon: TrendingUp
 }];
 const behavioralElements = [{
@@ -124,17 +124,36 @@ const PourquoiSteero = () => {
       </section>
 
       {/* Avantages comparatifs */}
-      <section className="py-16 bg-hero-gradient">
+      <section className="py-20 bg-hero-gradient">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-foreground text-center mb-12">Ce qui nous différencie</h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {advantages.map((adv, index) => <div key={index} className="card-feature text-center">
-                <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <adv.icon className="w-7 h-7 text-primary" />
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Pas d'automatisation qui te transforme en simple spectateur
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Avec Steero, tu deviens le pilote : tu comprends, ajustes et ritualises ta trajectoire financière
+              <br className="hidden md:block" /> pour atteindre la destination que tu as choisie.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {advantages.map((adv, index) => (
+              <div 
+                key={index} 
+                className="group relative bg-card rounded-2xl p-8 shadow-card border border-border/50 hover:border-primary/20 transition-all duration-300 hover:shadow-lg"
+              >
+                {/* Icon container */}
+                <div className="w-14 h-14 mb-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                  <adv.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-3 font-sans text-lg">{adv.title}</h3>
-                <p className="text-muted-foreground text-left text-base font-thin">{adv.description}</p>
-              </div>)}
+                
+                {/* Content */}
+                <h3 className="text-xl font-bold text-primary mb-4">{adv.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{adv.description}</p>
+                
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-8 right-8 h-1 bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
