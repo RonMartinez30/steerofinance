@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
+import Differentiation from "@/components/Differentiation";
 import NextSteps from "@/components/NextSteps";
 import Countdown from "@/components/Countdown";
 import CTA from "@/components/CTA";
@@ -12,6 +13,7 @@ const Index = () => {
       <Hero />
       <Features />
       <HowItWorks />
+      <Differentiation />
       <NextSteps />
       <CTA />
       <section className="py-16 bg-orange-50">
