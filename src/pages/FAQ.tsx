@@ -232,14 +232,14 @@ const FAQ = () => {
                         {section.title}
                       </h2>
                       <div className={`rounded-xl ${section.colorClass} p-1`}>
-                        <Accordion type="single" collapsible className="space-y-2">
+                        <Accordion type="single" collapsible className="space-y-1">
                           {section.items.map((item, itemIndex) => (
                             <AccordionItem
                               key={itemIndex}
                               value={`section-${sectionIndex}-item-${itemIndex}`}
-                              className="bg-card rounded-lg px-6 border-none shadow-sm"
+                              className="bg-card rounded-lg px-5 py-0 border-none shadow-sm"
                             >
-                              <AccordionTrigger className="text-left text-foreground font-medium hover:no-underline">
+                              <AccordionTrigger className="text-left text-foreground font-semibold hover:no-underline py-3 text-[15px]">
                                 <span className="flex items-center gap-2">
                                   {item.highlighted && (
                                     <span className="text-amber-500" title="Question importante">🔑</span>
@@ -247,7 +247,7 @@ const FAQ = () => {
                                   {item.question}
                                 </span>
                               </AccordionTrigger>
-                              <AccordionContent className="text-muted-foreground whitespace-pre-line">
+                              <AccordionContent className="text-muted-foreground/80 whitespace-pre-line text-sm pb-4 pt-0">
                                 {item.answer}
                               </AccordionContent>
                             </AccordionItem>
