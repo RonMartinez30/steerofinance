@@ -26,7 +26,7 @@ const Header = () => {
               <path d="m6 9 6 6 6-6" />
             </svg>
           </div>
-          <Button className="btn-primary">Commencer</Button>
+          <Button className="btn-primary">M'inscrire à la liste d'attente</Button>
         </div>
       </div>
     </header>
