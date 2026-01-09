@@ -118,10 +118,12 @@ const Differentiation = () => {
                     >
                       <Link 
                         to={adv.link.url}
-                        className="inline-flex items-center mt-4 text-primary hover:text-primary/80 font-medium transition-colors story-link"
+                        className="group inline-flex items-center mt-4 text-primary font-medium transition-all duration-300 hover:translate-x-1"
                       >
-                        {adv.link.label}
-                        <span className="ml-2">→</span>
+                        <span className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100">
+                          {adv.link.label}
+                        </span>
+                        <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
                       </Link>
                     </motion.div>
                   )}
