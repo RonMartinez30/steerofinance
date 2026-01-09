@@ -19,7 +19,7 @@ const advantages = [{
   title: "Ritualiser",
   description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. La répétition consciente est un facteur clé du changement durable, les rituels t'indiquent quoi faire, quoi regarder, quelles questions te poser et comment préparer la suite.",
   image: featureRitualiser,
-  link: null
+  link: { label: "Les fondements comportementaux de Steero", url: "/pourquoi-steero" }
 }];
 
 const Differentiation = () => {
