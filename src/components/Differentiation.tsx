@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import featureBudgetiser from "@/assets/feature-budgetiser.webp";
 import featureSaisir from "@/assets/feature-saisir.webp";
 import featureRitualiser from "@/assets/feature-ritualiser.webp";
@@ -7,15 +8,18 @@ import featureRitualiser from "@/assets/feature-ritualiser.webp";
 const advantages = [{
   title: "Budgétiser",
   description: "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l'avenir. Bien les définir est essentiel. Crée des budgets clairs, grâce à la trajectoire, notre outil intuitif qui t'accompagne pour définir ta destination.",
-  image: featureBudgetiser
+  image: featureBudgetiser,
+  link: null
 }, {
   title: "Saisir",
   description: "Contrairement à d'autres applications, Steero ne fait pas à ta place. La saisie manuelle crée un lien émotionnel : ce qui améliore significativement l'autorégulation… Le niveau, la jauge budgétaire, t'indique ce que tu as déjà dépensé, ce que la dépense saisie représente et ce qu'il reste dans ton budget.",
-  image: featureSaisir
+  image: featureSaisir,
+  link: { label: "Les fondements comportementaux de Steero", url: "/pourquoi-steero" }
 }, {
   title: "Ritualiser",
   description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. La répétition consciente est un facteur clé du changement durable, les rituels t'indiquent quoi faire, quoi regarder, quelles questions te poser et comment préparer la suite.",
-  image: featureRitualiser
+  image: featureRitualiser,
+  link: null
 }];
 
 const Differentiation = () => {
@@ -105,6 +109,22 @@ const Differentiation = () => {
                   >
                     {adv.description}
                   </motion.p>
+                  {adv.link && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.5 }}
+                    >
+                      <Link 
+                        to={adv.link.url}
+                        className="inline-flex items-center mt-4 text-primary hover:text-primary/80 font-medium transition-colors story-link"
+                      >
+                        {adv.link.label}
+                        <span className="ml-2">→</span>
+                      </Link>
+                    </motion.div>
+                  )}
                 </div>
               </motion.div>
             );
