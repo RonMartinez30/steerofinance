@@ -283,7 +283,7 @@ const PourquoiSteero = () => {
       </section>
 
       {/* Éléments comportementaux */}
-      <section id="fondements-comportementaux" className="py-16 bg-card scroll-mt-32">
+      <section id="fondements-comportementaux" className="py-16 bg-card scroll-mt-40">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div
