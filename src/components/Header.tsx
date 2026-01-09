@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import steeroLogo from "@/assets/steero-logo.png";
 
 const Header = () => {
@@ -43,33 +44,47 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border/50">
-          <nav className="container mx-auto px-6 py-4 flex flex-col gap-4">
-            <Link 
-              to="/pourquoi-steero" 
-              className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
+      {/* Mobile menu with slide animation */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-background/95 backdrop-blur-md border-t border-border/50 overflow-hidden"
+          >
+            <motion.nav
+              initial={{ y: -20 }}
+              animate={{ y: 0 }}
+              exit={{ y: -20 }}
+              transition={{ duration: 0.2, delay: 0.1 }}
+              className="container mx-auto px-6 py-4 flex flex-col gap-4"
             >
-              Pourquoi Steero
-            </Link>
-            <Link 
-              to="/faq" 
-              className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              FAQ
-            </Link>
-            <Button 
-              className="btn-primary text-xs w-full mt-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              M'inscrire à la liste d'attente
-            </Button>
-          </nav>
-        </div>
-      )}
+              <Link 
+                to="/pourquoi-steero" 
+                className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Pourquoi Steero
+              </Link>
+              <Link 
+                to="/faq" 
+                className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                FAQ
+              </Link>
+              <Button 
+                className="btn-primary text-xs w-full mt-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                M'inscrire à la liste d'attente
+              </Button>
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
