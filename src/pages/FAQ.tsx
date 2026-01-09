@@ -179,7 +179,7 @@ const FAQ = () => {
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
               {/* Left side - Sticky */}
               <div className="lg:w-1/3">
-                <div className="lg:sticky lg:top-32">
+                <div className="lg:sticky lg:top-1/3 lg:-translate-y-1/4">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -189,7 +189,7 @@ const FAQ = () => {
                       Questions fréquentes
                     </h1>
                     
-                    <div className="space-y-4 text-muted-foreground">
+                    <div className="space-y-2 text-muted-foreground">
                       <p className="text-sm uppercase tracking-wide font-medium">
                         Vous ne trouvez pas votre réponse ?
                       </p>
@@ -198,7 +198,7 @@ const FAQ = () => {
                       </p>
                     </div>
 
-                    <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                    <div className="mt-8 flex flex-col gap-3 max-w-xs">
                       <Link
                         to="/pourquoi-steero"
                         className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-primary text-primary-foreground font-medium transition-all hover:bg-primary/90 group"
