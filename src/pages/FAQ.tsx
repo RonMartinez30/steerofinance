@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -173,58 +175,89 @@ const FAQ = () => {
       <Header />
       <main className="pt-32 pb-16 bg-hero-gradient">
         <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Questions fréquentes
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                Tout ce que vous devez savoir sur Steero
-              </p>
-            </motion.div>
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+              {/* Left side - Sticky */}
+              <div className="lg:w-1/3">
+                <div className="lg:sticky lg:top-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-8">
+                      Questions fréquentes
+                    </h1>
+                    
+                    <div className="space-y-4 text-muted-foreground">
+                      <p className="text-sm uppercase tracking-wide font-medium">
+                        Vous ne trouvez pas votre réponse ?
+                      </p>
+                      <p className="text-base">
+                        Découvrez comment Steero fonctionne concrètement.
+                      </p>
+                    </div>
 
-            <div className="space-y-10">
-              {faqSections.map((section, sectionIndex) => (
-                <motion.div
-                  key={sectionIndex}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: sectionIndex * 0.1 }}
-                >
-                  <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                    {section.title}
-                  </h2>
-                  <div className={`rounded-xl ${section.colorClass} p-1`}>
-                    <Accordion type="single" collapsible className="space-y-2">
-                      {section.items.map((item, itemIndex) => (
-                        <AccordionItem
-                          key={itemIndex}
-                          value={`section-${sectionIndex}-item-${itemIndex}`}
-                          className="bg-card rounded-lg px-6 border-none shadow-sm"
-                        >
-                          <AccordionTrigger className="text-left text-foreground font-medium hover:no-underline">
-                            <span className="flex items-center gap-2">
-                              {item.highlighted && (
-                                <span className="text-amber-500" title="Question importante">🔑</span>
-                              )}
-                              {item.question}
-                            </span>
-                          </AccordionTrigger>
-                          <AccordionContent className="text-muted-foreground whitespace-pre-line">
-                            {item.answer}
-                          </AccordionContent>
-                        </AccordionItem>
-                      ))}
-                    </Accordion>
-                  </div>
-                </motion.div>
-              ))}
+                    <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                      <Link
+                        to="/pourquoi-steero"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-primary text-primary-foreground font-medium transition-all hover:bg-primary/90 group"
+                      >
+                        Découvrir l'approche Steero
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                      <a
+                        href="#waitlist"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-border bg-card text-foreground font-medium transition-all hover:bg-muted"
+                      >
+                        Rejoindre la liste d'attente
+                      </a>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Right side - Scrollable FAQ */}
+              <div className="lg:w-2/3">
+                <div className="space-y-10">
+                  {faqSections.map((section, sectionIndex) => (
+                    <motion.div
+                      key={sectionIndex}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: sectionIndex * 0.1 }}
+                    >
+                      <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                        {section.title}
+                      </h2>
+                      <div className={`rounded-xl ${section.colorClass} p-1`}>
+                        <Accordion type="single" collapsible className="space-y-2">
+                          {section.items.map((item, itemIndex) => (
+                            <AccordionItem
+                              key={itemIndex}
+                              value={`section-${sectionIndex}-item-${itemIndex}`}
+                              className="bg-card rounded-lg px-6 border-none shadow-sm"
+                            >
+                              <AccordionTrigger className="text-left text-foreground font-medium hover:no-underline">
+                                <span className="flex items-center gap-2">
+                                  {item.highlighted && (
+                                    <span className="text-amber-500" title="Question importante">🔑</span>
+                                  )}
+                                  {item.question}
+                                </span>
+                              </AccordionTrigger>
+                              <AccordionContent className="text-muted-foreground whitespace-pre-line">
+                                {item.answer}
+                              </AccordionContent>
+                            </AccordionItem>
+                          ))}
+                        </Accordion>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
