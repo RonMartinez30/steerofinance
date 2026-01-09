@@ -119,14 +119,8 @@ const PourquoiSteero = () => {
               duration: 0.6
             }}>
                 <h2 className="text-3xl font-bold text-foreground mb-4">Notre mission</h2>
-                <p className="text-muted-foreground mb-4">
-                  Steero est né d'un constat simple : les applications de finances personnelles automatisent tout, mais
-                  ne changent rien à vos comportements.
-                </p>
-                <p className="text-muted-foreground mb-6">
-                  Notre mission est de vous aider à développer une véritable intelligence financière, pas simplement à
-                  consulter des graphiques générés automatiquement.
-                </p>
+                <p className="text-muted-foreground mb-4">Steero est né d'un constat simple : les applications de finances personnelles automatisent tout, mais ne changent rien à tes comportements.</p>
+                <p className="text-muted-foreground mb-6">Notre mission est de t'aider à développer une véritable compréhension de ta gestion financière, pas simplement un outil pour consulter des graphiques générés automatiquement.</p>
                 <ul className="space-y-3">
                   {["Comprendre vos décisions", "Créer des habitudes durables", "Atteindre vos objectifs"].map((item, i) => <motion.li key={i} initial={{
                   opacity: 0,
