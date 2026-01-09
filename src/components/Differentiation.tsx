@@ -14,12 +14,12 @@ const advantages = [{
   title: "Saisir",
   description: "Contrairement à d'autres applications, Steero ne fait pas à ta place. La saisie manuelle crée un lien émotionnel : ce qui améliore significativement l'autorégulation… Le niveau, la jauge budgétaire, t'indique ce que tu as déjà dépensé, ce que la dépense saisie représente et ce qu'il reste dans ton budget.",
   image: featureSaisir,
-  link: { label: "Les fondements comportementaux de Steero", url: "/pourquoi-steero" }
+  link: { label: "Les fondements comportementaux de Steero", url: "/pourquoi-steero#fondements-comportementaux" }
 }, {
   title: "Ritualiser",
   description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. La répétition consciente est un facteur clé du changement durable, les rituels t'indiquent quoi faire, quoi regarder, quelles questions te poser et comment préparer la suite.",
   image: featureRitualiser,
-  link: { label: "Les fondements comportementaux de Steero", url: "/pourquoi-steero" }
+  link: { label: "Les fondements comportementaux de Steero", url: "/pourquoi-steero#fondements-comportementaux" }
 }];
 
 const Differentiation = () => {
