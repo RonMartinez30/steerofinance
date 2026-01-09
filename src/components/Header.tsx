@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 import steeroLogo from "@/assets/steero-logo.png";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
@@ -26,9 +30,46 @@ const Header = () => {
               <path d="m6 9 6 6 6-6" />
             </svg>
           </div>
-          <Button className="btn-primary text-xs sm:text-sm">M'inscrire à la liste d'attente</Button>
+          <Button className="btn-primary text-xs sm:text-sm hidden sm:inline-flex">M'inscrire à la liste d'attente</Button>
+          
+          {/* Hamburger button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+            aria-label="Menu"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border/50">
+          <nav className="container mx-auto px-6 py-4 flex flex-col gap-4">
+            <Link 
+              to="/pourquoi-steero" 
+              className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Pourquoi Steero
+            </Link>
+            <Link 
+              to="/faq" 
+              className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              FAQ
+            </Link>
+            <Button 
+              className="btn-primary text-xs w-full mt-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              M'inscrire à la liste d'attente
+            </Button>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
