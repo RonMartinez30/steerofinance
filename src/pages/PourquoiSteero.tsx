@@ -320,9 +320,7 @@ const PourquoiSteero = () => {
           duration: 0.6
         }}>
             <h2 className="text-3xl font-bold text-foreground mb-4">Prêt à transformer ta relation à l'argent ?</h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Rejoins Steero et commence 2026 dans les meilleurs disposi
-            </p>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">Rejoins Steero et commence 2026 dans les meilleurs dispositions</p>
             <motion.button whileHover={{
             scale: 1.05
           }} whileTap={{
