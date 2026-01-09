@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, Check, Star, Brain, Eye, RefreshCw, Pencil, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
-
 const alternatives = [{
   icon: "❌",
   title: "Excel dispersé",
@@ -21,7 +20,6 @@ const alternatives = [{
   description: "Un cadre simple, pensé pour durer.",
   highlight: true
 }];
-
 const testimonials = [{
   quote: "Steero m'a permis de comprendre enfin où partait mon argent. En 3 mois, j'ai économisé plus que jamais.",
   author: "Marie L.",
@@ -35,7 +33,6 @@ const testimonials = [{
   author: "Sophie M.",
   role: "Enseignante"
 }];
-
 const behavioralElements = [{
   icon: Brain,
   title: "La compréhension naît de l'effort cognitif",
@@ -67,30 +64,37 @@ const behavioralElements = [{
   description: "L'automatisation est utile après la compréhension, pas avant. Dans la majorité des apps, l'utilisateur est bombardé de données sans cadre mental ni pédagogie. Résultat : abandon rapide, consultation passive, aucune progression réelle.",
   reference: "Sweller – Cognitive Load Theory"
 }];
-
 const PourquoiSteero = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
 
       {/* Hero */}
       <section className="pt-32 pb-16 bg-hero-gradient overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="text-4xl md:text-5xl font-bold text-foreground mb-6"
-            >
+            <motion.h1 initial={{
+            opacity: 0,
+            y: 30
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.7,
+            ease: "easeOut"
+          }} className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Pourquoi choisir <span className="text-gradient">Steero</span> ?
             </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-              className="text-lg text-muted-foreground mb-8"
-            >
+            <motion.p initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.7,
+            delay: 0.2,
+            ease: "easeOut"
+          }} className="text-lg text-muted-foreground mb-8">
               Une approche différente de la gestion financière, basée sur la compréhension, la régularité et le
               changement durable.
             </motion.p>
@@ -103,12 +107,17 @@ const PourquoiSteero = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
+              <motion.div initial={{
+              opacity: 0,
+              x: -30
+            }} whileInView={{
+              opacity: 1,
+              x: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              duration: 0.6
+            }}>
                 <h2 className="text-3xl font-bold text-foreground mb-4">Notre mission</h2>
                 <p className="text-muted-foreground mb-4">
                   Steero est né d'un constat simple : les applications de finances personnelles automatisent tout, mais
@@ -119,28 +128,35 @@ const PourquoiSteero = () => {
                   consulter des graphiques générés automatiquement.
                 </p>
                 <ul className="space-y-3">
-                  {["Comprendre vos décisions", "Créer des habitudes durables", "Atteindre vos objectifs"].map((item, i) => (
-                    <motion.li 
-                      key={i} 
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-                      className="flex items-center gap-3 text-foreground"
-                    >
+                  {["Comprendre vos décisions", "Créer des habitudes durables", "Atteindre vos objectifs"].map((item, i) => <motion.li key={i} initial={{
+                  opacity: 0,
+                  x: -20
+                }} whileInView={{
+                  opacity: 1,
+                  x: 0
+                }} viewport={{
+                  once: true
+                }} transition={{
+                  duration: 0.4,
+                  delay: 0.3 + i * 0.1
+                }} className="flex items-center gap-3 text-foreground">
                       <Check className="w-5 h-5 text-primary" />
                       {item}
-                    </motion.li>
-                  ))}
+                    </motion.li>)}
                 </ul>
               </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-primary/5 rounded-3xl p-8"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              x: 30
+            }} whileInView={{
+              opacity: 1,
+              x: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              duration: 0.6,
+              delay: 0.2
+            }} className="bg-primary/5 rounded-3xl p-8">
                 <blockquote className="text-xl italic text-foreground">
                   "La vraie liberté financière vient de la compréhension, pas de l'automatisation."
                 </blockquote>
@@ -154,13 +170,17 @@ const PourquoiSteero = () => {
       {/* Comparaison alternatives */}
       <section className="py-16 bg-hero-gradient">
         <div className="container mx-auto px-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.5
+        }} className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
               Tu as peut-être déjà essayé...
             </h2>
@@ -169,23 +189,20 @@ const PourquoiSteero = () => {
             </p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {alternatives.map((alt, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: index * 0.15,
-                  ease: "easeOut"
-                }}
-                className={`text-center p-6 rounded-2xl transition-all ${
-                  alt.highlight 
-                    ? 'bg-primary text-primary-foreground shadow-lg scale-105' 
-                    : 'bg-card border border-border/50'
-                }`}
-              >
+            {alternatives.map((alt, index) => <motion.div key={index} initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true,
+            margin: "-50px"
+          }} transition={{
+            duration: 0.5,
+            delay: index * 0.15,
+            ease: "easeOut"
+          }} className={`text-center p-6 rounded-2xl transition-all ${alt.highlight ? 'bg-primary text-primary-foreground shadow-lg scale-105' : 'bg-card border border-border/50'}`}>
                 <span className="text-3xl mb-3 block">{alt.icon}</span>
                 <h3 className={`font-semibold mb-2 ${alt.highlight ? 'text-primary-foreground' : 'text-foreground'}`}>
                   {alt.title}
@@ -193,8 +210,7 @@ const PourquoiSteero = () => {
                 <p className={`text-sm ${alt.highlight ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>
                   {alt.description}
                 </p>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </div>
         </div>
       </section>
@@ -203,28 +219,35 @@ const PourquoiSteero = () => {
       <section id="fondements-comportementaux" className="py-16 bg-card scroll-mt-24">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-12"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.5
+          }} className="text-center mb-12">
               <h2 className="text-3xl font-bold text-foreground mb-4">Les fondements comportementaux de Steero</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Steero aide chacun à piloter consciemment sa trajectoire financière, plutôt que de la subir.
               </p>
             </motion.div>
             <div className="space-y-6">
-              {behavioralElements.map((element, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-background rounded-2xl p-6 shadow-card border border-border/50"
-                >
+              {behavioralElements.map((element, index) => <motion.div key={index} initial={{
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              duration: 0.5,
+              delay: index * 0.1
+            }} className="bg-background rounded-2xl p-6 shadow-card border border-border/50">
                   <div className="flex items-start gap-5">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <element.icon className="w-6 h-6 text-primary" />
@@ -238,8 +261,7 @@ const PourquoiSteero = () => {
                       <p className="text-xs text-muted-foreground/70 italic">📚 Référence : {element.reference}</p>
                     </div>
                   </div>
-                </motion.div>
-              ))}
+                </motion.div>)}
             </div>
           </div>
         </div>
@@ -248,25 +270,32 @@ const PourquoiSteero = () => {
       {/* Témoignages */}
       <section className="py-16 bg-hero-gradient">
         <div className="container mx-auto px-6">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-center mb-12 text-primary"
-          >
+          <motion.h2 initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.5
+        }} className="text-3xl font-bold text-center mb-12 text-primary">
             Ce qu'on aimerait que nos utilisateurs disent de Steero
           </motion.h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="bg-card rounded-2xl p-6 shadow-card"
-              >
+            {testimonials.map((testimonial, index) => <motion.div key={index} initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.5,
+            delay: index * 0.15
+          }} className="bg-card rounded-2xl p-6 shadow-card">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-primary text-primary" />)}
                 </div>
@@ -275,8 +304,7 @@ const PourquoiSteero = () => {
                   <p className="font-semibold text-foreground">{testimonial.author}</p>
                   <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                 </div>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </div>
         </div>
       </section>
@@ -284,21 +312,24 @@ const PourquoiSteero = () => {
       {/* CTA */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-foreground mb-4">Prêt à transformer votre relation à l'argent ?</h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Rejoignez des milliers d'utilisateurs qui ont choisi une approche différente.
-            </p>
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="btn-primary group"
-            >
+          <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.6
+        }}>
+            <h2 className="text-3xl font-bold text-foreground mb-4">Prêt à transformer ta relation à l'argent ?</h2>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">Rejoins Steero et commence 2026 dans les meilleurs disposi</p>
+            <motion.button whileHover={{
+            scale: 1.05
+          }} whileTap={{
+            scale: 0.98
+          }} className="btn-primary group">
               Je m'inscris à la liste d'attente
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </motion.button>
@@ -307,8 +338,6 @@ const PourquoiSteero = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default PourquoiSteero;
