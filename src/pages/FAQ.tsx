@@ -237,7 +237,7 @@ const FAQ = () => {
                             <AccordionItem
                               key={itemIndex}
                               value={`section-${sectionIndex}-item-${itemIndex}`}
-                              className="bg-card rounded-lg px-5 py-0 border-none shadow-sm"
+                              className="bg-card rounded-lg px-5 py-0 border-none shadow-sm transition-colors duration-200 hover:bg-muted/50 data-[state=open]:bg-card"
                             >
                               <AccordionTrigger className="text-left text-foreground font-semibold hover:no-underline py-3 text-[15px]">
                                 <span className="flex items-center gap-2">
