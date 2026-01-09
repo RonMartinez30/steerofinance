@@ -97,9 +97,7 @@ const Hero = () => {
           }} transition={{
             duration: 0.7,
             delay: 0.2
-          }} className="text-lg text-muted-foreground max-w-xl">
-              Un tableau de bord simple pour suivre budgets, dépenses et habitudes : Le premier Operating System personnel qui relie finances et habitudes pour changer durablement.
-            </motion.p>
+          }} className="text-lg text-muted-foreground max-w-xl">Un tableau de bord simple pour suivre tes budgets, tes dépenses et ancrer des habitudes. Steero : Le premier Operating System personnel qui relie finances et habitudes pour changer durablement.</motion.p>
 
             {/* Value props - Modern triptych */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
