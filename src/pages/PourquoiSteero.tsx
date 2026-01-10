@@ -285,75 +285,86 @@ const ControlIllusionAnimation = ({ isOpen }: { isOpen: boolean }) => {
   }, [isOpen]);
 
   return (
-    <div className="relative h-24 flex items-center justify-center gap-4">
-      {/* Fake automated view */}
-      <motion.div
-        animate={{
-          opacity: phase === 'fake' ? 1 : 0.3,
-          scale: phase === 'fake' ? 1 : 0.9,
-          filter: phase === 'reveal' ? 'blur(2px)' : 'blur(0px)',
-        }}
-        className="flex-1 bg-muted/50 rounded-lg p-3 border border-border"
-      >
-        <div className="flex items-center gap-2 mb-2">
-          <div className="w-2 h-2 rounded-full bg-destructive/50" />
-          <span className="text-xs text-muted-foreground">Auto-sync</span>
-        </div>
-        <div className="space-y-1">
-          <div className="h-2 bg-muted rounded w-full" />
-          <div className="h-2 bg-muted rounded w-3/4" />
-          <div className="h-2 bg-muted rounded w-1/2" />
-        </div>
-        {phase === 'reveal' && (
-          <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="absolute inset-0 flex items-center justify-center text-2xl"
-          >
-            ❓
-          </motion.span>
-        )}
-      </motion.div>
+    <div className="flex flex-col gap-2 py-2">
+      <div className="relative h-20 flex items-center justify-center gap-4">
+        {/* Fake automated view */}
+        <motion.div
+          animate={{
+            opacity: phase === 'fake' ? 1 : 0.3,
+            scale: phase === 'fake' ? 1 : 0.9,
+            filter: phase === 'reveal' ? 'blur(2px)' : 'blur(0px)',
+          }}
+          className="relative flex-1 bg-muted/50 rounded-lg p-3 border border-border"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-2 h-2 rounded-full bg-destructive/50" />
+            <span className="text-xs text-muted-foreground">Auto-sync</span>
+          </div>
+          <div className="space-y-1">
+            <div className="h-1.5 bg-muted rounded w-full" />
+            <div className="h-1.5 bg-muted rounded w-3/4" />
+            <div className="h-1.5 bg-muted rounded w-1/2" />
+          </div>
+          {phase === 'reveal' && (
+            <motion.span
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="absolute inset-0 flex items-center justify-center text-xl"
+            >
+              ❓
+            </motion.span>
+          )}
+        </motion.div>
+        
+        {/* Arrow */}
+        <motion.div
+          animate={{ x: phase === 'real' ? [0, 5, 0] : 0 }}
+          transition={{ duration: 0.5, repeat: phase === 'real' ? Infinity : 0 }}
+        >
+          <ArrowRight className="w-4 h-4 text-primary" />
+        </motion.div>
+        
+        {/* Real understanding */}
+        <motion.div
+          animate={{
+            opacity: phase === 'real' ? 1 : 0.3,
+            scale: phase === 'real' ? 1 : 0.9,
+          }}
+          className="relative flex-1 bg-primary/10 rounded-lg p-3 border border-primary/20"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <motion.div
+              animate={{ scale: phase === 'real' ? [1, 1.3, 1] : 1 }}
+              transition={{ duration: 0.5, repeat: phase === 'real' ? Infinity : 0, repeatDelay: 1 }}
+              className="w-2 h-2 rounded-full bg-primary"
+            />
+            <span className="text-xs text-primary font-medium">Compris</span>
+          </div>
+          <div className="space-y-1">
+            <div className="h-1.5 bg-primary/30 rounded w-full" />
+            <div className="h-1.5 bg-primary/50 rounded w-3/4" />
+            <div className="h-1.5 bg-primary/70 rounded w-1/2" />
+          </div>
+          {phase === 'real' && (
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center"
+            >
+              <Check className="w-2.5 h-2.5 text-primary-foreground" />
+            </motion.div>
+          )}
+        </motion.div>
+      </div>
       
-      {/* Arrow */}
-      <motion.div
-        animate={{ x: phase === 'real' ? [0, 5, 0] : 0 }}
-        transition={{ duration: 0.5, repeat: phase === 'real' ? Infinity : 0 }}
+      {/* Label outside */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: phase === 'real' ? 1 : 0 }}
+        className="text-center text-xs text-primary font-medium"
       >
-        <ArrowRight className="w-5 h-5 text-primary" />
-      </motion.div>
-      
-      {/* Real understanding */}
-      <motion.div
-        animate={{
-          opacity: phase === 'real' ? 1 : 0.3,
-          scale: phase === 'real' ? 1 : 0.9,
-        }}
-        className="flex-1 bg-primary/10 rounded-lg p-3 border border-primary/20"
-      >
-        <div className="flex items-center gap-2 mb-2">
-          <motion.div
-            animate={{ scale: phase === 'real' ? [1, 1.3, 1] : 1 }}
-            transition={{ duration: 0.5, repeat: phase === 'real' ? Infinity : 0, repeatDelay: 1 }}
-            className="w-2 h-2 rounded-full bg-primary"
-          />
-          <span className="text-xs text-primary font-medium">Compris</span>
-        </div>
-        <div className="space-y-1">
-          <div className="h-2 bg-primary/30 rounded w-full" />
-          <div className="h-2 bg-primary/50 rounded w-3/4" />
-          <div className="h-2 bg-primary/70 rounded w-1/2" />
-        </div>
-        {phase === 'real' && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center"
-          >
-            <Check className="w-3 h-3 text-primary-foreground" />
-          </motion.div>
-        )}
-      </motion.div>
+        ✓ Compréhension réelle
+      </motion.p>
     </div>
   );
 };
@@ -378,58 +389,57 @@ const RitualCycleAnimation = ({ isOpen }: { isOpen: boolean }) => {
   ];
 
   return (
-    <div className="relative h-24">
-      {/* Circular path */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-20 h-20 rounded-full border-2 border-dashed border-primary/20" />
+    <div className="flex flex-col gap-2 py-2">
+      <div className="relative h-20 flex items-center justify-center">
+        {/* Circular path */}
+        <div className="w-16 h-16 rounded-full border-2 border-dashed border-primary/20" />
+        
+        {/* Ritual steps around the circle */}
+        {ritualSteps.map((step, i) => {
+          const angle = (i * 90 - 90) * (Math.PI / 180);
+          const radius = 32;
+          const x = Math.cos(angle) * radius;
+          const y = Math.sin(angle) * radius;
+          
+          return (
+            <motion.div
+              key={i}
+              style={{
+                left: `calc(50% + ${x}px)`,
+                top: `calc(50% + ${y}px)`,
+                transform: 'translate(-50%, -50%)',
+              }}
+              animate={{
+                scale: activeStep === i ? 1.2 : 1,
+                backgroundColor: activeStep === i ? "hsl(var(--primary))" : "hsl(var(--muted))",
+              }}
+              transition={{ duration: 0.3, type: "spring" }}
+              className="absolute w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md"
+            >
+              {step.icon}
+            </motion.div>
+          );
+        })}
+        
+        {/* Center indicator */}
+        <motion.div
+          animate={{ rotate: activeStep * 90 }}
+          transition={{ duration: 0.5, type: "spring" }}
+          className="absolute"
+        >
+          <RefreshCw className="w-4 h-4 text-primary" />
+        </motion.div>
       </div>
       
-      {/* Ritual steps around the circle */}
-      {ritualSteps.map((step, i) => {
-        const angle = (i * 90 - 90) * (Math.PI / 180);
-        const radius = 40;
-        const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * radius;
-        
-        return (
-          <motion.div
-            key={i}
-            style={{
-              left: `calc(50% + ${x}px - 16px)`,
-              top: `calc(50% + ${y}px - 16px)`,
-            }}
-            animate={{
-              scale: activeStep === i ? 1.2 : 1,
-              backgroundColor: activeStep === i ? "hsl(var(--primary))" : "hsl(var(--muted))",
-            }}
-            transition={{ duration: 0.3, type: "spring" }}
-            className="absolute w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-md"
-          >
-            {step.icon}
-          </motion.div>
-        );
-      })}
-      
-      {/* Center indicator */}
-      <motion.div
-        animate={{ rotate: activeStep * 90 }}
-        transition={{ duration: 0.5, type: "spring" }}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-      >
-        <RefreshCw className="w-5 h-5 text-primary" />
-      </motion.div>
-      
-      {/* Current step label */}
-      <motion.div
+      {/* Current step label - outside the animation */}
+      <motion.p
         key={activeStep}
         initial={{ opacity: 0, y: 5 }}
         animate={{ opacity: 1, y: 0 }}
-        className="absolute bottom-0 left-0 right-0 text-center"
+        className="text-center text-xs font-medium text-primary"
       >
-        <span className="text-xs font-medium text-primary">
-          {ritualSteps[activeStep].label}
-        </span>
-      </motion.div>
+        {ritualSteps[activeStep].icon} {ritualSteps[activeStep].label}
+      </motion.p>
     </div>
   );
 };
@@ -447,75 +457,76 @@ const EmotionalConnectionAnimation = ({ isOpen }: { isOpen: boolean }) => {
   }, [isOpen]);
 
   return (
-    <div className="relative h-24 flex items-center justify-center">
-      {/* Transaction appearing */}
-      <motion.div
-        initial={{ x: -50, opacity: 0 }}
-        animate={{
-          x: step >= 1 ? 0 : -50,
-          opacity: step >= 1 ? 1 : 0,
-        }}
-        transition={{ duration: 0.4, type: "spring" }}
-        className="bg-muted rounded-lg px-3 py-2 flex items-center gap-2"
-      >
-        <span className="text-lg">☕</span>
-        <div>
-          <p className="text-xs font-medium text-foreground">Café</p>
-          <p className="text-xs text-muted-foreground">-3,50€</p>
-        </div>
-      </motion.div>
-      
-      {/* Pencil writing */}
-      <motion.div
-        animate={{
-          opacity: step >= 2 && step < 4 ? 1 : 0,
-          y: step === 2 ? [0, -5, 0] : 0,
-          rotate: step === 3 ? [0, -15, 15, 0] : 0,
-        }}
-        transition={{ duration: 0.5 }}
-        className="mx-3"
-      >
-        <Pencil className="w-5 h-5 text-primary" />
-      </motion.div>
-      
-      {/* Emotional response */}
-      <motion.div
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{
-          scale: step >= 3 ? 1 : 0,
-          opacity: step >= 3 ? 1 : 0,
-        }}
-        transition={{ duration: 0.3, type: "spring" }}
-        className="relative"
-      >
+    <div className="flex flex-col gap-2 py-2">
+      <div className="relative h-16 flex items-center justify-center gap-3">
+        {/* Transaction appearing */}
         <motion.div
+          initial={{ x: -50, opacity: 0 }}
           animate={{
-            scale: step === 4 ? [1, 1.2, 1] : 1,
+            x: step >= 1 ? 0 : -50,
+            opacity: step >= 1 ? 1 : 0,
           }}
-          transition={{ duration: 0.6, repeat: step === 4 ? Infinity : 0 }}
-          className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center"
+          transition={{ duration: 0.4, type: "spring" }}
+          className="bg-muted rounded-lg px-2.5 py-1.5 flex items-center gap-2"
         >
-          <span className="text-2xl">❤️</span>
+          <span className="text-base">☕</span>
+          <div>
+            <p className="text-[10px] font-medium text-foreground">Café</p>
+            <p className="text-[10px] text-muted-foreground">-3,50€</p>
+          </div>
         </motion.div>
         
-        {/* Ripple effect */}
-        {step === 4 && (
+        {/* Pencil writing */}
+        <motion.div
+          animate={{
+            opacity: step >= 2 && step < 4 ? 1 : 0,
+            y: step === 2 ? [0, -5, 0] : 0,
+            rotate: step === 3 ? [0, -15, 15, 0] : 0,
+          }}
+          transition={{ duration: 0.5 }}
+        >
+          <Pencil className="w-4 h-4 text-primary" />
+        </motion.div>
+        
+        {/* Emotional response */}
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{
+            scale: step >= 3 ? 1 : 0,
+            opacity: step >= 3 ? 1 : 0,
+          }}
+          transition={{ duration: 0.3, type: "spring" }}
+          className="relative"
+        >
           <motion.div
-            initial={{ scale: 1, opacity: 0.6 }}
-            animate={{ scale: 2, opacity: 0 }}
-            transition={{ duration: 1, repeat: Infinity }}
-            className="absolute inset-0 rounded-full border-2 border-primary"
-          />
-        )}
-      </motion.div>
+            animate={{
+              scale: step === 4 ? [1, 1.2, 1] : 1,
+            }}
+            transition={{ duration: 0.6, repeat: step === 4 ? Infinity : 0 }}
+            className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center"
+          >
+            <span className="text-xl">❤️</span>
+          </motion.div>
+          
+          {/* Ripple effect */}
+          {step === 4 && (
+            <motion.div
+              initial={{ scale: 1, opacity: 0.6 }}
+              animate={{ scale: 2, opacity: 0 }}
+              transition={{ duration: 1, repeat: Infinity }}
+              className="absolute inset-0 rounded-full border-2 border-primary"
+            />
+          )}
+        </motion.div>
+      </div>
       
-      {/* Result text */}
+      {/* Result text - outside */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 4 ? 1 : 0 }}
-        className="absolute bottom-0 left-0 right-0 text-center text-xs text-primary font-medium"
+        className="text-center text-xs text-primary font-medium"
       >
-        Décision consciente ✓
+        ❤️ Décision consciente
       </motion.p>
     </div>
   );
@@ -541,9 +552,9 @@ const LearningFirstAnimation = ({ isOpen }: { isOpen: boolean }) => {
   ];
 
   return (
-    <div className="h-24 flex flex-col justify-center gap-3">
+    <div className="flex flex-col gap-2 py-2">
       {/* Progress bar */}
-      <div className="relative h-3 bg-muted rounded-full overflow-hidden">
+      <div className="relative h-2.5 bg-muted rounded-full overflow-hidden">
         <motion.div
           animate={{ width: `${stages[stage].fill}%` }}
           transition={{ duration: 0.5, ease: "easeOut" }}
@@ -552,7 +563,7 @@ const LearningFirstAnimation = ({ isOpen }: { isOpen: boolean }) => {
       </div>
       
       {/* Stage indicators */}
-      <div className="flex justify-between">
+      <div className="flex justify-between px-1">
         {stages.map((s, i) => {
           const Icon = s.icon;
           return (
@@ -563,12 +574,12 @@ const LearningFirstAnimation = ({ isOpen }: { isOpen: boolean }) => {
                 opacity: stage >= i ? 1 : 0.4,
               }}
               transition={{ duration: 0.3 }}
-              className="flex flex-col items-center gap-1"
+              className="flex flex-col items-center gap-0.5"
             >
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${stage >= i ? 'bg-primary/20' : 'bg-muted'}`}>
-                <Icon className={`w-4 h-4 ${stage >= i ? 'text-primary' : 'text-muted-foreground'}`} />
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center ${stage >= i ? 'bg-primary/20' : 'bg-muted'}`}>
+                <Icon className={`w-3.5 h-3.5 ${stage >= i ? 'text-primary' : 'text-muted-foreground'}`} />
               </div>
-              <span className={`text-[10px] font-medium ${stage === i ? 'text-primary' : 'text-muted-foreground'}`}>
+              <span className={`text-[9px] font-medium ${stage === i ? 'text-primary' : 'text-muted-foreground'}`}>
                 {s.label}
               </span>
             </motion.div>
@@ -576,29 +587,44 @@ const LearningFirstAnimation = ({ isOpen }: { isOpen: boolean }) => {
         })}
       </div>
       
-      {/* Warning for premature automation */}
-      <AnimatePresence>
-        {stage < 2 && (
-          <motion.p
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            className="text-center text-[10px] text-muted-foreground"
-          >
-            ⚠️ Automatiser maintenant = échec probable
-          </motion.p>
-        )}
-        {stage >= 3 && (
-          <motion.p
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            className="text-center text-[10px] text-primary font-medium"
-          >
-            ✓ Prêt pour l'automatisation !
-          </motion.p>
-        )}
-      </AnimatePresence>
+      {/* Status message - outside with fixed height */}
+      <div className="h-4 flex items-center justify-center">
+        <AnimatePresence mode="wait">
+          {stage < 2 && (
+            <motion.p
+              key="warning"
+              initial={{ opacity: 0, y: -3 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -3 }}
+              className="text-center text-[10px] text-muted-foreground"
+            >
+              ⚠️ Automatiser maintenant = échec probable
+            </motion.p>
+          )}
+          {stage >= 2 && stage < 3 && (
+            <motion.p
+              key="progress"
+              initial={{ opacity: 0, y: -3 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -3 }}
+              className="text-center text-[10px] text-primary/70"
+            >
+              📈 En bonne voie...
+            </motion.p>
+          )}
+          {stage >= 3 && (
+            <motion.p
+              key="ready"
+              initial={{ opacity: 0, y: -3 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -3 }}
+              className="text-center text-[10px] text-primary font-medium"
+            >
+              ✓ Prêt pour l'automatisation !
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
