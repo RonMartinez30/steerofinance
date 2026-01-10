@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { ArrowRight, Check, Star, Brain, Eye, RefreshCw, Pencil, BookOpen, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import confetti from "canvas-confetti";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 // Progress sidebar component for behavioral principles
@@ -1108,8 +1109,8 @@ const PourquoiSteero = () => {
                 </div>)}
             </div>
             
-            {/* Hint text */}
-            <motion.p initial={{
+            {/* Hint text with link */}
+            <motion.div initial={{
             opacity: 0
           }} whileInView={{
             opacity: 1
@@ -1118,8 +1119,15 @@ const PourquoiSteero = () => {
           }} transition={{
             delay: 0.5
           }} className="text-center text-sm text-muted-foreground mt-8">
-              Clique sur chaque principe pour en découvrir le détail
-            </motion.p>
+              <p>Clique sur chaque principe pour en découvrir le détail.</p>
+              <Link 
+                to="/fonctionnalites" 
+                className="inline-flex items-center gap-1 mt-2 text-primary font-medium hover:underline group"
+              >
+                Découvrir les fonctionnalités
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
