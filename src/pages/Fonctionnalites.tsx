@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,7 @@ const features = [
     bgColor: "bg-amber-50",
     borderColor: "border-amber-200",
     textColor: "text-amber-700",
+    hasGauge: false,
   },
   {
     emoji: "💰",
@@ -24,6 +25,7 @@ const features = [
     bgColor: "bg-orange-50",
     borderColor: "border-orange-200",
     textColor: "text-orange-700",
+    hasGauge: false,
   },
   {
     emoji: "📅",
@@ -33,6 +35,7 @@ const features = [
     bgColor: "bg-rose-50",
     borderColor: "border-rose-200",
     textColor: "text-rose-700",
+    hasGauge: false,
   },
   {
     emoji: "🧾",
@@ -42,6 +45,7 @@ const features = [
     bgColor: "bg-red-50",
     borderColor: "border-red-200",
     textColor: "text-red-700",
+    hasGauge: false,
   },
   {
     emoji: "📊",
@@ -51,6 +55,7 @@ const features = [
     bgColor: "bg-yellow-50",
     borderColor: "border-yellow-200",
     textColor: "text-yellow-700",
+    hasGauge: true,
   },
   {
     emoji: "🎯",
@@ -60,6 +65,7 @@ const features = [
     bgColor: "bg-orange-50",
     borderColor: "border-orange-200",
     textColor: "text-orange-700",
+    hasGauge: false,
   },
   {
     emoji: "✨",
@@ -69,8 +75,134 @@ const features = [
     bgColor: "bg-amber-50",
     borderColor: "border-amber-200",
     textColor: "text-amber-700",
+    hasGauge: false,
   },
 ];
+
+// Animated gauge component for "Le Niveau" feature
+const AnimatedGauge = ({ isOpen }: { isOpen: boolean }) => {
+  const [step, setStep] = useState(0);
+  
+  useEffect(() => {
+    if (!isOpen) {
+      setStep(0);
+      return;
+    }
+    
+    // Animation sequence
+    const timers = [
+      setTimeout(() => setStep(1), 300),
+      setTimeout(() => setStep(2), 1200),
+      setTimeout(() => setStep(3), 2100),
+    ];
+    
+    const loopTimer = setInterval(() => {
+      setStep(0);
+      setTimeout(() => setStep(1), 300);
+      setTimeout(() => setStep(2), 1200);
+      setTimeout(() => setStep(3), 2100);
+    }, 4000);
+    
+    return () => {
+      timers.forEach(clearTimeout);
+      clearInterval(loopTimer);
+    };
+  }, [isOpen]);
+  
+  const spentWidth = 45; // Already spent
+  const currentWidth = 20; // Current expense
+  const remainingWidth = 35; // Remaining
+  
+  return (
+    <div className="mt-4 mb-2">
+      {/* Gauge bar */}
+      <div className="relative h-8 bg-gray-200 rounded-full overflow-hidden">
+        {/* Already spent (green) */}
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: step >= 1 ? `${spentWidth}%` : 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="absolute left-0 top-0 h-full bg-gradient-to-r from-emerald-400 to-emerald-500"
+        />
+        
+        {/* Current expense (amber, pulsing) */}
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ 
+            width: step >= 2 ? `${currentWidth}%` : 0,
+          }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          style={{ left: `${spentWidth}%` }}
+          className="absolute top-0 h-full bg-gradient-to-r from-amber-400 to-orange-500"
+        >
+          {step >= 2 && (
+            <motion.div
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1, repeat: Infinity }}
+              className="absolute inset-0 bg-white/30"
+            />
+          )}
+        </motion.div>
+        
+        {/* Remaining (light gray with pattern) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: step >= 3 ? 1 : 0 }}
+          transition={{ duration: 0.4 }}
+          style={{ left: `${spentWidth + currentWidth}%`, width: `${remainingWidth}%` }}
+          className="absolute top-0 h-full bg-gradient-to-r from-gray-300 to-gray-200"
+        />
+      </div>
+      
+      {/* Legend */}
+      <div className="flex justify-between mt-3 text-xs">
+        <motion.div
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 5 }}
+          className="flex items-center gap-1"
+        >
+          <span className="w-3 h-3 rounded-full bg-emerald-500" />
+          <span className="text-emerald-700 font-medium">Déjà dépensé</span>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : 5 }}
+          className="flex items-center gap-1"
+        >
+          <span className="w-3 h-3 rounded-full bg-amber-500" />
+          <span className="text-amber-700 font-medium">En cours</span>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : 5 }}
+          className="flex items-center gap-1"
+        >
+          <span className="w-3 h-3 rounded-full bg-gray-300" />
+          <span className="text-gray-600 font-medium">Disponible</span>
+        </motion.div>
+      </div>
+      
+      {/* Amount display */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: step >= 2 ? 1 : 0, scale: step >= 2 ? 1 : 0.9 }}
+        className="mt-3 text-center"
+      >
+        <span className="text-lg font-bold text-amber-600">-25€</span>
+        <span className="text-muted-foreground text-sm ml-2">→ Il te restera</span>
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: step >= 3 ? 1 : 0 }}
+          className="text-lg font-bold text-emerald-600 ml-2"
+        >
+          175€
+        </motion.span>
+      </motion.div>
+    </div>
+  );
+};
 
 const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: number }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -102,6 +234,7 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
+            {feature.hasGauge && <AnimatedGauge isOpen={isOpen} />}
             <p className="mt-4 text-muted-foreground leading-relaxed pt-4 border-t border-current/10">
               {feature.details}
             </p>
