@@ -125,9 +125,9 @@ const featureGroups: FeatureGroup[] = [
         title: "Parcours d'initialisation",
         microPromise: "Configurer ton point de départ",
         details: "Un parcours guidé et intuitif pour configurer ton profil financier. Étape par étape, tu définis tes objectifs, tes revenus et tes priorités pour que Steero s'adapte parfaitement à ta situation.",
-        bgColor: "bg-amber-50",
-        borderColor: "border-amber-200",
-        textColor: "text-amber-700",
+        bgColor: "bg-primary/5",
+        borderColor: "border-primary/20",
+        textColor: "text-primary",
         animation: "onboarding",
         animationDirection: "horizontal",
       },
@@ -136,9 +136,9 @@ const featureGroups: FeatureGroup[] = [
         title: "Gestion du budget",
         microPromise: "Définir ton cadre mensuel",
         details: "Organise tes finances avec un système de catégories hiérarchiques. Ton budget évolue avec toi, s'adapte à chaque mois et te permet d'affiner ta gestion au fil du temps.",
-        bgColor: "bg-orange-50",
-        borderColor: "border-orange-200",
-        textColor: "text-orange-700",
+        bgColor: "bg-secondary",
+        borderColor: "border-primary/15",
+        textColor: "text-primary",
         animation: "budget",
         animationDirection: "horizontal",
       },
@@ -153,9 +153,9 @@ const featureGroups: FeatureGroup[] = [
         title: "Transactions fixes",
         microPromise: "Anticiper ce qui revient chaque mois",
         details: "Centralise tous tes prélèvements, abonnements et revenus récurrents. Visualise clairement ce qui rentre et ce qui sort chaque mois, avec les dates exactes de chaque transaction.",
-        bgColor: "bg-rose-50",
-        borderColor: "border-rose-200",
-        textColor: "text-rose-700",
+        bgColor: "bg-card",
+        borderColor: "border-border",
+        textColor: "text-foreground",
         animation: "fixed",
         animationDirection: "vertical",
       },
@@ -164,9 +164,9 @@ const featureGroups: FeatureGroup[] = [
         title: "Transactions du quotidien",
         microPromise: "Saisir sans effort au quotidien",
         details: "Gagne du temps grâce aux modèles de transactions personnalisables. Tes achats récurrents sont pré-renseignés pour une saisie rapide et sans friction.",
-        bgColor: "bg-red-50",
-        borderColor: "border-red-200",
-        textColor: "text-red-700",
+        bgColor: "bg-primary/5",
+        borderColor: "border-primary/20",
+        textColor: "text-primary",
         animation: "daily",
         animationDirection: "vertical",
       },
@@ -175,9 +175,9 @@ const featureGroups: FeatureGroup[] = [
         title: "Le Niveau",
         microPromise: "Voir où tu en es en un coup d'œil",
         details: "Lors de chaque saisie, visualise instantanément : ce qui a déjà été dépensé, ce que représente la dépense en cours, et ce qu'il te restera disponible dans ton budget.",
-        bgColor: "bg-yellow-50",
-        borderColor: "border-yellow-200",
-        textColor: "text-yellow-700",
+        bgColor: "bg-secondary",
+        borderColor: "border-primary/15",
+        textColor: "text-foreground",
         animation: "gauge",
         animationDirection: "pulse",
       },
@@ -192,9 +192,9 @@ const featureGroups: FeatureGroup[] = [
         title: "Suivi des rituels",
         microPromise: "Suivre ce qui compte vraiment",
         details: "Un système de rituels qui te guide sur ce que tu dois faire, regarder, et quelles questions te poser. Développe des habitudes financières durables.",
-        bgColor: "bg-orange-50",
-        borderColor: "border-orange-200",
-        textColor: "text-orange-700",
+        bgColor: "bg-card",
+        borderColor: "border-border",
+        textColor: "text-foreground",
         animation: "rituals",
         animationDirection: "pulse",
       },
@@ -203,9 +203,9 @@ const featureGroups: FeatureGroup[] = [
         title: "Indicateurs ludiques",
         microPromise: "Mesurer tes progrès dans le temps",
         details: "Des visualisations claires et engageantes qui transforment tes données en insights actionnables. Comprends rapidement ta situation grâce à des indicateurs pensés pour faciliter tes décisions.",
-        bgColor: "bg-amber-50",
-        borderColor: "border-amber-200",
-        textColor: "text-amber-700",
+        bgColor: "bg-primary/5",
+        borderColor: "border-primary/20",
+        textColor: "text-primary",
         animation: "indicators",
         animationDirection: "pulse",
       },
@@ -236,17 +236,16 @@ const OnboardingAnimation = ({ isOpen }: { isOpen: boolean }) => {
               animate={{ 
                 scaleX: step > i ? 1 : 0, 
                 opacity: step > i ? 1 : 0.4,
-                backgroundColor: step > i ? "#f59e0b" : "#e5e7eb"
               }}
               style={{ originX: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="h-2 rounded-full mb-2"
+              className={`h-2 rounded-full mb-2 ${step > i ? 'bg-primary' : 'bg-muted'}`}
             />
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: step > i ? 1 : 0.4, x: step > i ? 0 : -10 }}
               transition={{ duration: 0.3 }}
-              className="text-xs text-center font-medium text-amber-700"
+              className="text-xs text-center font-medium text-primary"
             >
               {step > i && <Check className="inline w-3 h-3 mr-1" />}
               {label}
@@ -257,7 +256,7 @@ const OnboardingAnimation = ({ isOpen }: { isOpen: boolean }) => {
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: step === steps.length ? 1 : 0, x: step === steps.length ? 0 : 20 }}
-        className="mt-3 text-center text-sm font-medium text-emerald-600"
+        className="mt-3 text-center text-sm font-medium text-primary"
       >
         ✓ Profil complet !
       </motion.div>
@@ -292,9 +291,9 @@ const BudgetAnimation = ({ isOpen }: { isOpen: boolean }) => {
           animate={{ opacity: step >= i ? 1 : 0, x: step >= i ? 0 : -30 }}
           transition={{ delay: i * 0.1, duration: 0.4, ease: "easeOut" }}
         >
-          <div className="flex justify-between items-center bg-orange-100 rounded-lg px-3 py-2">
-            <span className="font-medium text-orange-800 text-sm">{cat.name}</span>
-            <span className="text-orange-600 font-bold text-sm">{cat.amount}</span>
+          <div className="flex justify-between items-center bg-primary/10 rounded-lg px-3 py-2">
+            <span className="font-medium text-foreground text-sm">{cat.name}</span>
+            <span className="text-primary font-bold text-sm">{cat.amount}</span>
           </div>
           <AnimatePresence>
             {step >= i + 1 && (
@@ -310,7 +309,7 @@ const BudgetAnimation = ({ isOpen }: { isOpen: boolean }) => {
                     initial={{ opacity: 0, x: -15 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: j * 0.15, duration: 0.3 }}
-                    className="text-xs text-orange-600 bg-orange-50 rounded px-2 py-1 whitespace-nowrap"
+                    className="text-xs text-primary bg-primary/5 rounded px-2 py-1 whitespace-nowrap"
                   >
                     {sub}
                   </motion.div>
@@ -352,16 +351,16 @@ const FixedTransactionsAnimation = ({ isOpen }: { isOpen: boolean }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: step > i ? 1 : 0.3, y: step > i ? 0 : -20 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="flex items-center gap-3 bg-rose-100/50 rounded-lg px-3 py-2"
+            className="flex items-center gap-3 bg-secondary rounded-lg px-3 py-2"
           >
-            <span className="w-8 h-8 rounded-full bg-rose-200 flex items-center justify-center text-xs font-bold text-rose-700">
+            <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
               {t.day}
             </span>
-            <span className="flex-1 text-sm text-rose-800">{t.label}</span>
+            <span className="flex-1 text-sm text-foreground">{t.label}</span>
             <motion.span 
               initial={{ scale: 0.8 }}
               animate={{ scale: step > i ? 1 : 0.8 }}
-              className={`font-bold text-sm ${t.type === "income" ? "text-emerald-600" : "text-rose-600"}`}
+              className={`font-bold text-sm ${t.type === "income" ? "text-primary" : "text-muted-foreground"}`}
             >
               {t.amount}
             </motion.span>
@@ -401,17 +400,17 @@ const DailyTransactionsAnimation = ({ isOpen }: { isOpen: boolean }) => {
               opacity: 1,
               y: 0,
               scale: activeTemplate === i ? 1.03 : 1,
-              boxShadow: activeTemplate === i ? "0 4px 12px rgba(239, 68, 68, 0.3)" : "none"
+              boxShadow: activeTemplate === i ? "0 4px 12px hsl(var(--primary) / 0.2)" : "none"
             }}
             transition={{ delay: i * 0.1, duration: 0.3 }}
-            className="flex items-center gap-3 bg-red-100 rounded-xl p-3 cursor-pointer"
+            className="flex items-center gap-3 bg-primary/10 rounded-xl p-3 cursor-pointer"
           >
             <div className="text-2xl">{t.emoji}</div>
-            <div className="flex-1 text-sm font-medium text-red-800">{t.label}</div>
+            <div className="flex-1 text-sm font-medium text-foreground">{t.label}</div>
             <motion.div
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: activeTemplate === i ? 1 : 0.5, x: activeTemplate === i ? 0 : 10 }}
-              className="text-sm text-red-600 font-bold"
+              className="text-sm text-primary font-bold"
             >
               {t.amount}
             </motion.div>
@@ -420,7 +419,7 @@ const DailyTransactionsAnimation = ({ isOpen }: { isOpen: boolean }) => {
       </div>
       <motion.div
         animate={{ opacity: activeTemplate !== null ? 1 : 0 }}
-        className="mt-3 text-center text-xs text-red-600"
+        className="mt-3 text-center text-xs text-primary"
       >
         Tap pour ajouter rapidement ↓
       </motion.div>
@@ -452,12 +451,12 @@ const GaugeAnimation = ({ isOpen }: { isOpen: boolean }) => {
   
   return (
     <div className="mt-4 mb-2">
-      <div className="relative h-8 bg-gray-200 rounded-full overflow-hidden">
+      <div className="relative h-8 bg-muted rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: step >= 1 ? `${spentWidth}%` : 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="absolute left-0 top-0 h-full bg-gradient-to-r from-emerald-400 to-emerald-500"
+          className="absolute left-0 top-0 h-full bg-gradient-to-r from-primary to-primary/80"
         />
         <motion.div
           initial={{ width: 0 }}
@@ -470,7 +469,7 @@ const GaugeAnimation = ({ isOpen }: { isOpen: boolean }) => {
             scale: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
           }}
           style={{ left: `${spentWidth}%` }}
-          className="absolute top-0 h-full bg-gradient-to-r from-amber-400 to-orange-500"
+          className="absolute top-0 h-full bg-gradient-to-r from-primary/60 to-primary/40"
         >
           {step >= 2 && (
             <motion.div 
@@ -485,7 +484,7 @@ const GaugeAnimation = ({ isOpen }: { isOpen: boolean }) => {
           animate={{ opacity: step >= 3 ? 1 : 0 }}
           transition={{ duration: 0.4 }}
           style={{ left: `${spentWidth + currentWidth}%`, width: `${remainingWidth}%` }}
-          className="absolute top-0 h-full bg-gradient-to-r from-gray-300 to-gray-200"
+          className="absolute top-0 h-full bg-gradient-to-r from-muted-foreground/20 to-muted-foreground/10"
         />
       </div>
       <div className="flex justify-between mt-3 text-xs">
@@ -493,28 +492,28 @@ const GaugeAnimation = ({ isOpen }: { isOpen: boolean }) => {
           <motion.span 
             animate={{ scale: step === 1 ? [1, 1.2, 1] : 1 }}
             transition={{ duration: 0.3 }}
-            className="w-3 h-3 rounded-full bg-emerald-500" 
+            className="w-3 h-3 rounded-full bg-primary" 
           />
-          <span className="text-emerald-700 font-medium">Dépensé</span>
+          <span className="text-primary font-medium">Dépensé</span>
         </motion.div>
         <motion.div animate={{ opacity: step >= 2 ? 1 : 0 }} className="flex items-center gap-1">
           <motion.span 
             animate={{ scale: step >= 2 ? [1, 1.15, 1] : 1 }}
             transition={{ duration: 1.2, repeat: step >= 2 ? Infinity : 0, ease: "easeInOut" }}
-            className="w-3 h-3 rounded-full bg-amber-500" 
+            className="w-3 h-3 rounded-full bg-primary/60" 
           />
-          <span className="text-amber-700 font-medium">En cours</span>
+          <span className="text-primary/80 font-medium">En cours</span>
         </motion.div>
         <motion.div animate={{ opacity: step >= 3 ? 1 : 0 }} className="flex items-center gap-1">
-          <span className="w-3 h-3 rounded-full bg-gray-300" />
-          <span className="text-gray-600 font-medium">Reste</span>
+          <span className="w-3 h-3 rounded-full bg-muted-foreground/30" />
+          <span className="text-muted-foreground font-medium">Reste</span>
         </motion.div>
       </div>
       <motion.div animate={{ opacity: step >= 2 ? 1 : 0 }} className="mt-3 text-center">
         <motion.span 
           animate={{ scale: step === 2 ? [1, 1.1, 1] : 1 }}
           transition={{ duration: 0.8, repeat: step === 2 ? Infinity : 0 }}
-          className="text-lg font-bold text-amber-600"
+          className="text-lg font-bold text-primary/80"
         >
           -25€
         </motion.span>
@@ -522,7 +521,7 @@ const GaugeAnimation = ({ isOpen }: { isOpen: boolean }) => {
         <motion.span 
           animate={{ opacity: step >= 3 ? 1 : 0, scale: step >= 3 ? [1, 1.05, 1] : 1 }} 
           transition={{ scale: { duration: 2, repeat: Infinity, ease: "easeInOut" } }}
-          className="text-lg font-bold text-emerald-600 ml-2"
+          className="text-lg font-bold text-primary ml-2"
         >
           175€
         </motion.span>
@@ -553,13 +552,13 @@ const RitualsAnimation = ({ isOpen }: { isOpen: boolean }) => {
   
   return (
     <div className="mt-4 mb-2">
-      <div className="text-xs text-orange-700 font-medium mb-2 text-center">📋 Vérifier mes dépenses</div>
+      <div className="text-xs text-foreground font-medium mb-2 text-center">📋 Vérifier mes dépenses</div>
       <div className="flex justify-center gap-2">
         {days.map((d, i) => (
           <motion.div
             key={i}
             animate={{ 
-              backgroundColor: checks[i] ? "#22c55e" : "#fed7aa",
+              backgroundColor: checks[i] ? "hsl(var(--primary))" : "hsl(var(--muted))",
               scale: checks[i] ? [1, 1.25, 1] : [1, 1.03, 1]
             }}
             transition={{ 
@@ -575,10 +574,10 @@ const RitualsAnimation = ({ isOpen }: { isOpen: boolean }) => {
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Check className="w-4 h-4 text-white" />
+                <Check className="w-4 h-4 text-primary-foreground" />
               </motion.div>
             ) : (
-              <span className="text-xs font-medium text-orange-700">{d}</span>
+              <span className="text-xs font-medium text-muted-foreground">{d}</span>
             )}
           </motion.div>
         ))}
@@ -589,7 +588,7 @@ const RitualsAnimation = ({ isOpen }: { isOpen: boolean }) => {
           scale: completedCount >= 5 ? [1, 1.05, 1] : 1
         }}
         transition={{ scale: { duration: 1.5, repeat: Infinity, ease: "easeInOut" } }}
-        className="mt-3 text-center text-xs text-emerald-600 font-medium"
+        className="mt-3 text-center text-xs text-primary font-medium"
       >
         🔥 5 jours consécutifs !
       </motion.div>
@@ -618,9 +617,9 @@ const IndicatorsAnimation = ({ isOpen }: { isOpen: boolean }) => {
   }, [isOpen]);
   
   const indicators = [
-    { label: "Budget utilisé", color: "bg-amber-500", value: values[0] },
-    { label: "Épargne", color: "bg-emerald-500", value: values[1] },
-    { label: "Rituels", color: "bg-rose-500", value: values[2] },
+    { label: "Budget utilisé", value: values[0] },
+    { label: "Épargne", value: values[1] },
+    { label: "Rituels", value: values[2] },
   ];
   
   return (
@@ -633,21 +632,21 @@ const IndicatorsAnimation = ({ isOpen }: { isOpen: boolean }) => {
           transition={{ delay: i * 0.2 }}
         >
           <div className="flex justify-between text-xs mb-1">
-            <span className="text-amber-800 font-medium">{ind.label}</span>
+            <span className="text-foreground font-medium">{ind.label}</span>
             <motion.span 
               animate={{ scale: ind.value > 0 ? [1, 1.1, 1] : 1 }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
-              className="text-amber-600 font-bold"
+              className="text-primary font-bold"
             >
               {ind.value}%
             </motion.span>
           </div>
-          <div className="h-3 bg-amber-100 rounded-full overflow-hidden">
+          <div className="h-3 bg-muted rounded-full overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${ind.value}%` }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className={`h-full ${ind.color} rounded-full relative overflow-hidden`}
+              className="h-full bg-primary rounded-full relative overflow-hidden"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.6, 0.3] }}
