@@ -576,21 +576,16 @@ const LearningFirstAnimation = ({
   const stages = [{
     label: "Apprendre",
     icon: BookOpen,
-    fill: 25,
+    fill: 33,
     color: "bg-primary/30"
   }, {
     label: "Comprendre",
     icon: Brain,
-    fill: 50,
+    fill: 66,
     color: "bg-primary/50"
   }, {
     label: "Maîtriser",
     icon: Check,
-    fill: 75,
-    color: "bg-primary/70"
-  }, {
-    label: "Automatiser",
-    icon: RefreshCw,
     fill: 100,
     color: "bg-primary"
   }];
@@ -598,27 +593,28 @@ const LearningFirstAnimation = ({
       {/* Progress bar */}
       <div className="relative h-2.5 bg-muted rounded-full overflow-hidden">
         <motion.div animate={{
-        width: `${stages[stage].fill}%`
+        width: `${stages[stage % 3].fill}%`
       }} transition={{
         duration: 0.5,
         ease: "easeOut"
-      }} className={`absolute left-0 top-0 h-full ${stages[stage].color} rounded-full`} />
+      }} className={`absolute left-0 top-0 h-full ${stages[stage % 3].color} rounded-full`} />
       </div>
       
       {/* Stage indicators */}
       <div className="flex justify-between px-1">
         {stages.map((s, i) => {
         const Icon = s.icon;
+        const currentStage = stage % 3;
         return <motion.div key={i} animate={{
-          scale: stage === i ? 1.1 : 1,
-          opacity: stage >= i ? 1 : 0.4
+          scale: currentStage === i ? 1.1 : 1,
+          opacity: currentStage >= i ? 1 : 0.4
         }} transition={{
           duration: 0.3
         }} className="flex flex-col items-center gap-0.5">
-              <div className={`w-7 h-7 rounded-full flex items-center justify-center ${stage >= i ? 'bg-primary/20' : 'bg-muted'}`}>
-                <Icon className={`w-3.5 h-3.5 ${stage >= i ? 'text-primary' : 'text-muted-foreground'}`} />
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center ${currentStage >= i ? 'bg-primary/20' : 'bg-muted'}`}>
+                <Icon className={`w-3.5 h-3.5 ${currentStage >= i ? 'text-primary' : 'text-muted-foreground'}`} />
               </div>
-              <span className={`text-[9px] font-medium ${stage === i ? 'text-primary' : 'text-muted-foreground'}`}>
+              <span className={`text-[9px] font-medium ${currentStage === i ? 'text-primary' : 'text-muted-foreground'}`}>
                 {s.label}
               </span>
             </motion.div>;
@@ -628,7 +624,7 @@ const LearningFirstAnimation = ({
       {/* Status message - outside with fixed height */}
       <div className="h-4 flex items-center justify-center">
         <AnimatePresence mode="wait">
-          {stage < 2 && <motion.p key="warning" initial={{
+          {stage % 3 < 1 && <motion.p key="warning" initial={{
           opacity: 0,
           y: -3
         }} animate={{
@@ -638,9 +634,9 @@ const LearningFirstAnimation = ({
           opacity: 0,
           y: -3
         }} className="text-center text-[10px] text-muted-foreground">
-              ⚠️ Automatiser maintenant = échec probable
+              ⚠️ Automatiser trop tôt = échec probable
             </motion.p>}
-          {stage >= 2 && stage < 3 && <motion.p key="progress" initial={{
+          {stage % 3 === 1 && <motion.p key="progress" initial={{
           opacity: 0,
           y: -3
         }} animate={{
@@ -650,9 +646,9 @@ const LearningFirstAnimation = ({
           opacity: 0,
           y: -3
         }} className="text-center text-[10px] text-primary/70">
-              📈 En bonne voie...
+              📈 La compréhension s'installe...
             </motion.p>}
-          {stage >= 3 && <motion.p key="ready" initial={{
+          {stage % 3 === 2 && <motion.p key="ready" initial={{
           opacity: 0,
           y: -3
         }} animate={{
@@ -662,7 +658,7 @@ const LearningFirstAnimation = ({
           opacity: 0,
           y: -3
         }} className="text-center text-[10px] text-primary font-medium">
-              ✓ Prêt pour l'automatisation !
+              ✓ L'automatisation peut être envisagée
             </motion.p>}
         </AnimatePresence>
       </div>
