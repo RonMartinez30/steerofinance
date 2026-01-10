@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import steeroLogo from "@/assets/steero-logo.png";
 const Footer = () => {
   const links = [{
+    to: "/fonctionnalites",
+    label: "Fonctionnalités"
+  }, {
     to: "/mentions-legales",
     label: "Mentions légales"
   }, {
