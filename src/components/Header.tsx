@@ -27,6 +27,9 @@ const Header = () => {
           <Link to="/pourquoi-steero" className="text-sm text-muted-foreground hover:text-primary transition-colors">
             Pourquoi Steero
           </Link>
+          <Link to="/fonctionnalites" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            Fonctionnalités
+          </Link>
           <Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">
             FAQ
           </Link>
@@ -75,6 +78,13 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Pourquoi Steero
+              </Link>
+              <Link 
+                to="/fonctionnalites" 
+                className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Fonctionnalités
               </Link>
               <Link 
                 to="/faq" 
