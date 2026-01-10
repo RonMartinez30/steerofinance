@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
+import { useSoundEffects } from "@/hooks/useSoundEffects";
 
 type AnimationType = "onboarding" | "budget" | "fixed" | "daily" | "gauge" | "rituals" | "indicators";
 
@@ -462,8 +463,21 @@ const FeatureAnimation = ({ type, isOpen }: { type: AnimationType; isOpen: boole
   }
 };
 
-const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: number }) => {
+const FeatureCard = ({ feature, index, sounds }: { 
+  feature: typeof features[0]; 
+  index: number;
+  sounds: ReturnType<typeof useSoundEffects>;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    if (isOpen) {
+      sounds.playCloseSound();
+    } else {
+      sounds.playOpenSound();
+    }
+    setIsOpen(!isOpen);
+  };
 
   return (
     <motion.div
@@ -471,7 +485,7 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
-      onClick={() => setIsOpen(!isOpen)}
+      onClick={handleClick}
       className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]`}
     >
       <div className="flex items-center gap-4">
@@ -508,6 +522,8 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
 };
 
 const Fonctionnalites = () => {
+  const sounds = useSoundEffects();
+  
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -536,7 +552,7 @@ const Fonctionnalites = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
-              <FeatureCard key={index} feature={feature} index={index} />
+              <FeatureCard key={index} feature={feature} index={index} sounds={sounds} />
             ))}
           </div>
         </div>
