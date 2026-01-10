@@ -4,147 +4,320 @@ import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+
+type AnimationType = "onboarding" | "budget" | "fixed" | "daily" | "gauge" | "rituals" | "indicators";
 
 const features = [
   {
     emoji: "🧭",
     title: "Parcours d'initialisation",
     details: "Un parcours guidé et intuitif pour configurer ton profil financier. Étape par étape, tu définis tes objectifs, tes revenus et tes priorités pour que Steero s'adapte parfaitement à ta situation.",
-    color: "from-amber-400 to-orange-500",
     bgColor: "bg-amber-50",
     borderColor: "border-amber-200",
     textColor: "text-amber-700",
-    hasGauge: false,
+    animation: "onboarding" as AnimationType,
   },
   {
     emoji: "💰",
     title: "Gestion du budget",
     details: "Organise tes finances avec un système de catégories hiérarchiques. Ton budget évolue avec toi, s'adapte à chaque mois et te permet d'affiner ta gestion au fil du temps.",
-    color: "from-orange-400 to-red-500",
     bgColor: "bg-orange-50",
     borderColor: "border-orange-200",
     textColor: "text-orange-700",
-    hasGauge: false,
+    animation: "budget" as AnimationType,
   },
   {
     emoji: "📅",
     title: "Transactions fixes",
     details: "Centralise tous tes prélèvements, abonnements et revenus récurrents. Visualise clairement ce qui rentre et ce qui sort chaque mois, avec les dates exactes de chaque transaction.",
-    color: "from-rose-400 to-pink-500",
     bgColor: "bg-rose-50",
     borderColor: "border-rose-200",
     textColor: "text-rose-700",
-    hasGauge: false,
+    animation: "fixed" as AnimationType,
   },
   {
     emoji: "🧾",
     title: "Transactions du quotidien",
     details: "Gagne du temps grâce aux modèles de transactions personnalisables. Tes achats récurrents sont pré-renseignés pour une saisie rapide et sans friction.",
-    color: "from-red-400 to-orange-500",
     bgColor: "bg-red-50",
     borderColor: "border-red-200",
     textColor: "text-red-700",
-    hasGauge: false,
+    animation: "daily" as AnimationType,
   },
   {
     emoji: "📊",
     title: "Le Niveau",
     details: "Lors de chaque saisie, visualise instantanément : ce qui a déjà été dépensé, ce que représente la dépense en cours, et ce qu'il te restera disponible dans ton budget.",
-    color: "from-yellow-400 to-amber-500",
     bgColor: "bg-yellow-50",
     borderColor: "border-yellow-200",
     textColor: "text-yellow-700",
-    hasGauge: true,
+    animation: "gauge" as AnimationType,
   },
   {
     emoji: "🎯",
     title: "Suivi des rituels",
     details: "Un système de rituels qui te guide sur ce que tu dois faire, regarder, et quelles questions te poser. Développe des habitudes financières durables.",
-    color: "from-orange-500 to-rose-500",
     bgColor: "bg-orange-50",
     borderColor: "border-orange-200",
     textColor: "text-orange-700",
-    hasGauge: false,
+    animation: "rituals" as AnimationType,
   },
   {
     emoji: "✨",
     title: "Indicateurs ludiques",
     details: "Des visualisations claires et engageantes qui transforment tes données en insights actionnables. Comprends rapidement ta situation grâce à des indicateurs pensés pour faciliter tes décisions.",
-    color: "from-amber-500 to-yellow-500",
     bgColor: "bg-amber-50",
     borderColor: "border-amber-200",
     textColor: "text-amber-700",
-    hasGauge: false,
+    animation: "indicators" as AnimationType,
   },
 ];
 
-// Animated gauge component for "Le Niveau" feature
-const AnimatedGauge = ({ isOpen }: { isOpen: boolean }) => {
+// Onboarding steps animation
+const OnboardingAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  const [step, setStep] = useState(0);
+  const steps = ["Objectifs", "Revenus", "Dépenses fixes", "Priorités"];
+  
+  useEffect(() => {
+    if (!isOpen) { setStep(0); return; }
+    const interval = setInterval(() => {
+      setStep(s => (s + 1) % (steps.length + 1));
+    }, 800);
+    return () => clearInterval(interval);
+  }, [isOpen]);
+  
+  return (
+    <div className="mt-4 mb-2">
+      <div className="flex items-center justify-between gap-2">
+        {steps.map((label, i) => (
+          <div key={i} className="flex-1">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0.3 }}
+              animate={{ 
+                scale: step > i ? 1 : 0.8, 
+                opacity: step > i ? 1 : 0.4,
+                backgroundColor: step > i ? "#f59e0b" : "#e5e7eb"
+              }}
+              className="h-2 rounded-full mb-2"
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: step > i ? 1 : 0.4 }}
+              className="text-xs text-center font-medium text-amber-700"
+            >
+              {step > i && <Check className="inline w-3 h-3 mr-1" />}
+              {label}
+            </motion.div>
+          </div>
+        ))}
+      </div>
+      <motion.div
+        animate={{ opacity: step === steps.length ? 1 : 0, scale: step === steps.length ? 1 : 0.9 }}
+        className="mt-3 text-center text-sm font-medium text-emerald-600"
+      >
+        ✓ Profil complet !
+      </motion.div>
+    </div>
+  );
+};
+
+// Budget hierarchy animation
+const BudgetAnimation = ({ isOpen }: { isOpen: boolean }) => {
   const [step, setStep] = useState(0);
   
   useEffect(() => {
-    if (!isOpen) {
-      setStep(0);
-      return;
-    }
-    
-    // Animation sequence
+    if (!isOpen) { setStep(0); return; }
+    const interval = setInterval(() => {
+      setStep(s => (s + 1) % 4);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isOpen]);
+  
+  const categories = [
+    { name: "Logement", amount: "800€", sub: ["Loyer 750€", "Assurance 50€"] },
+    { name: "Alimentation", amount: "400€", sub: ["Courses 300€", "Resto 100€"] },
+    { name: "Loisirs", amount: "150€", sub: ["Sport 50€", "Sorties 100€"] },
+  ];
+  
+  return (
+    <div className="mt-4 mb-2 space-y-2">
+      {categories.map((cat, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: step >= i ? 1 : 0, x: step >= i ? 0 : -20 }}
+          transition={{ delay: i * 0.1, duration: 0.3 }}
+        >
+          <div className="flex justify-between items-center bg-orange-100 rounded-lg px-3 py-2">
+            <span className="font-medium text-orange-800 text-sm">{cat.name}</span>
+            <span className="text-orange-600 font-bold text-sm">{cat.amount}</span>
+          </div>
+          <AnimatePresence>
+            {step >= i + 1 && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="ml-4 mt-1 space-y-1 overflow-hidden"
+              >
+                {cat.sub.map((sub, j) => (
+                  <motion.div
+                    key={j}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: j * 0.1 }}
+                    className="text-xs text-orange-600 bg-orange-50 rounded px-2 py-1"
+                  >
+                    └ {sub}
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+// Fixed transactions animation
+const FixedTransactionsAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  const [step, setStep] = useState(0);
+  
+  useEffect(() => {
+    if (!isOpen) { setStep(0); return; }
+    const interval = setInterval(() => {
+      setStep(s => (s + 1) % 5);
+    }, 700);
+    return () => clearInterval(interval);
+  }, [isOpen]);
+  
+  const transactions = [
+    { day: "01", label: "Loyer", amount: "-750€", type: "expense" },
+    { day: "05", label: "Salaire", amount: "+2100€", type: "income" },
+    { day: "15", label: "Netflix", amount: "-15€", type: "expense" },
+    { day: "20", label: "Électricité", amount: "-80€", type: "expense" },
+  ];
+  
+  return (
+    <div className="mt-4 mb-2">
+      <div className="space-y-2">
+        {transactions.map((t, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: step > i ? 1 : 0.3, y: step > i ? 0 : 10 }}
+            className="flex items-center gap-3 bg-rose-100/50 rounded-lg px-3 py-2"
+          >
+            <span className="w-8 h-8 rounded-full bg-rose-200 flex items-center justify-center text-xs font-bold text-rose-700">
+              {t.day}
+            </span>
+            <span className="flex-1 text-sm text-rose-800">{t.label}</span>
+            <span className={`font-bold text-sm ${t.type === "income" ? "text-emerald-600" : "text-rose-600"}`}>
+              {t.amount}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Daily transactions templates animation
+const DailyTransactionsAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  const [activeTemplate, setActiveTemplate] = useState<number | null>(null);
+  
+  useEffect(() => {
+    if (!isOpen) { setActiveTemplate(null); return; }
+    const interval = setInterval(() => {
+      setActiveTemplate(t => t === null ? 0 : t === 2 ? null : t + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isOpen]);
+  
+  const templates = [
+    { emoji: "🛒", label: "Courses", amount: "45€" },
+    { emoji: "☕", label: "Café", amount: "3,50€" },
+    { emoji: "⛽", label: "Essence", amount: "60€" },
+  ];
+  
+  return (
+    <div className="mt-4 mb-2">
+      <div className="flex gap-2 justify-center">
+        {templates.map((t, i) => (
+          <motion.div
+            key={i}
+            animate={{ 
+              scale: activeTemplate === i ? 1.1 : 1,
+              boxShadow: activeTemplate === i ? "0 4px 12px rgba(239, 68, 68, 0.3)" : "none"
+            }}
+            className="flex-1 bg-red-100 rounded-xl p-3 text-center cursor-pointer"
+          >
+            <div className="text-2xl mb-1">{t.emoji}</div>
+            <div className="text-xs font-medium text-red-800">{t.label}</div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: activeTemplate === i ? 1 : 0 }}
+              className="text-xs text-red-600 font-bold mt-1"
+            >
+              {t.amount}
+            </motion.div>
+          </motion.div>
+        ))}
+      </div>
+      <motion.div
+        animate={{ opacity: activeTemplate !== null ? 1 : 0 }}
+        className="mt-3 text-center text-xs text-red-600"
+      >
+        Tap pour ajouter rapidement →
+      </motion.div>
+    </div>
+  );
+};
+
+// Gauge animation (existing)
+const GaugeAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  const [step, setStep] = useState(0);
+  
+  useEffect(() => {
+    if (!isOpen) { setStep(0); return; }
     const timers = [
       setTimeout(() => setStep(1), 300),
       setTimeout(() => setStep(2), 1200),
       setTimeout(() => setStep(3), 2100),
     ];
-    
     const loopTimer = setInterval(() => {
       setStep(0);
       setTimeout(() => setStep(1), 300);
       setTimeout(() => setStep(2), 1200);
       setTimeout(() => setStep(3), 2100);
     }, 4000);
-    
-    return () => {
-      timers.forEach(clearTimeout);
-      clearInterval(loopTimer);
-    };
+    return () => { timers.forEach(clearTimeout); clearInterval(loopTimer); };
   }, [isOpen]);
   
-  const spentWidth = 45; // Already spent
-  const currentWidth = 20; // Current expense
-  const remainingWidth = 35; // Remaining
+  const spentWidth = 45, currentWidth = 20, remainingWidth = 35;
   
   return (
     <div className="mt-4 mb-2">
-      {/* Gauge bar */}
       <div className="relative h-8 bg-gray-200 rounded-full overflow-hidden">
-        {/* Already spent (green) */}
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: step >= 1 ? `${spentWidth}%` : 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="absolute left-0 top-0 h-full bg-gradient-to-r from-emerald-400 to-emerald-500"
         />
-        
-        {/* Current expense (amber, pulsing) */}
         <motion.div
           initial={{ width: 0 }}
-          animate={{ 
-            width: step >= 2 ? `${currentWidth}%` : 0,
-          }}
+          animate={{ width: step >= 2 ? `${currentWidth}%` : 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ left: `${spentWidth}%` }}
           className="absolute top-0 h-full bg-gradient-to-r from-amber-400 to-orange-500"
         >
           {step >= 2 && (
-            <motion.div
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1, repeat: Infinity }}
-              className="absolute inset-0 bg-white/30"
-            />
+            <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1, repeat: Infinity }} className="absolute inset-0 bg-white/30" />
           )}
         </motion.div>
-        
-        {/* Remaining (light gray with pattern) */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: step >= 3 ? 1 : 0 }}
@@ -153,55 +326,140 @@ const AnimatedGauge = ({ isOpen }: { isOpen: boolean }) => {
           className="absolute top-0 h-full bg-gradient-to-r from-gray-300 to-gray-200"
         />
       </div>
-      
-      {/* Legend */}
       <div className="flex justify-between mt-3 text-xs">
-        <motion.div
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 5 }}
-          className="flex items-center gap-1"
-        >
+        <motion.div animate={{ opacity: step >= 1 ? 1 : 0 }} className="flex items-center gap-1">
           <span className="w-3 h-3 rounded-full bg-emerald-500" />
-          <span className="text-emerald-700 font-medium">Déjà dépensé</span>
+          <span className="text-emerald-700 font-medium">Dépensé</span>
         </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : 5 }}
-          className="flex items-center gap-1"
-        >
+        <motion.div animate={{ opacity: step >= 2 ? 1 : 0 }} className="flex items-center gap-1">
           <span className="w-3 h-3 rounded-full bg-amber-500" />
           <span className="text-amber-700 font-medium">En cours</span>
         </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : 5 }}
-          className="flex items-center gap-1"
-        >
+        <motion.div animate={{ opacity: step >= 3 ? 1 : 0 }} className="flex items-center gap-1">
           <span className="w-3 h-3 rounded-full bg-gray-300" />
-          <span className="text-gray-600 font-medium">Disponible</span>
+          <span className="text-gray-600 font-medium">Reste</span>
         </motion.div>
       </div>
-      
-      {/* Amount display */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: step >= 2 ? 1 : 0, scale: step >= 2 ? 1 : 0.9 }}
-        className="mt-3 text-center"
-      >
+      <motion.div animate={{ opacity: step >= 2 ? 1 : 0 }} className="mt-3 text-center">
         <span className="text-lg font-bold text-amber-600">-25€</span>
-        <span className="text-muted-foreground text-sm ml-2">→ Il te restera</span>
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: step >= 3 ? 1 : 0 }}
-          className="text-lg font-bold text-emerald-600 ml-2"
-        >
-          175€
-        </motion.span>
+        <span className="text-muted-foreground text-sm ml-2">→</span>
+        <motion.span animate={{ opacity: step >= 3 ? 1 : 0 }} className="text-lg font-bold text-emerald-600 ml-2">175€</motion.span>
       </motion.div>
     </div>
   );
+};
+
+// Rituals/habits animation
+const RitualsAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  const [checks, setChecks] = useState([false, false, false, false, false, false, false]);
+  
+  useEffect(() => {
+    if (!isOpen) { setChecks([false, false, false, false, false, false, false]); return; }
+    const timers = checks.map((_, i) => 
+      setTimeout(() => setChecks(c => { const n = [...c]; n[i] = true; return n; }), 300 + i * 400)
+    );
+    const resetTimer = setTimeout(() => setChecks([false, false, false, false, false, false, false]), 4000);
+    const loopTimer = setInterval(() => {
+      setChecks([false, false, false, false, false, false, false]);
+      checks.forEach((_, i) => setTimeout(() => setChecks(c => { const n = [...c]; n[i] = true; return n; }), 300 + i * 400));
+    }, 5000);
+    return () => { timers.forEach(clearTimeout); clearTimeout(resetTimer); clearInterval(loopTimer); };
+  }, [isOpen]);
+  
+  const days = ["L", "M", "M", "J", "V", "S", "D"];
+  
+  return (
+    <div className="mt-4 mb-2">
+      <div className="text-xs text-orange-700 font-medium mb-2 text-center">📋 Vérifier mes dépenses</div>
+      <div className="flex justify-center gap-2">
+        {days.map((d, i) => (
+          <motion.div
+            key={i}
+            animate={{ 
+              backgroundColor: checks[i] ? "#22c55e" : "#fed7aa",
+              scale: checks[i] ? [1, 1.2, 1] : 1
+            }}
+            transition={{ duration: 0.3 }}
+            className="w-8 h-8 rounded-full flex items-center justify-center"
+          >
+            {checks[i] ? (
+              <Check className="w-4 h-4 text-white" />
+            ) : (
+              <span className="text-xs font-medium text-orange-700">{d}</span>
+            )}
+          </motion.div>
+        ))}
+      </div>
+      <motion.div
+        animate={{ opacity: checks.filter(Boolean).length >= 5 ? 1 : 0 }}
+        className="mt-3 text-center text-xs text-emerald-600 font-medium"
+      >
+        🔥 5 jours consécutifs !
+      </motion.div>
+    </div>
+  );
+};
+
+// Indicators animation
+const IndicatorsAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  const [values, setValues] = useState([0, 0, 0]);
+  
+  useEffect(() => {
+    if (!isOpen) { setValues([0, 0, 0]); return; }
+    const targetValues = [75, 45, 90];
+    const timers = targetValues.map((target, i) =>
+      setTimeout(() => {
+        let current = 0;
+        const interval = setInterval(() => {
+          current += 5;
+          if (current >= target) { current = target; clearInterval(interval); }
+          setValues(v => { const n = [...v]; n[i] = current; return n; });
+        }, 30);
+      }, i * 300)
+    );
+    return () => timers.forEach(clearTimeout);
+  }, [isOpen]);
+  
+  const indicators = [
+    { label: "Budget utilisé", color: "bg-amber-500", value: values[0] },
+    { label: "Épargne", color: "bg-emerald-500", value: values[1] },
+    { label: "Rituels", color: "bg-rose-500", value: values[2] },
+  ];
+  
+  return (
+    <div className="mt-4 mb-2 space-y-3">
+      {indicators.map((ind, i) => (
+        <div key={i}>
+          <div className="flex justify-between text-xs mb-1">
+            <span className="text-amber-800 font-medium">{ind.label}</span>
+            <span className="text-amber-600 font-bold">{ind.value}%</span>
+          </div>
+          <div className="h-3 bg-amber-100 rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${ind.value}%` }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className={`h-full ${ind.color} rounded-full`}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// Animation renderer
+const FeatureAnimation = ({ type, isOpen }: { type: AnimationType; isOpen: boolean }) => {
+  switch (type) {
+    case "onboarding": return <OnboardingAnimation isOpen={isOpen} />;
+    case "budget": return <BudgetAnimation isOpen={isOpen} />;
+    case "fixed": return <FixedTransactionsAnimation isOpen={isOpen} />;
+    case "daily": return <DailyTransactionsAnimation isOpen={isOpen} />;
+    case "gauge": return <GaugeAnimation isOpen={isOpen} />;
+    case "rituals": return <RitualsAnimation isOpen={isOpen} />;
+    case "indicators": return <IndicatorsAnimation isOpen={isOpen} />;
+    default: return null;
+  }
 };
 
 const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: number }) => {
@@ -217,12 +475,8 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
       className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]`}
     >
       <div className="flex items-center gap-4">
-        <div className={`text-4xl md:text-5xl`}>
-          {feature.emoji}
-        </div>
-        <h3 className={`text-lg md:text-xl font-semibold ${feature.textColor}`}>
-          {feature.title}
-        </h3>
+        <div className="text-4xl md:text-5xl">{feature.emoji}</div>
+        <h3 className={`text-lg md:text-xl font-semibold ${feature.textColor}`}>{feature.title}</h3>
       </div>
       
       <AnimatePresence>
@@ -234,7 +488,7 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            {feature.hasGauge && <AnimatedGauge isOpen={isOpen} />}
+            <FeatureAnimation type={feature.animation} isOpen={isOpen} />
             <p className="mt-4 text-muted-foreground leading-relaxed pt-4 border-t border-current/10">
               {feature.details}
             </p>
@@ -247,9 +501,7 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
         transition={{ duration: 0.2 }}
         className={`mt-3 text-center ${feature.textColor} opacity-50`}
       >
-        <span className="text-sm">
-          {isOpen ? "▲" : "▼"}
-        </span>
+        <span className="text-sm">{isOpen ? "▲" : "▼"}</span>
       </motion.div>
     </motion.div>
   );
