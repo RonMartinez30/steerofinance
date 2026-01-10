@@ -726,40 +726,90 @@ const Fonctionnalites = () => {
 
       {/* Feature Groups */}
       <section className="py-16">
-        <div className="container mx-auto px-6 space-y-16">
+        <div className="container mx-auto px-6 space-y-24">
           {featureGroups.map((group, groupIndex) => (
             <motion.div
               key={groupIndex}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: groupIndex * 0.1 }}
+              initial={{ opacity: 0, y: 60, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                duration: 0.7, 
+                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              className="relative"
             >
-              {/* Group Header */}
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-xs font-semibold text-primary/60 uppercase tracking-wider bg-primary/10 px-3 py-1 rounded-full">
-                  {group.label}
-                </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                  {group.title}
-                </h2>
-              </div>
+              {/* Decorative connector line between groups */}
+              {groupIndex < featureGroups.length - 1 && (
+                <motion.div
+                  initial={{ scaleY: 0, opacity: 0 }}
+                  whileInView={{ scaleY: 1, opacity: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                  className="absolute left-1/2 -bottom-16 w-px h-12 bg-gradient-to-b from-primary/30 to-transparent origin-top"
+                />
+              )}
               
-              {/* Feature Cards Grid */}
+              {/* Group Header */}
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex items-center gap-4 mb-8"
+              >
+                <motion.span 
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.3,
+                    type: "spring",
+                    stiffness: 200
+                  }}
+                  className="text-xs font-semibold text-primary/60 uppercase tracking-wider bg-primary/10 px-3 py-1 rounded-full"
+                >
+                  {group.label}
+                </motion.span>
+                <motion.h2 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.4 }}
+                  className="text-2xl md:text-3xl font-bold text-foreground"
+                >
+                  {group.title}
+                </motion.h2>
+              </motion.div>
+              
+              {/* Feature Cards Grid with staggered animation */}
               <div className={`grid gap-6 ${
                 group.isLarge 
                   ? 'grid-cols-1 md:grid-cols-2' 
                   : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
               }`}>
                 {group.features.map((feature, featureIndex) => (
-                  <FeatureCard 
-                    key={featureIndex} 
-                    feature={feature} 
-                    isOpen={openCardId === `${groupIndex}-${featureIndex}`}
-                    onToggle={() => handleToggleCard(groupIndex, featureIndex)}
-                    sounds={sounds}
-                    isLarge={group.isLarge}
-                  />
+                  <motion.div
+                    key={featureIndex}
+                    initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: 0.2 + featureIndex * 0.1,
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                  >
+                    <FeatureCard 
+                      feature={feature} 
+                      isOpen={openCardId === `${groupIndex}-${featureIndex}`}
+                      onToggle={() => handleToggleCard(groupIndex, featureIndex)}
+                      sounds={sounds}
+                      isLarge={group.isLarge}
+                    />
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
