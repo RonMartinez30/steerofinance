@@ -406,11 +406,11 @@ const RitualCycleAnimation = ({
     time: ""
   }, {
     icon: "📊",
-    label: "Révision",
+    label: "Réviser",
     time: ""
   }, {
     icon: "✨",
-    label: "Ancrage",
+    label: "Ancrer",
     time: ""
   }];
   return <div className="flex flex-col gap-3 py-3 mb-4">
