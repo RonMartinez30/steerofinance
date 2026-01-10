@@ -197,64 +197,67 @@ const CognitiveEffortAnimation = ({ isOpen }: { isOpen: boolean }) => {
   }, [isOpen]);
 
   const synapses = [
-    { x: 20, y: 30, delay: 0 },
-    { x: 50, y: 15, delay: 1 },
-    { x: 80, y: 35, delay: 2 },
-    { x: 35, y: 55, delay: 3 },
-    { x: 65, y: 50, delay: 4 },
+    { x: 15, y: 25, delay: 0 },
+    { x: 50, y: 10, delay: 1 },
+    { x: 85, y: 25, delay: 2 },
+    { x: 25, y: 55, delay: 3 },
+    { x: 75, y: 55, delay: 4 },
   ];
 
   return (
-    <div className="relative h-24 bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl overflow-hidden">
-      {/* Central brain icon */}
-      <motion.div
-        animate={{ scale: [1, 1.05, 1], rotate: [0, 2, -2, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center"
-      >
-        <Brain className="w-6 h-6 text-primary" />
-      </motion.div>
-      
-      {/* Synapse pulses */}
-      {synapses.map((synapse, i) => (
+    <div className="flex flex-col gap-2 py-2">
+      <div className="relative h-20 bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl overflow-hidden">
+        {/* Central brain icon */}
         <motion.div
-          key={i}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{
-            scale: step >= synapse.delay ? [0, 1.2, 0.8] : 0,
-            opacity: step >= synapse.delay ? [0, 1, 0.6] : 0,
-          }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          style={{ left: `${synapse.x}%`, top: `${synapse.y}%` }}
-          className="absolute w-3 h-3 rounded-full bg-primary"
-        />
-      ))}
-      
-      {/* Connection lines */}
-      <svg className="absolute inset-0 w-full h-full">
+          animate={{ scale: [1, 1.05, 1], rotate: [0, 2, -2, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center z-10"
+        >
+          <Brain className="w-5 h-5 text-primary" />
+        </motion.div>
+        
+        {/* Synapse pulses */}
         {synapses.map((synapse, i) => (
-          <motion.line
+          <motion.div
             key={i}
-            x1="50%"
-            y1="50%"
-            x2={`${synapse.x}%`}
-            y2={`${synapse.y}%`}
-            stroke="hsl(var(--primary))"
-            strokeWidth="1"
-            initial={{ pathLength: 0, opacity: 0 }}
+            initial={{ scale: 0, opacity: 0 }}
             animate={{
-              pathLength: step >= synapse.delay ? 1 : 0,
-              opacity: step >= synapse.delay ? 0.4 : 0,
+              scale: step >= synapse.delay ? [0, 1.2, 0.8] : 0,
+              opacity: step >= synapse.delay ? [0, 1, 0.6] : 0,
             }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            style={{ left: `${synapse.x}%`, top: `${synapse.y}%` }}
+            className="absolute w-2.5 h-2.5 rounded-full bg-primary -translate-x-1/2 -translate-y-1/2"
           />
         ))}
-      </svg>
+        
+        {/* Connection lines */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none">
+          {synapses.map((synapse, i) => (
+            <motion.line
+              key={i}
+              x1="50%"
+              y1="50%"
+              x2={`${synapse.x}%`}
+              y2={`${synapse.y}%`}
+              stroke="hsl(var(--primary))"
+              strokeWidth="1"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{
+                pathLength: step >= synapse.delay ? 1 : 0,
+                opacity: step >= synapse.delay ? 0.4 : 0,
+              }}
+              transition={{ duration: 0.3 }}
+            />
+          ))}
+        </svg>
+      </div>
       
+      {/* Label outside the animation box */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 4 ? 1 : 0 }}
-        className="absolute bottom-2 left-0 right-0 text-center text-xs text-primary font-medium"
+        className="text-center text-xs text-primary font-medium"
       >
         💡 Connexions actives
       </motion.p>
