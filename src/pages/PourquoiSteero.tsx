@@ -184,54 +184,438 @@ const behavioralElements: BehavioralElement[] = [{
   borderColor: "border-primary/15",
 }];
 
-// Animated visual for each behavioral element
-const BehavioralAnimation = ({ element, isOpen }: { element: BehavioralElement; isOpen: boolean }) => {
+// Animation 1: Cognitive Effort - Brain synapses firing
+const CognitiveEffortAnimation = ({ isOpen }: { isOpen: boolean }) => {
   const [step, setStep] = useState(0);
-
+  
   useEffect(() => {
     if (!isOpen) { setStep(0); return; }
     const interval = setInterval(() => {
-      setStep(s => (s + 1) % 4);
+      setStep(s => (s + 1) % 5);
+    }, 600);
+    return () => clearInterval(interval);
+  }, [isOpen]);
+
+  const synapses = [
+    { x: 20, y: 30, delay: 0 },
+    { x: 50, y: 15, delay: 1 },
+    { x: 80, y: 35, delay: 2 },
+    { x: 35, y: 55, delay: 3 },
+    { x: 65, y: 50, delay: 4 },
+  ];
+
+  return (
+    <div className="relative h-24 bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl overflow-hidden">
+      {/* Central brain icon */}
+      <motion.div
+        animate={{ scale: [1, 1.05, 1], rotate: [0, 2, -2, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center"
+      >
+        <Brain className="w-6 h-6 text-primary" />
+      </motion.div>
+      
+      {/* Synapse pulses */}
+      {synapses.map((synapse, i) => (
+        <motion.div
+          key={i}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{
+            scale: step >= synapse.delay ? [0, 1.2, 0.8] : 0,
+            opacity: step >= synapse.delay ? [0, 1, 0.6] : 0,
+          }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          style={{ left: `${synapse.x}%`, top: `${synapse.y}%` }}
+          className="absolute w-3 h-3 rounded-full bg-primary"
+        />
+      ))}
+      
+      {/* Connection lines */}
+      <svg className="absolute inset-0 w-full h-full">
+        {synapses.map((synapse, i) => (
+          <motion.line
+            key={i}
+            x1="50%"
+            y1="50%"
+            x2={`${synapse.x}%`}
+            y2={`${synapse.y}%`}
+            stroke="hsl(var(--primary))"
+            strokeWidth="1"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{
+              pathLength: step >= synapse.delay ? 1 : 0,
+              opacity: step >= synapse.delay ? 0.4 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+          />
+        ))}
+      </svg>
+      
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 4 ? 1 : 0 }}
+        className="absolute bottom-2 left-0 right-0 text-center text-xs text-primary font-medium"
+      >
+        💡 Connexions actives
+      </motion.p>
+    </div>
+  );
+};
+
+// Animation 2: Control Illusion - Fake vs Real dashboard
+const ControlIllusionAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  const [phase, setPhase] = useState<'fake' | 'reveal' | 'real'>('fake');
+  
+  useEffect(() => {
+    if (!isOpen) { setPhase('fake'); return; }
+    const timers = [
+      setTimeout(() => setPhase('reveal'), 1500),
+      setTimeout(() => setPhase('real'), 3000),
+      setTimeout(() => setPhase('fake'), 5000),
+    ];
+    const loop = setInterval(() => {
+      setPhase('fake');
+      setTimeout(() => setPhase('reveal'), 1500);
+      setTimeout(() => setPhase('real'), 3000);
+    }, 5500);
+    return () => { timers.forEach(clearTimeout); clearInterval(loop); };
+  }, [isOpen]);
+
+  return (
+    <div className="relative h-24 flex items-center justify-center gap-4">
+      {/* Fake automated view */}
+      <motion.div
+        animate={{
+          opacity: phase === 'fake' ? 1 : 0.3,
+          scale: phase === 'fake' ? 1 : 0.9,
+          filter: phase === 'reveal' ? 'blur(2px)' : 'blur(0px)',
+        }}
+        className="flex-1 bg-muted/50 rounded-lg p-3 border border-border"
+      >
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-2 h-2 rounded-full bg-destructive/50" />
+          <span className="text-xs text-muted-foreground">Auto-sync</span>
+        </div>
+        <div className="space-y-1">
+          <div className="h-2 bg-muted rounded w-full" />
+          <div className="h-2 bg-muted rounded w-3/4" />
+          <div className="h-2 bg-muted rounded w-1/2" />
+        </div>
+        {phase === 'reveal' && (
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="absolute inset-0 flex items-center justify-center text-2xl"
+          >
+            ❓
+          </motion.span>
+        )}
+      </motion.div>
+      
+      {/* Arrow */}
+      <motion.div
+        animate={{ x: phase === 'real' ? [0, 5, 0] : 0 }}
+        transition={{ duration: 0.5, repeat: phase === 'real' ? Infinity : 0 }}
+      >
+        <ArrowRight className="w-5 h-5 text-primary" />
+      </motion.div>
+      
+      {/* Real understanding */}
+      <motion.div
+        animate={{
+          opacity: phase === 'real' ? 1 : 0.3,
+          scale: phase === 'real' ? 1 : 0.9,
+        }}
+        className="flex-1 bg-primary/10 rounded-lg p-3 border border-primary/20"
+      >
+        <div className="flex items-center gap-2 mb-2">
+          <motion.div
+            animate={{ scale: phase === 'real' ? [1, 1.3, 1] : 1 }}
+            transition={{ duration: 0.5, repeat: phase === 'real' ? Infinity : 0, repeatDelay: 1 }}
+            className="w-2 h-2 rounded-full bg-primary"
+          />
+          <span className="text-xs text-primary font-medium">Compris</span>
+        </div>
+        <div className="space-y-1">
+          <div className="h-2 bg-primary/30 rounded w-full" />
+          <div className="h-2 bg-primary/50 rounded w-3/4" />
+          <div className="h-2 bg-primary/70 rounded w-1/2" />
+        </div>
+        {phase === 'real' && (
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center"
+          >
+            <Check className="w-3 h-3 text-primary-foreground" />
+          </motion.div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
+// Animation 3: Ritual Cycle - Daily habit loop
+const RitualCycleAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  const [activeStep, setActiveStep] = useState(0);
+  
+  useEffect(() => {
+    if (!isOpen) { setActiveStep(0); return; }
+    const interval = setInterval(() => {
+      setActiveStep(s => (s + 1) % 4);
     }, 1000);
     return () => clearInterval(interval);
   }, [isOpen]);
 
-  const Icon = element.icon;
+  const ritualSteps = [
+    { icon: "☀️", label: "Matin", time: "8h" },
+    { icon: "📝", label: "Saisie", time: "" },
+    { icon: "📊", label: "Révision", time: "" },
+    { icon: "✨", label: "Ancrage", time: "" },
+  ];
 
   return (
-    <div className="flex items-center justify-center py-4">
+    <div className="relative h-24">
+      {/* Circular path */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-20 h-20 rounded-full border-2 border-dashed border-primary/20" />
+      </div>
+      
+      {/* Ritual steps around the circle */}
+      {ritualSteps.map((step, i) => {
+        const angle = (i * 90 - 90) * (Math.PI / 180);
+        const radius = 40;
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        
+        return (
+          <motion.div
+            key={i}
+            style={{
+              left: `calc(50% + ${x}px - 16px)`,
+              top: `calc(50% + ${y}px - 16px)`,
+            }}
+            animate={{
+              scale: activeStep === i ? 1.2 : 1,
+              backgroundColor: activeStep === i ? "hsl(var(--primary))" : "hsl(var(--muted))",
+            }}
+            transition={{ duration: 0.3, type: "spring" }}
+            className="absolute w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-md"
+          >
+            {step.icon}
+          </motion.div>
+        );
+      })}
+      
+      {/* Center indicator */}
       <motion.div
-        animate={{
-          scale: step === 2 ? 1.1 : 1,
-          rotate: step === 1 ? [0, -5, 5, 0] : 0,
-        }}
-        transition={{ duration: 0.5 }}
-        className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center"
+        animate={{ rotate: activeStep * 90 }}
+        transition={{ duration: 0.5, type: "spring" }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       >
-        <Icon className="w-8 h-8 text-primary" />
+        <RefreshCw className="w-5 h-5 text-primary" />
       </motion.div>
+      
+      {/* Current step label */}
       <motion.div
-        initial={{ width: 0, opacity: 0 }}
-        animate={{ 
-          width: step >= 1 ? 60 : 0, 
-          opacity: step >= 1 ? 1 : 0 
-        }}
-        transition={{ duration: 0.4 }}
-        className="h-0.5 bg-gradient-to-r from-primary/40 to-primary mx-2"
-      />
-      <motion.div
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ 
-          scale: step >= 2 ? 1 : 0, 
-          opacity: step >= 2 ? 1 : 0 
-        }}
-        transition={{ duration: 0.3, type: "spring" }}
-        className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center"
+        key={activeStep}
+        initial={{ opacity: 0, y: 5 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="absolute bottom-0 left-0 right-0 text-center"
       >
-        <Check className="w-5 h-5 text-primary" />
+        <span className="text-xs font-medium text-primary">
+          {ritualSteps[activeStep].label}
+        </span>
       </motion.div>
     </div>
   );
+};
+
+// Animation 4: Emotional Connection - Heart + Transaction
+const EmotionalConnectionAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  const [step, setStep] = useState(0);
+  
+  useEffect(() => {
+    if (!isOpen) { setStep(0); return; }
+    const interval = setInterval(() => {
+      setStep(s => (s + 1) % 5);
+    }, 800);
+    return () => clearInterval(interval);
+  }, [isOpen]);
+
+  return (
+    <div className="relative h-24 flex items-center justify-center">
+      {/* Transaction appearing */}
+      <motion.div
+        initial={{ x: -50, opacity: 0 }}
+        animate={{
+          x: step >= 1 ? 0 : -50,
+          opacity: step >= 1 ? 1 : 0,
+        }}
+        transition={{ duration: 0.4, type: "spring" }}
+        className="bg-muted rounded-lg px-3 py-2 flex items-center gap-2"
+      >
+        <span className="text-lg">☕</span>
+        <div>
+          <p className="text-xs font-medium text-foreground">Café</p>
+          <p className="text-xs text-muted-foreground">-3,50€</p>
+        </div>
+      </motion.div>
+      
+      {/* Pencil writing */}
+      <motion.div
+        animate={{
+          opacity: step >= 2 && step < 4 ? 1 : 0,
+          y: step === 2 ? [0, -5, 0] : 0,
+          rotate: step === 3 ? [0, -15, 15, 0] : 0,
+        }}
+        transition={{ duration: 0.5 }}
+        className="mx-3"
+      >
+        <Pencil className="w-5 h-5 text-primary" />
+      </motion.div>
+      
+      {/* Emotional response */}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{
+          scale: step >= 3 ? 1 : 0,
+          opacity: step >= 3 ? 1 : 0,
+        }}
+        transition={{ duration: 0.3, type: "spring" }}
+        className="relative"
+      >
+        <motion.div
+          animate={{
+            scale: step === 4 ? [1, 1.2, 1] : 1,
+          }}
+          transition={{ duration: 0.6, repeat: step === 4 ? Infinity : 0 }}
+          className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center"
+        >
+          <span className="text-2xl">❤️</span>
+        </motion.div>
+        
+        {/* Ripple effect */}
+        {step === 4 && (
+          <motion.div
+            initial={{ scale: 1, opacity: 0.6 }}
+            animate={{ scale: 2, opacity: 0 }}
+            transition={{ duration: 1, repeat: Infinity }}
+            className="absolute inset-0 rounded-full border-2 border-primary"
+          />
+        )}
+      </motion.div>
+      
+      {/* Result text */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 4 ? 1 : 0 }}
+        className="absolute bottom-0 left-0 right-0 text-center text-xs text-primary font-medium"
+      >
+        Décision consciente ✓
+      </motion.p>
+    </div>
+  );
+};
+
+// Animation 5: Learning Before Automation - Progressive stages
+const LearningFirstAnimation = ({ isOpen }: { isOpen: boolean }) => {
+  const [stage, setStage] = useState(0);
+  
+  useEffect(() => {
+    if (!isOpen) { setStage(0); return; }
+    const interval = setInterval(() => {
+      setStage(s => (s + 1) % 4);
+    }, 1200);
+    return () => clearInterval(interval);
+  }, [isOpen]);
+
+  const stages = [
+    { label: "Apprendre", icon: BookOpen, fill: 25, color: "bg-primary/30" },
+    { label: "Comprendre", icon: Brain, fill: 50, color: "bg-primary/50" },
+    { label: "Maîtriser", icon: Check, fill: 75, color: "bg-primary/70" },
+    { label: "Automatiser", icon: RefreshCw, fill: 100, color: "bg-primary" },
+  ];
+
+  return (
+    <div className="h-24 flex flex-col justify-center gap-3">
+      {/* Progress bar */}
+      <div className="relative h-3 bg-muted rounded-full overflow-hidden">
+        <motion.div
+          animate={{ width: `${stages[stage].fill}%` }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className={`absolute left-0 top-0 h-full ${stages[stage].color} rounded-full`}
+        />
+      </div>
+      
+      {/* Stage indicators */}
+      <div className="flex justify-between">
+        {stages.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <motion.div
+              key={i}
+              animate={{
+                scale: stage === i ? 1.1 : 1,
+                opacity: stage >= i ? 1 : 0.4,
+              }}
+              transition={{ duration: 0.3 }}
+              className="flex flex-col items-center gap-1"
+            >
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${stage >= i ? 'bg-primary/20' : 'bg-muted'}`}>
+                <Icon className={`w-4 h-4 ${stage >= i ? 'text-primary' : 'text-muted-foreground'}`} />
+              </div>
+              <span className={`text-[10px] font-medium ${stage === i ? 'text-primary' : 'text-muted-foreground'}`}>
+                {s.label}
+              </span>
+            </motion.div>
+          );
+        })}
+      </div>
+      
+      {/* Warning for premature automation */}
+      <AnimatePresence>
+        {stage < 2 && (
+          <motion.p
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            className="text-center text-[10px] text-muted-foreground"
+          >
+            ⚠️ Automatiser maintenant = échec probable
+          </motion.p>
+        )}
+        {stage >= 3 && (
+          <motion.p
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            className="text-center text-[10px] text-primary font-medium"
+          >
+            ✓ Prêt pour l'automatisation !
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// Main animation router component
+const BehavioralAnimation = ({ element, index, isOpen }: { element: BehavioralElement; index: number; isOpen: boolean }) => {
+  switch (index) {
+    case 0:
+      return <CognitiveEffortAnimation isOpen={isOpen} />;
+    case 1:
+      return <ControlIllusionAnimation isOpen={isOpen} />;
+    case 2:
+      return <RitualCycleAnimation isOpen={isOpen} />;
+    case 3:
+      return <EmotionalConnectionAnimation isOpen={isOpen} />;
+    case 4:
+      return <LearningFirstAnimation isOpen={isOpen} />;
+    default:
+      return null;
+  }
 };
 
 // Behavioral card component
@@ -337,7 +721,7 @@ const BehavioralCard = ({
             >
               <div className="pt-4 mt-4 border-t border-border/50">
                 {/* Animation */}
-                <BehavioralAnimation element={element} isOpen={isOpen} />
+                <BehavioralAnimation element={element} index={index} isOpen={isOpen} />
 
                 {/* Description */}
                 <p className="text-muted-foreground leading-relaxed mb-4">
