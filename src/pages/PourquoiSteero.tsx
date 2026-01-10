@@ -413,8 +413,8 @@ const RitualCycleAnimation = ({
     label: "Ancrage",
     time: ""
   }];
-  return <div className="flex flex-col gap-2 py-2">
-      <div className="relative h-20 flex items-center justify-center">
+  return <div className="flex flex-col gap-3 py-3 mb-4">
+      <div className="relative h-24 flex items-center justify-center">
         {/* Circular path */}
         <div className="w-16 h-16 rounded-full border-2 border-dashed border-primary/20" />
         
@@ -450,14 +450,14 @@ const RitualCycleAnimation = ({
         </motion.div>
       </div>
       
-      {/* Current step label - outside the animation */}
+      {/* Current step label - outside the animation with proper spacing */}
       <motion.p key={activeStep} initial={{
       opacity: 0,
       y: 5
     }} animate={{
       opacity: 1,
       y: 0
-    }} className="text-center text-xs font-medium text-primary">
+    }} className="text-center text-xs font-medium text-primary bg-primary/5 rounded-full px-3 py-1.5 mx-auto">
         {ritualSteps[activeStep].icon} {ritualSteps[activeStep].label}
       </motion.p>
     </div>;
