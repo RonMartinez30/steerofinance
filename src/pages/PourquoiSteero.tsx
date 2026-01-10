@@ -2,7 +2,99 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, Check, Star, Brain, Eye, RefreshCw, Pencil, BookOpen, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+// Progress sidebar component for behavioral principles
+const BehavioralProgressSidebar = ({ 
+  elements, 
+  activeIndex,
+  exploredCards,
+  isVisible,
+}: { 
+  elements: BehavioralElement[];
+  activeIndex: number | null;
+  exploredCards: Set<number>;
+  isVisible: boolean;
+}) => {
+  const scrollToCard = (index: number) => {
+    const element = document.getElementById(`behavioral-card-${index}`);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.4 }}
+      className="fixed left-4 lg:left-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-3"
+    >
+      {/* Vertical line background */}
+      <div className="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-muted rounded-full" />
+      
+      {/* Progress line */}
+      <motion.div
+        className="absolute left-1/2 -translate-x-1/2 w-0.5 bg-primary rounded-full origin-top"
+        initial={{ height: 0 }}
+        animate={{ 
+          height: `${((exploredCards.size) / elements.length) * 100}%`
+        }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      />
+      
+      {/* Step indicators */}
+      {elements.map((element, index) => (
+        <button
+          key={index}
+          onClick={() => scrollToCard(index)}
+          className="relative z-10 group flex items-center gap-3"
+        >
+          {/* Step circle */}
+          <motion.div
+            animate={{
+              scale: activeIndex === index ? 1.3 : 1,
+              backgroundColor: exploredCards.has(index) ? "hsl(var(--primary))" : "hsl(var(--muted))",
+            }}
+            transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+            className="w-4 h-4 rounded-full border-2 border-background shadow-md flex items-center justify-center"
+          >
+            {exploredCards.has(index) && activeIndex !== index && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.2, delay: 0.1 }}
+              >
+                <Check className="w-2.5 h-2.5 text-primary-foreground" />
+              </motion.div>
+            )}
+            {activeIndex === index && (
+              <motion.div
+                animate={{ scale: [1, 1.5, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-1.5 h-1.5 rounded-full bg-primary-foreground"
+              />
+            )}
+          </motion.div>
+          
+          {/* Label tooltip */}
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            whileHover={{ opacity: 1, x: 0 }}
+            className="absolute left-8 whitespace-nowrap bg-card px-3 py-1.5 rounded-lg shadow-lg border border-border pointer-events-none max-w-[200px]"
+          >
+            <span className="text-xs font-medium text-muted-foreground">#{index + 1}</span>
+            <span className="mx-1.5 text-muted-foreground/50">·</span>
+            <span className="text-xs font-medium text-foreground truncate">{element.emoji}</span>
+          </motion.div>
+        </button>
+      ))}
+    </motion.div>
+  );
+};
 const alternatives = [{
   icon: "❌",
   title: "Excel dispersé",
@@ -268,6 +360,8 @@ const BehavioralCard = ({
 const PourquoiSteero = () => {
   const [openCardIndex, setOpenCardIndex] = useState<number | null>(null);
   const [exploredCards, setExploredCards] = useState<Set<number>>(new Set());
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const handleToggleCard = (index: number) => {
     if (openCardIndex !== index) {
@@ -276,8 +370,35 @@ const PourquoiSteero = () => {
     setOpenCardIndex(prev => prev === index ? null : index);
   };
 
+  // Track when behavioral section is in view
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.3;
+        setIsSidebarVisible(isInView);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return <div className="min-h-screen">
       <Header />
+      
+      {/* Progress Sidebar for Behavioral Section */}
+      <AnimatePresence>
+        {isSidebarVisible && (
+          <BehavioralProgressSidebar
+            elements={behavioralElements}
+            activeIndex={openCardIndex}
+            exploredCards={exploredCards}
+            isVisible={isSidebarVisible}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Hero */}
       <section className="pt-32 pb-16 bg-hero-gradient overflow-hidden">
@@ -423,8 +544,12 @@ const PourquoiSteero = () => {
       </section>
 
       {/* Éléments comportementaux */}
-      <section id="fondements-comportementaux" className="py-20 bg-primary/5 scroll-mt-40">
-        <div className="container mx-auto px-6">
+      <section 
+        ref={sectionRef}
+        id="fondements-comportementaux" 
+        className="py-20 bg-primary/5 scroll-mt-40"
+      >
+        <div className="container mx-auto px-6 md:pl-20 lg:pl-28">
           <div className="max-w-4xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -467,14 +592,15 @@ const PourquoiSteero = () => {
             
             <div className="space-y-4">
               {behavioralElements.map((element, index) => (
-                <BehavioralCard
-                  key={index}
-                  element={element}
-                  index={index}
-                  isOpen={openCardIndex === index}
-                  onToggle={() => handleToggleCard(index)}
-                  isExplored={exploredCards.has(index)}
-                />
+                <div key={index} id={`behavioral-card-${index}`}>
+                  <BehavioralCard
+                    element={element}
+                    index={index}
+                    isOpen={openCardIndex === index}
+                    onToggle={() => handleToggleCard(index)}
+                    isExplored={exploredCards.has(index)}
+                  />
+                </div>
               ))}
             </div>
             
