@@ -3,7 +3,8 @@ import Footer from "@/components/Footer";
 import { ArrowRight, Check, Star, Brain, Eye, RefreshCw, Pencil, BookOpen, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-
+import confetti from "canvas-confetti";
+import { useSoundEffects } from "@/hooks/useSoundEffects";
 // Progress sidebar component for behavioral principles
 const BehavioralProgressSidebar = ({
   elements,
@@ -831,13 +832,60 @@ const PourquoiSteero = () => {
   const [openCardIndex, setOpenCardIndex] = useState<number | null>(null);
   const [exploredCards, setExploredCards] = useState<Set<number>>(new Set());
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const [hasTriggeredCelebration, setHasTriggeredCelebration] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { playSuccessSound } = useSoundEffects();
+
   const handleToggleCard = (index: number) => {
     if (openCardIndex !== index) {
       setExploredCards(prev => new Set(prev).add(index));
     }
     setOpenCardIndex(prev => prev === index ? null : index);
   };
+
+  // Celebrate when all principles are explored
+  useEffect(() => {
+    if (exploredCards.size === behavioralElements.length && !hasTriggeredCelebration) {
+      setHasTriggeredCelebration(true);
+      playSuccessSound();
+      
+      // Fire confetti from both sides
+      const duration = 2000;
+      const end = Date.now() + duration;
+      
+      const frame = () => {
+        confetti({
+          particleCount: 3,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0, y: 0.7 },
+          colors: ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b']
+        });
+        confetti({
+          particleCount: 3,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1, y: 0.7 },
+          colors: ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b']
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      };
+      frame();
+      
+      // Big burst in the center
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          spread: 100,
+          origin: { x: 0.5, y: 0.5 },
+          colors: ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ec4899']
+        });
+      }, 300);
+    }
+  }, [exploredCards.size, hasTriggeredCelebration, playSuccessSound]);
 
   // Track when behavioral section is in view
   useEffect(() => {
@@ -1044,9 +1092,12 @@ const PourquoiSteero = () => {
                 {exploredCards.size === behavioralElements.length && <motion.span initial={{
                 scale: 0
               }} animate={{
-                scale: 1
-              }} className="ml-2 text-primary">
-                    ✓ Complet !
+                scale: [1, 1.2, 1]
+              }} transition={{
+                duration: 0.6,
+                repeat: 2
+              }} className="ml-2 text-primary font-semibold">
+                    🎉 Bravo !
                   </motion.span>}
               </motion.div>
             </motion.div>
