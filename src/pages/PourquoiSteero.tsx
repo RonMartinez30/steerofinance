@@ -834,11 +834,15 @@ const PourquoiSteero = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const [hasTriggeredCelebration, setHasTriggeredCelebration] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const { playSuccessSound } = useSoundEffects();
+  const { playSuccessSound, playOpenSound, playCloseSound } = useSoundEffects();
 
   const handleToggleCard = (index: number) => {
-    if (openCardIndex !== index) {
+    const isOpening = openCardIndex !== index;
+    if (isOpening) {
       setExploredCards(prev => new Set(prev).add(index));
+      playOpenSound();
+    } else {
+      playCloseSound();
     }
     setOpenCardIndex(prev => prev === index ? null : index);
   };
