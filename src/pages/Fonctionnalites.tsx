@@ -1,11 +1,96 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
+
+// Progress sidebar component
+const ProgressSidebar = ({ 
+  groups, 
+  activeIndex 
+}: { 
+  groups: FeatureGroup[]; 
+  activeIndex: number;
+}) => {
+  const scrollToGroup = (index: number) => {
+    const element = document.getElementById(`group-${index}`);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="fixed left-4 lg:left-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-2"
+    >
+      {/* Vertical line background */}
+      <div className="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-muted rounded-full" />
+      
+      {/* Progress line */}
+      <motion.div
+        className="absolute left-1/2 -translate-x-1/2 w-0.5 bg-primary rounded-full origin-top"
+        initial={{ height: 0 }}
+        animate={{ 
+          height: `${((activeIndex + 1) / groups.length) * 100}%`
+        }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      />
+      
+      {/* Step indicators */}
+      {groups.map((group, index) => (
+        <button
+          key={index}
+          onClick={() => scrollToGroup(index)}
+          className="relative z-10 group flex items-center gap-3"
+        >
+          {/* Step circle */}
+          <motion.div
+            animate={{
+              scale: activeIndex === index ? 1.2 : 1,
+              backgroundColor: index <= activeIndex ? "hsl(var(--primary))" : "hsl(var(--muted))",
+            }}
+            transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+            className="w-4 h-4 rounded-full border-2 border-background shadow-md flex items-center justify-center"
+          >
+            {index < activeIndex && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.2, delay: 0.1 }}
+              >
+                <Check className="w-2.5 h-2.5 text-primary-foreground" />
+              </motion.div>
+            )}
+            {activeIndex === index && (
+              <motion.div
+                animate={{ scale: [1, 1.5, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-1.5 h-1.5 rounded-full bg-primary-foreground"
+              />
+            )}
+          </motion.div>
+          
+          {/* Label tooltip */}
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            whileHover={{ opacity: 1, x: 0 }}
+            className="absolute left-8 whitespace-nowrap bg-card px-3 py-1.5 rounded-lg shadow-lg border border-border pointer-events-none"
+          >
+            <span className="text-xs font-medium text-muted-foreground">{group.label}</span>
+            <span className="mx-1.5 text-muted-foreground/50">·</span>
+            <span className="text-sm font-semibold text-foreground">{group.title}</span>
+          </motion.div>
+        </button>
+      ))}
+    </motion.div>
+  );
+};
 
 type AnimationType = "onboarding" | "budget" | "fixed" | "daily" | "gauge" | "rituals" | "indicators";
 type AnimationDirection = "horizontal" | "vertical" | "pulse";
@@ -695,15 +780,40 @@ const FeatureCard = ({
 const Fonctionnalites = () => {
   const sounds = useSoundEffects();
   const [openCardId, setOpenCardId] = useState<string | null>(null);
+  const [activeGroupIndex, setActiveGroupIndex] = useState(0);
+  const groupRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   const handleToggleCard = (groupIndex: number, featureIndex: number) => {
     const cardId = `${groupIndex}-${featureIndex}`;
     setOpenCardId(prev => prev === cardId ? null : cardId);
   };
 
+  // Track which group is currently in view
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      
+      for (let i = groupRefs.current.length - 1; i >= 0; i--) {
+        const element = groupRefs.current[i];
+        if (element && element.offsetTop <= scrollPosition) {
+          setActiveGroupIndex(i);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      
+      {/* Progress Sidebar */}
+      <ProgressSidebar groups={featureGroups} activeIndex={activeGroupIndex} />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-primary/5 to-background">
@@ -726,10 +836,12 @@ const Fonctionnalites = () => {
 
       {/* Feature Groups */}
       <section className="py-16">
-        <div className="container mx-auto px-6 space-y-24">
+        <div className="container mx-auto px-6 md:pl-20 lg:pl-28 space-y-24">
           {featureGroups.map((group, groupIndex) => (
             <motion.div
               key={groupIndex}
+              id={`group-${groupIndex}`}
+              ref={(el) => (groupRefs.current[groupIndex] = el)}
               initial={{ opacity: 0, y: 60, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -738,7 +850,7 @@ const Fonctionnalites = () => {
                 delay: 0.1,
                 ease: [0.22, 1, 0.36, 1]
               }}
-              className="relative"
+              className="relative scroll-mt-32"
             >
               {/* Decorative connector line between groups */}
               {groupIndex < featureGroups.length - 1 && (
