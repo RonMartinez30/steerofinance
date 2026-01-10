@@ -397,12 +397,12 @@ const RitualCycleAnimation = ({
     return () => clearInterval(interval);
   }, [isOpen]);
   const ritualSteps = [{
-    icon: "☀️",
-    label: "Matin",
-    time: "8h"
+    icon: "🎯",
+    label: "Définir",
+    time: ""
   }, {
     icon: "📝",
-    label: "Saisie",
+    label: "Saisir",
     time: ""
   }, {
     icon: "📊",
