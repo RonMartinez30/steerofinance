@@ -705,13 +705,15 @@ const FeatureCard = ({
   isOpen,
   onToggle,
   sounds,
-  isLarge = false 
+  isLarge = false,
+  isExplored = false
 }: { 
   feature: Feature; 
   isOpen: boolean;
   onToggle: () => void;
   sounds: ReturnType<typeof useSoundEffects>;
   isLarge?: boolean;
+  isExplored?: boolean;
 }) => {
   const handleClick = () => {
     if (isOpen) {
@@ -728,10 +730,42 @@ const FeatureCard = ({
     <motion.div
       layout
       onClick={handleClick}
-      className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} ${isLarge ? 'p-8' : 'p-6'} transition-all duration-300 hover:shadow-lg hover:scale-[1.02]`}
+      className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} ${isLarge ? 'p-8' : 'p-6'} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] relative ${isExplored && !isOpen ? 'saturate-[0.7] opacity-90' : ''}`}
     >
+      {/* Badge "Découvert" */}
+      <AnimatePresence>
+        {isExplored && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+            className="absolute -top-2 -right-2 flex items-center gap-1 bg-primary/90 text-primary-foreground text-xs font-medium px-2 py-1 rounded-full shadow-md"
+          >
+            <Check className="w-3 h-3" />
+            <span>Découvert</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
       <div className="flex items-center gap-4">
-        <div className={`${isLarge ? 'text-5xl md:text-6xl' : 'text-4xl md:text-5xl'}`}>{feature.emoji}</div>
+        <div className={`${isLarge ? 'text-5xl md:text-6xl' : 'text-4xl md:text-5xl'} relative`}>
+          {feature.emoji}
+          {/* Checkmark overlay when explored */}
+          <AnimatePresence>
+            {isExplored && !isOpen && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 0.2, type: "spring", stiffness: 300 }}
+                className="absolute -bottom-1 -right-1 w-5 h-5 bg-primary rounded-full flex items-center justify-center shadow-sm"
+              >
+                <Check className="w-3 h-3 text-primary-foreground" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
         <div className="flex-1">
           <h3 className={`${isLarge ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'} font-semibold ${feature.textColor}`}>
             {feature.title}
@@ -780,11 +814,16 @@ const FeatureCard = ({
 const Fonctionnalites = () => {
   const sounds = useSoundEffects();
   const [openCardId, setOpenCardId] = useState<string | null>(null);
+  const [exploredCards, setExploredCards] = useState<Set<string>>(new Set());
   const [activeGroupIndex, setActiveGroupIndex] = useState(0);
   const groupRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   const handleToggleCard = (groupIndex: number, featureIndex: number) => {
     const cardId = `${groupIndex}-${featureIndex}`;
+    // Mark as explored when opening
+    if (openCardId !== cardId) {
+      setExploredCards(prev => new Set(prev).add(cardId));
+    }
     setOpenCardId(prev => prev === cardId ? null : cardId);
   };
 
@@ -920,6 +959,7 @@ const Fonctionnalites = () => {
                       onToggle={() => handleToggleCard(groupIndex, featureIndex)}
                       sounds={sounds}
                       isLarge={group.isLarge}
+                      isExplored={exploredCards.has(`${groupIndex}-${featureIndex}`)}
                     />
                   </motion.div>
                 ))}
