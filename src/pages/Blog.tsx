@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Clock } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -40,8 +41,6 @@ Sans méthode claire, beaucoup fonctionnent :
 
 Ce flou est la principale source de stress financier.
 
----
-
 Gagner plus d'argent ne suffit pas à mieux gérer ses finances
 
 Un mythe très répandu consiste à penser que le problème vient uniquement du niveau de revenu.
@@ -57,8 +56,6 @@ Sans compréhension financière :
 • les objectifs financiers sont repoussés.
 
 👉 Ce n'est pas le montant gagné qui sécurise, mais la capacité à piloter ses finances personnelles.
-
----
 
 Comprendre son argent pour reprendre le contrôle financier
 
@@ -76,8 +73,6 @@ Une bonne compréhension financière permet :
 
 La clarté financière est le premier pas vers la liberté financière.
 
----
-
 La finance personnelle est une compétence qui se développe avec le temps
 
 Apprendre à gérer son argent ne se fait pas en un jour.
@@ -89,8 +84,6 @@ La montée en compétences financières suit généralement plusieurs étapes :
 4. Décider en fonction de ses objectifs
 
 L'essentiel n'est pas d'être parfait, mais d'avoir un cadre simple et évolutif.
-
----
 
 Comment Steero aide à mieux comprendre ses finances personnelles
 
@@ -105,8 +98,6 @@ Contrairement aux outils complexes ou trop techniques, Steero permet :
 
 L'objectif n'est pas seulement de suivre des chiffres, mais de comprendre pour mieux décider.
 
----
-
 Conclusion : apprendre à gérer son argent change durablement la relation à l'argent
 
 La gestion des finances personnelles n'est pas réservée aux experts.
@@ -116,8 +107,6 @@ C'est une compétence accessible à tous, à condition d'avoir :
 • et un rituel simple.
 
 Avant d'optimiser, d'investir ou de chercher plus de rendement, il faut d'abord comprendre ses finances.
-
----
 
 👉 Vous souhaitez mieux comprendre et gérer vos finances personnelles ?
 
@@ -150,8 +139,6 @@ Vision claire, arbitrages conscients, décisions alignées avec ses objectifs.
 
 La différence entre les deux n'est pas le revenu, mais le niveau de compétence financière.
 
----
-
 Étape 1 : Observer ses finances sans jugement
 
 La première étape n'est ni le budget, ni l'épargne, ni l'investissement.
@@ -167,8 +154,6 @@ Sans jugement, sans culpabilité.
 
 👉 Tant que l'argent reste flou, aucune décision solide n'est possible.
 
----
-
 Étape 2 : Structurer pour donner du sens aux chiffres
 
 Une fois les flux visibles, vient la structuration.
@@ -183,8 +168,6 @@ Cette étape transforme des chiffres isolés en information exploitable.
 Sans structure :
 • les chiffres s'accumulent,
 • mais ne racontent aucune histoire.
-
----
 
 Étape 3 : Comprendre les écarts pour mieux décider
 
@@ -202,8 +185,6 @@ Comprendre ses écarts permet :
 • d'éviter les mauvaises surprises,
 • de reprendre le contrôle sans se restreindre.
 
----
-
 Étape 4 : Décider en fonction de ses objectifs
 
 C'est ici que la gestion financière devient réellement utile.
@@ -214,8 +195,6 @@ Quand la vision est claire, on peut :
 • donner un rôle précis à chaque euro.
 
 L'argent cesse d'être une source d'anxiété pour devenir un outil au service de ses projets.
-
----
 
 Pourquoi la montée en compétences financières échoue souvent
 
@@ -232,8 +211,6 @@ Tout ou rien, sans progression naturelle.
 
 Résultat : motivation au départ, abandon quelques semaines plus tard.
 
----
-
 Comment Steero accompagne la montée en compétences financières
 
 Steero a été conçu comme un parcours, pas comme un simple outil de suivi.
@@ -245,8 +222,6 @@ Il permet :
 • de ritualiser le suivi pour durer dans le temps.
 
 L'objectif n'est pas de devenir expert en finance, mais de monter en compétences à son rythme, avec un cadre clair.
-
----
 
 Conclusion : piloter ses finances est une compétence accessible
 
@@ -260,8 +235,6 @@ La montée en compétences financières repose sur :
 
 Passer du flou au pilotage, c'est reprendre le contrôle de son avenir financier.
 
----
-
 👉 Vous souhaitez passer du flou au pilotage de vos finances ?
 
 Steero vous aide à :
@@ -273,8 +246,70 @@ Commencez par voir clair. Le reste suivra.`
   }
 ];
 
+// Calculate reading time (average 200 words per minute)
+const calculateReadingTime = (text: string): number => {
+  const words = text.split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 200));
+};
+
+// Format content with bold section titles
+const formatContent = (content: string) => {
+  const lines = content.split('\n');
+  
+  return lines.map((line, index) => {
+    const trimmedLine = line.trim();
+    
+    // Skip empty lines
+    if (!trimmedLine) {
+      return <br key={index} />;
+    }
+    
+    // Check if it's a section title (line that doesn't start with bullet, number, emoji, and is followed by content)
+    const isSectionTitle = 
+      !trimmedLine.startsWith('•') && 
+      !trimmedLine.startsWith('👉') &&
+      !trimmedLine.match(/^\d+\./) &&
+      trimmedLine.length < 80 &&
+      trimmedLine.length > 10 &&
+      !trimmedLine.includes(':') &&
+      (
+        trimmedLine.startsWith('Pourquoi') ||
+        trimmedLine.startsWith('Gagner') ||
+        trimmedLine.startsWith('Comprendre') ||
+        trimmedLine.startsWith('La finance') ||
+        trimmedLine.startsWith('La clarté') ||
+        trimmedLine.startsWith('Comment') ||
+        trimmedLine.startsWith('Conclusion') ||
+        trimmedLine.startsWith('De la gestion') ||
+        trimmedLine.startsWith('Subir') ||
+        trimmedLine.startsWith('Piloter') ||
+        trimmedLine.startsWith('Étape') ||
+        trimmedLine.startsWith("L'essentiel") ||
+        trimmedLine.startsWith("L'objectif") ||
+        trimmedLine.startsWith("L'argent") ||
+        trimmedLine.startsWith('Résultat') ||
+        trimmedLine.startsWith('Passer')
+      );
+    
+    if (isSectionTitle) {
+      return (
+        <span key={index} className="block font-semibold text-foreground mt-6 mb-2">
+          {trimmedLine}
+        </span>
+      );
+    }
+    
+    return (
+      <span key={index} className="block">
+        {trimmedLine}
+      </span>
+    );
+  });
+};
+
 const ArticleCard = ({ article }: { article: Article }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const readingTime = calculateReadingTime(article.hook + article.content);
 
   return (
     <motion.div
@@ -289,13 +324,19 @@ const ArticleCard = ({ article }: { article: Article }) => {
       {/* Header - always visible */}
       <div className="p-6 md:p-8">
         <div className="flex items-start justify-between gap-4">
-          <h2 className="text-xl md:text-2xl font-semibold text-primary flex-1">
-            {article.title}
-          </h2>
+          <div className="flex-1">
+            <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
+              <Clock className="w-4 h-4" />
+              <span>{readingTime} min de lecture</span>
+            </div>
+            <h2 className="text-xl md:text-2xl font-semibold text-primary">
+              {article.title}
+            </h2>
+          </div>
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="text-primary/60 flex-shrink-0 mt-1"
+            className="text-primary/60 flex-shrink-0 mt-8"
           >
             <svg width="20" height="20" viewBox="0 0 12 12" fill="none">
               <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -336,10 +377,8 @@ const ArticleCard = ({ article }: { article: Article }) => {
           >
             <div className="px-6 md:px-8 pb-6 md:pb-8">
               <div className="pt-6 border-t border-primary/15">
-                <div className="prose prose-sm md:prose-base max-w-none">
-                  <p className="text-foreground whitespace-pre-line leading-relaxed">
-                    {article.content}
-                  </p>
+                <div className="text-foreground leading-relaxed">
+                  {formatContent(article.content)}
                 </div>
               </div>
               
