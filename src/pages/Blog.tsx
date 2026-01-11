@@ -24,29 +24,109 @@ Beaucoup de personnes gagnent correctement leur vie, mais peinent à :
 • ou atteindre leurs objectifs financiers.
 
 La bonne nouvelle ? La finance personnelle s'apprend.`,
-    content: `La finance personnelle n'est pas réservée aux experts ou aux passionnés de chiffres. C'est un ensemble de principes simples qui, une fois compris et appliqués, transforment notre rapport à l'argent.
+    content: `Pourquoi la gestion des finances personnelles n'est pas innée
 
-Pourquoi est-ce si important aujourd'hui ?
+Contrairement aux idées reçues, être à l'aise avec l'argent n'est pas une question de talent ou de chance.
 
-Dans un monde où les sources de revenus se diversifient, où les dépenses sont de plus en plus fragmentées (abonnements, achats en ligne, services numériques), il devient crucial de reprendre le contrôle.
+La gestion financière personnelle est une compétence acquise, qui repose sur :
+• la compréhension de ses revenus et dépenses,
+• la capacité à structurer un budget,
+• et la prise de décisions conscientes dans le temps.
 
-Les fondamentaux à maîtriser :
+Sans méthode claire, beaucoup fonctionnent :
+• au ressenti,
+• à l'urgence,
+• ou en évitant le sujet financier.
 
-1. Connaître ses flux : Savoir exactement ce qui entre et ce qui sort chaque mois est la base de toute gestion saine.
+Ce flou est la principale source de stress financier.
 
-2. Distinguer le nécessaire du superflu : Non pas pour se priver, mais pour faire des choix conscients alignés avec ses priorités.
+---
 
-3. Anticiper plutôt que subir : Constituer une épargne de précaution, prévoir les grosses dépenses, éviter les découverts.
+Gagner plus d'argent ne suffit pas à mieux gérer ses finances
 
-4. Se fixer des objectifs : L'argent n'est qu'un outil. Il prend son sens quand il sert des projets concrets.
+Un mythe très répandu consiste à penser que le problème vient uniquement du niveau de revenu.
 
-Comment commencer ?
+En réalité :
+• plus de revenus = plus de décisions financières,
+• plus de flux = plus de complexité,
+• plus de comptes = plus de confusion… sans cadre adapté.
 
-La première étape est souvent la plus simple : observer. Pendant un mois, notez vos dépenses sans chercher à les modifier. Cette simple prise de conscience est déjà un premier pas vers une meilleure gestion.
+Sans compréhension financière :
+• les dépenses augmentent avec les revenus,
+• l'épargne reste irrégulière,
+• les objectifs financiers sont repoussés.
 
-Ensuite, définissez un budget réaliste, qui tient compte de vos revenus, de vos charges fixes, et de vos envies. Un budget n'est pas une prison, c'est une carte routière.
+👉 Ce n'est pas le montant gagné qui sécurise, mais la capacité à piloter ses finances personnelles.
 
-Enfin, automatisez ce qui peut l'être : virement vers l'épargne en début de mois, prélèvements des charges fixes... Moins vous avez de décisions à prendre au quotidien, plus vous libérez de l'énergie mentale.`
+---
+
+Comprendre son argent pour reprendre le contrôle financier
+
+Comprendre ses finances personnelles, ce n'est pas devenir expert en finance.
+
+C'est savoir :
+• combien on gagne réellement,
+• combien on dépense,
+• et comment ces choix impactent le futur.
+
+Une bonne compréhension financière permet :
+• de réduire le stress lié à l'argent,
+• de prendre de meilleures décisions budgétaires,
+• d'aligner ses dépenses avec ses priorités de vie.
+
+La clarté financière est le premier pas vers la liberté financière.
+
+---
+
+La finance personnelle est une compétence qui se développe avec le temps
+
+Apprendre à gérer son argent ne se fait pas en un jour.
+
+La montée en compétences financières suit généralement plusieurs étapes :
+1. Observer ses finances sans jugement
+2. Structurer ses budgets et catégories
+3. Analyser les écarts entre prévu et réel
+4. Décider en fonction de ses objectifs
+
+L'essentiel n'est pas d'être parfait, mais d'avoir un cadre simple et évolutif.
+
+---
+
+Comment Steero aide à mieux comprendre ses finances personnelles
+
+Steero a été conçu pour répondre à un besoin simple :
+rendre la gestion financière compréhensible, structurée et accessible.
+
+Contrairement aux outils complexes ou trop techniques, Steero permet :
+• une vision claire de ses finances globales,
+• une structuration budgétaire flexible,
+• un suivi ritualisé, rapide et durable,
+• une montée en compétences progressive.
+
+L'objectif n'est pas seulement de suivre des chiffres, mais de comprendre pour mieux décider.
+
+---
+
+Conclusion : apprendre à gérer son argent change durablement la relation à l'argent
+
+La gestion des finances personnelles n'est pas réservée aux experts.
+C'est une compétence accessible à tous, à condition d'avoir :
+• un cadre clair,
+• un outil adapté,
+• et un rituel simple.
+
+Avant d'optimiser, d'investir ou de chercher plus de rendement, il faut d'abord comprendre ses finances.
+
+---
+
+👉 Vous souhaitez mieux comprendre et gérer vos finances personnelles ?
+
+Steero vous aide à :
+• clarifier votre budget,
+• structurer vos finances,
+• et monter en compétences à votre rythme.
+
+Commencez par poser des bases solides pour votre avenir financier.`
   },
   {
     id: 2,
