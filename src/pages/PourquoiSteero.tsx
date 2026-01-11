@@ -836,9 +836,35 @@ const BehavioralCard = ({
                 <BehavioralAnimation element={element} index={index} isOpen={isOpen} />
 
                 {/* Description */}
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  {element.description}
-                </p>
+                <div className="text-muted-foreground leading-relaxed mb-4 space-y-4">
+                  {element.description.split('\n\n').map((paragraph, i) => {
+                    // Handle horizontal rules
+                    if (paragraph.trim() === '---') {
+                      return <hr key={i} className="border-border/50 my-4" />;
+                    }
+                    // Handle bold headers with emoji
+                    if (paragraph.startsWith('**')) {
+                      const headerMatch = paragraph.match(/^\*\*(.+?)\*\*$/);
+                      if (headerMatch) {
+                        return (
+                          <h4 key={i} className="font-semibold text-foreground text-sm mt-2">
+                            {headerMatch[1]}
+                          </h4>
+                        );
+                      }
+                    }
+                    // Handle italic references
+                    if (paragraph.startsWith('📚')) {
+                      return (
+                        <p key={i} className="text-xs text-muted-foreground/70 italic bg-muted/30 rounded-lg px-3 py-2">
+                          {paragraph.replace(/\*/g, '')}
+                        </p>
+                      );
+                    }
+                    // Regular paragraph
+                    return <p key={i}>{paragraph}</p>;
+                  })}
+                </div>
 
                 {/* Reference */}
                 <div className="flex items-center gap-2 text-xs text-muted-foreground/70 bg-muted/50 rounded-lg px-3 py-2">
