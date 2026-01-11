@@ -1086,7 +1086,7 @@ const PourquoiSteero = () => {
             duration: 0.5
           }} className="text-center mb-12">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-card border border-border mb-4">
-                🧠 Approche scientifique
+                🎓 Approche scientifique
               </span>
               <h2 className="text-3xl font-bold text-foreground mb-4">
                 Les fondements comportementaux de Steero
