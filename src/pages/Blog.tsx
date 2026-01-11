@@ -10,12 +10,14 @@ interface Article {
   title: string;
   hook: string;
   content: string;
+  tags: string[];
 }
 
 const articles: Article[] = [
   {
     id: 1,
     title: "Comprendre ses finances personnelles : pourquoi c'est une compétence essentielle aujourd'hui",
+    tags: ["Débutant", "Compétences"],
     hook: `La gestion des finances personnelles est rarement enseignée à l'école. Pourtant, comprendre son argent est aujourd'hui une compétence essentielle, au même titre que savoir organiser son temps ou développer ses compétences professionnelles.
 
 Beaucoup de personnes gagnent correctement leur vie, mais peinent à :
@@ -111,6 +113,7 @@ Commence par poser des bases solides pour ton avenir financier.`
   {
     id: 2,
     title: "La montée en compétences financières : passer du flou au pilotage de son argent",
+    tags: ["Pilotage", "Compétences"],
     hook: `Beaucoup de personnes ont l'impression de "mal gérer" leur argent. En réalité, la plupart ne gèrent pas mal : elles ne pilotent pas.
 
 Elles regardent parfois leur solde, paient leurs factures, épargnent quand il reste quelque chose… mais sans vision globale ni méthode claire.
@@ -230,6 +233,7 @@ Commence par voir clair. Le reste suivra.`
   {
     id: 3,
     title: "Pourquoi sans rituel, aucun outil financier ne fonctionne",
+    tags: ["Rituel", "Mindset"],
     hook: `Télécharger une application de gestion financière est facile. La consulter régulièrement… beaucoup moins.
 
 Ce n'est pas un manque de motivation. Ce n'est pas non plus un problème d'intelligence financière. Le véritable point de rupture, c'est l'absence de rituel.
@@ -346,6 +350,7 @@ Commence petit. Répète souvent. Les résultats suivront.`
   {
     id: 4,
     title: "Le rituel financier en 2 minutes : mythe ou réalité ?",
+    tags: ["Rituel", "Méthode"],
     hook: `Quand on parle de gestion financière, beaucoup imaginent encore :
 • des tableurs complexes,
 • des heures d'analyse,
@@ -446,6 +451,7 @@ Moins d'effort. Plus de clarté. Une vision durable.`
   {
     id: 5,
     title: "Comprendre tes finances comme un tableau de bord, pas comme une punition",
+    tags: ["Mindset", "Psychologie"],
     hook: `Si gérer ton argent te met mal à l'aise, ce n'est probablement pas à cause des chiffres. C'est à cause de ce qu'ils représentent émotionnellement.
 
 Pour beaucoup, regarder ses finances, c'est :
@@ -547,6 +553,7 @@ Moins de pression. Plus de clarté. Plus de maîtrise.`
   {
     id: 6,
     title: "La règle des 50 / 30 / 20 : bonne base ou fausse promesse ?",
+    tags: ["Budget", "Débutant"],
     hook: `Si tu t'intéresses un peu à la gestion de budget, tu as forcément déjà croisé cette règle :
 • 50 % pour les besoins,
 • 30 % pour les envies,
@@ -701,9 +708,19 @@ const ArticleCard = ({ article }: { article: Article }) => {
       <div className="p-6 md:p-8">
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1">
-            <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
-              <Clock className="w-4 h-4" />
-              <span>{readingTime} min de lecture</span>
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              {article.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2.5 py-1 text-xs font-medium rounded-full bg-primary/15 text-primary"
+                >
+                  {tag}
+                </span>
+              ))}
+              <span className="flex items-center gap-1.5 text-muted-foreground text-sm ml-auto">
+                <Clock className="w-4 h-4" />
+                {readingTime} min
+              </span>
             </div>
             <h2 className="text-xl md:text-2xl font-semibold text-primary">
               {article.title}
