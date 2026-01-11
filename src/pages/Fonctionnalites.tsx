@@ -1125,81 +1125,132 @@ const Fonctionnalites = () => {
 
           <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
             {/* Projets financiers */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: 0.1
-          }} className="bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden">
-              <span className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="group bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/5"
+            >
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              <motion.span 
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+                className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full"
+              >
                 À venir
-              </span>
-              <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4">
-                <span className="text-lg opacity-60">🧳</span>
-              </div>
-              <h3 className="text-base font-medium text-foreground/80 mb-2">
+              </motion.span>
+              <motion.div 
+                className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4 relative z-10"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <motion.span 
+                  className="text-lg opacity-60"
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  🧳
+                </motion.span>
+              </motion.div>
+              <h3 className="text-base font-medium text-foreground/80 mb-2 relative z-10">
                 Projets financiers
               </h3>
-              <p className="text-sm text-muted-foreground/70 leading-relaxed">Prépare et suis des enveloppes dédiées à des projets précis.
-Vacances, dépenses exceptionnelles ou objectifs personnels, sans perturber ton budget quotidien.</p>
+              <p className="text-sm text-muted-foreground/70 leading-relaxed relative z-10">
+                Prépare et suis des enveloppes dédiées à des projets précis.
+                Vacances, dépenses exceptionnelles ou objectifs personnels, sans perturber ton budget quotidien.
+              </p>
             </motion.div>
 
             {/* Tiers & avances */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: 0.2
-          }} className="bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden">
-              <span className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="group bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/5"
+            >
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              <motion.span 
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+                className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full"
+              >
                 À venir
-              </span>
-              <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4">
-                <span className="text-lg opacity-60">👥</span>
-              </div>
-              <h3 className="text-base font-medium text-foreground/80 mb-2">
+              </motion.span>
+              <motion.div 
+                className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4 relative z-10"
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <motion.span 
+                  className="text-lg opacity-60"
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                >
+                  👥
+                </motion.span>
+              </motion.div>
+              <h3 className="text-base font-medium text-foreground/80 mb-2 relative z-10">
                 Tiers & avances
               </h3>
-              <p className="text-sm text-muted-foreground/70 leading-relaxed">Suis simplement ce que tu prêtes, ce que l’on te doit,
-et identifie les principaux contributeurs à tes revenus ou dépenses.</p>
+              <p className="text-sm text-muted-foreground/70 leading-relaxed relative z-10">
+                Suis simplement ce que tu prêtes, ce que l'on te doit,
+                et identifie les principaux contributeurs à tes revenus ou dépenses.
+              </p>
             </motion.div>
 
             {/* Patrimoine */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: 0.3
-          }} className="bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden">
-              <span className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="group bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/5"
+            >
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              <motion.span 
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+                className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full"
+              >
                 À venir
-              </span>
-              <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4">
-                <span className="text-lg opacity-60">🏠</span>
-              </div>
-              <h3 className="text-base font-medium text-foreground/80 mb-2">
+              </motion.span>
+              <motion.div 
+                className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4 relative z-10"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <motion.span 
+                  className="text-lg opacity-60"
+                  animate={{ rotate: [0, 3, 0, -3, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                >
+                  🏠
+                </motion.span>
+              </motion.div>
+              <h3 className="text-base font-medium text-foreground/80 mb-2 relative z-10">
                 Patrimoine
               </h3>
-              <p className="text-sm text-muted-foreground/70 leading-relaxed">Visualise tes actifs et tes passifs pour comprendre ta situation globale.
-Épargne, investissements et dettes, réunis dans une vue lisible.</p>
+              <p className="text-sm text-muted-foreground/70 leading-relaxed relative z-10">
+                Visualise tes actifs et tes passifs pour comprendre ta situation globale.
+                Épargne, investissements et dettes, réunis dans une vue lisible.
+              </p>
             </motion.div>
           </div>
         </div>
