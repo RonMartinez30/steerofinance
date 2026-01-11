@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, ArrowRight, Lightbulb, AlertCircle, Share2, Check, List } from "lucide-react";
+import { Clock, ArrowRight, Lightbulb, AlertCircle, Share2, Check, List, Search, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -1108,7 +1108,41 @@ const ArticleCard = ({ article }: { article: Article }) => {
   );
 };
 
+// Extract all unique tags from articles
+const allTags = Array.from(new Set(articles.flatMap(article => article.tags)));
+
 const Blog = () => {
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
+  };
+
+  const clearFilters = () => {
+    setSelectedTags([]);
+    setSearchQuery("");
+  };
+
+  const filteredArticles = articles.filter(article => {
+    // Filter by tags
+    const matchesTags = selectedTags.length === 0 || 
+      selectedTags.some(tag => article.tags.includes(tag));
+    
+    // Filter by search query
+    const matchesSearch = searchQuery === "" || 
+      article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.hook.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    return matchesTags && matchesSearch;
+  });
+
+  const hasActiveFilters = selectedTags.length > 0 || searchQuery !== "";
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -1120,7 +1154,7 @@ const Blog = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
               Blog Steero
@@ -1130,18 +1164,109 @@ const Blog = () => {
             </p>
           </motion.div>
 
+          {/* Search and filter section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-8"
+          >
+            {/* Search bar */}
+            <div className="relative mb-4">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Rechercher un article..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-primary/20 bg-background focus:border-primary/50 focus:outline-none transition-colors text-foreground placeholder:text-muted-foreground"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
+            {/* Tags filter */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm text-muted-foreground mr-2">Filtrer par :</span>
+              {allTags.map((tag) => {
+                const isSelected = selectedTags.includes(tag);
+                return (
+                  <button
+                    key={tag}
+                    onClick={() => toggleTag(tag)}
+                    className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all ${
+                      isSelected
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-primary/10 text-primary hover:bg-primary/20"
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                );
+              })}
+              {hasActiveFilters && (
+                <button
+                  onClick={clearFilters}
+                  className="ml-2 px-3 py-1.5 text-sm font-medium rounded-full bg-muted text-muted-foreground hover:bg-muted/80 transition-colors flex items-center gap-1.5"
+                >
+                  <X className="w-3.5 h-3.5" />
+                  Effacer
+                </button>
+              )}
+            </div>
+
+            {/* Results count */}
+            {hasActiveFilters && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mt-4 text-sm text-muted-foreground"
+              >
+                {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''} trouvé{filteredArticles.length !== 1 ? 's' : ''}
+              </motion.p>
+            )}
+          </motion.div>
+
           {/* Articles list */}
           <div className="space-y-6">
-            {articles.map((article, index) => (
+            <AnimatePresence mode="popLayout">
+              {filteredArticles.map((article, index) => (
+                <motion.div
+                  key={article.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                >
+                  <ArticleCard article={article} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+
+            {filteredArticles.length === 0 && (
               <motion.div
-                key={article.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-12"
               >
-                <ArticleCard article={article} />
+                <p className="text-muted-foreground text-lg mb-4">
+                  Aucun article ne correspond à votre recherche.
+                </p>
+                <button
+                  onClick={clearFilters}
+                  className="text-primary font-medium hover:underline"
+                >
+                  Effacer les filtres
+                </button>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </main>
