@@ -1056,12 +1056,15 @@ const FeatureCard = ({
           </motion.div>}
       </AnimatePresence>
       
-      <motion.div animate={{
-      rotate: isOpen ? 180 : 0
-    }} transition={{
-      duration: 0.2
-    }} className={`mt-3 text-center ${feature.textColor} opacity-50`}>
-        <span className="text-sm">{isOpen ? "▲" : "▼"}</span>
+      {/* Chevron arrow */}
+      <motion.div 
+        animate={{ rotate: isOpen ? 180 : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`mt-3 flex justify-center ${feature.textColor} opacity-50`}
+      >
+        <svg width="16" height="16" viewBox="0 0 12 12" fill="none">
+          <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
       </motion.div>
     </motion.div>;
 };
