@@ -160,7 +160,7 @@ const featureGroups: FeatureGroup[] = [{
     animation: "daily",
     animationDirection: "vertical"
   }, {
-    emoji: "📊",
+    emoji: "🟢",
     title: "Le Niveau",
     microPromise: "Voir où tu en es en un coup d'œil",
     details: "Lors de chaque saisie, visualise instantanément : ce qui a déjà été dépensé, ce que représente la dépense en cours, et ce qu'il te restera disponible dans ton budget.",
@@ -184,7 +184,7 @@ const featureGroups: FeatureGroup[] = [{
     animation: "rituals",
     animationDirection: "pulse"
   }, {
-    emoji: "✨",
+    emoji: "📊",
     title: "Indicateurs ludiques",
     microPromise: "Mesurer tes progrès dans le temps",
     details: "Des visualisations claires et engageantes qui transforment tes données en insights actionnables. Comprends rapidement ta situation grâce à des indicateurs pensés pour faciliter tes décisions.",
