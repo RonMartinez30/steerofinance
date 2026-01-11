@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, ArrowRight, Lightbulb, AlertCircle } from "lucide-react";
+import { Clock, ArrowRight, Lightbulb, AlertCircle, Share2, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -809,8 +809,18 @@ const ReadingProgressBar = ({ contentRef }: { contentRef: React.RefObject<HTMLDi
 
 const ArticleCard = ({ article }: { article: Article }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const readingTime = calculateReadingTime(article.hook + article.content);
+
+  const handleShare = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const url = `${window.location.origin}/blog#article-${article.id}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   return (
     <motion.div
@@ -920,22 +930,50 @@ const ArticleCard = ({ article }: { article: Article }) => {
                 </Button>
               </motion.div>
               
-              {/* Collapse button */}
-              <motion.button
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsOpen(false);
-                }}
-                className="mt-6 text-primary/70 text-sm font-medium flex items-center gap-2 hover:text-primary transition-colors"
-              >
-                <svg width="16" height="16" viewBox="0 0 12 12" fill="none" className="rotate-180">
-                  <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Réduire l'article
-              </motion.button>
+              {/* Actions row */}
+              <div className="mt-6 flex items-center gap-4">
+                {/* Share button */}
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  onClick={handleShare}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${
+                    copied 
+                      ? "bg-green-500/10 border-green-500/30 text-green-600" 
+                      : "bg-primary/5 border-primary/20 text-primary/70 hover:text-primary hover:border-primary/40"
+                  }`}
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      <span className="text-sm font-medium">Lien copié !</span>
+                    </>
+                  ) : (
+                    <>
+                      <Share2 className="w-4 h-4" />
+                      <span className="text-sm font-medium">Partager</span>
+                    </>
+                  )}
+                </motion.button>
+
+                {/* Collapse button */}
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsOpen(false);
+                  }}
+                  className="text-primary/70 text-sm font-medium flex items-center gap-2 hover:text-primary transition-colors"
+                >
+                  <svg width="16" height="16" viewBox="0 0 12 12" fill="none" className="rotate-180">
+                    <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  Réduire l'article
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         )}
