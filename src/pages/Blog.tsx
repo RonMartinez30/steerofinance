@@ -243,6 +243,148 @@ Steero vous aide à :
 • et progresser étape par étape.
 
 Commencez par voir clair. Le reste suivra.`
+  },
+  {
+    id: 3,
+    title: "Pourquoi sans rituel, aucun outil financier ne fonctionne",
+    hook: `Télécharger une application de gestion financière est facile.
+La consulter régulièrement… beaucoup moins.
+
+Ce n'est pas un manque de motivation.
+Ce n'est pas non plus un problème d'intelligence financière.
+
+Le véritable point de rupture, c'est l'absence de rituel.
+
+Sans rituel, même le meilleur outil finit oublié.
+Avec un rituel simple, la gestion financière devient enfin durable.`,
+    content: `Le vrai problème des outils financiers modernes
+
+La majorité des outils de gestion financière échouent pour une raison simple :
+ils supposent que l'utilisateur va s'adapter à l'outil.
+
+Dans la réalité :
+• les interfaces sont complexes,
+• les actions demandées sont nombreuses,
+• le suivi prend trop de temps.
+
+Résultat :
+• enthousiasme au début,
+• effort perçu comme trop important,
+• abandon progressif.
+
+👉 Ce n'est pas un problème de discipline, mais de conception.
+
+Rituel financier : de quoi parle-t-on vraiment ?
+
+Un rituel financier n'est pas :
+• un long bilan mensuel,
+• une session Excel de deux heures,
+• une contrainte rigide.
+
+Un rituel, c'est :
+• une action simple,
+• répétée régulièrement,
+• intégrée naturellement dans le quotidien.
+
+Le rituel transforme la gestion financière en habitude, pas en corvée.
+
+Pourquoi la régularité vaut mieux que la perfection
+
+Beaucoup pensent qu'il faut :
+• tout suivre,
+• tout comprendre,
+• tout optimiser.
+
+En réalité, la régularité est bien plus importante que la précision.
+
+5 minutes par semaine permettent :
+• d'identifier les dérives,
+• d'anticiper les problèmes,
+• de garder le contrôle.
+
+À l'inverse, un suivi parfait mais rare ne crée aucune maîtrise durable.
+
+Sans rituel, la finance redevient anxiogène
+
+Quand il n'y a pas de rituel :
+• on regarde ses comptes en retard,
+• souvent après une mauvaise surprise,
+• avec une charge émotionnelle forte.
+
+L'argent devient alors :
+• source de stress,
+• de culpabilité,
+• voire d'évitement.
+
+Le rituel agit comme un tampon émotionnel :
+il neutralise la surprise et redonne de la sérénité.
+
+Le rituel comme pilier de la montée en compétences financières
+
+La montée en compétences financières repose sur une chose :
+la répétition consciente.
+
+Le rituel permet :
+• d'observer régulièrement,
+• de comprendre progressivement,
+• d'ajuster sans brutalité.
+
+Sans rituel, aucune compétence ne se développe.
+Avec un rituel, la progression devient naturelle.
+
+Pourquoi la plupart des rituels financiers échouent
+
+Trois raisons principales expliquent l'échec des rituels financiers :
+
+Ils prennent trop de temps
+→ incompatibles avec la vie réelle.
+
+Ils demandent trop d'efforts cognitifs
+→ fatigue mentale.
+
+Ils ne donnent pas de feedback immédiat
+→ perte de motivation.
+
+Un bon rituel doit être :
+• rapide,
+• clair,
+• utile dès la première utilisation.
+
+Comment Steero a été pensé autour du rituel, pas de l'outil
+
+Steero n'a pas été conçu comme une application "à consulter quand on a le temps".
+
+Il a été pensé pour :
+• s'intégrer dans une routine courte,
+• donner une information claire en quelques secondes,
+• montrer immédiatement où l'on en est.
+
+Le cœur de Steero, ce n'est pas la donnée brute,
+c'est la ritualisation de la compréhension financière.
+
+Parce que ce qui est simple se répète.
+Et ce qui se répète transforme durablement.
+
+Conclusion : sans rituel, il n'y a pas de contrôle financier
+
+Aucun outil, aussi puissant soit-il, ne fonctionne sans rituel.
+La maîtrise financière ne vient pas de l'intensité, mais de la constance.
+
+Un rituel simple :
+• réduit le stress,
+• améliore les décisions,
+• renforce la confiance.
+
+C'est le socle invisible de toute gestion financière réussie.
+
+👉 Et si votre gestion financière devenait un rituel simple, et non une contrainte ?
+
+Steero vous aide à :
+• créer un rituel financier durable,
+• suivre vos finances sans friction,
+• progresser sans surcharge mentale.
+
+Commencez petit. Répétez souvent. Les résultats suivront.`
   }
 ];
 
@@ -288,7 +430,21 @@ const formatContent = (content: string) => {
         trimmedLine.startsWith("L'objectif") ||
         trimmedLine.startsWith("L'argent") ||
         trimmedLine.startsWith('Résultat') ||
-        trimmedLine.startsWith('Passer')
+        trimmedLine.startsWith('Passer') ||
+        trimmedLine.startsWith('Le vrai problème') ||
+        trimmedLine.startsWith('Rituel financier') ||
+        trimmedLine.startsWith('Le rituel') ||
+        trimmedLine.startsWith('Sans rituel') ||
+        trimmedLine.startsWith('Un rituel') ||
+        trimmedLine.startsWith('Aucun outil') ||
+        trimmedLine.startsWith('La maîtrise') ||
+        trimmedLine.startsWith('La montée') ||
+        trimmedLine.startsWith('Trois raisons') ||
+        trimmedLine.startsWith('Ils prennent') ||
+        trimmedLine.startsWith('Ils demandent') ||
+        trimmedLine.startsWith('Ils ne donnent') ||
+        trimmedLine.startsWith('Un bon rituel') ||
+        trimmedLine.startsWith("C'est le socle")
       );
     
     if (isSectionTitle) {
