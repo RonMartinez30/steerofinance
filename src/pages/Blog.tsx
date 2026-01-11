@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, ArrowRight, Lightbulb, AlertCircle, Share2, Check } from "lucide-react";
+import { Clock, ArrowRight, Lightbulb, AlertCircle, Share2, Check, List } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -672,8 +672,44 @@ const MythBlock = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+// Extract section titles for TOC
+const extractSectionTitles = (content: string, articleId: number): { title: string; id: string }[] => {
+  const lines = content.split('\n');
+  const titles: { title: string; id: string }[] = [];
+  
+  lines.forEach((line, index) => {
+    const trimmedLine = line.trim();
+    if (!trimmedLine) return;
+    
+    const isSectionTitle = 
+      !trimmedLine.startsWith('•') && 
+      !trimmedLine.startsWith('→') &&
+      !trimmedLine.match(/^\d+\./) &&
+      !trimmedLine.startsWith('"') &&
+      trimmedLine.length < 100 &&
+      trimmedLine.length > 5 &&
+      !trimmedLine.toLowerCase().includes('à retenir') &&
+      !trimmedLine.toLowerCase().includes('idée reçue') &&
+      !trimmedLine.match(/^(La gestion financière n'est pas innée|Ce n'est pas le montant|La clarté financière|L'essentiel n'est pas d'être parfait|Personne ne naît en sachant|Ce n'est pas un problème de discipline|Le rituel transforme|la régularité est bien plus importante|Le rituel agit comme un tampon|Sans rituel, aucune compétence|Ce n'est pas le temps qui manque|La clé d'une gestion financière durable|Le problème n'est pas l'information|Un bon budget ne te dit pas)/i) &&
+      !trimmedLine.match(/^(Un mythe très répandu|Gagner plus d'argent suffit|plus de revenus = plus de|La majorité des outils de gestion financière échouent|Beaucoup pensent qu'il faut|Quand la règle est présentée comme une norme)/i) &&
+      (
+        trimmedLine.match(/^(Pourquoi|Comment|Gagner|Comprendre|La finance|La clarté|Conclusion|De la gestion|Subir|Piloter|Étape|L'essentiel|L'objectif|L'argent|Résultat|Passer|Le vrai|Rituel|Le rituel|Sans rituel|Un rituel|Aucun outil|La maîtrise|La montée|Trois raisons|Un bon rituel|C'est le socle|Le principe|Les rituels|Ce que change|Le problème|La règle|Adapter|Un tableau|Posture|Voir clair|Ce simple|Tu souhaites|Steero t'aide|Commence|Moins d'effort|Des repères|Et si|Son rôle|Ce sont)/) ||
+        (trimmedLine.length < 80 && !trimmedLine.endsWith('.') && !trimmedLine.endsWith(',') && !trimmedLine.includes(':') && !trimmedLine.startsWith('•'))
+      );
+    
+    if (isSectionTitle) {
+      titles.push({
+        title: trimmedLine,
+        id: `section-${articleId}-${index}`
+      });
+    }
+  });
+  
+  return titles;
+};
+
 // Format content with improved visual hierarchy
-const formatContent = (content: string) => {
+const formatContent = (content: string, articleId: number = 0) => {
   const lines = content.split('\n');
   const elements: React.ReactNode[] = [];
   let i = 0;
@@ -718,8 +754,9 @@ const formatContent = (content: string) => {
       );
     
     if (isSectionTitle) {
+      const sectionId = `section-${articleId}-${i}`;
       elements.push(
-        <div key={i} className="mt-10 mb-4 flex items-center gap-3">
+        <div key={i} id={sectionId} className="mt-10 mb-4 flex items-center gap-3 scroll-mt-24">
           <div className="w-1 h-6 bg-primary rounded-full" />
           <h3 className="text-lg md:text-xl font-bold text-foreground">
             {trimmedLine}
@@ -766,6 +803,47 @@ const formatContent = (content: string) => {
   }
   
   return elements;
+};
+
+// Table of contents component
+const TableOfContents = ({ sections }: { sections: { title: string; id: string }[] }) => {
+  const handleClick = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  if (sections.length < 2) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1 }}
+      className="mb-8 p-5 bg-muted/50 rounded-xl border border-primary/10"
+    >
+      <div className="flex items-center gap-2 mb-4">
+        <List className="w-4 h-4 text-primary" />
+        <span className="text-sm font-semibold text-foreground">Sommaire</span>
+      </div>
+      <nav className="space-y-2">
+        {sections.map((section, index) => (
+          <button
+            key={section.id}
+            onClick={(e) => handleClick(e, section.id)}
+            className="w-full text-left flex items-start gap-3 py-1.5 px-3 rounded-lg text-sm text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors group"
+          >
+            <span className="text-primary/50 font-medium group-hover:text-primary">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <span className="line-clamp-1">{section.title}</span>
+          </button>
+        ))}
+      </nav>
+    </motion.div>
+  );
 };
 
 // Reading progress bar component
@@ -907,8 +985,9 @@ const ArticleCard = ({ article }: { article: Article }) => {
             <div ref={contentRef} className="px-6 md:px-8 pb-6 md:pb-8">
               <ReadingProgressBar contentRef={contentRef} />
               <div className="pt-4 border-t border-primary/15">
+                <TableOfContents sections={extractSectionTitles(article.content, article.id)} />
                 <div className="text-foreground">
-                  {formatContent(article.content)}
+                  {formatContent(article.content, article.id)}
                 </div>
               </div>
               
