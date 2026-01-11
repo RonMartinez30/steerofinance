@@ -1031,9 +1031,21 @@ const FeatureCard = ({
           </AnimatePresence>
         </div>
         <div className="flex-1">
-          <h3 className={`${isLarge ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'} font-semibold ${feature.textColor}`}>
-            {feature.title}
-          </h3>
+          <div className="flex items-center gap-2">
+            <h3 className={`${isLarge ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'} font-semibold ${feature.textColor}`}>
+              {feature.title}
+            </h3>
+            {/* Chevron arrow next to title */}
+            <motion.div 
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              className={`${feature.textColor} opacity-50`}
+            >
+              <svg width="16" height="16" viewBox="0 0 12 12" fill="none">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </motion.div>
+          </div>
           {!isOpen && <motion.p initial={{
           opacity: 0
         }} animate={{
@@ -1055,17 +1067,6 @@ const FeatureCard = ({
             </p>
           </motion.div>}
       </AnimatePresence>
-      
-      {/* Chevron arrow */}
-      <motion.div 
-        animate={{ rotate: isOpen ? 180 : 0 }}
-        transition={{ duration: 0.3 }}
-        className={`mt-3 flex justify-center ${feature.textColor} opacity-50`}
-      >
-        <svg width="16" height="16" viewBox="0 0 12 12" fill="none">
-          <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </motion.div>
     </motion.div>;
 };
 const Fonctionnalites = () => {
