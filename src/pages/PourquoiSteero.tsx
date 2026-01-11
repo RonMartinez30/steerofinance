@@ -161,9 +161,35 @@ const behavioralElements: BehavioralElement[] = [{
   icon: RefreshCw,
   emoji: "🔄",
   title: "Le rituel transforme la finance en comportement",
-  subtitle: "Pas en donnée",
-  description: "Ritualiser permet d'ancrer une routine consciente, de créer un point de contact régulier avec la réalité financière et de transformer une contrainte abstraite en pratique tangible. Les micro-rituels sont plus efficaces que les bilans occasionnels automatisés.",
-  reference: "BJ Fogg – Behavior Model",
+  subtitle: "Pas en simple donnée",
+  description: `**🔁 3.a — Le rituel agit par répétition**
+
+Une habitude ne se crée pas par une action isolée, mais par la répétition consciente d'un même comportement dans le temps.
+
+Les habitudes sont des automatismes neurologiques : plus un geste est répété, plus il devient naturel et moins il demande d'effort conscient. Le rituel financier — quelques secondes, régulièrement — permet d'ancrer la compréhension, de renforcer la mémorisation et de transformer une intention en action réelle.
+
+Les micro-actions régulières sont préférables aux efforts ponctuels : mieux vaut 30 secondes chaque jour qu'une heure une fois par mois.
+
+📚 *Wood & Neal (2007) — A new look at habits and the habit–goal interface*
+
+---
+
+**⏳ 3.b — Le changement est progressif, pas instantané**
+
+Modifier sa relation à l'argent est un apprentissage, pas une performance immédiate.
+
+Le changement comportemental demande du temps. Les recherches montrent que plusieurs semaines — parfois plus de deux mois — sont souvent nécessaires pour qu'un comportement devienne vraiment automatique. Les écarts font partie du processus : la progression n'est jamais parfaitement linéaire.
+
+Steero est conçu comme un compagnon de trajectoire, pas comme un outil de contrôle. Ce qui compte, c'est la progression, pas la perfection.
+
+📚 *Lally et al. (2010) — How are habits formed: Modelling habit formation in the real world*
+
+---
+
+**✨ Ce qu'il faut retenir**
+
+Changer ses habitudes financières prend du temps. Steero t'accompagne pas à pas, grâce à des rituels simples et répétés, parce que la maîtrise durable naît de la progression, pas de l'automatisation totale.`,
+  reference: "Wood & Neal (2007) • Lally et al. (2010)",
   bgColor: "bg-card",
   borderColor: "border-border"
 }, {
