@@ -985,7 +985,7 @@ const FeatureCard = ({
     onToggle();
   };
   const variants = getCardAnimationVariants(feature.animationDirection);
-  return <motion.div layout onClick={handleClick} className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} ${isLarge ? 'p-8' : 'p-6'} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] relative ${isExplored && !isOpen ? 'saturate-[0.7] opacity-90' : ''}`}>
+  return <motion.div layout onClick={handleClick} className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} ${isLarge ? 'p-8' : 'p-6'} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] relative ${isExplored && !isOpen ? 'saturate-[0.7] opacity-90' : ''} ${!isOpen ? 'min-h-[100px]' : ''}`}>
       {/* Badge "Découvert" */}
       <AnimatePresence>
         {isExplored && !isOpen && <motion.div initial={{
