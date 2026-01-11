@@ -138,35 +138,138 @@ Elles regardent parfois leur solde, paient leurs factures, épargnent quand il r
 
 La bonne nouvelle ?
 La gestion financière n'est pas binaire. Elle se construit par étapes, comme une véritable montée en compétences.`,
-    content: `Imaginez la gestion de vos finances comme un escalier. Chaque marche représente un niveau de maîtrise supplémentaire.
+    content: `De la gestion subie au pilotage financier
 
-Niveau 1 : La survie
-À ce stade, on vit au jour le jour. On regarde son solde avant chaque achat, on craint les fins de mois, on subit plus qu'on ne décide.
+On peut schématiser la relation à l'argent en deux grandes situations :
 
-Niveau 2 : La stabilisation
-On commence à avoir une vue d'ensemble. Les charges fixes sont identifiées, on évite les découverts, on a peut-être un petit matelas de sécurité.
+Subir ses finances
+Argent flou, décisions réactives, stress latent.
 
-Niveau 3 : L'organisation
-Un budget existe, même simple. On sait où va l'argent, on anticipe les grosses dépenses, on épargne de façon régulière.
+Piloter ses finances
+Vision claire, arbitrages conscients, décisions alignées avec ses objectifs.
 
-Niveau 4 : L'optimisation
-On cherche à améliorer : réduire certaines dépenses, augmenter l'épargne, faire travailler son argent. On se fixe des objectifs financiers précis.
+La différence entre les deux n'est pas le revenu, mais le niveau de compétence financière.
 
-Niveau 5 : Le pilotage
-La gestion financière devient un réflexe. On prend des décisions éclairées, on adapte sa stratégie aux changements de vie, on se sent serein face à l'argent.
+---
 
-Comment progresser ?
+Étape 1 : Observer ses finances sans jugement
 
-La clé n'est pas de sauter les étapes, mais de les franchir une à une, solidement.
+La première étape n'est ni le budget, ni l'épargne, ni l'investissement.
 
-Commencez par identifier où vous en êtes. Sans jugement. Puis fixez-vous un objectif réaliste pour les 3 prochains mois.
+C'est l'observation.
 
-Par exemple :
-• Si vous êtes au niveau 1 → visez à constituer 500€ d'épargne de précaution
-• Si vous êtes au niveau 2 → mettez en place un budget mensuel simple
-• Si vous êtes au niveau 3 → automatisez votre épargne en début de mois
+Observer, c'est :
+• voir ses revenus et ses dépenses,
+• identifier les grandes catégories,
+• comprendre ses habitudes financières.
 
-Chaque petit progrès compte. Et surtout, chaque petit progrès vous rapproche d'une relation plus saine et plus sereine avec votre argent.`
+Sans jugement, sans culpabilité.
+
+👉 Tant que l'argent reste flou, aucune décision solide n'est possible.
+
+---
+
+Étape 2 : Structurer pour donner du sens aux chiffres
+
+Une fois les flux visibles, vient la structuration.
+
+Structurer ses finances, c'est :
+• organiser ses dépenses par catégories,
+• poser des budgets simples,
+• distinguer l'essentiel du variable.
+
+Cette étape transforme des chiffres isolés en information exploitable.
+
+Sans structure :
+• les chiffres s'accumulent,
+• mais ne racontent aucune histoire.
+
+---
+
+Étape 3 : Comprendre les écarts pour mieux décider
+
+Un budget parfait n'existe pas.
+
+Les écarts sont normaux :
+• un mois plus cher que prévu,
+• une dépense imprévue,
+• une priorité qui change.
+
+Le problème n'est pas l'écart, mais le fait de ne pas le voir.
+
+Comprendre ses écarts permet :
+• d'ajuster ses décisions,
+• d'éviter les mauvaises surprises,
+• de reprendre le contrôle sans se restreindre.
+
+---
+
+Étape 4 : Décider en fonction de ses objectifs
+
+C'est ici que la gestion financière devient réellement utile.
+
+Quand la vision est claire, on peut :
+• arbitrer sans stress,
+• aligner ses dépenses avec ses objectifs,
+• donner un rôle précis à chaque euro.
+
+L'argent cesse d'être une source d'anxiété pour devenir un outil au service de ses projets.
+
+---
+
+Pourquoi la montée en compétences financières échoue souvent
+
+Beaucoup abandonnent à cette étape pour trois raisons principales :
+
+Des outils trop complexes
+Pensés pour des experts, pas pour progresser.
+
+Un suivi trop lourd
+Trop chronophage pour durer.
+
+Aucun cadre évolutif
+Tout ou rien, sans progression naturelle.
+
+Résultat : motivation au départ, abandon quelques semaines plus tard.
+
+---
+
+Comment Steero accompagne la montée en compétences financières
+
+Steero a été conçu comme un parcours, pas comme un simple outil de suivi.
+
+Il permet :
+• d'observer ses finances simplement,
+• de structurer progressivement ses budgets,
+• de visualiser les écarts sans culpabilité,
+• de ritualiser le suivi pour durer dans le temps.
+
+L'objectif n'est pas de devenir expert en finance, mais de monter en compétences à son rythme, avec un cadre clair.
+
+---
+
+Conclusion : piloter ses finances est une compétence accessible
+
+Personne ne naît en sachant gérer son argent.
+Mais tout le monde peut apprendre à le piloter.
+
+La montée en compétences financières repose sur :
+• la clarté,
+• la régularité,
+• et des outils pensés pour accompagner, pas pour complexifier.
+
+Passer du flou au pilotage, c'est reprendre le contrôle de son avenir financier.
+
+---
+
+👉 Vous souhaitez passer du flou au pilotage de vos finances ?
+
+Steero vous aide à :
+• comprendre vos finances,
+• structurer votre budget,
+• et progresser étape par étape.
+
+Commencez par voir clair. Le reste suivra.`
   }
 ];
 
