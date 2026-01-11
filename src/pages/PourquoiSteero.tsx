@@ -520,10 +520,10 @@ const EmotionalConnectionAnimation = ({
         duration: 0.4,
         type: "spring"
       }} className="bg-muted rounded-lg px-2.5 py-1.5 flex items-center gap-2">
-          <span className="text-base">☕</span>
+          <span className="text-base">🍽️</span>
           <div>
-            <p className="text-[10px] font-medium text-foreground">Café</p>
-            <p className="text-[10px] text-muted-foreground">-3,50€</p>
+            <p className="text-[10px] font-medium text-foreground">Restaurant</p>
+            <p className="text-[10px] text-muted-foreground">-34,90€</p>
           </div>
         </motion.div>
         
@@ -555,7 +555,7 @@ const EmotionalConnectionAnimation = ({
           duration: 0.6,
           repeat: step === 4 ? Infinity : 0
         }} className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-            <span className="text-xl">❤️</span>
+            <span className="text-xl">🤔</span>
           </motion.div>
           
           {/* Ripple effect */}
@@ -578,7 +578,7 @@ const EmotionalConnectionAnimation = ({
     }} animate={{
       opacity: step >= 4 ? 1 : 0
     }} className="text-center text-xs text-primary font-medium">
-        ❤️ Décision consciente
+        👌 Réelle prise de conscience
       </motion.p>
     </div>;
 };
