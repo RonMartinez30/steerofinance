@@ -385,165 +385,6 @@ Steero vous aide à :
 • progresser sans surcharge mentale.
 
 Commencez petit. Répétez souvent. Les résultats suivront.`
-  },
-  {
-    id: 4,
-    title: "Les 5 rituels Steero : la clé d'une gestion financière durable",
-    hook: `La gestion financière ne se résume pas à un outil ou une méthode.
-Elle repose sur des rituels simples, adaptés à ton rythme de vie.
-
-Steero propose 5 rituels complémentaires :
-• Quotidien : Enregistrer
-• Hebdomadaire : Ajuster
-• Mensuel : Décider
-• Trimestriel : Aligner
-• Annuel : Projeter
-
-Chaque rituel a un objectif clair et s'intègre naturellement dans ton quotidien.
-Ensemble, ils forment un système cohérent pour reprendre le contrôle de tes finances.`,
-    content: `Rituel quotidien — Enregistrer
-
-Objectif : Garder le lien, éviter la dérive invisible
-
-Prends un instant pour enregistrer et vérifier tes dernières opérations. En quelques secondes, tu gardes une vision claire de ta situation et évites les écarts invisibles.
-
-Activités :
-• Vérifier et enregistrer les nouvelles opérations
-• Ajuster une catégorie si nécessaire
-• Observer l'impact sur ta trésorerie et ton budget
-
-Aucune analyse approfondie n'est attendue, il s'agit simplement de saisir, observer et valider.
-
-Questions à te poser :
-• Est-ce que tout est bien classé ?
-• Suis-je toujours aligné avec ce que j'avais prévu ?
-• Y a-t-il un signal faible à surveiller ?
-
-Pourquoi c'est clé :
-• Installe la régularité
-• Évite l'effet "fin de mois surprise"
-• Maintient la motivation sans charge mentale
-
-Règle d'or : Si tu manques un jour, ce n'est pas grave. Je suis là pour t'accompagner, pas pour te contraindre.
-
-Rituel hebdomadaire — Ajuster
-
-Objectif : Corriger la trajectoire avant qu'il ne soit trop tard
-
-C'est le moment de prendre du recul et de décider consciemment. Steero t'aide à comparer le prévu et le réel pour reprendre la main sur tes choix.
-
-Activités :
-• Passer en revue les dépenses de la semaine
-• Identifier les écarts ou dépenses inhabituelles
-• Ajuster certaines catégories si besoin
-
-Mieux vaut ajuster maintenant que corriger plus tard : si tu as bien suivi tes rituels quotidiens, l'effort ici est minime.
-
-Questions à te poser :
-• Ai-je dépensé comme prévu ?
-• Qu'est-ce qui mérite d'être ajusté ?
-• Que puis-je ajuster la semaine prochaine ?
-
-Pourquoi c'est clé :
-• Il prévient l'effet "je verrai en fin de mois"
-• Il t'invite à devenir acteur plutôt que spectateur
-• Il crée un pont naturel entre tes actions quotidiennes et tes objectifs
-
-Règle d'or : Rater un rituel n'est pas un échec. Ce qui compte, c'est la tendance, pas la perfection.
-
-Rituel mensuel — Décider
-
-Objectif : Reprendre la main sur les choix financiers
-
-Cette étape te permet d'ajuster ta trajectoire avant que les écarts ne s'installent. Quelques minutes suffisent pour corriger et avancer sereinement.
-
-Activités :
-• Analyser : revenus vs dépenses, budget prévu vs réel, évolution de la trésorerie
-• Ajuster : les catégories, les montants budgétés
-• Valider ou revoir : les priorités du mois suivant
-
-Je décide consciemment où va mon argent.
-
-Questions à te poser :
-• Où ai-je choisi de mettre mon argent ce mois-ci ?
-• Est-ce aligné avec ce que je veux construire ?
-• Qu'est-ce que je décide consciemment pour le mois prochain ?
-
-Pourquoi c'est clé :
-• Tu (re)prends pleinement le contrôle de tes finances, tu es le décideur
-• Ce rituel donne du sens aux rituels quotidien et hebdomadaire
-• Il installe une vraie discipline consciente, sans rigidité
-• Il te prépare naturellement au rituel trimestriel (Aligner)
-
-Règle d'or : Un mois imparfait n'est pas un problème. Un mois non regardé, oui.
-
-Rituel trimestriel — Aligner
-
-Objectif : Aligner finances et objectifs de vie
-
-Cette étape te permet de prendre de la hauteur et de vérifier que tes finances servent réellement tes projets.
-
-Activités :
-• Revoir les objectifs financiers
-• Évaluer les progrès réels
-• Identifier les leviers d'optimisation et les charges inutiles
-• Ajuster la stratégie globale
-
-Aligner aujourd'hui, c'est éviter les écarts demain. Ainsi je m'assure que mes finances avancent dans le bon sens.
-
-Questions à te poser :
-• Mes finances soutiennent-elles mes objectifs ?
-• Qu'est-ce qui doit évoluer pour les 3 prochains mois ?
-
-Pourquoi ce rituel est stratégique :
-• Il évite la gestion "automatique" sans sens
-• Il renforce ton attachement émotionnel à tes finances, c'est clé dans ta compréhension
-• Il te prépare aux arbitrages importants et à ton rituel annuel
-• Cet espace devient une boussole, pas juste un outil transactionnel
-
-Règle d'or : Changer d'objectif n'est pas un recul. C'est souvent un signe de maturité.
-
-Rituel annuel — Projeter
-
-Objectif : Prendre de la hauteur et préparer l'avenir
-
-Prends un temps long pour observer le chemin parcouru et préparer la suite. Ce rituel t'aide à piloter ta trajectoire financière, pas seulement ton quotidien.
-
-Activités :
-• Bilan global de l'année écoulée
-• Analyse : évolution du patrimoine, discipline financière, habitudes installées
-• Définition des grandes orientations : épargne, investissements, projets de vie
-
-Gérer le présent est nécessaire. Choisir l'avenir est fondamental.
-
-Questions à te poser :
-• Qu'est-ce que je veux vraiment construire avec mon argent ?
-• Quelle vie est-ce que je soutiens par mes décisions financières ?
-• Qu'est-ce qui mérite mon énergie cette année — et qu'est-ce qui n'en mérite plus ?
-
-Pourquoi ce rituel est stratégique :
-Tes finances ont désormais un impact sur ta vie. Ce rituel donne du sens à tous les autres rituels, il vient clôturer ton exercice et te permet de préparer la période suivante avec plus de justesse et de sérénité.
-
-Règle d'or : Une direction claire vaut mieux qu'un plan parfait.
-
-Conclusion : un système de rituels pour une maîtrise durable
-
-Les 5 rituels Steero ne sont pas des contraintes.
-Ce sont des rendez-vous avec toi-même pour :
-• garder le contrôle au quotidien,
-• ajuster avant qu'il ne soit trop tard,
-• décider en conscience,
-• aligner tes finances avec tes objectifs,
-• et projeter ton avenir avec clarté.
-
-👉 Prêt à installer tes rituels financiers ?
-
-Steero t'accompagne pas à pas pour :
-• créer des habitudes durables,
-• progresser sans pression,
-• et reprendre le contrôle de ton argent.
-
-Commence aujourd'hui. Un rituel à la fois.`
   }
 ];
 
@@ -565,18 +406,46 @@ const formatContent = (content: string) => {
       return <br key={index} />;
     }
     
-    // Section title patterns - more robust detection
-    const sectionTitlePatterns = [
-      /^(Pourquoi|Comment|Conclusion|Étape \d|De la gestion|La finance|La clarté|La montée|Le vrai problème|Le rituel|Rituel (quotidien|hebdomadaire|mensuel|trimestriel|annuel)|Sans rituel|Un rituel|Aucun outil|La maîtrise|Trois raisons|Un bon rituel|Objectif|Activités|Questions à te poser|Pourquoi c'est clé|Pourquoi ce rituel|Règle d'or|Gagner plus|Comprendre son|Subir ses|Piloter ses|Des outils|Un suivi|Aucun cadre|Résultat|Passer du|Gérer le présent|Choisir l'avenir|Les 5 rituels)/i,
-    ];
-    
+    // Check if it's a section title (line that doesn't start with bullet, number, emoji, and is followed by content)
     const isSectionTitle = 
       !trimmedLine.startsWith('•') && 
       !trimmedLine.startsWith('👉') &&
-      !trimmedLine.match(/^\d+\.\s/) &&
-      trimmedLine.length < 100 &&
-      trimmedLine.length > 5 &&
-      sectionTitlePatterns.some(pattern => pattern.test(trimmedLine));
+      !trimmedLine.match(/^\d+\./) &&
+      trimmedLine.length < 80 &&
+      trimmedLine.length > 10 &&
+      !trimmedLine.includes(':') &&
+      (
+        trimmedLine.startsWith('Pourquoi') ||
+        trimmedLine.startsWith('Gagner') ||
+        trimmedLine.startsWith('Comprendre') ||
+        trimmedLine.startsWith('La finance') ||
+        trimmedLine.startsWith('La clarté') ||
+        trimmedLine.startsWith('Comment') ||
+        trimmedLine.startsWith('Conclusion') ||
+        trimmedLine.startsWith('De la gestion') ||
+        trimmedLine.startsWith('Subir') ||
+        trimmedLine.startsWith('Piloter') ||
+        trimmedLine.startsWith('Étape') ||
+        trimmedLine.startsWith("L'essentiel") ||
+        trimmedLine.startsWith("L'objectif") ||
+        trimmedLine.startsWith("L'argent") ||
+        trimmedLine.startsWith('Résultat') ||
+        trimmedLine.startsWith('Passer') ||
+        trimmedLine.startsWith('Le vrai problème') ||
+        trimmedLine.startsWith('Rituel financier') ||
+        trimmedLine.startsWith('Le rituel') ||
+        trimmedLine.startsWith('Sans rituel') ||
+        trimmedLine.startsWith('Un rituel') ||
+        trimmedLine.startsWith('Aucun outil') ||
+        trimmedLine.startsWith('La maîtrise') ||
+        trimmedLine.startsWith('La montée') ||
+        trimmedLine.startsWith('Trois raisons') ||
+        trimmedLine.startsWith('Ils prennent') ||
+        trimmedLine.startsWith('Ils demandent') ||
+        trimmedLine.startsWith('Ils ne donnent') ||
+        trimmedLine.startsWith('Un bon rituel') ||
+        trimmedLine.startsWith("C'est le socle")
+      );
     
     if (isSectionTitle) {
       return (
