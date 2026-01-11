@@ -805,8 +805,37 @@ const formatContent = (content: string, articleId: number = 0) => {
   return elements;
 };
 
-// Table of contents component
+// Table of contents component with active section tracking
 const TableOfContents = ({ sections }: { sections: { title: string; id: string }[] }) => {
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+      }
+    );
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section.id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [sections]);
+
   const handleClick = (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
     const element = document.getElementById(id);
@@ -828,19 +857,37 @@ const TableOfContents = ({ sections }: { sections: { title: string; id: string }
         <List className="w-4 h-4 text-primary" />
         <span className="text-sm font-semibold text-foreground">Sommaire</span>
       </div>
-      <nav className="space-y-2">
-        {sections.map((section, index) => (
-          <button
-            key={section.id}
-            onClick={(e) => handleClick(e, section.id)}
-            className="w-full text-left flex items-start gap-3 py-1.5 px-3 rounded-lg text-sm text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors group"
-          >
-            <span className="text-primary/50 font-medium group-hover:text-primary">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <span className="line-clamp-1">{section.title}</span>
-          </button>
-        ))}
+      <nav className="space-y-1">
+        {sections.map((section, index) => {
+          const isActive = activeSection === section.id;
+          return (
+            <button
+              key={section.id}
+              onClick={(e) => handleClick(e, section.id)}
+              className={`w-full text-left flex items-start gap-3 py-2 px-3 rounded-lg text-sm transition-all duration-200 group ${
+                isActive 
+                  ? "bg-primary/10 text-primary font-medium" 
+                  : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+              }`}
+            >
+              <span className={`font-medium transition-colors ${
+                isActive ? "text-primary" : "text-primary/50 group-hover:text-primary"
+              }`}>
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span className="line-clamp-1 flex-1">{section.title}</span>
+              {isActive && (
+                <motion.div
+                  layoutId="activeIndicator"
+                  className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.2 }}
+                />
+              )}
+            </button>
+          );
+        })}
       </nav>
     </motion.div>
   );
