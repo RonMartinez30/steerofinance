@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, ArrowRight } from "lucide-react";
+import { Clock, ArrowRight, Lightbulb, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -646,20 +646,65 @@ const calculateReadingTime = (text: string): number => {
   return Math.max(1, Math.ceil(words / 200));
 };
 
-// Format content with bold section titles
+// Key idea block component
+const KeyIdeaBlock = ({ children }: { children: React.ReactNode }) => (
+  <div className="my-6 p-5 bg-primary/10 border-l-4 border-primary rounded-r-xl">
+    <div className="flex items-start gap-3">
+      <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+      <div>
+        <span className="text-xs font-semibold text-primary uppercase tracking-wide">À retenir</span>
+        <p className="mt-1 text-foreground font-medium">{children}</p>
+      </div>
+    </div>
+  </div>
+);
+
+// Myth block component
+const MythBlock = ({ children }: { children: React.ReactNode }) => (
+  <div className="my-6 p-5 bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl">
+    <div className="flex items-start gap-3">
+      <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+      <div>
+        <span className="text-xs font-semibold text-amber-600 uppercase tracking-wide">Idée reçue</span>
+        <p className="mt-1 text-foreground font-medium">{children}</p>
+      </div>
+    </div>
+  </div>
+);
+
+// Format content with improved visual hierarchy
 const formatContent = (content: string) => {
   const lines = content.split('\n');
+  const elements: React.ReactNode[] = [];
+  let i = 0;
   
-  return lines.map((line, index) => {
-    const trimmedLine = line.trim();
+  while (i < lines.length) {
+    const trimmedLine = lines[i].trim();
     
-    // Skip empty lines
+    // Skip empty lines - add spacing
     if (!trimmedLine) {
-      return <br key={index} />;
+      elements.push(<div key={i} className="h-2" />);
+      i++;
+      continue;
     }
     
-    // Check if it's a section title - lines that don't start with bullet points, numbers, arrows, 
-    // and are relatively short (indicating a heading)
+    // Check for key idea markers
+    if (trimmedLine.toLowerCase().includes('à retenir') || 
+        trimmedLine.match(/^(La gestion financière n'est pas innée|Ce n'est pas le montant|La clarté financière|L'essentiel n'est pas d'être parfait|Personne ne naît en sachant|Ce n'est pas un problème de discipline|Le rituel transforme|la régularité est bien plus importante|Le rituel agit comme un tampon|Sans rituel, aucune compétence|Ce n'est pas le temps qui manque|La clé d'une gestion financière durable|Le problème n'est pas l'information|Un bon budget ne te dit pas)/i)) {
+      elements.push(<KeyIdeaBlock key={i}>{trimmedLine}</KeyIdeaBlock>);
+      i++;
+      continue;
+    }
+    
+    // Check for myth markers
+    if (trimmedLine.toLowerCase().includes('idée reçue') ||
+        trimmedLine.match(/^(Un mythe très répandu|Gagner plus d'argent suffit|plus de revenus = plus de|La majorité des outils de gestion financière échouent|Beaucoup pensent qu'il faut|Quand la règle est présentée comme une norme)/i)) {
+      elements.push(<MythBlock key={i}>{trimmedLine}</MythBlock>);
+      i++;
+      continue;
+    }
+    
+    // Check if it's a section title
     const isSectionTitle = 
       !trimmedLine.startsWith('•') && 
       !trimmedLine.startsWith('→') &&
@@ -668,30 +713,103 @@ const formatContent = (content: string) => {
       trimmedLine.length < 100 &&
       trimmedLine.length > 5 &&
       (
-        // Match common section title patterns
         trimmedLine.match(/^(Pourquoi|Comment|Gagner|Comprendre|La finance|La clarté|Conclusion|De la gestion|Subir|Piloter|Étape|L'essentiel|L'objectif|L'argent|Résultat|Passer|Le vrai|Rituel|Le rituel|Sans rituel|Un rituel|Aucun outil|La maîtrise|La montée|Trois raisons|Un bon rituel|C'est le socle|Le principe|Les rituels|Ce que change|Le problème|La règle|Adapter|Un tableau|Posture|Voir clair|Ce simple|Tu souhaites|Steero t'aide|Commence|Moins d'effort|Des repères|Et si|Son rôle|Ce sont)/) ||
-        // Also match titles that end without punctuation and look like headings
         (trimmedLine.length < 80 && !trimmedLine.endsWith('.') && !trimmedLine.endsWith(',') && !trimmedLine.includes(':') && !trimmedLine.startsWith('•'))
       );
     
     if (isSectionTitle) {
-      return (
-        <span key={index} className="block font-semibold text-foreground mt-6 mb-2">
+      elements.push(
+        <div key={i} className="mt-10 mb-4 flex items-center gap-3">
+          <div className="w-1 h-6 bg-primary rounded-full" />
+          <h3 className="text-lg md:text-xl font-bold text-foreground">
+            {trimmedLine}
+          </h3>
+        </div>
+      );
+      i++;
+      continue;
+    }
+    
+    // Regular text with bullet points styling
+    if (trimmedLine.startsWith('•')) {
+      elements.push(
+        <div key={i} className="flex items-start gap-3 py-1.5 pl-4">
+          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+          <span className="text-muted-foreground">{trimmedLine.substring(1).trim()}</span>
+        </div>
+      );
+    } else if (trimmedLine.startsWith('→')) {
+      elements.push(
+        <div key={i} className="flex items-start gap-3 py-1.5 pl-4 text-primary/80">
+          <span className="flex-shrink-0">→</span>
+          <span>{trimmedLine.substring(1).trim()}</span>
+        </div>
+      );
+    } else if (trimmedLine.match(/^\d+\./)) {
+      elements.push(
+        <div key={i} className="flex items-start gap-3 py-2 pl-4">
+          <span className="w-6 h-6 rounded-full bg-primary/15 text-primary text-sm font-semibold flex items-center justify-center flex-shrink-0">
+            {trimmedLine.match(/^(\d+)/)?.[1]}
+          </span>
+          <span className="text-muted-foreground pt-0.5">{trimmedLine.replace(/^\d+\.\s*/, '')}</span>
+        </div>
+      );
+    } else {
+      elements.push(
+        <p key={i} className="text-muted-foreground leading-relaxed py-1">
           {trimmedLine}
-        </span>
+        </p>
       );
     }
     
-    return (
-      <span key={index} className="block">
-        {trimmedLine}
-      </span>
-    );
-  });
+    i++;
+  }
+  
+  return elements;
+};
+
+// Reading progress bar component
+const ReadingProgressBar = ({ contentRef }: { contentRef: React.RefObject<HTMLDivElement> }) => {
+  const [progress, setProgress] = useState(0);
+  
+  useEffect(() => {
+    const content = contentRef.current;
+    if (!content) return;
+    
+    const handleScroll = () => {
+      const rect = content.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const contentHeight = content.scrollHeight;
+      
+      // Calculate how much of the content has been scrolled past
+      const scrolled = Math.max(0, windowHeight - rect.top);
+      const totalScrollable = contentHeight;
+      const progressPercent = Math.min(100, Math.max(0, (scrolled / totalScrollable) * 100));
+      
+      setProgress(progressPercent);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [contentRef]);
+  
+  return (
+    <div className="sticky top-0 left-0 right-0 h-1 bg-primary/10 z-10 -mx-6 md:-mx-8 mb-4">
+      <motion.div 
+        className="h-full bg-primary"
+        initial={{ width: 0 }}
+        animate={{ width: `${progress}%` }}
+        transition={{ duration: 0.1 }}
+      />
+    </div>
+  );
 };
 
 const ArticleCard = ({ article }: { article: Article }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
   const readingTime = calculateReadingTime(article.hook + article.content);
 
   return (
@@ -776,9 +894,10 @@ const ArticleCard = ({ article }: { article: Article }) => {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-6 md:px-8 pb-6 md:pb-8">
-              <div className="pt-6 border-t border-primary/15">
-                <div className="text-foreground leading-relaxed">
+            <div ref={contentRef} className="px-6 md:px-8 pb-6 md:pb-8">
+              <ReadingProgressBar contentRef={contentRef} />
+              <div className="pt-4 border-t border-primary/15">
+                <div className="text-foreground">
                   {formatContent(article.content)}
                 </div>
               </div>
