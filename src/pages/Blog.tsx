@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock } from "lucide-react";
+import { Clock, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
+import { Button } from "@/components/ui/button";
 interface Article {
   id: number;
   title: string;
@@ -764,6 +765,24 @@ const ArticleCard = ({ article }: { article: Article }) => {
                   {formatContent(article.content)}
                 </div>
               </div>
+              
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="mt-8 p-6 bg-primary/5 rounded-xl border border-primary/10"
+              >
+                <p className="text-foreground font-medium mb-4">
+                  Prêt à transformer ta gestion financière ?
+                </p>
+                <Button asChild className="group">
+                  <Link to="/#cta">
+                    Rejoindre la liste d'attente
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </motion.div>
               
               {/* Collapse button */}
               <motion.button
