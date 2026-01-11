@@ -1483,7 +1483,7 @@ const Fonctionnalites = () => {
               delay={0.3}
               sounds={sounds}
               animation={
-                <div className="relative h-32 w-full flex items-center justify-center">
+                <div className="relative h-40 w-full flex flex-col items-center justify-start pt-2">
                   <div className="flex gap-4 items-end">
                     {/* Actifs column */}
                     <motion.div
@@ -1496,7 +1496,7 @@ const Fonctionnalites = () => {
                       <motion.div
                         className="w-14 rounded-t-lg overflow-hidden"
                         initial={{ height: 0 }}
-                        animate={{ height: 80 }}
+                        animate={{ height: 70 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
                       >
                         <div className="h-full bg-gradient-to-t from-emerald-500 to-emerald-400 flex flex-col items-center justify-end pb-1">
@@ -1544,7 +1544,7 @@ const Fonctionnalites = () => {
                       <motion.div
                         className="w-14 rounded-t-lg overflow-hidden"
                         initial={{ height: 0 }}
-                        animate={{ height: 45 }}
+                        animate={{ height: 40 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                       >
                         <div className="h-full bg-gradient-to-t from-rose-500 to-rose-400 flex flex-col items-center justify-end pb-1">
@@ -1572,12 +1572,12 @@ const Fonctionnalites = () => {
                     </motion.div>
                   </div>
 
-                  {/* Net worth indicator */}
+                  {/* Net worth indicator - positioned below the chart */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9 }}
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1"
+                    className="mt-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1"
                   >
                     <span className="text-[9px] text-emerald-600 dark:text-emerald-400 font-medium">
                       Patrimoine net: +8 300€
