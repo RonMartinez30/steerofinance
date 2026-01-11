@@ -751,6 +751,138 @@ const IndicatorsAnimation = ({
     </div>;
 };
 
+// Future Feature Card component with expandable animation
+const FutureFeatureCard = ({
+  emoji,
+  title,
+  description,
+  delay,
+  sounds,
+  animation
+}: {
+  emoji: string;
+  title: string;
+  description: string;
+  delay: number;
+  sounds: ReturnType<typeof useSoundEffects>;
+  animation: React.ReactNode;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    if (isOpen) {
+      sounds.playCloseSound();
+    } else {
+      sounds.playOpenSound();
+    }
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      onClick={handleToggle}
+      className={`group bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden transition-all duration-300 cursor-pointer ${
+        isOpen ? 'shadow-lg shadow-primary/10 border-primary/30' : 'hover:shadow-lg hover:shadow-primary/5'
+      }`}
+    >
+      {/* Gradient overlay */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+      />
+
+      {/* À venir badge */}
+      <motion.span
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.3, delay: delay + 0.2 }}
+        className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full"
+      >
+        À venir
+      </motion.span>
+
+      {/* Header */}
+      <div className="relative z-10">
+        <motion.div
+          className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4"
+          whileHover={{ scale: 1.1 }}
+          animate={{ rotate: isOpen ? [0, 5, -5, 0] : 0 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        >
+          <motion.span
+            className="text-lg opacity-60"
+            animate={{ 
+              opacity: isOpen ? 1 : 0.6,
+              scale: isOpen ? 1.1 : 1
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            {emoji}
+          </motion.span>
+        </motion.div>
+
+        <div className="flex items-center gap-2 mb-2">
+          <h3 className="text-base font-medium text-foreground/80">
+            {title}
+          </h3>
+          <motion.div
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="text-muted-foreground/50"
+          >
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </motion.div>
+        </div>
+
+        <p className="text-sm text-muted-foreground/70 leading-relaxed">
+          {description}
+        </p>
+      </div>
+
+      {/* Expandable animation area */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              className="pt-4 mt-4 border-t border-border/30"
+            >
+              {animation}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Click hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isOpen ? 0 : 0.5 }}
+        className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-muted-foreground/50"
+      >
+        Cliquer pour voir l'aperçu
+      </motion.div>
+    </motion.div>
+  );
+};
+
 // Animation renderer
 const FeatureAnimation = ({
   type,
@@ -1125,133 +1257,335 @@ const Fonctionnalites = () => {
 
           <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
             {/* Projets financiers */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/5"
-            >
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
-              <motion.span 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-                className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full"
-              >
-                À venir
-              </motion.span>
-              <motion.div 
-                className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4 relative z-10"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <motion.span 
-                  className="text-lg opacity-60"
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  🧳
-                </motion.span>
-              </motion.div>
-              <h3 className="text-base font-medium text-foreground/80 mb-2 relative z-10">
-                Projets financiers
-              </h3>
-              <p className="text-sm text-muted-foreground/70 leading-relaxed relative z-10">
-                Prépare et suis des enveloppes dédiées à des projets précis.
-                Vacances, dépenses exceptionnelles ou objectifs personnels, sans perturber ton budget quotidien.
-              </p>
-            </motion.div>
+            <FutureFeatureCard
+              emoji="🧳"
+              title="Projets financiers"
+              description="Prépare et suis des enveloppes dédiées à des projets précis. Vacances, dépenses exceptionnelles ou objectifs personnels, sans perturber ton budget quotidien."
+              delay={0.1}
+              sounds={sounds}
+              animation={
+                <div className="relative h-32 w-full flex items-center justify-center gap-3">
+                  {/* Envelope 1 - Vacances */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.1 }}
+                    className="relative"
+                  >
+                    <motion.div 
+                      className="w-16 h-20 bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/20 rounded-lg border border-blue-200/50 dark:border-blue-700/30 flex flex-col items-center justify-center shadow-sm"
+                      animate={{ y: [0, -3, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <span className="text-lg mb-1">✈️</span>
+                      <span className="text-[8px] font-medium text-blue-600/80 dark:text-blue-400/80">Vacances</span>
+                      <motion.div 
+                        className="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.5, type: "spring" }}
+                      >
+                        <span className="text-[7px] text-white font-bold">75%</span>
+                      </motion.div>
+                    </motion.div>
+                    <motion.div
+                      className="absolute bottom-0 left-1 right-1 h-1.5 bg-muted rounded-full overflow-hidden"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      <motion.div 
+                        className="h-full bg-blue-500 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: "75%" }}
+                        transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                      />
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Envelope 2 - Projet */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.25 }}
+                    className="relative"
+                  >
+                    <motion.div 
+                      className="w-16 h-20 bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/30 dark:to-amber-800/20 rounded-lg border border-amber-200/50 dark:border-amber-700/30 flex flex-col items-center justify-center shadow-sm"
+                      animate={{ y: [0, -3, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                    >
+                      <span className="text-lg mb-1">🎁</span>
+                      <span className="text-[8px] font-medium text-amber-600/80 dark:text-amber-400/80">Cadeaux</span>
+                      <motion.div 
+                        className="absolute -top-1 -right-1 w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.7, type: "spring" }}
+                      >
+                        <span className="text-[7px] text-white font-bold">40%</span>
+                      </motion.div>
+                    </motion.div>
+                    <motion.div
+                      className="absolute bottom-0 left-1 right-1 h-1.5 bg-muted rounded-full overflow-hidden"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      <motion.div 
+                        className="h-full bg-amber-500 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: "40%" }}
+                        transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
+                      />
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Envelope 3 - Rénovation */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.4 }}
+                    className="relative"
+                  >
+                    <motion.div 
+                      className="w-16 h-20 bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/30 dark:to-emerald-800/20 rounded-lg border border-emerald-200/50 dark:border-emerald-700/30 flex flex-col items-center justify-center shadow-sm"
+                      animate={{ y: [0, -3, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+                    >
+                      <span className="text-lg mb-1">🔧</span>
+                      <span className="text-[8px] font-medium text-emerald-600/80 dark:text-emerald-400/80">Travaux</span>
+                      <motion.div 
+                        className="absolute -top-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.9, type: "spring" }}
+                      >
+                        <span className="text-[7px] text-white font-bold">20%</span>
+                      </motion.div>
+                    </motion.div>
+                    <motion.div
+                      className="absolute bottom-0 left-1 right-1 h-1.5 bg-muted rounded-full overflow-hidden"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      <motion.div 
+                        className="h-full bg-emerald-500 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: "20%" }}
+                        transition={{ delay: 0.9, duration: 0.8, ease: "easeOut" }}
+                      />
+                    </motion.div>
+                  </motion.div>
+                </div>
+              }
+            />
 
             {/* Tiers & avances */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/5"
-            >
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
-              <motion.span 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.4 }}
-                className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full"
-              >
-                À venir
-              </motion.span>
-              <motion.div 
-                className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4 relative z-10"
-                whileHover={{ scale: 1.1, rotate: -5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <motion.span 
-                  className="text-lg opacity-60"
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                >
-                  👥
-                </motion.span>
-              </motion.div>
-              <h3 className="text-base font-medium text-foreground/80 mb-2 relative z-10">
-                Tiers & avances
-              </h3>
-              <p className="text-sm text-muted-foreground/70 leading-relaxed relative z-10">
-                Suis simplement ce que tu prêtes, ce que l'on te doit,
-                et identifie les principaux contributeurs à tes revenus ou dépenses.
-              </p>
-            </motion.div>
+            <FutureFeatureCard
+              emoji="👥"
+              title="Tiers & avances"
+              description="Suis simplement ce que tu prêtes, ce que l'on te doit, et identifie les principaux contributeurs à tes revenus ou dépenses."
+              delay={0.2}
+              sounds={sounds}
+              animation={
+                <div className="relative h-32 w-full flex flex-col items-center justify-center gap-2">
+                  {/* Person owing money */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 }}
+                    className="flex items-center gap-2 bg-card/80 rounded-lg px-3 py-2 border border-border/50 w-full max-w-[180px]"
+                  >
+                    <motion.div 
+                      className="w-8 h-8 rounded-full bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-900/30 dark:to-rose-800/20 flex items-center justify-center border border-rose-200/50 dark:border-rose-700/30"
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      <span className="text-sm">👤</span>
+                    </motion.div>
+                    <div className="flex-1">
+                      <p className="text-[9px] font-medium text-foreground/80">Marie</p>
+                      <p className="text-[8px] text-muted-foreground">Me doit</p>
+                    </div>
+                    <motion.span 
+                      className="text-xs font-semibold text-rose-500"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      +45€
+                    </motion.span>
+                  </motion.div>
+
+                  {/* Arrow indicator */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5, type: "spring" }}
+                    className="flex items-center gap-1"
+                  >
+                    <motion.div
+                      animate={{ y: [0, 2, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <ArrowRight className="w-3 h-3 text-muted-foreground/50 rotate-90" />
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Person I owe money to */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.3 }}
+                    className="flex items-center gap-2 bg-card/80 rounded-lg px-3 py-2 border border-border/50 w-full max-w-[180px]"
+                  >
+                    <motion.div 
+                      className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/20 flex items-center justify-center border border-blue-200/50 dark:border-blue-700/30"
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    >
+                      <span className="text-sm">👤</span>
+                    </motion.div>
+                    <div className="flex-1">
+                      <p className="text-[9px] font-medium text-foreground/80">Paul</p>
+                      <p className="text-[8px] text-muted-foreground">Je dois</p>
+                    </div>
+                    <motion.span 
+                      className="text-xs font-semibold text-blue-500"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      -20€
+                    </motion.span>
+                  </motion.div>
+
+                  {/* Balance indicator */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="absolute bottom-0 right-2 text-[9px] text-muted-foreground/60"
+                  >
+                    Solde: <span className="text-emerald-500 font-medium">+25€</span>
+                  </motion.div>
+                </div>
+              }
+            />
 
             {/* Patrimoine */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/5"
-            >
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
-              <motion.span 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.5 }}
-                className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full"
-              >
-                À venir
-              </motion.span>
-              <motion.div 
-                className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4 relative z-10"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <motion.span 
-                  className="text-lg opacity-60"
-                  animate={{ rotate: [0, 3, 0, -3, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                >
-                  🏠
-                </motion.span>
-              </motion.div>
-              <h3 className="text-base font-medium text-foreground/80 mb-2 relative z-10">
-                Patrimoine
-              </h3>
-              <p className="text-sm text-muted-foreground/70 leading-relaxed relative z-10">
-                Visualise tes actifs et tes passifs pour comprendre ta situation globale.
-                Épargne, investissements et dettes, réunis dans une vue lisible.
-              </p>
-            </motion.div>
+            <FutureFeatureCard
+              emoji="🏠"
+              title="Patrimoine"
+              description="Visualise tes actifs et tes passifs pour comprendre ta situation globale. Épargne, investissements et dettes, réunis dans une vue lisible."
+              delay={0.3}
+              sounds={sounds}
+              animation={
+                <div className="relative h-32 w-full flex items-center justify-center">
+                  <div className="flex gap-4 items-end">
+                    {/* Actifs column */}
+                    <motion.div
+                      initial={{ opacity: 0, scaleY: 0 }}
+                      animate={{ opacity: 1, scaleY: 1 }}
+                      transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+                      style={{ originY: 1 }}
+                      className="flex flex-col items-center"
+                    >
+                      <motion.div
+                        className="w-14 rounded-t-lg overflow-hidden"
+                        initial={{ height: 0 }}
+                        animate={{ height: 80 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                      >
+                        <div className="h-full bg-gradient-to-t from-emerald-500 to-emerald-400 flex flex-col items-center justify-end pb-1">
+                          <motion.span 
+                            className="text-[8px] text-white font-medium"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.6 }}
+                          >
+                            12 500€
+                          </motion.span>
+                        </div>
+                      </motion.div>
+                      <motion.div 
+                        className="mt-1 flex flex-col items-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                      >
+                        <span className="text-[9px] font-medium text-foreground/70">Actifs</span>
+                        <div className="flex gap-0.5 mt-0.5">
+                          <span className="text-[7px] text-muted-foreground">💰🏦📈</span>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+
+                    {/* VS separator */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4, type: "spring" }}
+                      className="text-[10px] text-muted-foreground/50 font-medium pb-8"
+                    >
+                      vs
+                    </motion.div>
+
+                    {/* Passifs column */}
+                    <motion.div
+                      initial={{ opacity: 0, scaleY: 0 }}
+                      animate={{ opacity: 1, scaleY: 1 }}
+                      transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                      style={{ originY: 1 }}
+                      className="flex flex-col items-center"
+                    >
+                      <motion.div
+                        className="w-14 rounded-t-lg overflow-hidden"
+                        initial={{ height: 0 }}
+                        animate={{ height: 45 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                      >
+                        <div className="h-full bg-gradient-to-t from-rose-500 to-rose-400 flex flex-col items-center justify-end pb-1">
+                          <motion.span 
+                            className="text-[8px] text-white font-medium"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.7 }}
+                          >
+                            4 200€
+                          </motion.span>
+                        </div>
+                      </motion.div>
+                      <motion.div 
+                        className="mt-1 flex flex-col items-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                      >
+                        <span className="text-[9px] font-medium text-foreground/70">Passifs</span>
+                        <div className="flex gap-0.5 mt-0.5">
+                          <span className="text-[7px] text-muted-foreground">💳🏠</span>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  </div>
+
+                  {/* Net worth indicator */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.9 }}
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1"
+                  >
+                    <span className="text-[9px] text-emerald-600 dark:text-emerald-400 font-medium">
+                      Patrimoine net: +8 300€
+                    </span>
+                  </motion.div>
+                </div>
+              }
+            />
           </div>
         </div>
       </section>
