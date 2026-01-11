@@ -280,52 +280,89 @@ const ArticleCard = ({ article }: { article: Article }) => {
     <motion.div
       layout
       onClick={() => setIsOpen(!isOpen)}
-      className="cursor-pointer rounded-2xl border-2 border-primary/20 bg-primary/5 p-6 md:p-8 transition-all duration-300 hover:shadow-lg hover:border-primary/40"
+      className={`cursor-pointer rounded-2xl border-2 transition-all duration-300 hover:shadow-lg ${
+        isOpen 
+          ? "border-primary/30 bg-gradient-to-br from-primary/10 to-primary/5 shadow-md" 
+          : "border-primary/20 bg-primary/5 hover:border-primary/40"
+      }`}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex-1">
-          <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4">
+      {/* Header - always visible */}
+      <div className="p-6 md:p-8">
+        <div className="flex items-start justify-between gap-4">
+          <h2 className="text-xl md:text-2xl font-semibold text-primary flex-1">
             {article.title}
           </h2>
+          <motion.div
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="text-primary/60 flex-shrink-0 mt-1"
+          >
+            <svg width="20" height="20" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </motion.div>
         </div>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="text-primary opacity-50 flex-shrink-0 mt-1"
-        >
-          <svg width="20" height="20" viewBox="0 0 12 12" fill="none">
-            <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </motion.div>
+
+        {/* Hook - truncated when closed */}
+        <div className={`mt-4 ${!isOpen ? "line-clamp-4" : ""}`}>
+          <p className="text-muted-foreground whitespace-pre-line leading-relaxed">
+            {article.hook}
+          </p>
+        </div>
+
+        {!isOpen && (
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-primary text-sm mt-4 font-medium flex items-center gap-2"
+          >
+            Lire l'article complet
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="animate-pulse">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </motion.p>
+        )}
       </div>
 
-      <p className="text-muted-foreground whitespace-pre-line leading-relaxed">
-        {article.hook}
-      </p>
-
-      <AnimatePresence>
+      {/* Content - expandable */}
+      <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="pt-6 mt-6 border-t border-primary/10">
-              <p className="text-foreground whitespace-pre-line leading-relaxed">
-                {article.content}
-              </p>
+            <div className="px-6 md:px-8 pb-6 md:pb-8">
+              <div className="pt-6 border-t border-primary/15">
+                <div className="prose prose-sm md:prose-base max-w-none">
+                  <p className="text-foreground whitespace-pre-line leading-relaxed">
+                    {article.content}
+                  </p>
+                </div>
+              </div>
+              
+              {/* Collapse button */}
+              <motion.button
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsOpen(false);
+                }}
+                className="mt-6 text-primary/70 text-sm font-medium flex items-center gap-2 hover:text-primary transition-colors"
+              >
+                <svg width="16" height="16" viewBox="0 0 12 12" fill="none" className="rotate-180">
+                  <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Réduire l'article
+              </motion.button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      {!isOpen && (
-        <p className="text-primary/60 text-sm mt-4 font-medium">
-          Cliquez pour lire la suite →
-        </p>
-      )}
     </motion.div>
   );
 };
