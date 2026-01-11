@@ -6,6 +6,9 @@ const Footer = () => {
     to: "/fonctionnalites",
     label: "Fonctionnalités"
   }, {
+    to: "/blog",
+    label: "Blog"
+  }, {
     to: "/mentions-legales",
     label: "Mentions légales"
   }, {

@@ -30,6 +30,9 @@ const Header = () => {
           <Link to="/fonctionnalites" className="text-sm text-muted-foreground hover:text-primary transition-colors">
             Fonctionnalités
           </Link>
+          <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            Blog
+          </Link>
           <Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">
             FAQ
           </Link>
@@ -85,6 +88,13 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Fonctionnalités
+              </Link>
+              <Link 
+                to="/blog" 
+                className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog
               </Link>
               <Link 
                 to="/faq" 
