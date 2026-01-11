@@ -968,6 +968,95 @@ const Fonctionnalites = () => {
         </div>
       </section>
 
+      {/* Future Features Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-6 md:pl-20 lg:pl-28">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mb-12"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground/80 mb-4">
+              Et quand tu voudras aller plus loin
+            </h2>
+            <p className="text-muted-foreground text-base leading-relaxed">
+              Ces fonctionnalités ne sont pas nécessaires pour démarrer.
+              Elles viendront compléter le cadre, quand tu en auras besoin.
+            </p>
+          </motion.div>
+
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
+            {/* Projets financiers */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden"
+            >
+              <span className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full">
+                À venir
+              </span>
+              <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4">
+                <span className="text-lg opacity-60">🧳</span>
+              </div>
+              <h3 className="text-base font-medium text-foreground/80 mb-2">
+                Projets financiers
+              </h3>
+              <p className="text-sm text-muted-foreground/70 leading-relaxed">
+                Crée des enveloppes dédiées pour tes vacances, projets personnels ou dépenses exceptionnelles.
+              </p>
+            </motion.div>
+
+            {/* Tiers & avances */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden"
+            >
+              <span className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full">
+                À venir
+              </span>
+              <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4">
+                <span className="text-lg opacity-60">👥</span>
+              </div>
+              <h3 className="text-base font-medium text-foreground/80 mb-2">
+                Tiers & avances
+              </h3>
+              <p className="text-sm text-muted-foreground/70 leading-relaxed">
+                Gère simplement ce que tu prêtes ou dois. Visualise les principaux contributeurs à tes revenus ou dépenses.
+              </p>
+            </motion.div>
+
+            {/* Patrimoine */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden"
+            >
+              <span className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full">
+                À venir
+              </span>
+              <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4">
+                <span className="text-lg opacity-60">🏠</span>
+              </div>
+              <h3 className="text-base font-medium text-foreground/80 mb-2">
+                Patrimoine
+              </h3>
+              <p className="text-sm text-muted-foreground/70 leading-relaxed">
+                Une vue globale et lisible de ta situation financière. Épargne, investissements, dettes — sans jargon.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-card">
         <div className="container mx-auto px-6">
