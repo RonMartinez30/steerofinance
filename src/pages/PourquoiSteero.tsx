@@ -4,7 +4,7 @@ import { ArrowRight, Check, Star, Brain, Eye, RefreshCw, Pencil, BookOpen, Chevr
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import confetti from "canvas-confetti";
+
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 // Progress sidebar component for behavioral principles
 const BehavioralProgressSidebar = ({
@@ -844,47 +844,11 @@ const PourquoiSteero = () => {
     setOpenCardIndex(prev => prev === index ? null : index);
   };
 
-  // Celebrate when all principles are explored
+  // Play sound when all principles are explored
   useEffect(() => {
     if (exploredCards.size === behavioralElements.length && !hasTriggeredCelebration) {
       setHasTriggeredCelebration(true);
       playSuccessSound();
-      
-      // Fire confetti from both sides
-      const duration = 2000;
-      const end = Date.now() + duration;
-      
-      const frame = () => {
-        confetti({
-          particleCount: 3,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0, y: 0.7 },
-          colors: ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b']
-        });
-        confetti({
-          particleCount: 3,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1, y: 0.7 },
-          colors: ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b']
-        });
-
-        if (Date.now() < end) {
-          requestAnimationFrame(frame);
-        }
-      };
-      frame();
-      
-      // Big burst in the center
-      setTimeout(() => {
-        confetti({
-          particleCount: 100,
-          spread: 100,
-          origin: { x: 0.5, y: 0.5 },
-          colors: ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ec4899']
-        });
-      }, 300);
     }
   }, [exploredCards.size, hasTriggeredCelebration, playSuccessSound]);
 
