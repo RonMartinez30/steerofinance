@@ -14,12 +14,10 @@ interface Article {
 const articles: Article[] = [
   {
     id: 1,
-    title: "Comprendre avant d'agir : pourquoi la finance personnelle est une compétence clé",
-    hook: `La gestion des finances personnelles est rarement enseignée à l'école.
-Pourtant, comprendre son argent est aujourd'hui une compétence essentielle, au même titre que savoir organiser son temps ou développer ses compétences professionnelles.
+    title: "Comprendre ses finances personnelles : pourquoi c'est une compétence essentielle aujourd'hui",
+    hook: `La gestion des finances personnelles est rarement enseignée à l'école. Pourtant, comprendre son argent est aujourd'hui une compétence essentielle, au même titre que savoir organiser son temps ou développer ses compétences professionnelles.
 
 Beaucoup de personnes gagnent correctement leur vie, mais peinent à :
-
 • comprendre où part leur argent,
 • prendre des décisions financières sereines,
 • ou atteindre leurs objectifs financiers.
@@ -34,12 +32,7 @@ La gestion financière personnelle est une compétence acquise, qui repose sur :
 • la capacité à structurer un budget,
 • et la prise de décisions conscientes dans le temps.
 
-Sans méthode claire, beaucoup fonctionnent :
-• au ressenti,
-• à l'urgence,
-• ou en évitant le sujet financier.
-
-Ce flou est la principale source de stress financier.
+Sans méthode claire, beaucoup fonctionnent au ressenti, à l'urgence, ou en évitant le sujet financier. Ce flou est la principale source de stress financier.
 
 Gagner plus d'argent ne suffit pas à mieux gérer ses finances
 
@@ -55,7 +48,7 @@ Sans compréhension financière :
 • l'épargne reste irrégulière,
 • les objectifs financiers sont repoussés.
 
-👉 Ce n'est pas le montant gagné qui sécurise, mais la capacité à piloter ses finances personnelles.
+Ce n'est pas le montant gagné qui sécurise, mais la capacité à piloter ses finances personnelles.
 
 Comprendre son argent pour reprendre le contrôle financier
 
@@ -75,9 +68,8 @@ La clarté financière est le premier pas vers la liberté financière.
 
 La finance personnelle est une compétence qui se développe avec le temps
 
-Apprendre à gérer son argent ne se fait pas en un jour.
+Apprendre à gérer son argent ne se fait pas en un jour. La montée en compétences financières suit généralement plusieurs étapes :
 
-La montée en compétences financières suit généralement plusieurs étapes :
 1. Observer ses finances sans jugement
 2. Structurer ses budgets et catégories
 3. Analyser les écarts entre prévu et réel
@@ -85,10 +77,9 @@ La montée en compétences financières suit généralement plusieurs étapes :
 
 L'essentiel n'est pas d'être parfait, mais d'avoir un cadre simple et évolutif.
 
-Comment Steero aide à mieux comprendre ses finances personnelles
+Comment Steero t'aide à mieux comprendre tes finances personnelles
 
-Steero a été conçu pour répondre à un besoin simple :
-rendre la gestion financière compréhensible, structurée et accessible.
+Steero a été conçu pour répondre à un besoin simple : rendre la gestion financière compréhensible, structurée et accessible.
 
 Contrairement aux outils complexes ou trop techniques, Steero permet :
 • une vision claire de ses finances globales,
@@ -100,28 +91,26 @@ L'objectif n'est pas seulement de suivre des chiffres, mais de comprendre pour m
 
 Conclusion : apprendre à gérer son argent change durablement la relation à l'argent
 
-La gestion des finances personnelles n'est pas réservée aux experts.
-C'est une compétence accessible à tous, à condition d'avoir :
+La gestion des finances personnelles n'est pas réservée aux experts. C'est une compétence accessible à tous, à condition d'avoir :
 • un cadre clair,
 • un outil adapté,
 • et un rituel simple.
 
 Avant d'optimiser, d'investir ou de chercher plus de rendement, il faut d'abord comprendre ses finances.
 
-👉 Vous souhaitez mieux comprendre et gérer vos finances personnelles ?
+Tu souhaites mieux comprendre et gérer tes finances personnelles ?
 
-Steero vous aide à :
-• clarifier votre budget,
-• structurer vos finances,
-• et monter en compétences à votre rythme.
+Steero t'aide à :
+• clarifier ton budget,
+• structurer tes finances,
+• et monter en compétences à ton rythme.
 
-Commencez par poser des bases solides pour votre avenir financier.`
+Commence par poser des bases solides pour ton avenir financier.`
   },
   {
     id: 2,
     title: "La montée en compétences financières : passer du flou au pilotage de son argent",
-    hook: `Beaucoup de personnes ont l'impression de "mal gérer" leur argent.
-En réalité, la plupart ne gèrent pas mal : elles ne pilotent pas.
+    hook: `Beaucoup de personnes ont l'impression de "mal gérer" leur argent. En réalité, la plupart ne gèrent pas mal : elles ne pilotent pas.
 
 Elles regardent parfois leur solde, paient leurs factures, épargnent quand il reste quelque chose… mais sans vision globale ni méthode claire.
 
@@ -141,9 +130,7 @@ La différence entre les deux n'est pas le revenu, mais le niveau de compétence
 
 Étape 1 : Observer ses finances sans jugement
 
-La première étape n'est ni le budget, ni l'épargne, ni l'investissement.
-
-C'est l'observation.
+La première étape n'est ni le budget, ni l'épargne, ni l'investissement. C'est l'observation.
 
 Observer, c'est :
 • voir ses revenus et ses dépenses,
@@ -152,7 +139,7 @@ Observer, c'est :
 
 Sans jugement, sans culpabilité.
 
-👉 Tant que l'argent reste flou, aucune décision solide n'est possible.
+Tant que l'argent reste flou, aucune décision solide n'est possible.
 
 Étape 2 : Structurer pour donner du sens aux chiffres
 
@@ -187,9 +174,7 @@ Comprendre ses écarts permet :
 
 Étape 4 : Décider en fonction de ses objectifs
 
-C'est ici que la gestion financière devient réellement utile.
-
-Quand la vision est claire, on peut :
+C'est ici que la gestion financière devient réellement utile. Quand la vision est claire, on peut :
 • arbitrer sans stress,
 • aligner ses dépenses avec ses objectifs,
 • donner un rôle précis à chaque euro.
@@ -200,22 +185,20 @@ Pourquoi la montée en compétences financières échoue souvent
 
 Beaucoup abandonnent à cette étape pour trois raisons principales :
 
-Des outils trop complexes
+1. Des outils trop complexes
 Pensés pour des experts, pas pour progresser.
 
-Un suivi trop lourd
+2. Un suivi trop lourd
 Trop chronophage pour durer.
 
-Aucun cadre évolutif
+3. Aucun cadre évolutif
 Tout ou rien, sans progression naturelle.
 
 Résultat : motivation au départ, abandon quelques semaines plus tard.
 
 Comment Steero accompagne la montée en compétences financières
 
-Steero a été conçu comme un parcours, pas comme un simple outil de suivi.
-
-Il permet :
+Steero a été conçu comme un parcours, pas comme un simple outil de suivi. Il permet :
 • d'observer ses finances simplement,
 • de structurer progressivement ses budgets,
 • de visualiser les écarts sans culpabilité,
@@ -225,8 +208,7 @@ L'objectif n'est pas de devenir expert en finance, mais de monter en compétence
 
 Conclusion : piloter ses finances est une compétence accessible
 
-Personne ne naît en sachant gérer son argent.
-Mais tout le monde peut apprendre à le piloter.
+Personne ne naît en sachant gérer son argent. Mais tout le monde peut apprendre à le piloter.
 
 La montée en compétences financières repose sur :
 • la clarté,
@@ -235,32 +217,26 @@ La montée en compétences financières repose sur :
 
 Passer du flou au pilotage, c'est reprendre le contrôle de son avenir financier.
 
-👉 Vous souhaitez passer du flou au pilotage de vos finances ?
+Tu souhaites passer du flou au pilotage de tes finances ?
 
-Steero vous aide à :
-• comprendre vos finances,
-• structurer votre budget,
+Steero t'aide à :
+• comprendre tes finances,
+• structurer ton budget,
 • et progresser étape par étape.
 
-Commencez par voir clair. Le reste suivra.`
+Commence par voir clair. Le reste suivra.`
   },
   {
     id: 3,
     title: "Pourquoi sans rituel, aucun outil financier ne fonctionne",
-    hook: `Télécharger une application de gestion financière est facile.
-La consulter régulièrement… beaucoup moins.
+    hook: `Télécharger une application de gestion financière est facile. La consulter régulièrement… beaucoup moins.
 
-Ce n'est pas un manque de motivation.
-Ce n'est pas non plus un problème d'intelligence financière.
+Ce n'est pas un manque de motivation. Ce n'est pas non plus un problème d'intelligence financière. Le véritable point de rupture, c'est l'absence de rituel.
 
-Le véritable point de rupture, c'est l'absence de rituel.
-
-Sans rituel, même le meilleur outil finit oublié.
-Avec un rituel simple, la gestion financière devient enfin durable.`,
+Sans rituel, même le meilleur outil finit oublié. Avec un rituel simple, la gestion financière devient enfin durable.`,
     content: `Le vrai problème des outils financiers modernes
 
-La majorité des outils de gestion financière échouent pour une raison simple :
-ils supposent que l'utilisateur va s'adapter à l'outil.
+La majorité des outils de gestion financière échouent pour une raison simple : ils supposent que l'utilisateur va s'adapter à l'outil.
 
 Dans la réalité :
 • les interfaces sont complexes,
@@ -272,7 +248,7 @@ Résultat :
 • effort perçu comme trop important,
 • abandon progressif.
 
-👉 Ce n'est pas un problème de discipline, mais de conception.
+Ce n'est pas un problème de discipline, mais de conception.
 
 Rituel financier : de quoi parle-t-on vraiment ?
 
@@ -295,9 +271,7 @@ Beaucoup pensent qu'il faut :
 • tout comprendre,
 • tout optimiser.
 
-En réalité, la régularité est bien plus importante que la précision.
-
-5 minutes par semaine permettent :
+En réalité, la régularité est bien plus importante que la précision. Quelques minutes par semaine permettent :
 • d'identifier les dérives,
 • d'anticiper les problèmes,
 • de garder le contrôle.
@@ -316,75 +290,345 @@ L'argent devient alors :
 • de culpabilité,
 • voire d'évitement.
 
-Le rituel agit comme un tampon émotionnel :
-il neutralise la surprise et redonne de la sérénité.
+Le rituel agit comme un tampon émotionnel : il neutralise la surprise et redonne de la sérénité.
 
 Le rituel comme pilier de la montée en compétences financières
 
-La montée en compétences financières repose sur une chose :
-la répétition consciente.
+La montée en compétences financières repose sur une chose : la répétition consciente.
 
 Le rituel permet :
 • d'observer régulièrement,
 • de comprendre progressivement,
 • d'ajuster sans brutalité.
 
-Sans rituel, aucune compétence ne se développe.
-Avec un rituel, la progression devient naturelle.
+Sans rituel, aucune compétence ne se développe. Avec un rituel, la progression devient naturelle.
 
 Pourquoi la plupart des rituels financiers échouent
 
 Trois raisons principales expliquent l'échec des rituels financiers :
 
-Ils prennent trop de temps
+1. Ils prennent trop de temps
 → incompatibles avec la vie réelle.
 
-Ils demandent trop d'efforts cognitifs
+2. Ils demandent trop d'efforts cognitifs
 → fatigue mentale.
 
-Ils ne donnent pas de feedback immédiat
+3. Ils ne donnent pas de feedback immédiat
 → perte de motivation.
 
-Un bon rituel doit être :
-• rapide,
-• clair,
-• utile dès la première utilisation.
+Un bon rituel doit être : rapide, clair et utile dès la première utilisation.
 
 Comment Steero a été pensé autour du rituel, pas de l'outil
 
-Steero n'a pas été conçu comme une application "à consulter quand on a le temps".
-
-Il a été pensé pour :
+Steero n'a pas été conçu comme une application "à consulter quand on a le temps" mais pour :
 • s'intégrer dans une routine courte,
 • donner une information claire en quelques secondes,
 • montrer immédiatement où l'on en est.
 
-Le cœur de Steero, ce n'est pas la donnée brute,
-c'est la ritualisation de la compréhension financière.
-
-Parce que ce qui est simple se répète.
-Et ce qui se répète transforme durablement.
+Le cœur de Steero, ce n'est pas la donnée brute, c'est la ritualisation de la compréhension financière. Parce que ce qui est simple se répète et ce qui se répète transforme durablement.
 
 Conclusion : sans rituel, il n'y a pas de contrôle financier
 
-Aucun outil, aussi puissant soit-il, ne fonctionne sans rituel.
-La maîtrise financière ne vient pas de l'intensité, mais de la constance.
+Aucun outil, aussi puissant soit-il, ne fonctionne sans rituel. La maîtrise financière ne vient pas de l'intensité, mais de la constance.
 
-Un rituel simple :
-• réduit le stress,
-• améliore les décisions,
-• renforce la confiance.
+Un rituel simple réduit le stress, améliore les décisions et renforce la confiance. C'est le socle invisible de toute gestion financière réussie.
 
-C'est le socle invisible de toute gestion financière réussie.
+Et si ta gestion financière devenait un rituel simple, et non une contrainte ?
 
-👉 Et si votre gestion financière devenait un rituel simple, et non une contrainte ?
-
-Steero vous aide à :
+Steero t'aide à :
 • créer un rituel financier durable,
-• suivre vos finances sans friction,
+• suivre tes finances sans friction,
 • progresser sans surcharge mentale.
 
-Commencez petit. Répétez souvent. Les résultats suivront.`
+Commence petit. Répète souvent. Les résultats suivront.`
+  },
+  {
+    id: 4,
+    title: "Le rituel financier en 2 minutes : mythe ou réalité ?",
+    hook: `Quand on parle de gestion financière, beaucoup imaginent encore :
+• des tableurs complexes,
+• des heures d'analyse,
+• une discipline difficile à tenir.
+
+Alors l'idée d'un rituel financier en 2 minutes semble irréaliste. Pas parce que 2 minutes ne suffisent pas… mais parce que la gestion financière est souvent pensée comme un bloc unique, au lieu d'un ensemble de rituels complémentaires.`,
+    content: `Pourquoi la gestion financière paraît toujours trop lourde
+
+Le problème n'est pas la finance. Le problème, c'est l'absence de structure.
+
+Beaucoup essaient de :
+• tout suivre en même temps,
+• tout comprendre au même moment,
+• tout décider d'un seul coup.
+
+Résultat :
+• surcharge mentale,
+• confusion,
+• abandon.
+
+Sans séparation claire des rôles, la gestion financière devient pesante.
+
+Le principe clé : un rituel = une vocation
+
+Un rituel financier efficace n'essaie jamais de tout faire.
+
+Chaque rituel a :
+• un horizon temporel,
+• un objectif précis,
+• une vocation claire.
+
+C'est cette répartition qui rend la gestion financière fluide et durable.
+
+Les rituels financiers : une architecture, pas une contrainte
+
+Dans l'approche Steero, la gestion financière repose sur plusieurs rituels, chacun jouant un rôle spécifique dans le pilotage global.
+
+Le rituel court terme pour rester connecté
+Son rôle est simple : maintenir le lien avec tes finances. Il évite l'évitement, la surprise et la perte de contrôle. Ce rituel n'est pas là pour décider, mais pour voir.
+
+Le rituel de pilotage pour garder le cap
+Il permet de vérifier que la trajectoire est cohérente avec ce qui a été prévu. C'est un moment d'ajustement léger, sans remise en question profonde. On ne refait pas le plan, on corrige la trajectoire.
+
+Le rituel d'analyse pour comprendre
+Ici, on cherche à donner du sens : comprendre les écarts, observer les habitudes, améliorer la structure existante. Ce rituel transforme les chiffres en apprentissages.
+
+Le rituel de recul pour prendre de la hauteur
+Il permet d'observer les tendances, les évolutions et la cohérence globale. On sort du quotidien pour regarder le système dans son ensemble. C'est le rituel de la lucidité stratégique.
+
+Le rituel d'alignement pour donner du sens
+Le plus rare, mais le plus structurant. Il permet de réaligner les finances avec :
+• les objectifs de vie,
+• les priorités personnelles,
+• la direction souhaitée.
+
+Pourquoi le rituel en 2 minutes est non seulement possible, mais essentiel
+
+Le rituel en 2 minutes n'est pas censé remplacer les autres, il est plus régulier et est le point d'entrée du système.
+
+Son rôle :
+• maintenir la conscience financière,
+• éviter la déconnexion,
+• rendre les autres rituels naturels et non subis.
+
+Ce sont ces micro-rituels qui rendent :
+• le pilotage fluide,
+• l'analyse pertinente,
+• et la vision long terme sereine.
+
+Ce que change une approche structurée par rituels
+
+Quand chaque rituel a une vocation claire :
+• la charge mentale diminue,
+• la gestion devient plus régulière,
+• les décisions sont prises au bon moment.
+
+La finance cesse d'être une tâche lourde. Elle devient un système de pilotage simple et progressif.
+
+Conclusion
+
+Ce n'est pas le temps qui manque, c'est la structure.
+
+Un rituel financier en 2 minutes n'est pas un mythe. Ce qui est irréaliste, c'est de vouloir tout gérer au même moment.
+
+La clé d'une gestion financière durable, ce n'est pas l'intensité, mais une architecture de rituels, chacun avec un objectif clair.
+
+C'est cette structure qui transforme la contrainte en sérénité.
+
+Et si ta gestion financière reposait enfin sur les bons rituels, au bon moment ?
+
+Steero t'aide à :
+• structurer ton approche financière,
+• clarifier chaque temps de décision,
+• et garder le contrôle sans surcharge mentale.
+
+Moins d'effort. Plus de clarté. Une vision durable.`
+  },
+  {
+    id: 5,
+    title: "Comprendre tes finances comme un tableau de bord, pas comme une punition",
+    hook: `Si gérer ton argent te met mal à l'aise, ce n'est probablement pas à cause des chiffres. C'est à cause de ce qu'ils représentent émotionnellement.
+
+Pour beaucoup, regarder ses finances, c'est :
+• se confronter à des erreurs passées,
+• ressentir de la culpabilité,
+• ou avoir l'impression de se faire "gronder".
+
+Mais si tu changeais complètement de perspective ? Et si tes finances devenaient un tableau de bord, pas un jugement ?`,
+    content: `Pourquoi regarder ses finances est souvent vécu comme une punition
+
+Dans l'imaginaire collectif, suivre son argent signifie souvent :
+• pointer ce qui ne va pas,
+• repérer les excès,
+• chercher ce qu'il aurait fallu mieux faire.
+
+Résultat :
+• on repousse le moment de regarder,
+• on évite quand on doute,
+• on consulte uniquement en cas de problème.
+
+Le problème n'est pas l'information, mais la manière dont on l'interprète.
+
+Un tableau de bord n'est pas là pour juger, mais pour informer
+
+Dans un avion ou une voiture, le tableau de bord ne te juge pas. Il t'indique simplement ta vitesse, ton niveau de carburant et d'éventuelles alertes.
+
+Il ne dit jamais : « tu es nul ».
+Il dit : « voilà où tu en es ».
+
+Tes finances devraient fonctionner exactement de la même manière.
+
+Ce que change une vision "tableau de bord" de l'argent
+
+Quand tu regardes tes finances comme un tableau de bord :
+• tu observes au lieu de culpabiliser,
+• tu ajustes au lieu de te restreindre,
+• tu décides au lieu de subir.
+
+Les chiffres deviennent :
+• neutres,
+• utiles,
+• actionnables.
+
+Ils ne racontent pas qui tu es mais t'aident simplement à savoir où tu vas.
+
+Pourquoi la visualisation est un levier si puissant
+
+Le cerveau humain comprend mieux ce qu'il peut voir clairement.
+
+Une bonne visualisation permet :
+• d'identifier rapidement une dérive,
+• de confirmer que tout est sous contrôle,
+• de prendre une décision sans surcharge mentale.
+
+À l'inverse, quand tout est dispersé ou peu lisible :
+• l'information fatigue,
+• la décision est repoussée,
+• le stress augmente.
+
+Voir clair, c'est déjà décider mieux.
+
+De la sanction au pilotage : un changement de posture
+
+La différence entre une gestion punitive et une gestion pilotée ne tient pas aux chiffres. Elle tient à la posture.
+
+Posture punitive :
+"J'ai mal fait."
+
+Posture de pilotage :
+"Voilà où j'en suis. Que fais-je maintenant ?"
+
+Ce simple changement transforme complètement la relation à l'argent.
+
+Comment Steero t'aide à adopter cette logique de tableau de bord
+
+Steero a été pensé pour que tu ne craignes pas de regarder.
+
+L'objectif n'est pas de tout analyser, optimiser ou contrôler mais de te donner une vision claire, lisible et rassurante de ta situation.
+
+Tu viens prendre l'information dont tu as besoin pour avancer.
+
+Conclusion : regarder tes finances ne devrait jamais faire peur
+
+Tes finances ne sont pas un bulletin de notes mais un système vivant, qui évolue avec toi.
+
+Quand tu les regardes avec des indicateurs pertinents :
+• tu enlèves la charge émotionnelle,
+• tu simplifies les décisions,
+• tu reprends le contrôle.
+
+La clarté remplace la culpabilité et c'est là que tout change.
+
+Et si regarder tes finances devenait un réflexe simple, pas une source de stress ?
+
+Steero t'aide à visualiser clairement ta situation, piloter sans te juger et décider avec sérénité.
+
+Moins de pression. Plus de clarté. Plus de maîtrise.`
+  },
+  {
+    id: 6,
+    title: "La règle des 50 / 30 / 20 : bonne base ou fausse promesse ?",
+    hook: `Si tu t'intéresses un peu à la gestion de budget, tu as forcément déjà croisé cette règle :
+• 50 % pour les besoins,
+• 30 % pour les envies,
+• 20 % pour l'épargne.
+
+Simple. Claire. Rassurante. Mais une question mérite d'être posée : est-ce une vraie solution… ou juste un point de départ ?`,
+    content: `Pourquoi la règle des 50 / 30 / 20 est si populaire
+
+Cette règle a un énorme avantage : elle simplifie. Elle permet de donner un cadre clair, éviter de partir de zéro et de comprendre qu'un budget doit être équilibré.
+
+Pour quelqu'un qui débute, c'est souvent la première fois que l'argent est structuré autrement que "ce qu'il reste à la fin du mois".
+
+En ce sens, la règle joue parfaitement son rôle : pédagogique.
+
+Le problème : une règle simple appliquée à des vies complexes
+
+Là où les choses se compliquent, c'est quand on essaie de l'appliquer telle quelle.
+
+Parce que dans la vraie vie :
+• les loyers ne font pas 50 % partout,
+• les revenus varient,
+• les situations personnelles sont très différentes.
+
+Famille, célibat, ville chère, projets personnels, phases de vie…
+
+Vouloir faire entrer toutes les réalités dans une seule règle rigide crée souvent plus de frustration que de clarté.
+
+Pourquoi la règle devient vite culpabilisante
+
+Quand la règle est présentée comme une norme, elle peut devenir un piège. Si tu n'es pas à 20 % d'épargne tu as l'impression de mal faire, tu te compares et tu culpabilises.
+
+Mais une règle n'a jamais été faite pour juger mais pour aider à réfléchir.
+
+Le problème n'est pas l'écart, mais l'absence de compréhension derrière cet écart.
+
+La vraie question à se poser (et que la règle ne pose pas)
+
+La règle des 50 / 30 / 20 ne répond pas à la question la plus importante : Pourquoi dépenses-tu comme tu dépenses ?
+
+Un bon budget ne cherche pas à faire rentrer la réalité dans des pourcentages ou d'atteindre un chiffre "idéal", il cherche à refléter ta vie, respecter tes contraintes et surtout soutenir tes objectifs.
+
+La règle comme repère, pas comme objectif
+
+Utilisée intelligemment, la règle des 50 / 30 / 20 peut être très utile, non pas comme une obligation, mais comme un point de comparaison, un outil de lecture et un déclencheur de questions. Par exemple :
+• Pourquoi mes besoins sont-ils si élevés ?
+• Est-ce temporaire ou structurel ?
+• Quelle part de mes dépenses reflète vraiment mes priorités ?
+
+C'est là que la règle devient intéressante.
+
+Adapter plutôt qu'appliquer : la clé d'un budget durable
+
+Un budget qui fonctionne est un budget : adaptable, évolutif, et aligné avec ta réalité.
+
+Tu peux très bien :
+• épargner moins aujourd'hui pour un projet précis,
+• dépenser plus sur certaines envies sans culpabilité,
+• ajuster tes ratios selon les périodes de ta vie.
+
+La cohérence compte plus que le pourcentage.
+
+Comment Steero t'aide à dépasser la règle sans la jeter
+
+Steero ne te demande pas de rentrer dans une règle toute faite mais t'aide à structurer ton budget, visualiser tes répartitions, et comprendre ce qui est choisi et ce qui est subi.
+
+La règle des 50 / 30 / 20 peut devenir un point de départ, un repère visuel et un outil de réflexion mais jamais une injonction.
+
+Conclusion : une bonne règle ne remplace jamais la compréhension
+
+La règle des 50 / 30 / 20 n'est ni bonne ni mauvaise. Elle est incomplète si elle est utilisée seule.
+
+Ce qui fait la différence, ce n'est pas le respect parfait d'un ratio, mais la capacité à comprendre, ajuster et décider en conscience.
+
+Un bon budget ne te dit pas ce que tu dois faire. Il t'aide à faire des choix alignés avec ta vie.
+
+Et si ton budget s'adaptait enfin à ta réalité, plutôt que l'inverse ?
+
+Steero t'aide à :
+• structurer ton budget sans rigidité,
+• comprendre tes arbitrages,
+• et piloter ton argent sans culpabilité.
+
+Des repères clairs. Des choix conscients. Une gestion qui te ressemble.`
   }
 ];
 
@@ -406,45 +650,20 @@ const formatContent = (content: string) => {
       return <br key={index} />;
     }
     
-    // Check if it's a section title (line that doesn't start with bullet, number, emoji, and is followed by content)
+    // Check if it's a section title - lines that don't start with bullet points, numbers, arrows, 
+    // and are relatively short (indicating a heading)
     const isSectionTitle = 
       !trimmedLine.startsWith('•') && 
-      !trimmedLine.startsWith('👉') &&
+      !trimmedLine.startsWith('→') &&
       !trimmedLine.match(/^\d+\./) &&
-      trimmedLine.length < 80 &&
-      trimmedLine.length > 10 &&
-      !trimmedLine.includes(':') &&
+      !trimmedLine.startsWith('"') &&
+      trimmedLine.length < 100 &&
+      trimmedLine.length > 5 &&
       (
-        trimmedLine.startsWith('Pourquoi') ||
-        trimmedLine.startsWith('Gagner') ||
-        trimmedLine.startsWith('Comprendre') ||
-        trimmedLine.startsWith('La finance') ||
-        trimmedLine.startsWith('La clarté') ||
-        trimmedLine.startsWith('Comment') ||
-        trimmedLine.startsWith('Conclusion') ||
-        trimmedLine.startsWith('De la gestion') ||
-        trimmedLine.startsWith('Subir') ||
-        trimmedLine.startsWith('Piloter') ||
-        trimmedLine.startsWith('Étape') ||
-        trimmedLine.startsWith("L'essentiel") ||
-        trimmedLine.startsWith("L'objectif") ||
-        trimmedLine.startsWith("L'argent") ||
-        trimmedLine.startsWith('Résultat') ||
-        trimmedLine.startsWith('Passer') ||
-        trimmedLine.startsWith('Le vrai problème') ||
-        trimmedLine.startsWith('Rituel financier') ||
-        trimmedLine.startsWith('Le rituel') ||
-        trimmedLine.startsWith('Sans rituel') ||
-        trimmedLine.startsWith('Un rituel') ||
-        trimmedLine.startsWith('Aucun outil') ||
-        trimmedLine.startsWith('La maîtrise') ||
-        trimmedLine.startsWith('La montée') ||
-        trimmedLine.startsWith('Trois raisons') ||
-        trimmedLine.startsWith('Ils prennent') ||
-        trimmedLine.startsWith('Ils demandent') ||
-        trimmedLine.startsWith('Ils ne donnent') ||
-        trimmedLine.startsWith('Un bon rituel') ||
-        trimmedLine.startsWith("C'est le socle")
+        // Match common section title patterns
+        trimmedLine.match(/^(Pourquoi|Comment|Gagner|Comprendre|La finance|La clarté|Conclusion|De la gestion|Subir|Piloter|Étape|L'essentiel|L'objectif|L'argent|Résultat|Passer|Le vrai|Rituel|Le rituel|Sans rituel|Un rituel|Aucun outil|La maîtrise|La montée|Trois raisons|Un bon rituel|C'est le socle|Le principe|Les rituels|Ce que change|Le problème|La règle|Adapter|Un tableau|Posture|Voir clair|Ce simple|Tu souhaites|Steero t'aide|Commence|Moins d'effort|Des repères|Et si|Son rôle|Ce sont)/) ||
+        // Also match titles that end without punctuation and look like headings
+        (trimmedLine.length < 80 && !trimmedLine.endsWith('.') && !trimmedLine.endsWith(',') && !trimmedLine.includes(':') && !trimmedLine.startsWith('•'))
       );
     
     if (isSectionTitle) {
@@ -499,14 +718,15 @@ const ArticleCard = ({ article }: { article: Article }) => {
             </svg>
           </motion.div>
         </div>
-
-        {/* Hook - truncated when closed */}
+        
+        {/* Hook - always visible, truncated when closed */}
         <div className={`mt-4 ${!isOpen ? "line-clamp-4" : ""}`}>
           <p className="text-muted-foreground whitespace-pre-line leading-relaxed">
             {article.hook}
           </p>
         </div>
 
+        {/* Read more indicator when closed */}
         {!isOpen && (
           <motion.p 
             initial={{ opacity: 0 }}
@@ -514,14 +734,21 @@ const ArticleCard = ({ article }: { article: Article }) => {
             className="text-primary text-sm mt-4 font-medium flex items-center gap-2"
           >
             Lire l'article complet
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="animate-pulse">
+            <motion.svg 
+              width="16" 
+              height="16" 
+              viewBox="0 0 16 16" 
+              fill="none"
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            </motion.svg>
           </motion.p>
         )}
       </div>
 
-      {/* Content - expandable */}
+      {/* Expanded content */}
       <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
@@ -567,31 +794,31 @@ const Blog = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="pt-32 pb-20">
+      <main className="pt-32 pb-16">
         <div className="container mx-auto px-4 max-w-4xl">
-          {/* Header */}
+          {/* Page header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Blog
+            <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Blog Steero
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Des articles pour mieux comprendre et piloter vos finances personnelles.
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Découvrez nos articles pour mieux comprendre et piloter vos finances personnelles.
             </p>
           </motion.div>
 
-          {/* Articles */}
+          {/* Articles list */}
           <div className="space-y-6">
             {articles.map((article, index) => (
               <motion.div
                 key={article.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <ArticleCard article={article} />
               </motion.div>
