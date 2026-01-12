@@ -37,11 +37,9 @@ La gestion financière personnelle est une compétence acquise, qui repose sur :
 
 Sans méthode claire, beaucoup fonctionnent au ressenti, à l'urgence, ou en évitant le sujet financier. Ce flou est la principale source de stress financier.
 
-Gagner plus d'argent ne suffit pas à mieux gérer ses finances
+Comprendre son argent pour reprendre le contrôle financier
 
-Un mythe très répandu consiste à penser que le problème vient uniquement du niveau de revenu.
-
-En réalité :
+Un mythe également très répandu consiste à penser que le problème vient uniquement du niveau de revenu, bien souvent gagner plus d'argent ne suffit pas à mieux gérer ses finances car en réalité :
 • plus de revenus = plus de décisions financières,
 • plus de flux = plus de complexité,
 • plus de comptes = plus de confusion… sans cadre adapté.
@@ -52,8 +50,6 @@ Sans compréhension financière :
 • les objectifs financiers sont repoussés.
 
 Ce n'est pas le montant gagné qui sécurise, mais la capacité à piloter ses finances personnelles.
-
-Comprendre son argent pour reprendre le contrôle financier
 
 Comprendre ses finances personnelles, ce n'est pas devenir expert en finance.
 
@@ -78,9 +74,7 @@ Apprendre à gérer son argent ne se fait pas en un jour. La montée en compéte
 3. Analyser les écarts entre prévu et réel
 4. Décider en fonction de ses objectifs
 
-L'essentiel n'est pas d'être parfait, mais d'avoir un cadre simple et évolutif.
-
-Comment Steero t'aide à mieux comprendre tes finances personnelles
+L'essentiel n'est pas d'être parfait, mais d'avoir un cadre simple et évolutif alors comment Steero t'aide à mieux comprendre tes finances personnelles ?
 
 Steero a été conçu pour répondre à un besoin simple : rendre la gestion financière compréhensible, structurée et accessible.
 
@@ -156,10 +150,6 @@ Structurer ses finances, c'est :
 
 Cette étape transforme des chiffres isolés en information exploitable.
 
-Sans structure :
-• les chiffres s'accumulent,
-• mais ne racontent aucune histoire.
-
 Étape 3 : Comprendre les écarts pour mieux décider
 
 Un budget parfait n'existe pas.
@@ -202,7 +192,7 @@ Résultat : motivation au départ, abandon quelques semaines plus tard.
 
 Comment Steero accompagne la montée en compétences financières
 
-Steero a été conçu comme un parcours, pas comme un simple outil de suivi. Il permet :
+Steero a été conçu comme un parcours, pas comme un simple outil de suivi te permettant :
 • d'observer ses finances simplement,
 • de structurer progressivement ses budgets,
 • de visualiser les écarts sans culpabilité,
@@ -244,8 +234,8 @@ Sans rituel, même le meilleur outil finit oublié. Avec un rituel simple, la ge
 La majorité des outils de gestion financière échouent pour une raison simple : ils supposent que l'utilisateur va s'adapter à l'outil.
 
 Dans la réalité :
-• les interfaces sont complexes,
-• les actions demandées sont nombreuses,
+• les interfaces peuvent être complexes,
+• les actions et/ou connaissances demandées peuvent être nombreuses,
 • le suivi prend trop de temps.
 
 Résultat :
@@ -267,25 +257,11 @@ Un rituel, c'est :
 • répétée régulièrement,
 • intégrée naturellement dans le quotidien.
 
-Le rituel transforme la gestion financière en habitude, pas en corvée.
+Le rituel transforme la gestion financière en habitude, pas en corvée c'est pourquoi la régularité vaut mieux que la perfection sans nécessairement tout suivre, tout comprendre ou tout optimiser.
 
-Pourquoi la régularité vaut mieux que la perfection
+En réalité, la régularité est bien plus importante que la précision : quelques minutes par semaine permettent d'identifier les dérives, d'anticiper les problèmes et de garder le contrôle.
 
-Beaucoup pensent qu'il faut :
-• tout suivre,
-• tout comprendre,
-• tout optimiser.
-
-En réalité, la régularité est bien plus importante que la précision. Quelques minutes par semaine permettent :
-• d'identifier les dérives,
-• d'anticiper les problèmes,
-• de garder le contrôle.
-
-À l'inverse, un suivi parfait mais rare ne crée aucune maîtrise durable.
-
-Sans rituel, la finance redevient anxiogène
-
-Quand il n'y a pas de rituel :
+À l'inverse, un suivi parfait mais rare ne crée aucune maîtrise durable et trop souvent il est anxiogène car sans rituel :
 • on regarde ses comptes en retard,
 • souvent après une mauvaise surprise,
 • avec une charge émotionnelle forte.
@@ -306,20 +282,13 @@ Le rituel permet :
 • de comprendre progressivement,
 • d'ajuster sans brutalité.
 
-Sans rituel, aucune compétence ne se développe. Avec un rituel, la progression devient naturelle.
-
-Pourquoi la plupart des rituels financiers échouent
+Sans rituel, aucune compétence ne se développe. Avec un rituel, la progression devient naturelle mais alors pourquoi la plupart des rituels financiers échouent ?
 
 Trois raisons principales expliquent l'échec des rituels financiers :
 
-1. Ils prennent trop de temps
-→ incompatibles avec la vie réelle.
-
-2. Ils demandent trop d'efforts cognitifs
-→ fatigue mentale.
-
-3. Ils ne donnent pas de feedback immédiat
-→ perte de motivation.
+1. Ils prennent trop de temps → incompatibles avec la vie réelle.
+2. Ils demandent trop d'efforts cognitifs → fatigue mentale.
+3. Ils ne donnent pas de feedback immédiat → perte de motivation.
 
 Un bon rituel doit être : rapide, clair et utile dès la première utilisation.
 
@@ -330,7 +299,7 @@ Steero n'a pas été conçu comme une application "à consulter quand on a le te
 • donner une information claire en quelques secondes,
 • montrer immédiatement où l'on en est.
 
-Le cœur de Steero, ce n'est pas la donnée brute, c'est la ritualisation de la compréhension financière. Parce que ce qui est simple se répète et ce qui se répète transforme durablement.
+Le cœur de Steero, ce n'est pas la donnée brute, c'est la ritualisation de la compréhension financière parce que ce qui est simple se répète et ce qui se répète transforme durablement.
 
 Conclusion : sans rituel, il n'y a pas de contrôle financier
 
@@ -429,9 +398,7 @@ Quand chaque rituel a une vocation claire :
 
 La finance cesse d'être une tâche lourde. Elle devient un système de pilotage simple et progressif.
 
-Conclusion
-
-Ce n'est pas le temps qui manque, c'est la structure.
+Conclusion : ce n'est pas le temps qui manque, c'est la structure
 
 Un rituel financier en 2 minutes n'est pas un mythe. Ce qui est irréaliste, c'est de vouloir tout gérer au même moment.
 
@@ -481,21 +448,14 @@ Dans un avion ou une voiture, le tableau de bord ne te juge pas. Il t'indique si
 Il ne dit jamais : « tu es nul ».
 Il dit : « voilà où tu en es ».
 
-Tes finances devraient fonctionner exactement de la même manière.
-
-Ce que change une vision "tableau de bord" de l'argent
+Tes finances devraient fonctionner exactement de la même manière, mais alors que change une vision "tableau de bord" ?
 
 Quand tu regardes tes finances comme un tableau de bord :
 • tu observes au lieu de culpabiliser,
 • tu ajustes au lieu de te restreindre,
 • tu décides au lieu de subir.
 
-Les chiffres deviennent :
-• neutres,
-• utiles,
-• actionnables.
-
-Ils ne racontent pas qui tu es mais t'aident simplement à savoir où tu vas.
+Les chiffres deviennent neutres, utiles et actionnables. Ils ne racontent pas qui tu es mais t'aident simplement à savoir où tu vas.
 
 Pourquoi la visualisation est un levier si puissant
 
@@ -566,22 +526,16 @@ Cette règle a un énorme avantage : elle simplifie. Elle permet de donner un ca
 
 Pour quelqu'un qui débute, c'est souvent la première fois que l'argent est structuré autrement que "ce qu'il reste à la fin du mois".
 
-En ce sens, la règle joue parfaitement son rôle : pédagogique.
-
-Le problème : une règle simple appliquée à des vies complexes
-
-Là où les choses se compliquent, c'est quand on essaie de l'appliquer telle quelle.
-
-Parce que dans la vraie vie :
+En ce sens, la règle joue parfaitement son rôle pédagogique toutefois cette règle simple appliquée à des vies complexes n'est pas toujours évident parce que dans la vraie vie :
 • les loyers ne font pas 50 % partout,
 • les revenus varient,
 • les situations personnelles sont très différentes.
 
 Famille, célibat, ville chère, projets personnels, phases de vie…
 
-Vouloir faire entrer toutes les réalités dans une seule règle rigide crée souvent plus de frustration que de clarté.
+Vouloir faire entrer toutes les réalités dans une seule règle rigide peut créer plus de frustration que de clarté.
 
-Pourquoi la règle devient vite culpabilisante
+Pourquoi la règle peut devenir culpabilisante
 
 Quand la règle est présentée comme une norme, elle peut devenir un piège. Si tu n'es pas à 20 % d'épargne tu as l'impression de mal faire, tu te compares et tu culpabilises.
 
