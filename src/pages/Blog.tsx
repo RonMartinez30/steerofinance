@@ -810,7 +810,7 @@ const TableOfContents = ({ sections, isSticky = false }: { sections: { title: st
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 }}
       className={`p-5 bg-muted/50 rounded-xl border border-primary/10 ${
-        isSticky ? "sticky top-24" : "mb-8"
+        isSticky ? "" : "mb-8"
       }`}
     >
       <div className="flex items-center gap-2 mb-4">
@@ -987,30 +987,29 @@ const ArticleCard = ({ article }: { article: Article }) => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="overflow-hidden"
           >
             <div ref={contentRef} className="px-6 md:px-8 pb-6 md:pb-8">
               <ReadingProgressBar contentRef={contentRef} />
               <div className="pt-4 border-t border-primary/15">
                 {/* Mobile: TOC inline at top */}
-                <div className="lg:hidden">
+                <div className="lg:hidden mb-8">
                   <TableOfContents sections={extractSectionTitles(article.content, article.id)} />
                 </div>
                 
                 {/* Desktop: Two-column layout with sticky TOC */}
-                <div className="flex gap-8">
+                <div className="lg:flex lg:gap-8 lg:items-start">
                   {/* Main content */}
                   <div className="flex-1 min-w-0 text-foreground">
                     {formatContent(article.content, article.id)}
                   </div>
                   
                   {/* Sticky TOC on the right - desktop only */}
-                  <div className="hidden lg:block w-72 flex-shrink-0">
+                  <aside className="hidden lg:block w-72 flex-shrink-0 self-start sticky top-24">
                     <TableOfContents 
                       sections={extractSectionTitles(article.content, article.id)} 
                       isSticky={true}
                     />
-                  </div>
+                  </aside>
                 </div>
               </div>
               
