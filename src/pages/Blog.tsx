@@ -763,8 +763,8 @@ const formatContent = (content: string, articleId: number = 0) => {
   return elements;
 };
 
-// Table of contents component with active section tracking
-const TableOfContents = ({ sections }: { sections: { title: string; id: string }[] }) => {
+// Table of contents component with active section tracking - sticky on desktop
+const TableOfContents = ({ sections, isSticky = false }: { sections: { title: string; id: string }[], isSticky?: boolean }) => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
@@ -809,7 +809,9 @@ const TableOfContents = ({ sections }: { sections: { title: string; id: string }
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 }}
-      className="mb-8 p-5 bg-muted/50 rounded-xl border border-primary/10"
+      className={`p-5 bg-muted/50 rounded-xl border border-primary/10 ${
+        isSticky ? "sticky top-24" : "mb-8"
+      }`}
     >
       <div className="flex items-center gap-2 mb-4">
         <List className="w-4 h-4 text-primary" />
@@ -828,16 +830,16 @@ const TableOfContents = ({ sections }: { sections: { title: string; id: string }
                   : "text-muted-foreground hover:text-primary hover:bg-primary/5"
               }`}
             >
-              <span className={`font-medium transition-colors ${
+              <span className={`font-medium transition-colors flex-shrink-0 ${
                 isActive ? "text-primary" : "text-primary/50 group-hover:text-primary"
               }`}>
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <span className="line-clamp-1 flex-1">{section.title}</span>
+              <span className={`flex-1 ${isSticky ? "line-clamp-2" : "line-clamp-1"}`}>{section.title}</span>
               {isActive && (
                 <motion.div
-                  layoutId="activeIndicator"
-                  className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5"
+                  layoutId={`activeIndicator-${isSticky ? 'sticky' : 'inline'}`}
+                  className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.2 }}
@@ -990,9 +992,25 @@ const ArticleCard = ({ article }: { article: Article }) => {
             <div ref={contentRef} className="px-6 md:px-8 pb-6 md:pb-8">
               <ReadingProgressBar contentRef={contentRef} />
               <div className="pt-4 border-t border-primary/15">
-                <TableOfContents sections={extractSectionTitles(article.content, article.id)} />
-                <div className="text-foreground">
-                  {formatContent(article.content, article.id)}
+                {/* Mobile: TOC inline at top */}
+                <div className="lg:hidden">
+                  <TableOfContents sections={extractSectionTitles(article.content, article.id)} />
+                </div>
+                
+                {/* Desktop: Two-column layout with sticky TOC */}
+                <div className="flex gap-8">
+                  {/* Main content */}
+                  <div className="flex-1 min-w-0 text-foreground">
+                    {formatContent(article.content, article.id)}
+                  </div>
+                  
+                  {/* Sticky TOC on the right - desktop only */}
+                  <div className="hidden lg:block w-72 flex-shrink-0">
+                    <TableOfContents 
+                      sections={extractSectionTitles(article.content, article.id)} 
+                      isSticky={true}
+                    />
+                  </div>
                 </div>
               </div>
               
