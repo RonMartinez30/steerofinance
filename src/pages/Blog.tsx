@@ -626,40 +626,65 @@ const MythBlock = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-// Extract section titles for TOC
+// Define explicit section titles for each article (matching the document)
+const articleSections: Record<number, string[]> = {
+  1: [
+    "Pourquoi la gestion des finances personnelles n'est pas innée",
+    "Comprendre son argent pour reprendre le contrôle financier",
+    "La finance personnelle est une compétence qui se développe avec le temps",
+    "Conclusion : apprendre à gérer son argent change durablement la relation à l'argent"
+  ],
+  2: [
+    "De la gestion subie au pilotage financier",
+    "Étape 1 : Observer ses finances sans jugement",
+    "Étape 2 : Structurer pour donner du sens aux chiffres",
+    "Étape 3 : Comprendre les écarts pour mieux décider",
+    "Étape 4 : Décider en fonction de ses objectifs",
+    "Pourquoi la montée en compétences financières échoue souvent",
+    "Comment Steero accompagne la montée en compétences financières",
+    "Conclusion : piloter ses finances est une compétence accessible"
+  ],
+  3: [
+    "Le vrai problème des outils financiers modernes",
+    "Rituel financier : de quoi parle-t-on vraiment ?",
+    "Le rituel comme pilier de la montée en compétences financières",
+    "Comment Steero a été pensé autour du rituel, pas de l'outil",
+    "Conclusion : sans rituel, il n'y a pas de contrôle financier"
+  ],
+  4: [
+    "Pourquoi la gestion financière paraît toujours trop lourde",
+    "Le principe clé : un rituel = une vocation",
+    "Les rituels financiers : une architecture, pas une contrainte",
+    "Pourquoi le rituel en 2 minutes est non seulement possible, mais essentiel",
+    "Ce que change une approche structurée par rituels",
+    "Conclusion : ce n'est pas le temps qui manque, c'est la structure"
+  ],
+  5: [
+    "Pourquoi regarder ses finances est souvent vécu comme une punition",
+    "Un tableau de bord n'est pas là pour juger, mais pour informer",
+    "Pourquoi la visualisation est un levier si puissant",
+    "De la sanction au pilotage : un changement de posture",
+    "Comment Steero t'aide à adopter cette logique de tableau de bord",
+    "Conclusion : regarder tes finances ne devrait jamais faire peur"
+  ],
+  6: [
+    "Pourquoi la règle des 50 / 30 / 20 est si populaire",
+    "Pourquoi la règle peut devenir culpabilisante",
+    "La vraie question à se poser (et que la règle ne pose pas)",
+    "La règle comme repère, pas comme objectif",
+    "Adapter plutôt qu'appliquer : la clé d'un budget durable",
+    "Comment Steero t'aide à dépasser la règle sans la jeter",
+    "Conclusion : une bonne règle ne remplace jamais la compréhension"
+  ]
+};
+
+// Extract section titles for TOC based on predefined sections
 const extractSectionTitles = (content: string, articleId: number): { title: string; id: string }[] => {
-  const lines = content.split('\n');
-  const titles: { title: string; id: string }[] = [];
-  
-  lines.forEach((line, index) => {
-    const trimmedLine = line.trim();
-    if (!trimmedLine) return;
-    
-    const isSectionTitle = 
-      !trimmedLine.startsWith('•') && 
-      !trimmedLine.startsWith('→') &&
-      !trimmedLine.match(/^\d+\./) &&
-      !trimmedLine.startsWith('"') &&
-      trimmedLine.length < 100 &&
-      trimmedLine.length > 5 &&
-      !trimmedLine.toLowerCase().includes('à retenir') &&
-      !trimmedLine.toLowerCase().includes('idée reçue') &&
-      !trimmedLine.match(/^(La gestion financière n'est pas innée|Ce n'est pas le montant|La clarté financière|L'essentiel n'est pas d'être parfait|Personne ne naît en sachant|Ce n'est pas un problème de discipline|Le rituel transforme|la régularité est bien plus importante|Le rituel agit comme un tampon|Sans rituel, aucune compétence|Ce n'est pas le temps qui manque|La clé d'une gestion financière durable|Le problème n'est pas l'information|Un bon budget ne te dit pas)/i) &&
-      !trimmedLine.match(/^(Un mythe très répandu|Gagner plus d'argent suffit|plus de revenus = plus de|La majorité des outils de gestion financière échouent|Beaucoup pensent qu'il faut|Quand la règle est présentée comme une norme)/i) &&
-      (
-        trimmedLine.match(/^(Pourquoi|Comment|Gagner|Comprendre|La finance|La clarté|Conclusion|De la gestion|Subir|Piloter|Étape|L'essentiel|L'objectif|L'argent|Résultat|Passer|Le vrai|Rituel|Le rituel|Sans rituel|Un rituel|Aucun outil|La maîtrise|La montée|Trois raisons|Un bon rituel|C'est le socle|Le principe|Les rituels|Ce que change|Le problème|La règle|Adapter|Un tableau|Posture|Voir clair|Ce simple|Tu souhaites|Steero t'aide|Commence|Moins d'effort|Des repères|Et si|Son rôle|Ce sont)/) ||
-        (trimmedLine.length < 80 && !trimmedLine.endsWith('.') && !trimmedLine.endsWith(',') && !trimmedLine.includes(':') && !trimmedLine.startsWith('•'))
-      );
-    
-    if (isSectionTitle) {
-      titles.push({
-        title: trimmedLine,
-        id: `section-${articleId}-${index}`
-      });
-    }
-  });
-  
-  return titles;
+  const sections = articleSections[articleId] || [];
+  return sections.map((title, index) => ({
+    title,
+    id: `section-${articleId}-${index}`
+  }));
 };
 
 // Format content with improved visual hierarchy
@@ -667,6 +692,8 @@ const formatContent = (content: string, articleId: number = 0) => {
   const lines = content.split('\n');
   const elements: React.ReactNode[] = [];
   let i = 0;
+  let sectionIndex = 0;
+  const sections = articleSections[articleId] || [];
   
   while (i < lines.length) {
     const trimmedLine = lines[i].trim();
@@ -678,37 +705,13 @@ const formatContent = (content: string, articleId: number = 0) => {
       continue;
     }
     
-    // Check for key idea markers
-    if (trimmedLine.toLowerCase().includes('à retenir') || 
-        trimmedLine.match(/^(La gestion financière n'est pas innée|Ce n'est pas le montant|La clarté financière|L'essentiel n'est pas d'être parfait|Personne ne naît en sachant|Ce n'est pas un problème de discipline|Le rituel transforme|la régularité est bien plus importante|Le rituel agit comme un tampon|Sans rituel, aucune compétence|Ce n'est pas le temps qui manque|La clé d'une gestion financière durable|Le problème n'est pas l'information|Un bon budget ne te dit pas)/i)) {
-      elements.push(<KeyIdeaBlock key={i}>{trimmedLine}</KeyIdeaBlock>);
-      i++;
-      continue;
-    }
+    // Check if it's a predefined section title
+    const matchingSectionIndex = sections.findIndex(s => 
+      trimmedLine === s || trimmedLine.startsWith(s.split(':')[0])
+    );
     
-    // Check for myth markers
-    if (trimmedLine.toLowerCase().includes('idée reçue') ||
-        trimmedLine.match(/^(Un mythe très répandu|Gagner plus d'argent suffit|plus de revenus = plus de|La majorité des outils de gestion financière échouent|Beaucoup pensent qu'il faut|Quand la règle est présentée comme une norme)/i)) {
-      elements.push(<MythBlock key={i}>{trimmedLine}</MythBlock>);
-      i++;
-      continue;
-    }
-    
-    // Check if it's a section title
-    const isSectionTitle = 
-      !trimmedLine.startsWith('•') && 
-      !trimmedLine.startsWith('→') &&
-      !trimmedLine.match(/^\d+\./) &&
-      !trimmedLine.startsWith('"') &&
-      trimmedLine.length < 100 &&
-      trimmedLine.length > 5 &&
-      (
-        trimmedLine.match(/^(Pourquoi|Comment|Gagner|Comprendre|La finance|La clarté|Conclusion|De la gestion|Subir|Piloter|Étape|L'essentiel|L'objectif|L'argent|Résultat|Passer|Le vrai|Rituel|Le rituel|Sans rituel|Un rituel|Aucun outil|La maîtrise|La montée|Trois raisons|Un bon rituel|C'est le socle|Le principe|Les rituels|Ce que change|Le problème|La règle|Adapter|Un tableau|Posture|Voir clair|Ce simple|Tu souhaites|Steero t'aide|Commence|Moins d'effort|Des repères|Et si|Son rôle|Ce sont)/) ||
-        (trimmedLine.length < 80 && !trimmedLine.endsWith('.') && !trimmedLine.endsWith(',') && !trimmedLine.includes(':') && !trimmedLine.startsWith('•'))
-      );
-    
-    if (isSectionTitle) {
-      const sectionId = `section-${articleId}-${i}`;
+    if (matchingSectionIndex !== -1 && sections.includes(trimmedLine)) {
+      const sectionId = `section-${articleId}-${matchingSectionIndex}`;
       elements.push(
         <div key={i} id={sectionId} className="mt-10 mb-4 flex items-center gap-3 scroll-mt-24">
           <div className="w-1 h-6 bg-primary rounded-full" />
@@ -717,6 +720,7 @@ const formatContent = (content: string, articleId: number = 0) => {
           </h3>
         </div>
       );
+      sectionIndex++;
       i++;
       continue;
     }
