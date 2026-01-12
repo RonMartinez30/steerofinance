@@ -1,4 +1,5 @@
 import { UserPlus, Users, Rocket } from "lucide-react";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -24,21 +25,62 @@ const steps = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 30,
+    scale: 0.95,
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.46, 0.45, 0.94] as const,
+    },
+  },
+};
+
 const NextSteps = () => {
   return (
     <section id="prochaines-etapes" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Les prochaines étapes</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Découvre la feuille de route de Steero et rejoins l'aventure dès maintenant.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <motion.div 
+          className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {steps.map((step, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={cardVariants}
               className="relative p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -57,9 +99,9 @@ const NextSteps = () => {
                   {step.date}
                 </div>
               )}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
