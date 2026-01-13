@@ -186,5 +186,200 @@
     "understandingGrows": "La compréhension s'installe...",
     "autoCanBeConsidered": "L'automatisation peut être envisagée",
     "restaurant": "Restaurant"
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "noAnswer": "TU NE TROUVES PAS TA RÉPONSE ?",
+    "discoverHow": "Découvre comment Steero fonctionne concrètement.",
+    "discoverApproach": "Découvrir l'approche Steero",
+    "joinWaitlist": "Rejoindre la liste d'attente",
+    "sections": {
+      "understand": {
+        "title": "Comprendre Steero",
+        "q1": {
+          "question": "À qui s'adresse Steero ?",
+          "answer": "Steero s'adresse à toutes les personnes qui veulent reprendre le contrôle de leurs finances, sans devenir expertes ni passer des heures à gérer des chiffres.\n\nQue tu débutes ou que tu aies déjà essayé des tableurs, des applications budgétaires ou des outils automatisés, Steero est fait pour toi si tu cherches avant tout de la clarté, des repères compréhensibles et un cadre simple pour avancer dans la durée.\n\nIl n'y a aucun prérequis financier."
+        },
+        "q2": {
+          "question": "Quelle est la différence entre Steero et une app bancaire ou un agrégateur ?",
+          "answer": "Les applications bancaires et les agrégateurs montrent principalement ce qui s'est déjà passé : soldes, transactions, graphiques rétrospectifs.\n\nSteero adopte une approche différente. Steero est un outil de pilotage, pas un simple outil de consultation. Il te permet de :\n• définir une direction (objectifs)\n• suivre une trajectoire (budgets, indicateurs)\n• repérer les écarts\n• ajuster consciemment tes décisions\n• suivre un rythme clair qui te guide\n\nLà où d'autres outils informent, Steero t'aide à comprendre et agir."
+        },
+        "q3": {
+          "question": "Est-ce que Steero remplace mon application bancaire ?",
+          "answer": "Non, et ce n'est pas son objectif. Ton application bancaire reste indispensable pour payer, consulter tes comptes et effectuer des opérations bancaires.\n\nSteero vient en complément. Il te permet de prendre de la hauteur, de structurer ta vision financière et de piloter ce que tes apps bancaires ne font pas : tes rituels, tes objectifs, ta trajectoire, tes arbitrages.\n\nEn résumé : la banque exécute, Steero t'aide à décider."
+        }
+      },
+      "howItWorks": {
+        "title": "Fonctionnement",
+        "q1": {
+          "question": "Pourquoi Steero ne se connecte pas à mes banques ?",
+          "answer": "Automatiser ≠ Comprendre. Les outils 100 % automatisés montrent des chiffres, mais n'enseignent pas. Sans effort cognitif, l'utilisateur voit ses finances sans les maîtriser. Résultat courant : illusion de contrôle → désengagement → abandon.\n\nLa compréhension naît de l'action consciente. Enregistrer manuellement une opération oblige à identifier la dépense, la catégoriser et la relier à un budget ou un objectif. Ce micro-effort active l'apprentissage et la mémorisation. C'est le principe du learning by doing : on comprend en faisant.\n\nLe rituel crée un comportement durable. Steero privilégie un rituel court et régulier. La répétition consciente transforme la finance en habitude, pas en contrainte. Une habitude bat toujours un dashboard automatisé oublié."
+        },
+        "q2": {
+          "question": "Combien de temps ça prend d'enregistrer mes opérations ?",
+          "answer": "Très peu de temps — et beaucoup moins que tu ne l'imagines.\n\nDans la réalité, la majorité des personnes effectue quelques opérations par jour, parfois seulement quelques-unes par semaine. Avec Steero, les enregistrer prend quelques secondes. Il ne s'agit pas de tout consigner obsessivement, mais de capturer l'essentiel, régulièrement.\n\nPourquoi ce n'est pas lourd :\n• Tu n'as pas des dizaines de lignes par jour\n• Les opérations récurrentes deviennent vite naturelles à saisir grâce aux modèles de transactions\n• Le geste s'intègre dans un rituel simple, pas dans une corvée\n\nCe que tu gagnes : tu sais où tu en es sans attendre la fin du mois, et tu repères immédiatement où tu te situes grâce à un indicateur dynamique de budget."
+        },
+        "q3": {
+          "question": "Est-ce que Steero donne des conseils financiers ?",
+          "answer": "Non. Et c'est volontaire.\n\nSteero ne fournit pas de conseils financiers personnalisés et ne remplace pas un professionnel (conseiller financier, fiscaliste, juriste).\n\nLes analyses, graphiques, projections et indicateurs proposés par Steero ont un objectif informatif et pédagogique : ils t'aident à mieux comprendre ta situation, à visualiser ta trajectoire et à prendre du recul sur tes décisions.\n\nIls ne constituent ni des recommandations individualisées, ni des garanties de performance ou de résultat. Steero ne décide pas à ta place."
+        }
+      },
+      "security": {
+        "title": "Sécurité & données",
+        "q1": {
+          "question": "Mes données sont-elles sécurisées ?",
+          "answer": "Oui. La sécurité et le respect de tes données sont des priorités.\n\n• Tes données sont stockées de manière sécurisée\n• Steero ne revend pas tes informations\n• Tu restes propriétaire de tes données à tout moment\n\nSteero est conçu comme un outil de confiance, durable et respectueux — pas comme un produit basé sur l'exploitation de tes informations.\n\nNous t'invitons à prendre connaissance des conditions générales de services avant d'essayer."
+        },
+        "q2": {
+          "question": "Où sont stockées mes données ?",
+          "answer": "Tes données sont hébergées sur des serveurs sécurisés en Europe, conformément aux réglementations en vigueur (RGPD).\n\nNous utilisons des technologies modernes de chiffrement et des pratiques de sécurité éprouvées pour garantir la confidentialité et l'intégrité de tes informations."
+        }
+      },
+      "access": {
+        "title": "Accès & modèle",
+        "q1": {
+          "question": "Est-ce que Steero est gratuit ?",
+          "answer": "Oui, Steero est gratuit pendant 14 jours. Cette période te permet de découvrir l'outil, de l'utiliser dans ton quotidien et de vérifier s'il s'intègre naturellement à ta façon de gérer tes finances. Aucune pression — tu peux arrêter à tout moment pendant cette période.\n\nEt après les 14 jours ? Un abonnement est nécessaire pour continuer. Cet abonnement permet de maintenir et améliorer la solution, de garantir une expérience stable et de développer de nouvelles fonctionnalités.\n\nUn prix volontairement accessible : l'abonnement principal coûtera moins de 10 € par mois — soit l'équivalent d'un café par semaine, ou de quelques minutes de charge mentale en moins chaque jour."
+        },
+        "q2": {
+          "question": "Comment fonctionne la liste d'attente ?",
+          "answer": "La liste d'attente te permet de réserver ta place pour accéder à Steero dès son lancement.\n\nEn t'inscrivant, tu seras parmi les premiers informés de l'ouverture de l'application. Tu recevras un email pour créer ton compte et commencer ton essai gratuit de 14 jours.\n\nL'inscription est gratuite et sans engagement."
+        },
+        "q3": {
+          "question": "Puis-je utiliser Steero sur Mobile ?",
+          "answer": "Pas pour le moment — et c'est un choix assumé. Steero est conçu comme un outil de pilotage, pas comme une application à consulter entre deux notifications.\n\nLe rituel financier que nous défendons nécessite du calme et de la concentration. Comprendre une trajectoire financière implique de la profondeur d'information, des comparaisons, des indicateurs lisibles et une vision globale.\n\nLe mobile est excellent pour consulter rapidement. Il l'est beaucoup moins pour réfléchir, analyser et ajuster consciemment. Steero n'est pas conçu pour être \"checké\", mais pour être utilisé avec intention.\n\nEt pour la suite ? Le mobile n'est pas exclu, mais s'il arrive un jour, ce sera pour servir le pilotage, pas pour l'appauvrir."
+        },
+        "q4": {
+          "question": "Steero va-t-il évoluer avec le temps ?",
+          "answer": "Oui, et c'est même au cœur du projet.\n\nSteero est pensé comme un produit long terme, qui évolue progressivement pour rester simple, pertinent et aligné avec les besoins réels des utilisateurs.\n\nDe nouvelles fonctionnalités viendront enrichir l'expérience, toujours avec la même philosophie :\n• pas de complexité inutile\n• pas d'automatisation qui dépossède\n• uniquement ce qui aide réellement à mieux piloter\n\nLes abonnements servent précisément à maintenir cette qualité et à faire évoluer Steero dans le bon sens."
+        }
+      }
+    }
+  },
+  "fonctionnalites": {
+    "heroTitle": "Des fonctionnalités pensées pour ton autonomie financière",
+    "heroSubtitle": "Clique sur une carte pour en savoir plus",
+    "step1": "Étape 1",
+    "step2": "Étape 2",
+    "step3": "Étape 3",
+    "start": "Démarrer",
+    "follow": "Suivre",
+    "adjustLast": "Ajuster & durer",
+    "discovered": "Découvert",
+    "clickForPreview": "Cliquer pour voir l'aperçu",
+    "comingSoon": "À venir",
+    "futureTitle": "Et quand tu voudras aller plus loin",
+    "futureSubtitle": "D'autres dimensions à explorer, bientôt disponibles.",
+    "ctaTitle": "Prêt à piloter tes finances ?",
+    "ctaSubtitle": "Rejoins la liste d'attente et sois parmi les premiers à essayer Steero.",
+    "features": {
+      "onboarding": {
+        "title": "Parcours d'initialisation",
+        "microPromise": "Configurer ton point de départ",
+        "details": "Un parcours guidé et intuitif pour configurer ton profil financier. Étape par étape, tu définis tes objectifs, tes revenus et tes priorités pour que Steero s'adapte parfaitement à ta situation."
+      },
+      "budget": {
+        "title": "Gestion du budget",
+        "microPromise": "Définir ton cadre mensuel",
+        "details": "Organise tes finances avec un système de catégories hiérarchiques. Ton budget évolue avec toi, s'adapte à chaque mois et te permet d'affiner ta gestion au fil du temps."
+      },
+      "fixed": {
+        "title": "Transactions fixes",
+        "microPromise": "Anticiper ce qui revient chaque mois",
+        "details": "Centralise tous tes prélèvements, abonnements et revenus récurrents. Visualise clairement ce qui rentre et ce qui sort chaque mois, avec les dates exactes de chaque transaction."
+      },
+      "daily": {
+        "title": "Transactions du quotidien",
+        "microPromise": "Saisir sans effort au quotidien",
+        "details": "Gagne du temps grâce aux modèles de transactions personnalisables. Tes achats récurrents sont pré-renseignés pour une saisie rapide et sans friction."
+      },
+      "level": {
+        "title": "Le Niveau",
+        "microPromise": "Voir où tu en es en un coup d'œil",
+        "details": "Lors de chaque saisie, visualise instantanément : ce qui a déjà été dépensé, ce que représente la dépense en cours, et ce qu'il te restera disponible dans ton budget."
+      },
+      "rituals": {
+        "title": "Suivi des rituels",
+        "microPromise": "Suivre ce qui compte vraiment",
+        "details": "Un système de rituels qui te guide sur ce que tu dois faire, regarder, et quelles questions te poser. Développe des habitudes financières durables."
+      },
+      "indicators": {
+        "title": "Indicateurs ludiques",
+        "microPromise": "Mesurer tes progrès dans le temps",
+        "details": "Des visualisations claires et engageantes qui transforment tes données en insights actionnables. Comprends rapidement ta situation grâce à des indicateurs pensés pour faciliter tes décisions."
+      }
+    },
+    "futureFeatures": {
+      "projects": {
+        "title": "Projets",
+        "description": "Planifie tes objectifs financiers à moyen et long terme."
+      },
+      "tiers": {
+        "title": "Tiers",
+        "description": "Gère les personnes et entités avec qui tu échanges."
+      },
+      "patrimoine": {
+        "title": "Patrimoine",
+        "description": "Visualise l'évolution de ton patrimoine global."
+      }
+    },
+    "animations": {
+      "objectives": "Objectifs",
+      "income": "Revenus",
+      "fixedExpenses": "Dépenses fixes",
+      "priorities": "Priorités",
+      "profileComplete": "✓ Profil complet !",
+      "housing": "Logement",
+      "rent": "Loyer",
+      "insurance": "Assurance",
+      "food": "Alimentation",
+      "groceries": "Courses",
+      "restaurant": "Resto",
+      "leisure": "Loisirs",
+      "sports": "Sport",
+      "outings": "Sorties",
+      "salary": "Salaire",
+      "netflix": "Netflix",
+      "electricity": "Électricité",
+      "shopping": "Courses",
+      "coffee": "Café",
+      "gas": "Essence",
+      "tapToAdd": "Tap pour ajouter rapidement ↓",
+      "spent": "Dépensé",
+      "inProgress": "En cours",
+      "remaining": "Reste",
+      "checkExpenses": "📋 Vérifier mes dépenses",
+      "consecutiveDays": "🔥 5 jours consécutifs !",
+      "budgetUsed": "Budget utilisé",
+      "savings": "Épargne",
+      "rituals": "Rituels"
+    }
+  },
+  "blog": {
+    "title": "Blog Steero",
+    "subtitle": "Découvrez nos articles pour mieux comprendre et piloter vos finances personnelles.",
+    "searchPlaceholder": "Rechercher un article...",
+    "filterBy": "Filtrer par :",
+    "clear": "Effacer",
+    "articlesFound": "article(s) trouvé(s)",
+    "readFullArticle": "Lire l'article complet",
+    "readyToTransform": "Prêt à transformer ta gestion financière ?",
+    "joinWaitlist": "Rejoindre la liste d'attente",
+    "linkCopied": "Lien copié !",
+    "share": "Partager",
+    "collapseArticle": "Réduire l'article",
+    "noResults": "Aucun article ne correspond à votre recherche.",
+    "clearFilters": "Effacer les filtres",
+    "tableOfContents": "Sommaire",
+    "min": "min",
+    "tags": {
+      "beginner": "Débutant",
+      "skills": "Compétences",
+      "piloting": "Pilotage",
+      "ritual": "Rituel",
+      "mindset": "Mindset",
+      "method": "Méthode",
+      "psychology": "Psychologie"
+    }
   }
 }
