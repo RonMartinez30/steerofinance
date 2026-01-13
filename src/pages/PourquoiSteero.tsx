@@ -4,19 +4,21 @@ import { ArrowRight, Check, Star, Brain, Eye, RefreshCw, Pencil, BookOpen, Chevr
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 // Progress sidebar component for behavioral principles
 const BehavioralProgressSidebar = ({
   elements,
   activeIndex,
   exploredCards,
-  isVisible
+  isVisible,
+  t
 }: {
   elements: BehavioralElement[];
   activeIndex: number | null;
   exploredCards: Set<number>;
   isVisible: boolean;
+  t: (key: string) => string;
 }) => {
   const scrollToCard = (index: number) => {
     const element = document.getElementById(`behavioral-card-${index}`);
@@ -91,168 +93,88 @@ const BehavioralProgressSidebar = ({
         opacity: 1,
         x: 0
       }} className="absolute left-8 whitespace-nowrap bg-card px-3 py-1.5 rounded-lg shadow-lg border border-border pointer-events-none max-w-[200px]">
-            <span className="text-xs font-medium text-foreground truncate">{element.emoji} {element.title}</span>
+            <span className="text-xs font-medium text-foreground truncate">{element.emoji} {t(element.titleKey)}</span>
           </motion.div>
         </button>)}
     </motion.div>;
 };
-const alternatives = [{
-  icon: "❌",
-  title: "Excel dispersé",
-  description: "Formules cassées, suivi irrégulier."
-}, {
-  icon: "❌",
-  title: "Apps bancaires",
-  description: "Beaucoup de données, peu de décisions."
-}, {
-  icon: "❌",
-  title: "Notion bricolé",
-  description: "Puissant mais fragile."
-}, {
-  icon: "✅",
-  title: "Steero",
-  description: "Un cadre simple, pensé pour durer.",
-  highlight: true
-}];
-const testimonials = [{
-  quote: "Steero m'a permis de comprendre enfin où partait mon argent. En 3 mois, j'ai économisé plus que jamais.",
-  author: "Marie L.",
-  role: "Freelance"
-}, {
-  quote: "La saisie manuelle semblait contraignante au début, mais c'est devenu un rituel qui m'aide vraiment à réfléchir.",
-  author: "Thomas D.",
-  role: "Cadre"
-}, {
-  quote: "Simple, efficace, sans prise de tête. Exactement ce dont j'avais besoin pour reprendre le contrôle.",
-  author: "Sophie M.",
-  role: "Enseignante"
-}];
+interface Alternative {
+  icon: string;
+  titleKey: string;
+  descriptionKey: string;
+  highlight?: boolean;
+}
+
+const alternativesData: Alternative[] = [
+  { icon: "❌", titleKey: "whySteero.alternatives.excel.title", descriptionKey: "whySteero.alternatives.excel.description" },
+  { icon: "❌", titleKey: "whySteero.alternatives.bankApps.title", descriptionKey: "whySteero.alternatives.bankApps.description" },
+  { icon: "❌", titleKey: "whySteero.alternatives.notion.title", descriptionKey: "whySteero.alternatives.notion.description" },
+  { icon: "✅", titleKey: "whySteero.alternatives.steero.title", descriptionKey: "whySteero.alternatives.steero.description", highlight: true }
+];
+
 interface BehavioralElement {
   icon: typeof Brain;
   emoji: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  reference: string;
+  titleKey: string;
+  subtitleKey: string;
+  descriptionKey: string;
+  referenceKey: string;
   bgColor: string;
   borderColor: string;
 }
-const behavioralElements: BehavioralElement[] = [{
-  icon: Brain,
-  emoji: "🧠",
-  title: "La compréhension naît de l'effort cognitif",
-  subtitle: "Pas de la simple exposition à l'information",
-  description: `Les sciences cognitives sont très claires sur un point : voir une information n'est pas la comprendre.
 
-Le cerveau apprend durablement lorsqu'il est actif, pas passif. L'enregistrement manuel oblige à :
-
-• identifier la dépense,
-• la catégoriser,
-• la comparer à une intention (budget, objectif),
-• l'assumer consciemment.
-
-Ce mécanisme est proche de ce qu'on appelle le "learning by doing" ou apprentissage actif, largement documenté en psychologie de l'éducation.
-
-➡️ Automatiser supprime l'effort cognitif, donc la compréhension profonde. L'automatisation crée une illusion de contrôle. Elle ne développe pas une réelle maîtrise.`,
-  reference: "Chi et Wylie – The ICAP Framework",
-  bgColor: "bg-primary/5",
-  borderColor: "border-primary/20"
-}, {
-  icon: Eye,
-  emoji: "👁️",
-  title: "L'automatisation crée une illusion de contrôle",
-  subtitle: "Elle ne développe pas une réelle maîtrise",
-  description: `De nombreuses études montrent que les outils automatisés génèrent une illusion de maîtrise :
-
-• "Mes comptes sont connectés"
-• "Mes dépenses sont catégorisées"
-• "J'ai un dashboard"
-
-Mais :
-
-• l'utilisateur ne sait pas expliquer où va son argent,
-• ni pourquoi il dévie de ses objectifs,
-• ni quel levier activer.
-
-Ce phénomène est proche du biais de surconfiance passive, renforcé par les systèmes automatiques.
-
-➡️ L'automatisation déplace la responsabilité vers l'outil, pas vers l'utilisateur.`,
-  reference: "Parasuraman & Riley – Humans and Automation",
-  bgColor: "bg-secondary",
-  borderColor: "border-primary/15"
-}, {
-  icon: RefreshCw,
-  emoji: "🔄",
-  title: "Le rituel transforme la finance en comportement",
-  subtitle: "Le rituel développe la compréhension et la maîtrise",
-  description: `La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales.
-
-Ritualiser (ex. quelques minutes par jour et semaine) permet :
-
-• d'ancrer une routine consciente,
-• de créer un point de contact régulier avec la réalité financière,
-• de transformer une contrainte abstraite en pratique tangible.
-
-Les recherches sur les habitudes montrent que :
-
-• la répétition consciente est un facteur clé de changement durable,
-• les micro-rituels sont plus efficaces que les bilans occasionnels automatisés.
-
-➡️ Steero ne cherche pas qu'à "montrer des chiffres", mais aussi à installer un comportement.`,
-  reference: "Wood & Neal (2007) • Lally et al. (2010)",
-  bgColor: "bg-card",
-  borderColor: "border-border"
-}, {
-  icon: Pencil,
-  emoji: "✏️",
-  title: "L'enregistrement manuel crée un lien émotionnel",
-  subtitle: "La clé de la décision",
-  description: `Une dépense enregistrée manuellement n'est pas neutre :
-
-• elle déclenche une micro-évaluation émotionnelle,
-• elle rend le coût psychologiquement réel,
-• elle renforce la mémoire de la décision.
-
-C'est le même mécanisme que :
-
-• écrire ses objectifs à la main,
-• noter ses repas dans un journal alimentaire,
-• tenir un carnet de dépenses.
-
-Les études montrent que cette auto-observation consciente améliore significativement l'autorégulation.
-
-➡️ Sans friction minimale, il n'y a ni prise de conscience, ni arbitrage réel.`,
-  reference: "Baumeister & Vohs – Self-regulation",
-  bgColor: "bg-primary/5",
-  borderColor: "border-primary/20"
-}, {
-  icon: BookOpen,
-  emoji: "📖",
-  title: "Automatiser trop tôt empêche l'apprentissage",
-  subtitle: "Une des erreurs classiques à l'heure de reprendre le contrôle",
-  description: `L'automatisation est utile… après la compréhension, pas avant.
-
-Dans la majorité des apps actuelles :
-
-• l'utilisateur est bombardé de données,
-• sans cadre mental,
-• sans pédagogie implicite,
-• sans appropriation.
-
-Résultat :
-
-• abandon rapide,
-• consultation passive,
-• aucune progression réelle.
-
-À l'inverse, Steero adopte une logique similaire à l'apprentissage de la conduite : d'abord comprendre et ressentir puis optimiser et automatiser.
-
-➡️ L'objectif n'est pas de supprimer l'effort, mais de le rendre utile, court et intentionnel.`,
-  reference: "Sweller – Cognitive Load Theory",
-  bgColor: "bg-secondary",
-  borderColor: "border-primary/15"
-}];
-
+const behavioralElementsData: BehavioralElement[] = [
+  {
+    icon: Brain,
+    emoji: "🧠",
+    titleKey: "whySteero.behavioral.cognitive.title",
+    subtitleKey: "whySteero.behavioral.cognitive.subtitle",
+    descriptionKey: "whySteero.behavioral.cognitive.description",
+    referenceKey: "whySteero.behavioral.cognitive.reference",
+    bgColor: "bg-primary/5",
+    borderColor: "border-primary/20"
+  },
+  {
+    icon: Eye,
+    emoji: "👁️",
+    titleKey: "whySteero.behavioral.illusion.title",
+    subtitleKey: "whySteero.behavioral.illusion.subtitle",
+    descriptionKey: "whySteero.behavioral.illusion.description",
+    referenceKey: "whySteero.behavioral.illusion.reference",
+    bgColor: "bg-secondary",
+    borderColor: "border-primary/15"
+  },
+  {
+    icon: RefreshCw,
+    emoji: "🔄",
+    titleKey: "whySteero.behavioral.ritual.title",
+    subtitleKey: "whySteero.behavioral.ritual.subtitle",
+    descriptionKey: "whySteero.behavioral.ritual.description",
+    referenceKey: "whySteero.behavioral.ritual.reference",
+    bgColor: "bg-card",
+    borderColor: "border-border"
+  },
+  {
+    icon: Pencil,
+    emoji: "✏️",
+    titleKey: "whySteero.behavioral.emotional.title",
+    subtitleKey: "whySteero.behavioral.emotional.subtitle",
+    descriptionKey: "whySteero.behavioral.emotional.description",
+    referenceKey: "whySteero.behavioral.emotional.reference",
+    bgColor: "bg-primary/5",
+    borderColor: "border-primary/20"
+  },
+  {
+    icon: BookOpen,
+    emoji: "📖",
+    titleKey: "whySteero.behavioral.learning.title",
+    subtitleKey: "whySteero.behavioral.learning.subtitle",
+    descriptionKey: "whySteero.behavioral.learning.description",
+    referenceKey: "whySteero.behavioral.learning.reference",
+    bgColor: "bg-secondary",
+    borderColor: "border-primary/15"
+  }
+];
 // Animation 1: Cognitive Effort - Brain synapses firing
 const CognitiveEffortAnimation = ({
   isOpen
@@ -765,13 +687,15 @@ const BehavioralCard = ({
   index,
   isOpen,
   onToggle,
-  isExplored
+  isExplored,
+  t
 }: {
   element: BehavioralElement;
   index: number;
   isOpen: boolean;
   onToggle: () => void;
   isExplored: boolean;
+  t: (key: string) => string;
 }) => {
   return <motion.div initial={{
     opacity: 0,
@@ -806,7 +730,7 @@ const BehavioralCard = ({
         y: -5
       }} className="absolute -top-2 -right-2 z-10">
             <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full border border-primary/20">
-              ✓ Lu
+              ✓ {t('whySteero.read')}
             </span>
           </motion.div>}
       </AnimatePresence>
@@ -840,10 +764,10 @@ const BehavioralCard = ({
             <div className="flex items-start justify-between gap-2">
               <div>
                 <h3 className="font-semibold text-foreground leading-tight">
-                  {element.title}
+                  {t(element.titleKey)}
                 </h3>
                 <p className="text-sm text-primary font-medium mt-0.5">
-                  {element.subtitle}
+                  {t(element.subtitleKey)}
                 </p>
               </div>
               <motion.div animate={{
@@ -878,7 +802,7 @@ const BehavioralCard = ({
 
                 {/* Description */}
                 <div className="text-muted-foreground leading-relaxed mb-4 space-y-3">
-                  {element.description.split('\n\n').map((paragraph, i) => {
+                  {t(element.descriptionKey).split('\n\n').map((paragraph, i) => {
                     // Handle horizontal rules
                     if (paragraph.trim() === '---') {
                       return <hr key={i} className="border-border/50 my-4" />;
@@ -946,7 +870,7 @@ const BehavioralCard = ({
                 {/* Reference */}
                 <div className="flex items-center gap-2 text-xs text-muted-foreground/70 bg-muted/50 rounded-lg px-3 py-2">
                   <BookOpen className="w-3.5 h-3.5" />
-                  <span className="italic">Référence : {element.reference}</span>
+                  <span className="italic">{t('whySteero.reference')} : {t(element.referenceKey)}</span>
                 </div>
               </div>
             </motion.div>}
@@ -955,12 +879,15 @@ const BehavioralCard = ({
     </motion.div>;
 };
 const PourquoiSteero = () => {
+  const { t } = useTranslation();
   const [openCardIndex, setOpenCardIndex] = useState<number | null>(null);
   const [exploredCards, setExploredCards] = useState<Set<number>>(new Set());
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const [hasTriggeredCelebration, setHasTriggeredCelebration] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { playSuccessSound, playOpenSound, playCloseSound } = useSoundEffects();
+
+  const testimonials = (t('whySteero.testimonials', { returnObjects: true }) as { quote: string; author: string; role: string }[]);
 
   const handleToggleCard = (index: number) => {
     const isOpening = openCardIndex !== index;
@@ -975,7 +902,7 @@ const PourquoiSteero = () => {
 
   // Play sound when all principles are explored
   useEffect(() => {
-    if (exploredCards.size === behavioralElements.length && !hasTriggeredCelebration) {
+    if (exploredCards.size === behavioralElementsData.length && !hasTriggeredCelebration) {
       setHasTriggeredCelebration(true);
       playSuccessSound();
     }
@@ -1001,7 +928,7 @@ const PourquoiSteero = () => {
       
       {/* Progress Sidebar for Behavioral Section */}
       <AnimatePresence>
-        {isSidebarVisible && <BehavioralProgressSidebar elements={behavioralElements} activeIndex={openCardIndex} exploredCards={exploredCards} isVisible={isSidebarVisible} />}
+        {isSidebarVisible && <BehavioralProgressSidebar elements={behavioralElementsData} activeIndex={openCardIndex} exploredCards={exploredCards} isVisible={isSidebarVisible} t={t} />}
       </AnimatePresence>
 
       {/* Hero */}
@@ -1018,7 +945,7 @@ const PourquoiSteero = () => {
             duration: 0.7,
             ease: "easeOut"
           }} className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Pourquoi choisir <span className="text-gradient">Steero</span> ?
+              {t('whySteero.heroTitle')} <span className="text-gradient">Steero</span> ?
             </motion.h1>
             <motion.p initial={{
             opacity: 0,
@@ -1031,8 +958,7 @@ const PourquoiSteero = () => {
             delay: 0.2,
             ease: "easeOut"
           }} className="text-lg text-muted-foreground mb-8">
-              Une approche différente de la gestion financière, basée sur la compréhension, la régularité et le
-              changement durable.
+              {t('whySteero.heroDescription')}
             </motion.p>
           </div>
         </div>
@@ -1054,17 +980,15 @@ const PourquoiSteero = () => {
             }} transition={{
               duration: 0.6
             }}>
-                <h2 className="text-3xl font-bold text-foreground mb-4">Notre mission</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-4">{t('whySteero.missionTitle')}</h2>
                 <p className="text-muted-foreground mb-4">
-                  Steero est né d'un constat simple : les applications de finances personnelles automatisent tout, mais
-                  ne changent rien à tes comportements.
+                  {t('whySteero.missionP1')}
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  Notre mission est de t'aider à développer une véritable compréhension de ta gestion financière, pas
-                  simplement un outil pour consulter des graphiques générés automatiquement.
+                  {t('whySteero.missionP2')}
                 </p>
                 <ul className="space-y-3">
-                  {["Comprends et ajuste tes décisions", "Créé des habitudes durables", "Atteinds tes objectifs"].map((item, i) => <motion.li key={i} initial={{
+                  {(t('whySteero.missionItems', { returnObjects: true }) as string[]).map((item, i) => <motion.li key={i} initial={{
                   opacity: 0,
                   x: -20
                 }} whileInView={{
@@ -1093,8 +1017,8 @@ const PourquoiSteero = () => {
               duration: 0.6,
               delay: 0.2
             }} className="bg-primary/5 rounded-3xl p-8">
-                <blockquote className="text-xl italic text-foreground">"La vraie liberté financière vient de la compréhension, qui naît et se renforce par l'action et non par l'automatisation."</blockquote>
-                <p className="mt-4 text-muted-foreground">L'équipe Steero</p>
+                <blockquote className="text-xl italic text-foreground">"{t('whySteero.quote')}"</blockquote>
+                <p className="mt-4 text-muted-foreground">{t('whySteero.quoteAuthor')}</p>
               </motion.div>
             </div>
           </div>
@@ -1115,13 +1039,13 @@ const PourquoiSteero = () => {
         }} transition={{
           duration: 0.5
         }} className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Tu as peut-être déjà essayé...</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4">{t('whySteero.alternativesTitle')}</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Des solutions qui promettent beaucoup, mais qui ne changent pas vraiment tes habitudes.
+              {t('whySteero.alternativesDescription')}
             </p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {alternatives.map((alt, index) => <motion.div key={index} initial={{
+            {alternativesData.map((alt, index) => <motion.div key={index} initial={{
             opacity: 0,
             y: 30
           }} whileInView={{
@@ -1137,10 +1061,10 @@ const PourquoiSteero = () => {
           }} className={`text-center p-6 rounded-2xl transition-all ${alt.highlight ? "bg-primary text-primary-foreground shadow-lg scale-105" : "bg-card border border-border/50"}`}>
                 <span className="text-3xl mb-3 block">{alt.icon}</span>
                 <h3 className={`font-semibold mb-2 ${alt.highlight ? "text-primary-foreground" : "text-foreground"}`}>
-                  {alt.title}
+                  {t(alt.titleKey)}
                 </h3>
                 <p className={`text-sm ${alt.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
-                  {alt.description}
+                  {t(alt.descriptionKey)}
                 </p>
               </motion.div>)}
           </div>
@@ -1163,13 +1087,13 @@ const PourquoiSteero = () => {
             duration: 0.5
           }} className="text-center mb-12">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-card border border-border mb-4">
-                🎓 Approche scientifique
+                🎓 {t('whySteero.behavioralBadge')}
               </span>
               <h2 className="text-3xl font-bold text-foreground mb-4">
-                Les fondements comportementaux de Steero
+                {t('whySteero.behavioralTitle')}
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Steero aide chacun à piloter consciemment sa trajectoire financière, plutôt que de la subir.
+                {t('whySteero.behavioralDescription')}
               </p>
               
               {/* Progress indicator */}
@@ -1182,8 +1106,8 @@ const PourquoiSteero = () => {
             }} className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
                 <span className="text-primary font-medium">{exploredCards.size}</span>
                 <span>/</span>
-                <span>{behavioralElements.length} principes explorés</span>
-                {exploredCards.size === behavioralElements.length && <motion.span initial={{
+                <span>{behavioralElementsData.length} {t('whySteero.principlesExplored')}</span>
+                {exploredCards.size === behavioralElementsData.length && <motion.span initial={{
                 scale: 0
               }} animate={{
                 scale: [1, 1.2, 1]
@@ -1191,14 +1115,14 @@ const PourquoiSteero = () => {
                 duration: 0.6,
                 repeat: 2
               }} className="ml-2 text-primary font-semibold">
-                    🎉 Bravo !
+                    🎉 {t('whySteero.bravo')}
                   </motion.span>}
               </motion.div>
             </motion.div>
             
             <div className="space-y-4">
-              {behavioralElements.map((element, index) => <div key={index} id={`behavioral-card-${index}`}>
-                  <BehavioralCard element={element} index={index} isOpen={openCardIndex === index} onToggle={() => handleToggleCard(index)} isExplored={exploredCards.has(index)} />
+              {behavioralElementsData.map((element, index) => <div key={index} id={`behavioral-card-${index}`}>
+                  <BehavioralCard element={element} index={index} isOpen={openCardIndex === index} onToggle={() => handleToggleCard(index)} isExplored={exploredCards.has(index)} t={t} />
                 </div>)}
             </div>
             
@@ -1212,12 +1136,12 @@ const PourquoiSteero = () => {
           }} transition={{
             delay: 0.5
           }} className="text-center text-sm text-muted-foreground mt-8">
-              <p>Clique sur chaque principe pour en découvrir le détail.</p>
+              <p>{t('whySteero.clickToDiscover')}</p>
               <Link 
                 to="/fonctionnalites" 
                 className="inline-flex items-center gap-1 mt-2 text-primary font-medium hover:underline group"
               >
-                Découvrir les fonctionnalités
+                {t('common.discoverFeatures')}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>
@@ -1239,7 +1163,7 @@ const PourquoiSteero = () => {
         }} transition={{
           duration: 0.5
         }} className="text-3xl font-bold text-center mb-12 text-primary">
-            Ce qu'on aimerait que nos utilisateurs disent de Steero
+            {t('whySteero.testimonialsTitle')}
           </motion.h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => <motion.div key={index} initial={{
@@ -1281,14 +1205,14 @@ const PourquoiSteero = () => {
         }} transition={{
           duration: 0.6
         }}>
-            <h2 className="text-3xl font-bold text-foreground mb-4">Prêt à transformer ta relation à l'argent ?</h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">Rejoins Steero et commence 2026 dans les meilleurs dispositions</p>
+            <h2 className="text-3xl font-bold text-foreground mb-4">{t('whySteero.ctaTitle')}</h2>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{t('whySteero.ctaDescription')}</p>
             <motion.button whileHover={{
             scale: 1.05
           }} whileTap={{
             scale: 0.98
           }} className="btn-primary group">
-              Je m'inscris à la liste d'attente
+              {t('common.joinWaitlist')}
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </motion.button>
           </motion.div>
