@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
+import { useTranslation } from "react-i18next";
 
 // Progress sidebar component
 const ProgressSidebar = ({
@@ -111,90 +112,7 @@ interface FeatureGroup {
   features: Feature[];
   isLarge?: boolean;
 }
-const featureGroups: FeatureGroup[] = [{
-  label: "Étape 1",
-  title: "Démarrer",
-  isLarge: true,
-  features: [{
-    emoji: "🧭",
-    title: "Parcours d'initialisation",
-    microPromise: "Configurer ton point de départ",
-    details: "Un parcours guidé et intuitif pour configurer ton profil financier. Étape par étape, tu définis tes objectifs, tes revenus et tes priorités pour que Steero s'adapte parfaitement à ta situation.",
-    bgColor: "bg-primary/5",
-    borderColor: "border-primary/20",
-    textColor: "text-primary",
-    animation: "onboarding",
-    animationDirection: "horizontal"
-  }, {
-    emoji: "💰",
-    title: "Gestion du budget",
-    microPromise: "Définir ton cadre mensuel",
-    details: "Organise tes finances avec un système de catégories hiérarchiques. Ton budget évolue avec toi, s'adapte à chaque mois et te permet d'affiner ta gestion au fil du temps.",
-    bgColor: "bg-secondary",
-    borderColor: "border-primary/15",
-    textColor: "text-primary",
-    animation: "budget",
-    animationDirection: "horizontal"
-  }]
-}, {
-  label: "Étape 2",
-  title: "Suivre",
-  features: [{
-    emoji: "📅",
-    title: "Transactions fixes",
-    microPromise: "Anticiper ce qui revient chaque mois",
-    details: "Centralise tous tes prélèvements, abonnements et revenus récurrents. Visualise clairement ce qui rentre et ce qui sort chaque mois, avec les dates exactes de chaque transaction.",
-    bgColor: "bg-card",
-    borderColor: "border-border",
-    textColor: "text-foreground",
-    animation: "fixed",
-    animationDirection: "vertical"
-  }, {
-    emoji: "🧾",
-    title: "Transactions du quotidien",
-    microPromise: "Saisir sans effort au quotidien",
-    details: "Gagne du temps grâce aux modèles de transactions personnalisables. Tes achats récurrents sont pré-renseignés pour une saisie rapide et sans friction.",
-    bgColor: "bg-primary/5",
-    borderColor: "border-primary/20",
-    textColor: "text-primary",
-    animation: "daily",
-    animationDirection: "vertical"
-  }, {
-    emoji: "🟢",
-    title: "Le Niveau",
-    microPromise: "Voir où tu en es en un coup d'œil",
-    details: "Lors de chaque saisie, visualise instantanément : ce qui a déjà été dépensé, ce que représente la dépense en cours, et ce qu'il te restera disponible dans ton budget.",
-    bgColor: "bg-secondary",
-    borderColor: "border-primary/15",
-    textColor: "text-foreground",
-    animation: "gauge",
-    animationDirection: "pulse"
-  }]
-}, {
-  label: "Étape 3",
-  title: "Ajuster & durer",
-  features: [{
-    emoji: "🎯",
-    title: "Suivi des rituels",
-    microPromise: "Suivre ce qui compte vraiment",
-    details: "Un système de rituels qui te guide sur ce que tu dois faire, regarder, et quelles questions te poser. Développe des habitudes financières durables.",
-    bgColor: "bg-card",
-    borderColor: "border-border",
-    textColor: "text-foreground",
-    animation: "rituals",
-    animationDirection: "pulse"
-  }, {
-    emoji: "📊",
-    title: "Indicateurs ludiques",
-    microPromise: "Mesurer tes progrès dans le temps",
-    details: "Des visualisations claires et engageantes qui transforment tes données en insights actionnables. Comprends rapidement ta situation grâce à des indicateurs pensés pour faciliter tes décisions.",
-    bgColor: "bg-primary/5",
-    borderColor: "border-primary/20",
-    textColor: "text-primary",
-    animation: "indicators",
-    animationDirection: "pulse"
-  }]
-}];
+// featureGroups is now defined inside the component to use translations
 
 // Onboarding steps animation - horizontal direction
 const OnboardingAnimation = ({
@@ -1070,11 +988,97 @@ const FeatureCard = ({
     </motion.div>;
 };
 const Fonctionnalites = () => {
+  const { t } = useTranslation();
   const sounds = useSoundEffects();
   const [openCardId, setOpenCardId] = useState<string | null>(null);
   const [exploredCards, setExploredCards] = useState<Set<string>>(new Set());
   const [activeGroupIndex, setActiveGroupIndex] = useState(0);
   const groupRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const featureGroups: FeatureGroup[] = [{
+    label: t('fonctionnalites.step1'),
+    title: t('fonctionnalites.start'),
+    isLarge: true,
+    features: [{
+      emoji: "🧭",
+      title: t('fonctionnalites.features.onboarding.title'),
+      microPromise: t('fonctionnalites.features.onboarding.microPromise'),
+      details: t('fonctionnalites.features.onboarding.details'),
+      bgColor: "bg-primary/5",
+      borderColor: "border-primary/20",
+      textColor: "text-primary",
+      animation: "onboarding",
+      animationDirection: "horizontal"
+    }, {
+      emoji: "💰",
+      title: t('fonctionnalites.features.budget.title'),
+      microPromise: t('fonctionnalites.features.budget.microPromise'),
+      details: t('fonctionnalites.features.budget.details'),
+      bgColor: "bg-secondary",
+      borderColor: "border-primary/15",
+      textColor: "text-primary",
+      animation: "budget",
+      animationDirection: "horizontal"
+    }]
+  }, {
+    label: t('fonctionnalites.step2'),
+    title: t('fonctionnalites.follow'),
+    features: [{
+      emoji: "📅",
+      title: t('fonctionnalites.features.fixed.title'),
+      microPromise: t('fonctionnalites.features.fixed.microPromise'),
+      details: t('fonctionnalites.features.fixed.details'),
+      bgColor: "bg-card",
+      borderColor: "border-border",
+      textColor: "text-foreground",
+      animation: "fixed",
+      animationDirection: "vertical"
+    }, {
+      emoji: "🧾",
+      title: t('fonctionnalites.features.daily.title'),
+      microPromise: t('fonctionnalites.features.daily.microPromise'),
+      details: t('fonctionnalites.features.daily.details'),
+      bgColor: "bg-primary/5",
+      borderColor: "border-primary/20",
+      textColor: "text-primary",
+      animation: "daily",
+      animationDirection: "vertical"
+    }, {
+      emoji: "🟢",
+      title: t('fonctionnalites.features.level.title'),
+      microPromise: t('fonctionnalites.features.level.microPromise'),
+      details: t('fonctionnalites.features.level.details'),
+      bgColor: "bg-secondary",
+      borderColor: "border-primary/15",
+      textColor: "text-foreground",
+      animation: "gauge",
+      animationDirection: "pulse"
+    }]
+  }, {
+    label: t('fonctionnalites.step3'),
+    title: t('fonctionnalites.adjustLast'),
+    features: [{
+      emoji: "🎯",
+      title: t('fonctionnalites.features.rituals.title'),
+      microPromise: t('fonctionnalites.features.rituals.microPromise'),
+      details: t('fonctionnalites.features.rituals.details'),
+      bgColor: "bg-card",
+      borderColor: "border-border",
+      textColor: "text-foreground",
+      animation: "rituals",
+      animationDirection: "pulse"
+    }, {
+      emoji: "📊",
+      title: t('fonctionnalites.features.indicators.title'),
+      microPromise: t('fonctionnalites.features.indicators.microPromise'),
+      details: t('fonctionnalites.features.indicators.details'),
+      bgColor: "bg-primary/5",
+      borderColor: "border-primary/20",
+      textColor: "text-primary",
+      animation: "indicators",
+      animationDirection: "pulse"
+    }]
+  }];
   const handleToggleCard = (groupIndex: number, featureIndex: number) => {
     const cardId = `${groupIndex}-${featureIndex}`;
     // Mark as explored when opening
@@ -1122,10 +1126,10 @@ const Fonctionnalites = () => {
           duration: 0.6
         }} className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Des fonctionnalités pensées pour ton autonomie financière
+              {t('fonctionnalites.heroTitle')}
             </h1>
             <p className="text-lg text-muted-foreground">
-              Clique sur une carte pour en savoir plus
+              {t('fonctionnalites.heroSubtitle')}
             </p>
           </motion.div>
         </div>
@@ -1251,11 +1255,10 @@ const Fonctionnalites = () => {
           duration: 0.6
         }} className="max-w-3xl mb-12">
             <h2 className="text-2xl md:text-3xl font-semibold text-foreground/80 mb-4">
-              Et quand tu voudras aller plus loin
+              {t('fonctionnalites.futureTitle')}
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed">
-              Ces fonctionnalités ne sont pas nécessaires pour démarrer.
-              Elles viendront compléter le cadre, quand tu en auras besoin.
+              {t('fonctionnalites.futureSubtitle')}
             </p>
           </motion.div>
 
@@ -1263,8 +1266,8 @@ const Fonctionnalites = () => {
             {/* Projets financiers */}
             <FutureFeatureCard
               emoji="🧳"
-              title="Projets financiers"
-              description="Prépare et suis des enveloppes dédiées à des projets précis. Vacances, dépenses exceptionnelles ou objectifs personnels, sans perturber ton budget quotidien."
+              title={t('fonctionnalites.futureFeatures.projects.title')}
+              description={t('fonctionnalites.futureFeatures.projects.description')}
               delay={0.1}
               sounds={sounds}
               animation={
@@ -1389,8 +1392,8 @@ const Fonctionnalites = () => {
             {/* Tiers & avances */}
             <FutureFeatureCard
               emoji="👥"
-              title="Tiers & avances"
-              description="Suis simplement ce que tu prêtes, ce que l'on te doit, et identifie les principaux contributeurs à tes revenus ou dépenses."
+              title={t('fonctionnalites.futureFeatures.tiers.title')}
+              description={t('fonctionnalites.futureFeatures.tiers.description')}
               delay={0.2}
               sounds={sounds}
               animation={
@@ -1482,8 +1485,8 @@ const Fonctionnalites = () => {
             {/* Patrimoine */}
             <FutureFeatureCard
               emoji="🏠"
-              title="Patrimoine"
-              description="Visualise tes actifs et tes passifs pour comprendre ta situation globale. Épargne, investissements et dettes, réunis dans une vue lisible."
+              title={t('fonctionnalites.futureFeatures.patrimoine.title')}
+              description={t('fonctionnalites.futureFeatures.patrimoine.description')}
               delay={0.3}
               sounds={sounds}
               animation={
@@ -1609,21 +1612,21 @@ const Fonctionnalites = () => {
           duration: 0.6
         }} className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Prêt à reprendre le contrôle ?
+              {t('fonctionnalites.ctaTitle')}
             </h2>
             <p className="text-muted-foreground mb-8">
-              Rejoins la liste d'attente pour être parmi les premiers à découvrir Steero.
+              {t('fonctionnalites.ctaSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="group">
                 <a href="/#cta">
-                  Rejoindre la liste d'attente
+                  {t('common.joinWaitlist')}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link to="/pourquoi-steero">
-                  Découvrir l'approche Steero
+                  {t('common.discoverApproach')}
                 </Link>
               </Button>
             </div>
