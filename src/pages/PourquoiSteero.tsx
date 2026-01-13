@@ -91,9 +91,7 @@ const BehavioralProgressSidebar = ({
         opacity: 1,
         x: 0
       }} className="absolute left-8 whitespace-nowrap bg-card px-3 py-1.5 rounded-lg shadow-lg border border-border pointer-events-none max-w-[200px]">
-            <span className="text-xs font-medium text-muted-foreground">#{index + 1}</span>
-            <span className="mx-1.5 text-muted-foreground/50">·</span>
-            <span className="text-xs font-medium text-foreground truncate">{element.emoji}</span>
+            <span className="text-xs font-medium text-foreground truncate">{element.emoji} {element.title}</span>
           </motion.div>
         </button>)}
     </motion.div>;
@@ -144,7 +142,22 @@ const behavioralElements: BehavioralElement[] = [{
   emoji: "🧠",
   title: "La compréhension naît de l'effort cognitif",
   subtitle: "Pas de la simple exposition à l'information",
-  description: "Le cerveau apprend durablement lorsqu'il est actif, pas passif. L'enregistrement manuel oblige à identifier la dépense, la catégoriser, la comparer à une intention et l'assumer consciemment. Automatiser supprime l'effort cognitif, donc la compréhension profonde.",
+  description: `Les sciences cognitives sont très claires sur un point :
+
+👉 voir une information n'est pas la comprendre.
+
+Le cerveau apprend durablement lorsqu'il est actif, pas passif.
+
+L'enregistrement manuel oblige à :
+
+• identifier la dépense,
+• la catégoriser,
+• la comparer à une intention (budget, objectif),
+• l'assumer consciemment.
+
+Ce mécanisme est proche de ce qu'on appelle le "learning by doing" ou apprentissage actif, largement documenté en psychologie de l'éducation.
+
+➡️ Automatiser supprime l'effort cognitif, donc la compréhension profonde.`,
   reference: "Chi et Wylie – The ICAP Framework",
   bgColor: "bg-primary/5",
   borderColor: "border-primary/20"
@@ -799,7 +812,7 @@ const BehavioralCard = ({
             <div className="flex items-start justify-between gap-2">
               <div>
                 <h3 className="font-semibold text-foreground leading-tight">
-                  {index + 1}. {element.title}
+                  {element.title}
                 </h3>
                 <p className="text-sm text-primary font-medium mt-0.5">
                   {element.subtitle}
