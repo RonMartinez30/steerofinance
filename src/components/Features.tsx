@@ -1,28 +1,28 @@
 import { Circle, Settings, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
-
-const features = [
-  {
-    icon: Circle,
-    title: "Budgétiser",
-    description:
-      "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l'avenir. Bien les définir est essentiel. Créé des budgets clairs, grâce à la trajectoire, notre outil intuitif qui t'accompagne pour définir ta destination.",
-  },
-  {
-    icon: Settings,
-    title: "Saisir",
-    description:
-      "Contrairement à d'autres applications, Steero ne fait pas à ta place. La saisie manuelle crée un lien émotionnel : ce qui améliore significativement l'autorégulation… Nous l'avons amélioré grâce au Niveau - La jauge budgétaire qui indique le consommé, consommé avec la dépense saisie et le restant",
-  },
-  {
-    icon: TrendingUp,
-    title: "Ritualiser",
-    description:
-      "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. La répétition consciente est un facteur clé du changement durable, les rituels t'indiquent quoi faire, quoi regarder, quelles questions te poser et comment préparer la suite.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const Features = () => {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: Circle,
+      title: t('features.budget.title'),
+      description: t('features.budget.description'),
+    },
+    {
+      icon: Settings,
+      title: t('features.capture.title'),
+      description: t('features.capture.description'),
+    },
+    {
+      icon: TrendingUp,
+      title: t('features.ritualize.title'),
+      description: t('features.ritualize.description'),
+    },
+  ];
+
   return (
     <section className="py-24 bg-card">
       <div className="container mx-auto px-6">
@@ -34,11 +34,10 @@ const Features = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Pas d'automatisation qui te transforme en simple spectateur
+            {t('features.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Avec Steero, tu deviens le pilote : tu comprends, ajustes et ritualises ta trajectoire financière pour
-            atteindre la destination que tu as choisie.
+            {t('features.description')}
           </p>
         </motion.div>
 

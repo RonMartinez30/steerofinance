@@ -1,8 +1,11 @@
 import { Sparkles, Timer, Eye, ShieldCheck } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/hero-dashboard.webp";
+
 const Hero = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const {
     scrollYProgress
@@ -15,6 +18,25 @@ const Hero = () => {
   const decorScale1 = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
   const decorScale2 = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+
+  const valueProps = [
+    {
+      icon: Timer,
+      title: t('hero.features.time'),
+      desc: t('hero.features.time')
+    },
+    {
+      icon: Eye,
+      title: t('hero.features.clarity'),
+      desc: t('hero.features.clarity')
+    },
+    {
+      icon: ShieldCheck,
+      title: t('hero.features.security'),
+      desc: t('hero.features.security')
+    }
+  ];
+
   return <section ref={sectionRef} className="relative min-h-screen bg-hero-gradient pt-24 pb-16 overflow-hidden">
       {/* Decorative elements with parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -72,7 +94,7 @@ const Hero = () => {
             duration: 0.6
           }} className="badge-sparkle">
               <Sparkles className="w-4 h-4 text-primary" />
-              <span>Moins de technologie, plus de compréhension</span>
+              <span>{t('hero.badge')}</span>
             </motion.div>
 
             <motion.h1 initial={{
@@ -85,7 +107,7 @@ const Hero = () => {
             duration: 0.7,
             delay: 0.1
           }} className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
-              (Re)Prends le contrôle de tes finances avec <span className="text-gradient">simplicité</span>
+              {t('hero.title')}
             </motion.h1>
 
             <motion.p initial={{
@@ -97,38 +119,26 @@ const Hero = () => {
           }} transition={{
             duration: 0.7,
             delay: 0.2
-          }} className="text-lg text-muted-foreground max-w-xl">Un tableau de bord simple pour suivre tes budgets, tes dépenses et ancrer des habitudes qui comptent. Découvre le premier Operating System personnel qui relie finances et habitudes pour changer durablement.</motion.p>
+          }} className="text-lg text-muted-foreground max-w-xl">{t('hero.description')}</motion.p>
 
             {/* Value props - Modern triptych */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              {[{
-              icon: Timer,
-              title: "Simplicité",
-              desc: "Un rituel de suivi en moins de 2 minutes par jour"
-            }, {
-              icon: Eye,
-              title: "Clarté",
-              desc: "Tu sais exactement pourquoi tu dépenses et où tu vas"
-            }, {
-              icon: ShieldCheck,
-              title: "Sérénité",
-              desc: "Plus de surprises en fin de mois"
-            }].map((item, index) => <motion.div key={index} initial={{
-              opacity: 0,
-              y: 30
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.5,
-              delay: 0.4 + index * 0.1
-            }} className="group relative p-5 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                    <item.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-primary font-semibold text-base mb-1">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                </motion.div>)}
+              {valueProps.map((item, index) => <motion.div key={index} initial={{
+                opacity: 0,
+                y: 30
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.5,
+                delay: 0.4 + index * 0.1
+              }} className="group relative p-5 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
+                      <item.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-primary font-semibold text-base mb-1">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </motion.div>)}
             </div>
           </div>
 
