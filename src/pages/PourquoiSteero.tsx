@@ -916,18 +916,10 @@ const BehavioralCard = ({
                           <ul className="space-y-2 pl-1">
                             {bulletLines.map((line, j) => {
                               const text = line.replace('•', '').trim();
-                              // Alternate colors for visual distinction
-                              const colorClasses = [
-                                'bg-primary/10 text-primary border-primary/20',
-                                'bg-accent/10 text-accent-foreground border-accent/20',
-                                'bg-secondary text-secondary-foreground border-secondary',
-                                'bg-muted text-muted-foreground border-muted-foreground/20',
-                              ];
-                              const colorClass = colorClasses[j % colorClasses.length];
                               
                               return (
                                 <li key={j} className="flex items-start gap-3 group">
-                                  <span className={`flex-shrink-0 w-6 h-6 rounded-lg ${colorClass} border flex items-center justify-center text-xs font-bold mt-0.5 transition-transform group-hover:scale-110`}>
+                                  <span className="flex-shrink-0 w-6 h-6 rounded-lg bg-primary/10 text-primary border border-primary/20 flex items-center justify-center text-xs font-bold mt-0.5 transition-transform group-hover:scale-110">
                                     {j + 1}
                                   </span>
                                   <span className="text-foreground/80 leading-relaxed">{text}</span>
