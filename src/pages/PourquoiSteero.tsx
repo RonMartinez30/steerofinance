@@ -142,13 +142,9 @@ const behavioralElements: BehavioralElement[] = [{
   emoji: "🧠",
   title: "La compréhension naît de l'effort cognitif",
   subtitle: "Pas de la simple exposition à l'information",
-  description: `Les sciences cognitives sont très claires sur un point :
+  description: `Les sciences cognitives sont très claires sur un point : voir une information n'est pas la comprendre.
 
-👉 voir une information n'est pas la comprendre.
-
-Le cerveau apprend durablement lorsqu'il est actif, pas passif.
-
-L'enregistrement manuel oblige à :
+Le cerveau apprend durablement lorsqu'il est actif, pas passif. L'enregistrement manuel oblige à :
 
 • identifier la dépense,
 • la catégoriser,
@@ -157,7 +153,7 @@ L'enregistrement manuel oblige à :
 
 Ce mécanisme est proche de ce qu'on appelle le "learning by doing" ou apprentissage actif, largement documenté en psychologie de l'éducation.
 
-➡️ Automatiser supprime l'effort cognitif, donc la compréhension profonde.`,
+➡️ Automatiser supprime l'effort cognitif, donc la compréhension profonde. L'automatisation crée une illusion de contrôle. Elle ne développe pas une réelle maîtrise.`,
   reference: "Chi et Wylie – The ICAP Framework",
   bgColor: "bg-primary/5",
   borderColor: "border-primary/20"
@@ -165,8 +161,22 @@ Ce mécanisme est proche de ce qu'on appelle le "learning by doing" ou apprentis
   icon: Eye,
   emoji: "👁️",
   title: "L'automatisation crée une illusion de contrôle",
-  subtitle: "Sans maîtrise réelle",
-  description: "\"Mes comptes sont connectés\", \"Mes dépenses sont catégorisées\"… Mais l'utilisateur ne sait pas expliquer où va son argent, ni pourquoi il dévie de ses objectifs. L'automatisation déplace la responsabilité vers l'outil, pas vers l'utilisateur.",
+  subtitle: "Elle ne développe pas une réelle maîtrise",
+  description: `De nombreuses études montrent que les outils automatisés génèrent une illusion de maîtrise :
+
+• "Mes comptes sont connectés"
+• "Mes dépenses sont catégorisées"
+• "J'ai un dashboard"
+
+Mais :
+
+• l'utilisateur ne sait pas expliquer où va son argent,
+• ni pourquoi il dévie de ses objectifs,
+• ni quel levier activer.
+
+Ce phénomène est proche du biais de surconfiance passive, renforcé par les systèmes automatiques.
+
+➡️ L'automatisation déplace la responsabilité vers l'outil, pas vers l'utilisateur.`,
   reference: "Parasuraman & Riley – Humans and Automation",
   bgColor: "bg-secondary",
   borderColor: "border-primary/15"
@@ -174,34 +184,21 @@ Ce mécanisme est proche de ce qu'on appelle le "learning by doing" ou apprentis
   icon: RefreshCw,
   emoji: "🔄",
   title: "Le rituel transforme la finance en comportement",
-  subtitle: "Pas en simple donnée",
-  description: `**🔁 3.a — Le rituel agit par répétition**
+  subtitle: "Le rituel développe la compréhension et la maîtrise",
+  description: `La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales.
 
-Une habitude ne se crée pas par une action isolée, mais par la répétition consciente d'un même comportement dans le temps.
+Ritualiser (ex. quelques minutes par jour et semaine) permet :
 
-Les habitudes sont des automatismes neurologiques : plus un geste est répété, plus il devient naturel et moins il demande d'effort conscient. Le rituel financier — quelques secondes, régulièrement — permet d'ancrer la compréhension, de renforcer la mémorisation et de transformer une intention en action réelle.
+• d'ancrer une routine consciente,
+• de créer un point de contact régulier avec la réalité financière,
+• de transformer une contrainte abstraite en pratique tangible.
 
-Les micro-actions régulières sont préférables aux efforts ponctuels : mieux vaut 30 secondes chaque jour qu'une heure une fois par mois.
+Les recherches sur les habitudes montrent que :
 
-📚 *Wood & Neal (2007) — A new look at habits and the habit–goal interface*
+• la répétition consciente est un facteur clé de changement durable,
+• les micro-rituels sont plus efficaces que les bilans occasionnels automatisés.
 
----
-
-**⏳ 3.b — Le changement est progressif, pas instantané**
-
-Modifier sa relation à l'argent est un apprentissage, pas une performance immédiate.
-
-Le changement comportemental demande du temps. Les recherches montrent que plusieurs semaines — parfois plus de deux mois — sont souvent nécessaires pour qu'un comportement devienne vraiment automatique. Les écarts font partie du processus : la progression n'est jamais parfaitement linéaire.
-
-Steero est conçu comme un compagnon de trajectoire, pas comme un outil de contrôle. Ce qui compte, c'est la progression, pas la perfection.
-
-📚 *Lally et al. (2010) — How are habits formed: Modelling habit formation in the real world*
-
----
-
-**✨ Ce qu'il faut retenir**
-
-Changer ses habitudes financières prend du temps. Steero t'accompagne pas à pas, grâce à des rituels simples et répétés, parce que la maîtrise durable naît de la progression, pas de l'automatisation totale.`,
+➡️ Steero ne cherche pas qu'à "montrer des chiffres", mais aussi à installer un comportement.`,
   reference: "Wood & Neal (2007) • Lally et al. (2010)",
   bgColor: "bg-card",
   borderColor: "border-border"
@@ -209,8 +206,22 @@ Changer ses habitudes financières prend du temps. Steero t'accompagne pas à pa
   icon: Pencil,
   emoji: "✏️",
   title: "L'enregistrement manuel crée un lien émotionnel",
-  subtitle: "Clé de la décision",
-  description: "Une dépense enregistrée manuellement déclenche une micro-évaluation émotionnelle, rend le coût psychologiquement réel et renforce la mémoire de la décision. Sans friction minimale, il n'y a ni prise de conscience, ni arbitrage réel.",
+  subtitle: "La clé de la décision",
+  description: `Une dépense enregistrée manuellement n'est pas neutre :
+
+• elle déclenche une micro-évaluation émotionnelle,
+• elle rend le coût psychologiquement réel,
+• elle renforce la mémoire de la décision.
+
+C'est le même mécanisme que :
+
+• écrire ses objectifs à la main,
+• noter ses repas dans un journal alimentaire,
+• tenir un carnet de dépenses.
+
+Les études montrent que cette auto-observation consciente améliore significativement l'autorégulation.
+
+➡️ Sans friction minimale, il n'y a ni prise de conscience, ni arbitrage réel.`,
   reference: "Baumeister & Vohs – Self-regulation",
   bgColor: "bg-primary/5",
   borderColor: "border-primary/20"
@@ -218,8 +229,25 @@ Changer ses habitudes financières prend du temps. Steero t'accompagne pas à pa
   icon: BookOpen,
   emoji: "📖",
   title: "Automatiser trop tôt empêche l'apprentissage",
-  subtitle: "Erreur classique des apps financières",
-  description: "L'automatisation est utile après la compréhension, pas avant. Dans la majorité des apps, l'utilisateur est bombardé de données sans cadre mental ni pédagogie. Résultat : abandon rapide, consultation passive, aucune progression réelle.",
+  subtitle: "Une des erreurs classiques à l'heure de reprendre le contrôle",
+  description: `L'automatisation est utile… après la compréhension, pas avant.
+
+Dans la majorité des apps actuelles :
+
+• l'utilisateur est bombardé de données,
+• sans cadre mental,
+• sans pédagogie implicite,
+• sans appropriation.
+
+Résultat :
+
+• abandon rapide,
+• consultation passive,
+• aucune progression réelle.
+
+À l'inverse, Steero adopte une logique similaire à l'apprentissage de la conduite : d'abord comprendre et ressentir puis optimiser et automatiser.
+
+➡️ L'objectif n'est pas de supprimer l'effort, mais de le rendre utile, court et intentionnel.`,
   reference: "Sweller – Cognitive Load Theory",
   bgColor: "bg-secondary",
   borderColor: "border-primary/15"
