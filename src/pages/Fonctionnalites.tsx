@@ -116,12 +116,19 @@ interface FeatureGroup {
 
 // Onboarding steps animation - horizontal direction
 const OnboardingAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [step, setStep] = useState(0);
-  const steps = ["Objectifs", "Revenus", "Dépenses fixes", "Priorités"];
+  const steps = [
+    t('fonctionnalites.animations.objectives'),
+    t('fonctionnalites.animations.income'),
+    t('fonctionnalites.animations.fixedExpenses'),
+    t('fonctionnalites.animations.priorities')
+  ];
   useEffect(() => {
     if (!isOpen) {
       setStep(0);
@@ -131,7 +138,7 @@ const OnboardingAnimation = ({
       setStep(s => (s + 1) % (steps.length + 1));
     }, 800);
     return () => clearInterval(interval);
-  }, [isOpen]);
+  }, [isOpen, steps.length]);
   return <div className="mt-4 mb-2">
       <div className="flex items-center justify-between gap-2">
         {steps.map((label, i) => <div key={i} className="flex-1">
@@ -168,16 +175,18 @@ const OnboardingAnimation = ({
       opacity: step === steps.length ? 1 : 0,
       x: step === steps.length ? 0 : 20
     }} className="mt-3 text-center text-sm font-medium text-primary">
-        ✓ Profil complet !
+        {t('fonctionnalites.animations.profileComplete')}
       </motion.div>
     </div>;
 };
 
 // Budget hierarchy animation - horizontal cascade
 const BudgetAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [step, setStep] = useState(0);
   useEffect(() => {
@@ -191,17 +200,17 @@ const BudgetAnimation = ({
     return () => clearInterval(interval);
   }, [isOpen]);
   const categories = [{
-    name: "Logement",
+    name: t('fonctionnalites.animations.housing'),
     amount: "800€",
-    sub: ["Loyer 750€", "Assurance 50€"]
+    sub: [`${t('fonctionnalites.animations.rent')} 750€`, `${t('fonctionnalites.animations.insurance')} 50€`]
   }, {
-    name: "Alimentation",
+    name: t('fonctionnalites.animations.food'),
     amount: "400€",
-    sub: ["Courses 300€", "Resto 100€"]
+    sub: [`${t('fonctionnalites.animations.groceries')} 300€`, `${t('fonctionnalites.animations.restaurant')} 100€`]
   }, {
-    name: "Loisirs",
+    name: t('fonctionnalites.animations.leisure'),
     amount: "150€",
-    sub: ["Sport 50€", "Sorties 100€"]
+    sub: [`${t('fonctionnalites.animations.sports')} 50€`, `${t('fonctionnalites.animations.outings')} 100€`]
   }];
   return <div className="mt-4 mb-2 space-y-2">
       {categories.map((cat, i) => <motion.div key={i} initial={{
@@ -250,9 +259,11 @@ const BudgetAnimation = ({
 
 // Fixed transactions animation - vertical flow
 const FixedTransactionsAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [step, setStep] = useState(0);
   useEffect(() => {
@@ -267,28 +278,28 @@ const FixedTransactionsAnimation = ({
   }, [isOpen]);
   const transactions = [{
     day: "01",
-    label: "Loyer",
+    label: t('fonctionnalites.animations.rent'),
     amount: "-750€",
     type: "expense"
   }, {
     day: "05",
-    label: "Salaire",
+    label: t('fonctionnalites.animations.salary'),
     amount: "+2100€",
     type: "income"
   }, {
     day: "15",
-    label: "Netflix",
+    label: t('fonctionnalites.animations.netflix'),
     amount: "-15€",
     type: "expense"
   }, {
     day: "20",
-    label: "Électricité",
+    label: t('fonctionnalites.animations.electricity'),
     amount: "-80€",
     type: "expense"
   }];
   return <div className="mt-4 mb-2">
       <div className="space-y-2">
-        {transactions.map((t, i) => <motion.div key={i} initial={{
+        {transactions.map((tx, i) => <motion.div key={i} initial={{
         opacity: 0,
         y: -20
       }} animate={{
@@ -299,15 +310,15 @@ const FixedTransactionsAnimation = ({
         ease: "easeOut"
       }} className="flex items-center gap-3 bg-secondary rounded-lg px-3 py-2">
             <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
-              {t.day}
+              {tx.day}
             </span>
-            <span className="flex-1 text-sm text-foreground">{t.label}</span>
+            <span className="flex-1 text-sm text-foreground">{tx.label}</span>
             <motion.span initial={{
           scale: 0.8
         }} animate={{
           scale: step > i ? 1 : 0.8
-        }} className={`font-bold text-sm ${t.type === "income" ? "text-primary" : "text-muted-foreground"}`}>
-              {t.amount}
+        }} className={`font-bold text-sm ${tx.type === "income" ? "text-primary" : "text-muted-foreground"}`}>
+              {tx.amount}
             </motion.span>
           </motion.div>)}
       </div>
@@ -316,9 +327,11 @@ const FixedTransactionsAnimation = ({
 
 // Daily transactions templates animation - vertical scroll effect
 const DailyTransactionsAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [activeTemplate, setActiveTemplate] = useState<number | null>(null);
   useEffect(() => {
@@ -327,26 +340,26 @@ const DailyTransactionsAnimation = ({
       return;
     }
     const interval = setInterval(() => {
-      setActiveTemplate(t => t === null ? 0 : t === 2 ? null : t + 1);
+      setActiveTemplate(active => active === null ? 0 : active === 2 ? null : active + 1);
     }, 1000);
     return () => clearInterval(interval);
   }, [isOpen]);
   const templates = [{
     emoji: "🛒",
-    label: "Courses",
+    label: t('fonctionnalites.animations.shopping'),
     amount: "45€"
   }, {
     emoji: "☕",
-    label: "Café",
+    label: t('fonctionnalites.animations.coffee'),
     amount: "3,50€"
   }, {
     emoji: "⛽",
-    label: "Essence",
+    label: t('fonctionnalites.animations.gas'),
     amount: "60€"
   }];
   return <div className="mt-4 mb-2">
       <div className="flex flex-col gap-2">
-        {templates.map((t, i) => <motion.div key={i} initial={{
+        {templates.map((template, i) => <motion.div key={i} initial={{
         opacity: 0,
         y: 15
       }} animate={{
@@ -358,8 +371,8 @@ const DailyTransactionsAnimation = ({
         delay: i * 0.1,
         duration: 0.3
       }} className="flex items-center gap-3 bg-primary/10 rounded-xl p-3 cursor-pointer">
-            <div className="text-2xl">{t.emoji}</div>
-            <div className="flex-1 text-sm font-medium text-foreground">{t.label}</div>
+            <div className="text-2xl">{template.emoji}</div>
+            <div className="flex-1 text-sm font-medium text-foreground">{template.label}</div>
             <motion.div initial={{
           opacity: 0,
           x: 10
@@ -367,23 +380,25 @@ const DailyTransactionsAnimation = ({
           opacity: activeTemplate === i ? 1 : 0.5,
           x: activeTemplate === i ? 0 : 10
         }} className="text-sm text-primary font-bold">
-              {t.amount}
+              {template.amount}
             </motion.div>
           </motion.div>)}
       </div>
       <motion.div animate={{
       opacity: activeTemplate !== null ? 1 : 0
     }} className="mt-3 text-center text-xs text-primary">
-        Tap pour ajouter rapidement ↓
+        {t('fonctionnalites.animations.tapToAdd')}
       </motion.div>
     </div>;
 };
 
 // Gauge animation - pulse effect
 const GaugeAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [step, setStep] = useState(0);
   useEffect(() => {
@@ -462,7 +477,7 @@ const GaugeAnimation = ({
         }} transition={{
           duration: 0.3
         }} className="w-3 h-3 rounded-full bg-primary" />
-          <span className="text-primary font-medium">Dépensé</span>
+          <span className="text-primary font-medium">{t('fonctionnalites.animations.spent')}</span>
         </motion.div>
         <motion.div animate={{
         opacity: step >= 2 ? 1 : 0
@@ -474,13 +489,13 @@ const GaugeAnimation = ({
           repeat: step >= 2 ? Infinity : 0,
           ease: "easeInOut"
         }} className="w-3 h-3 rounded-full bg-primary/60" />
-          <span className="text-primary/80 font-medium">En cours</span>
+          <span className="text-primary/80 font-medium">{t('fonctionnalites.animations.inProgress')}</span>
         </motion.div>
         <motion.div animate={{
         opacity: step >= 3 ? 1 : 0
       }} className="flex items-center gap-1">
           <span className="w-3 h-3 rounded-full bg-muted-foreground/30" />
-          <span className="text-muted-foreground font-medium">Reste</span>
+          <span className="text-muted-foreground font-medium">{t('fonctionnalites.animations.remaining')}</span>
         </motion.div>
       </div>
       <motion.div animate={{
@@ -513,9 +528,11 @@ const GaugeAnimation = ({
 
 // Rituals/habits animation - soft pulse effect
 const RitualsAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [checks, setChecks] = useState([false, false, false, false, false, false, false]);
   useEffect(() => {
@@ -546,7 +563,7 @@ const RitualsAnimation = ({
   const days = ["L", "M", "M", "J", "V", "S", "D"];
   const completedCount = checks.filter(Boolean).length;
   return <div className="mt-4 mb-2">
-      <div className="text-xs text-foreground font-medium mb-2 text-center">📋 Vérifier mes dépenses</div>
+      <div className="text-xs text-foreground font-medium mb-2 text-center">{t('fonctionnalites.animations.checkExpenses')}</div>
       <div className="flex justify-center gap-2">
         {days.map((d, i) => <motion.div key={i} animate={{
         backgroundColor: checks[i] ? "hsl(var(--primary))" : "hsl(var(--muted))",
@@ -580,16 +597,18 @@ const RitualsAnimation = ({
         ease: "easeInOut"
       }
     }} className="mt-3 text-center text-xs text-primary font-medium">
-        🔥 5 jours consécutifs !
+        {t('fonctionnalites.animations.consecutiveDays')}
       </motion.div>
     </div>;
 };
 
 // Indicators animation - soft pulse/breathing effect
 const IndicatorsAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [values, setValues] = useState([0, 0, 0]);
   useEffect(() => {
@@ -616,13 +635,13 @@ const IndicatorsAnimation = ({
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
   const indicators = [{
-    label: "Budget utilisé",
+    label: t('fonctionnalites.animations.budgetUsed'),
     value: values[0]
   }, {
-    label: "Épargne",
+    label: t('fonctionnalites.animations.savings'),
     value: values[1]
   }, {
-    label: "Rituels",
+    label: t('fonctionnalites.animations.rituals'),
     value: values[2]
   }];
   return <div className="mt-4 mb-2 space-y-3">
@@ -676,7 +695,8 @@ const FutureFeatureCard = ({
   description,
   delay,
   sounds,
-  animation
+  animation,
+  t
 }: {
   emoji: string;
   title: string;
@@ -684,6 +704,7 @@ const FutureFeatureCard = ({
   delay: number;
   sounds: ReturnType<typeof useSoundEffects>;
   animation: React.ReactNode;
+  t: (key: string) => string;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -723,7 +744,7 @@ const FutureFeatureCard = ({
         transition={{ duration: 0.3, delay: delay + 0.2 }}
         className="absolute top-4 right-4 text-[10px] font-medium text-muted-foreground/60 bg-muted/50 px-2 py-1 rounded-full"
       >
-        À venir
+        {t('fonctionnalites.comingSoon')}
       </motion.span>
 
       {/* Header */}
@@ -795,7 +816,7 @@ const FutureFeatureCard = ({
         animate={{ opacity: isOpen ? 0 : 0.5 }}
         className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-muted-foreground/50"
       >
-        Cliquer pour voir l'aperçu
+        {t('fonctionnalites.clickForPreview')}
       </motion.div>
     </motion.div>
   );
@@ -804,26 +825,28 @@ const FutureFeatureCard = ({
 // Animation renderer
 const FeatureAnimation = ({
   type,
-  isOpen
+  isOpen,
+  t
 }: {
   type: AnimationType;
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   switch (type) {
     case "onboarding":
-      return <OnboardingAnimation isOpen={isOpen} />;
+      return <OnboardingAnimation isOpen={isOpen} t={t} />;
     case "budget":
-      return <BudgetAnimation isOpen={isOpen} />;
+      return <BudgetAnimation isOpen={isOpen} t={t} />;
     case "fixed":
-      return <FixedTransactionsAnimation isOpen={isOpen} />;
+      return <FixedTransactionsAnimation isOpen={isOpen} t={t} />;
     case "daily":
-      return <DailyTransactionsAnimation isOpen={isOpen} />;
+      return <DailyTransactionsAnimation isOpen={isOpen} t={t} />;
     case "gauge":
-      return <GaugeAnimation isOpen={isOpen} />;
+      return <GaugeAnimation isOpen={isOpen} t={t} />;
     case "rituals":
-      return <RitualsAnimation isOpen={isOpen} />;
+      return <RitualsAnimation isOpen={isOpen} t={t} />;
     case "indicators":
-      return <IndicatorsAnimation isOpen={isOpen} />;
+      return <IndicatorsAnimation isOpen={isOpen} t={t} />;
     default:
       return null;
   }
@@ -885,7 +908,8 @@ const FeatureCard = ({
   onToggle,
   sounds,
   isLarge = false,
-  isExplored = false
+  isExplored = false,
+  t
 }: {
   feature: Feature;
   isOpen: boolean;
@@ -893,6 +917,7 @@ const FeatureCard = ({
   sounds: ReturnType<typeof useSoundEffects>;
   isLarge?: boolean;
   isExplored?: boolean;
+  t: (key: string) => string;
 }) => {
   const handleClick = () => {
     if (isOpen) {
@@ -921,7 +946,7 @@ const FeatureCard = ({
         duration: 0.3
       }} className="absolute -top-2 -right-2 flex items-center gap-1 bg-primary/90 text-primary-foreground text-xs font-medium px-2 py-1 rounded-full shadow-md">
             <Check className="w-3 h-3" />
-            <span>Découvert</span>
+            <span>{t('fonctionnalites.discovered')}</span>
           </motion.div>}
       </AnimatePresence>
       
@@ -979,7 +1004,7 @@ const FeatureCard = ({
         duration: 0.3,
         ease: "easeInOut"
       }} className="overflow-hidden">
-            <FeatureAnimation type={feature.animation} isOpen={isOpen} />
+            <FeatureAnimation type={feature.animation} isOpen={isOpen} t={t} />
             <p className="mt-4 text-muted-foreground leading-relaxed pt-4 border-t border-current/10">
               {feature.details}
             </p>
@@ -1233,7 +1258,7 @@ const Fonctionnalites = () => {
               delay: 0.2 + featureIndex * 0.1,
               ease: [0.22, 1, 0.36, 1]
             }}>
-                    <FeatureCard feature={feature} isOpen={openCardId === `${groupIndex}-${featureIndex}`} onToggle={() => handleToggleCard(groupIndex, featureIndex)} sounds={sounds} isLarge={group.isLarge} isExplored={exploredCards.has(`${groupIndex}-${featureIndex}`)} />
+                    <FeatureCard feature={feature} isOpen={openCardId === `${groupIndex}-${featureIndex}`} onToggle={() => handleToggleCard(groupIndex, featureIndex)} sounds={sounds} isLarge={group.isLarge} isExplored={exploredCards.has(`${groupIndex}-${featureIndex}`)} t={t} />
                   </motion.div>)}
               </div>
             </motion.div>)}
@@ -1270,6 +1295,7 @@ const Fonctionnalites = () => {
               description={t('fonctionnalites.futureFeatures.projects.description')}
               delay={0.1}
               sounds={sounds}
+              t={t}
               animation={
                 <div className="relative h-32 w-full flex items-center justify-center gap-3">
                   {/* Envelope 1 - Vacances */}
@@ -1396,6 +1422,7 @@ const Fonctionnalites = () => {
               description={t('fonctionnalites.futureFeatures.tiers.description')}
               delay={0.2}
               sounds={sounds}
+              t={t}
               animation={
                 <div className="relative h-32 w-full flex flex-col items-center justify-center gap-2">
                   {/* Person owing money */}
@@ -1489,6 +1516,7 @@ const Fonctionnalites = () => {
               description={t('fonctionnalites.futureFeatures.patrimoine.description')}
               delay={0.3}
               sounds={sounds}
+              t={t}
               animation={
                 <div className="relative h-40 w-full flex flex-col items-center justify-start pt-2">
                   <div className="flex gap-4 items-end">
