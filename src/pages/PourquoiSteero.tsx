@@ -177,9 +177,11 @@ const behavioralElementsData: BehavioralElement[] = [
 ];
 // Animation 1: Cognitive Effort - Brain synapses firing
 const CognitiveEffortAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [step, setStep] = useState(0);
   useEffect(() => {
@@ -262,16 +264,18 @@ const CognitiveEffortAnimation = ({
     }} animate={{
       opacity: step >= 4 ? 1 : 0
     }} className="text-center text-xs text-primary font-medium">
-        💡 Connexions actives
+        💡 {t('animations.activeConnections')}
       </motion.p>
     </div>;
 };
 
 // Animation 2: Control Illusion - Fake vs Real dashboard
 const ControlIllusionAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [phase, setPhase] = useState<'fake' | 'reveal' | 'real'>('fake');
   useEffect(() => {
@@ -300,7 +304,7 @@ const ControlIllusionAnimation = ({
       }} className="relative flex-1 bg-muted/50 rounded-lg p-3 border border-border">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full bg-destructive/50" />
-            <span className="text-xs text-muted-foreground">Auto-sync</span>
+            <span className="text-xs text-muted-foreground">{t('animations.autoSync')}</span>
           </div>
           <div className="space-y-1">
             <div className="h-1.5 bg-muted rounded w-full" />
@@ -341,7 +345,7 @@ const ControlIllusionAnimation = ({
             repeat: phase === 'real' ? Infinity : 0,
             repeatDelay: 1
           }} className="w-2 h-2 rounded-full bg-primary" />
-            <span className="text-xs text-primary font-medium">Compris</span>
+            <span className="text-xs text-primary font-medium">{t('animations.understood')}</span>
           </div>
           <div className="space-y-1">
             <div className="h-1.5 bg-primary/30 rounded w-full" />
@@ -364,16 +368,18 @@ const ControlIllusionAnimation = ({
     }} animate={{
       opacity: phase === 'real' ? 1 : 0
     }} className="text-center text-xs text-primary font-medium">
-        ✓ Compréhension réelle
+        ✓ {t('animations.realUnderstanding')}
       </motion.p>
     </div>;
 };
 
 // Animation 3: Ritual Cycle - Daily habit loop
 const RitualCycleAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [activeStep, setActiveStep] = useState(0);
   useEffect(() => {
@@ -388,19 +394,19 @@ const RitualCycleAnimation = ({
   }, [isOpen]);
   const ritualSteps = [{
     icon: "🎯",
-    label: "Définir",
+    label: t('animations.define'),
     time: ""
   }, {
     icon: "📝",
-    label: "Saisir",
+    label: t('animations.capture'),
     time: ""
   }, {
     icon: "📊",
-    label: "Réviser",
+    label: t('animations.review'),
     time: ""
   }, {
     icon: "✨",
-    label: "Ancrer",
+    label: t('animations.anchor'),
     time: ""
   }];
   return <div className="flex flex-col gap-3 py-3 mb-4">
@@ -455,9 +461,11 @@ const RitualCycleAnimation = ({
 
 // Animation 4: Emotional Connection - Heart + Transaction
 const EmotionalConnectionAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [step, setStep] = useState(0);
   useEffect(() => {
@@ -485,7 +493,7 @@ const EmotionalConnectionAnimation = ({
       }} className="bg-muted rounded-lg px-2.5 py-1.5 flex items-center gap-2">
           <span className="text-base">🍽️</span>
           <div>
-            <p className="text-[10px] font-medium text-foreground">Restaurant</p>
+            <p className="text-[10px] font-medium text-foreground">{t('animations.restaurant')}</p>
             <p className="text-[10px] text-muted-foreground">-34,90€</p>
           </div>
         </motion.div>
@@ -541,16 +549,18 @@ const EmotionalConnectionAnimation = ({
     }} animate={{
       opacity: step >= 4 ? 1 : 0
     }} className="text-center text-xs text-primary font-medium">
-        👌 Réelle prise de conscience
+        👌 {t('animations.realAwareness')}
       </motion.p>
     </div>;
 };
 
 // Animation 5: Learning Before Automation - Progressive stages
 const LearningFirstAnimation = ({
-  isOpen
+  isOpen,
+  t
 }: {
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   const [stage, setStage] = useState(0);
   useEffect(() => {
@@ -564,17 +574,17 @@ const LearningFirstAnimation = ({
     return () => clearInterval(interval);
   }, [isOpen]);
   const stages = [{
-    label: "Apprendre",
+    label: t('animations.learn'),
     icon: BookOpen,
     fill: 33,
     color: "bg-primary/30"
   }, {
-    label: "Comprendre",
+    label: t('animations.understand'),
     icon: Brain,
     fill: 66,
     color: "bg-primary/50"
   }, {
-    label: "Maîtriser",
+    label: t('animations.master'),
     icon: Check,
     fill: 100,
     color: "bg-primary"
@@ -624,7 +634,7 @@ const LearningFirstAnimation = ({
           opacity: 0,
           y: -3
         }} className="text-center text-[10px] text-muted-foreground">
-              ⚠️ Automatiser trop tôt = échec probable
+              ⚠️ {t('animations.autoTooEarly')}
             </motion.p>}
           {stage % 3 === 1 && <motion.p key="progress" initial={{
           opacity: 0,
@@ -636,7 +646,7 @@ const LearningFirstAnimation = ({
           opacity: 0,
           y: -3
         }} className="text-center text-[10px] text-primary/70">
-              📈 La compréhension s'installe...
+              📈 {t('animations.understandingGrows')}
             </motion.p>}
           {stage % 3 === 2 && <motion.p key="ready" initial={{
           opacity: 0,
@@ -648,7 +658,7 @@ const LearningFirstAnimation = ({
           opacity: 0,
           y: -3
         }} className="text-center text-[10px] text-primary font-medium">
-              ✓ L'automatisation peut être envisagée
+              ✓ {t('animations.autoCanBeConsidered')}
             </motion.p>}
         </AnimatePresence>
       </div>
@@ -659,23 +669,25 @@ const LearningFirstAnimation = ({
 const BehavioralAnimation = ({
   element,
   index,
-  isOpen
+  isOpen,
+  t
 }: {
   element: BehavioralElement;
   index: number;
   isOpen: boolean;
+  t: (key: string) => string;
 }) => {
   switch (index) {
     case 0:
-      return <CognitiveEffortAnimation isOpen={isOpen} />;
+      return <CognitiveEffortAnimation isOpen={isOpen} t={t} />;
     case 1:
-      return <ControlIllusionAnimation isOpen={isOpen} />;
+      return <ControlIllusionAnimation isOpen={isOpen} t={t} />;
     case 2:
-      return <RitualCycleAnimation isOpen={isOpen} />;
+      return <RitualCycleAnimation isOpen={isOpen} t={t} />;
     case 3:
-      return <EmotionalConnectionAnimation isOpen={isOpen} />;
+      return <EmotionalConnectionAnimation isOpen={isOpen} t={t} />;
     case 4:
-      return <LearningFirstAnimation isOpen={isOpen} />;
+      return <LearningFirstAnimation isOpen={isOpen} t={t} />;
     default:
       return null;
   }
@@ -798,7 +810,7 @@ const BehavioralCard = ({
         }} className="overflow-hidden">
               <div className="pt-4 mt-4 border-t border-border/50">
                 {/* Animation */}
-                <BehavioralAnimation element={element} index={index} isOpen={isOpen} />
+                <BehavioralAnimation element={element} index={index} isOpen={isOpen} t={t} />
 
                 {/* Description */}
                 <div className="text-muted-foreground leading-relaxed mb-4 space-y-3">
