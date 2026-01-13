@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 interface Article {
   id: number;
   title: string;
@@ -765,6 +766,7 @@ const formatContent = (content: string, articleId: number = 0) => {
 
 // Table of contents component with active section tracking - sticky on desktop
 const TableOfContents = ({ sections, isSticky = false }: { sections: { title: string; id: string }[], isSticky?: boolean }) => {
+  const { t } = useTranslation();
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
@@ -815,7 +817,7 @@ const TableOfContents = ({ sections, isSticky = false }: { sections: { title: st
     >
       <div className="flex items-center gap-2 mb-4">
         <List className="w-4 h-4 text-primary" />
-        <span className="text-sm font-semibold text-foreground">Sommaire</span>
+        <span className="text-sm font-semibold text-foreground">{t('blog.tableOfContents')}</span>
       </div>
       <nav className="space-y-1">
         {sections.map((section, index) => {
@@ -893,6 +895,7 @@ const ReadingProgressBar = ({ contentRef }: { contentRef: React.RefObject<HTMLDi
 };
 
 const ArticleCard = ({ article }: { article: Article }) => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -964,7 +967,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
             animate={{ opacity: 1 }}
             className="text-primary text-sm mt-4 font-medium flex items-center gap-2"
           >
-            Lire l'article complet
+            {t('blog.readFullArticle')}
             <motion.svg 
               width="16" 
               height="16" 
@@ -1021,11 +1024,11 @@ const ArticleCard = ({ article }: { article: Article }) => {
                 className="mt-8 p-6 bg-primary/5 rounded-xl border border-primary/10"
               >
                 <p className="text-foreground font-medium mb-4">
-                  Prêt à transformer ta gestion financière ?
+                  {t('blog.readyToTransform')}
                 </p>
                 <Button asChild className="group">
                   <Link to="/#cta">
-                    Rejoindre la liste d'attente
+                    {t('blog.joinWaitlist')}
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>
@@ -1048,12 +1051,12 @@ const ArticleCard = ({ article }: { article: Article }) => {
                   {copied ? (
                     <>
                       <Check className="w-4 h-4" />
-                      <span className="text-sm font-medium">Lien copié !</span>
+                      <span className="text-sm font-medium">{t('blog.linkCopied')}</span>
                     </>
                   ) : (
                     <>
                       <Share2 className="w-4 h-4" />
-                      <span className="text-sm font-medium">Partager</span>
+                      <span className="text-sm font-medium">{t('blog.share')}</span>
                     </>
                   )}
                 </motion.button>
@@ -1072,7 +1075,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
                   <svg width="16" height="16" viewBox="0 0 12 12" fill="none" className="rotate-180">
                     <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  Réduire l'article
+                  {t('blog.collapseArticle')}
                 </motion.button>
               </div>
             </div>
@@ -1087,6 +1090,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
 const allTags = Array.from(new Set(articles.flatMap(article => article.tags)));
 
 const Blog = () => {
+  const { t } = useTranslation();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -1132,10 +1136,10 @@ const Blog = () => {
             className="text-center mb-8"
           >
             <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              Blog Steero
+              {t('blog.title')}
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Découvrez nos articles pour mieux comprendre et piloter vos finances personnelles.
+              {t('blog.subtitle')}
             </p>
           </motion.div>
 
@@ -1151,7 +1155,7 @@ const Blog = () => {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <input
                 type="text"
-                placeholder="Rechercher un article..."
+                placeholder={t('blog.searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-primary/20 bg-background focus:border-primary/50 focus:outline-none transition-colors text-foreground placeholder:text-muted-foreground"
@@ -1168,7 +1172,7 @@ const Blog = () => {
 
             {/* Tags filter */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm text-muted-foreground mr-2">Filtrer par :</span>
+              <span className="text-sm text-muted-foreground mr-2">{t('blog.filterBy')}</span>
               {allTags.map((tag) => {
                 const isSelected = selectedTags.includes(tag);
                 return (
@@ -1191,7 +1195,7 @@ const Blog = () => {
                   className="ml-2 px-3 py-1.5 text-sm font-medium rounded-full bg-muted text-muted-foreground hover:bg-muted/80 transition-colors flex items-center gap-1.5"
                 >
                   <X className="w-3.5 h-3.5" />
-                  Effacer
+                  {t('blog.clear')}
                 </button>
               )}
             </div>
@@ -1203,7 +1207,7 @@ const Blog = () => {
                 animate={{ opacity: 1 }}
                 className="mt-4 text-sm text-muted-foreground"
               >
-                {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''} trouvé{filteredArticles.length !== 1 ? 's' : ''}
+                {filteredArticles.length} {t('blog.articlesFound')}
               </motion.p>
             )}
           </motion.div>
@@ -1232,13 +1236,13 @@ const Blog = () => {
                 className="text-center py-12"
               >
                 <p className="text-muted-foreground text-lg mb-4">
-                  Aucun article ne correspond à votre recherche.
+                  {t('blog.noResults')}
                 </p>
                 <button
                   onClick={clearFilters}
                   className="text-primary font-medium hover:underline"
                 >
-                  Effacer les filtres
+                  {t('blog.clearFilters')}
                 </button>
               </motion.div>
             )}
