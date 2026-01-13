@@ -129,23 +129,33 @@
     "behavioral": {
       "cognitive": {
         "title": "La compréhension naît de l'effort cognitif",
-        "subtitle": "Pas de la simple exposition à l'information"
+        "subtitle": "Pas de la simple exposition à l'information",
+        "description": "Les sciences cognitives sont très claires sur un point : voir une information n'est pas la comprendre.\n\nLe cerveau apprend durablement lorsqu'il est actif, pas passif. L'enregistrement manuel oblige à :\n\n• identifier la dépense,\n• la catégoriser,\n• la comparer à une intention (budget, objectif),\n• l'assumer consciemment.\n\nCe mécanisme est proche de ce qu'on appelle le \"learning by doing\" ou apprentissage actif, largement documenté en psychologie de l'éducation.\n\n➡️ Automatiser supprime l'effort cognitif, donc la compréhension profonde. L'automatisation crée une illusion de contrôle. Elle ne développe pas une réelle maîtrise.",
+        "reference": "Chi et Wylie – The ICAP Framework"
       },
       "illusion": {
         "title": "L'automatisation crée une illusion de contrôle",
-        "subtitle": "Elle ne développe pas une réelle maîtrise"
+        "subtitle": "Elle ne développe pas une réelle maîtrise",
+        "description": "De nombreuses études montrent que les outils automatisés génèrent une illusion de maîtrise :\n\n• \"Mes comptes sont connectés\"\n• \"Mes dépenses sont catégorisées\"\n• \"J'ai un dashboard\"\n\nMais :\n\n• l'utilisateur ne sait pas expliquer où va son argent,\n• ni pourquoi il dévie de ses objectifs,\n• ni quel levier activer.\n\nCe phénomène est proche du biais de surconfiance passive, renforcé par les systèmes automatiques.\n\n➡️ L'automatisation déplace la responsabilité vers l'outil, pas vers l'utilisateur.",
+        "reference": "Parasuraman & Riley – Humans and Automation"
       },
       "ritual": {
         "title": "Le rituel transforme la finance en comportement",
-        "subtitle": "Le rituel développe la compréhension et la maîtrise"
+        "subtitle": "Le rituel développe la compréhension et la maîtrise",
+        "description": "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales.\n\nRitualiser (ex. quelques minutes par jour et semaine) permet :\n\n• d'ancrer une routine consciente,\n• de créer un point de contact régulier avec la réalité financière,\n• de transformer une contrainte abstraite en pratique tangible.\n\nLes recherches sur les habitudes montrent que :\n\n• la répétition consciente est un facteur clé de changement durable,\n• les micro-rituels sont plus efficaces que les bilans occasionnels automatisés.\n\n➡️ Steero ne cherche pas qu'à \"montrer des chiffres\", mais aussi à installer un comportement.",
+        "reference": "Wood & Neal (2007) • Lally et al. (2010)"
       },
       "emotional": {
         "title": "L'enregistrement manuel crée un lien émotionnel",
-        "subtitle": "La clé de la décision"
+        "subtitle": "La clé de la décision",
+        "description": "Une dépense enregistrée manuellement n'est pas neutre :\n\n• elle déclenche une micro-évaluation émotionnelle,\n• elle rend le coût psychologiquement réel,\n• elle renforce la mémoire de la décision.\n\nC'est le même mécanisme que :\n\n• écrire ses objectifs à la main,\n• noter ses repas dans un journal alimentaire,\n• tenir un carnet de dépenses.\n\nLes études montrent que cette auto-observation consciente améliore significativement l'autorégulation.\n\n➡️ Sans friction minimale, il n'y a ni prise de conscience, ni arbitrage réel.",
+        "reference": "Baumeister & Vohs – Self-regulation"
       },
       "learning": {
         "title": "Automatiser trop tôt empêche l'apprentissage",
-        "subtitle": "Une des erreurs classiques à l'heure de reprendre le contrôle"
+        "subtitle": "Une des erreurs classiques à l'heure de reprendre le contrôle",
+        "description": "L'automatisation est utile… après la compréhension, pas avant.\n\nDans la majorité des apps actuelles :\n\n• l'utilisateur est bombardé de données,\n• sans cadre mental,\n• sans pédagogie implicite,\n• sans appropriation.\n\nRésultat :\n\n• abandon rapide,\n• consultation passive,\n• aucune progression réelle.\n\nÀ l'inverse, Steero adopte une logique similaire à l'apprentissage de la conduite : d'abord comprendre et ressentir puis optimiser et automatiser.\n\n➡️ L'objectif n'est pas de supprimer l'effort, mais de le rendre utile, court et intentionnel.",
+        "reference": "Sweller – Cognitive Load Theory"
       }
     },
     "testimonialsTitle": "Ce qu'on aimerait que nos utilisateurs disent de Steero",

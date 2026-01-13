@@ -129,23 +129,33 @@
     "behavioral": {
       "cognitive": {
         "title": "Understanding comes from cognitive effort",
-        "subtitle": "Not from simple exposure to information"
+        "subtitle": "Not from simple exposure to information",
+        "description": "Cognitive sciences are very clear on one point: seeing information is not understanding it.\n\nThe brain learns durably when it is active, not passive. Manual recording requires:\n\n• identifying the expense,\n• categorizing it,\n• comparing it to an intention (budget, goal),\n• consciously accepting it.\n\nThis mechanism is close to what's called \"learning by doing\" or active learning, widely documented in educational psychology.\n\n➡️ Automation removes cognitive effort, therefore deep understanding. Automation creates an illusion of control. It doesn't develop real mastery.",
+        "reference": "Chi & Wylie – The ICAP Framework"
       },
       "illusion": {
         "title": "Automation creates an illusion of control",
-        "subtitle": "It doesn't develop real mastery"
+        "subtitle": "It doesn't develop real mastery",
+        "description": "Numerous studies show that automated tools generate an illusion of mastery:\n\n• \"My accounts are connected\"\n• \"My expenses are categorized\"\n• \"I have a dashboard\"\n\nBut:\n\n• the user can't explain where their money goes,\n• nor why they deviate from their goals,\n• nor which lever to activate.\n\nThis phenomenon is close to passive overconfidence bias, reinforced by automatic systems.\n\n➡️ Automation shifts responsibility to the tool, not to the user.",
+        "reference": "Parasuraman & Riley – Humans and Automation"
       },
       "ritual": {
         "title": "Ritual transforms finance into behavior",
-        "subtitle": "Ritual develops understanding and mastery"
+        "subtitle": "Ritual develops understanding and mastery",
+        "description": "Financial understanding doesn't rely solely on knowledge, but on behavioral habits.\n\nRitualizing (e.g., a few minutes per day and week) allows:\n\n• anchoring a conscious routine,\n• creating a regular point of contact with financial reality,\n• transforming an abstract constraint into tangible practice.\n\nResearch on habits shows that:\n\n• conscious repetition is a key factor for lasting change,\n• micro-rituals are more effective than occasional automated reviews.\n\n➡️ Steero doesn't just aim to \"show numbers\", but also to install a behavior.",
+        "reference": "Wood & Neal (2007) • Lally et al. (2010)"
       },
       "emotional": {
         "title": "Manual logging creates an emotional connection",
-        "subtitle": "The key to decision-making"
+        "subtitle": "The key to decision-making",
+        "description": "A manually recorded expense is not neutral:\n\n• it triggers a micro emotional evaluation,\n• it makes the cost psychologically real,\n• it reinforces the memory of the decision.\n\nIt's the same mechanism as:\n\n• writing goals by hand,\n• noting meals in a food diary,\n• keeping an expense journal.\n\nStudies show that this conscious self-observation significantly improves self-regulation.\n\n➡️ Without minimal friction, there is neither awareness nor real arbitration.",
+        "reference": "Baumeister & Vohs – Self-regulation"
       },
       "learning": {
         "title": "Automating too early prevents learning",
-        "subtitle": "One of the classic mistakes when regaining control"
+        "subtitle": "One of the classic mistakes when regaining control",
+        "description": "Automation is useful… after understanding, not before.\n\nIn most current apps:\n\n• the user is bombarded with data,\n• without mental framework,\n• without implicit pedagogy,\n• without appropriation.\n\nResult:\n\n• quick abandonment,\n• passive consultation,\n• no real progress.\n\nConversely, Steero adopts a logic similar to learning to drive: first understand and feel, then optimize and automate.\n\n➡️ The goal is not to remove effort, but to make it useful, short, and intentional.",
+        "reference": "Sweller – Cognitive Load Theory"
       }
     },
     "testimonialsTitle": "What we'd love our users to say about Steero",
