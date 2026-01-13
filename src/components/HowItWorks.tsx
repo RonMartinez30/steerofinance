@@ -1,19 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-
-const steps = [{
-  number: "01",
-  title: "Observe tes habitudes",
-  description: "Comprends où va ton argent sans jugement. Steero t'aide à visualiser, à chaque saisie, ce que tu as déjà consommé et ce qu'il te reste dans ton budget"
-}, {
-  number: "02",
-  title: "Ritualise ton suivi",
-  description: "Avec des rituels financiers réguliers conçus pour t'accompagner, prend un moment une fois par semaine, mois ou trimestre pour comprendre, ajuster et planifier.."
-}, {
-  number: "03",
-  title: "Avance vers tes objectifs",
-  description: "Chaque petite décision s'accumule pour construire l'avenir avec serenité et aligné avec tes objectifs : Constituer un patrimoine, créer ton entreprise ou voyager ."
-}];
+import { useTranslation } from "react-i18next";
 
 const containerVariants = {
   hidden: {},
@@ -55,6 +42,7 @@ const lineVariants = {
 };
 
 const HowItWorks = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -63,6 +51,20 @@ const HowItWorks = () => {
 
   const decorY1 = useTransform(scrollYProgress, [0, 1], [-50, 100]);
   const decorY2 = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
+  const steps = [{
+    number: "01",
+    title: t('howItWorks.step1.title'),
+    description: t('howItWorks.step1.description')
+  }, {
+    number: "02",
+    title: t('howItWorks.step2.title'),
+    description: t('howItWorks.step2.description')
+  }, {
+    number: "03",
+    title: t('howItWorks.step3.title'),
+    description: t('howItWorks.step3.description')
+  }];
 
   return (
     <section ref={sectionRef} className="py-24 bg-primary/5 relative overflow-hidden">
@@ -86,9 +88,9 @@ const HowItWorks = () => {
           viewport={{ once: true, margin: "-100px" }} 
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Comment ça marche ?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t('howItWorks.title')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Un processus simple en 3 étapes pour reprendre le contrôle de tes finances
+            {t('howItWorks.description')}
           </p>
         </motion.div>
 

@@ -1,23 +1,26 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import steeroLogo from "@/assets/steero-logo.png";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const productLinks = [
-    { to: "/pourquoi-steero", label: "Pourquoi Steero" },
-    { to: "/fonctionnalites", label: "Fonctionnalités" },
-    { to: "/faq", label: "FAQ" },
+    { to: "/pourquoi-steero", labelKey: "header.whySteero" },
+    { to: "/fonctionnalites", labelKey: "header.features" },
+    { to: "/faq", labelKey: "header.faq" },
   ];
 
   const resourceLinks = [
-    { to: "/blog", label: "Blog" },
-    { href: "mailto:contact@steero.fr", label: "Contact" },
+    { to: "/blog", labelKey: "header.blog" },
+    { href: "mailto:contact@steero.fr", labelKey: "footer.contact" },
   ];
 
   const legalLinks = [
-    { to: "/mentions-legales", label: "Mentions légales" },
-    { to: "/cgs", label: "CGS" },
-    { to: "/politique-confidentialite", label: "Confidentialité" },
+    { to: "/mentions-legales", labelKey: "footer.legalNotice" },
+    { to: "/cgs", labelKey: "footer.cgs" },
+    { to: "/politique-confidentialite", labelKey: "footer.privacy" },
   ];
 
   return (
@@ -43,7 +46,7 @@ const Footer = () => {
               <img src={steeroLogo} alt="Steero" className="h-12 w-auto object-contain" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              Un cadre simple pour comprendre et piloter ses finances dans la durée.
+              {t('footer.tagline')}
             </p>
           </motion.div>
 
@@ -54,7 +57,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <h4 className="text-sm font-semibold text-foreground mb-4">Produit</h4>
+            <h4 className="text-sm font-semibold text-foreground mb-4">{t('footer.product')}</h4>
             <nav className="flex flex-col gap-3">
               {productLinks.map((link) => (
                 <Link
@@ -62,7 +65,7 @@ const Footer = () => {
                   to={link.to}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </Link>
               ))}
             </nav>
@@ -75,7 +78,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h4 className="text-sm font-semibold text-foreground mb-4">Ressources</h4>
+            <h4 className="text-sm font-semibold text-foreground mb-4">{t('footer.resources')}</h4>
             <nav className="flex flex-col gap-3">
               {resourceLinks.map((link) => (
                 'to' in link ? (
@@ -84,7 +87,7 @@ const Footer = () => {
                     to={link.to}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 ) : (
                   <a
@@ -92,7 +95,7 @@ const Footer = () => {
                     href={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </a>
                 )
               ))}
@@ -106,7 +109,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.25 }}
           >
-            <h4 className="text-sm font-semibold text-foreground mb-4">Légal</h4>
+            <h4 className="text-sm font-semibold text-foreground mb-4">{t('footer.legal')}</h4>
             <nav className="flex flex-col gap-3">
               {legalLinks.map((link) => (
                 <Link
@@ -114,7 +117,7 @@ const Footer = () => {
                   to={link.to}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </Link>
               ))}
             </nav>
@@ -130,10 +133,10 @@ const Footer = () => {
           className="mt-12 pt-8 border-t border-border/50"
         >
           <p className="text-center text-muted-foreground text-sm mb-4">
-            Construis ta sérénité financière, un rituel à la fois.
+            {t('footer.closingPhrase')}
           </p>
           <p className="text-center text-xs text-muted-foreground/70">
-            © 2026 Steero. Tous droits réservés.
+            {t('footer.copyright')}
           </p>
         </motion.div>
       </div>

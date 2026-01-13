@@ -1,10 +1,12 @@
 import { ArrowRight, Shield, Users, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const targetDate = new Date("2026-03-20T12:00:00+01:00");
 
 const CTA = () => {
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   function calculateTimeLeft() {
@@ -29,16 +31,16 @@ const CTA = () => {
   }, []);
 
   const timeUnits = [
-    { value: timeLeft.days, label: "Jours" },
-    { value: timeLeft.hours, label: "Heures" },
-    { value: timeLeft.minutes, label: "Minutes" },
-    { value: timeLeft.seconds, label: "Secondes" },
+    { value: timeLeft.days, label: t('cta.days') },
+    { value: timeLeft.hours, label: t('cta.hours') },
+    { value: timeLeft.minutes, label: t('cta.minutes') },
+    { value: timeLeft.seconds, label: t('cta.seconds') },
   ];
 
   const features = [
-    { icon: Users, text: "Gratuit pour commencer" },
-    { icon: Zap, text: "Sans publicités" },
-    { icon: Shield, text: "Données sécurisées" },
+    { icon: Users, text: t('cta.features.free') },
+    { icon: Zap, text: t('cta.features.noCard') },
+    { icon: Shield, text: t('cta.features.cancel') },
   ];
 
   return (
@@ -58,7 +60,7 @@ const CTA = () => {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-bold mb-4 text-primary-foreground"
           >
-            Prêt à (re)prendre le contrôle ?
+            {t('cta.title')}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -67,7 +69,7 @@ const CTA = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg mb-8 max-w-xl mx-auto text-primary-foreground/90"
           >
-            Inscris toi à la liste d'attente pour recevoir des nouvelles de l'avancement du projet, profiter d'un accès anticipé et d'une offre de bienvenue*.
+            {t('cta.description')}
           </motion.p>
 
           <motion.button 
@@ -79,7 +81,7 @@ const CTA = () => {
             whileTap={{ scale: 0.98 }}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group mb-12"
           >
-            Je m'inscris à la liste d'attente
+            {t('common.joinWaitlist')}
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </motion.button>
 
@@ -92,7 +94,7 @@ const CTA = () => {
             className="mb-10 p-6 rounded-2xl bg-primary-foreground/10 backdrop-blur-sm"
           >
             <p className="text-primary-foreground/80 mb-4 text-sm">
-              Lancement prévu le <span className="font-semibold text-primary-foreground">20 mars 2026 à 12h</span>
+              {t('cta.launchDate')}
             </p>
             <div className="flex justify-center gap-3 md:gap-6">
               {timeUnits.map((unit, index) => (

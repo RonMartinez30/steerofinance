@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import steeroLogo from "@/assets/steero-logo.png";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -25,27 +28,22 @@ const Header = () => {
 
         <nav className="hidden md:flex items-center gap-6">
           <Link to="/pourquoi-steero" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-            Pourquoi Steero
+            {t('header.whySteero')}
           </Link>
           <Link to="/fonctionnalites" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-            Fonctionnalités
+            {t('header.features')}
           </Link>
           <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-            Blog
+            {t('header.blog')}
           </Link>
           <Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-            FAQ
+            {t('header.faq')}
           </Link>
         </nav>
 
         <div className="flex items-center gap-4">
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-md border border-border text-sm text-muted-foreground">
-            FR
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          </div>
-          <Button className="btn-primary text-xs sm:text-sm hidden sm:inline-flex">M'inscrire à la liste d'attente</Button>
+          <LanguageSwitcher />
+          <Button className="btn-primary text-xs sm:text-sm hidden sm:inline-flex">{t('common.joinWaitlist')}</Button>
           
           {/* Hamburger button */}
           <button
@@ -80,34 +78,34 @@ const Header = () => {
                 className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Pourquoi Steero
+                {t('header.whySteero')}
               </Link>
               <Link 
                 to="/fonctionnalites" 
                 className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Fonctionnalités
+                {t('header.features')}
               </Link>
               <Link 
                 to="/blog" 
                 className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Blog
+                {t('header.blog')}
               </Link>
               <Link 
                 to="/faq" 
                 className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                FAQ
+                {t('header.faq')}
               </Link>
               <Button 
                 className="btn-primary text-xs w-full mt-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                M'inscrire à la liste d'attente
+                {t('common.joinWaitlist')}
               </Button>
             </motion.nav>
           </motion.div>
