@@ -877,7 +877,7 @@ const BehavioralCard = ({
                 <BehavioralAnimation element={element} index={index} isOpen={isOpen} />
 
                 {/* Description */}
-                <div className="text-muted-foreground leading-relaxed mb-4 space-y-4">
+                <div className="text-muted-foreground leading-relaxed mb-4 space-y-3">
                   {element.description.split('\n\n').map((paragraph, i) => {
                     // Handle horizontal rules
                     if (paragraph.trim() === '---') {
@@ -900,6 +900,50 @@ const BehavioralCard = ({
                         <p key={i} className="text-xs text-muted-foreground/70 italic bg-muted/30 rounded-lg px-3 py-2">
                           {paragraph.replace(/\*/g, '')}
                         </p>
+                      );
+                    }
+                    // Handle bullet point lists
+                    if (paragraph.includes('• ')) {
+                      const lines = paragraph.split('\n');
+                      const bulletLines = lines.filter(line => line.trim().startsWith('•'));
+                      const nonBulletLines = lines.filter(line => !line.trim().startsWith('•') && line.trim());
+                      
+                      return (
+                        <div key={i} className="space-y-2">
+                          {nonBulletLines.length > 0 && (
+                            <p className="text-muted-foreground">{nonBulletLines.join(' ')}</p>
+                          )}
+                          <ul className="space-y-2 pl-1">
+                            {bulletLines.map((line, j) => {
+                              const text = line.replace('•', '').trim();
+                              // Alternate colors for visual distinction
+                              const colorClasses = [
+                                'bg-primary/10 text-primary border-primary/20',
+                                'bg-accent/10 text-accent-foreground border-accent/20',
+                                'bg-secondary text-secondary-foreground border-secondary',
+                                'bg-muted text-muted-foreground border-muted-foreground/20',
+                              ];
+                              const colorClass = colorClasses[j % colorClasses.length];
+                              
+                              return (
+                                <li key={j} className="flex items-start gap-3 group">
+                                  <span className={`flex-shrink-0 w-6 h-6 rounded-lg ${colorClass} border flex items-center justify-center text-xs font-bold mt-0.5 transition-transform group-hover:scale-110`}>
+                                    {j + 1}
+                                  </span>
+                                  <span className="text-foreground/80 leading-relaxed">{text}</span>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      );
+                    }
+                    // Handle arrow callouts
+                    if (paragraph.startsWith('➡️')) {
+                      return (
+                        <div key={i} className="bg-primary/5 border-l-4 border-primary rounded-r-lg px-4 py-3 mt-3">
+                          <p className="text-foreground font-medium text-sm">{paragraph}</p>
+                        </div>
                       );
                     }
                     // Regular paragraph
