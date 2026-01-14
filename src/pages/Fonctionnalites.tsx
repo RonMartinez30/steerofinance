@@ -140,8 +140,8 @@ const OnboardingAnimation = ({
     return () => clearInterval(interval);
   }, [isOpen, steps.length]);
   return <div className="mt-4 mb-2">
-      <div className="flex items-center justify-between gap-2">
-        {steps.map((label, i) => <div key={i} className="flex-1">
+      <div className="flex items-start justify-between gap-1 sm:gap-2">
+        {steps.map((label, i) => <div key={i} className="flex-1 min-w-0">
             <motion.div initial={{
           scaleX: 0,
           opacity: 0.3
@@ -162,9 +162,9 @@ const OnboardingAnimation = ({
           x: step > i ? 0 : -10
         }} transition={{
           duration: 0.3
-        }} className="text-xs text-center font-medium text-primary">
-              {step > i && <Check className="inline w-3 h-3 mr-1" />}
-              {label}
+        }} className="text-[10px] sm:text-xs text-center font-medium text-primary min-h-[2.5rem] flex flex-col items-center justify-start">
+              {step > i && <Check className="w-3 h-3 mb-0.5" />}
+              <span className="leading-tight">{label}</span>
             </motion.div>
           </div>)}
       </div>
