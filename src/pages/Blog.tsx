@@ -863,13 +863,13 @@ const ReadingProgressBar = ({ contentRef }: { contentRef: React.RefObject<HTMLDi
   );
 };
 
-const ArticleCard = ({ article, t }: { article: Article; t: (key: string, options?: Record<string, unknown>) => unknown }) => {
+const ArticleCard = ({ article, t }: { article: Article; t: (key: string, options?: Record<string, unknown>) => string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-  const hook = t(article.hookKey) as string;
-  const title = t(article.titleKey) as string;
-  const tags = t(article.tagsKey, { returnObjects: true }) as string[];
+  const hook = t(article.hookKey);
+  const title = t(article.titleKey);
+  const tags = t(article.tagsKey, { returnObjects: true }) as unknown as string[];
   const readingTime = calculateReadingTime(hook + article.content);
 
   const handleShare = (e: React.MouseEvent) => {
