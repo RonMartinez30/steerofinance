@@ -417,6 +417,8 @@
     "clearFilters": "Clear filters",
     "tableOfContents": "Table of Contents",
     "min": "min",
+    "keyIdea": "Key takeaway",
+    "myth": "Common myth",
     "tags": {
       "beginner": "Beginner",
       "skills": "Skills",
@@ -424,7 +426,88 @@
       "ritual": "Ritual",
       "mindset": "Mindset",
       "method": "Method",
-      "psychology": "Psychology"
+      "psychology": "Psychology",
+      "budget": "Budget"
+    },
+    "articles": {
+      "1": {
+        "title": "Understanding personal finances: why it's an essential skill today",
+        "tags": ["Beginner", "Skills"],
+        "hook": "Personal finance management is rarely taught in school. Yet understanding your money is now an essential skill, just like knowing how to manage your time or develop professional skills.\n\nMany people earn a decent living, but struggle to:\n• understand where their money goes,\n• make calm financial decisions,\n• or achieve their financial goals.\n\nThe good news? Personal finance can be learned.",
+        "sections": [
+          "Why personal finance management isn't innate",
+          "Understanding your money to regain financial control",
+          "Personal finance is a skill that develops over time",
+          "Conclusion: learning to manage money permanently changes the relationship with money"
+        ]
+      },
+      "2": {
+        "title": "Financial skill building: from confusion to steering your money",
+        "tags": ["Piloting", "Skills"],
+        "hook": "Many people feel like they \"manage their money poorly.\" In reality, most don't manage poorly: they don't steer.\n\nThey sometimes check their balance, pay their bills, save when there's something left... but without a global vision or clear method.\n\nThe good news?\nFinancial management isn't binary. It's built step by step, like real skill development.",
+        "sections": [
+          "From passive management to financial steering",
+          "Step 1: Observe your finances without judgment",
+          "Step 2: Structure to give meaning to numbers",
+          "Step 3: Understand gaps to make better decisions",
+          "Step 4: Decide based on your goals",
+          "Why financial skill building often fails",
+          "How Steero supports financial skill building",
+          "Conclusion: steering your finances is an accessible skill"
+        ]
+      },
+      "3": {
+        "title": "Why no financial tool works without a ritual",
+        "tags": ["Ritual", "Mindset"],
+        "hook": "Downloading a financial management app is easy. Checking it regularly... much less so.\n\nIt's not a lack of motivation. It's not a problem with financial intelligence either. The real breaking point is the absence of ritual.\n\nWithout ritual, even the best tool ends up forgotten. With a simple ritual, financial management finally becomes sustainable.",
+        "sections": [
+          "The real problem with modern financial tools",
+          "Financial ritual: what are we really talking about?",
+          "Ritual as a pillar of financial skill building",
+          "How Steero was designed around ritual, not the tool",
+          "Conclusion: without ritual, there's no financial control"
+        ]
+      },
+      "4": {
+        "title": "The 2-minute financial ritual: myth or reality?",
+        "tags": ["Ritual", "Method"],
+        "hook": "When talking about financial management, many still imagine:\n• complex spreadsheets,\n• hours of analysis,\n• a discipline that's hard to maintain.\n\nSo the idea of a 2-minute financial ritual seems unrealistic. Not because 2 minutes isn't enough... but because financial management is often thought of as a single block, instead of a set of complementary rituals.",
+        "sections": [
+          "Why financial management always seems too heavy",
+          "The key principle: one ritual = one purpose",
+          "Financial rituals: an architecture, not a constraint",
+          "Why the 2-minute ritual is not only possible, but essential",
+          "What a ritual-structured approach changes",
+          "Conclusion: it's not time that's missing, it's structure"
+        ]
+      },
+      "5": {
+        "title": "Understanding your finances as a dashboard, not as punishment",
+        "tags": ["Mindset", "Psychology"],
+        "hook": "If managing your money makes you uncomfortable, it's probably not because of the numbers. It's because of what they represent emotionally.\n\nFor many, looking at their finances means:\n• confronting past mistakes,\n• feeling guilty,\n• or feeling like being \"scolded.\"\n\nBut what if you completely changed perspective? What if your finances became a dashboard, not a judgment?",
+        "sections": [
+          "Why looking at finances is often experienced as punishment",
+          "A dashboard isn't there to judge, but to inform",
+          "Why visualization is such a powerful lever",
+          "From punishment to steering: a change of posture",
+          "How Steero helps you adopt this dashboard logic",
+          "Conclusion: looking at your finances should never be scary"
+        ]
+      },
+      "6": {
+        "title": "The 50/30/20 rule: good foundation or false promise?",
+        "tags": ["Budget", "Beginner"],
+        "hook": "If you're at all interested in budget management, you've surely come across this rule:\n• 50% for needs,\n• 30% for wants,\n• 20% for savings.\n\nSimple. Clear. Reassuring. But one question deserves to be asked: is it a real solution... or just a starting point?",
+        "sections": [
+          "Why the 50/30/20 rule is so popular",
+          "Why the rule can become guilt-inducing",
+          "The real question to ask (that the rule doesn't ask)",
+          "The rule as a benchmark, not a goal",
+          "Adapt rather than apply: the key to a lasting budget",
+          "How Steero helps you go beyond the rule without throwing it away",
+          "Conclusion: a good rule never replaces understanding"
+        ]
+      }
     }
   }
 }
