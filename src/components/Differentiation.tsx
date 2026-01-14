@@ -1,28 +1,13 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import featureBudgetiser from "@/assets/feature-budgetiser.webp";
 import featureSaisir from "@/assets/feature-saisir.webp";
 import featureRitualiser from "@/assets/feature-ritualiser.webp";
 
-const advantages = [{
-  title: "Budgétiser",
-  description: "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l'avenir. Bien les définir est essentiel. Crée des budgets clairs, grâce à la trajectoire, notre outil intuitif qui t'accompagne pour définir ta destination.",
-  image: featureBudgetiser,
-  link: null
-}, {
-  title: "Saisir",
-  description: "Contrairement à d'autres applications, Steero ne fait pas à ta place. La saisie manuelle crée un lien émotionnel : ce qui améliore significativement l'autorégulation… Le niveau, la jauge budgétaire, t'indique ce que tu as déjà dépensé, ce que la dépense saisie représente et ce qu'il reste dans ton budget.",
-  image: featureSaisir,
-  link: { label: "Les fondements comportementaux de Steero", url: "/pourquoi-steero#fondements-comportementaux" }
-}, {
-  title: "Ritualiser",
-  description: "La compréhension financière ne repose pas uniquement sur des connaissances, mais sur des habitudes comportementales. La répétition consciente est un facteur clé du changement durable, les rituels t'indiquent quoi faire, quoi regarder, quelles questions te poser et comment préparer la suite.",
-  image: featureRitualiser,
-  link: { label: "Les fondements comportementaux de Steero", url: "/pourquoi-steero#fondements-comportementaux" }
-}];
-
 const Differentiation = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -31,6 +16,23 @@ const Differentiation = () => {
 
   const decorY1 = useTransform(scrollYProgress, [0, 1], [-30, 80]);
   const decorY2 = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
+  const advantages = [{
+    titleKey: "differentiation.budget.title",
+    descriptionKey: "differentiation.budget.description",
+    image: featureBudgetiser,
+    link: null
+  }, {
+    titleKey: "differentiation.capture.title",
+    descriptionKey: "differentiation.capture.description",
+    image: featureSaisir,
+    link: { labelKey: "differentiation.capture.link", url: "/pourquoi-steero#fondements-comportementaux" }
+  }, {
+    titleKey: "differentiation.ritualize.title",
+    descriptionKey: "differentiation.ritualize.description",
+    image: featureRitualiser,
+    link: { labelKey: "differentiation.ritualize.link", url: "/pourquoi-steero#fondements-comportementaux" }
+  }];
 
   return (
     <section ref={sectionRef} className="py-20 bg-hero-gradient bg-secondary-foreground relative overflow-hidden">
@@ -55,13 +57,10 @@ const Differentiation = () => {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Pas d'automatisation qui te transforme en simple spectateur
+            {t('differentiation.title')}
           </h2>
           <p className="text-muted-foreground text-lg">
-            Avec Steero, tu deviens le pilote : tu comprends, ajustes et
-            ritualises ta trajectoire financière
-            <br className="hidden md:block" /> pour atteindre la destination que
-            tu as choisie.
+            {t('differentiation.description')}
           </p>
         </motion.div>
         <div className="max-w-6xl mx-auto space-y-20">
@@ -85,7 +84,7 @@ const Differentiation = () => {
                   className="w-full md:w-1/2"
                 >
                   <div className="rounded-2xl overflow-hidden shadow-lg bg-muted/30">
-                    <img src={adv.image} alt={adv.title} className="w-full h-auto object-cover" />
+                    <img src={adv.image} alt={t(adv.titleKey)} className="w-full h-auto object-cover" />
                   </div>
                 </motion.div>
 
@@ -98,7 +97,7 @@ const Differentiation = () => {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="text-2xl md:text-3xl font-bold text-primary mb-4"
                   >
-                    {adv.title}
+                    {t(adv.titleKey)}
                   </motion.h3>
                   <motion.p 
                     initial={{ opacity: 0, y: 20 }}
@@ -107,7 +106,7 @@ const Differentiation = () => {
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="text-muted-foreground text-lg leading-relaxed"
                   >
-                    {adv.description}
+                    {t(adv.descriptionKey)}
                   </motion.p>
                   {adv.link && (
                     <motion.div
@@ -121,7 +120,7 @@ const Differentiation = () => {
                         className="group inline-flex items-center mt-4 text-primary font-medium transition-all duration-300 hover:translate-x-1"
                       >
                         <span className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100">
-                          {adv.link.label}
+                          {t(adv.link.labelKey)}
                         </span>
                         <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
                       </Link>
