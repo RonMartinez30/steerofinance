@@ -228,31 +228,27 @@ const BudgetAnimation = ({
             <span className="font-medium text-foreground text-sm">{cat.name}</span>
             <span className="text-primary font-bold text-sm">{cat.amount}</span>
           </div>
-          <AnimatePresence>
-            {step >= i + 1 && <motion.div initial={{
-          width: 0,
-          opacity: 0
-        }} animate={{
-          width: "auto",
-          opacity: 1
-        }} exit={{
-          width: 0,
-          opacity: 0
-        }} className="ml-4 mt-1 flex gap-1 overflow-hidden">
-                {cat.sub.map((sub, j) => <motion.div key={j} initial={{
-            opacity: 0,
-            x: -15
-          }} animate={{
-            opacity: 1,
-            x: 0
-          }} transition={{
-            delay: j * 0.15,
-            duration: 0.3
-          }} className="text-xs text-primary bg-primary/5 rounded px-2 py-1 whitespace-nowrap">
-                    {sub}
-                  </motion.div>)}
-              </motion.div>}
-          </AnimatePresence>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: step >= i + 1 ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="ml-4 mt-1 flex gap-1 h-6"
+          >
+            {cat.sub.map((sub, j) => <motion.div key={j} 
+              initial={{ opacity: 0, x: -15 }}
+              animate={{ 
+                opacity: step >= i + 1 ? 1 : 0, 
+                x: step >= i + 1 ? 0 : -15 
+              }}
+              transition={{
+                delay: step >= i + 1 ? j * 0.15 : 0,
+                duration: 0.3
+              }} 
+              className="text-xs text-primary bg-primary/5 rounded px-2 py-1 whitespace-nowrap"
+            >
+              {sub}
+            </motion.div>)}
+          </motion.div>
         </motion.div>)}
     </div>;
 };
