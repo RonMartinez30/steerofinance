@@ -1068,7 +1068,7 @@ const Fonctionnalites = () => {
       animation: "daily",
       animationDirection: "vertical"
     }, {
-      emoji: "🟢",
+      emoji: "⚖️",
       title: t('fonctionnalites.features.level.title'),
       microPromise: t('fonctionnalites.features.level.microPromise'),
       details: t('fonctionnalites.features.level.details'),
