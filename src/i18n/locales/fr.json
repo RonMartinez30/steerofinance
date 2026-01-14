@@ -509,5 +509,240 @@
         ]
       }
     }
+  },
+  "legal": {
+    "cgs": {
+      "title": "Conditions Générales de Services",
+      "subtitle": "Application de gestion financière personnelle",
+      "lastUpdate": "Dernière mise à jour : Vendredi 9 janvier 2026",
+      "sections": {
+        "s1": {
+          "title": "1. Pourquoi ces conditions ?",
+          "intro": "Ces Conditions Générales de Services (les « CGS ») expliquent simplement :",
+          "items": ["ce que fait l'application,", "ce que tu peux en attendre,", "ce que nous faisons (et ne faisons pas),", "et comment chacun est protégé."],
+          "outro": "En créant un compte ou en utilisant l'application, tu acceptes ces conditions."
+        },
+        "s2": {
+          "title": "2. Ce qu'est l'application",
+          "intro": "L'application est un outil personnel de gestion financière et de suivi d'habitudes, conçu pour t'aider à :",
+          "items": ["mieux comprendre tes finances,", "suivre tes dépenses, revenus et budgets,", "fixer des objectifs clairs,", "adopter de meilleurs comportements financiers sur la durée."],
+          "notes": ["👉 Ce n'est pas une banque,", "👉 ce n'est pas un conseiller financier,", "👉 et ce n'est pas un outil de trading ou d'investissement automatisé."],
+          "outro": "C'est un tableau de bord intelligent pour t'aider à prendre de meilleures décisions."
+        },
+        "s3": {
+          "title": "3. À qui s'adresse l'application ?",
+          "intro": "L'application est destinée à toute personne majeure souhaitant organiser ses finances personnelles.",
+          "confirm": "En utilisant l'application, tu confirmes que :",
+          "items": ["tu es légalement capable de contracter,", "tu utilises l'outil pour un usage personnel (pas professionnel ou illégal)."]
+        },
+        "s4": {
+          "title": "4. Création et gestion du compte",
+          "intro": "Pour utiliser l'application, tu dois créer un compte.",
+          "responsible": "Tu es responsable :",
+          "items": ["des informations que tu renseignes,", "de la confidentialité de tes identifiants,", "de l'usage de ton compte."],
+          "outro": "Si tu constates une activité suspecte, contacte-nous rapidement."
+        },
+        "s5": {
+          "title": "5. Fonctionnalités et évolutions",
+          "intro": "Les fonctionnalités disponibles dépendent :",
+          "items": ["de la version de l'application,", "de ton abonnement éventuel."],
+          "evolution": "L'application évolue en continu : nous pouvons ajouter, modifier ou améliorer certaines fonctionnalités pour offrir une meilleure expérience.",
+          "outro": "Nous faisons toujours de notre mieux pour que ces évolutions restent cohérentes et bénéfiques."
+        },
+        "s6": {
+          "title": "6. Abonnements et paiements",
+          "intro": "Certaines fonctionnalités peuvent être accessibles via un abonnement payant.",
+          "conditions": "Les conditions (prix, durée, renouvellement) sont clairement indiquées au moment de la souscription.",
+          "renewal": "Les abonnements sont renouvelés automatiquement, sauf résiliation avant la date de renouvellement.",
+          "outro": "Tu peux gérer ou résilier ton abonnement à tout moment depuis ton compte."
+        },
+        "s7": {
+          "title": "7. Ce que l'application ne fait pas",
+          "important": "C'est important d'être clair 👇",
+          "noAdvice": "L'application ne donne pas de conseils financiers personnalisés.",
+          "informative": "Les analyses, graphiques, projections ou recommandations sont informatives, pas des garanties.",
+          "responsible": "Tu restes 100 % responsable de tes décisions financières.",
+          "outro": "Si tu as besoin de conseils professionnels (financiers, fiscaux, juridiques), fais appel à un expert qualifié."
+        },
+        "s8": {
+          "title": "8. Tes données",
+          "ownership": "Tes données t'appartiennent.",
+          "intro": "Nous :",
+          "items": ["les stockons de manière sécurisée,", "les utilisons uniquement pour faire fonctionner l'application,", "ne les revendons jamais."],
+          "details": "Les détails sur la gestion des données personnelles sont disponibles dans notre",
+          "privacyLink": "Politique de confidentialité",
+          "gdpr": "(conforme au RGPD)."
+        },
+        "s9": {
+          "title": "9. Disponibilité et sécurité",
+          "intro": "Nous mettons tout en œuvre pour :",
+          "items": ["assurer un service fiable,", "protéger tes données,", "maintenir l'application accessible."]
+        },
+        "s10": {
+          "title": "10. Responsabilité",
+          "intro": "L'application est un outil d'aide, pas une promesse de résultat.",
+          "noLiability": "Nous ne pouvons pas être tenus responsables :",
+          "items": ["d'erreurs de saisie,", "de mauvaises interprétations,", "de pertes financières,", "de décisions prises sur la base des données affichées."],
+          "outro": "Tu gardes le contrôle. Toujours."
+        },
+        "s11": {
+          "title": "11. Propriété intellectuelle",
+          "intro": "Tout ce qui compose l'application (design, code, textes, marque, structure) nous appartient ou est utilisé avec autorisation.",
+          "usage": "Tu peux utiliser l'application normalement, mais pas :",
+          "items": ["la copier,", "la revendre,", "la modifier,", "ou l'exploiter sans accord écrit."]
+        },
+        "s12": {
+          "title": "12. Résiliation",
+          "userDelete": "Tu peux supprimer ton compte à tout moment, simplement.",
+          "ourSide": "De notre côté, nous pouvons suspendre ou fermer un compte en cas :",
+          "items": ["d'usage abusif,", "de fraude,", "ou de non-respect des présentes conditions."]
+        },
+        "s13": {
+          "title": "13. Loi applicable",
+          "law": "Ces conditions sont régies par le droit français.",
+          "dispute": "En cas de litige, nous privilégions toujours une solution amiable avant toute action judiciaire."
+        },
+        "s14": {
+          "title": "14. Contact",
+          "question": "Une question, un souci, une idée ?",
+          "email": "📧 Contacte-nous à :",
+          "tempEmail": "(Mail temporaire)"
+        }
+      }
+    },
+    "mentions": {
+      "title": "Mentions légales",
+      "sections": {
+        "s1": {
+          "title": "1. Éditeur du site",
+          "intro": "Le site Steero est édité par la société Steero SAS, société par actions simplifiée au capital de 10 000 euros, immatriculée au Registre du Commerce et des Sociétés de Paris sous le numéro XXX XXX XXX.",
+          "address": "Siège social :",
+          "director": "Directeur de la publication :",
+          "email": "Email :",
+          "tbc": "[À compléter]"
+        },
+        "s2": {
+          "title": "2. Hébergement",
+          "intro": "Le site est hébergé par [Nom de l'hébergeur], dont le siège social est situé [Adresse de l'hébergeur]."
+        },
+        "s3": {
+          "title": "3. Propriété intellectuelle",
+          "content": "L'ensemble du contenu de ce site (textes, images, vidéos, logos, icônes, sons, logiciels, etc.) est protégé par le droit d'auteur et le droit des marques. Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de Steero SAS."
+        },
+        "s4": {
+          "title": "4. Protection des données personnelles",
+          "content": "Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données personnelles vous concernant. Pour exercer ces droits, vous pouvez nous contacter à l'adresse : contact@steero.fr"
+        },
+        "s5": {
+          "title": "5. Cookies",
+          "content": "Ce site utilise des cookies pour améliorer l'expérience utilisateur et mesurer l'audience. Vous pouvez configurer votre navigateur pour refuser les cookies, mais certaines fonctionnalités du site pourraient ne plus être disponibles."
+        },
+        "s6": {
+          "title": "6. Contact",
+          "content": "Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter à l'adresse email suivante : contact@steero.fr"
+        }
+      }
+    },
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "subtitle": "Protection des données personnelles & RGPD (UE)",
+      "lastUpdate": "Dernière mise à jour : Vendredi 09 janvier 2026",
+      "sections": {
+        "s1": {
+          "title": "1. Pourquoi cette politique ?",
+          "intro": "Ta vie privée est importante pour nous.",
+          "explains": "Cette politique de confidentialité explique :",
+          "items": ["quelles données nous collectons,", "pourquoi nous les collectons,", "comment nous les utilisons et les protégeons,", "et quels sont tes droits."],
+          "outro": "Elle s'applique à tous les utilisateurs de l'application."
+        },
+        "s2": {
+          "title": "2. Qui est responsable de tes données ?",
+          "intro": "Le responsable du traitement est :",
+          "company": "Steero",
+          "legalForm": "[Forme juridique] – [RCS] / En cours de création",
+          "address": "Siège social : 295 rue Lecourbe",
+          "contact": "📧 Contact : steerofinance@gmail.com (Mail temporaire)"
+        },
+        "s3": {
+          "title": "3. Quelles données collectons-nous ?",
+          "intro": "Nous collectons uniquement les données nécessaires au fonctionnement de l'application.",
+          "voluntary": "🔹 Données que tu fournis volontairement",
+          "voluntaryItems": ["Adresse email", "Mot de passe (chiffré)", "Informations de profil (facultatives)"],
+          "financial": "Données financières saisies manuellement :",
+          "financialItems": ["budgets (Objectifs)", "transactions", "revenus", "habitudes", "catégories personnalisées"],
+          "note": "👉 Aucune donnée bancaire n'est collectée sans action volontaire explicite de ta part.",
+          "technical": "🔹 Données techniques",
+          "technicalItems": ["Type d'appareil et navigateur", "Adresse IP", "Logs de connexion", "Données d'usage anonymisées (pour améliorer le produit)"]
+        },
+        "s4": {
+          "title": "4. Pourquoi utilisons-nous ces données ?",
+          "intro": "Tes données sont utilisées pour :",
+          "items": ["Fournir et faire fonctionner l'application", "Sauvegarder et afficher tes informations", "Calculer des statistiques et visualisations", "Améliorer l'expérience utilisateur", "Assurer la sécurité et prévenir la fraude", "Gérer les abonnements et la facturation", "Répondre à tes demandes de support"],
+          "noProfiling": "Nous ne faisons aucun profilage publicitaire."
+        },
+        "s5": {
+          "title": "5. Base légale du traitement (RGPD)",
+          "intro": "Conformément au RGPD, les traitements reposent sur :",
+          "items": ["L'exécution du contrat (utilisation normale de l'application)", "Ton consentement (ex : communications non essentielles)", "Notre intérêt légitime (sécurité, amélioration du produit)"]
+        },
+        "s6": {
+          "title": "6. Partage des données",
+          "noSell": "Nous ne vendons jamais tes données. Jamais.",
+          "shared": "Tes données peuvent être partagées uniquement avec :",
+          "items": ["des prestataires techniques de confiance (hébergement, paiement, emails),", "strictement dans le cadre du fonctionnement de l'application,", "avec des garanties contractuelles conformes au RGPD."],
+          "outro": "Aucune donnée n'est transmise à des tiers à des fins commerciales."
+        },
+        "s7": {
+          "title": "7. Où sont stockées tes données ?",
+          "location": "Les données sont hébergées au sein de l'Union Européenne ou dans des pays reconnus comme adéquats par la Commission européenne.",
+          "scc": "Si un prestataire hors UE est utilisé, des clauses contractuelles standard (SCC) sont mises en place."
+        },
+        "s8": {
+          "title": "8. Combien de temps conservons-nous tes données ?",
+          "content": "Les données sont conservées pendant la durée de ton utilisation de l'application, puis supprimées ou anonymisées conformément aux obligations légales."
+        },
+        "s9": {
+          "title": "9. Sécurité des données",
+          "intro": "Nous mettons en œuvre des mesures techniques et organisationnelles adaptées :",
+          "items": ["chiffrement des mots de passe", "accès restreint aux données", "surveillance des accès", "sauvegardes sécurisées"],
+          "outro": "Aucun système n'est infaillible, mais la sécurité est une priorité."
+        },
+        "s10": {
+          "title": "10. Tes droits (RGPD)",
+          "intro": "Conformément au RGPD, tu disposes des droits suivants :",
+          "items": ["Droit d'accès à tes données", "Droit de rectification", "Droit à l'effacement (droit à l'oubli)", "Droit à la limitation du traitement", "Droit à la portabilité", "Droit d'opposition", "Droit de retirer ton consentement à tout moment"],
+          "exercise": "📩 Pour exercer tes droits : Contacte-nous à",
+          "response": "Nous répondons sous 30 jours maximum."
+        },
+        "s11": {
+          "title": "11. Suppression du compte",
+          "intro": "Tu peux supprimer ton compte directement depuis l'application.",
+          "result": "Cette action entraîne :",
+          "items": ["la suppression de tes données personnelles,", "sauf obligations légales de conservation."]
+        },
+        "s12": {
+          "title": "12. Cookies et traceurs",
+          "intro": "L'application peut utiliser :",
+          "items": ["des cookies strictement nécessaires,", "des outils de mesure anonymisés."],
+          "outro": "Aucun cookie publicitaire sans consentement explicite."
+        },
+        "s13": {
+          "title": "13. Modifications de la politique",
+          "intro": "Cette politique peut évoluer pour :",
+          "items": ["rester conforme à la loi,", "refléter l'évolution du produit."],
+          "outro": "En cas de changement majeur, tu seras informé."
+        },
+        "s14": {
+          "title": "14. Réclamation",
+          "intro": "Si tu estimes que tes droits ne sont pas respectés, tu peux :",
+          "items": ["nous contacter directement,", "ou saisir l'autorité de contrôle compétente (ex : CNIL en France)."]
+        },
+        "s15": {
+          "title": "15. Contact",
+          "question": "Une question sur tes données ?",
+          "tempEmail": "(Mail temporaire)"
+        }
+      }
+    }
   }
 }

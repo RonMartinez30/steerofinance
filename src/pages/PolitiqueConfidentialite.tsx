@@ -1,7 +1,10 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useTranslation } from "react-i18next";
 
 const PolitiqueConfidentialite = () => {
+  const { t } = useTranslation();
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -9,215 +12,187 @@ const PolitiqueConfidentialite = () => {
       <main className="flex-grow pt-32 pb-16">
         <div className="container mx-auto px-6 max-w-4xl">
           <h1 className="text-4xl font-bold text-foreground mb-2">
-            Politique de confidentialité
+            {t('legal.privacy.title')}
           </h1>
           <p className="text-muted-foreground mb-4">
-            Protection des données personnelles & RGPD (UE)
+            {t('legal.privacy.subtitle')}
           </p>
           <p className="text-sm text-muted-foreground mb-12">
-            Dernière mise à jour : Vendredi 09 janvier 2026
+            {t('legal.privacy.lastUpdate')}
           </p>
 
           <div className="space-y-10 text-foreground">
             {/* Section 1 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">1. Pourquoi cette politique ?</h2>
-              <p className="mb-4">Ta vie privée est importante pour nous.</p>
-              <p className="mb-4">Cette politique de confidentialité explique :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s1.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s1.intro')}</p>
+              <p className="mb-4">{t('legal.privacy.sections.s1.explains')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>quelles données nous collectons,</li>
-                <li>pourquoi nous les collectons,</li>
-                <li>comment nous les utilisons et les protégeons,</li>
-                <li>et quels sont tes droits.</li>
+                {(t('legal.privacy.sections.s1.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
-              <p className="mt-4">Elle s'applique à tous les utilisateurs de l'application.</p>
+              <p className="mt-4">{t('legal.privacy.sections.s1.outro')}</p>
             </section>
 
             {/* Section 2 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">2. Qui est responsable de tes données ?</h2>
-              <p className="mb-4">Le responsable du traitement est :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s2.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s2.intro')}</p>
               <div className="bg-muted/50 p-4 rounded-lg space-y-2 text-muted-foreground">
-                <p><strong className="text-foreground">Steero</strong></p>
-                <p>[Forme juridique] – [RCS] / En cours de création</p>
-                <p>Siège social : 295 rue Lecourbe</p>
-                <p>📧 Contact : steerofinance@gmail.com (Mail temporaire)</p>
+                <p><strong className="text-foreground">{t('legal.privacy.sections.s2.company')}</strong></p>
+                <p>{t('legal.privacy.sections.s2.legalForm')}</p>
+                <p>{t('legal.privacy.sections.s2.address')}</p>
+                <p>{t('legal.privacy.sections.s2.contact')}</p>
               </div>
             </section>
 
             {/* Section 3 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">3. Quelles données collectons-nous ?</h2>
-              <p className="mb-4">Nous collectons uniquement les données nécessaires au fonctionnement de l'application.</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s3.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s3.intro')}</p>
               
-              <h3 className="text-lg font-medium mb-3">🔹 Données que tu fournis volontairement</h3>
+              <h3 className="text-lg font-medium mb-3">{t('legal.privacy.sections.s3.voluntary')}</h3>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-4">
-                <li>Adresse email</li>
-                <li>Mot de passe (chiffré)</li>
-                <li>Informations de profil (facultatives)</li>
+                {(t('legal.privacy.sections.s3.voluntaryItems', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
 
-              <p className="mb-3">Données financières saisies manuellement :</p>
+              <p className="mb-3">{t('legal.privacy.sections.s3.financial')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-4">
-                <li>budgets (Objectifs)</li>
-                <li>transactions</li>
-                <li>revenus</li>
-                <li>habitudes</li>
-                <li>catégories personnalisées</li>
+                {(t('legal.privacy.sections.s3.financialItems', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
-              <p className="text-sm text-muted-foreground mb-6">
-                👉 Aucune donnée bancaire n'est collectée sans action volontaire explicite de ta part.
-              </p>
+              <p className="text-sm text-muted-foreground mb-6">{t('legal.privacy.sections.s3.note')}</p>
 
-              <h3 className="text-lg font-medium mb-3">🔹 Données techniques</h3>
+              <h3 className="text-lg font-medium mb-3">{t('legal.privacy.sections.s3.technical')}</h3>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Type d'appareil et navigateur</li>
-                <li>Adresse IP</li>
-                <li>Logs de connexion</li>
-                <li>Données d'usage anonymisées (pour améliorer le produit)</li>
+                {(t('legal.privacy.sections.s3.technicalItems', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
             </section>
 
-            {/* Section 4 */}
+            {/* Section 4-15 - simplified pattern */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">4. Pourquoi utilisons-nous ces données ?</h2>
-              <p className="mb-4">Tes données sont utilisées pour :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s4.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s4.intro')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Fournir et faire fonctionner l'application</li>
-                <li>Sauvegarder et afficher tes informations</li>
-                <li>Calculer des statistiques et visualisations</li>
-                <li>Améliorer l'expérience utilisateur</li>
-                <li>Assurer la sécurité et prévenir la fraude</li>
-                <li>Gérer les abonnements et la facturation</li>
-                <li>Répondre à tes demandes de support</li>
+                {(t('legal.privacy.sections.s4.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
-              <p className="mt-4 font-medium">Nous ne faisons aucun profilage publicitaire.</p>
+              <p className="mt-4 font-medium">{t('legal.privacy.sections.s4.noProfiling')}</p>
             </section>
 
-            {/* Section 5 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">5. Base légale du traitement (RGPD)</h2>
-              <p className="mb-4">Conformément au RGPD, les traitements reposent sur :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s5.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s5.intro')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>L'exécution du contrat (utilisation normale de l'application)</li>
-                <li>Ton consentement (ex : communications non essentielles)</li>
-                <li>Notre intérêt légitime (sécurité, amélioration du produit)</li>
+                {(t('legal.privacy.sections.s5.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
             </section>
 
-            {/* Section 6 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">6. Partage des données</h2>
-              <p className="mb-4 font-medium">Nous ne vendons jamais tes données. Jamais.</p>
-              <p className="mb-4">Tes données peuvent être partagées uniquement avec :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s6.title')}</h2>
+              <p className="mb-4 font-medium">{t('legal.privacy.sections.s6.noSell')}</p>
+              <p className="mb-4">{t('legal.privacy.sections.s6.shared')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>des prestataires techniques de confiance (hébergement, paiement, emails),</li>
-                <li>strictement dans le cadre du fonctionnement de l'application,</li>
-                <li>avec des garanties contractuelles conformes au RGPD.</li>
+                {(t('legal.privacy.sections.s6.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
-              <p className="mt-4">Aucune donnée n'est transmise à des tiers à des fins commerciales.</p>
+              <p className="mt-4">{t('legal.privacy.sections.s6.outro')}</p>
             </section>
 
-            {/* Section 7 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">7. Où sont stockées tes données ?</h2>
-              <p className="mb-4">
-                Les données sont hébergées au sein de l'Union Européenne ou dans des pays reconnus comme adéquats par la Commission européenne.
-              </p>
-              <p>
-                Si un prestataire hors UE est utilisé, des clauses contractuelles standard (SCC) sont mises en place.
-              </p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s7.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s7.location')}</p>
+              <p>{t('legal.privacy.sections.s7.scc')}</p>
             </section>
 
-            {/* Section 8 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">8. Combien de temps conservons-nous tes données ?</h2>
-              <p className="text-muted-foreground">
-                Les données sont conservées pendant la durée de ton utilisation de l'application, puis supprimées ou anonymisées conformément aux obligations légales.
-              </p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s8.title')}</h2>
+              <p className="text-muted-foreground">{t('legal.privacy.sections.s8.content')}</p>
             </section>
 
-            {/* Section 9 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">9. Sécurité des données</h2>
-              <p className="mb-4">Nous mettons en œuvre des mesures techniques et organisationnelles adaptées :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s9.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s9.intro')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>chiffrement des mots de passe</li>
-                <li>accès restreint aux données</li>
-                <li>surveillance des accès</li>
-                <li>sauvegardes sécurisées</li>
+                {(t('legal.privacy.sections.s9.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
-              <p className="mt-4">Aucun système n'est infaillible, mais la sécurité est une priorité.</p>
+              <p className="mt-4">{t('legal.privacy.sections.s9.outro')}</p>
             </section>
 
-            {/* Section 10 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">10. Tes droits (RGPD)</h2>
-              <p className="mb-4">Conformément au RGPD, tu disposes des droits suivants :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s10.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s10.intro')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Droit d'accès à tes données</li>
-                <li>Droit de rectification</li>
-                <li>Droit à l'effacement (droit à l'oubli)</li>
-                <li>Droit à la limitation du traitement</li>
-                <li>Droit à la portabilité</li>
-                <li>Droit d'opposition</li>
-                <li>Droit de retirer ton consentement à tout moment</li>
+                {(t('legal.privacy.sections.s10.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
               <p className="mt-4">
-                📩 Pour exercer tes droits : Contacte-nous à <a href="mailto:steerofinance@gmail.com" className="text-primary hover:underline">steerofinance@gmail.com</a> (Mail temporaire)
+                {t('legal.privacy.sections.s10.exercise')} <a href="mailto:steerofinance@gmail.com" className="text-primary hover:underline">steerofinance@gmail.com</a>
               </p>
-              <p className="mt-2 text-muted-foreground">Nous répondons sous 30 jours maximum.</p>
+              <p className="mt-2 text-muted-foreground">{t('legal.privacy.sections.s10.response')}</p>
             </section>
 
-            {/* Section 11 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">11. Suppression du compte</h2>
-              <p className="mb-4">Tu peux supprimer ton compte directement depuis l'application.</p>
-              <p className="mb-2">Cette action entraîne :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s11.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s11.intro')}</p>
+              <p className="mb-2">{t('legal.privacy.sections.s11.result')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>la suppression de tes données personnelles,</li>
-                <li>sauf obligations légales de conservation.</li>
+                {(t('legal.privacy.sections.s11.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
             </section>
 
-            {/* Section 12 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">12. Cookies et traceurs</h2>
-              <p className="mb-4">L'application peut utiliser :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s12.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s12.intro')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>des cookies strictement nécessaires,</li>
-                <li>des outils de mesure anonymisés.</li>
+                {(t('legal.privacy.sections.s12.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
-              <p className="mt-4">Aucun cookie publicitaire sans consentement explicite.</p>
+              <p className="mt-4">{t('legal.privacy.sections.s12.outro')}</p>
             </section>
 
-            {/* Section 13 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">13. Modifications de la politique</h2>
-              <p className="mb-4">Cette politique peut évoluer pour :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s13.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s13.intro')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>rester conforme à la loi,</li>
-                <li>refléter l'évolution du produit.</li>
+                {(t('legal.privacy.sections.s13.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
-              <p className="mt-4">En cas de changement majeur, tu seras informé.</p>
+              <p className="mt-4">{t('legal.privacy.sections.s13.outro')}</p>
             </section>
 
-            {/* Section 14 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">14. Réclamation</h2>
-              <p className="mb-4">Si tu estimes que tes droits ne sont pas respectés, tu peux :</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s14.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s14.intro')}</p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>nous contacter directement,</li>
-                <li>ou saisir l'autorité de contrôle compétente (ex : CNIL en France).</li>
+                {(t('legal.privacy.sections.s14.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
             </section>
 
-            {/* Section 15 */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">15. Contact</h2>
-              <p className="mb-4">Une question sur tes données ?</p>
+              <h2 className="text-2xl font-semibold mb-4">{t('legal.privacy.sections.s15.title')}</h2>
+              <p className="mb-4">{t('legal.privacy.sections.s15.question')}</p>
               <p>
-                📧 <a href="mailto:steerofinance@gmail.com" className="text-primary hover:underline">steerofinance@gmail.com</a> (Mail temporaire)
+                📧 <a href="mailto:steerofinance@gmail.com" className="text-primary hover:underline">steerofinance@gmail.com</a> {t('legal.privacy.sections.s15.tempEmail')}
               </p>
             </section>
           </div>

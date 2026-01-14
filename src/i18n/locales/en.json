@@ -509,5 +509,240 @@
         ]
       }
     }
+  },
+  "legal": {
+    "cgs": {
+      "title": "Terms of Service",
+      "subtitle": "Personal financial management application",
+      "lastUpdate": "Last updated: Friday, January 9, 2026",
+      "sections": {
+        "s1": {
+          "title": "1. Why these terms?",
+          "intro": "These Terms of Service simply explain:",
+          "items": ["what the application does,", "what you can expect from it,", "what we do (and don't do),", "and how everyone is protected."],
+          "outro": "By creating an account or using the application, you accept these terms."
+        },
+        "s2": {
+          "title": "2. What the application is",
+          "intro": "The application is a personal financial management and habit tracking tool, designed to help you:",
+          "items": ["better understand your finances,", "track your expenses, income, and budgets,", "set clear goals,", "adopt better long-term financial behaviors."],
+          "notes": ["👉 It's not a bank,", "👉 it's not a financial advisor,", "👉 and it's not an automated trading or investment tool."],
+          "outro": "It's a smart dashboard to help you make better decisions."
+        },
+        "s3": {
+          "title": "3. Who is the application for?",
+          "intro": "The application is intended for any adult wishing to organize their personal finances.",
+          "confirm": "By using the application, you confirm that:",
+          "items": ["you are legally capable of contracting,", "you use the tool for personal use (not professional or illegal)."]
+        },
+        "s4": {
+          "title": "4. Account creation and management",
+          "intro": "To use the application, you must create an account.",
+          "responsible": "You are responsible for:",
+          "items": ["the information you provide,", "the confidentiality of your credentials,", "the use of your account."],
+          "outro": "If you notice suspicious activity, contact us quickly."
+        },
+        "s5": {
+          "title": "5. Features and updates",
+          "intro": "Available features depend on:",
+          "items": ["the version of the application,", "your subscription, if any."],
+          "evolution": "The application evolves continuously: we may add, modify, or improve certain features to offer a better experience.",
+          "outro": "We always do our best to ensure these changes remain consistent and beneficial."
+        },
+        "s6": {
+          "title": "6. Subscriptions and payments",
+          "intro": "Some features may be accessible via a paid subscription.",
+          "conditions": "The conditions (price, duration, renewal) are clearly indicated at the time of subscription.",
+          "renewal": "Subscriptions are automatically renewed, unless cancelled before the renewal date.",
+          "outro": "You can manage or cancel your subscription at any time from your account."
+        },
+        "s7": {
+          "title": "7. What the application doesn't do",
+          "important": "This is important to be clear about 👇",
+          "noAdvice": "The application does not provide personalized financial advice.",
+          "informative": "Analyses, charts, projections, or recommendations are informative, not guarantees.",
+          "responsible": "You remain 100% responsible for your financial decisions.",
+          "outro": "If you need professional advice (financial, tax, legal), consult a qualified expert."
+        },
+        "s8": {
+          "title": "8. Your data",
+          "ownership": "Your data belongs to you.",
+          "intro": "We:",
+          "items": ["store it securely,", "use it only to operate the application,", "never sell it."],
+          "details": "Details on personal data management are available in our",
+          "privacyLink": "Privacy Policy",
+          "gdpr": "(GDPR compliant)."
+        },
+        "s9": {
+          "title": "9. Availability and security",
+          "intro": "We do our best to:",
+          "items": ["ensure reliable service,", "protect your data,", "keep the application accessible."]
+        },
+        "s10": {
+          "title": "10. Liability",
+          "intro": "The application is a support tool, not a promise of results.",
+          "noLiability": "We cannot be held liable for:",
+          "items": ["input errors,", "misinterpretations,", "financial losses,", "decisions made based on displayed data."],
+          "outro": "You keep control. Always."
+        },
+        "s11": {
+          "title": "11. Intellectual property",
+          "intro": "Everything that makes up the application (design, code, texts, brand, structure) belongs to us or is used with authorization.",
+          "usage": "You can use the application normally, but not:",
+          "items": ["copy it,", "resell it,", "modify it,", "or exploit it without written agreement."]
+        },
+        "s12": {
+          "title": "12. Termination",
+          "userDelete": "You can delete your account at any time, simply.",
+          "ourSide": "On our side, we may suspend or close an account in case of:",
+          "items": ["abusive use,", "fraud,", "or non-compliance with these terms."]
+        },
+        "s13": {
+          "title": "13. Applicable law",
+          "law": "These terms are governed by French law.",
+          "dispute": "In case of dispute, we always prefer an amicable solution before any legal action."
+        },
+        "s14": {
+          "title": "14. Contact",
+          "question": "A question, a problem, an idea?",
+          "email": "📧 Contact us at:",
+          "tempEmail": "(Temporary email)"
+        }
+      }
+    },
+    "mentions": {
+      "title": "Legal Notice",
+      "sections": {
+        "s1": {
+          "title": "1. Site publisher",
+          "intro": "The Steero site is published by Steero SAS, a simplified joint-stock company with capital of 10,000 euros, registered with the Paris Trade and Companies Register under number XXX XXX XXX.",
+          "address": "Registered office:",
+          "director": "Publication director:",
+          "email": "Email:",
+          "tbc": "[To be completed]"
+        },
+        "s2": {
+          "title": "2. Hosting",
+          "intro": "The site is hosted by [Host name], whose registered office is located at [Host address]."
+        },
+        "s3": {
+          "title": "3. Intellectual property",
+          "content": "All content on this site (texts, images, videos, logos, icons, sounds, software, etc.) is protected by copyright and trademark law. Any reproduction, representation, modification, publication, or adaptation of all or part of the site elements, by any means or process, is prohibited without prior written authorization from Steero SAS."
+        },
+        "s4": {
+          "title": "4. Personal data protection",
+          "content": "In accordance with the General Data Protection Regulation (GDPR), you have the right to access, rectify, delete, and object to personal data concerning you. To exercise these rights, you can contact us at: contact@steero.fr"
+        },
+        "s5": {
+          "title": "5. Cookies",
+          "content": "This site uses cookies to improve user experience and measure audience. You can configure your browser to refuse cookies, but some site features may no longer be available."
+        },
+        "s6": {
+          "title": "6. Contact",
+          "content": "For any questions regarding these legal notices, you can contact us at the following email address: contact@steero.fr"
+        }
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "subtitle": "Personal data protection & GDPR (EU)",
+      "lastUpdate": "Last updated: Friday, January 9, 2026",
+      "sections": {
+        "s1": {
+          "title": "1. Why this policy?",
+          "intro": "Your privacy is important to us.",
+          "explains": "This privacy policy explains:",
+          "items": ["what data we collect,", "why we collect it,", "how we use and protect it,", "and what your rights are."],
+          "outro": "It applies to all application users."
+        },
+        "s2": {
+          "title": "2. Who is responsible for your data?",
+          "intro": "The data controller is:",
+          "company": "Steero",
+          "legalForm": "[Legal form] – [RCS] / Being created",
+          "address": "Registered office: 295 rue Lecourbe",
+          "contact": "📧 Contact: steerofinance@gmail.com (Temporary email)"
+        },
+        "s3": {
+          "title": "3. What data do we collect?",
+          "intro": "We only collect data necessary for the application to function.",
+          "voluntary": "🔹 Data you voluntarily provide",
+          "voluntaryItems": ["Email address", "Password (encrypted)", "Profile information (optional)"],
+          "financial": "Manually entered financial data:",
+          "financialItems": ["budgets (Goals)", "transactions", "income", "habits", "custom categories"],
+          "note": "👉 No banking data is collected without your explicit voluntary action.",
+          "technical": "🔹 Technical data",
+          "technicalItems": ["Device type and browser", "IP address", "Connection logs", "Anonymized usage data (to improve the product)"]
+        },
+        "s4": {
+          "title": "4. Why do we use this data?",
+          "intro": "Your data is used to:",
+          "items": ["Provide and operate the application", "Save and display your information", "Calculate statistics and visualizations", "Improve user experience", "Ensure security and prevent fraud", "Manage subscriptions and billing", "Respond to your support requests"],
+          "noProfiling": "We do not do any advertising profiling."
+        },
+        "s5": {
+          "title": "5. Legal basis for processing (GDPR)",
+          "intro": "In accordance with GDPR, processing is based on:",
+          "items": ["Contract execution (normal use of the application)", "Your consent (e.g., non-essential communications)", "Our legitimate interest (security, product improvement)"]
+        },
+        "s6": {
+          "title": "6. Data sharing",
+          "noSell": "We never sell your data. Never.",
+          "shared": "Your data may only be shared with:",
+          "items": ["trusted technical providers (hosting, payment, emails),", "strictly within the scope of application operation,", "with contractual guarantees compliant with GDPR."],
+          "outro": "No data is transmitted to third parties for commercial purposes."
+        },
+        "s7": {
+          "title": "7. Where is your data stored?",
+          "location": "Data is hosted within the European Union or in countries recognized as adequate by the European Commission.",
+          "scc": "If a provider outside the EU is used, standard contractual clauses (SCC) are implemented."
+        },
+        "s8": {
+          "title": "8. How long do we keep your data?",
+          "content": "Data is kept for the duration of your use of the application, then deleted or anonymized in accordance with legal obligations."
+        },
+        "s9": {
+          "title": "9. Data security",
+          "intro": "We implement appropriate technical and organizational measures:",
+          "items": ["password encryption", "restricted data access", "access monitoring", "secure backups"],
+          "outro": "No system is infallible, but security is a priority."
+        },
+        "s10": {
+          "title": "10. Your rights (GDPR)",
+          "intro": "In accordance with GDPR, you have the following rights:",
+          "items": ["Right to access your data", "Right to rectification", "Right to erasure (right to be forgotten)", "Right to restriction of processing", "Right to data portability", "Right to object", "Right to withdraw your consent at any time"],
+          "exercise": "📩 To exercise your rights: Contact us at",
+          "response": "We respond within 30 days maximum."
+        },
+        "s11": {
+          "title": "11. Account deletion",
+          "intro": "You can delete your account directly from the application.",
+          "result": "This action results in:",
+          "items": ["the deletion of your personal data,", "except for legal retention obligations."]
+        },
+        "s12": {
+          "title": "12. Cookies and trackers",
+          "intro": "The application may use:",
+          "items": ["strictly necessary cookies,", "anonymized measurement tools."],
+          "outro": "No advertising cookies without explicit consent."
+        },
+        "s13": {
+          "title": "13. Policy changes",
+          "intro": "This policy may evolve to:",
+          "items": ["remain compliant with the law,", "reflect product evolution."],
+          "outro": "In case of major changes, you will be informed."
+        },
+        "s14": {
+          "title": "14. Complaint",
+          "intro": "If you believe your rights are not being respected, you can:",
+          "items": ["contact us directly,", "or file a complaint with the competent supervisory authority (e.g., CNIL in France)."]
+        },
+        "s15": {
+          "title": "15. Contact",
+          "question": "A question about your data?",
+          "tempEmail": "(Temporary email)"
+        }
+      }
+    }
   }
 }
