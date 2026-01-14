@@ -417,6 +417,8 @@
     "clearFilters": "Effacer les filtres",
     "tableOfContents": "Sommaire",
     "min": "min",
+    "keyIdea": "À retenir",
+    "myth": "Idée reçue",
     "tags": {
       "beginner": "Débutant",
       "skills": "Compétences",
@@ -424,7 +426,88 @@
       "ritual": "Rituel",
       "mindset": "Mindset",
       "method": "Méthode",
-      "psychology": "Psychologie"
+      "psychology": "Psychologie",
+      "budget": "Budget"
+    },
+    "articles": {
+      "1": {
+        "title": "Comprendre ses finances personnelles : pourquoi c'est une compétence essentielle aujourd'hui",
+        "tags": ["Débutant", "Compétences"],
+        "hook": "La gestion des finances personnelles est rarement enseignée à l'école. Pourtant, comprendre son argent est aujourd'hui une compétence essentielle, au même titre que savoir organiser son temps ou développer ses compétences professionnelles.\n\nBeaucoup de personnes gagnent correctement leur vie, mais peinent à :\n• comprendre où part leur argent,\n• prendre des décisions financières sereines,\n• ou atteindre leurs objectifs financiers.\n\nLa bonne nouvelle ? La finance personnelle s'apprend.",
+        "sections": [
+          "Pourquoi la gestion des finances personnelles n'est pas innée",
+          "Comprendre son argent pour reprendre le contrôle financier",
+          "La finance personnelle est une compétence qui se développe avec le temps",
+          "Conclusion : apprendre à gérer son argent change durablement la relation à l'argent"
+        ]
+      },
+      "2": {
+        "title": "La montée en compétences financières : passer du flou au pilotage de son argent",
+        "tags": ["Pilotage", "Compétences"],
+        "hook": "Beaucoup de personnes ont l'impression de \"mal gérer\" leur argent. En réalité, la plupart ne gèrent pas mal : elles ne pilotent pas.\n\nElles regardent parfois leur solde, paient leurs factures, épargnent quand il reste quelque chose… mais sans vision globale ni méthode claire.\n\nLa bonne nouvelle ?\nLa gestion financière n'est pas binaire. Elle se construit par étapes, comme une véritable montée en compétences.",
+        "sections": [
+          "De la gestion subie au pilotage financier",
+          "Étape 1 : Observer ses finances sans jugement",
+          "Étape 2 : Structurer pour donner du sens aux chiffres",
+          "Étape 3 : Comprendre les écarts pour mieux décider",
+          "Étape 4 : Décider en fonction de ses objectifs",
+          "Pourquoi la montée en compétences financières échoue souvent",
+          "Comment Steero accompagne la montée en compétences financières",
+          "Conclusion : piloter ses finances est une compétence accessible"
+        ]
+      },
+      "3": {
+        "title": "Pourquoi sans rituel, aucun outil financier ne fonctionne",
+        "tags": ["Rituel", "Mindset"],
+        "hook": "Télécharger une application de gestion financière est facile. La consulter régulièrement… beaucoup moins.\n\nCe n'est pas un manque de motivation. Ce n'est pas non plus un problème d'intelligence financière. Le véritable point de rupture, c'est l'absence de rituel.\n\nSans rituel, même le meilleur outil finit oublié. Avec un rituel simple, la gestion financière devient enfin durable.",
+        "sections": [
+          "Le vrai problème des outils financiers modernes",
+          "Rituel financier : de quoi parle-t-on vraiment ?",
+          "Le rituel comme pilier de la montée en compétences financières",
+          "Comment Steero a été pensé autour du rituel, pas de l'outil",
+          "Conclusion : sans rituel, il n'y a pas de contrôle financier"
+        ]
+      },
+      "4": {
+        "title": "Le rituel financier en 2 minutes : mythe ou réalité ?",
+        "tags": ["Rituel", "Méthode"],
+        "hook": "Quand on parle de gestion financière, beaucoup imaginent encore :\n• des tableurs complexes,\n• des heures d'analyse,\n• une discipline difficile à tenir.\n\nAlors l'idée d'un rituel financier en 2 minutes semble irréaliste. Pas parce que 2 minutes ne suffisent pas… mais parce que la gestion financière est souvent pensée comme un bloc unique, au lieu d'un ensemble de rituels complémentaires.",
+        "sections": [
+          "Pourquoi la gestion financière paraît toujours trop lourde",
+          "Le principe clé : un rituel = une vocation",
+          "Les rituels financiers : une architecture, pas une contrainte",
+          "Pourquoi le rituel en 2 minutes est non seulement possible, mais essentiel",
+          "Ce que change une approche structurée par rituels",
+          "Conclusion : ce n'est pas le temps qui manque, c'est la structure"
+        ]
+      },
+      "5": {
+        "title": "Comprendre tes finances comme un tableau de bord, pas comme une punition",
+        "tags": ["Mindset", "Psychologie"],
+        "hook": "Si gérer ton argent te met mal à l'aise, ce n'est probablement pas à cause des chiffres. C'est à cause de ce qu'ils représentent émotionnellement.\n\nPour beaucoup, regarder ses finances, c'est :\n• se confronter à des erreurs passées,\n• ressentir de la culpabilité,\n• ou avoir l'impression de se faire \"gronder\".\n\nMais si tu changeais complètement de perspective ? Et si tes finances devenaient un tableau de bord, pas un jugement ?",
+        "sections": [
+          "Pourquoi regarder ses finances est souvent vécu comme une punition",
+          "Un tableau de bord n'est pas là pour juger, mais pour informer",
+          "Pourquoi la visualisation est un levier si puissant",
+          "De la sanction au pilotage : un changement de posture",
+          "Comment Steero t'aide à adopter cette logique de tableau de bord",
+          "Conclusion : regarder tes finances ne devrait jamais faire peur"
+        ]
+      },
+      "6": {
+        "title": "La règle des 50 / 30 / 20 : bonne base ou fausse promesse ?",
+        "tags": ["Budget", "Débutant"],
+        "hook": "Si tu t'intéresses un peu à la gestion de budget, tu as forcément déjà croisé cette règle :\n• 50 % pour les besoins,\n• 30 % pour les envies,\n• 20 % pour l'épargne.\n\nSimple. Claire. Rassurante. Mais une question mérite d'être posée : est-ce une vraie solution… ou juste un point de départ ?",
+        "sections": [
+          "Pourquoi la règle des 50 / 30 / 20 est si populaire",
+          "Pourquoi la règle peut devenir culpabilisante",
+          "La vraie question à se poser (et que la règle ne pose pas)",
+          "La règle comme repère, pas comme objectif",
+          "Adapter plutôt qu'appliquer : la clé d'un budget durable",
+          "Comment Steero t'aide à dépasser la règle sans la jeter",
+          "Conclusion : une bonne règle ne remplace jamais la compréhension"
+        ]
+      }
     }
   }
 }

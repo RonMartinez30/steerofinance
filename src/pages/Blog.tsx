@@ -6,27 +6,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
+
 interface Article {
   id: number;
-  title: string;
-  hook: string;
+  titleKey: string;
+  hookKey: string;
   content: string;
-  tags: string[];
+  tagsKey: string;
 }
 
-const articles: Article[] = [
+// Article content is kept in French as the main content - titles/hooks are translated
+const getArticles = (t: (key: string, options?: Record<string, unknown>) => string): Article[] => [
   {
     id: 1,
-    title: "Comprendre ses finances personnelles : pourquoi c'est une compétence essentielle aujourd'hui",
-    tags: ["Débutant", "Compétences"],
-    hook: `La gestion des finances personnelles est rarement enseignée à l'école. Pourtant, comprendre son argent est aujourd'hui une compétence essentielle, au même titre que savoir organiser son temps ou développer ses compétences professionnelles.
-
-Beaucoup de personnes gagnent correctement leur vie, mais peinent à :
-• comprendre où part leur argent,
-• prendre des décisions financières sereines,
-• ou atteindre leurs objectifs financiers.
-
-La bonne nouvelle ? La finance personnelle s'apprend.`,
+    titleKey: "blog.articles.1.title",
+    hookKey: "blog.articles.1.hook",
+    tagsKey: "blog.articles.1.tags",
     content: `Pourquoi la gestion des finances personnelles n'est pas innée
 
 Contrairement aux idées reçues, être à l'aise avec l'argent n'est pas une question de talent ou de chance.
@@ -107,14 +102,9 @@ Commence par poser des bases solides pour ton avenir financier.`
   },
   {
     id: 2,
-    title: "La montée en compétences financières : passer du flou au pilotage de son argent",
-    tags: ["Pilotage", "Compétences"],
-    hook: `Beaucoup de personnes ont l'impression de "mal gérer" leur argent. En réalité, la plupart ne gèrent pas mal : elles ne pilotent pas.
-
-Elles regardent parfois leur solde, paient leurs factures, épargnent quand il reste quelque chose… mais sans vision globale ni méthode claire.
-
-La bonne nouvelle ?
-La gestion financière n'est pas binaire. Elle se construit par étapes, comme une véritable montée en compétences.`,
+    titleKey: "blog.articles.2.title",
+    hookKey: "blog.articles.2.hook",
+    tagsKey: "blog.articles.2.tags",
     content: `De la gestion subie au pilotage financier
 
 On peut schématiser la relation à l'argent en deux grandes situations :
@@ -223,13 +213,9 @@ Commence par voir clair. Le reste suivra.`
   },
   {
     id: 3,
-    title: "Pourquoi sans rituel, aucun outil financier ne fonctionne",
-    tags: ["Rituel", "Mindset"],
-    hook: `Télécharger une application de gestion financière est facile. La consulter régulièrement… beaucoup moins.
-
-Ce n'est pas un manque de motivation. Ce n'est pas non plus un problème d'intelligence financière. Le véritable point de rupture, c'est l'absence de rituel.
-
-Sans rituel, même le meilleur outil finit oublié. Avec un rituel simple, la gestion financière devient enfin durable.`,
+    titleKey: "blog.articles.3.title",
+    hookKey: "blog.articles.3.hook",
+    tagsKey: "blog.articles.3.tags",
     content: `Le vrai problème des outils financiers modernes
 
 La majorité des outils de gestion financière échouent pour une raison simple : ils supposent que l'utilisateur va s'adapter à l'outil.
@@ -319,14 +305,9 @@ Commence petit. Répète souvent. Les résultats suivront.`
   },
   {
     id: 4,
-    title: "Le rituel financier en 2 minutes : mythe ou réalité ?",
-    tags: ["Rituel", "Méthode"],
-    hook: `Quand on parle de gestion financière, beaucoup imaginent encore :
-• des tableurs complexes,
-• des heures d'analyse,
-• une discipline difficile à tenir.
-
-Alors l'idée d'un rituel financier en 2 minutes semble irréaliste. Pas parce que 2 minutes ne suffisent pas… mais parce que la gestion financière est souvent pensée comme un bloc unique, au lieu d'un ensemble de rituels complémentaires.`,
+    titleKey: "blog.articles.4.title",
+    hookKey: "blog.articles.4.hook",
+    tagsKey: "blog.articles.4.tags",
     content: `Pourquoi la gestion financière paraît toujours trop lourde
 
 Le problème n'est pas la finance. Le problème, c'est l'absence de structure.
@@ -418,16 +399,9 @@ Moins d'effort. Plus de clarté. Une vision durable.`
   },
   {
     id: 5,
-    title: "Comprendre tes finances comme un tableau de bord, pas comme une punition",
-    tags: ["Mindset", "Psychologie"],
-    hook: `Si gérer ton argent te met mal à l'aise, ce n'est probablement pas à cause des chiffres. C'est à cause de ce qu'ils représentent émotionnellement.
-
-Pour beaucoup, regarder ses finances, c'est :
-• se confronter à des erreurs passées,
-• ressentir de la culpabilité,
-• ou avoir l'impression de se faire "gronder".
-
-Mais si tu changeais complètement de perspective ? Et si tes finances devenaient un tableau de bord, pas un jugement ?`,
+    titleKey: "blog.articles.5.title",
+    hookKey: "blog.articles.5.hook",
+    tagsKey: "blog.articles.5.tags",
     content: `Pourquoi regarder ses finances est souvent vécu comme une punition
 
 Dans l'imaginaire collectif, suivre son argent signifie souvent :
@@ -513,14 +487,9 @@ Moins de pression. Plus de clarté. Plus de maîtrise.`
   },
   {
     id: 6,
-    title: "La règle des 50 / 30 / 20 : bonne base ou fausse promesse ?",
-    tags: ["Budget", "Débutant"],
-    hook: `Si tu t'intéresses un peu à la gestion de budget, tu as forcément déjà croisé cette règle :
-• 50 % pour les besoins,
-• 30 % pour les envies,
-• 20 % pour l'épargne.
-
-Simple. Claire. Rassurante. Mais une question mérite d'être posée : est-ce une vraie solution… ou juste un point de départ ?`,
+    titleKey: "blog.articles.6.title",
+    hookKey: "blog.articles.6.hook",
+    tagsKey: "blog.articles.6.tags",
     content: `Pourquoi la règle des 50 / 30 / 20 est si populaire
 
 Cette règle a un énorme avantage : elle simplifie. Elle permet de donner un cadre clair, éviter de partir de zéro et de comprendre qu'un budget doit être équilibré.
@@ -894,12 +863,14 @@ const ReadingProgressBar = ({ contentRef }: { contentRef: React.RefObject<HTMLDi
   );
 };
 
-const ArticleCard = ({ article }: { article: Article }) => {
-  const { t } = useTranslation();
+const ArticleCard = ({ article, t }: { article: Article; t: (key: string, options?: Record<string, unknown>) => unknown }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-  const readingTime = calculateReadingTime(article.hook + article.content);
+  const hook = t(article.hookKey) as string;
+  const title = t(article.titleKey) as string;
+  const tags = t(article.tagsKey, { returnObjects: true }) as string[];
+  const readingTime = calculateReadingTime(hook + article.content);
 
   const handleShare = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -925,7 +896,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1">
             <div className="flex flex-wrap items-center gap-2 mb-3">
-              {article.tags.map((tag) => (
+              {tags.map((tag) => (
                 <span
                   key={tag}
                   className="px-2.5 py-1 text-xs font-medium rounded-full bg-primary/15 text-primary"
@@ -939,7 +910,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
               </span>
             </div>
             <h2 className="text-xl md:text-2xl font-semibold text-primary">
-              {article.title}
+              {title}
             </h2>
           </div>
           <motion.div
@@ -956,7 +927,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
         {/* Hook - always visible, truncated when closed */}
         <div className={`mt-4 ${!isOpen ? "line-clamp-4" : ""}`}>
           <p className="text-muted-foreground whitespace-pre-line leading-relaxed">
-            {article.hook}
+            {hook}
           </p>
         </div>
 
@@ -1086,18 +1057,18 @@ const ArticleCard = ({ article }: { article: Article }) => {
   );
 };
 
-// Extract all unique tags from articles
-const allTags = Array.from(new Set(articles.flatMap(article => article.tags)));
-
 const Blog = () => {
   const { t } = useTranslation();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  
+  const articles = getArticles(t);
+  const allTags = Array.from(new Set(articles.flatMap(article => t(article.tagsKey, { returnObjects: true }) as string[])));
 
   const toggleTag = (tag: string) => {
     setSelectedTags(prev => 
       prev.includes(tag) 
-        ? prev.filter(t => t !== tag)
+        ? prev.filter(tg => tg !== tag)
         : [...prev, tag]
     );
   };
@@ -1108,14 +1079,17 @@ const Blog = () => {
   };
 
   const filteredArticles = articles.filter(article => {
+    const tags = t(article.tagsKey, { returnObjects: true }) as string[];
+    const title = t(article.titleKey) as string;
+    const hook = t(article.hookKey) as string;
     // Filter by tags
     const matchesTags = selectedTags.length === 0 || 
-      selectedTags.some(tag => article.tags.includes(tag));
+      selectedTags.some(tag => tags.includes(tag));
     
     // Filter by search query
     const matchesSearch = searchQuery === "" || 
-      article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      article.hook.toLowerCase().includes(searchQuery.toLowerCase());
+      title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      hook.toLowerCase().includes(searchQuery.toLowerCase());
     
     return matchesTags && matchesSearch;
   });
@@ -1224,7 +1198,7 @@ const Blog = () => {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
-                  <ArticleCard article={article} />
+                  <ArticleCard article={article} t={t} />
                 </motion.div>
               ))}
             </AnimatePresence>
