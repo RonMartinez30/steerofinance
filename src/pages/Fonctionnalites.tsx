@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
@@ -1132,6 +1133,12 @@ const Fonctionnalites = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return <div className="min-h-screen bg-background">
+      <SEO
+        title="Fonctionnalités - Comment bien gérer son budget"
+        description="Découvrez les fonctionnalités Steero pour mieux gérer votre argent : budget personnalisé, saisie intuitive des dépenses, rituels financiers. Plus simple qu'un tableau Excel, plus efficace que les apps bancaires."
+        keywords="fonctionnalités gestion budget, application budget, gérer son argent facilement, alternative excel budget, suivi dépenses, rituel financier"
+        canonical="/fonctionnalites"
+      />
       <Header />
       
       {/* Progress Sidebar */}

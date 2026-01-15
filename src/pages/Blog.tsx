@@ -4,6 +4,7 @@ import { Clock, ArrowRight, Lightbulb, AlertCircle, Share2, Check, List, Search,
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 
@@ -1098,6 +1099,13 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Blog - Conseils pour bien gérer son argent"
+        description="Articles et conseils pour apprendre à gérer son argent. Comment mieux gérer son budget sans Excel ? Découvrez nos guides pratiques sur les finances personnelles et les rituels financiers."
+        keywords="blog finances personnelles, comment gérer son argent, conseils budget, mieux gérer son argent, gestion budget personnel, alternative excel finances"
+        canonical="/blog"
+        ogType="blog"
+      />
       <Header />
       
       <main className="pt-32 pb-16">
