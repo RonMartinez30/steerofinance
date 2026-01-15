@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { ArrowRight, Check, Star, Brain, Eye, RefreshCw, Pencil, BookOpen, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
@@ -936,6 +937,12 @@ const PourquoiSteero = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return <div className="min-h-screen">
+      <SEO
+        title="Pourquoi Steero - L'approche comportementale pour gérer son argent"
+        description="Pourquoi choisir Steero plutôt qu'Excel ou une app bancaire pour gérer son argent ? Découvrez notre approche unique basée sur les sciences comportementales pour mieux gérer votre budget durablement."
+        keywords="pourquoi steero, alternative excel budget, mieux gérer son argent, application finances personnelles, approche comportementale argent, gestion budget durable"
+        canonical="/pourquoi-steero"
+      />
       <Header />
       
       {/* Progress Sidebar for Behavioral Section */}

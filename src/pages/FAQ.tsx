@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -79,6 +80,12 @@ const FAQ = () => {
   }];
 
   return <div className="min-h-screen">
+      <SEO
+        title="FAQ - Questions sur la gestion de budget"
+        description="Toutes les réponses à vos questions sur Steero. Comment bien gérer son argent ? Pourquoi Steero est mieux qu'Excel pour votre budget ? Découvrez notre approche comportementale unique."
+        keywords="faq gestion budget, questions finances personnelles, comment gérer son argent, steero faq, application budget questions"
+        canonical="/faq"
+      />
       <Header />
       <main className="pt-32 pb-16 bg-hero-gradient">
         <div className="container mx-auto px-6">
