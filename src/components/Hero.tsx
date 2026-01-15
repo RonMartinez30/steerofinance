@@ -23,17 +23,17 @@ const Hero = () => {
     {
       icon: Timer,
       title: t('hero.features.time'),
-      desc: t('hero.features.time')
+      desc: t('hero.features.timeDesc')
     },
     {
       icon: Eye,
       title: t('hero.features.clarity'),
-      desc: t('hero.features.clarity')
+      desc: t('hero.features.clarityDesc')
     },
     {
       icon: ShieldCheck,
       title: t('hero.features.security'),
-      desc: t('hero.features.security')
+      desc: t('hero.features.securityDesc')
     }
   ];
 
@@ -107,7 +107,7 @@ const Hero = () => {
             duration: 0.7,
             delay: 0.1
           }} className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
-              {t('hero.title')}
+              {t('hero.title')} <span className="text-primary">{t('hero.titleHighlight')}</span>
             </motion.h1>
 
             <motion.p initial={{

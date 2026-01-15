@@ -26,29 +26,33 @@
     "copyright": "© 2026 Steero. All rights reserved."
   },
   "hero": {
-    "badge": "The personal finance app that doesn't do it for you",
-    "title": "Take back control of your personal finances",
-    "description": "Steero helps you understand, manage, and ritualize your financial management to achieve your goals with peace of mind.",
+    "badge": "Less technology, more understanding",
+    "title": "(Re)Take control of your finances with",
+    "titleHighlight": "simplicity",
+    "description": "A simple dashboard to track your budgets, expenses, and anchor habits that matter. Discover the first personal Operating System that connects finances and habits for lasting change.",
     "features": {
-      "time": "5 min/day is enough",
-      "clarity": "Financial clarity",
-      "security": "Secure data"
+      "time": "Simplicity",
+      "timeDesc": "A tracking ritual in less than 2 minutes per day",
+      "clarity": "Clarity",
+      "clarityDesc": "You know exactly why you spend and where you're going",
+      "security": "Serenity",
+      "securityDesc": "No more surprises at the end of the month"
     }
   },
   "howItWorks": {
     "title": "How does it work?",
-    "description": "A simple 3-step method to transform your relationship with money.",
+    "description": "A simple 3-step process to take back control of your finances",
     "step1": {
-      "title": "Define your trajectory",
-      "description": "Create your budgets and goals based on your priorities."
+      "title": "Observe your habits",
+      "description": "Understand where your money goes without judgment. Steero helps you visualize, with each entry, what you've already spent and what remains in your budget"
     },
     "step2": {
-      "title": "Log your expenses",
-      "description": "A few seconds per transaction for real awareness."
+      "title": "Ritualize your tracking",
+      "description": "With regular financial rituals designed to support you, take a moment once a week, month, or quarter to understand, adjust, and plan."
     },
     "step3": {
-      "title": "Ritualize your tracking",
-      "description": "Guided rituals to anchor lasting habits."
+      "title": "Move towards your goals",
+      "description": "Each small decision accumulates to build the future with serenity and aligned with your goals: Build wealth, create your business, or travel."
     }
   },
   "features": {

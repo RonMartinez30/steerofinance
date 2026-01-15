@@ -26,29 +26,33 @@
     "copyright": "© 2026 Steero. Todos los derechos reservados."
   },
   "hero": {
-    "badge": "La app de finanzas personales que no hace las cosas por ti",
-    "title": "Retoma el control de tus finanzas personales",
-    "description": "Steero te ayuda a comprender, gestionar y ritualizar tu gestión financiera para alcanzar tus objetivos con tranquilidad.",
+    "badge": "Menos tecnología, más comprensión",
+    "title": "(Re)Toma el control de tus finanzas con",
+    "titleHighlight": "simplicidad",
+    "description": "Un tablero simple para seguir tus presupuestos, gastos y anclar hábitos que importan. Descubre el primer Sistema Operativo personal que conecta finanzas y hábitos para cambiar de forma duradera.",
     "features": {
-      "time": "5 min/día son suficientes",
-      "clarity": "Claridad financiera",
-      "security": "Datos seguros"
+      "time": "Simplicidad",
+      "timeDesc": "Un ritual de seguimiento en menos de 2 minutos por día",
+      "clarity": "Claridad",
+      "clarityDesc": "Sabes exactamente por qué gastas y hacia dónde vas",
+      "security": "Serenidad",
+      "securityDesc": "Sin más sorpresas a fin de mes"
     }
   },
   "howItWorks": {
     "title": "¿Cómo funciona?",
-    "description": "Un método sencillo en 3 pasos para transformar tu relación con el dinero.",
+    "description": "Un proceso simple en 3 pasos para retomar el control de tus finanzas",
     "step1": {
-      "title": "Define tu trayectoria",
-      "description": "Crea tus presupuestos y objetivos según tus prioridades."
+      "title": "Observa tus hábitos",
+      "description": "Comprende a dónde va tu dinero sin juzgarte. Steero te ayuda a visualizar, con cada registro, lo que ya has gastado y lo que te queda en tu presupuesto"
     },
     "step2": {
-      "title": "Registra tus gastos",
-      "description": "Unos segundos por transacción para una toma de conciencia real."
+      "title": "Ritualiza tu seguimiento",
+      "description": "Con rituales financieros regulares diseñados para acompañarte, toma un momento una vez por semana, mes o trimestre para comprender, ajustar y planificar."
     },
     "step3": {
-      "title": "Ritualiza tu seguimiento",
-      "description": "Rituales guiados para anclar hábitos duraderos."
+      "title": "Avanza hacia tus objetivos",
+      "description": "Cada pequeña decisión se acumula para construir el futuro con serenidad y alineado con tus objetivos: Construir un patrimonio, crear tu empresa o viajar."
     }
   },
   "features": {
