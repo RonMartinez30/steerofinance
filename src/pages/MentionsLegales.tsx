@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { useTranslation } from "react-i18next";
 
 const MentionsLegales = () => {
@@ -7,6 +8,12 @@ const MentionsLegales = () => {
   
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Mentions légales"
+        description="Mentions légales de Steero, application de gestion de budget et finances personnelles. Informations sur l'éditeur, l'hébergement et la propriété intellectuelle."
+        canonical="/mentions-legales"
+        noIndex={true}
+      />
       <Header />
       <main className="pt-32 pb-16 bg-hero-gradient">
         <div className="container mx-auto px-6">

@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { useTranslation } from "react-i18next";
 
 const PolitiqueConfidentialite = () => {
@@ -7,6 +8,12 @@ const PolitiqueConfidentialite = () => {
   
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Politique de confidentialité"
+        description="Politique de confidentialité de Steero. Découvrez comment nous protégeons vos données personnelles et respectons votre vie privée."
+        canonical="/politique-confidentialite"
+        noIndex={true}
+      />
       <Header />
       
       <main className="flex-grow pt-32 pb-16">

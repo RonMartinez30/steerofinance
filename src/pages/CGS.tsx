@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -8,6 +9,12 @@ const CGS = () => {
   
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Conditions Générales de Service"
+        description="Conditions générales d'utilisation de Steero. Découvrez les règles d'utilisation de notre application de gestion de budget et finances personnelles."
+        canonical="/cgs"
+        noIndex={true}
+      />
       <Header />
       
       <main className="flex-grow pt-32 pb-16">
