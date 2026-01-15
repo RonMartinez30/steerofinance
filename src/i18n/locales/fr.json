@@ -26,29 +26,33 @@
     "copyright": "© 2026 Steero. Tous droits réservés."
   },
   "hero": {
-    "badge": "L'app de finances personnelles qui ne fait pas à ta place",
-    "title": "Reprends le contrôle de tes finances personnelles",
-    "description": "Steero t'aide à comprendre, piloter et ritualiser ta gestion financière pour atteindre tes objectifs en toute sérénité.",
+    "badge": "Moins de technologie, plus de compréhension",
+    "title": "(Re)Prends le contrôle de tes finances avec",
+    "titleHighlight": "simplicité",
+    "description": "Un tableau de bord simple pour suivre tes budgets, tes dépenses et ancrer des habitudes qui comptent. Découvre le premier Operating System personnel qui relie finances et habitudes pour changer durablement.",
     "features": {
-      "time": "5 min/jour suffisent",
-      "clarity": "Clarté financière",
-      "security": "Données sécurisées"
+      "time": "Simplicité",
+      "timeDesc": "Un rituel de suivi en moins de 2 minutes par jour",
+      "clarity": "Clarté",
+      "clarityDesc": "Tu sais exactement pourquoi tu dépenses et où tu vas",
+      "security": "Sérénité",
+      "securityDesc": "Plus de surprises en fin de mois"
     }
   },
   "howItWorks": {
     "title": "Comment ça marche ?",
-    "description": "Une méthode simple en 3 étapes pour transformer ta relation à l'argent.",
+    "description": "Un processus simple en 3 étapes pour reprendre le contrôle de tes finances",
     "step1": {
-      "title": "Définis ta trajectoire",
-      "description": "Créé tes budgets et objectifs en fonction de tes priorités."
+      "title": "Observe tes habitudes",
+      "description": "Comprends où va ton argent sans jugement. Steero t'aide à visualiser, à chaque saisie, ce que tu as déjà consommé et ce qu'il te reste dans ton budget"
     },
     "step2": {
-      "title": "Saisis tes dépenses",
-      "description": "Quelques secondes par transaction pour une prise de conscience réelle."
+      "title": "Ritualise ton suivi",
+      "description": "Avec des rituels financiers réguliers conçus pour t'accompagner, prend un moment une fois par semaine, mois ou trimestre pour comprendre, ajuster et planifier."
     },
     "step3": {
-      "title": "Ritualise ton suivi",
-      "description": "Des rituels guidés pour ancrer des habitudes durables."
+      "title": "Avance vers tes objectifs",
+      "description": "Chaque petite décision s'accumule pour construire l'avenir avec sérénité et aligné avec tes objectifs : Constituer un patrimoine, créer ton entreprise ou voyager."
     }
   },
   "features": {
