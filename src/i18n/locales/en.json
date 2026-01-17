@@ -113,15 +113,15 @@
   "cta": {
     "title": "Ready to transform your relationship with money?",
     "description": "Join Steero and start 2026 in the best conditions",
-    "launchDate": "Launch planned for April 1st, 2026",
+    "launchDate": "Launch planned for March 20th, 2026",
     "days": "Days",
     "hours": "Hours",
     "minutes": "Minutes",
     "seconds": "Seconds",
     "features": {
-      "free": "Free at launch",
-      "noCard": "No credit card required",
-      "cancel": "Can cancel anytime"
+      "free": "Free to start",
+      "noCard": "No automation",
+      "cancel": "Secure data"
     }
   },
   "whySteero": {
