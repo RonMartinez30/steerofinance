@@ -113,15 +113,15 @@
   "cta": {
     "title": "¿Listo para transformar tu relación con el dinero?",
     "description": "Únete a Steero y empieza 2026 en las mejores condiciones",
-    "launchDate": "Lanzamiento previsto el 1 de abril de 2026",
+    "launchDate": "Lanzamiento previsto el 20 de marzo de 2026",
     "days": "Días",
     "hours": "Horas",
     "minutes": "Minutos",
     "seconds": "Segundos",
     "features": {
-      "free": "Gratis en el lanzamiento",
-      "noCard": "Sin tarjeta bancaria",
-      "cancel": "Cancelación posible"
+      "free": "Gratis para empezar",
+      "noCard": "Sin automatización",
+      "cancel": "Datos seguros"
     }
   },
   "whySteero": {
