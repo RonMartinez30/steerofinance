@@ -45,7 +45,7 @@ const Countdown = () => {
       </p>
       <div className="flex justify-center gap-4 md:gap-8">
         {timeUnits.map((unit, index) => <div key={index} className="text-center">
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-card border border-border flex items-center justify-center shadow-sm">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-card border border-border flex items-center justify-center shadow-sm animate-countdown-glow">
               <span className="text-2xl md:text-3xl font-bold text-primary">
                 {String(unit.value).padStart(2, "0")}
               </span>
