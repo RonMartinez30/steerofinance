@@ -721,8 +721,9 @@ const FutureFeatureCard = ({
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
       onClick={handleToggle}
+      layout="position"
       className={`group bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden transition-all duration-300 cursor-pointer ${
-        isOpen ? 'shadow-lg shadow-primary/10 border-primary/30' : 'hover:shadow-lg hover:shadow-primary/5'
+        isOpen ? 'shadow-lg shadow-primary/10 border-primary/30 h-auto' : 'hover:shadow-lg hover:shadow-primary/5 h-[160px]'
       }`}
     >
       {/* Gradient overlay */}
@@ -1294,7 +1295,7 @@ const Fonctionnalites = () => {
             </p>
           </motion.div>
 
-          <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-3 items-start">
             {/* Projets financiers */}
             <FutureFeatureCard
               emoji="🧳"
