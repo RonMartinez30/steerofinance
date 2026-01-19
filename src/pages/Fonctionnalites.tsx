@@ -747,37 +747,39 @@ const FutureFeatureCard = ({
 
       {/* Header */}
       <div className="relative z-10">
-        <motion.div
-          className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4"
-          whileHover={{ scale: 1.1 }}
-          animate={{ rotate: isOpen ? [0, 5, -5, 0] : 0 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        >
-          <motion.span
-            className="text-lg opacity-60"
-            animate={{ 
-              opacity: isOpen ? 1 : 0.6,
-              scale: isOpen ? 1.1 : 1
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            {emoji}
-          </motion.span>
-        </motion.div>
-
-        <div className="flex items-center gap-2 mb-2">
-          <h3 className="text-base font-medium text-foreground/80">
-            {title}
-          </h3>
+        <div className="flex items-center gap-3 mb-3">
           <motion.div
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="text-muted-foreground/50"
+            className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center flex-shrink-0"
+            whileHover={{ scale: 1.1 }}
+            animate={{ rotate: isOpen ? [0, 5, -5, 0] : 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <motion.span
+              className="text-lg opacity-60"
+              animate={{ 
+                opacity: isOpen ? 1 : 0.6,
+                scale: isOpen ? 1.1 : 1
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              {emoji}
+            </motion.span>
           </motion.div>
+
+          <div className="flex items-center gap-2">
+            <h3 className="text-base font-medium text-foreground/80">
+              {title}
+            </h3>
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="text-muted-foreground/50"
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </motion.div>
+          </div>
         </div>
 
         <p className="text-sm text-muted-foreground/70 leading-relaxed">
