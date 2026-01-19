@@ -1312,19 +1312,19 @@ const Fonctionnalites = () => {
                     className="relative"
                   >
                     <motion.div 
-                      className="w-16 h-20 bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/20 rounded-lg border border-blue-200/50 dark:border-blue-700/30 flex flex-col items-center justify-center shadow-sm"
+                      className="w-16 h-20 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg border border-primary/30 flex flex-col items-center justify-center shadow-sm"
                       animate={{ y: [0, -3, 0] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     >
                       <span className="text-lg mb-1">✈️</span>
-                      <span className="text-[8px] font-medium text-blue-600/80 dark:text-blue-400/80">Vacances</span>
+                      <span className="text-[8px] font-medium text-primary/80">Vacances</span>
                       <motion.div 
-                        className="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center"
+                        className="absolute -top-1 -right-1 w-5 h-5 bg-primary rounded-full flex items-center justify-center"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.5, type: "spring" }}
                       >
-                        <span className="text-[7px] text-white font-bold">75%</span>
+                        <span className="text-[7px] text-primary-foreground font-bold">75%</span>
                       </motion.div>
                     </motion.div>
                     <motion.div
@@ -1334,7 +1334,7 @@ const Fonctionnalites = () => {
                       transition={{ delay: 0.3 }}
                     >
                       <motion.div 
-                        className="h-full bg-blue-500 rounded-full"
+                        className="h-full bg-primary rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: "75%" }}
                         transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
@@ -1350,19 +1350,19 @@ const Fonctionnalites = () => {
                     className="relative"
                   >
                     <motion.div 
-                      className="w-16 h-20 bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/30 dark:to-amber-800/20 rounded-lg border border-amber-200/50 dark:border-amber-700/30 flex flex-col items-center justify-center shadow-sm"
+                      className="w-16 h-20 bg-gradient-to-br from-accent/40 to-accent/10 rounded-lg border border-accent/50 flex flex-col items-center justify-center shadow-sm"
                       animate={{ y: [0, -3, 0] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
                     >
                       <span className="text-lg mb-1">🎁</span>
-                      <span className="text-[8px] font-medium text-amber-600/80 dark:text-amber-400/80">Cadeaux</span>
+                      <span className="text-[8px] font-medium text-accent-foreground/80">Cadeaux</span>
                       <motion.div 
-                        className="absolute -top-1 -right-1 w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center"
+                        className="absolute -top-1 -right-1 w-5 h-5 bg-accent rounded-full flex items-center justify-center"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.7, type: "spring" }}
                       >
-                        <span className="text-[7px] text-white font-bold">40%</span>
+                        <span className="text-[7px] text-accent-foreground font-bold">40%</span>
                       </motion.div>
                     </motion.div>
                     <motion.div
@@ -1372,7 +1372,7 @@ const Fonctionnalites = () => {
                       transition={{ delay: 0.4 }}
                     >
                       <motion.div 
-                        className="h-full bg-amber-500 rounded-full"
+                        className="h-full bg-accent rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: "40%" }}
                         transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
@@ -1388,19 +1388,19 @@ const Fonctionnalites = () => {
                     className="relative"
                   >
                     <motion.div 
-                      className="w-16 h-20 bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/30 dark:to-emerald-800/20 rounded-lg border border-emerald-200/50 dark:border-emerald-700/30 flex flex-col items-center justify-center shadow-sm"
+                      className="w-16 h-20 bg-gradient-to-br from-secondary to-secondary/50 rounded-lg border border-border flex flex-col items-center justify-center shadow-sm"
                       animate={{ y: [0, -3, 0] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
                     >
                       <span className="text-lg mb-1">🔧</span>
-                      <span className="text-[8px] font-medium text-emerald-600/80 dark:text-emerald-400/80">Travaux</span>
+                      <span className="text-[8px] font-medium text-muted-foreground">Travaux</span>
                       <motion.div 
-                        className="absolute -top-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center"
+                        className="absolute -top-1 -right-1 w-5 h-5 bg-muted-foreground rounded-full flex items-center justify-center"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.9, type: "spring" }}
                       >
-                        <span className="text-[7px] text-white font-bold">20%</span>
+                        <span className="text-[7px] text-background font-bold">20%</span>
                       </motion.div>
                     </motion.div>
                     <motion.div
@@ -1410,7 +1410,7 @@ const Fonctionnalites = () => {
                       transition={{ delay: 0.5 }}
                     >
                       <motion.div 
-                        className="h-full bg-emerald-500 rounded-full"
+                        className="h-full bg-muted-foreground rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: "20%" }}
                         transition={{ delay: 0.9, duration: 0.8, ease: "easeOut" }}
@@ -1439,7 +1439,7 @@ const Fonctionnalites = () => {
                     className="flex items-center gap-2 bg-card/80 rounded-lg px-3 py-2 border border-border/50 w-full max-w-[180px]"
                   >
                     <motion.div 
-                      className="w-8 h-8 rounded-full bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-900/30 dark:to-rose-800/20 flex items-center justify-center border border-rose-200/50 dark:border-rose-700/30"
+                      className="w-8 h-8 rounded-full bg-gradient-to-br from-destructive/20 to-destructive/5 flex items-center justify-center border border-destructive/30"
                       animate={{ scale: [1, 1.05, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
@@ -1450,7 +1450,7 @@ const Fonctionnalites = () => {
                       <p className="text-[8px] text-muted-foreground">Me doit</p>
                     </div>
                     <motion.span 
-                      className="text-xs font-semibold text-rose-500"
+                      className="text-xs font-semibold text-destructive"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.4 }}
@@ -1482,7 +1482,7 @@ const Fonctionnalites = () => {
                     className="flex items-center gap-2 bg-card/80 rounded-lg px-3 py-2 border border-border/50 w-full max-w-[180px]"
                   >
                     <motion.div 
-                      className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/20 flex items-center justify-center border border-blue-200/50 dark:border-blue-700/30"
+                      className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/30"
                       animate={{ scale: [1, 1.05, 1] }}
                       transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                     >
@@ -1493,7 +1493,7 @@ const Fonctionnalites = () => {
                       <p className="text-[8px] text-muted-foreground">Je dois</p>
                     </div>
                     <motion.span 
-                      className="text-xs font-semibold text-blue-500"
+                      className="text-xs font-semibold text-primary"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.6 }}
@@ -1509,7 +1509,7 @@ const Fonctionnalites = () => {
                     transition={{ delay: 0.8 }}
                     className="absolute bottom-0 right-2 text-[9px] text-muted-foreground/60"
                   >
-                    Solde: <span className="text-emerald-500 font-medium">+25€</span>
+                    Solde: <span className="text-primary font-medium">+25€</span>
                   </motion.div>
                 </div>
               }
@@ -1540,9 +1540,9 @@ const Fonctionnalites = () => {
                         animate={{ height: 70 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
                       >
-                        <div className="h-full bg-gradient-to-t from-emerald-500 to-emerald-400 flex flex-col items-center justify-end pb-1">
+                        <div className="h-full bg-gradient-to-t from-primary to-primary/80 flex flex-col items-center justify-end pb-1">
                           <motion.span 
-                            className="text-[8px] text-white font-medium"
+                            className="text-[8px] text-primary-foreground font-medium"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6 }}
@@ -1588,9 +1588,9 @@ const Fonctionnalites = () => {
                         animate={{ height: 40 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                       >
-                        <div className="h-full bg-gradient-to-t from-rose-500 to-rose-400 flex flex-col items-center justify-end pb-1">
+                        <div className="h-full bg-gradient-to-t from-destructive to-destructive/80 flex flex-col items-center justify-end pb-1">
                           <motion.span 
-                            className="text-[8px] text-white font-medium"
+                            className="text-[8px] text-destructive-foreground font-medium"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.7 }}
@@ -1618,9 +1618,9 @@ const Fonctionnalites = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9 }}
-                    className="mt-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1"
+                    className="mt-3 bg-primary/10 border border-primary/20 rounded-full px-3 py-1"
                   >
-                    <span className="text-[9px] text-emerald-600 dark:text-emerald-400 font-medium">
+                    <span className="text-[9px] text-primary font-medium">
                       Patrimoine net: +8 300€
                     </span>
                   </motion.div>
