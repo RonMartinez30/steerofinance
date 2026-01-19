@@ -925,7 +925,7 @@ const FeatureCard = ({
     onToggle();
   };
   const variants = getCardAnimationVariants(feature.animationDirection);
-  return <motion.div onClick={handleClick} className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} ${isLarge ? 'p-8' : 'p-6'} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] relative ${isExplored && !isOpen ? 'saturate-[0.7] opacity-90' : ''} ${!isOpen ? 'min-h-[100px]' : ''}`}>
+  return <motion.div onClick={handleClick} className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} ${isLarge ? 'p-8' : 'p-6'} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] relative ${isExplored && !isOpen ? 'saturate-[0.7] opacity-90' : ''} ${!isOpen ? 'min-h-[100px]' : ''} h-full flex flex-col`}>
       {/* Badge "Découvert" */}
       <AnimatePresence>
         {isExplored && !isOpen && <motion.div initial={{
@@ -1247,8 +1247,8 @@ const Fonctionnalites = () => {
               </motion.div>
               
               {/* Feature Cards Grid with staggered animation */}
-              <div className={`grid gap-6 ${group.isLarge ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
-                {group.features.map((feature, featureIndex) => <motion.div key={featureIndex} initial={{
+              <div className={`grid gap-6 items-stretch ${group.isLarge ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
+                {group.features.map((feature, featureIndex) => <motion.div key={featureIndex} className="h-full" initial={{
               opacity: 0,
               y: 40,
               scale: 0.9
