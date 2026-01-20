@@ -2421,37 +2421,47 @@ const Fonctionnalites = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-card">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }} className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
+      <section className="py-20 bg-primary relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -left-20 top-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+          <div className="absolute -right-20 bottom-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }} 
+            transition={{ duration: 0.6 }} 
+            className="text-center max-w-2xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
               {t('fonctionnalites.ctaTitle')}
             </h2>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-lg text-primary-foreground/90 mb-8">
               {t('fonctionnalites.ctaSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="group">
-                <a href="/#cta">
-                  {t('common.joinWaitlist')}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link to="/pourquoi-steero">
-                  {t('common.discoverApproach')}
-                </Link>
-              </Button>
+              <motion.a 
+                href="/#cta"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
+              >
+                {t('common.joinWaitlist')}
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </motion.a>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button asChild variant="outline" size="lg" className="border-white/30 text-primary-foreground hover:bg-white/10 hover:text-primary-foreground rounded-full px-8 py-4 h-auto">
+                  <Link to="/pourquoi-steero">
+                    {t('common.discoverApproach')}
+                  </Link>
+                </Button>
+              </motion.div>
             </div>
           </motion.div>
         </div>
