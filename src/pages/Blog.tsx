@@ -886,71 +886,51 @@ const ArticleCard = ({ article, t }: { article: Article; t: (key: string, option
     <motion.div
       layout
       onClick={() => setIsOpen(!isOpen)}
-      className={`cursor-pointer rounded-2xl border-2 transition-all duration-300 hover:shadow-lg ${
+      className={`cursor-pointer rounded-xl border transition-all duration-300 ${
         isOpen 
-          ? "border-primary/30 bg-gradient-to-br from-primary/10 to-primary/5 shadow-md" 
-          : "border-primary/20 bg-primary/5 hover:border-primary/40"
+          ? "border-primary/30 bg-card shadow-md" 
+          : "border-border bg-card hover:border-primary/30 hover:shadow-sm"
       }`}
     >
-      {/* Header - always visible */}
-      <div className="p-6 md:p-8">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex-1">
-            <div className="flex flex-wrap items-center gap-2 mb-3">
+      {/* Header - compact version */}
+      <div className="p-4">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex-1 min-w-0">
+            {/* Tags and reading time inline */}
+            <div className="flex flex-wrap items-center gap-1.5 mb-2">
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2.5 py-1 text-xs font-medium rounded-full bg-primary/15 text-primary"
+                  className="px-2 py-0.5 text-[10px] font-medium rounded-full bg-primary/10 text-primary"
                 >
                   {tag}
                 </span>
               ))}
-              <span className="flex items-center gap-1.5 text-muted-foreground text-sm ml-auto">
-                <Clock className="w-4 h-4" />
-                {readingTime} min
+              <span className="flex items-center gap-1 text-muted-foreground text-xs ml-auto">
+                <Clock className="w-3 h-3" />
+                {readingTime} {t('blog.min')}
               </span>
             </div>
-            <h2 className="text-xl md:text-2xl font-semibold text-primary">
+            <h2 className="text-base font-semibold text-foreground leading-tight line-clamp-2">
               {title}
             </h2>
           </div>
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="text-primary/60 flex-shrink-0 mt-8"
+            className="text-muted-foreground flex-shrink-0 mt-1"
           >
-            <svg width="20" height="20" viewBox="0 0 12 12" fill="none">
+            <svg width="16" height="16" viewBox="0 0 12 12" fill="none">
               <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </motion.div>
         </div>
         
-        {/* Hook - always visible, truncated when closed */}
-        <div className={`mt-4 ${!isOpen ? "line-clamp-4" : ""}`}>
-          <p className="text-muted-foreground whitespace-pre-line leading-relaxed">
-            {hook}
-          </p>
-        </div>
-
-        {/* Read more indicator when closed */}
+        {/* Hook - truncated when closed */}
         {!isOpen && (
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-primary text-sm mt-4 font-medium flex items-center gap-2"
-          >
-            {t('blog.readFullArticle')}
-            <motion.svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 16 16" 
-              fill="none"
-              animate={{ x: [0, 4, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </motion.svg>
-          </motion.p>
+          <p className="mt-2 text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+            {hook.split('\n')[0]}
+          </p>
         )}
       </div>
 
@@ -961,25 +941,33 @@ const ArticleCard = ({ article, t }: { article: Article; t: (key: string, option
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div ref={contentRef} className="px-6 md:px-8 pb-6 md:pb-8">
+            <div ref={contentRef} className="px-4 pb-4">
               <ReadingProgressBar contentRef={contentRef} />
-              <div className="pt-4 border-t border-primary/15">
+              
+              {/* Hook full text */}
+              <div className="py-3 border-t border-border/50">
+                <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">
+                  {hook}
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-border/50">
                 {/* Mobile: TOC inline at top */}
-                <div className="lg:hidden mb-8">
+                <div className="lg:hidden mb-6">
                   <TableOfContents sections={extractSectionTitles(article.content, article.id)} />
                 </div>
                 
                 {/* Desktop: Two-column layout with sticky TOC */}
-                <div className="lg:flex lg:gap-8 lg:items-start">
+                <div className="lg:flex lg:gap-6 lg:items-start">
                   {/* Main content */}
-                  <div className="flex-1 min-w-0 text-foreground">
+                  <div className="flex-1 min-w-0 text-sm">
                     {formatContent(article.content, article.id)}
                   </div>
                   
                   {/* Sticky TOC on the right - desktop only */}
-                  <aside className="hidden lg:block w-72 flex-shrink-0 self-start sticky top-24">
+                  <aside className="hidden lg:block w-64 flex-shrink-0 self-start sticky top-24">
                     <TableOfContents 
                       sections={extractSectionTitles(article.content, article.id)} 
                       isSticky={true}
@@ -988,67 +976,61 @@ const ArticleCard = ({ article, t }: { article: Article; t: (key: string, option
                 </div>
               </div>
               
-              {/* CTA Button */}
+              {/* CTA Button - more compact */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="mt-8 p-6 bg-primary/5 rounded-xl border border-primary/10"
+                transition={{ delay: 0.2 }}
+                className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/10"
               >
-                <p className="text-foreground font-medium mb-4">
+                <p className="text-sm text-foreground font-medium mb-3">
                   {t('blog.readyToTransform')}
                 </p>
-                <Button asChild className="group">
+                <Button asChild size="sm" className="group">
                   <Link to="/#cta">
                     {t('blog.joinWaitlist')}
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>
               </motion.div>
               
-              {/* Actions row */}
-              <div className="mt-6 flex items-center gap-4">
-                {/* Share button */}
+              {/* Actions row - compact */}
+              <div className="mt-4 flex items-center gap-3">
                 <motion.button
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   onClick={handleShare}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium transition-all ${
                     copied 
                       ? "bg-green-500/10 border-green-500/30 text-green-600" 
-                      : "bg-primary/5 border-primary/20 text-primary/70 hover:text-primary hover:border-primary/40"
+                      : "bg-muted/50 border-border text-muted-foreground hover:text-foreground hover:border-primary/30"
                   }`}
                 >
                   {copied ? (
                     <>
-                      <Check className="w-4 h-4" />
-                      <span className="text-sm font-medium">{t('blog.linkCopied')}</span>
+                      <Check className="w-3.5 h-3.5" />
+                      {t('blog.linkCopied')}
                     </>
                   ) : (
                     <>
-                      <Share2 className="w-4 h-4" />
-                      <span className="text-sm font-medium">{t('blog.share')}</span>
+                      <Share2 className="w-3.5 h-3.5" />
+                      {t('blog.share')}
                     </>
                   )}
                 </motion.button>
 
-                {/* Collapse button */}
-                <motion.button
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
+                <button
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsOpen(false);
                   }}
-                  className="text-primary/70 text-sm font-medium flex items-center gap-2 hover:text-primary transition-colors"
+                  className="text-muted-foreground text-xs font-medium flex items-center gap-1.5 hover:text-foreground transition-colors"
                 >
-                  <svg width="16" height="16" viewBox="0 0 12 12" fill="none" className="rotate-180">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="rotate-180">
                     <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   {t('blog.collapseArticle')}
-                </motion.button>
+                </button>
               </div>
             </div>
           </motion.div>
@@ -1098,7 +1080,7 @@ const Blog = () => {
   const hasActiveFilters = selectedTags.length > 0 || searchQuery !== "";
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <SEO
         title="Blog - Conseils pour bien gérer son argent"
         description="Articles et conseils pour apprendre à gérer son argent. Comment mieux gérer son budget sans Excel ? Découvrez nos guides pratiques sur les finances personnelles et les rituels financiers."
@@ -1108,126 +1090,129 @@ const Blog = () => {
       />
       <Header />
       
-      <main className="pt-32 pb-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          {/* Page header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8"
-          >
-            <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              {t('blog.title')}
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              {t('blog.subtitle')}
-            </p>
-          </motion.div>
-
-          {/* Search and filter section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-8"
-          >
-            {/* Search bar */}
-            <div className="relative mb-4">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-              <input
-                type="text"
-                placeholder={t('blog.searchPlaceholder')}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-primary/20 bg-background focus:border-primary/50 focus:outline-none transition-colors text-foreground placeholder:text-muted-foreground"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
-            </div>
-
-            {/* Tags filter */}
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm text-muted-foreground mr-2">{t('blog.filterBy')}</span>
-              {allTags.map((tag) => {
-                const isSelected = selectedTags.includes(tag);
-                return (
-                  <button
-                    key={tag}
-                    onClick={() => toggleTag(tag)}
-                    className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all ${
-                      isSelected
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-primary/10 text-primary hover:bg-primary/20"
-                    }`}
+      <main className="pt-32 pb-16 bg-hero-gradient">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-10 lg:gap-12">
+              {/* Left side - Sticky */}
+              <div className="lg:w-1/3">
+                <div className="lg:sticky lg:top-32">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
                   >
-                    {tag}
-                  </button>
-                );
-              })}
-              {hasActiveFilters && (
-                <button
-                  onClick={clearFilters}
-                  className="ml-2 px-3 py-1.5 text-sm font-medium rounded-full bg-muted text-muted-foreground hover:bg-muted/80 transition-colors flex items-center gap-1.5"
-                >
-                  <X className="w-3.5 h-3.5" />
-                  {t('blog.clear')}
-                </button>
-              )}
+                    <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                      {t('blog.title')}
+                    </h1>
+                    <p className="text-muted-foreground mb-6">
+                      {t('blog.subtitle')}
+                    </p>
+
+                    {/* Search bar */}
+                    <div className="relative mb-4">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                      <input
+                        type="text"
+                        placeholder={t('blog.searchPlaceholder')}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full pl-10 pr-10 py-2.5 rounded-lg border border-border bg-card focus:border-primary/50 focus:outline-none transition-colors text-foreground placeholder:text-muted-foreground text-sm"
+                      />
+                      {searchQuery && (
+                        <button
+                          onClick={() => setSearchQuery("")}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Tags filter */}
+                    <div className="space-y-2">
+                      <span className="text-xs text-muted-foreground font-medium uppercase tracking-wide">{t('blog.filterBy')}</span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {allTags.map((tag) => {
+                          const isSelected = selectedTags.includes(tag);
+                          return (
+                            <button
+                              key={tag}
+                              onClick={() => toggleTag(tag)}
+                              className={`px-2.5 py-1 text-xs font-medium rounded-full transition-all ${
+                                isSelected
+                                  ? "bg-primary text-primary-foreground"
+                                  : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary/30"
+                              }`}
+                            >
+                              {tag}
+                            </button>
+                          );
+                        })}
+                      </div>
+                      {hasActiveFilters && (
+                        <button
+                          onClick={clearFilters}
+                          className="mt-2 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+                        >
+                          <X className="w-3 h-3" />
+                          {t('blog.clear')}
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Results count */}
+                    {hasActiveFilters && (
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="mt-4 text-sm text-muted-foreground"
+                      >
+                        {filteredArticles.length} {t('blog.articlesFound')}
+                      </motion.p>
+                    )}
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Right side - Scrollable articles */}
+              <div className="lg:w-2/3">
+                <div className="space-y-4">
+                  <AnimatePresence mode="popLayout">
+                    {filteredArticles.map((article, index) => (
+                      <motion.div
+                        key={article.id}
+                        layout
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                      >
+                        <ArticleCard article={article} t={t} />
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+
+                  {filteredArticles.length === 0 && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="text-center py-12 bg-card rounded-xl border border-border"
+                    >
+                      <p className="text-muted-foreground mb-4">
+                        {t('blog.noResults')}
+                      </p>
+                      <button
+                        onClick={clearFilters}
+                        className="text-primary font-medium hover:underline text-sm"
+                      >
+                        {t('blog.clearFilters')}
+                      </button>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
             </div>
-
-            {/* Results count */}
-            {hasActiveFilters && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="mt-4 text-sm text-muted-foreground"
-              >
-                {filteredArticles.length} {t('blog.articlesFound')}
-              </motion.p>
-            )}
-          </motion.div>
-
-          {/* Articles list */}
-          <div className="space-y-6">
-            <AnimatePresence mode="popLayout">
-              {filteredArticles.map((article, index) => (
-                <motion.div
-                  key={article.id}
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                >
-                  <ArticleCard article={article} t={t} />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-
-            {filteredArticles.length === 0 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-center py-12"
-              >
-                <p className="text-muted-foreground text-lg mb-4">
-                  {t('blog.noResults')}
-                </p>
-                <button
-                  onClick={clearFilters}
-                  className="text-primary font-medium hover:underline"
-                >
-                  {t('blog.clearFilters')}
-                </button>
-              </motion.div>
-            )}
           </div>
         </div>
       </main>
