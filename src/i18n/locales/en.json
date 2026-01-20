@@ -305,8 +305,8 @@
     }
   },
   "fonctionnalites": {
-    "heroTitle": "Features designed for your financial autonomy",
-    "heroSubtitle": "Click on a card to learn more",
+    "heroTitle": "Features designed for your",
+    "heroTitleHighlight": "financial autonomy",
     "step1": "Step 1",
     "step2": "Step 2",
     "step3": "Step 3",
