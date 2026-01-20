@@ -382,13 +382,13 @@ const BudgetAnimation = ({
             }}
           >
             {/* Catégorie principale */}
-            <div className="grid grid-cols-[80px_1fr_1fr_1fr] gap-x-2 items-center bg-rose-500/10 rounded-lg px-3 py-1.5">
+            <div className="grid grid-cols-[80px_1fr_1fr_1fr] gap-x-2 items-center bg-secondary rounded-lg px-3 py-1.5">
               <span className="font-medium text-foreground text-xs truncate">{cat.category}</span>
-              <span className="text-rose-500 dark:text-rose-400 font-bold text-xs text-center">{cat.april}</span>
-              <span className={`font-bold text-xs text-center ${cat.changed ? 'text-rose-600 dark:text-rose-300' : 'text-rose-500 dark:text-rose-400'}`}>
+              <span className="text-muted-foreground font-bold text-xs text-center">{cat.april}</span>
+              <span className={`font-bold text-xs text-center ${cat.changed ? 'text-foreground' : 'text-muted-foreground'}`}>
                 {cat.may}
               </span>
-              <span className={`font-bold text-xs text-center ${cat.changed ? 'text-rose-600 dark:text-rose-300' : 'text-rose-500 dark:text-rose-400'}`}>
+              <span className={`font-bold text-xs text-center ${cat.changed ? 'text-foreground' : 'text-muted-foreground'}`}>
                 {cat.june}
               </span>
             </div>
@@ -410,11 +410,11 @@ const BudgetAnimation = ({
                   className="grid grid-cols-[80px_1fr_1fr_1fr] gap-x-2 items-center text-[11px] px-3 py-0.5"
                 >
                   <span className="text-muted-foreground pl-1 truncate">{sub.label}</span>
-                  <span className="text-rose-400/70 text-center">{sub.april}</span>
-                  <span className={`text-center ${sub.changed ? 'text-rose-500 font-medium' : 'text-rose-400/70'}`}>
+                  <span className="text-muted-foreground/70 text-center">{sub.april}</span>
+                  <span className={`text-center ${sub.changed ? 'text-foreground font-medium' : 'text-muted-foreground/70'}`}>
                     {sub.may}
                   </span>
-                  <span className={`text-center ${sub.changed ? 'text-rose-500 font-medium' : 'text-rose-400/70'}`}>
+                  <span className={`text-center ${sub.changed ? 'text-foreground font-medium' : 'text-muted-foreground/70'}`}>
                     {sub.june}
                   </span>
                 </div>
@@ -438,9 +438,9 @@ const BudgetAnimation = ({
         className="grid grid-cols-[80px_1fr_1fr_1fr] gap-x-2 items-center mt-3 pt-2 border-t border-border/30 px-3"
       >
         <span className="font-semibold text-foreground text-xs">{t('fonctionnalites.animations.total')}</span>
-        <span className="text-rose-500 dark:text-rose-400 font-bold text-xs text-center">{totals.april}</span>
-        <span className="text-rose-500 dark:text-rose-400 font-bold text-xs text-center">{totals.may}</span>
-        <span className="text-rose-500 dark:text-rose-400 font-bold text-xs text-center">{totals.june}</span>
+        <span className="text-muted-foreground font-bold text-xs text-center">{totals.april}</span>
+        <span className="text-muted-foreground font-bold text-xs text-center">{totals.may}</span>
+        <span className="text-muted-foreground font-bold text-xs text-center">{totals.june}</span>
       </motion.div>
 
       {/* Ligne Reste disponible */}
