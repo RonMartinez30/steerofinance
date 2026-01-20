@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import { ArrowRight, Check, Star, ChevronDown, Brain, Compass, RotateCcw, Heart, GraduationCap, BookOpen } from "lucide-react";
+import { ArrowRight, Check, Star, ChevronDown, Brain, Compass, RotateCcw, Heart, GraduationCap, BookOpen, PenLine, Zap, Calendar, Eye, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
@@ -163,7 +163,7 @@ const behavioralElementsData: BehavioralElement[] = [
     referenceKey: "whySteero.behavioral.learning.reference",
   }
 ];
-// Animation 1: Cognitive Effort - Abstract network
+// Animation 1: Cognitive Effort - Manual entry vs passive viewing
 const CognitiveEffortAnimation = ({
   isOpen,
   t
@@ -171,77 +171,105 @@ const CognitiveEffortAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [step, setStep] = useState(0);
+  const [phase, setPhase] = useState<'passive' | 'active' | 'result'>('passive');
+  
   useEffect(() => {
     if (!isOpen) {
-      setStep(0);
+      setPhase('passive');
       return;
     }
-    const interval = setInterval(() => {
-      setStep(s => (s + 1) % 5);
-    }, 700);
-    return () => clearInterval(interval);
+    const timers = [
+      setTimeout(() => setPhase('active'), 1500),
+      setTimeout(() => setPhase('result'), 3500)
+    ];
+    const loop = setInterval(() => {
+      setPhase('passive');
+      setTimeout(() => setPhase('active'), 1500);
+      setTimeout(() => setPhase('result'), 3500);
+    }, 6000);
+    return () => {
+      timers.forEach(clearTimeout);
+      clearInterval(loop);
+    };
   }, [isOpen]);
-  const nodes = [{
-    x: 15,
-    y: 25,
-    delay: 0
-  }, {
-    x: 50,
-    y: 10,
-    delay: 1
-  }, {
-    x: 85,
-    y: 25,
-    delay: 2
-  }, {
-    x: 25,
-    y: 55,
-    delay: 3
-  }, {
-    x: 75,
-    y: 55,
-    delay: 4
-  }];
-  return <div className="flex flex-col gap-2 py-2">
-      <div className="relative h-20 bg-muted/20 rounded-lg overflow-hidden border border-border/30">
-        {/* Central node - static */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-border/40 flex items-center justify-center z-10 bg-background">
-          <Brain className="w-4 h-4 text-muted-foreground/60" />
-        </div>
-        
-        {/* Network nodes */}
-        {nodes.map((node, i) => <motion.div key={i} animate={{
-        opacity: step >= node.delay ? 0.5 : 0
-      }} transition={{
-        duration: 0.4,
-        ease: "easeOut"
-      }} style={{
-        left: `${node.x}%`,
-        top: `${node.y}%`
-      }} className="absolute w-2 h-2 rounded-full bg-muted-foreground/40 -translate-x-1/2 -translate-y-1/2" />)}
-        
-        {/* Connection lines */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none">
-          {nodes.map((node, i) => <motion.line key={i} x1="50%" y1="50%" x2={`${node.x}%`} y2={`${node.y}%`} stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeOpacity="0.15" animate={{
-          pathLength: step >= node.delay ? 1 : 0,
-          opacity: step >= node.delay ? 0.2 : 0
-        }} transition={{
-          duration: 0.4
-        }} />)}
-        </svg>
+
+  return (
+    <div className="flex flex-col gap-3 py-3">
+      <div className="grid grid-cols-2 gap-3">
+        {/* Passive: Auto-sync data */}
+        <motion.div
+          animate={{
+            opacity: phase === 'passive' ? 1 : 0.4,
+            scale: phase === 'passive' ? 1 : 0.98
+          }}
+          transition={{ duration: 0.4 }}
+          className="relative bg-muted/30 rounded-lg p-3 border border-border/40"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <Zap className="w-3 h-3 text-muted-foreground/50" />
+            <span className="text-[10px] text-muted-foreground/60 font-medium">{t('animations.autoSync')}</span>
+          </div>
+          <div className="space-y-1.5">
+            <div className="h-1.5 bg-muted/60 rounded w-full" />
+            <div className="h-1.5 bg-muted/60 rounded w-4/5" />
+            <div className="h-1.5 bg-muted/60 rounded w-3/5" />
+          </div>
+          <motion.div
+            animate={{ opacity: phase === 'passive' ? 0.6 : 0 }}
+            className="absolute -bottom-1 left-1/2 -translate-x-1/2"
+          >
+            <Eye className="w-3 h-3 text-muted-foreground/40" />
+          </motion.div>
+        </motion.div>
+
+        {/* Active: Manual entry */}
+        <motion.div
+          animate={{
+            opacity: phase !== 'passive' ? 1 : 0.4,
+            scale: phase !== 'passive' ? 1 : 0.98
+          }}
+          transition={{ duration: 0.4 }}
+          className="relative bg-primary/5 rounded-lg p-3 border border-primary/20"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <PenLine className="w-3 h-3 text-primary/70" />
+            <span className="text-[10px] text-primary/70 font-medium">{t('animations.manualEntry')}</span>
+          </div>
+          <div className="space-y-1.5">
+            <motion.div
+              animate={{ width: phase === 'active' ? '100%' : phase === 'result' ? '100%' : '0%' }}
+              transition={{ duration: 0.8 }}
+              className="h-1.5 bg-primary/30 rounded"
+            />
+            <motion.div
+              animate={{ width: phase === 'active' ? '75%' : phase === 'result' ? '75%' : '0%' }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-1.5 bg-primary/30 rounded"
+            />
+          </div>
+          <motion.div
+            animate={{ opacity: phase === 'result' ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute -bottom-1 left-1/2 -translate-x-1/2"
+          >
+            <Brain className="w-3 h-3 text-primary/60" />
+          </motion.div>
+        </motion.div>
       </div>
-      
-      {/* Label */}
-      <motion.p animate={{
-      opacity: step >= 4 ? 0.8 : 0
-    }} transition={{ duration: 0.3 }} className="text-center text-xs text-muted-foreground/70">
+
+      {/* Result label */}
+      <motion.p
+        animate={{ opacity: phase === 'result' ? 0.8 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="text-center text-xs text-muted-foreground/70"
+      >
         {t('animations.activeConnections')}
       </motion.p>
-    </div>;
+    </div>
+  );
 };
 
-// Animation 2: Control Illusion - Comparison view
+// Animation 2: Control Illusion - Beautiful dashboard but no understanding
 const ControlIllusionAnimation = ({
   isOpen,
   t
@@ -249,69 +277,105 @@ const ControlIllusionAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [phase, setPhase] = useState<'fake' | 'reveal' | 'real'>('fake');
+  const [phase, setPhase] = useState<'dashboard' | 'question' | 'reality'>('dashboard');
+  
   useEffect(() => {
     if (!isOpen) {
-      setPhase('fake');
+      setPhase('dashboard');
       return;
     }
-    const timers = [setTimeout(() => setPhase('reveal'), 1800), setTimeout(() => setPhase('real'), 3500)];
+    const timers = [
+      setTimeout(() => setPhase('question'), 2000),
+      setTimeout(() => setPhase('reality'), 4000)
+    ];
     const loop = setInterval(() => {
-      setPhase('fake');
-      setTimeout(() => setPhase('reveal'), 1800);
-      setTimeout(() => setPhase('real'), 3500);
-    }, 6000);
+      setPhase('dashboard');
+      setTimeout(() => setPhase('question'), 2000);
+      setTimeout(() => setPhase('reality'), 4000);
+    }, 7000);
     return () => {
       timers.forEach(clearTimeout);
       clearInterval(loop);
     };
   }, [isOpen]);
-  return <div className="flex flex-col gap-2 py-2">
-      <div className="relative h-20 flex items-center justify-center gap-4">
-        {/* Automated view */}
-        <motion.div animate={{
-        opacity: phase === 'fake' ? 0.8 : 0.3,
-      }} transition={{ duration: 0.4 }} className="relative flex-1 bg-muted/30 rounded-lg p-3 border border-border/40">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40" />
-            <span className="text-[10px] text-muted-foreground/60">{t('animations.autoSync')}</span>
+
+  return (
+    <div className="flex flex-col gap-3 py-3">
+      <div className="relative h-24 bg-muted/20 rounded-lg border border-border/30 p-3 overflow-hidden">
+        {/* Dashboard mockup */}
+        <div className="flex gap-2 h-full">
+          {/* Fake chart */}
+          <div className="flex-1 flex items-end gap-0.5">
+            {[40, 65, 45, 80, 55, 70, 50].map((h, i) => (
+              <motion.div
+                key={i}
+                animate={{ height: `${h}%`, opacity: phase === 'dashboard' ? 0.6 : 0.2 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="flex-1 bg-muted-foreground/30 rounded-t"
+              />
+            ))}
           </div>
-          <div className="space-y-1">
-            <div className="h-1 bg-muted/60 rounded w-full" />
-            <div className="h-1 bg-muted/60 rounded w-3/4" />
-            <div className="h-1 bg-muted/60 rounded w-1/2" />
+          {/* Fake metrics */}
+          <div className="w-16 space-y-1.5">
+            <motion.div
+              animate={{ opacity: phase === 'dashboard' ? 0.7 : 0.2 }}
+              className="h-2 bg-muted/60 rounded w-full"
+            />
+            <motion.div
+              animate={{ opacity: phase === 'dashboard' ? 0.7 : 0.2 }}
+              className="h-2 bg-muted/60 rounded w-3/4"
+            />
+            <motion.div
+              animate={{ opacity: phase === 'dashboard' ? 0.7 : 0.2 }}
+              className="h-2 bg-muted/60 rounded w-1/2"
+            />
+          </div>
+        </div>
+
+        {/* Question overlay */}
+        <motion.div
+          animate={{
+            opacity: phase === 'question' ? 1 : 0,
+            scale: phase === 'question' ? 1 : 0.9
+          }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-0 bg-background/80 flex items-center justify-center"
+        >
+          <div className="text-center">
+            <AlertCircle className="w-5 h-5 text-muted-foreground/60 mx-auto mb-1" />
+            <p className="text-[10px] text-muted-foreground/70">{t('animations.whereMoneyGoes')}</p>
           </div>
         </motion.div>
-        
-        {/* Arrow */}
-        <ArrowRight className="w-3 h-3 text-muted-foreground/40 flex-shrink-0" />
-        
-        {/* Understood view */}
-        <motion.div animate={{
-        opacity: phase === 'real' ? 0.9 : 0.3,
-      }} transition={{ duration: 0.4 }} className="relative flex-1 bg-muted/20 rounded-lg p-3 border border-border/30">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50" />
-            <span className="text-[10px] text-muted-foreground/70">{t('animations.understood')}</span>
-          </div>
-          <div className="space-y-1">
-            <div className="h-1 bg-muted-foreground/20 rounded w-full" />
-            <div className="h-1 bg-muted-foreground/30 rounded w-3/4" />
-            <div className="h-1 bg-muted-foreground/40 rounded w-1/2" />
+
+        {/* Reality overlay */}
+        <motion.div
+          animate={{
+            opacity: phase === 'reality' ? 1 : 0,
+            scale: phase === 'reality' ? 1 : 0.9
+          }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-0 bg-background/90 flex items-center justify-center"
+        >
+          <div className="text-center">
+            <Compass className="w-5 h-5 text-primary/60 mx-auto mb-1" />
+            <p className="text-[10px] text-primary/70 font-medium">{t('animations.realUnderstanding')}</p>
           </div>
         </motion.div>
       </div>
-      
+
       {/* Label */}
-      <motion.p animate={{
-      opacity: phase === 'real' ? 0.8 : 0
-    }} transition={{ duration: 0.3 }} className="text-center text-xs text-muted-foreground/70">
-        {t('animations.realUnderstanding')}
+      <motion.p
+        animate={{ opacity: phase === 'reality' ? 0.8 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="text-center text-xs text-muted-foreground/70"
+      >
+        {t('animations.controlVsUnderstanding')}
       </motion.p>
-    </div>;
+    </div>
+  );
 };
 
-// Animation 3: Ritual Cycle - Circular progression
+// Animation 3: Ritual Cycle - Calendar with regular moments
 const RitualCycleAnimation = ({
   isOpen,
   t
@@ -319,67 +383,114 @@ const RitualCycleAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeDay, setActiveDay] = useState(0);
+  const [weekComplete, setWeekComplete] = useState(false);
+  
   useEffect(() => {
     if (!isOpen) {
-      setActiveStep(0);
+      setActiveDay(0);
+      setWeekComplete(false);
       return;
     }
-    const interval = setInterval(() => {
-      setActiveStep(s => (s + 1) % 4);
-    }, 1200);
-    return () => clearInterval(interval);
+    
+    const dayTimers = [0, 1, 2, 3, 4, 5, 6].map((day, i) =>
+      setTimeout(() => setActiveDay(day + 1), 600 + i * 400)
+    );
+    const completeTimer = setTimeout(() => setWeekComplete(true), 3600);
+    
+    const loop = setInterval(() => {
+      setActiveDay(0);
+      setWeekComplete(false);
+      [0, 1, 2, 3, 4, 5, 6].forEach((day, i) => {
+        setTimeout(() => setActiveDay(day + 1), 600 + i * 400);
+      });
+      setTimeout(() => setWeekComplete(true), 3600);
+    }, 5500);
+    
+    return () => {
+      dayTimers.forEach(clearTimeout);
+      clearTimeout(completeTimer);
+      clearInterval(loop);
+    };
   }, [isOpen]);
-  const ritualSteps = [{
-    label: t('animations.define'),
-  }, {
-    label: t('animations.capture'),
-  }, {
-    label: t('animations.review'),
-  }, {
-    label: t('animations.anchor'),
-  }];
-  return <div className="flex flex-col gap-3 py-3 mb-4">
-      <div className="relative h-20 flex items-center justify-center">
-        {/* Circular path */}
-        <div className="w-14 h-14 rounded-full border border-border/30" />
+
+  const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+  const ritualDays = [0, 2, 6]; // Lundi, Mercredi, Dimanche
+
+  return (
+    <div className="flex flex-col gap-3 py-3">
+      {/* Week calendar */}
+      <div className="bg-muted/20 rounded-lg p-3 border border-border/30">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <Calendar className="w-3.5 h-3.5 text-muted-foreground/60" />
+            <span className="text-[10px] text-muted-foreground/60 font-medium">{t('animations.weeklyRitual')}</span>
+          </div>
+          <motion.div
+            animate={{ opacity: weekComplete ? 1 : 0 }}
+            className="flex items-center gap-1"
+          >
+            <Check className="w-3 h-3 text-primary/70" />
+            <span className="text-[9px] text-primary/70">{t('animations.ritualComplete')}</span>
+          </motion.div>
+        </div>
         
-        {/* Ritual steps around the circle */}
-        {ritualSteps.map((step, i) => {
-        const angle = (i * 90 - 90) * (Math.PI / 180);
-        const radius = 28;
-        const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * radius;
-        return <motion.div key={i} style={{
-          left: `calc(50% + ${x}px)`,
-          top: `calc(50% + ${y}px)`,
-          transform: 'translate(-50%, -50%)'
-        }} animate={{
-          opacity: activeStep === i ? 0.8 : 0.3
-        }} transition={{
-          duration: 0.4,
-        }} className={`absolute w-2.5 h-2.5 rounded-full ${activeStep === i ? 'bg-muted-foreground/60' : 'bg-muted/60'}`} />;
-      })}
-        
-        {/* Center indicator */}
-        <motion.div animate={{
-        rotate: activeStep * 90
-      }} transition={{
-        duration: 0.5,
-        ease: "easeOut"
-      }} className="absolute">
-          <RotateCcw className="w-3 h-3 text-muted-foreground/40" />
-        </motion.div>
+        <div className="flex justify-between gap-1">
+          {days.map((day, i) => {
+            const isRitualDay = ritualDays.includes(i);
+            const isPast = activeDay > i;
+            const isCurrent = activeDay === i + 1;
+            
+            return (
+              <motion.div
+                key={i}
+                animate={{
+                  opacity: isPast || isCurrent ? 1 : 0.4,
+                  scale: isCurrent ? 1.1 : 1
+                }}
+                transition={{ duration: 0.3 }}
+                className={`flex-1 flex flex-col items-center gap-1 py-1.5 rounded ${
+                  isRitualDay && isPast
+                    ? 'bg-primary/15'
+                    : isPast
+                    ? 'bg-muted/40'
+                    : ''
+                }`}
+              >
+                <span className={`text-[9px] font-medium ${
+                  isRitualDay && isPast ? 'text-primary/80' : 'text-muted-foreground/60'
+                }`}>
+                  {day}
+                </span>
+                <motion.div
+                  animate={{
+                    backgroundColor: isRitualDay && isPast
+                      ? 'hsl(var(--primary))'
+                      : isPast
+                      ? 'hsl(var(--muted-foreground) / 0.3)'
+                      : 'hsl(var(--muted) / 0.4)'
+                  }}
+                  className="w-2 h-2 rounded-full"
+                />
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
-      
-      {/* Current step label */}
-      <motion.p key={activeStep} initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ duration: 0.3 }} className="text-center text-xs text-muted-foreground/70">
-        {ritualSteps[activeStep].label}
+
+      {/* Label */}
+      <motion.p
+        animate={{ opacity: weekComplete ? 0.8 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="text-center text-xs text-muted-foreground/70"
+      >
+        {t('animations.habitFormed')}
       </motion.p>
-    </div>;
+    </div>
+  );
 };
 
-// Animation 4: Awareness Process - Linear flow
+// Animation 4: Emotional Connection - Manual entry creates awareness
 const EmotionalConnectionAnimation = ({
   isOpen,
   t
@@ -387,71 +498,104 @@ const EmotionalConnectionAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [step, setStep] = useState(0);
+  const [phase, setPhase] = useState<'input' | 'feel' | 'decide'>('input');
+  
   useEffect(() => {
     if (!isOpen) {
-      setStep(0);
+      setPhase('input');
       return;
     }
-    const interval = setInterval(() => {
-      setStep(s => (s + 1) % 5);
-    }, 900);
-    return () => clearInterval(interval);
+    const timers = [
+      setTimeout(() => setPhase('feel'), 1800),
+      setTimeout(() => setPhase('decide'), 3600)
+    ];
+    const loop = setInterval(() => {
+      setPhase('input');
+      setTimeout(() => setPhase('feel'), 1800);
+      setTimeout(() => setPhase('decide'), 3600);
+    }, 6000);
+    return () => {
+      timers.forEach(clearTimeout);
+      clearInterval(loop);
+    };
   }, [isOpen]);
-  return <div className="flex flex-col gap-2 py-2">
-      <div className="relative h-14 flex items-center justify-center gap-3">
-        {/* Input */}
-        <motion.div animate={{
-        opacity: step >= 1 ? 0.5 : 0.2
-      }} transition={{
-        duration: 0.4
-      }} className="w-7 h-7 rounded border border-border/40 bg-muted/20 flex items-center justify-center">
-          <span className="text-[10px] text-muted-foreground/50 font-medium">€</span>
+
+  return (
+    <div className="flex flex-col gap-3 py-3">
+      <div className="bg-muted/20 rounded-lg p-3 border border-border/30">
+        {/* Transaction input simulation */}
+        <div className="flex items-center gap-3 mb-3">
+          <motion.div
+            animate={{
+              opacity: phase !== 'input' ? 1 : 0.5,
+              scale: phase === 'input' ? 1.05 : 1
+            }}
+            transition={{ duration: 0.4 }}
+            className="flex-1 bg-background rounded border border-border/50 p-2"
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] text-muted-foreground/70">{t('animations.restaurant')}</span>
+              <motion.span
+                animate={{ opacity: phase !== 'input' ? 1 : 0 }}
+                className="text-xs font-medium text-foreground"
+              >
+                -34,90 €
+              </motion.span>
+            </div>
+          </motion.div>
+          <motion.div
+            animate={{ opacity: phase === 'input' ? 0.8 : 0.3 }}
+            className="flex-shrink-0"
+          >
+            <PenLine className="w-4 h-4 text-muted-foreground/50" />
+          </motion.div>
+        </div>
+
+        {/* Emotional reaction */}
+        <motion.div
+          animate={{
+            opacity: phase === 'feel' ? 1 : 0,
+            height: phase === 'feel' ? 'auto' : 0,
+            marginBottom: phase === 'feel' ? 8 : 0
+          }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
+        >
+          <div className="flex items-center gap-2 bg-amber-500/10 rounded px-2 py-1.5">
+            <Heart className="w-3 h-3 text-amber-600/70" />
+            <span className="text-[10px] text-amber-700/80">{t('animations.emotionalReaction')}</span>
+          </div>
         </motion.div>
-        
-        {/* Arrow */}
-        <motion.div animate={{
-        opacity: step >= 2 ? 0.4 : 0.15,
-      }} transition={{ duration: 0.3 }}>
-          <ArrowRight className="w-2.5 h-2.5 text-muted-foreground/40" />
-        </motion.div>
-        
-        {/* Processing */}
-        <motion.div animate={{
-        opacity: step >= 3 ? 0.6 : 0.25
-      }} transition={{
-        duration: 0.4,
-      }} className="w-9 h-9 rounded-full border border-border/30 bg-muted/15 flex items-center justify-center">
-          <Heart className="w-3.5 h-3.5 text-muted-foreground/40" />
-        </motion.div>
-        
-        {/* Arrow */}
-        <motion.div animate={{
-        opacity: step >= 4 ? 0.4 : 0.15,
-      }} transition={{ duration: 0.3 }}>
-          <ArrowRight className="w-2.5 h-2.5 text-muted-foreground/40" />
-        </motion.div>
-        
-        {/* Output */}
-        <motion.div animate={{
-        opacity: step >= 4 ? 0.7 : 0.2,
-      }} transition={{
-        duration: 0.4,
-      }} className="w-7 h-7 rounded border border-border/40 bg-muted/20 flex items-center justify-center">
-          <Check className="w-2.5 h-2.5 text-muted-foreground/50" />
+
+        {/* Conscious decision */}
+        <motion.div
+          animate={{
+            opacity: phase === 'decide' ? 1 : 0,
+            height: phase === 'decide' ? 'auto' : 0
+          }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
+        >
+          <div className="flex items-center gap-2 bg-primary/10 rounded px-2 py-1.5">
+            <Check className="w-3 h-3 text-primary/70" />
+            <span className="text-[10px] text-primary/80 font-medium">{t('animations.consciousDecision')}</span>
+          </div>
         </motion.div>
       </div>
-      
-      {/* Result text */}
-      <motion.p animate={{
-      opacity: step >= 4 ? 0.7 : 0
-    }} transition={{ duration: 0.3 }} className="text-center text-xs text-muted-foreground/70">
+
+      {/* Label */}
+      <motion.p
+        animate={{ opacity: phase === 'decide' ? 0.8 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="text-center text-xs text-muted-foreground/70"
+      >
         {t('animations.realAwareness')}
       </motion.p>
-    </div>;
+    </div>
+  );
 };
 
-// Animation 5: Learning Progression
+// Animation 5: Learning First - Understanding before automation
 const LearningFirstAnimation = ({
   isOpen,
   t
@@ -459,70 +603,114 @@ const LearningFirstAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [stage, setStage] = useState(0);
+  const [phase, setPhase] = useState<'learn' | 'understand' | 'master' | 'auto'>('learn');
+  
   useEffect(() => {
     if (!isOpen) {
-      setStage(0);
+      setPhase('learn');
       return;
     }
-    const interval = setInterval(() => {
-      setStage(s => (s + 1) % 4);
-    }, 1400);
-    return () => clearInterval(interval);
+    const timers = [
+      setTimeout(() => setPhase('understand'), 1500),
+      setTimeout(() => setPhase('master'), 3000),
+      setTimeout(() => setPhase('auto'), 4500)
+    ];
+    const loop = setInterval(() => {
+      setPhase('learn');
+      setTimeout(() => setPhase('understand'), 1500);
+      setTimeout(() => setPhase('master'), 3000);
+      setTimeout(() => setPhase('auto'), 4500);
+    }, 7000);
+    return () => {
+      timers.forEach(clearTimeout);
+      clearInterval(loop);
+    };
   }, [isOpen]);
-  const stages = [{
-    label: t('animations.learn'),
-    fill: 33,
-  }, {
-    label: t('animations.understand'),
-    fill: 66,
-  }, {
-    label: t('animations.master'),
-    fill: 100,
-  }];
-  return <div className="flex flex-col gap-2 py-2">
-      {/* Progress bar */}
-      <div className="relative h-1 bg-muted/40 rounded-full overflow-hidden">
-        <motion.div animate={{
-        width: `${stages[stage % 3].fill}%`
-      }} transition={{
-        duration: 0.6,
-        ease: "easeOut"
-      }} className="absolute left-0 top-0 h-full bg-muted-foreground/30 rounded-full" />
+
+  const phases = [
+    { key: 'learn', label: t('animations.learn'), icon: BookOpen },
+    { key: 'understand', label: t('animations.understand'), icon: Brain },
+    { key: 'master', label: t('animations.master'), icon: GraduationCap },
+    { key: 'auto', label: t('animations.thenAutomate'), icon: Zap }
+  ];
+
+  const currentIndex = phases.findIndex(p => p.key === phase);
+
+  return (
+    <div className="flex flex-col gap-3 py-3">
+      {/* Progress steps */}
+      <div className="bg-muted/20 rounded-lg p-3 border border-border/30">
+        <div className="flex items-center justify-between gap-2">
+          {phases.map((p, i) => {
+            const PhaseIcon = p.icon;
+            const isActive = i <= currentIndex;
+            const isCurrent = p.key === phase;
+            
+            return (
+              <div key={p.key} className="flex-1 flex flex-col items-center gap-1.5">
+                <motion.div
+                  animate={{
+                    scale: isCurrent ? 1.15 : 1,
+                    opacity: isActive ? 1 : 0.35
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                    isActive
+                      ? i === 3
+                        ? 'bg-emerald-500/15 border border-emerald-500/30'
+                        : 'bg-primary/15 border border-primary/30'
+                      : 'bg-muted/40 border border-border/30'
+                  }`}
+                >
+                  <PhaseIcon className={`w-3.5 h-3.5 ${
+                    isActive
+                      ? i === 3
+                        ? 'text-emerald-600/80'
+                        : 'text-primary/80'
+                      : 'text-muted-foreground/40'
+                  }`} />
+                </motion.div>
+                <motion.span
+                  animate={{ opacity: isActive ? 0.8 : 0.35 }}
+                  className={`text-[9px] text-center font-medium ${
+                    isCurrent ? 'text-foreground' : 'text-muted-foreground'
+                  }`}
+                >
+                  {p.label}
+                </motion.span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Progress bar */}
+        <div className="mt-3 h-1 bg-muted/40 rounded-full overflow-hidden">
+          <motion.div
+            animate={{ width: `${((currentIndex + 1) / phases.length) * 100}%` }}
+            transition={{ duration: 0.5 }}
+            className={`h-full rounded-full ${
+              phase === 'auto' ? 'bg-emerald-500/60' : 'bg-primary/50'
+            }`}
+          />
+        </div>
       </div>
-      
-      {/* Stage indicators */}
-      <div className="flex justify-between px-1">
-        {stages.map((s, i) => {
-        const currentStage = stage % 3;
-        return <motion.div key={i} animate={{
-          opacity: currentStage >= i ? 0.8 : 0.3
-        }} transition={{
-          duration: 0.4
-        }} className="flex flex-col items-center gap-0.5">
-              <div className={`w-1.5 h-1.5 rounded-full ${currentStage >= i ? 'bg-muted-foreground/50' : 'bg-muted/50'}`} />
-              <span className={`text-[9px] ${currentStage === i ? 'text-muted-foreground/70' : 'text-muted-foreground/40'}`}>
-                {s.label}
-              </span>
-            </motion.div>;
-      })}
-      </div>
-      
+
       {/* Status message */}
-      <div className="h-4 flex items-center justify-center">
-        <AnimatePresence mode="wait">
-          {stage % 3 < 1 && <motion.p key="warning" initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} exit={{ opacity: 0 }} className="text-center text-[10px] text-muted-foreground/60">
-              {t('animations.autoTooEarly')}
-            </motion.p>}
-          {stage % 3 === 1 && <motion.p key="progress" initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} exit={{ opacity: 0 }} className="text-center text-[10px] text-muted-foreground/60">
-              {t('animations.understandingGrows')}
-            </motion.p>}
-          {stage % 3 === 2 && <motion.p key="ready" initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} exit={{ opacity: 0 }} className="text-center text-[10px] text-muted-foreground/70">
-              {t('animations.autoCanBeConsidered')}
-            </motion.p>}
-        </AnimatePresence>
-      </div>
-    </div>;
+      <motion.p
+        animate={{ opacity: phase === 'auto' ? 0.8 : 0.6 }}
+        className={`text-center text-xs ${
+          phase === 'auto' ? 'text-emerald-600/80' : 'text-muted-foreground/70'
+        }`}
+      >
+        {phase === 'auto' 
+          ? t('animations.autoCanBeConsidered')
+          : phase === 'learn'
+          ? t('animations.autoTooEarly')
+          : t('animations.understandingGrows')
+        }
+      </motion.p>
+    </div>
+  );
 };
 
 // Main animation router component
