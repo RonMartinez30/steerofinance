@@ -400,7 +400,15 @@
       "consecutiveDays": "🔥 ¡5 días consecutivos!",
       "budgetUsed": "Presupuesto usado",
       "savings": "Ahorro",
-      "rituals": "Rituales"
+      "rituals": "Rituales",
+      "projectVacances": "Vacaciones",
+      "projectLodging": "Alojamiento",
+      "projectTransport": "Transporte",
+      "projectOnSite": "Gastos en destino",
+      "budgetLeisure": "Presupuesto ocio",
+      "budgetTransport": "Presupuesto transporte",
+      "budgetDaily": "Presupuesto diario",
+      "projectClosing": "El proyecto no es un presupuesto más: es tu vista transversal."
     }
   },
   "blog": {

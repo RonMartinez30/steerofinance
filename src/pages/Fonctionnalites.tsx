@@ -1294,120 +1294,74 @@ const Fonctionnalites = () => {
               sounds={sounds}
               t={t}
               animation={
-                <div className="relative h-32 w-full flex items-center justify-center gap-3">
-                  {/* Envelope 1 - Vacances */}
+                <div className="relative w-full flex flex-col items-center gap-3">
+                  {/* Projet Vacances */}
                   <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 }}
-                    className="relative"
+                    className="w-full bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg border border-primary/20 p-4"
                   >
-                    <motion.div 
-                      className="w-16 h-20 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg border border-primary/30 flex flex-col items-center justify-center shadow-sm"
-                      animate={{ y: [0, -3, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <span className="text-lg mb-1">✈️</span>
-                      <span className="text-[8px] font-medium text-primary/80">Vacances</span>
-                      <motion.div 
-                        className="absolute -top-1 -right-1 w-5 h-5 bg-primary rounded-full flex items-center justify-center"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.5, type: "spring", stiffness: 150, damping: 20 }}
+                    {/* Header avec titre et montant */}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">✈️</span>
+                        <span className="text-sm font-semibold text-foreground">{t('fonctionnalites.animations.projectVacances')}</span>
+                      </div>
+                      <motion.span 
+                        className="text-base font-bold text-primary"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3 }}
                       >
-                        <span className="text-[7px] text-primary-foreground font-bold">75%</span>
+                        2 300 €
+                      </motion.span>
+                    </div>
+
+                    {/* Liste des budgets */}
+                    <div className="space-y-2">
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="flex items-center gap-2 text-xs text-muted-foreground"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                        <span>{t('fonctionnalites.animations.projectLodging')}</span>
+                        <span className="text-muted-foreground/50">({t('fonctionnalites.animations.budgetLeisure')})</span>
                       </motion.div>
-                    </motion.div>
-                    <motion.div
-                      className="absolute bottom-0 left-1 right-1 h-1.5 bg-muted rounded-full overflow-hidden"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      <motion.div 
-                        className="h-full bg-primary rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{ width: "75%" }}
-                        transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-                      />
-                    </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="flex items-center gap-2 text-xs text-muted-foreground"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                        <span>{t('fonctionnalites.animations.projectTransport')}</span>
+                        <span className="text-muted-foreground/50">({t('fonctionnalites.animations.budgetTransport')})</span>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className="flex items-center gap-2 text-xs text-muted-foreground"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                        <span>{t('fonctionnalites.animations.projectOnSite')}</span>
+                        <span className="text-muted-foreground/50">({t('fonctionnalites.animations.budgetDaily')})</span>
+                      </motion.div>
+                    </div>
                   </motion.div>
 
-                  {/* Envelope 2 - Projet */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.25 }}
-                    className="relative"
+                  {/* Texte de clôture */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="text-[11px] text-center text-muted-foreground/80 italic px-2"
                   >
-                    <motion.div 
-                      className="w-16 h-20 bg-gradient-to-br from-accent/40 to-accent/10 rounded-lg border border-accent/50 flex flex-col items-center justify-center shadow-sm"
-                      animate={{ y: [0, -3, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                    >
-                      <span className="text-lg mb-1">🎁</span>
-                      <span className="text-[8px] font-medium text-accent-foreground/80">Cadeaux</span>
-                      <motion.div 
-                        className="absolute -top-1 -right-1 w-5 h-5 bg-accent rounded-full flex items-center justify-center"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.7, type: "spring", stiffness: 150, damping: 20 }}
-                      >
-                        <span className="text-[7px] text-accent-foreground font-bold">40%</span>
-                      </motion.div>
-                    </motion.div>
-                    <motion.div
-                      className="absolute bottom-0 left-1 right-1 h-1.5 bg-muted rounded-full overflow-hidden"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                    >
-                      <motion.div 
-                        className="h-full bg-accent rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{ width: "40%" }}
-                        transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
-                      />
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Envelope 3 - Rénovation */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.4 }}
-                    className="relative"
-                  >
-                    <motion.div 
-                      className="w-16 h-20 bg-gradient-to-br from-secondary to-secondary/50 rounded-lg border border-border flex flex-col items-center justify-center shadow-sm"
-                      animate={{ y: [0, -3, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                    >
-                      <span className="text-lg mb-1">🔧</span>
-                      <span className="text-[8px] font-medium text-muted-foreground">Travaux</span>
-                      <motion.div 
-                        className="absolute -top-1 -right-1 w-5 h-5 bg-muted-foreground rounded-full flex items-center justify-center"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.9, type: "spring", stiffness: 150, damping: 20 }}
-                      >
-                        <span className="text-[7px] text-background font-bold">20%</span>
-                      </motion.div>
-                    </motion.div>
-                    <motion.div
-                      className="absolute bottom-0 left-1 right-1 h-1.5 bg-muted rounded-full overflow-hidden"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      <motion.div 
-                        className="h-full bg-muted-foreground rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{ width: "20%" }}
-                        transition={{ delay: 0.9, duration: 0.8, ease: "easeOut" }}
-                      />
-                    </motion.div>
-                  </motion.div>
+                    {t('fonctionnalites.animations.projectClosing')}
+                  </motion.p>
                 </div>
               }
             />
