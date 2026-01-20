@@ -360,14 +360,17 @@
     "futureFeatures": {
       "projects": {
         "title": "Gestión de proyectos",
+        "promise": "Conecta varios presupuestos en torno a un mismo objetivo.",
         "description": "Agrupa varios presupuestos bajo un mismo objetivo con una temporalidad definida. Ya sea un viaje, una renovación o un evento: visualiza tu progreso y mantén una visión transversal de los recursos asignados."
       },
       "tiers": {
         "title": "Gestión de terceros y tesorería",
+        "promise": "Aclara lo que debes, lo que te deben y el impacto real en tu tesorería.",
         "description": "Sigue lo que debes y lo que te deben. Notas de gastos, adelantos entre amigos, reembolsos esperados: esta vista te permite clarificar tu tesorería real y anticipar los flujos futuros."
       },
       "patrimoine": {
         "title": "Gestión del patrimonio",
+        "promise": "Comprende tu situación financiera global de un vistazo.",
         "description": "Identifica tus activos (ahorros, inversiones, bienes) y tus pasivos (créditos, deudas). Comprende tu patrimonio neto como un indicador clave de tu situación financiera global."
       }
     },
@@ -431,7 +434,7 @@
       "patrimoineMortgage": "Hipoteca",
       "patrimoineApartmentDebt": "Préstamo apartamento",
       "patrimoineNetWorth": "Patrimonio neto",
-      "patrimoineClosing": "Tengo un balance global y sintético de mi patrimonio."
+      "patrimoineClosing": "Tengo un balance global, sintético y evolutivo de mi patrimonio."
     }
   },
   "blog": {

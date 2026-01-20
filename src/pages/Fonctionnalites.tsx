@@ -690,7 +690,7 @@ const IndicatorsAnimation = ({
 const FutureFeatureCard = ({
   icon,
   title,
-  description,
+  promise,
   delay,
   sounds,
   animation,
@@ -698,7 +698,7 @@ const FutureFeatureCard = ({
 }: {
   icon: "folder-kanban" | "users" | "building-2";
   title: string;
-  description: string;
+  promise: string;
   delay: number;
   sounds: ReturnType<typeof useSoundEffects>;
   animation: React.ReactNode;
@@ -775,7 +775,7 @@ const FutureFeatureCard = ({
         </div>
 
         <p className="text-sm text-muted-foreground/70 leading-relaxed">
-          {description}
+          {promise}
         </p>
       </div>
 
@@ -1289,7 +1289,7 @@ const Fonctionnalites = () => {
             <FutureFeatureCard
               icon="folder-kanban"
               title={t('fonctionnalites.futureFeatures.projects.title')}
-              description={t('fonctionnalites.futureFeatures.projects.description')}
+              promise={t('fonctionnalites.futureFeatures.projects.promise')}
               delay={0.1}
               sounds={sounds}
               t={t}
@@ -1403,7 +1403,7 @@ const Fonctionnalites = () => {
             <FutureFeatureCard
               icon="users"
               title={t('fonctionnalites.futureFeatures.tiers.title')}
-              description={t('fonctionnalites.futureFeatures.tiers.description')}
+              promise={t('fonctionnalites.futureFeatures.tiers.promise')}
               delay={0.2}
               sounds={sounds}
               t={t}
@@ -1525,7 +1525,7 @@ const Fonctionnalites = () => {
             <FutureFeatureCard
               icon="building-2"
               title={t('fonctionnalites.futureFeatures.patrimoine.title')}
-              description={t('fonctionnalites.futureFeatures.patrimoine.description')}
+              promise={t('fonctionnalites.futureFeatures.patrimoine.promise')}
               delay={0.3}
               sounds={sounds}
               t={t}
