@@ -604,8 +604,8 @@ const BehavioralCard = ({
         <div className="flex items-start gap-4">
           {/* Icon with principle number */}
           <div className="relative flex-shrink-0">
-            <div className="w-12 h-12 rounded-lg border border-border/50 bg-muted/30 flex items-center justify-center">
-              <Icon className="w-5 h-5 text-muted-foreground" strokeWidth={1.5} />
+            <div className="w-12 h-12 rounded-lg border border-primary/20 bg-primary/10 flex items-center justify-center">
+              <Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
             </div>
             {/* Principle number */}
             <span className="absolute -top-1 -left-1 text-[10px] font-mono text-muted-foreground/60">
