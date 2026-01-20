@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useScroll } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import Header from "@/components/Header";
@@ -117,7 +117,7 @@ interface FeatureGroup {
 }
 // featureGroups is now defined inside the component to use translations
 
-// Onboarding steps animation - horizontal direction
+// Onboarding steps animation - calm horizontal progression
 const OnboardingAnimation = ({
   isOpen,
   t
@@ -137,53 +137,56 @@ const OnboardingAnimation = ({
       setStep(0);
       return;
     }
-    const interval = setInterval(() => {
-      setStep(s => (s + 1) % (steps.length + 1));
-    }, 800);
-    return () => clearInterval(interval);
+    // Animation unique sans boucle - progression linéaire
+    const timers = steps.map((_, i) => 
+      setTimeout(() => setStep(i + 1), 400 + i * 600)
+    );
+    return () => timers.forEach(clearTimeout);
   }, [isOpen, steps.length]);
+  
   return <div className="mt-4 mb-2">
       <div className="flex items-start justify-between gap-1 sm:gap-2">
         {steps.map((label, i) => <div key={i} className="flex-1 min-w-0">
-            <motion.div initial={{
-          scaleX: 0,
-          opacity: 0.3
-        }} animate={{
-          scaleX: step > i ? 1 : 0,
-          opacity: step > i ? 1 : 0.4
-        }} style={{
-          originX: 0
-        }} transition={{
-          duration: 0.5,
-          ease: "easeOut"
-        }} className={`h-2 rounded-full mb-2 ${step > i ? 'bg-primary' : 'bg-muted'}`} />
-            <motion.div initial={{
-          opacity: 0,
-          x: -10
-        }} animate={{
-          opacity: step > i ? 1 : 0.4,
-          x: step > i ? 0 : -10
-        }} transition={{
-          duration: 0.3
-        }} className="text-[10px] sm:text-xs text-center font-medium text-primary min-h-[2.5rem] flex flex-col items-center justify-start">
+            <motion.div 
+              initial={{ scaleX: 0, opacity: 0.3 }}
+              animate={{
+                scaleX: step > i ? 1 : 0,
+                opacity: step > i ? 1 : 0.4
+              }} 
+              style={{ originX: 0 }}
+              transition={{
+                duration: 0.4,
+                ease: [0.25, 0.1, 0.25, 1]
+              }} 
+              className={`h-2 rounded-full mb-2 ${step > i ? 'bg-primary' : 'bg-muted'}`} 
+            />
+            <motion.div 
+              initial={{ opacity: 0.4 }}
+              animate={{
+                opacity: step > i ? 1 : 0.4
+              }} 
+              transition={{ duration: 0.3, ease: "easeOut" }} 
+              className="text-[10px] sm:text-xs text-center font-medium text-primary min-h-[2.5rem] flex flex-col items-center justify-start"
+            >
               {step > i && <Check className="w-3 h-3 mb-0.5" />}
               <span className="leading-tight">{label}</span>
             </motion.div>
           </div>)}
       </div>
-      <motion.div initial={{
-      opacity: 0,
-      x: 20
-    }} animate={{
-      opacity: step === steps.length ? 1 : 0,
-      x: step === steps.length ? 0 : 20
-    }} className="mt-3 text-center text-sm font-medium text-primary">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: step === steps.length ? 1 : 0
+        }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="mt-3 text-center text-sm font-medium text-primary"
+      >
         {t('fonctionnalites.animations.profileComplete')}
       </motion.div>
     </div>;
 };
 
-// Budget hierarchy animation - horizontal cascade
+// Budget hierarchy animation - calm horizontal cascade
 const BudgetAnimation = ({
   isOpen,
   t
@@ -197,11 +200,13 @@ const BudgetAnimation = ({
       setStep(0);
       return;
     }
-    const interval = setInterval(() => {
-      setStep(s => (s + 1) % 4);
-    }, 1000);
-    return () => clearInterval(interval);
+    // Animation unique sans boucle
+    const timers = [0, 1, 2, 3].map((i) => 
+      setTimeout(() => setStep(i + 1), 300 + i * 500)
+    );
+    return () => timers.forEach(clearTimeout);
   }, [isOpen]);
+  
   const categories = [{
     name: t('fonctionnalites.animations.housing'),
     amount: "800€",
@@ -215,37 +220,40 @@ const BudgetAnimation = ({
     amount: "150€",
     sub: [`${t('fonctionnalites.animations.sports')} 50€`, `${t('fonctionnalites.animations.outings')} 100€`]
   }];
+  
   return <div className="mt-4 mb-2 space-y-2">
-      {categories.map((cat, i) => <motion.div key={i} initial={{
-      opacity: 0,
-      x: -30
-    }} animate={{
-      opacity: step >= i ? 1 : 0,
-      x: step >= i ? 0 : -30
-    }} transition={{
-      delay: i * 0.1,
-      duration: 0.4,
-      ease: "easeOut"
-    }}>
+      {categories.map((cat, i) => <motion.div 
+        key={i} 
+        initial={{ opacity: 0, x: -15 }}
+        animate={{
+          opacity: step >= i + 1 ? 1 : 0,
+          x: step >= i + 1 ? 0 : -15
+        }} 
+        transition={{
+          duration: 0.35,
+          ease: [0.25, 0.1, 0.25, 1]
+        }}
+      >
           <div className="flex justify-between items-center bg-primary/10 rounded-lg px-3 py-2">
             <span className="font-medium text-foreground text-sm">{cat.name}</span>
             <span className="text-primary font-bold text-sm">{cat.amount}</span>
           </div>
           <motion.div 
             initial={{ opacity: 0 }}
-            animate={{ opacity: step >= i + 1 ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
+            animate={{ opacity: step >= i + 2 ? 1 : 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             className="ml-4 mt-1 flex gap-1 h-6"
           >
-            {cat.sub.map((sub, j) => <motion.div key={j} 
-              initial={{ opacity: 0, x: -15 }}
+            {cat.sub.map((sub, j) => <motion.div 
+              key={j} 
+              initial={{ opacity: 0 }}
               animate={{ 
-                opacity: step >= i + 1 ? 1 : 0, 
-                x: step >= i + 1 ? 0 : -15 
+                opacity: step >= i + 2 ? 1 : 0
               }}
               transition={{
-                delay: step >= i + 1 ? j * 0.15 : 0,
-                duration: 0.3
+                delay: step >= i + 2 ? j * 0.1 : 0,
+                duration: 0.25,
+                ease: "easeOut"
               }} 
               className="text-xs text-primary bg-primary/5 rounded px-2 py-1 whitespace-nowrap"
             >
@@ -256,7 +264,7 @@ const BudgetAnimation = ({
     </div>;
 };
 
-// Fixed transactions animation - vertical flow
+// Fixed transactions animation - calm vertical flow
 const FixedTransactionsAnimation = ({
   isOpen,
   t
@@ -270,11 +278,13 @@ const FixedTransactionsAnimation = ({
       setStep(0);
       return;
     }
-    const interval = setInterval(() => {
-      setStep(s => (s + 1) % 5);
-    }, 700);
-    return () => clearInterval(interval);
+    // Animation unique sans boucle
+    const timers = [0, 1, 2, 3, 4].map((i) => 
+      setTimeout(() => setStep(i + 1), 200 + i * 400)
+    );
+    return () => timers.forEach(clearTimeout);
   }, [isOpen]);
+  
   const transactions = [{
     day: "01",
     label: t('fonctionnalites.animations.rent'),
@@ -296,35 +306,35 @@ const FixedTransactionsAnimation = ({
     amount: "-80€",
     type: "expense"
   }];
+  
   return <div className="mt-4 mb-2">
       <div className="space-y-2">
-        {transactions.map((tx, i) => <motion.div key={i} initial={{
-        opacity: 0,
-        y: -20
-      }} animate={{
-        opacity: step > i ? 1 : 0.3,
-        y: step > i ? 0 : -20
-      }} transition={{
-        duration: 0.4,
-        ease: "easeOut"
-      }} className="flex items-center gap-3 bg-secondary rounded-lg px-3 py-2">
+        {transactions.map((tx, i) => <motion.div 
+          key={i} 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{
+            opacity: step > i ? 1 : 0.3,
+            y: step > i ? 0 : -10
+          }} 
+          transition={{
+            duration: 0.3,
+            ease: [0.25, 0.1, 0.25, 1]
+          }} 
+          className="flex items-center gap-3 bg-secondary rounded-lg px-3 py-2"
+        >
             <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
               {tx.day}
             </span>
             <span className="flex-1 text-sm text-foreground">{tx.label}</span>
-            <motion.span initial={{
-          scale: 0.8
-        }} animate={{
-          scale: step > i ? 1 : 0.8
-        }} className={`font-bold text-sm ${tx.type === "income" ? "text-primary" : "text-muted-foreground"}`}>
+            <span className={`font-bold text-sm ${tx.type === "income" ? "text-primary" : "text-muted-foreground"}`}>
               {tx.amount}
-            </motion.span>
+            </span>
           </motion.div>)}
       </div>
     </div>;
 };
 
-// Daily transactions templates animation - vertical scroll effect
+// Daily transactions templates animation - calm selection effect
 const DailyTransactionsAnimation = ({
   isOpen,
   t
@@ -338,11 +348,15 @@ const DailyTransactionsAnimation = ({
       setActiveTemplate(null);
       return;
     }
-    const interval = setInterval(() => {
-      setActiveTemplate(active => active === null ? 0 : active === 2 ? null : active + 1);
-    }, 1000);
-    return () => clearInterval(interval);
+    // Animation unique sans boucle - sélection progressive
+    const timers = [
+      setTimeout(() => setActiveTemplate(0), 400),
+      setTimeout(() => setActiveTemplate(1), 1200),
+      setTimeout(() => setActiveTemplate(2), 2000)
+    ];
+    return () => timers.forEach(clearTimeout);
   }, [isOpen]);
+  
   const templates = [{
     emoji: "🛒",
     label: t('fonctionnalites.animations.shopping'),
@@ -356,42 +370,48 @@ const DailyTransactionsAnimation = ({
     label: t('fonctionnalites.animations.gas'),
     amount: "60€"
   }];
+  
   return <div className="mt-4 mb-2">
       <div className="flex flex-col gap-2">
-        {templates.map((template, i) => <motion.div key={i} initial={{
-        opacity: 0,
-        y: 15
-      }} animate={{
-        opacity: 1,
-        y: 0,
-        scale: activeTemplate === i ? 1.03 : 1,
-        boxShadow: activeTemplate === i ? "0 4px 12px hsl(var(--primary) / 0.2)" : "none"
-      }} transition={{
-        delay: i * 0.1,
-        duration: 0.3
-      }} className="flex items-center gap-3 bg-primary/10 rounded-xl p-3 cursor-pointer">
+        {templates.map((template, i) => <motion.div 
+          key={i} 
+          initial={{ opacity: 0, y: 8 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            backgroundColor: activeTemplate === i ? "hsl(var(--primary) / 0.15)" : "hsl(var(--primary) / 0.1)"
+          }} 
+          transition={{
+            delay: i * 0.1,
+            duration: 0.3,
+            ease: [0.25, 0.1, 0.25, 1]
+          }} 
+          className="flex items-center gap-3 rounded-xl p-3 cursor-pointer"
+        >
             <div className="text-2xl">{template.emoji}</div>
             <div className="flex-1 text-sm font-medium text-foreground">{template.label}</div>
-            <motion.div initial={{
-          opacity: 0,
-          x: 10
-        }} animate={{
-          opacity: activeTemplate === i ? 1 : 0.5,
-          x: activeTemplate === i ? 0 : 10
-        }} className="text-sm text-primary font-bold">
+            <motion.div 
+              animate={{
+                opacity: activeTemplate !== null && activeTemplate >= i ? 1 : 0.5
+              }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="text-sm text-primary font-bold"
+            >
               {template.amount}
             </motion.div>
           </motion.div>)}
       </div>
-      <motion.div animate={{
-      opacity: activeTemplate !== null ? 1 : 0
-    }} className="mt-3 text-center text-xs text-primary">
+      <motion.div 
+        animate={{ opacity: activeTemplate !== null ? 1 : 0 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="mt-3 text-center text-xs text-primary"
+      >
         {t('fonctionnalites.animations.tapToAdd')}
       </motion.div>
     </div>;
 };
 
-// Gauge animation - pulse effect
+// Gauge animation - calm progressive reveal
 const GaugeAnimation = ({
   isOpen,
   t
@@ -405,127 +425,96 @@ const GaugeAnimation = ({
       setStep(0);
       return;
     }
-    const timers = [setTimeout(() => setStep(1), 300), setTimeout(() => setStep(2), 1200), setTimeout(() => setStep(3), 2100)];
-    const loopTimer = setInterval(() => {
-      setStep(0);
-      setTimeout(() => setStep(1), 300);
-      setTimeout(() => setStep(2), 1200);
-      setTimeout(() => setStep(3), 2100);
-    }, 4000);
-    return () => {
-      timers.forEach(clearTimeout);
-      clearInterval(loopTimer);
-    };
+    // Animation unique sans boucle
+    const timers = [
+      setTimeout(() => setStep(1), 300),
+      setTimeout(() => setStep(2), 900),
+      setTimeout(() => setStep(3), 1500)
+    ];
+    return () => timers.forEach(clearTimeout);
   }, [isOpen]);
+  
   const spentWidth = 45,
     currentWidth = 20,
     remainingWidth = 35;
+    
   return <div className="mt-4 mb-2">
       <div className="relative h-8 bg-muted rounded-full overflow-hidden">
-        <motion.div initial={{
-        width: 0
-      }} animate={{
-        width: step >= 1 ? `${spentWidth}%` : 0
-      }} transition={{
-        duration: 0.6,
-        ease: "easeOut"
-      }} className="absolute left-0 top-0 h-full bg-gradient-to-r from-primary to-primary/80" />
-        <motion.div initial={{
-        width: 0
-      }} animate={{
-        width: step >= 2 ? `${currentWidth}%` : 0,
-        scale: step >= 2 ? [1, 1.02, 1] : 1
-      }} transition={{
-        width: {
-          duration: 0.5,
-          ease: "easeOut"
-        },
-        scale: {
-          duration: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }
-      }} style={{
-        left: `${spentWidth}%`
-      }} className="absolute top-0 h-full bg-gradient-to-r from-primary/60 to-primary/40">
-          {step >= 2 && <motion.div animate={{
-          opacity: [0.3, 0.7, 0.3]
-        }} transition={{
-          duration: 1.2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }} className="absolute inset-0 bg-white/40" />}
-        </motion.div>
-        <motion.div initial={{
-        opacity: 0
-      }} animate={{
-        opacity: step >= 3 ? 1 : 0
-      }} transition={{
-        duration: 0.4
-      }} style={{
-        left: `${spentWidth + currentWidth}%`,
-        width: `${remainingWidth}%`
-      }} className="absolute top-0 h-full bg-gradient-to-r from-muted-foreground/20 to-muted-foreground/10" />
+        <motion.div 
+          initial={{ width: 0 }}
+          animate={{ width: step >= 1 ? `${spentWidth}%` : 0 }}
+          transition={{
+            duration: 0.5,
+            ease: [0.25, 0.1, 0.25, 1]
+          }} 
+          className="absolute left-0 top-0 h-full bg-gradient-to-r from-primary to-primary/80" 
+        />
+        <motion.div 
+          initial={{ width: 0 }}
+          animate={{ width: step >= 2 ? `${currentWidth}%` : 0 }}
+          transition={{
+            duration: 0.4,
+            ease: [0.25, 0.1, 0.25, 1]
+          }} 
+          style={{ left: `${spentWidth}%` }}
+          className="absolute top-0 h-full bg-gradient-to-r from-primary/60 to-primary/40"
+        />
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: step >= 3 ? 1 : 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          style={{
+            left: `${spentWidth + currentWidth}%`,
+            width: `${remainingWidth}%`
+          }}
+          className="absolute top-0 h-full bg-gradient-to-r from-muted-foreground/20 to-muted-foreground/10" 
+        />
       </div>
       <div className="flex justify-between mt-3 text-xs">
-        <motion.div animate={{
-        opacity: step >= 1 ? 1 : 0
-      }} className="flex items-center gap-1">
-          <motion.span animate={{
-          scale: step === 1 ? [1, 1.2, 1] : 1
-        }} transition={{
-          duration: 0.3
-        }} className="w-3 h-3 rounded-full bg-primary" />
+        <motion.div 
+          animate={{ opacity: step >= 1 ? 1 : 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="flex items-center gap-1"
+        >
+          <span className="w-3 h-3 rounded-full bg-primary" />
           <span className="text-primary font-medium">{t('fonctionnalites.animations.spent')}</span>
         </motion.div>
-        <motion.div animate={{
-        opacity: step >= 2 ? 1 : 0
-      }} className="flex items-center gap-1">
-          <motion.span animate={{
-          scale: step >= 2 ? [1, 1.15, 1] : 1
-        }} transition={{
-          duration: 1.2,
-          repeat: step >= 2 ? Infinity : 0,
-          ease: "easeInOut"
-        }} className="w-3 h-3 rounded-full bg-primary/60" />
+        <motion.div 
+          animate={{ opacity: step >= 2 ? 1 : 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="flex items-center gap-1"
+        >
+          <span className="w-3 h-3 rounded-full bg-primary/60" />
           <span className="text-primary/80 font-medium">{t('fonctionnalites.animations.inProgress')}</span>
         </motion.div>
-        <motion.div animate={{
-        opacity: step >= 3 ? 1 : 0
-      }} className="flex items-center gap-1">
+        <motion.div 
+          animate={{ opacity: step >= 3 ? 1 : 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="flex items-center gap-1"
+        >
           <span className="w-3 h-3 rounded-full bg-muted-foreground/30" />
           <span className="text-muted-foreground font-medium">{t('fonctionnalites.animations.remaining')}</span>
         </motion.div>
       </div>
-      <motion.div animate={{
-      opacity: step >= 2 ? 1 : 0
-    }} className="mt-3 text-center">
-        <motion.span animate={{
-        scale: step === 2 ? [1, 1.1, 1] : 1
-      }} transition={{
-        duration: 0.8,
-        repeat: step === 2 ? Infinity : 0
-      }} className="text-lg font-bold text-primary/80">
-          -25€
-        </motion.span>
+      <motion.div 
+        animate={{ opacity: step >= 2 ? 1 : 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className="mt-3 text-center"
+      >
+        <span className="text-lg font-bold text-primary/80">-25€</span>
         <span className="text-muted-foreground text-sm ml-2">→</span>
-        <motion.span animate={{
-        opacity: step >= 3 ? 1 : 0,
-        scale: step >= 3 ? [1, 1.05, 1] : 1
-      }} transition={{
-        scale: {
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }
-      }} className="text-lg font-bold text-primary ml-2">
+        <motion.span 
+          animate={{ opacity: step >= 3 ? 1 : 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="text-lg font-bold text-primary ml-2"
+        >
           175€
         </motion.span>
       </motion.div>
     </div>;
 };
 
-// Rituals/habits animation - soft pulse effect
+// Rituals/habits animation - calm progression
 const RitualsAnimation = ({
   isOpen,
   t
@@ -539,69 +528,52 @@ const RitualsAnimation = ({
       setChecks([false, false, false, false, false, false, false]);
       return;
     }
+    // Animation unique sans boucle
     const timers = checks.map((_, i) => setTimeout(() => setChecks(c => {
       const n = [...c];
       n[i] = true;
       return n;
-    }), 300 + i * 400));
-    const resetTimer = setTimeout(() => setChecks([false, false, false, false, false, false, false]), 4000);
-    const loopTimer = setInterval(() => {
-      setChecks([false, false, false, false, false, false, false]);
-      checks.forEach((_, i) => setTimeout(() => setChecks(c => {
-        const n = [...c];
-        n[i] = true;
-        return n;
-      }), 300 + i * 400));
-    }, 5000);
-    return () => {
-      timers.forEach(clearTimeout);
-      clearTimeout(resetTimer);
-      clearInterval(loopTimer);
-    };
+    }), 300 + i * 300));
+    return () => timers.forEach(clearTimeout);
   }, [isOpen]);
+  
   const days = ["L", "M", "M", "J", "V", "S", "D"];
   const completedCount = checks.filter(Boolean).length;
+  
   return <div className="mt-4 mb-2">
       <div className="text-xs text-foreground font-medium mb-2 text-center">{t('fonctionnalites.animations.checkExpenses')}</div>
       <div className="flex justify-center gap-2">
-        {days.map((d, i) => <motion.div key={i} animate={{
-        backgroundColor: checks[i] ? "hsl(var(--primary))" : "hsl(var(--muted))",
-        scale: checks[i] ? [1, 1.25, 1] : [1, 1.03, 1]
-      }} transition={{
-        duration: checks[i] ? 0.3 : 2,
-        repeat: checks[i] ? 0 : Infinity,
-        ease: "easeInOut"
-      }} className="w-8 h-8 rounded-full flex items-center justify-center">
-            {checks[i] ? <motion.div initial={{
-          scale: 0,
-          rotate: -180
-        }} animate={{
-          scale: 1,
-          rotate: 0
-        }} transition={{
-          type: "spring",
-          stiffness: 300
-        }}>
+        {days.map((d, i) => <motion.div 
+          key={i} 
+          animate={{
+            backgroundColor: checks[i] ? "hsl(var(--primary))" : "hsl(var(--muted))"
+          }} 
+          transition={{
+            duration: 0.25,
+            ease: [0.25, 0.1, 0.25, 1]
+          }} 
+          className="w-8 h-8 rounded-full flex items-center justify-center"
+        >
+            {checks[i] ? <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
                 <Check className="w-4 h-4 text-primary-foreground" />
               </motion.div> : <span className="text-xs font-medium text-muted-foreground">{d}</span>}
           </motion.div>)}
       </div>
-      <motion.div animate={{
-      opacity: completedCount >= 5 ? 1 : 0,
-      scale: completedCount >= 5 ? [1, 1.05, 1] : 1
-    }} transition={{
-      scale: {
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }} className="mt-3 text-center text-xs text-primary font-medium">
+      <motion.div 
+        animate={{ opacity: completedCount >= 5 ? 1 : 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className="mt-3 text-center text-xs text-primary font-medium"
+      >
         {t('fonctionnalites.animations.consecutiveDays')}
       </motion.div>
     </div>;
 };
 
-// Indicators animation - soft pulse/breathing effect
+// Indicators animation - calm progressive reveal
 const IndicatorsAnimation = ({
   isOpen,
   t
@@ -629,10 +601,11 @@ const IndicatorsAnimation = ({
           n[i] = current;
           return n;
         });
-      }, 30);
-    }, i * 300));
+      }, 25);
+    }, i * 250));
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
+  
   const indicators = [{
     label: t('fonctionnalites.animations.budgetUsed'),
     value: values[0]
@@ -643,45 +616,32 @@ const IndicatorsAnimation = ({
     label: t('fonctionnalites.animations.rituals'),
     value: values[2]
   }];
+  
   return <div className="mt-4 mb-2 space-y-3">
-      {indicators.map((ind, i) => <motion.div key={i} initial={{
-      opacity: 0
-    }} animate={{
-      opacity: 1
-    }} transition={{
-      delay: i * 0.2
-    }}>
+      {indicators.map((ind, i) => <motion.div 
+        key={i} 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          delay: i * 0.15,
+          duration: 0.25,
+          ease: "easeOut"
+        }}
+      >
           <div className="flex justify-between text-xs mb-1">
             <span className="text-foreground font-medium">{ind.label}</span>
-            <motion.span animate={{
-          scale: ind.value > 0 ? [1, 1.1, 1] : 1
-        }} transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: i * 0.3
-        }} className="text-primary font-bold">
-              {ind.value}%
-            </motion.span>
+            <span className="text-primary font-bold">{ind.value}%</span>
           </div>
           <div className="h-3 bg-muted rounded-full overflow-hidden">
-            <motion.div initial={{
-          width: 0
-        }} animate={{
-          width: `${ind.value}%`
-        }} transition={{
-          duration: 0.5,
-          ease: "easeOut"
-        }} className="h-full bg-primary rounded-full relative overflow-hidden">
-              <motion.div animate={{
-            opacity: [0.3, 0.6, 0.3]
-          }} transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.2
-          }} className="absolute inset-0 bg-white/30" />
-            </motion.div>
+            <motion.div 
+              initial={{ width: 0 }}
+              animate={{ width: `${ind.value}%` }}
+              transition={{
+                duration: 0.4,
+                ease: [0.25, 0.1, 0.25, 1]
+              }} 
+              className="h-full bg-primary rounded-full"
+            />
           </div>
         </motion.div>)}
     </div>;
@@ -845,52 +805,53 @@ const FeatureAnimation = ({
   }
 };
 
-// Get animation variants based on direction
-const getCardAnimationVariants = (direction: AnimationDirection) => {
+// Get animation variants based on direction - calm, professional easing
+const getCardAnimationVariants = (direction: AnimationDirection, isFuture: boolean = false) => {
+  // Future features: slower, more subtle animations
+  const baseDuration = isFuture ? 0.4 : 0.3;
+  const baseOpacity = isFuture ? 0.95 : 1;
+  
   switch (direction) {
     case "horizontal":
       return {
         hidden: {
           opacity: 0,
-          x: -30
+          x: -15
         },
         visible: {
-          opacity: 1,
+          opacity: baseOpacity,
           x: 0
         },
         exit: {
           opacity: 0,
-          x: 30
+          x: 15
         }
       };
     case "vertical":
       return {
         hidden: {
           opacity: 0,
-          y: -20
+          y: -10
         },
         visible: {
-          opacity: 1,
+          opacity: baseOpacity,
           y: 0
         },
         exit: {
           opacity: 0,
-          y: 20
+          y: 10
         }
       };
     case "pulse":
       return {
         hidden: {
-          opacity: 0,
-          scale: 0.95
+          opacity: 0
         },
         visible: {
-          opacity: 1,
-          scale: 1
+          opacity: baseOpacity
         },
         exit: {
-          opacity: 0,
-          scale: 0.95
+          opacity: 0
         }
       };
   }
@@ -924,9 +885,13 @@ const FeatureCard = ({
   const IconComponent = feature.icon;
   
   return (
-    <div 
+    <motion.div 
       onClick={handleClick} 
-      className={`cursor-pointer rounded-2xl border ${isOpen ? 'border-primary/30 shadow-lg' : 'border-border/40 hover:border-border/60'} bg-card ${isLarge ? 'p-6' : 'p-5'} transition-all duration-300 hover:shadow-md relative ${isExplored && !isOpen ? 'opacity-90' : ''} ${isOpen ? 'h-auto' : closedHeight}`}
+      layout
+      transition={{
+        layout: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
+      }}
+      className={`cursor-pointer rounded-2xl border ${isOpen ? 'border-primary/30 shadow-md' : 'border-border/40 hover:border-border/60'} bg-card ${isLarge ? 'p-6' : 'p-5'} transition-colors duration-250 hover:shadow-sm relative ${isExplored && !isOpen ? 'opacity-90' : ''} ${isOpen ? '' : closedHeight}`}
     >
       {/* Badge "Découvert" - plus subtil */}
       <AnimatePresence>
@@ -961,10 +926,10 @@ const FeatureCard = ({
               {feature.title}
             </h3>
             
-            {/* Chevron avec affordance renforcée */}
+            {/* Chevron avec rotation calme */}
             <motion.div 
               animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
               className="flex-shrink-0 text-muted-foreground/60"
             >
               <svg width="18" height="18" viewBox="0 0 12 12" fill="none">
@@ -979,7 +944,7 @@ const FeatureCard = ({
               opacity: isOpen ? 0 : 1,
               height: isOpen ? 0 : 'auto'
             }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             className="text-sm text-muted-foreground mt-1.5 leading-relaxed overflow-hidden"
           >
             {feature.microPromise}
@@ -987,7 +952,8 @@ const FeatureCard = ({
           
           {/* Indice d'interaction - uniquement en état fermé */}
           <motion.span
-            animate={{ opacity: isOpen ? 0 : 0.5 }}
+            animate={{ opacity: isOpen ? 0 : 0.4 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
             className="text-[10px] text-muted-foreground/50 mt-2 block"
           >
             {t('fonctionnalites.clickForPreview')}
@@ -995,25 +961,52 @@ const FeatureCard = ({
         </div>
       </div>
       
-      {/* Contenu déplié */}
+      {/* Contenu déplié - animations calmes et progressives */}
       <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div 
-            variants={variants} 
-            initial="hidden" 
-            animate="visible" 
-            exit="exit" 
-            transition={{ duration: 0.3, ease: "easeInOut" }} 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ 
+              duration: 0.3, 
+              ease: [0.25, 0.1, 0.25, 1], // ease-out doux
+              opacity: { duration: 0.25, delay: 0.05 }
+            }} 
             className="overflow-hidden"
           >
-            <FeatureAnimation type={feature.animation} isOpen={isOpen} t={t} />
-            <p className="mt-4 text-sm text-muted-foreground leading-relaxed pt-4 border-t border-border/30">
+            {/* Animation du contenu avec apparition progressive */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ 
+                duration: 0.25, 
+                delay: 0.1,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
+            >
+              <FeatureAnimation type={feature.animation} isOpen={isOpen} t={t} />
+            </motion.div>
+            
+            {/* Texte détaillé avec délai supplémentaire */}
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ 
+                duration: 0.2, 
+                delay: 0.2,
+                ease: "easeOut"
+              }}
+              className="mt-4 text-sm text-muted-foreground leading-relaxed pt-4 border-t border-border/30"
+            >
               {feature.details}
-            </p>
+            </motion.p>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
 const Fonctionnalites = () => {
