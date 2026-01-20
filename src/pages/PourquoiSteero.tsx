@@ -224,26 +224,26 @@ const CognitiveEffortAnimation = ({
   return (
     <div className="flex flex-col gap-3 py-3">
       {/* Flow A: Automatic - data fades before halfway */}
-      <div className="bg-muted/20 rounded-lg p-3 border border-border/30">
+      <div className="bg-muted/30 rounded-lg p-3 border border-border/50">
         <div className="flex items-center gap-2 mb-2">
-          <Zap className="w-3 h-3 text-muted-foreground/50" />
-          <span className="text-[10px] text-muted-foreground/60 font-medium">{t('animations.flowAuto')}</span>
+          <Zap className="w-3.5 h-3.5 text-muted-foreground/70" />
+          <span className="text-[11px] text-muted-foreground/80 font-medium">{t('animations.flowAuto')}</span>
         </div>
-        <div className="relative h-6 flex items-center">
+        <div className="relative h-8 flex items-center">
           {/* Track */}
-          <div className="absolute inset-x-0 h-0.5 bg-muted/40 rounded" />
+          <div className="absolute inset-x-0 h-1 bg-muted/50 rounded" />
           {/* Fade zone indicator - before middle */}
-          <div className="absolute left-[40%] w-px h-3 bg-muted/30" />
+          <div className="absolute left-[40%] w-px h-4 bg-muted-foreground/40" />
           {/* End zone - never reached */}
-          <div className="absolute right-0 w-6 h-4 bg-muted/10 rounded-r flex items-center justify-end pr-1">
-            <span className="text-[8px] text-muted-foreground/30">?</span>
+          <div className="absolute right-0 w-8 h-5 bg-muted/30 rounded-r flex items-center justify-end pr-1.5">
+            <span className="text-[10px] text-muted-foreground/50">?</span>
           </div>
           {/* Data packets */}
           <AutoPacket delay={0} />
           <AutoPacket delay={0.5} />
           <AutoPacket delay={1} />
         </div>
-        <p className="text-[9px] text-muted-foreground/50 mt-1.5 text-right">{t('animations.dataForgotten')}</p>
+        <p className="text-[10px] text-muted-foreground/70 mt-2 text-right font-medium">{t('animations.dataForgotten')}</p>
       </div>
 
       {/* Flow B: Processed - goes to the end with amplification */}

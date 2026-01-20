@@ -220,8 +220,8 @@
   "animations": {
     "flowAuto": "Automatic flow",
     "flowProcessed": "Processed flow",
-    "dataForgotten": "Data forgotten",
-    "dataAnchored": "Data anchored",
+    "dataForgotten": "Little or no mastery",
+    "dataAnchored": "Reinforced mastery",
     "effortCreatesStep": "Effort creates an additional cognitive step",
     "denseView": "Dense view",
     "simpleView": "Simple view",

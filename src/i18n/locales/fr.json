@@ -216,8 +216,8 @@
   "animations": {
     "flowAuto": "Flux automatique",
     "flowProcessed": "Flux traité",
-    "dataForgotten": "Données oubliées",
-    "dataAnchored": "Données ancrées",
+    "dataForgotten": "Peu ou pas de maîtrise",
+    "dataAnchored": "Maîtrise renforcée",
     "effortCreatesStep": "L'effort crée une étape cognitive supplémentaire",
     "denseView": "Vue dense",
     "simpleView": "Vue simple",
