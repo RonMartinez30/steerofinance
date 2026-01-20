@@ -1409,7 +1409,7 @@ const Fonctionnalites = () => {
               t={t}
               animation={
                 <div className="relative w-full flex flex-col gap-3">
-                  {/* Section: Ce qu'on me doit */}
+                  {/* Section: Mes avoirs - Ce qu'on me doit */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1451,13 +1451,30 @@ const Fonctionnalites = () => {
                       </div>
                       <span className="text-xs font-semibold text-primary">+32 €</span>
                     </motion.div>
+
+                    {/* Employeur - Notes de frais */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -15 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="flex items-center justify-between bg-primary/5 rounded-lg px-3 py-1.5 border border-primary/20"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm">🏢</span>
+                        <div>
+                          <p className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.tiersEmployer')}</p>
+                          <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.tiersExpenseReports')}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-primary">+250 €</span>
+                    </motion.div>
                   </motion.div>
 
-                  {/* Section: Ce que je dois */}
+                  {/* Section: Mes dettes - Ce que je dois */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.4 }}
+                    transition={{ duration: 0.3, delay: 0.5 }}
                     className="space-y-1.5"
                   >
                     <p className="text-[10px] font-medium text-foreground/70 mb-1">{t('fonctionnalites.animations.tiersIOwe')}</p>
@@ -1466,7 +1483,7 @@ const Fonctionnalites = () => {
                     <motion.div
                       initial={{ opacity: 0, x: 15 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 }}
+                      transition={{ delay: 0.6 }}
                       className="flex items-center justify-between bg-destructive/5 rounded-lg px-3 py-1.5 border border-destructive/20"
                     >
                       <div className="flex items-center gap-2">
@@ -1480,55 +1497,22 @@ const Fonctionnalites = () => {
                     </motion.div>
                   </motion.div>
 
-                  {/* Section: Avances en cours */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.6 }}
-                    className="space-y-1.5"
-                  >
-                    <p className="text-[10px] font-medium text-foreground/70 mb-1">{t('fonctionnalites.animations.tiersAdvances')}</p>
-                    
-                    {/* Employeur - Notes de frais */}
-                    <motion.div
-                      initial={{ opacity: 0, x: -15 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.7 }}
-                      className="flex items-center justify-between bg-accent/10 rounded-lg px-3 py-1.5 border border-accent/30"
-                    >
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm">🏢</span>
-                        <div>
-                          <p className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.tiersEmployer')}</p>
-                          <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.tiersExpenseReports')}</p>
-                        </div>
-                      </div>
-                      <motion.span 
-                        className="text-xs font-semibold text-accent-foreground"
-                        animate={{ opacity: [0.7, 1, 0.7] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        -250 €
-                      </motion.span>
-                    </motion.div>
-                  </motion.div>
-
                   {/* Solde trésorerie */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9 }}
+                    transition={{ delay: 0.8 }}
                     className="flex justify-between items-center pt-2 border-t border-border/30"
                   >
                     <span className="text-[10px] text-muted-foreground">{t('fonctionnalites.animations.tiersTreasuryBalance')}</span>
-                    <span className="text-xs font-bold text-primary">-193 €</span>
+                    <span className="text-xs font-bold text-primary">+307 €</span>
                   </motion.div>
 
                   {/* Texte de clôture */}
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.1 }}
+                    transition={{ delay: 1.0 }}
                     className="text-[11px] text-center text-muted-foreground/80 italic px-2"
                   >
                     {t('fonctionnalites.animations.tiersClosing')}
