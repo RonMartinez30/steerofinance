@@ -410,7 +410,15 @@
       "budgetDaily": "Daily budget",
       "projectClosing": "A project isn't just another budget: it's your cross-functional view.",
       "projectConsumed": "Consumed",
-      "projectRemaining": "Remaining"
+      "projectRemaining": "Remaining",
+      "tiersOwedToMe": "Owed to me",
+      "tiersIOwe": "I owe",
+      "tiersVacationShare": "Vacation share",
+      "tiersRestaurant": "Saturday dinner",
+      "tiersGroupGift": "Group gift",
+      "tiersAdvances": "Pending advances",
+      "tiersAdvancesDetail": "Expense reports; employer",
+      "tiersTreasuryBalance": "Treasury impact"
     }
   },
   "blog": {

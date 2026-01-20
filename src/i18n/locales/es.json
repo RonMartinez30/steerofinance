@@ -410,7 +410,15 @@
       "budgetDaily": "Presupuesto diario",
       "projectClosing": "El proyecto no es un presupuesto más: es tu vista transversal.",
       "projectConsumed": "Consumido",
-      "projectRemaining": "Resto"
+      "projectRemaining": "Resto",
+      "tiersOwedToMe": "Me deben",
+      "tiersIOwe": "Yo debo",
+      "tiersVacationShare": "Parte vacaciones",
+      "tiersRestaurant": "Restaurante sábado",
+      "tiersGroupGift": "Regalo grupo",
+      "tiersAdvances": "Anticipos en curso",
+      "tiersAdvancesDetail": "Notas de gastos; empleador",
+      "tiersTreasuryBalance": "Impacto tesorería"
     }
   },
   "blog": {

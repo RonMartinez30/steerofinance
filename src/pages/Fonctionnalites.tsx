@@ -1408,86 +1408,109 @@ const Fonctionnalites = () => {
               sounds={sounds}
               t={t}
               animation={
-                <div className="relative h-32 w-full flex flex-col items-center justify-center gap-2">
-                  {/* Person owing money */}
+                <div className="relative w-full flex flex-col gap-3">
+                  {/* Section: Ce qu'on me doit */}
                   <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                    className="flex items-center gap-2 bg-card/80 rounded-lg px-3 py-2 border border-border/50 w-full max-w-[180px]"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                    className="space-y-1.5"
                   >
-                    <motion.div 
-                      className="w-8 h-8 rounded-full bg-gradient-to-br from-destructive/20 to-destructive/5 flex items-center justify-center border border-destructive/30"
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <span className="text-sm">👤</span>
-                    </motion.div>
-                    <div className="flex-1">
-                      <p className="text-[9px] font-medium text-foreground/80">Marie</p>
-                      <p className="text-[8px] text-muted-foreground">Me doit</p>
-                    </div>
-                    <motion.span 
-                      className="text-xs font-semibold text-destructive"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                    >
-                      +45€
-                    </motion.span>
-                  </motion.div>
-
-                  {/* Arrow indicator */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5, type: "spring", stiffness: 150, damping: 20 }}
-                    className="flex items-center gap-1"
-                  >
+                    <p className="text-[10px] font-medium text-foreground/70 mb-1">{t('fonctionnalites.animations.tiersOwedToMe')}</p>
+                    
+                    {/* Marie - Vacances */}
                     <motion.div
-                      animate={{ y: [0, 2, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
+                      initial={{ opacity: 0, x: -15 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="flex items-center justify-between bg-primary/5 rounded-lg px-3 py-1.5 border border-primary/20"
                     >
-                      <ArrowRight className="w-3 h-3 text-muted-foreground/50 rotate-90" />
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm">👤</span>
+                        <div>
+                          <p className="text-[10px] font-medium text-foreground/80">Marie</p>
+                          <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.tiersVacationShare')}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-primary">+45 €</span>
+                    </motion.div>
+
+                    {/* Lucas - Restaurant */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -15 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="flex items-center justify-between bg-primary/5 rounded-lg px-3 py-1.5 border border-primary/20"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm">👤</span>
+                        <div>
+                          <p className="text-[10px] font-medium text-foreground/80">Lucas</p>
+                          <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.tiersRestaurant')}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-primary">+32 €</span>
                     </motion.div>
                   </motion.div>
 
-                  {/* Person I owe money to */}
+                  {/* Section: Ce que je dois */}
                   <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
-                    className="flex items-center gap-2 bg-card/80 rounded-lg px-3 py-2 border border-border/50 w-full max-w-[180px]"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.4 }}
+                    className="space-y-1.5"
                   >
-                    <motion.div 
-                      className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/30"
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    <p className="text-[10px] font-medium text-foreground/70 mb-1">{t('fonctionnalites.animations.tiersIOwe')}</p>
+                    
+                    {/* Paul - Cadeau groupe */}
+                    <motion.div
+                      initial={{ opacity: 0, x: 15 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="flex items-center justify-between bg-destructive/5 rounded-lg px-3 py-1.5 border border-destructive/20"
                     >
-                      <span className="text-sm">👤</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm">👤</span>
+                        <div>
+                          <p className="text-[10px] font-medium text-foreground/80">Paul</p>
+                          <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.tiersGroupGift')}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-destructive">-20 €</span>
                     </motion.div>
-                    <div className="flex-1">
-                      <p className="text-[9px] font-medium text-foreground/80">Paul</p>
-                      <p className="text-[8px] text-muted-foreground">Je dois</p>
-                    </div>
-                    <motion.span 
-                      className="text-xs font-semibold text-primary"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.6 }}
-                    >
-                      -20€
-                    </motion.span>
                   </motion.div>
 
-                  {/* Balance indicator */}
+                  {/* Section: Avances en cours */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="bg-accent/10 rounded-lg px-3 py-2 border border-accent/30"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.tiersAdvances')}</p>
+                        <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.tiersAdvancesDetail')}</p>
+                      </div>
+                      <motion.span 
+                        className="text-sm font-bold text-accent-foreground"
+                        animate={{ opacity: [0.7, 1, 0.7] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        -250 €
+                      </motion.span>
+                    </div>
+                  </motion.div>
+
+                  {/* Solde trésorerie */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
-                    className="absolute bottom-0 right-2 text-[9px] text-muted-foreground/60"
+                    className="flex justify-between items-center pt-2 border-t border-border/30"
                   >
-                    Solde: <span className="text-primary font-medium">+25€</span>
+                    <span className="text-[10px] text-muted-foreground">{t('fonctionnalites.animations.tiersTreasuryBalance')}</span>
+                    <span className="text-xs font-bold text-primary">-193 €</span>
                   </motion.div>
                 </div>
               }

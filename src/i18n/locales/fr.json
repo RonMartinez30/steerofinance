@@ -406,7 +406,15 @@
       "budgetDaily": "Budget quotidien",
       "projectClosing": "Le projet n'est pas un budget de plus : c'est ta vue transversale.",
       "projectConsumed": "Consommé",
-      "projectRemaining": "Reste"
+      "projectRemaining": "Reste",
+      "tiersOwedToMe": "Ce qu'on me doit",
+      "tiersIOwe": "Ce que je dois",
+      "tiersVacationShare": "Part vacances",
+      "tiersRestaurant": "Restaurant samedi",
+      "tiersGroupGift": "Cadeau groupe",
+      "tiersAdvances": "Avances en cours",
+      "tiersAdvancesDetail": "Notes de frais ; employeur",
+      "tiersTreasuryBalance": "Impact trésorerie"
     }
   },
   "blog": {
