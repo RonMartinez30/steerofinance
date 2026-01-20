@@ -214,6 +214,11 @@
     "ctaDescription": "Rejoins Steero et commence 2026 dans les meilleures dispositions"
   },
   "animations": {
+    "flowAuto": "Flux automatique",
+    "flowProcessed": "Flux traité",
+    "dataForgotten": "Données oubliées",
+    "dataAnchored": "Données ancrées",
+    "effortCreatesStep": "L'effort crée une étape cognitive supplémentaire",
     "activeConnections": "L'effort crée la compréhension",
     "realUnderstanding": "Comprendre vraiment",
     "understood": "Compris",
