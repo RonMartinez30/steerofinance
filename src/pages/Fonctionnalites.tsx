@@ -117,7 +117,7 @@ interface FeatureGroup {
 }
 // featureGroups is now defined inside the component to use translations
 
-// Onboarding steps animation - calm horizontal progression
+// Onboarding steps animation - Parcours d'initialisation progressif
 const OnboardingAnimation = ({
   isOpen,
   t
@@ -127,66 +127,109 @@ const OnboardingAnimation = ({
 }) => {
   const [step, setStep] = useState(0);
   const steps = [
-    t('fonctionnalites.animations.objectives'),
-    t('fonctionnalites.animations.income'),
-    t('fonctionnalites.animations.fixedExpenses'),
-    t('fonctionnalites.animations.priorities')
+    { label: t('fonctionnalites.animations.banks'), icon: "🏦" },
+    { label: t('fonctionnalites.animations.income'), icon: "💰" },
+    { label: t('fonctionnalites.animations.fixedExpenses'), icon: "📋" },
+    { label: t('fonctionnalites.animations.rituals'), icon: "🔄" }
   ];
+
   useEffect(() => {
     if (!isOpen) {
       setStep(0);
       return;
     }
-    // Animation unique sans boucle - progression linéaire
+    // Animation progressive : chaque étape apparaît l'une après l'autre
+    // Durée totale : ~5 secondes (4 étapes × 1s + état final 1s)
     const timers = steps.map((_, i) => 
-      setTimeout(() => setStep(i + 1), 400 + i * 600)
+      setTimeout(() => setStep(i + 1), 800 + i * 1000)
     );
     return () => timers.forEach(clearTimeout);
   }, [isOpen, steps.length]);
+
+  const allCompleted = step === steps.length;
   
-  return <div className="mt-4 mb-2">
-      <div className="flex items-start justify-between gap-1 sm:gap-2">
-        {steps.map((label, i) => <div key={i} className="flex-1 min-w-0">
-            <motion.div 
-              initial={{ scaleX: 0, opacity: 0.3 }}
+  return (
+    <div className="mt-4 mb-2">
+      {/* Liste des étapes avec apparition progressive */}
+      <div className="space-y-2">
+        {steps.map((stepItem, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -12 }}
+            animate={{
+              opacity: step > i ? 1 : 0.25,
+              x: step > i ? 0 : -12
+            }}
+            transition={{
+              duration: 0.35,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
+            className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${
+              step > i ? 'bg-primary/10' : 'bg-muted/50'
+            }`}
+          >
+            <span className="text-lg">{stepItem.icon}</span>
+            <span className={`flex-1 text-sm font-medium ${
+              step > i ? 'text-foreground' : 'text-muted-foreground'
+            }`}>
+              {stepItem.label}
+            </span>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
               animate={{
-                scaleX: step > i ? 1 : 0,
-                opacity: step > i ? 1 : 0.4
-              }} 
-              style={{ originX: 0 }}
+                opacity: step > i ? 1 : 0,
+                scale: step > i ? 1 : 0.5
+              }}
               transition={{
-                duration: 0.4,
+                duration: 0.25,
+                delay: step > i ? 0.15 : 0,
                 ease: [0.25, 0.1, 0.25, 1]
-              }} 
-              className={`h-2 rounded-full mb-2 ${step > i ? 'bg-primary' : 'bg-muted'}`} 
-            />
-            <motion.div 
-              initial={{ opacity: 0.4 }}
-              animate={{
-                opacity: step > i ? 1 : 0.4
-              }} 
-              transition={{ duration: 0.3, ease: "easeOut" }} 
-              className="text-[10px] sm:text-xs text-center font-medium text-primary min-h-[2.5rem] flex flex-col items-center justify-start"
+              }}
             >
-              {step > i && <Check className="w-3 h-3 mb-0.5" />}
-              <span className="leading-tight">{label}</span>
+              <Check className="w-4 h-4 text-primary" />
             </motion.div>
-          </div>)}
+          </motion.div>
+        ))}
       </div>
-      <motion.div 
-        initial={{ opacity: 0 }}
+
+      {/* État final : Profil complété */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
         animate={{
-          opacity: step === steps.length ? 1 : 0
+          opacity: allCompleted ? 1 : 0,
+          y: allCompleted ? 0 : 8
         }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="mt-3 text-center text-sm font-medium text-primary"
+        transition={{
+          duration: 0.35,
+          delay: allCompleted ? 0.3 : 0,
+          ease: [0.25, 0.1, 0.25, 1]
+        }}
+        className="mt-4 text-center"
       >
-        {t('fonctionnalites.animations.profileComplete')}
+        <div className="inline-flex items-center gap-2 bg-primary/15 text-primary px-4 py-2 rounded-full">
+          <Check className="w-4 h-4" />
+          <span className="text-sm font-medium">{t('fonctionnalites.animations.profileComplete')}</span>
+        </div>
       </motion.div>
-    </div>;
+
+      {/* Texte de clôture */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: allCompleted ? 1 : 0 }}
+        transition={{
+          duration: 0.3,
+          delay: allCompleted ? 0.5 : 0,
+          ease: "easeOut"
+        }}
+        className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
+      >
+        {t('fonctionnalites.animations.onboardingClosing')}
+      </motion.p>
+    </div>
+  );
 };
 
-// Budget hierarchy animation - calm horizontal cascade
+// Budget hierarchy animation - Structure de budget mensuel
 const BudgetAnimation = ({
   isOpen,
   t
@@ -195,73 +238,145 @@ const BudgetAnimation = ({
   t: (key: string) => string;
 }) => {
   const [step, setStep] = useState(0);
+  
   useEffect(() => {
     if (!isOpen) {
       setStep(0);
       return;
     }
-    // Animation unique sans boucle
-    const timers = [0, 1, 2, 3].map((i) => 
-      setTimeout(() => setStep(i + 1), 300 + i * 500)
-    );
+    // Animation progressive : mois → catégories → sous-catégories
+    // Durée totale : ~5 secondes
+    const timers = [
+      setTimeout(() => setStep(1), 400),  // Mois apparaît
+      setTimeout(() => setStep(2), 1200), // 1ère catégorie + sous-catégories
+      setTimeout(() => setStep(3), 2200), // 2ème catégorie + sous-catégories
+      setTimeout(() => setStep(4), 3200), // 3ème catégorie + sous-catégories
+      setTimeout(() => setStep(5), 4200)  // Texte de clôture
+    ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
-  
-  const categories = [{
-    name: t('fonctionnalites.animations.housing'),
-    amount: "800€",
-    sub: [`${t('fonctionnalites.animations.rent')} 750€`, `${t('fonctionnalites.animations.insurance')} 50€`]
-  }, {
-    name: t('fonctionnalites.animations.food'),
-    amount: "400€",
-    sub: [`${t('fonctionnalites.animations.groceries')} 300€`, `${t('fonctionnalites.animations.restaurant')} 100€`]
-  }, {
-    name: t('fonctionnalites.animations.leisure'),
-    amount: "150€",
-    sub: [`${t('fonctionnalites.animations.sports')} 50€`, `${t('fonctionnalites.animations.outings')} 100€`]
-  }];
-  
-  return <div className="mt-4 mb-2 space-y-2">
-      {categories.map((cat, i) => <motion.div 
-        key={i} 
-        initial={{ opacity: 0, x: -15 }}
+
+  const categories = [
+    {
+      name: t('fonctionnalites.animations.housing'),
+      amount: "800 €",
+      subs: [
+        { label: t('fonctionnalites.animations.rent'), amount: "750 €" },
+        { label: t('fonctionnalites.animations.insurance'), amount: "50 €" }
+      ]
+    },
+    {
+      name: t('fonctionnalites.animations.food'),
+      amount: "400 €",
+      subs: [
+        { label: t('fonctionnalites.animations.groceries'), amount: "300 €" },
+        { label: t('fonctionnalites.animations.restaurant'), amount: "100 €" }
+      ]
+    },
+    {
+      name: t('fonctionnalites.animations.leisure'),
+      amount: "150 €",
+      subs: [
+        { label: t('fonctionnalites.animations.sports'), amount: "50 €" },
+        { label: t('fonctionnalites.animations.outings'), amount: "100 €" }
+      ]
+    }
+  ];
+
+  return (
+    <div className="mt-4 mb-2">
+      {/* En-tête du mois */}
+      <motion.div
+        initial={{ opacity: 0, y: -8 }}
         animate={{
-          opacity: step >= i + 1 ? 1 : 0,
-          x: step >= i + 1 ? 0 : -15
-        }} 
+          opacity: step >= 1 ? 1 : 0,
+          y: step >= 1 ? 0 : -8
+        }}
         transition={{
-          duration: 0.35,
+          duration: 0.3,
           ease: [0.25, 0.1, 0.25, 1]
         }}
+        className="text-center mb-4"
       >
-          <div className="flex justify-between items-center bg-primary/10 rounded-lg px-3 py-2">
-            <span className="font-medium text-foreground text-sm">{cat.name}</span>
-            <span className="text-primary font-bold text-sm">{cat.amount}</span>
-          </div>
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: step >= i + 2 ? 1 : 0 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="ml-4 mt-1 flex gap-1 h-6"
+        <span className="text-sm font-semibold text-primary bg-primary/10 px-4 py-1.5 rounded-full">
+          {t('fonctionnalites.animations.month')} : {t('fonctionnalites.animations.april')}
+        </span>
+      </motion.div>
+
+      {/* Catégories avec sous-catégories */}
+      <div className="space-y-3">
+        {categories.map((cat, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -12 }}
+            animate={{
+              opacity: step >= i + 2 ? 1 : 0,
+              x: step >= i + 2 ? 0 : -12
+            }}
+            transition={{
+              duration: 0.35,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
           >
-            {cat.sub.map((sub, j) => <motion.div 
-              key={j} 
-              initial={{ opacity: 0 }}
-              animate={{ 
-                opacity: step >= i + 2 ? 1 : 0
+            {/* Catégorie principale */}
+            <div className="flex justify-between items-center bg-primary/10 rounded-lg px-3 py-2">
+              <span className="font-medium text-foreground text-sm">{cat.name}</span>
+              <span className="text-primary font-bold text-sm">{cat.amount}</span>
+            </div>
+
+            {/* Sous-catégories */}
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{
+                opacity: step >= i + 2 ? 1 : 0,
+                height: step >= i + 2 ? "auto" : 0
               }}
               transition={{
-                delay: step >= i + 2 ? j * 0.1 : 0,
-                duration: 0.25,
-                ease: "easeOut"
-              }} 
-              className="text-xs text-primary bg-primary/5 rounded px-2 py-1 whitespace-nowrap"
+                duration: 0.3,
+                delay: step >= i + 2 ? 0.15 : 0,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
+              className="ml-4 mt-1.5 space-y-1 overflow-hidden"
             >
-              {sub}
-            </motion.div>)}
+              {cat.subs.map((sub, j) => (
+                <motion.div
+                  key={j}
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{
+                    opacity: step >= i + 2 ? 1 : 0,
+                    x: step >= i + 2 ? 0 : -8
+                  }}
+                  transition={{
+                    duration: 0.25,
+                    delay: step >= i + 2 ? 0.2 + j * 0.1 : 0,
+                    ease: "easeOut"
+                  }}
+                  className="flex justify-between items-center text-xs text-muted-foreground bg-muted/30 rounded px-2.5 py-1.5"
+                >
+                  <span>{sub.label}</span>
+                  <span className="text-foreground/70 font-medium">{sub.amount}</span>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
-        </motion.div>)}
-    </div>;
+        ))}
+      </div>
+
+      {/* Texte de clôture */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 5 ? 1 : 0 }}
+        transition={{
+          duration: 0.3,
+          delay: step >= 5 ? 0.2 : 0,
+          ease: "easeOut"
+        }}
+        className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
+      >
+        {t('fonctionnalites.animations.budgetClosing')}
+      </motion.p>
+    </div>
+  );
 };
 
 // Fixed transactions animation - calm vertical flow
@@ -613,7 +728,7 @@ const IndicatorsAnimation = ({
     label: t('fonctionnalites.animations.savings'),
     value: values[1]
   }, {
-    label: t('fonctionnalites.animations.rituals'),
+    label: t('fonctionnalites.animations.ritualsLabel'),
     value: values[2]
   }];
   
