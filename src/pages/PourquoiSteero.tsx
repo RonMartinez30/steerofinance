@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import { ArrowRight, Check, Star, Brain, Eye, RefreshCw, Pencil, BookOpen, ChevronDown } from "lucide-react";
+import { ArrowRight, Check, Star, ChevronDown, Hexagon, Circle, Triangle, Square, Octagon, BookOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
@@ -94,7 +94,7 @@ const BehavioralProgressSidebar = ({
         opacity: 1,
         x: 0
       }} className="absolute left-8 whitespace-nowrap bg-card px-3 py-1.5 rounded-lg shadow-lg border border-border pointer-events-none max-w-[200px]">
-            <span className="text-xs font-medium text-foreground truncate">{element.emoji} {t(element.titleKey)}</span>
+            <span className="text-xs font-medium text-foreground truncate">{t(element.titleKey)}</span>
           </motion.div>
         </button>)}
     </motion.div>;
@@ -114,69 +114,57 @@ const alternativesData: Alternative[] = [
 ];
 
 interface BehavioralElement {
-  icon: typeof Brain;
-  emoji: string;
+  icon: typeof Hexagon;
+  principleNumber: string;
   titleKey: string;
   subtitleKey: string;
   descriptionKey: string;
   referenceKey: string;
-  bgColor: string;
-  borderColor: string;
 }
 
 const behavioralElementsData: BehavioralElement[] = [
   {
-    icon: Brain,
-    emoji: "🧠",
+    icon: Hexagon,
+    principleNumber: "01",
     titleKey: "whySteero.behavioral.cognitive.title",
     subtitleKey: "whySteero.behavioral.cognitive.subtitle",
     descriptionKey: "whySteero.behavioral.cognitive.description",
     referenceKey: "whySteero.behavioral.cognitive.reference",
-    bgColor: "bg-primary/5",
-    borderColor: "border-primary/20"
   },
   {
-    icon: Eye,
-    emoji: "👁️",
+    icon: Circle,
+    principleNumber: "02",
     titleKey: "whySteero.behavioral.illusion.title",
     subtitleKey: "whySteero.behavioral.illusion.subtitle",
     descriptionKey: "whySteero.behavioral.illusion.description",
     referenceKey: "whySteero.behavioral.illusion.reference",
-    bgColor: "bg-secondary",
-    borderColor: "border-primary/15"
   },
   {
-    icon: RefreshCw,
-    emoji: "🔄",
+    icon: Triangle,
+    principleNumber: "03",
     titleKey: "whySteero.behavioral.ritual.title",
     subtitleKey: "whySteero.behavioral.ritual.subtitle",
     descriptionKey: "whySteero.behavioral.ritual.description",
     referenceKey: "whySteero.behavioral.ritual.reference",
-    bgColor: "bg-card",
-    borderColor: "border-border"
   },
   {
-    icon: Pencil,
-    emoji: "✏️",
+    icon: Square,
+    principleNumber: "04",
     titleKey: "whySteero.behavioral.emotional.title",
     subtitleKey: "whySteero.behavioral.emotional.subtitle",
     descriptionKey: "whySteero.behavioral.emotional.description",
     referenceKey: "whySteero.behavioral.emotional.reference",
-    bgColor: "bg-primary/5",
-    borderColor: "border-primary/20"
   },
   {
-    icon: BookOpen,
-    emoji: "📖",
+    icon: Octagon,
+    principleNumber: "05",
     titleKey: "whySteero.behavioral.learning.title",
     subtitleKey: "whySteero.behavioral.learning.subtitle",
     descriptionKey: "whySteero.behavioral.learning.description",
     referenceKey: "whySteero.behavioral.learning.reference",
-    bgColor: "bg-secondary",
-    borderColor: "border-primary/15"
   }
 ];
-// Animation 1: Cognitive Effort - Brain synapses firing
+// Animation 1: Cognitive Effort - Abstract network
 const CognitiveEffortAnimation = ({
   isOpen,
   t
@@ -195,7 +183,7 @@ const CognitiveEffortAnimation = ({
     }, 600);
     return () => clearInterval(interval);
   }, [isOpen]);
-  const synapses = [{
+  const nodes = [{
     x: 15,
     y: 25,
     delay: 0
@@ -217,55 +205,54 @@ const CognitiveEffortAnimation = ({
     delay: 4
   }];
   return <div className="flex flex-col gap-2 py-2">
-      <div className="relative h-20 bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl overflow-hidden">
-        {/* Central brain icon */}
+      <div className="relative h-20 bg-muted/30 rounded-lg overflow-hidden border border-border/50">
+        {/* Central node */}
         <motion.div animate={{
-        scale: [1, 1.05, 1],
-        rotate: [0, 2, -2, 0]
+        scale: [1, 1.02, 1],
       }} transition={{
-        duration: 2,
+        duration: 3,
         repeat: Infinity,
         ease: "easeInOut"
-      }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center z-10">
-          <Brain className="w-5 h-5 text-primary" />
+      }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border-2 border-primary/40 flex items-center justify-center z-10 bg-background">
+          <Hexagon className="w-4 h-4 text-primary/60" />
         </motion.div>
         
-        {/* Synapse pulses */}
-        {synapses.map((synapse, i) => <motion.div key={i} initial={{
+        {/* Network nodes */}
+        {nodes.map((node, i) => <motion.div key={i} initial={{
         scale: 0,
         opacity: 0
       }} animate={{
-        scale: step >= synapse.delay ? [0, 1.2, 0.8] : 0,
-        opacity: step >= synapse.delay ? [0, 1, 0.6] : 0
+        scale: step >= node.delay ? 1 : 0,
+        opacity: step >= node.delay ? 0.6 : 0
       }} transition={{
-        duration: 0.5,
+        duration: 0.4,
         ease: "easeOut"
       }} style={{
-        left: `${synapse.x}%`,
-        top: `${synapse.y}%`
-      }} className="absolute w-2.5 h-2.5 rounded-full bg-primary -translate-x-1/2 -translate-y-1/2" />)}
+        left: `${node.x}%`,
+        top: `${node.y}%`
+      }} className="absolute w-2 h-2 rounded-full bg-primary/50 -translate-x-1/2 -translate-y-1/2" />)}
         
         {/* Connection lines */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none">
-          {synapses.map((synapse, i) => <motion.line key={i} x1="50%" y1="50%" x2={`${synapse.x}%`} y2={`${synapse.y}%`} stroke="hsl(var(--primary))" strokeWidth="1" initial={{
+          {nodes.map((node, i) => <motion.line key={i} x1="50%" y1="50%" x2={`${node.x}%`} y2={`${node.y}%`} stroke="hsl(var(--primary))" strokeWidth="1" strokeOpacity="0.2" initial={{
           pathLength: 0,
           opacity: 0
         }} animate={{
-          pathLength: step >= synapse.delay ? 1 : 0,
-          opacity: step >= synapse.delay ? 0.4 : 0
+          pathLength: step >= node.delay ? 1 : 0,
+          opacity: step >= node.delay ? 0.3 : 0
         }} transition={{
           duration: 0.3
         }} />)}
         </svg>
       </div>
       
-      {/* Label outside the animation box */}
+      {/* Label */}
       <motion.p initial={{
       opacity: 0
     }} animate={{
       opacity: step >= 4 ? 1 : 0
-    }} className="text-center text-xs text-primary font-medium">
-        💡 {t('animations.activeConnections')}
+    }} className="text-center text-xs text-muted-foreground">
+        {t('animations.activeConnections')}
       </motion.p>
     </div>;
 };
@@ -374,7 +361,7 @@ const ControlIllusionAnimation = ({
     </div>;
 };
 
-// Animation 3: Ritual Cycle - Daily habit loop
+// Animation 3: Ritual Cycle - Abstract cycle
 const RitualCycleAnimation = ({
   isOpen,
   t
@@ -394,31 +381,23 @@ const RitualCycleAnimation = ({
     return () => clearInterval(interval);
   }, [isOpen]);
   const ritualSteps = [{
-    icon: "🎯",
     label: t('animations.define'),
-    time: ""
   }, {
-    icon: "📝",
     label: t('animations.capture'),
-    time: ""
   }, {
-    icon: "📊",
     label: t('animations.review'),
-    time: ""
   }, {
-    icon: "✨",
     label: t('animations.anchor'),
-    time: ""
   }];
   return <div className="flex flex-col gap-3 py-3 mb-4">
-      <div className="relative h-24 flex items-center justify-center">
+      <div className="relative h-20 flex items-center justify-center">
         {/* Circular path */}
-        <div className="w-16 h-16 rounded-full border-2 border-dashed border-primary/20" />
+        <div className="w-14 h-14 rounded-full border border-border/50" />
         
         {/* Ritual steps around the circle */}
         {ritualSteps.map((step, i) => {
         const angle = (i * 90 - 90) * (Math.PI / 180);
-        const radius = 32;
+        const radius = 28;
         const x = Math.cos(angle) * radius;
         const y = Math.sin(angle) * radius;
         return <motion.div key={i} style={{
@@ -426,14 +405,11 @@ const RitualCycleAnimation = ({
           top: `calc(50% + ${y}px)`,
           transform: 'translate(-50%, -50%)'
         }} animate={{
-          scale: activeStep === i ? 1.2 : 1,
-          backgroundColor: activeStep === i ? "hsl(var(--primary))" : "hsl(var(--muted))"
+          scale: activeStep === i ? 1.1 : 1,
+          opacity: activeStep === i ? 1 : 0.4
         }} transition={{
           duration: 0.3,
-          type: "spring"
-        }} className="absolute w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md">
-              {step.icon}
-            </motion.div>;
+        }} className={`absolute w-3 h-3 rounded-full ${activeStep === i ? 'bg-primary/60' : 'bg-muted'}`} />;
       })}
         
         {/* Center indicator */}
@@ -441,26 +417,23 @@ const RitualCycleAnimation = ({
         rotate: activeStep * 90
       }} transition={{
         duration: 0.5,
-        type: "spring"
       }} className="absolute">
-          <RefreshCw className="w-4 h-4 text-primary" />
+          <Triangle className="w-3 h-3 text-primary/50" />
         </motion.div>
       </div>
       
-      {/* Current step label - outside the animation with proper spacing */}
+      {/* Current step label */}
       <motion.p key={activeStep} initial={{
       opacity: 0,
-      y: 5
     }} animate={{
       opacity: 1,
-      y: 0
-    }} className="text-center text-xs font-medium text-primary bg-primary/5 rounded-full px-3 py-1.5 mx-auto">
-        {ritualSteps[activeStep].icon} {ritualSteps[activeStep].label}
+    }} className="text-center text-xs text-muted-foreground">
+        {ritualSteps[activeStep].label}
       </motion.p>
     </div>;
 };
 
-// Animation 4: Emotional Connection - Heart + Transaction
+// Animation 4: Emotional Connection - Abstract process
 const EmotionalConnectionAnimation = ({
   isOpen,
   t
@@ -480,77 +453,64 @@ const EmotionalConnectionAnimation = ({
     return () => clearInterval(interval);
   }, [isOpen]);
   return <div className="flex flex-col gap-2 py-2">
-      <div className="relative h-16 flex items-center justify-center gap-3">
-        {/* Transaction appearing */}
+      <div className="relative h-14 flex items-center justify-center gap-4">
+        {/* Input signal */}
         <motion.div initial={{
-        x: -50,
         opacity: 0
       }} animate={{
-        x: step >= 1 ? 0 : -50,
-        opacity: step >= 1 ? 1 : 0
+        opacity: step >= 1 ? 0.6 : 0
       }} transition={{
-        duration: 0.4,
-        type: "spring"
-      }} className="bg-muted rounded-lg px-2.5 py-1.5 flex items-center gap-2">
-          <span className="text-base">🍽️</span>
-          <div>
-            <p className="text-[10px] font-medium text-foreground">{t('animations.restaurant')}</p>
-            <p className="text-[10px] text-muted-foreground">-34,90€</p>
-          </div>
+        duration: 0.3
+      }} className="w-8 h-8 rounded border border-border/50 bg-muted/30 flex items-center justify-center">
+          <Square className="w-3 h-3 text-muted-foreground" />
         </motion.div>
         
-        {/* Pencil writing */}
+        {/* Arrow */}
         <motion.div animate={{
-        opacity: step >= 2 && step < 4 ? 1 : 0,
-        y: step === 2 ? [0, -5, 0] : 0,
-        rotate: step === 3 ? [0, -15, 15, 0] : 0
+        opacity: step >= 2 ? 0.5 : 0,
       }} transition={{
-        duration: 0.5
+        duration: 0.3
       }}>
-          <Pencil className="w-4 h-4 text-primary" />
+          <ArrowRight className="w-3 h-3 text-muted-foreground" />
         </motion.div>
         
-        {/* Emotional response */}
-        <motion.div initial={{
-        scale: 0,
-        opacity: 0
-      }} animate={{
-        scale: step >= 3 ? 1 : 0,
-        opacity: step >= 3 ? 1 : 0
+        {/* Processing */}
+        <motion.div animate={{
+        scale: step >= 3 ? 1 : 0.8,
+        opacity: step >= 3 ? 1 : 0.3
       }} transition={{
         duration: 0.3,
-        type: "spring"
-      }} className="relative">
-          <motion.div animate={{
-          scale: step === 4 ? [1, 1.2, 1] : 1
-        }} transition={{
-          duration: 0.6,
-          repeat: step === 4 ? Infinity : 0
-        }} className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-            <span className="text-xl">🤔</span>
-          </motion.div>
-          
-          {/* Ripple effect */}
-          {step === 4 && <motion.div initial={{
-          scale: 1,
-          opacity: 0.6
-        }} animate={{
-          scale: 2,
-          opacity: 0
-        }} transition={{
-          duration: 1,
-          repeat: Infinity
-        }} className="absolute inset-0 rounded-full border-2 border-primary" />}
+      }} className="w-10 h-10 rounded-full border border-primary/30 bg-muted/20 flex items-center justify-center">
+          <Circle className="w-4 h-4 text-primary/50" />
+        </motion.div>
+        
+        {/* Arrow */}
+        <motion.div animate={{
+        opacity: step >= 4 ? 0.5 : 0,
+      }} transition={{
+        duration: 0.3
+      }}>
+          <ArrowRight className="w-3 h-3 text-muted-foreground" />
+        </motion.div>
+        
+        {/* Output */}
+        <motion.div animate={{
+        opacity: step >= 4 ? 1 : 0.3,
+        scale: step >= 4 ? 1 : 0.9
+      }} transition={{
+        duration: 0.3,
+      }} className="w-8 h-8 rounded border border-primary/40 bg-primary/5 flex items-center justify-center">
+          <Check className="w-3 h-3 text-primary/60" />
         </motion.div>
       </div>
       
-      {/* Result text - outside */}
+      {/* Result text */}
       <motion.p initial={{
       opacity: 0
     }} animate={{
       opacity: step >= 4 ? 1 : 0
-    }} className="text-center text-xs text-primary font-medium">
-        👌 {t('animations.realAwareness')}
+    }} className="text-center text-xs text-muted-foreground">
+        {t('animations.realAwareness')}
       </motion.p>
     </div>;
 };
@@ -576,90 +536,71 @@ const LearningFirstAnimation = ({
   }, [isOpen]);
   const stages = [{
     label: t('animations.learn'),
-    icon: BookOpen,
     fill: 33,
-    color: "bg-primary/30"
   }, {
     label: t('animations.understand'),
-    icon: Brain,
     fill: 66,
-    color: "bg-primary/50"
   }, {
     label: t('animations.master'),
-    icon: Check,
     fill: 100,
-    color: "bg-primary"
   }];
   return <div className="flex flex-col gap-2 py-2">
       {/* Progress bar */}
-      <div className="relative h-2.5 bg-muted rounded-full overflow-hidden">
+      <div className="relative h-1.5 bg-muted rounded-full overflow-hidden">
         <motion.div animate={{
         width: `${stages[stage % 3].fill}%`
       }} transition={{
         duration: 0.5,
         ease: "easeOut"
-      }} className={`absolute left-0 top-0 h-full ${stages[stage % 3].color} rounded-full`} />
+      }} className="absolute left-0 top-0 h-full bg-primary/40 rounded-full" />
       </div>
       
       {/* Stage indicators */}
       <div className="flex justify-between px-1">
         {stages.map((s, i) => {
-        const Icon = s.icon;
         const currentStage = stage % 3;
         return <motion.div key={i} animate={{
-          scale: currentStage === i ? 1.1 : 1,
           opacity: currentStage >= i ? 1 : 0.4
         }} transition={{
           duration: 0.3
         }} className="flex flex-col items-center gap-0.5">
-              <div className={`w-7 h-7 rounded-full flex items-center justify-center ${currentStage >= i ? 'bg-primary/20' : 'bg-muted'}`}>
-                <Icon className={`w-3.5 h-3.5 ${currentStage >= i ? 'text-primary' : 'text-muted-foreground'}`} />
-              </div>
-              <span className={`text-[9px] font-medium ${currentStage === i ? 'text-primary' : 'text-muted-foreground'}`}>
+              <div className={`w-2 h-2 rounded-full ${currentStage >= i ? 'bg-primary/50' : 'bg-muted'}`} />
+              <span className={`text-[9px] ${currentStage === i ? 'text-muted-foreground' : 'text-muted-foreground/50'}`}>
                 {s.label}
               </span>
             </motion.div>;
       })}
       </div>
       
-      {/* Status message - outside with fixed height */}
+      {/* Status message */}
       <div className="h-4 flex items-center justify-center">
         <AnimatePresence mode="wait">
           {stage % 3 < 1 && <motion.p key="warning" initial={{
           opacity: 0,
-          y: -3
         }} animate={{
           opacity: 1,
-          y: 0
         }} exit={{
           opacity: 0,
-          y: -3
         }} className="text-center text-[10px] text-muted-foreground">
-              ⚠️ {t('animations.autoTooEarly')}
+              {t('animations.autoTooEarly')}
             </motion.p>}
           {stage % 3 === 1 && <motion.p key="progress" initial={{
           opacity: 0,
-          y: -3
         }} animate={{
           opacity: 1,
-          y: 0
         }} exit={{
           opacity: 0,
-          y: -3
-        }} className="text-center text-[10px] text-primary/70">
-              📈 {t('animations.understandingGrows')}
+        }} className="text-center text-[10px] text-muted-foreground">
+              {t('animations.understandingGrows')}
             </motion.p>}
           {stage % 3 === 2 && <motion.p key="ready" initial={{
           opacity: 0,
-          y: -3
         }} animate={{
           opacity: 1,
-          y: 0
         }} exit={{
           opacity: 0,
-          y: -3
-        }} className="text-center text-[10px] text-primary font-medium">
-              ✓ {t('animations.autoCanBeConsidered')}
+        }} className="text-center text-[10px] text-muted-foreground">
+              {t('animations.autoCanBeConsidered')}
             </motion.p>}
         </AnimatePresence>
       </div>
@@ -710,6 +651,7 @@ const BehavioralCard = ({
   isExplored: boolean;
   t: (key: string) => string;
 }) => {
+  const Icon = element.icon;
   return <motion.div initial={{
     opacity: 0,
     y: 20
@@ -722,64 +664,48 @@ const BehavioralCard = ({
     duration: 0.4,
     delay: index * 0.1
   }} onClick={onToggle} className={`
-        relative rounded-2xl border cursor-pointer transition-all duration-300
-        ${element.bgColor} ${element.borderColor}
-        ${isOpen ? 'shadow-card ring-2 ring-primary/20' : 'shadow-soft hover:shadow-card'}
-        ${isExplored && !isOpen ? 'saturate-[0.7] opacity-90' : ''}
+        relative rounded-xl border cursor-pointer transition-all duration-300
+        bg-card border-border/50
+        ${isOpen ? 'shadow-sm ring-1 ring-primary/10' : 'hover:border-border'}
+        ${isExplored && !isOpen ? 'opacity-80' : ''}
       `}>
-      {/* Explored badge */}
+      {/* Explored indicator - subtle */}
       <AnimatePresence>
         {isExplored && !isOpen && <motion.div initial={{
         opacity: 0,
-        scale: 0.8,
-        y: -5
       }} animate={{
         opacity: 1,
-        scale: 1,
-        y: 0
       }} exit={{
         opacity: 0,
-        scale: 0.8,
-        y: -5
-      }} className="absolute -top-2 -right-2 z-10">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full border border-primary/20">
-              ✓ {t('whySteero.read')}
-            </span>
+      }} className="absolute top-3 right-3 z-10">
+            <Check className="w-4 h-4 text-primary/50" />
           </motion.div>}
       </AnimatePresence>
 
       <div className="p-5">
         <div className="flex items-start gap-4">
-          {/* Emoji with explored indicator */}
+          {/* Icon with principle number */}
           <div className="relative flex-shrink-0">
-            <div className={`
-              w-14 h-14 rounded-xl flex items-center justify-center text-2xl
-              ${isOpen ? 'bg-primary/15' : 'bg-primary/10'}
-              transition-all duration-300
-            `}>
-              {element.emoji}
+            <div className="w-12 h-12 rounded-lg border border-border/50 bg-muted/30 flex items-center justify-center">
+              <Icon className="w-5 h-5 text-muted-foreground" strokeWidth={1.5} />
             </div>
-            <AnimatePresence>
-              {isExplored && !isOpen && <motion.div initial={{
-              scale: 0
-            }} animate={{
-              scale: 1
-            }} exit={{
-              scale: 0
-            }} className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                  <Check className="w-3 h-3 text-primary-foreground" />
-                </motion.div>}
-            </AnimatePresence>
+            {/* Principle number */}
+            <span className="absolute -top-1 -left-1 text-[10px] font-mono text-muted-foreground/60">
+              {element.principleNumber}
+            </span>
           </div>
 
           {/* Content */}
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2">
               <div>
-                <h3 className="font-semibold text-foreground leading-tight">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground/60 mb-1 block">
+                  Principe {element.principleNumber}
+                </span>
+                <h3 className="font-medium text-foreground leading-tight">
                   {t(element.titleKey)}
                 </h3>
-                <p className="text-sm text-primary font-medium mt-0.5">
+                <p className="text-sm text-muted-foreground mt-0.5">
                   {t(element.subtitleKey)}
                 </p>
               </div>
@@ -788,7 +714,7 @@ const BehavioralCard = ({
             }} transition={{
               duration: 0.3
             }} className="flex-shrink-0 mt-1">
-                <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                <ChevronDown className="w-4 h-4 text-muted-foreground/50" />
               </motion.div>
             </div>
           </div>
@@ -1105,37 +1031,30 @@ const PourquoiSteero = () => {
           }} transition={{
             duration: 0.5
           }} className="text-center mb-12">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-card border border-border mb-4">
-                🎓 {t('whySteero.behavioralBadge')}
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded text-xs font-mono uppercase tracking-wider text-muted-foreground border border-border/50 mb-4">
+                {t('whySteero.behavioralBadge')}
               </span>
-              <h2 className="text-3xl font-bold text-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
                 {t('whySteero.behavioralTitle')}
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-muted-foreground max-w-2xl mx-auto text-sm">
                 {t('whySteero.behavioralDescription')}
               </p>
               
-              {/* Progress indicator */}
+              {/* Progress indicator - subtle */}
               <motion.div initial={{
               opacity: 0
             }} animate={{
               opacity: 1
             }} transition={{
               delay: 0.3
-            }} className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                <span className="text-primary font-medium">{exploredCards.size}</span>
+            }} className="mt-6 flex items-center justify-center gap-1.5 text-xs text-muted-foreground/70 font-mono">
+                <span>{exploredCards.size}</span>
                 <span>/</span>
-                <span>{behavioralElementsData.length} {t('whySteero.principlesExplored')}</span>
-                {exploredCards.size === behavioralElementsData.length && <motion.span initial={{
-                scale: 0
-              }} animate={{
-                scale: [1, 1.2, 1]
-              }} transition={{
-                duration: 0.6,
-                repeat: 2
-              }} className="ml-2 text-primary font-semibold">
-                    🎉 {t('whySteero.bravo')}
-                  </motion.span>}
+                <span>{behavioralElementsData.length}</span>
+                {exploredCards.size === behavioralElementsData.length && <span className="ml-2 text-primary/70">
+                    {t('whySteero.bravo')}
+                  </span>}
               </motion.div>
             </motion.div>
             
