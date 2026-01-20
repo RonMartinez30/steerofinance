@@ -408,7 +408,9 @@
       "budgetLeisure": "Leisure budget",
       "budgetTransport": "Transport budget",
       "budgetDaily": "Daily budget",
-      "projectClosing": "A project isn't just another budget: it's your cross-functional view."
+      "projectClosing": "A project isn't just another budget: it's your cross-functional view.",
+      "projectConsumed": "Consumed",
+      "projectRemaining": "Remaining"
     }
   },
   "blog": {

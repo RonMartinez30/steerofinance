@@ -1303,7 +1303,7 @@ const Fonctionnalites = () => {
                     className="w-full bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg border border-primary/20 p-4"
                   >
                     {/* Header avec titre et montant */}
-                    <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <span className="text-xl">✈️</span>
                         <span className="text-sm font-semibold text-foreground">{t('fonctionnalites.animations.projectVacances')}</span>
@@ -1318,37 +1318,70 @@ const Fonctionnalites = () => {
                       </motion.span>
                     </div>
 
-                    {/* Liste des budgets */}
-                    <div className="space-y-2">
+                    {/* Progress bar */}
+                    <motion.div 
+                      className="h-2 bg-muted rounded-full overflow-hidden mb-3"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.35 }}
+                    >
+                      <motion.div 
+                        className="h-full bg-primary rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: "65%" }}
+                        transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                      />
+                    </motion.div>
+                    <motion.div 
+                      className="flex justify-between text-[10px] text-muted-foreground mb-3"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <span>{t('fonctionnalites.animations.projectConsumed')}: <span className="text-primary font-medium">1 495 €</span></span>
+                      <span>{t('fonctionnalites.animations.projectRemaining')}: <span className="font-medium">805 €</span></span>
+                    </motion.div>
+
+                    {/* Liste des budgets avec montants */}
+                    <div className="space-y-1.5">
                       <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.4 }}
-                        className="flex items-center gap-2 text-xs text-muted-foreground"
+                        transition={{ delay: 0.7 }}
+                        className="flex items-center justify-between text-xs"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
-                        <span>{t('fonctionnalites.animations.projectLodging')}</span>
-                        <span className="text-muted-foreground/50">({t('fonctionnalites.animations.budgetLeisure')})</span>
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                          <span>{t('fonctionnalites.animations.projectLodging')}</span>
+                          <span className="text-muted-foreground/50">({t('fonctionnalites.animations.budgetLeisure')})</span>
+                        </div>
+                        <span className="text-foreground/80 font-medium">1 100 €</span>
                       </motion.div>
                       <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5 }}
-                        className="flex items-center gap-2 text-xs text-muted-foreground"
+                        transition={{ delay: 0.8 }}
+                        className="flex items-center justify-between text-xs"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
-                        <span>{t('fonctionnalites.animations.projectTransport')}</span>
-                        <span className="text-muted-foreground/50">({t('fonctionnalites.animations.budgetTransport')})</span>
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                          <span>{t('fonctionnalites.animations.projectTransport')}</span>
+                          <span className="text-muted-foreground/50">({t('fonctionnalites.animations.budgetTransport')})</span>
+                        </div>
+                        <span className="text-foreground/80 font-medium">650 €</span>
                       </motion.div>
                       <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.6 }}
-                        className="flex items-center gap-2 text-xs text-muted-foreground"
+                        transition={{ delay: 0.9 }}
+                        className="flex items-center justify-between text-xs"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
-                        <span>{t('fonctionnalites.animations.projectOnSite')}</span>
-                        <span className="text-muted-foreground/50">({t('fonctionnalites.animations.budgetDaily')})</span>
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                          <span>{t('fonctionnalites.animations.projectOnSite')}</span>
+                          <span className="text-muted-foreground/50">({t('fonctionnalites.animations.budgetDaily')})</span>
+                        </div>
+                        <span className="text-foreground/80 font-medium">550 €</span>
                       </motion.div>
                     </div>
                   </motion.div>
@@ -1357,7 +1390,7 @@ const Fonctionnalites = () => {
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 }}
+                    transition={{ delay: 1.1 }}
                     className="text-[11px] text-center text-muted-foreground/80 italic px-2"
                   >
                     {t('fonctionnalites.animations.projectClosing')}
