@@ -574,6 +574,27 @@ const RitualCycleAnimation = ({
               })}
             </div>
           </div>
+
+          {/* Ritual labels under each point group */}
+          <div className="relative flex justify-between items-center mt-1">
+            {[...Array(points)].map((_, i) => {
+              const isActive = i <= activePoint;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: isActive ? 1 : 0.3 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex justify-center"
+                  style={{ width: 24 }}
+                >
+                  <span className="text-[8px] text-muted-foreground whitespace-nowrap">
+                    {t('animations.ritual')} +{i + 1}
+                  </span>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
         
         {/* Rhythm indicator */}
