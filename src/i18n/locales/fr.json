@@ -120,7 +120,7 @@
     "seconds": "Secondes",
     "features": {
       "free": "Gratuit pour commencer",
-      "noCard": "Finance Habit Tracker",
+      "noCard": "Gestions des habitudes financières",
       "cancel": "Données sécurisées"
     }
   },
@@ -130,11 +130,7 @@
     "missionTitle": "Notre mission",
     "missionP1": "Steero est né d'un constat simple : les applications de finances personnelles automatisent tout, mais ne changent rien à tes comportements.",
     "missionP2": "Notre mission est de t'aider à développer une véritable compréhension de ta gestion financière, pas simplement un outil pour consulter des graphiques générés automatiquement.",
-    "missionItems": [
-      "Comprends et ajuste tes décisions",
-      "Créé des habitudes durables",
-      "Atteinds tes objectifs"
-    ],
+    "missionItems": ["Comprends et ajuste tes décisions", "Créé des habitudes durables", "Atteinds tes objectifs"],
     "quote": "La vraie liberté financière vient de la compréhension, qui naît et se renforce par l'action et non par l'automatisation.",
     "quoteAuthor": "L'équipe Steero",
     "alternativesTitle": "Tu as peut-être déjà essayé...",
@@ -523,27 +519,48 @@
         "s1": {
           "title": "1. Pourquoi ces conditions ?",
           "intro": "Ces Conditions Générales de Services (les « CGS ») expliquent simplement :",
-          "items": ["ce que fait l'application,", "ce que tu peux en attendre,", "ce que nous faisons (et ne faisons pas),", "et comment chacun est protégé."],
+          "items": [
+            "ce que fait l'application,",
+            "ce que tu peux en attendre,",
+            "ce que nous faisons (et ne faisons pas),",
+            "et comment chacun est protégé."
+          ],
           "outro": "En créant un compte ou en utilisant l'application, tu acceptes ces conditions."
         },
         "s2": {
           "title": "2. Ce qu'est l'application",
           "intro": "L'application est un outil personnel de gestion financière et de suivi d'habitudes, conçu pour t'aider à :",
-          "items": ["mieux comprendre tes finances,", "suivre tes dépenses, revenus et budgets,", "fixer des objectifs clairs,", "adopter de meilleurs comportements financiers sur la durée."],
-          "notes": ["👉 Ce n'est pas une banque,", "👉 ce n'est pas un conseiller financier,", "👉 et ce n'est pas un outil de trading ou d'investissement automatisé."],
+          "items": [
+            "mieux comprendre tes finances,",
+            "suivre tes dépenses, revenus et budgets,",
+            "fixer des objectifs clairs,",
+            "adopter de meilleurs comportements financiers sur la durée."
+          ],
+          "notes": [
+            "👉 Ce n'est pas une banque,",
+            "👉 ce n'est pas un conseiller financier,",
+            "👉 et ce n'est pas un outil de trading ou d'investissement automatisé."
+          ],
           "outro": "C'est un tableau de bord intelligent pour t'aider à prendre de meilleures décisions."
         },
         "s3": {
           "title": "3. À qui s'adresse l'application ?",
           "intro": "L'application est destinée à toute personne majeure souhaitant organiser ses finances personnelles.",
           "confirm": "En utilisant l'application, tu confirmes que :",
-          "items": ["tu es légalement capable de contracter,", "tu utilises l'outil pour un usage personnel (pas professionnel ou illégal)."]
+          "items": [
+            "tu es légalement capable de contracter,",
+            "tu utilises l'outil pour un usage personnel (pas professionnel ou illégal)."
+          ]
         },
         "s4": {
           "title": "4. Création et gestion du compte",
           "intro": "Pour utiliser l'application, tu dois créer un compte.",
           "responsible": "Tu es responsable :",
-          "items": ["des informations que tu renseignes,", "de la confidentialité de tes identifiants,", "de l'usage de ton compte."],
+          "items": [
+            "des informations que tu renseignes,",
+            "de la confidentialité de tes identifiants,",
+            "de l'usage de ton compte."
+          ],
           "outro": "Si tu constates une activité suspecte, contacte-nous rapidement."
         },
         "s5": {
@@ -572,7 +589,11 @@
           "title": "8. Tes données",
           "ownership": "Tes données t'appartiennent.",
           "intro": "Nous :",
-          "items": ["les stockons de manière sécurisée,", "les utilisons uniquement pour faire fonctionner l'application,", "ne les revendons jamais."],
+          "items": [
+            "les stockons de manière sécurisée,",
+            "les utilisons uniquement pour faire fonctionner l'application,",
+            "ne les revendons jamais."
+          ],
           "details": "Les détails sur la gestion des données personnelles sont disponibles dans notre",
           "privacyLink": "Politique de confidentialité",
           "gdpr": "(conforme au RGPD)."
@@ -586,7 +607,12 @@
           "title": "10. Responsabilité",
           "intro": "L'application est un outil d'aide, pas une promesse de résultat.",
           "noLiability": "Nous ne pouvons pas être tenus responsables :",
-          "items": ["d'erreurs de saisie,", "de mauvaises interprétations,", "de pertes financières,", "de décisions prises sur la base des données affichées."],
+          "items": [
+            "d'erreurs de saisie,",
+            "de mauvaises interprétations,",
+            "de pertes financières,",
+            "de décisions prises sur la base des données affichées."
+          ],
           "outro": "Tu gardes le contrôle. Toujours."
         },
         "s11": {
@@ -656,7 +682,12 @@
           "title": "1. Pourquoi cette politique ?",
           "intro": "Ta vie privée est importante pour nous.",
           "explains": "Cette politique de confidentialité explique :",
-          "items": ["quelles données nous collectons,", "pourquoi nous les collectons,", "comment nous les utilisons et les protégeons,", "et quels sont tes droits."],
+          "items": [
+            "quelles données nous collectons,",
+            "pourquoi nous les collectons,",
+            "comment nous les utilisons et les protégeons,",
+            "et quels sont tes droits."
+          ],
           "outro": "Elle s'applique à tous les utilisateurs de l'application."
         },
         "s2": {
@@ -673,27 +704,54 @@
           "voluntary": "🔹 Données que tu fournis volontairement",
           "voluntaryItems": ["Adresse email", "Mot de passe (chiffré)", "Informations de profil (facultatives)"],
           "financial": "Données financières saisies manuellement :",
-          "financialItems": ["budgets (Objectifs)", "transactions", "revenus", "habitudes", "catégories personnalisées"],
+          "financialItems": [
+            "budgets (Objectifs)",
+            "transactions",
+            "revenus",
+            "habitudes",
+            "catégories personnalisées"
+          ],
           "note": "👉 Aucune donnée bancaire n'est collectée sans action volontaire explicite de ta part.",
           "technical": "🔹 Données techniques",
-          "technicalItems": ["Type d'appareil et navigateur", "Adresse IP", "Logs de connexion", "Données d'usage anonymisées (pour améliorer le produit)"]
+          "technicalItems": [
+            "Type d'appareil et navigateur",
+            "Adresse IP",
+            "Logs de connexion",
+            "Données d'usage anonymisées (pour améliorer le produit)"
+          ]
         },
         "s4": {
           "title": "4. Pourquoi utilisons-nous ces données ?",
           "intro": "Tes données sont utilisées pour :",
-          "items": ["Fournir et faire fonctionner l'application", "Sauvegarder et afficher tes informations", "Calculer des statistiques et visualisations", "Améliorer l'expérience utilisateur", "Assurer la sécurité et prévenir la fraude", "Gérer les abonnements et la facturation", "Répondre à tes demandes de support"],
+          "items": [
+            "Fournir et faire fonctionner l'application",
+            "Sauvegarder et afficher tes informations",
+            "Calculer des statistiques et visualisations",
+            "Améliorer l'expérience utilisateur",
+            "Assurer la sécurité et prévenir la fraude",
+            "Gérer les abonnements et la facturation",
+            "Répondre à tes demandes de support"
+          ],
           "noProfiling": "Nous ne faisons aucun profilage publicitaire."
         },
         "s5": {
           "title": "5. Base légale du traitement (RGPD)",
           "intro": "Conformément au RGPD, les traitements reposent sur :",
-          "items": ["L'exécution du contrat (utilisation normale de l'application)", "Ton consentement (ex : communications non essentielles)", "Notre intérêt légitime (sécurité, amélioration du produit)"]
+          "items": [
+            "L'exécution du contrat (utilisation normale de l'application)",
+            "Ton consentement (ex : communications non essentielles)",
+            "Notre intérêt légitime (sécurité, amélioration du produit)"
+          ]
         },
         "s6": {
           "title": "6. Partage des données",
           "noSell": "Nous ne vendons jamais tes données. Jamais.",
           "shared": "Tes données peuvent être partagées uniquement avec :",
-          "items": ["des prestataires techniques de confiance (hébergement, paiement, emails),", "strictement dans le cadre du fonctionnement de l'application,", "avec des garanties contractuelles conformes au RGPD."],
+          "items": [
+            "des prestataires techniques de confiance (hébergement, paiement, emails),",
+            "strictement dans le cadre du fonctionnement de l'application,",
+            "avec des garanties contractuelles conformes au RGPD."
+          ],
           "outro": "Aucune donnée n'est transmise à des tiers à des fins commerciales."
         },
         "s7": {
@@ -708,13 +766,26 @@
         "s9": {
           "title": "9. Sécurité des données",
           "intro": "Nous mettons en œuvre des mesures techniques et organisationnelles adaptées :",
-          "items": ["chiffrement des mots de passe", "accès restreint aux données", "surveillance des accès", "sauvegardes sécurisées"],
+          "items": [
+            "chiffrement des mots de passe",
+            "accès restreint aux données",
+            "surveillance des accès",
+            "sauvegardes sécurisées"
+          ],
           "outro": "Aucun système n'est infaillible, mais la sécurité est une priorité."
         },
         "s10": {
           "title": "10. Tes droits (RGPD)",
           "intro": "Conformément au RGPD, tu disposes des droits suivants :",
-          "items": ["Droit d'accès à tes données", "Droit de rectification", "Droit à l'effacement (droit à l'oubli)", "Droit à la limitation du traitement", "Droit à la portabilité", "Droit d'opposition", "Droit de retirer ton consentement à tout moment"],
+          "items": [
+            "Droit d'accès à tes données",
+            "Droit de rectification",
+            "Droit à l'effacement (droit à l'oubli)",
+            "Droit à la limitation du traitement",
+            "Droit à la portabilité",
+            "Droit d'opposition",
+            "Droit de retirer ton consentement à tout moment"
+          ],
           "exercise": "📩 Pour exercer tes droits : Contacte-nous à",
           "response": "Nous répondons sous 30 jours maximum."
         },
