@@ -800,7 +800,7 @@ const DailyTransactionsAnimation = ({
   );
 };
 
-// Gauge animation - Budget "Resto" with specific values
+// Gauge animation - Budget "Resto" with transaction form and mini gauge
 const GaugeAnimation = ({
   isOpen,
   t
@@ -821,16 +821,27 @@ const GaugeAnimation = ({
   const inProgressPercent = (inProgress / budgetTotal) * 100; // 11.6%
   const remainingPercent = (remaining / budgetTotal) * 100; // 33.3%
 
+  const today = new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' });
+
   useEffect(() => {
     if (!isOpen) {
       setStep(0);
       return;
     }
+    // Animation steps:
+    // 1: Show main gauge with "spent"
+    // 2: Show "in progress" segment
+    // 3: Show "remaining" segment + legend
+    // 4: Show transaction form
+    // 5: Show mini gauge under amount field
+    // 6: Closing text
     const timers = [
       setTimeout(() => setStep(1), 400),
       setTimeout(() => setStep(2), 1000),
       setTimeout(() => setStep(3), 1600),
-      setTimeout(() => setStep(4), 2200) // Closing text
+      setTimeout(() => setStep(4), 2400),
+      setTimeout(() => setStep(5), 3200),
+      setTimeout(() => setStep(6), 4000)
     ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
@@ -848,7 +859,7 @@ const GaugeAnimation = ({
         <span className="text-xs text-muted-foreground ml-2">({budgetTotal} €)</span>
       </motion.div>
 
-      {/* Gauge bar */}
+      {/* Main Gauge bar */}
       <div className="relative h-8 bg-muted rounded-full overflow-hidden">
         <motion.div 
           initial={{ width: 0 }}
@@ -918,10 +929,104 @@ const GaugeAnimation = ({
         </motion.div>
       </div>
 
+      {/* Transaction Form with mini gauge */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: step >= 4 ? 1 : 0, y: step >= 4 ? 0 : 12 }}
+        transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+        className="mt-5 bg-secondary/50 rounded-xl p-3 space-y-2"
+      >
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-5 h-5 rounded bg-primary/10 flex items-center justify-center">
+            <span className="text-xs">🍽️</span>
+          </div>
+          <span className="text-xs font-medium text-foreground">{t('fonctionnalites.animations.newExpense')}</span>
+        </div>
+
+        {/* Compact form fields */}
+        <div className="grid grid-cols-3 gap-2">
+          <div className="space-y-0.5">
+            <label className="text-[9px] text-muted-foreground uppercase">{t('fonctionnalites.animations.name')}</label>
+            <div className="bg-background border border-border rounded px-2 py-1 text-xs text-foreground">
+              {t('fonctionnalites.animations.restaurant')}
+            </div>
+          </div>
+          <div className="space-y-0.5">
+            <label className="text-[9px] text-muted-foreground uppercase">{t('fonctionnalites.animations.date')}</label>
+            <div className="bg-background border border-border rounded px-2 py-1 text-xs text-foreground">
+              {today}
+            </div>
+          </div>
+          <div className="space-y-0.5">
+            <label className="text-[9px] text-muted-foreground uppercase">{t('fonctionnalites.animations.category')}</label>
+            <div className="bg-background border border-border rounded px-2 py-1 text-xs text-foreground">
+              {t('fonctionnalites.animations.food')}
+            </div>
+          </div>
+        </div>
+
+        {/* Amount field with highlight */}
+        <div className="space-y-0.5">
+          <label className="text-[9px] text-muted-foreground uppercase">{t('fonctionnalites.animations.amount')}</label>
+          <div className="bg-background border border-primary/50 rounded px-2 py-1.5 text-sm font-medium text-foreground">
+            35 €
+          </div>
+        </div>
+
+        {/* Mini gauge under amount field */}
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: step >= 5 ? 1 : 0, height: step >= 5 ? "auto" : 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="overflow-hidden"
+        >
+          <div className="bg-background/80 rounded-lg p-2 mt-1 border border-border/50">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[10px] font-medium text-foreground">{t('fonctionnalites.animations.budgetResto')}</span>
+              <span className="text-[10px] text-muted-foreground">{budgetTotal} €</span>
+            </div>
+            
+            {/* Mini gauge bar */}
+            <div className="relative h-4 bg-muted rounded-full overflow-hidden">
+              <div 
+                className="absolute left-0 top-0 h-full bg-gradient-to-r from-primary to-primary/80"
+                style={{ width: `${spentPercent}%` }}
+              />
+              <div 
+                className="absolute top-0 h-full bg-gradient-to-r from-primary/60 to-primary/40"
+                style={{ left: `${spentPercent}%`, width: `${inProgressPercent}%` }}
+              />
+              <div 
+                className="absolute top-0 h-full bg-muted-foreground/15"
+                style={{ left: `${spentPercent + inProgressPercent}%`, width: `${remainingPercent}%` }}
+              />
+            </div>
+
+            {/* Mini legend */}
+            <div className="flex justify-between mt-1.5 text-[9px]">
+              <span className="text-primary">{t('fonctionnalites.animations.spent')}: {spent}€</span>
+              <span className="text-primary/70">{t('fonctionnalites.animations.inProgress')}: {inProgress}€</span>
+              <span className="text-muted-foreground">{t('fonctionnalites.animations.remaining')}: {remaining}€</span>
+            </div>
+          </div>
+          
+          {/* Indicator message */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: step >= 5 ? 1 : 0 }}
+            transition={{ duration: 0.2, delay: 0.2, ease: "easeOut" }}
+            className="flex items-center justify-center gap-1.5 mt-2"
+          >
+            <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+            <span className="text-[10px] text-muted-foreground italic">{t('fonctionnalites.animations.gaugeEachEntry')}</span>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+
       {/* Closing text */}
       <motion.p
         initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 4 ? 1 : 0 }}
+        animate={{ opacity: step >= 6 ? 1 : 0 }}
         transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
         className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
       >
