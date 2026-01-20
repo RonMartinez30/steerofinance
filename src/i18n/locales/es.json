@@ -352,9 +352,9 @@
         "details": "Un sistema de rituales que te guía sobre lo que debes hacer, mirar, y qué preguntas hacerte. Desarrolla hábitos financieros duraderos."
       },
       "indicators": {
-        "title": "Indicadores lúdicos",
-        "microPromise": "Mide tus progresos de un vistazo.",
-        "details": "Visualizaciones claras y atractivas que transforman tus datos en insights accionables. Comprende rápidamente tu situación gracias a indicadores pensados para facilitar tus decisiones."
+        "title": "Ayuda a la toma de decisiones",
+        "microPromise": "Detecta las desviaciones antes de que se instalen.",
+        "details": "Una vista presupuestaria clara que resalta lo que merece tu atención. Comprende rápidamente tu situación y toma decisiones informadas gracias a indicadores pensados para ayudarte a ajustar tu trayectoria."
       }
     },
     "futureFeatures": {
@@ -411,11 +411,18 @@
       "spent": "Gastado",
       "inProgress": "En curso",
       "remaining": "Disponible",
-      "checkExpenses": "📋 Verificar mis gastos",
-      "consecutiveDays": "🔥 ¡5 días consecutivos!",
-      "budgetUsed": "Presupuesto usado",
-      "savings": "Ahorro",
-      "ritualsLabel": "Rituales",
+      "dailyRitual": "📋 Ritual diario",
+      "consecutiveDays": "🔥 ¡7 días consecutivos!",
+      "upcomingRituals": "Próximos rituales",
+      "weeklyRitual": "Semanal",
+      "weeklyDate": "7 de abril",
+      "monthlyRitual": "Mensual",
+      "monthlyDate": "28 de abril",
+      "ritualsClosing": "Citas simples para mantener el rumbo, sin presión.",
+      "budgetLabel": "Presupuesto",
+      "percentConsumed": "% cons.",
+      "available": "Disp.",
+      "indicatorsClosing": "Una ayuda concreta para decidir, antes de que las desviaciones se instalen.",
       "fixedChargesIdentified": "Cargos fijos identificados",
       "fixedClosing": "Sé de antemano lo que saldrá cada mes y centralizo la gestión.",
       "favoriteOperations": "Operaciones favoritas",

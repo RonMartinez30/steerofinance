@@ -352,9 +352,9 @@
         "details": "A ritual system that guides you on what to do, what to look at, and what questions to ask yourself. Develop lasting financial habits."
       },
       "indicators": {
-        "title": "Playful Indicators",
-        "microPromise": "Measure your progress at a glance.",
-        "details": "Clear and engaging visualizations that transform your data into actionable insights. Quickly understand your situation through indicators designed to facilitate your decisions."
+        "title": "Decision Support",
+        "microPromise": "Spot gaps before they settle in.",
+        "details": "A clear budget view that highlights what deserves your attention. Quickly understand your situation and make informed decisions with indicators designed to help you adjust your trajectory."
       }
     },
     "futureFeatures": {
@@ -411,11 +411,18 @@
       "spent": "Spent",
       "inProgress": "In progress",
       "remaining": "Available",
-      "checkExpenses": "📋 Check my expenses",
-      "consecutiveDays": "🔥 5 consecutive days!",
-      "budgetUsed": "Budget used",
-      "savings": "Savings",
-      "ritualsLabel": "Rituals",
+      "dailyRitual": "📋 Daily ritual",
+      "consecutiveDays": "🔥 7 consecutive days!",
+      "upcomingRituals": "Upcoming rituals",
+      "weeklyRitual": "Weekly",
+      "weeklyDate": "April 7th",
+      "monthlyRitual": "Monthly",
+      "monthlyDate": "April 28th",
+      "ritualsClosing": "Simple check-ins to stay on track, without pressure.",
+      "budgetLabel": "Budget",
+      "percentConsumed": "% used",
+      "available": "Avail.",
+      "indicatorsClosing": "Concrete support for decisions, before gaps settle in.",
       "fixedChargesIdentified": "Fixed charges identified",
       "fixedClosing": "I know in advance what will come out each month and I centralize the management.",
       "favoriteOperations": "Favorite operations",
