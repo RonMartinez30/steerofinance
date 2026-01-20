@@ -408,7 +408,9 @@
       "budgetLeisure": "Presupuesto ocio",
       "budgetTransport": "Presupuesto transporte",
       "budgetDaily": "Presupuesto diario",
-      "projectClosing": "El proyecto no es un presupuesto más: es tu vista transversal."
+      "projectClosing": "El proyecto no es un presupuesto más: es tu vista transversal.",
+      "projectConsumed": "Consumido",
+      "projectRemaining": "Resto"
     }
   },
   "blog": {
