@@ -479,7 +479,7 @@ const BudgetAnimation = ({
   );
 };
 
-// Fixed transactions animation - calm vertical flow
+// Fixed transactions animation - Monthly recurring charges with horizontal scroll between months
 const FixedTransactionsAnimation = ({
   isOpen,
   t
@@ -488,68 +488,118 @@ const FixedTransactionsAnimation = ({
   t: (key: string) => string;
 }) => {
   const [step, setStep] = useState(0);
+  const [currentMonth, setCurrentMonth] = useState(0);
+  
+  const months = [
+    t('fonctionnalites.animations.april'),
+    t('fonctionnalites.animations.may'),
+    t('fonctionnalites.animations.june')
+  ];
+  
+  const transactions = [
+    { day: "01", label: t('fonctionnalites.animations.rent'), amount: "750 €" },
+    { day: "05", label: t('fonctionnalites.animations.insurance'), amount: "50 €" },
+    { day: "15", label: t('fonctionnalites.animations.electricity'), amount: "80 €" }
+  ];
+
   useEffect(() => {
     if (!isOpen) {
       setStep(0);
+      setCurrentMonth(0);
       return;
     }
-    // Animation unique sans boucle
-    const timers = [0, 1, 2, 3, 4].map((i) => 
-      setTimeout(() => setStep(i + 1), 200 + i * 400)
-    );
+    
+    // Animation: show transactions, then cycle through months
+    const timers = [
+      setTimeout(() => setStep(1), 400),
+      setTimeout(() => setStep(2), 800),
+      setTimeout(() => setStep(3), 1200),
+      setTimeout(() => setStep(4), 1800), // Show indicator
+      setTimeout(() => setCurrentMonth(1), 2500), // Switch to May
+      setTimeout(() => setCurrentMonth(2), 3500), // Switch to June
+      setTimeout(() => setStep(5), 4200) // Show closing text
+    ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
-  
-  const transactions = [{
-    day: "01",
-    label: t('fonctionnalites.animations.rent'),
-    amount: "-750€",
-    type: "expense"
-  }, {
-    day: "05",
-    label: t('fonctionnalites.animations.salary'),
-    amount: "+2100€",
-    type: "income"
-  }, {
-    day: "15",
-    label: t('fonctionnalites.animations.netflix'),
-    amount: "-15€",
-    type: "expense"
-  }, {
-    day: "20",
-    label: t('fonctionnalites.animations.electricity'),
-    amount: "-80€",
-    type: "expense"
-  }];
-  
-  return <div className="mt-4 mb-2">
+
+  return (
+    <div className="mt-4 mb-2">
+      {/* Month header with horizontal indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : -8 }}
+        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+        className="flex items-center justify-center gap-4 mb-4"
+      >
+        {months.map((month, i) => (
+          <motion.span
+            key={i}
+            animate={{
+              opacity: currentMonth === i ? 1 : 0.4,
+              scale: currentMonth === i ? 1.05 : 1
+            }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className={`text-sm font-medium px-3 py-1 rounded-full ${
+              currentMonth === i ? 'bg-primary/15 text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            {month}
+          </motion.span>
+        ))}
+      </motion.div>
+
+      {/* Fixed transactions list - same amounts every month */}
       <div className="space-y-2">
-        {transactions.map((tx, i) => <motion.div 
-          key={i} 
-          initial={{ opacity: 0, y: -10 }}
-          animate={{
-            opacity: step > i ? 1 : 0.3,
-            y: step > i ? 0 : -10
-          }} 
-          transition={{
-            duration: 0.3,
-            ease: [0.25, 0.1, 0.25, 1]
-          }} 
-          className="flex items-center gap-3 bg-secondary rounded-lg px-3 py-2"
-        >
+        {transactions.map((tx, i) => (
+          <motion.div
+            key={`${currentMonth}-${i}`}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{
+              opacity: step > i ? 1 : 0,
+              x: step > i ? 0 : 20
+            }}
+            transition={{
+              duration: 0.35,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
+            className="flex items-center gap-3 bg-secondary rounded-lg px-3 py-2"
+          >
             <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
               {tx.day}
             </span>
             <span className="flex-1 text-sm text-foreground">{tx.label}</span>
-            <span className={`font-bold text-sm ${tx.type === "income" ? "text-primary" : "text-muted-foreground"}`}>
-              {tx.amount}
+            <span className="font-bold text-sm text-muted-foreground">
+              -{tx.amount}
             </span>
-          </motion.div>)}
+          </motion.div>
+        ))}
       </div>
-    </div>;
+
+      {/* Discrete indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 4 ? 1 : 0 }}
+        transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+        className="mt-4 flex items-center justify-center gap-2"
+      >
+        <div className="w-2 h-2 rounded-full bg-primary/60" />
+        <span className="text-xs text-muted-foreground">{t('fonctionnalites.animations.fixedChargesIdentified')}</span>
+      </motion.div>
+
+      {/* Closing text */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 5 ? 1 : 0 }}
+        transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
+        className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
+      >
+        {t('fonctionnalites.animations.fixedClosing')}
+      </motion.p>
+    </div>
+  );
 };
 
-// Daily transactions templates animation - calm selection effect
+// Daily transactions templates animation - Form with dropdown and auto-fill
 const DailyTransactionsAnimation = ({
   isOpen,
   t
@@ -557,76 +607,200 @@ const DailyTransactionsAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [activeTemplate, setActiveTemplate] = useState<number | null>(null);
+  const [step, setStep] = useState(0);
+  
+  const favoriteOperations = [
+    { label: t('fonctionnalites.animations.shopping'), category: t('fonctionnalites.animations.food'), bank: "Compte courant" },
+    { label: t('fonctionnalites.animations.cornerCoffee'), category: t('fonctionnalites.animations.leisure'), bank: "Compte courant" },
+    { label: t('fonctionnalites.animations.gas'), category: t('fonctionnalites.animations.transport'), bank: "Compte courant" }
+  ];
+
+  const selectedOperation = favoriteOperations[0]; // "Course" selected
+  const today = new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' });
+
   useEffect(() => {
     if (!isOpen) {
-      setActiveTemplate(null);
+      setStep(0);
       return;
     }
-    // Animation unique sans boucle - sélection progressive
+    
+    // Animation steps:
+    // 1: Show empty form
+    // 2: Open dropdown
+    // 3: Select "Course"
+    // 4: Auto-fill fields, highlight amount
+    // 5: Enter amount
+    // 6: Transaction complete
+    // 7: Closing text
     const timers = [
-      setTimeout(() => setActiveTemplate(0), 400),
-      setTimeout(() => setActiveTemplate(1), 1200),
-      setTimeout(() => setActiveTemplate(2), 2000)
+      setTimeout(() => setStep(1), 400),
+      setTimeout(() => setStep(2), 1000),
+      setTimeout(() => setStep(3), 1800),
+      setTimeout(() => setStep(4), 2400),
+      setTimeout(() => setStep(5), 3200),
+      setTimeout(() => setStep(6), 4000),
+      setTimeout(() => setStep(7), 4600)
     ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
-  
-  const templates = [{
-    emoji: "🛒",
-    label: t('fonctionnalites.animations.shopping'),
-    amount: "45€"
-  }, {
-    emoji: "☕",
-    label: t('fonctionnalites.animations.coffee'),
-    amount: "3,50€"
-  }, {
-    emoji: "⛽",
-    label: t('fonctionnalites.animations.gas'),
-    amount: "60€"
-  }];
-  
-  return <div className="mt-4 mb-2">
-      <div className="flex flex-col gap-2">
-        {templates.map((template, i) => <motion.div 
-          key={i} 
-          initial={{ opacity: 0, y: 8 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            backgroundColor: activeTemplate === i ? "hsl(var(--primary) / 0.15)" : "hsl(var(--primary) / 0.1)"
-          }} 
-          transition={{
-            delay: i * 0.1,
-            duration: 0.3,
-            ease: [0.25, 0.1, 0.25, 1]
-          }} 
-          className="flex items-center gap-3 rounded-xl p-3 cursor-pointer"
-        >
-            <div className="text-2xl">{template.emoji}</div>
-            <div className="flex-1 text-sm font-medium text-foreground">{template.label}</div>
-            <motion.div 
-              animate={{
-                opacity: activeTemplate !== null && activeTemplate >= i ? 1 : 0.5
-              }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="text-sm text-primary font-bold"
-            >
-              {template.amount}
-            </motion.div>
-          </motion.div>)}
-      </div>
-      <motion.div 
-        animate={{ opacity: activeTemplate !== null ? 1 : 0 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="mt-3 text-center text-xs text-primary"
+
+  return (
+    <div className="mt-4 mb-2">
+      {/* Form container */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 8 }}
+        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+        className="bg-secondary/50 rounded-xl p-4 space-y-3"
       >
-        {t('fonctionnalites.animations.tapToAdd')}
+        {/* Dropdown field */}
+        <div className="space-y-1">
+          <label className="text-[10px] text-muted-foreground uppercase tracking-wide">
+            {t('fonctionnalites.animations.favoriteOperations')}
+          </label>
+          <motion.div
+            animate={{
+              borderColor: step === 2 ? "hsl(var(--primary))" : "hsl(var(--border))"
+            }}
+            className="bg-background border rounded-lg px-3 py-2 text-sm relative"
+          >
+            <div className="flex items-center justify-between">
+              <span className={step >= 3 ? "text-foreground" : "text-muted-foreground/50"}>
+                {step >= 3 ? selectedOperation.label : t('fonctionnalites.animations.selectOperation')}
+              </span>
+              <motion.svg
+                animate={{ rotate: step === 2 ? 180 : 0 }}
+                width="12" height="12" viewBox="0 0 12 12" fill="none"
+                className="text-muted-foreground"
+              >
+                <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </motion.svg>
+            </div>
+
+            {/* Dropdown options */}
+            <AnimatePresence>
+              {step === 2 && (
+                <motion.div
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-0 right-0 top-full mt-1 bg-background border border-border rounded-lg shadow-lg z-10 overflow-hidden"
+                >
+                  {favoriteOperations.map((op, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ backgroundColor: "transparent" }}
+                      animate={{ backgroundColor: i === 0 ? "hsl(var(--primary) / 0.1)" : "transparent" }}
+                      className="px-3 py-2 text-sm text-foreground hover:bg-muted/50 cursor-pointer"
+                    >
+                      {op.label}
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+
+        {/* Other fields in 2-column grid */}
+        <div className="grid grid-cols-2 gap-2">
+          {/* Name field */}
+          <div className="space-y-1">
+            <label className="text-[10px] text-muted-foreground uppercase tracking-wide">
+              {t('fonctionnalites.animations.name')}
+            </label>
+            <div className="bg-background border border-border rounded-lg px-3 py-2 text-sm">
+              <span className={step >= 4 ? "text-foreground" : "text-muted-foreground/30"}>
+                {step >= 4 ? selectedOperation.label : "—"}
+              </span>
+            </div>
+          </div>
+
+          {/* Date field */}
+          <div className="space-y-1">
+            <label className="text-[10px] text-muted-foreground uppercase tracking-wide">
+              {t('fonctionnalites.animations.date')}
+            </label>
+            <div className="bg-background border border-border rounded-lg px-3 py-2 text-sm">
+              <span className={step >= 4 ? "text-foreground" : "text-muted-foreground/30"}>
+                {step >= 4 ? today : "—"}
+              </span>
+            </div>
+          </div>
+
+          {/* Category field */}
+          <div className="space-y-1">
+            <label className="text-[10px] text-muted-foreground uppercase tracking-wide">
+              {t('fonctionnalites.animations.category')}
+            </label>
+            <div className="bg-background border border-border rounded-lg px-3 py-2 text-sm">
+              <span className={step >= 4 ? "text-foreground" : "text-muted-foreground/30"}>
+                {step >= 4 ? selectedOperation.category : "—"}
+              </span>
+            </div>
+          </div>
+
+          {/* Bank field */}
+          <div className="space-y-1">
+            <label className="text-[10px] text-muted-foreground uppercase tracking-wide">
+              {t('fonctionnalites.animations.bank')}
+            </label>
+            <div className="bg-background border border-border rounded-lg px-3 py-2 text-sm">
+              <span className={step >= 4 ? "text-foreground" : "text-muted-foreground/30"}>
+                {step >= 4 ? selectedOperation.bank : "—"}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Amount field - highlighted when waiting for input */}
+        <div className="space-y-1">
+          <label className="text-[10px] text-muted-foreground uppercase tracking-wide">
+            {t('fonctionnalites.animations.amount')}
+          </label>
+          <motion.div
+            animate={{
+              borderColor: step === 4 ? "hsl(var(--primary))" : "hsl(var(--border))",
+              boxShadow: step === 4 ? "0 0 0 2px hsl(var(--primary) / 0.2)" : "none"
+            }}
+            transition={{ duration: 0.3 }}
+            className="bg-background border rounded-lg px-3 py-2 text-sm"
+          >
+            <span className={step >= 5 ? "text-foreground font-medium" : "text-muted-foreground/30"}>
+              {step >= 5 ? "20 €" : "—"}
+            </span>
+          </motion.div>
+        </div>
+
+        {/* Validation indicator */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: step >= 6 ? 1 : 0, scale: step >= 6 ? 1 : 0.9 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="flex items-center justify-center gap-2 pt-2"
+        >
+          <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
+            <Check className="w-3.5 h-3.5 text-primary" />
+          </div>
+          <span className="text-xs text-primary font-medium">{t('fonctionnalites.animations.transactionComplete')}</span>
+        </motion.div>
       </motion.div>
-    </div>;
+
+      {/* Closing text */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 7 ? 1 : 0 }}
+        transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
+        className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
+      >
+        {t('fonctionnalites.animations.dailyClosing')}
+      </motion.p>
+    </div>
+  );
 };
 
-// Gauge animation - calm progressive reveal
+// Gauge animation - Budget "Resto" with specific values
 const GaugeAnimation = ({
   isOpen,
   t
@@ -635,29 +809,50 @@ const GaugeAnimation = ({
   t: (key: string) => string;
 }) => {
   const [step, setStep] = useState(0);
+  
+  // Budget Resto: 300€ total
+  // Dépensé: 165€ (55%), En-Cours: 35€ (11.6%), Reste: 100€ (33.3%)
+  const budgetTotal = 300;
+  const spent = 165;
+  const inProgress = 35;
+  const remaining = 100;
+  
+  const spentPercent = (spent / budgetTotal) * 100; // 55%
+  const inProgressPercent = (inProgress / budgetTotal) * 100; // 11.6%
+  const remainingPercent = (remaining / budgetTotal) * 100; // 33.3%
+
   useEffect(() => {
     if (!isOpen) {
       setStep(0);
       return;
     }
-    // Animation unique sans boucle
     const timers = [
-      setTimeout(() => setStep(1), 300),
-      setTimeout(() => setStep(2), 900),
-      setTimeout(() => setStep(3), 1500)
+      setTimeout(() => setStep(1), 400),
+      setTimeout(() => setStep(2), 1000),
+      setTimeout(() => setStep(3), 1600),
+      setTimeout(() => setStep(4), 2200) // Closing text
     ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
-  
-  const spentWidth = 45,
-    currentWidth = 20,
-    remainingWidth = 35;
-    
-  return <div className="mt-4 mb-2">
+
+  return (
+    <div className="mt-4 mb-2">
+      {/* Budget label */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 1 ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="text-center mb-3"
+      >
+        <span className="text-sm font-medium text-foreground">{t('fonctionnalites.animations.budgetResto')}</span>
+        <span className="text-xs text-muted-foreground ml-2">({budgetTotal} €)</span>
+      </motion.div>
+
+      {/* Gauge bar */}
       <div className="relative h-8 bg-muted rounded-full overflow-hidden">
         <motion.div 
           initial={{ width: 0 }}
-          animate={{ width: step >= 1 ? `${spentWidth}%` : 0 }}
+          animate={{ width: step >= 1 ? `${spentPercent}%` : 0 }}
           transition={{
             duration: 0.5,
             ease: [0.25, 0.1, 0.25, 1]
@@ -666,12 +861,12 @@ const GaugeAnimation = ({
         />
         <motion.div 
           initial={{ width: 0 }}
-          animate={{ width: step >= 2 ? `${currentWidth}%` : 0 }}
+          animate={{ width: step >= 2 ? `${inProgressPercent}%` : 0 }}
           transition={{
             duration: 0.4,
             ease: [0.25, 0.1, 0.25, 1]
           }} 
-          style={{ left: `${spentWidth}%` }}
+          style={{ left: `${spentPercent}%` }}
           className="absolute top-0 h-full bg-gradient-to-r from-primary/60 to-primary/40"
         />
         <motion.div 
@@ -679,54 +874,61 @@ const GaugeAnimation = ({
           animate={{ opacity: step >= 3 ? 1 : 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           style={{
-            left: `${spentWidth + currentWidth}%`,
-            width: `${remainingWidth}%`
+            left: `${spentPercent + inProgressPercent}%`,
+            width: `${remainingPercent}%`
           }}
           className="absolute top-0 h-full bg-gradient-to-r from-muted-foreground/20 to-muted-foreground/10" 
         />
       </div>
+
+      {/* Legend with specific values */}
       <div className="flex justify-between mt-3 text-xs">
         <motion.div 
           animate={{ opacity: step >= 1 ? 1 : 0 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="flex items-center gap-1"
+          className="flex flex-col items-center gap-0.5"
         >
-          <span className="w-3 h-3 rounded-full bg-primary" />
-          <span className="text-primary font-medium">{t('fonctionnalites.animations.spent')}</span>
+          <div className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-primary" />
+            <span className="text-primary font-medium">{t('fonctionnalites.animations.spent')}</span>
+          </div>
+          <span className="text-primary font-bold">{spent} € <span className="font-normal text-primary/70">(55%)</span></span>
         </motion.div>
         <motion.div 
           animate={{ opacity: step >= 2 ? 1 : 0 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="flex items-center gap-1"
+          className="flex flex-col items-center gap-0.5"
         >
-          <span className="w-3 h-3 rounded-full bg-primary/60" />
-          <span className="text-primary/80 font-medium">{t('fonctionnalites.animations.inProgress')}</span>
+          <div className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-primary/60" />
+            <span className="text-primary/80 font-medium">{t('fonctionnalites.animations.inProgress')}</span>
+          </div>
+          <span className="text-primary/80 font-bold">{inProgress} € <span className="font-normal text-primary/60">(11,6%)</span></span>
         </motion.div>
         <motion.div 
           animate={{ opacity: step >= 3 ? 1 : 0 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="flex items-center gap-1"
+          className="flex flex-col items-center gap-0.5"
         >
-          <span className="w-3 h-3 rounded-full bg-muted-foreground/30" />
-          <span className="text-muted-foreground font-medium">{t('fonctionnalites.animations.remaining')}</span>
+          <div className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded-full bg-muted-foreground/30" />
+            <span className="text-muted-foreground font-medium">{t('fonctionnalites.animations.remaining')}</span>
+          </div>
+          <span className="text-muted-foreground font-bold">{remaining} € <span className="font-normal text-muted-foreground/70">(33,3%)</span></span>
         </motion.div>
       </div>
-      <motion.div 
-        animate={{ opacity: step >= 2 ? 1 : 0 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
-        className="mt-3 text-center"
+
+      {/* Closing text */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 4 ? 1 : 0 }}
+        transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
+        className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
       >
-        <span className="text-lg font-bold text-primary/80">-25€</span>
-        <span className="text-muted-foreground text-sm ml-2">→</span>
-        <motion.span 
-          animate={{ opacity: step >= 3 ? 1 : 0 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          className="text-lg font-bold text-primary ml-2"
-        >
-          175€
-        </motion.span>
-      </motion.div>
-    </div>;
+        {t('fonctionnalites.animations.gaugeClosing')}
+      </motion.p>
+    </div>
+  );
 };
 
 // Rituals/habits animation - calm progression
