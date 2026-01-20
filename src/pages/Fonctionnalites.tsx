@@ -1036,7 +1036,7 @@ const GaugeAnimation = ({
   );
 };
 
-// Rituals/habits animation - calm progression
+// Rituals/habits animation - calm progression with upcoming rituals
 const RitualsAnimation = ({
   isOpen,
   t
@@ -1044,58 +1044,143 @@ const RitualsAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
+  const [step, setStep] = useState(0);
   const [checks, setChecks] = useState([false, false, false, false, false, false, false]);
+  
   useEffect(() => {
     if (!isOpen) {
+      setStep(0);
       setChecks([false, false, false, false, false, false, false]);
       return;
     }
-    // Animation unique sans boucle
-    const timers = checks.map((_, i) => setTimeout(() => setChecks(c => {
-      const n = [...c];
-      n[i] = true;
-      return n;
-    }), 300 + i * 300));
+    
+    // Progressive animation: daily ritual → checks → streak → upcoming rituals → closing
+    const timers = [
+      setTimeout(() => setStep(1), 400), // Show daily ritual section
+      ...checks.map((_, i) => setTimeout(() => {
+        setChecks(c => {
+          const n = [...c];
+          n[i] = true;
+          return n;
+        });
+      }, 600 + i * 250)),
+      setTimeout(() => setStep(2), 600 + 7 * 250 + 300), // Show streak
+      setTimeout(() => setStep(3), 600 + 7 * 250 + 800), // Show upcoming rituals
+      setTimeout(() => setStep(4), 600 + 7 * 250 + 1600) // Show closing text
+    ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
   
   const days = ["L", "M", "M", "J", "V", "S", "D"];
   const completedCount = checks.filter(Boolean).length;
   
-  return <div className="mt-4 mb-2">
-      <div className="text-xs text-foreground font-medium mb-2 text-center">{t('fonctionnalites.animations.checkExpenses')}</div>
-      <div className="flex justify-center gap-2">
-        {days.map((d, i) => <motion.div 
-          key={i} 
-          animate={{
-            backgroundColor: checks[i] ? "hsl(var(--primary))" : "hsl(var(--muted))"
-          }} 
-          transition={{
-            duration: 0.25,
-            ease: [0.25, 0.1, 0.25, 1]
-          }} 
-          className="w-8 h-8 rounded-full flex items-center justify-center"
-        >
-            {checks[i] ? <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-            >
-                <Check className="w-4 h-4 text-primary-foreground" />
-              </motion.div> : <span className="text-xs font-medium text-muted-foreground">{d}</span>}
-          </motion.div>)}
-      </div>
-      <motion.div 
-        animate={{ opacity: completedCount >= 5 ? 1 : 0 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
-        className="mt-3 text-center text-xs text-primary font-medium"
+  return (
+    <div className="mt-4 mb-2">
+      {/* Daily ritual section */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 8 }}
+        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+        className="mb-4"
       >
-        {t('fonctionnalites.animations.consecutiveDays')}
+        <div className="text-xs text-foreground font-medium mb-2 text-center">
+          {t('fonctionnalites.animations.dailyRitual')}
+        </div>
+        <div className="flex justify-center gap-2">
+          {days.map((d, i) => (
+            <motion.div 
+              key={i} 
+              animate={{
+                backgroundColor: checks[i] ? "hsl(var(--primary))" : "hsl(var(--muted))"
+              }} 
+              transition={{
+                duration: 0.25,
+                ease: [0.25, 0.1, 0.25, 1]
+              }} 
+              className="w-8 h-8 rounded-full flex items-center justify-center"
+            >
+              {checks[i] ? (
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                >
+                  <Check className="w-4 h-4 text-primary-foreground" />
+                </motion.div>
+              ) : (
+                <span className="text-xs font-medium text-muted-foreground">{d}</span>
+              )}
+            </motion.div>
+          ))}
+        </div>
+        
+        {/* 7 consecutive days message */}
+        <motion.div 
+          animate={{ opacity: step >= 2 && completedCount >= 7 ? 1 : 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="mt-3 text-center text-xs text-primary font-medium"
+        >
+          {t('fonctionnalites.animations.consecutiveDays')}
+        </motion.div>
       </motion.div>
-    </div>;
+
+      {/* Upcoming rituals section */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : 12 }}
+        transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+        className="bg-secondary/50 rounded-xl p-4 mt-2"
+      >
+        <div className="text-xs font-semibold text-foreground mb-3 flex items-center gap-2">
+          <CalendarCheck className="w-4 h-4 text-primary" />
+          {t('fonctionnalites.animations.upcomingRituals')}
+        </div>
+        
+        <div className="space-y-2">
+          {/* Weekly ritual */}
+          <motion.div
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: step >= 3 ? 1 : 0, x: step >= 3 ? 0 : -8 }}
+            transition={{ duration: 0.25, delay: 0.1, ease: "easeOut" }}
+            className="flex items-center justify-between bg-background/60 rounded-lg px-3 py-2"
+          >
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary/60" />
+              <span className="text-xs text-foreground">{t('fonctionnalites.animations.weeklyRitual')}</span>
+            </div>
+            <span className="text-xs text-muted-foreground">{t('fonctionnalites.animations.weeklyDate')}</span>
+          </motion.div>
+          
+          {/* Monthly ritual */}
+          <motion.div
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: step >= 3 ? 1 : 0, x: step >= 3 ? 0 : -8 }}
+            transition={{ duration: 0.25, delay: 0.2, ease: "easeOut" }}
+            className="flex items-center justify-between bg-background/60 rounded-lg px-3 py-2"
+          >
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span className="text-xs text-foreground">{t('fonctionnalites.animations.monthlyRitual')}</span>
+            </div>
+            <span className="text-xs text-muted-foreground">{t('fonctionnalites.animations.monthlyDate')}</span>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Closing text */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 4 ? 1 : 0 }}
+        transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
+        className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
+      >
+        {t('fonctionnalites.animations.ritualsClosing')}
+      </motion.p>
+    </div>
+  );
 };
 
-// Indicators animation - calm progressive reveal
+// Decision support animation - Budget view focused on May with decision indicators
 const IndicatorsAnimation = ({
   isOpen,
   t
@@ -1103,70 +1188,152 @@ const IndicatorsAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [values, setValues] = useState([0, 0, 0]);
+  const [step, setStep] = useState(0);
+  
   useEffect(() => {
     if (!isOpen) {
-      setValues([0, 0, 0]);
+      setStep(0);
       return;
     }
-    const targetValues = [75, 45, 90];
-    const timers = targetValues.map((target, i) => setTimeout(() => {
-      let current = 0;
-      const interval = setInterval(() => {
-        current += 5;
-        if (current >= target) {
-          current = target;
-          clearInterval(interval);
-        }
-        setValues(v => {
-          const n = [...v];
-          n[i] = current;
-          return n;
-        });
-      }, 25);
-    }, i * 250));
+    // Animation: header → rows progressively → highlight exceeded → closing
+    const timers = [
+      setTimeout(() => setStep(1), 400),   // Header
+      setTimeout(() => setStep(2), 800),   // Housing row
+      setTimeout(() => setStep(3), 1200),  // Food row
+      setTimeout(() => setStep(4), 1600),  // Leisure row
+      setTimeout(() => setStep(5), 2000),  // Outings row (exceeded)
+      setTimeout(() => setStep(6), 2600),  // Closing text
+    ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
-  
-  const indicators = [{
-    label: t('fonctionnalites.animations.budgetUsed'),
-    value: values[0]
-  }, {
-    label: t('fonctionnalites.animations.savings'),
-    value: values[1]
-  }, {
-    label: t('fonctionnalites.animations.ritualsLabel'),
-    value: values[2]
-  }];
-  
-  return <div className="mt-4 mb-2 space-y-3">
-      {indicators.map((ind, i) => <motion.div 
-        key={i} 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          delay: i * 0.15,
-          duration: 0.25,
-          ease: "easeOut"
-        }}
+
+  // Budget data for May - single month decision view
+  const budgetRows = [
+    { 
+      category: t('fonctionnalites.animations.housing'), 
+      spent: "800 €", 
+      budget: "800 €", 
+      percent: 100, 
+      available: "–",
+      isExceeded: false,
+      isNeutral: true
+    },
+    { 
+      category: t('fonctionnalites.animations.food'), 
+      spent: "350 €", 
+      budget: "500 €", 
+      percent: 70, 
+      available: "150 €",
+      isExceeded: false,
+      isNeutral: false
+    },
+    { 
+      category: t('fonctionnalites.animations.leisure'), 
+      spent: "210 €", 
+      budget: "300 €", 
+      percent: 70, 
+      available: "90 €",
+      isExceeded: false,
+      isNeutral: false
+    },
+    { 
+      category: t('fonctionnalites.animations.outings'), 
+      spent: "345 €", 
+      budget: "300 €", 
+      percent: 115, 
+      available: "–45 €",
+      isExceeded: true,
+      isNeutral: false
+    }
+  ];
+
+  return (
+    <div className="mt-4 mb-2">
+      {/* Month header */}
+      <motion.div
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : -8 }}
+        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+        className="text-center mb-3"
       >
-          <div className="flex justify-between text-xs mb-1">
-            <span className="text-foreground font-medium">{ind.label}</span>
-            <span className="text-primary font-bold">{ind.value}%</span>
-          </div>
-          <div className="h-3 bg-muted rounded-full overflow-hidden">
-            <motion.div 
-              initial={{ width: 0 }}
-              animate={{ width: `${ind.value}%` }}
-              transition={{
-                duration: 0.4,
-                ease: [0.25, 0.1, 0.25, 1]
-              }} 
-              className="h-full bg-primary rounded-full"
-            />
-          </div>
-        </motion.div>)}
-    </div>;
+        <span className="text-sm font-semibold text-primary">{t('fonctionnalites.animations.may')}</span>
+      </motion.div>
+
+      {/* Table header */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 1 ? 1 : 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className="grid grid-cols-[1fr_60px_60px_55px_55px] gap-1 mb-2 pb-2 border-b border-border/30 text-[10px] font-semibold text-muted-foreground"
+      >
+        <span>{t('fonctionnalites.animations.categories')}</span>
+        <span className="text-center">{t('fonctionnalites.animations.spent')}</span>
+        <span className="text-center">{t('fonctionnalites.animations.budgetLabel')}</span>
+        <span className="text-center">{t('fonctionnalites.animations.percentConsumed')}</span>
+        <span className="text-center">{t('fonctionnalites.animations.available')}</span>
+      </motion.div>
+
+      {/* Budget rows */}
+      <div className="space-y-1.5">
+        {budgetRows.map((row, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ 
+              opacity: step >= i + 2 ? 1 : 0, 
+              y: step >= i + 2 ? 0 : 8 
+            }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className={`grid grid-cols-[1fr_60px_60px_55px_55px] gap-1 items-center rounded-lg px-2 py-1.5 ${
+              row.isExceeded ? 'bg-rose-500/10' : row.isNeutral ? 'bg-secondary' : 'bg-background'
+            }`}
+          >
+            <span className={`text-xs font-medium truncate ${
+              row.isExceeded ? 'text-rose-600 dark:text-rose-400' : 'text-foreground'
+            }`}>
+              {row.category}
+            </span>
+            <span className={`text-xs text-center ${
+              row.isExceeded ? 'text-rose-600 dark:text-rose-400 font-medium' : 'text-muted-foreground'
+            }`}>
+              {row.spent}
+            </span>
+            <span className="text-xs text-center text-muted-foreground">
+              {row.budget}
+            </span>
+            <span className={`text-[11px] text-center font-medium px-1.5 py-0.5 rounded ${
+              row.isExceeded 
+                ? 'bg-rose-500/20 text-rose-600 dark:text-rose-400' 
+                : row.percent === 100 
+                  ? 'bg-muted text-muted-foreground'
+                  : 'bg-primary/10 text-primary'
+            }`}>
+              {row.percent}%
+            </span>
+            <span className={`text-xs text-center font-medium ${
+              row.isExceeded 
+                ? 'text-rose-600 dark:text-rose-400' 
+                : row.available === "–" 
+                  ? 'text-muted-foreground' 
+                  : 'text-foreground'
+            }`}>
+              {row.available}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Closing text */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: step >= 6 ? 1 : 0 }}
+        transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
+        className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
+      >
+        {t('fonctionnalites.animations.indicatorsClosing')}
+      </motion.p>
+    </div>
+  );
 };
 
 // Future Feature Card component with expandable animation

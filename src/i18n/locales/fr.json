@@ -348,9 +348,9 @@
         "details": "Un système de rituels qui te guide sur ce que tu dois faire, regarder, et quelles questions te poser. Développe des habitudes financières durables."
       },
       "indicators": {
-        "title": "Indicateurs ludiques",
-        "microPromise": "Mesure tes progrès en un coup d'œil.",
-        "details": "Des visualisations claires et engageantes qui transforment tes données en insights actionnables. Comprends rapidement ta situation grâce à des indicateurs pensés pour faciliter tes décisions."
+        "title": "Aide à la prise de décision",
+        "microPromise": "Repère les écarts avant qu'ils ne s'installent.",
+        "details": "Une vue budgétaire claire qui met en évidence ce qui mérite ton attention. Comprends rapidement ta situation et prends des décisions éclairées grâce à des indicateurs pensés pour t'aider à ajuster ta trajectoire."
       }
     },
     "futureFeatures": {
@@ -407,11 +407,18 @@
       "spent": "Dépensé",
       "inProgress": "En cours",
       "remaining": "Reste dispo",
-      "checkExpenses": "📋 Vérifier mes dépenses",
-      "consecutiveDays": "🔥 5 jours consécutifs !",
-      "budgetUsed": "Budget utilisé",
-      "savings": "Épargne",
-      "ritualsLabel": "Rituels",
+      "dailyRitual": "📋 Rituel quotidien",
+      "consecutiveDays": "🔥 7 jours consécutifs !",
+      "upcomingRituals": "Prochains rituels",
+      "weeklyRitual": "Hebdomadaire",
+      "weeklyDate": "Le 7 avril",
+      "monthlyRitual": "Mensuel",
+      "monthlyDate": "Le 28 avril",
+      "ritualsClosing": "Des rendez-vous simples pour garder le cap, sans pression.",
+      "budgetLabel": "Budget",
+      "percentConsumed": "% conso.",
+      "available": "Dispo.",
+      "indicatorsClosing": "Une aide concrète pour décider, avant que les écarts ne s'installent.",
       "fixedChargesIdentified": "Charges fixes identifiées",
       "fixedClosing": "Je sais à l'avance ce qui va sortir chaque mois et je centralise la gestion.",
       "favoriteOperations": "Opérations favorites",
