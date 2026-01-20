@@ -853,9 +853,9 @@ const ReadingProgressBar = ({ contentRef }: { contentRef: React.RefObject<HTMLDi
   }, [contentRef]);
   
   return (
-    <div className="sticky top-0 left-0 right-0 h-1 bg-primary/10 z-10 -mx-6 md:-mx-8 mb-4">
+    <div className="h-1 bg-primary/10 rounded-full overflow-hidden mb-4">
       <motion.div 
-        className="h-full bg-primary"
+        className="h-full bg-primary rounded-full"
         initial={{ width: 0 }}
         animate={{ width: `${progress}%` }}
         transition={{ duration: 0.1 }}
@@ -943,11 +943,14 @@ const ArticleCard = ({ article, t }: { article: Article; t: (key: string, option
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div ref={contentRef} className="px-4 pb-4">
+            {/* Sticky progress bar container */}
+            <div className="sticky top-16 z-20 bg-card px-4 pt-2 pb-3 border-b border-border/30">
               <ReadingProgressBar contentRef={contentRef} />
-              
+            </div>
+            
+            <div ref={contentRef} className="px-4 pb-4">
               {/* Hook full text */}
-              <div className="py-3 border-t border-border/50">
+              <div className="py-3 border-b border-border/50">
                 <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">
                   {hook}
                 </p>
