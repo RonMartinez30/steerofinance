@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useSoundEffects } from "@/hooks/useSoundEffects";
 // Progress sidebar component for behavioral principles
 const BehavioralProgressSidebar = ({
   elements,
@@ -180,7 +179,7 @@ const CognitiveEffortAnimation = ({
     }
     const interval = setInterval(() => {
       setStep(s => (s + 1) % 5);
-    }, 600);
+    }, 700);
     return () => clearInterval(interval);
   }, [isOpen]);
   const nodes = [{
@@ -205,59 +204,44 @@ const CognitiveEffortAnimation = ({
     delay: 4
   }];
   return <div className="flex flex-col gap-2 py-2">
-      <div className="relative h-20 bg-muted/30 rounded-lg overflow-hidden border border-border/50">
-        {/* Central node */}
-        <motion.div animate={{
-        scale: [1, 1.02, 1],
-      }} transition={{
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border-2 border-primary/40 flex items-center justify-center z-10 bg-background">
-          <Hexagon className="w-4 h-4 text-primary/60" />
-        </motion.div>
+      <div className="relative h-20 bg-muted/20 rounded-lg overflow-hidden border border-border/30">
+        {/* Central node - static */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-border/40 flex items-center justify-center z-10 bg-background">
+          <Hexagon className="w-4 h-4 text-muted-foreground/60" />
+        </div>
         
         {/* Network nodes */}
-        {nodes.map((node, i) => <motion.div key={i} initial={{
-        scale: 0,
-        opacity: 0
-      }} animate={{
-        scale: step >= node.delay ? 1 : 0,
-        opacity: step >= node.delay ? 0.6 : 0
+        {nodes.map((node, i) => <motion.div key={i} animate={{
+        opacity: step >= node.delay ? 0.5 : 0
       }} transition={{
         duration: 0.4,
         ease: "easeOut"
       }} style={{
         left: `${node.x}%`,
         top: `${node.y}%`
-      }} className="absolute w-2 h-2 rounded-full bg-primary/50 -translate-x-1/2 -translate-y-1/2" />)}
+      }} className="absolute w-2 h-2 rounded-full bg-muted-foreground/40 -translate-x-1/2 -translate-y-1/2" />)}
         
         {/* Connection lines */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none">
-          {nodes.map((node, i) => <motion.line key={i} x1="50%" y1="50%" x2={`${node.x}%`} y2={`${node.y}%`} stroke="hsl(var(--primary))" strokeWidth="1" strokeOpacity="0.2" initial={{
-          pathLength: 0,
-          opacity: 0
-        }} animate={{
+          {nodes.map((node, i) => <motion.line key={i} x1="50%" y1="50%" x2={`${node.x}%`} y2={`${node.y}%`} stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeOpacity="0.15" animate={{
           pathLength: step >= node.delay ? 1 : 0,
-          opacity: step >= node.delay ? 0.3 : 0
+          opacity: step >= node.delay ? 0.2 : 0
         }} transition={{
-          duration: 0.3
+          duration: 0.4
         }} />)}
         </svg>
       </div>
       
       {/* Label */}
-      <motion.p initial={{
-      opacity: 0
-    }} animate={{
-      opacity: step >= 4 ? 1 : 0
-    }} className="text-center text-xs text-muted-foreground">
+      <motion.p animate={{
+      opacity: step >= 4 ? 0.8 : 0
+    }} transition={{ duration: 0.3 }} className="text-center text-xs text-muted-foreground/70">
         {t('animations.activeConnections')}
       </motion.p>
     </div>;
 };
 
-// Animation 2: Control Illusion - Fake vs Real dashboard
+// Animation 2: Control Illusion - Comparison view
 const ControlIllusionAnimation = ({
   isOpen,
   t
@@ -271,12 +255,12 @@ const ControlIllusionAnimation = ({
       setPhase('fake');
       return;
     }
-    const timers = [setTimeout(() => setPhase('reveal'), 1500), setTimeout(() => setPhase('real'), 3000), setTimeout(() => setPhase('fake'), 5000)];
+    const timers = [setTimeout(() => setPhase('reveal'), 1800), setTimeout(() => setPhase('real'), 3500)];
     const loop = setInterval(() => {
       setPhase('fake');
-      setTimeout(() => setPhase('reveal'), 1500);
-      setTimeout(() => setPhase('real'), 3000);
-    }, 5500);
+      setTimeout(() => setPhase('reveal'), 1800);
+      setTimeout(() => setPhase('real'), 3500);
+    }, 6000);
     return () => {
       timers.forEach(clearTimeout);
       clearInterval(loop);
@@ -284,84 +268,50 @@ const ControlIllusionAnimation = ({
   }, [isOpen]);
   return <div className="flex flex-col gap-2 py-2">
       <div className="relative h-20 flex items-center justify-center gap-4">
-        {/* Fake automated view */}
+        {/* Automated view */}
         <motion.div animate={{
-        opacity: phase === 'fake' ? 1 : 0.3,
-        scale: phase === 'fake' ? 1 : 0.9,
-        filter: phase === 'reveal' ? 'blur(2px)' : 'blur(0px)'
-      }} className="relative flex-1 bg-muted/50 rounded-lg p-3 border border-border">
+        opacity: phase === 'fake' ? 0.8 : 0.3,
+      }} transition={{ duration: 0.4 }} className="relative flex-1 bg-muted/30 rounded-lg p-3 border border-border/40">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-2 h-2 rounded-full bg-destructive/50" />
-            <span className="text-xs text-muted-foreground">{t('animations.autoSync')}</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40" />
+            <span className="text-[10px] text-muted-foreground/60">{t('animations.autoSync')}</span>
           </div>
           <div className="space-y-1">
-            <div className="h-1.5 bg-muted rounded w-full" />
-            <div className="h-1.5 bg-muted rounded w-3/4" />
-            <div className="h-1.5 bg-muted rounded w-1/2" />
+            <div className="h-1 bg-muted/60 rounded w-full" />
+            <div className="h-1 bg-muted/60 rounded w-3/4" />
+            <div className="h-1 bg-muted/60 rounded w-1/2" />
           </div>
-          {phase === 'reveal' && <motion.span initial={{
-          opacity: 0,
-          scale: 0.8
-        }} animate={{
-          opacity: 1,
-          scale: 1
-        }} className="absolute inset-0 flex items-center justify-center text-xl">
-              ❓
-            </motion.span>}
         </motion.div>
         
         {/* Arrow */}
-        <motion.div animate={{
-        x: phase === 'real' ? [0, 5, 0] : 0
-      }} transition={{
-        duration: 0.5,
-        repeat: phase === 'real' ? Infinity : 0
-      }}>
-          <ArrowRight className="w-4 h-4 text-primary" />
-        </motion.div>
+        <ArrowRight className="w-3 h-3 text-muted-foreground/40 flex-shrink-0" />
         
-        {/* Real understanding */}
+        {/* Understood view */}
         <motion.div animate={{
-        opacity: phase === 'real' ? 1 : 0.3,
-        scale: phase === 'real' ? 1 : 0.9
-      }} className="relative flex-1 bg-primary/10 rounded-lg p-3 border border-primary/20">
+        opacity: phase === 'real' ? 0.9 : 0.3,
+      }} transition={{ duration: 0.4 }} className="relative flex-1 bg-muted/20 rounded-lg p-3 border border-border/30">
           <div className="flex items-center gap-2 mb-2">
-            <motion.div animate={{
-            scale: phase === 'real' ? [1, 1.3, 1] : 1
-          }} transition={{
-            duration: 0.5,
-            repeat: phase === 'real' ? Infinity : 0,
-            repeatDelay: 1
-          }} className="w-2 h-2 rounded-full bg-primary" />
-            <span className="text-xs text-primary font-medium">{t('animations.understood')}</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50" />
+            <span className="text-[10px] text-muted-foreground/70">{t('animations.understood')}</span>
           </div>
           <div className="space-y-1">
-            <div className="h-1.5 bg-primary/30 rounded w-full" />
-            <div className="h-1.5 bg-primary/50 rounded w-3/4" />
-            <div className="h-1.5 bg-primary/70 rounded w-1/2" />
+            <div className="h-1 bg-muted-foreground/20 rounded w-full" />
+            <div className="h-1 bg-muted-foreground/30 rounded w-3/4" />
+            <div className="h-1 bg-muted-foreground/40 rounded w-1/2" />
           </div>
-          {phase === 'real' && <motion.div initial={{
-          scale: 0
-        }} animate={{
-          scale: 1
-        }} className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
-              <Check className="w-2.5 h-2.5 text-primary-foreground" />
-            </motion.div>}
         </motion.div>
       </div>
       
-      {/* Label outside */}
-      <motion.p initial={{
-      opacity: 0
-    }} animate={{
-      opacity: phase === 'real' ? 1 : 0
-    }} className="text-center text-xs text-primary font-medium">
-        ✓ {t('animations.realUnderstanding')}
+      {/* Label */}
+      <motion.p animate={{
+      opacity: phase === 'real' ? 0.8 : 0
+    }} transition={{ duration: 0.3 }} className="text-center text-xs text-muted-foreground/70">
+        {t('animations.realUnderstanding')}
       </motion.p>
     </div>;
 };
 
-// Animation 3: Ritual Cycle - Abstract cycle
+// Animation 3: Ritual Cycle - Circular progression
 const RitualCycleAnimation = ({
   isOpen,
   t
@@ -377,7 +327,7 @@ const RitualCycleAnimation = ({
     }
     const interval = setInterval(() => {
       setActiveStep(s => (s + 1) % 4);
-    }, 1000);
+    }, 1200);
     return () => clearInterval(interval);
   }, [isOpen]);
   const ritualSteps = [{
@@ -392,7 +342,7 @@ const RitualCycleAnimation = ({
   return <div className="flex flex-col gap-3 py-3 mb-4">
       <div className="relative h-20 flex items-center justify-center">
         {/* Circular path */}
-        <div className="w-14 h-14 rounded-full border border-border/50" />
+        <div className="w-14 h-14 rounded-full border border-border/30" />
         
         {/* Ritual steps around the circle */}
         {ritualSteps.map((step, i) => {
@@ -405,11 +355,10 @@ const RitualCycleAnimation = ({
           top: `calc(50% + ${y}px)`,
           transform: 'translate(-50%, -50%)'
         }} animate={{
-          scale: activeStep === i ? 1.1 : 1,
-          opacity: activeStep === i ? 1 : 0.4
+          opacity: activeStep === i ? 0.8 : 0.3
         }} transition={{
-          duration: 0.3,
-        }} className={`absolute w-3 h-3 rounded-full ${activeStep === i ? 'bg-primary/60' : 'bg-muted'}`} />;
+          duration: 0.4,
+        }} className={`absolute w-2.5 h-2.5 rounded-full ${activeStep === i ? 'bg-muted-foreground/60' : 'bg-muted/60'}`} />;
       })}
         
         {/* Center indicator */}
@@ -417,23 +366,20 @@ const RitualCycleAnimation = ({
         rotate: activeStep * 90
       }} transition={{
         duration: 0.5,
+        ease: "easeOut"
       }} className="absolute">
-          <Triangle className="w-3 h-3 text-primary/50" />
+          <Triangle className="w-2.5 h-2.5 text-muted-foreground/40" />
         </motion.div>
       </div>
       
       {/* Current step label */}
-      <motion.p key={activeStep} initial={{
-      opacity: 0,
-    }} animate={{
-      opacity: 1,
-    }} className="text-center text-xs text-muted-foreground">
+      <motion.p key={activeStep} initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ duration: 0.3 }} className="text-center text-xs text-muted-foreground/70">
         {ritualSteps[activeStep].label}
       </motion.p>
     </div>;
 };
 
-// Animation 4: Emotional Connection - Abstract process
+// Animation 4: Awareness Process - Linear flow
 const EmotionalConnectionAnimation = ({
   isOpen,
   t
@@ -449,73 +395,63 @@ const EmotionalConnectionAnimation = ({
     }
     const interval = setInterval(() => {
       setStep(s => (s + 1) % 5);
-    }, 800);
+    }, 900);
     return () => clearInterval(interval);
   }, [isOpen]);
   return <div className="flex flex-col gap-2 py-2">
-      <div className="relative h-14 flex items-center justify-center gap-4">
-        {/* Input signal */}
-        <motion.div initial={{
-        opacity: 0
-      }} animate={{
-        opacity: step >= 1 ? 0.6 : 0
+      <div className="relative h-14 flex items-center justify-center gap-3">
+        {/* Input */}
+        <motion.div animate={{
+        opacity: step >= 1 ? 0.5 : 0.2
       }} transition={{
-        duration: 0.3
-      }} className="w-8 h-8 rounded border border-border/50 bg-muted/30 flex items-center justify-center">
-          <Square className="w-3 h-3 text-muted-foreground" />
+        duration: 0.4
+      }} className="w-7 h-7 rounded border border-border/40 bg-muted/20 flex items-center justify-center">
+          <Square className="w-2.5 h-2.5 text-muted-foreground/50" />
         </motion.div>
         
         {/* Arrow */}
         <motion.div animate={{
-        opacity: step >= 2 ? 0.5 : 0,
-      }} transition={{
-        duration: 0.3
-      }}>
-          <ArrowRight className="w-3 h-3 text-muted-foreground" />
+        opacity: step >= 2 ? 0.4 : 0.15,
+      }} transition={{ duration: 0.3 }}>
+          <ArrowRight className="w-2.5 h-2.5 text-muted-foreground/40" />
         </motion.div>
         
         {/* Processing */}
         <motion.div animate={{
-        scale: step >= 3 ? 1 : 0.8,
-        opacity: step >= 3 ? 1 : 0.3
+        opacity: step >= 3 ? 0.6 : 0.25
       }} transition={{
-        duration: 0.3,
-      }} className="w-10 h-10 rounded-full border border-primary/30 bg-muted/20 flex items-center justify-center">
-          <Circle className="w-4 h-4 text-primary/50" />
+        duration: 0.4,
+      }} className="w-9 h-9 rounded-full border border-border/30 bg-muted/15 flex items-center justify-center">
+          <Circle className="w-3.5 h-3.5 text-muted-foreground/40" />
         </motion.div>
         
         {/* Arrow */}
         <motion.div animate={{
-        opacity: step >= 4 ? 0.5 : 0,
-      }} transition={{
-        duration: 0.3
-      }}>
-          <ArrowRight className="w-3 h-3 text-muted-foreground" />
+        opacity: step >= 4 ? 0.4 : 0.15,
+      }} transition={{ duration: 0.3 }}>
+          <ArrowRight className="w-2.5 h-2.5 text-muted-foreground/40" />
         </motion.div>
         
         {/* Output */}
         <motion.div animate={{
-        opacity: step >= 4 ? 1 : 0.3,
-        scale: step >= 4 ? 1 : 0.9
+        opacity: step >= 4 ? 0.7 : 0.2,
       }} transition={{
-        duration: 0.3,
-      }} className="w-8 h-8 rounded border border-primary/40 bg-primary/5 flex items-center justify-center">
-          <Check className="w-3 h-3 text-primary/60" />
+        duration: 0.4,
+      }} className="w-7 h-7 rounded border border-border/40 bg-muted/20 flex items-center justify-center">
+          <Check className="w-2.5 h-2.5 text-muted-foreground/50" />
         </motion.div>
       </div>
       
       {/* Result text */}
-      <motion.p initial={{
-      opacity: 0
-    }} animate={{
-      opacity: step >= 4 ? 1 : 0
-    }} className="text-center text-xs text-muted-foreground">
+      <motion.p animate={{
+      opacity: step >= 4 ? 0.7 : 0
+    }} transition={{ duration: 0.3 }} className="text-center text-xs text-muted-foreground/70">
         {t('animations.realAwareness')}
       </motion.p>
     </div>;
 };
 
-// Animation 5: Learning Before Automation - Progressive stages
+// Animation 5: Learning Progression
 const LearningFirstAnimation = ({
   isOpen,
   t
@@ -531,7 +467,7 @@ const LearningFirstAnimation = ({
     }
     const interval = setInterval(() => {
       setStage(s => (s + 1) % 4);
-    }, 1200);
+    }, 1400);
     return () => clearInterval(interval);
   }, [isOpen]);
   const stages = [{
@@ -546,13 +482,13 @@ const LearningFirstAnimation = ({
   }];
   return <div className="flex flex-col gap-2 py-2">
       {/* Progress bar */}
-      <div className="relative h-1.5 bg-muted rounded-full overflow-hidden">
+      <div className="relative h-1 bg-muted/40 rounded-full overflow-hidden">
         <motion.div animate={{
         width: `${stages[stage % 3].fill}%`
       }} transition={{
-        duration: 0.5,
+        duration: 0.6,
         ease: "easeOut"
-      }} className="absolute left-0 top-0 h-full bg-primary/40 rounded-full" />
+      }} className="absolute left-0 top-0 h-full bg-muted-foreground/30 rounded-full" />
       </div>
       
       {/* Stage indicators */}
@@ -560,12 +496,12 @@ const LearningFirstAnimation = ({
         {stages.map((s, i) => {
         const currentStage = stage % 3;
         return <motion.div key={i} animate={{
-          opacity: currentStage >= i ? 1 : 0.4
+          opacity: currentStage >= i ? 0.8 : 0.3
         }} transition={{
-          duration: 0.3
+          duration: 0.4
         }} className="flex flex-col items-center gap-0.5">
-              <div className={`w-2 h-2 rounded-full ${currentStage >= i ? 'bg-primary/50' : 'bg-muted'}`} />
-              <span className={`text-[9px] ${currentStage === i ? 'text-muted-foreground' : 'text-muted-foreground/50'}`}>
+              <div className={`w-1.5 h-1.5 rounded-full ${currentStage >= i ? 'bg-muted-foreground/50' : 'bg-muted/50'}`} />
+              <span className={`text-[9px] ${currentStage === i ? 'text-muted-foreground/70' : 'text-muted-foreground/40'}`}>
                 {s.label}
               </span>
             </motion.div>;
@@ -575,31 +511,13 @@ const LearningFirstAnimation = ({
       {/* Status message */}
       <div className="h-4 flex items-center justify-center">
         <AnimatePresence mode="wait">
-          {stage % 3 < 1 && <motion.p key="warning" initial={{
-          opacity: 0,
-        }} animate={{
-          opacity: 1,
-        }} exit={{
-          opacity: 0,
-        }} className="text-center text-[10px] text-muted-foreground">
+          {stage % 3 < 1 && <motion.p key="warning" initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} exit={{ opacity: 0 }} className="text-center text-[10px] text-muted-foreground/60">
               {t('animations.autoTooEarly')}
             </motion.p>}
-          {stage % 3 === 1 && <motion.p key="progress" initial={{
-          opacity: 0,
-        }} animate={{
-          opacity: 1,
-        }} exit={{
-          opacity: 0,
-        }} className="text-center text-[10px] text-muted-foreground">
+          {stage % 3 === 1 && <motion.p key="progress" initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} exit={{ opacity: 0 }} className="text-center text-[10px] text-muted-foreground/60">
               {t('animations.understandingGrows')}
             </motion.p>}
-          {stage % 3 === 2 && <motion.p key="ready" initial={{
-          opacity: 0,
-        }} animate={{
-          opacity: 1,
-        }} exit={{
-          opacity: 0,
-        }} className="text-center text-[10px] text-muted-foreground">
+          {stage % 3 === 2 && <motion.p key="ready" initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} exit={{ opacity: 0 }} className="text-center text-[10px] text-muted-foreground/70">
               {t('animations.autoCanBeConsidered')}
             </motion.p>}
         </AnimatePresence>
@@ -822,9 +740,7 @@ const PourquoiSteero = () => {
   const [openCardIndex, setOpenCardIndex] = useState<number | null>(null);
   const [exploredCards, setExploredCards] = useState<Set<number>>(new Set());
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-  const [hasTriggeredCelebration, setHasTriggeredCelebration] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const { playSuccessSound, playOpenSound, playCloseSound } = useSoundEffects();
 
   const testimonials = (t('whySteero.testimonials', { returnObjects: true }) as { quote: string; author: string; role: string }[]);
 
@@ -832,20 +748,9 @@ const PourquoiSteero = () => {
     const isOpening = openCardIndex !== index;
     if (isOpening) {
       setExploredCards(prev => new Set(prev).add(index));
-      playOpenSound();
-    } else {
-      playCloseSound();
     }
     setOpenCardIndex(prev => prev === index ? null : index);
   };
-
-  // Play sound when all principles are explored
-  useEffect(() => {
-    if (exploredCards.size === behavioralElementsData.length && !hasTriggeredCelebration) {
-      setHasTriggeredCelebration(true);
-      playSuccessSound();
-    }
-  }, [exploredCards.size, hasTriggeredCelebration, playSuccessSound]);
 
   // Track when behavioral section is in view
   useEffect(() => {
