@@ -1,3 +1,4 @@
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
@@ -490,17 +491,35 @@ const FixedTransactionsAnimation = ({
   const [step, setStep] = useState(0);
   const [currentMonth, setCurrentMonth] = useState(0);
   
+  const income = 2100;
+  
   const months = [
-    t('fonctionnalites.animations.april'),
-    t('fonctionnalites.animations.may'),
-    t('fonctionnalites.animations.june')
+    { name: t('fonctionnalites.animations.april'), hasStreaming: true },
+    { name: t('fonctionnalites.animations.may'), hasStreaming: true },
+    { name: t('fonctionnalites.animations.june'), hasStreaming: false }
   ];
   
-  const transactions = [
-    { day: "01", label: t('fonctionnalites.animations.rent'), amount: "750 €" },
-    { day: "05", label: t('fonctionnalites.animations.insurance'), amount: "50 €" },
-    { day: "15", label: t('fonctionnalites.animations.electricity'), amount: "80 €" }
+  const baseTransactions = [
+    { day: "01", label: t('fonctionnalites.animations.rent'), amount: 750 },
+    { day: "05", label: t('fonctionnalites.animations.insurance'), amount: 50 },
+    { day: "15", label: t('fonctionnalites.animations.electricity'), amount: 80 }
   ];
+  
+  const streamingTransaction = { day: "20", label: "Streaming", amount: 20 };
+  
+  // Calculate totals per month
+  const getMonthData = (monthIndex: number) => {
+    const hasStreaming = months[monthIndex].hasStreaming;
+    const transactions = hasStreaming 
+      ? [...baseTransactions, streamingTransaction]
+      : baseTransactions;
+    const total = transactions.reduce((sum, tx) => sum + tx.amount, 0);
+    const percentage = Math.round((total / income) * 100);
+    return { transactions, total, percentage };
+  };
+  
+  const monthData = [getMonthData(0), getMonthData(1), getMonthData(2)];
+  const currentData = monthData[currentMonth];
 
   useEffect(() => {
     if (!isOpen) {
@@ -514,10 +533,11 @@ const FixedTransactionsAnimation = ({
       setTimeout(() => setStep(1), 400),
       setTimeout(() => setStep(2), 800),
       setTimeout(() => setStep(3), 1200),
-      setTimeout(() => setStep(4), 1800), // Show indicator
-      setTimeout(() => setCurrentMonth(1), 2500), // Switch to May
-      setTimeout(() => setCurrentMonth(2), 3500), // Switch to June
-      setTimeout(() => setStep(5), 4200) // Show closing text
+      setTimeout(() => setStep(4), 1600), // Show streaming if applicable
+      setTimeout(() => setStep(5), 2200), // Show summary
+      setTimeout(() => setCurrentMonth(1), 3000), // Switch to May
+      setTimeout(() => setCurrentMonth(2), 4200), // Switch to June
+      setTimeout(() => setStep(6), 5000) // Show closing text
     ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
@@ -543,14 +563,14 @@ const FixedTransactionsAnimation = ({
               currentMonth === i ? 'bg-primary/15 text-primary' : 'text-muted-foreground'
             }`}
           >
-            {month}
+            {month.name}
           </motion.span>
         ))}
       </motion.div>
 
-      {/* Fixed transactions list - same amounts every month */}
+      {/* Fixed transactions list */}
       <div className="space-y-2">
-        {transactions.map((tx, i) => (
+        {baseTransactions.map((tx, i) => (
           <motion.div
             key={`${currentMonth}-${i}`}
             initial={{ opacity: 0, x: 20 }}
@@ -569,27 +589,143 @@ const FixedTransactionsAnimation = ({
             </span>
             <span className="flex-1 text-sm text-foreground">{tx.label}</span>
             <span className="font-bold text-sm text-muted-foreground">
-              -{tx.amount}
+              -{tx.amount} €
             </span>
           </motion.div>
         ))}
+        
+        {/* Streaming - appears in April/May, disappears in June */}
+        <AnimatePresence mode="wait">
+          {months[currentMonth].hasStreaming && step >= 4 && (
+            <motion.div
+              key={`streaming-${currentMonth}`}
+              initial={{ opacity: 0, x: 20, height: 0 }}
+              animate={{ opacity: 1, x: 0, height: "auto" }}
+              exit={{ opacity: 0, x: -20, height: 0 }}
+              transition={{
+                duration: 0.35,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
+              className="flex items-center gap-3 bg-secondary rounded-lg px-3 py-2"
+            >
+              <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+                {streamingTransaction.day}
+              </span>
+              <span className="flex-1 text-sm text-foreground">{streamingTransaction.label}</span>
+              <span className="font-bold text-sm text-muted-foreground">
+                -{streamingTransaction.amount} €
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-      {/* Discrete indicator */}
+      {/* Summary: Total fixed expenses + % of income */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 4 ? 1 : 0 }}
-        transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
-        className="mt-4 flex items-center justify-center gap-2"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: step >= 5 ? 1 : 0, y: step >= 5 ? 0 : 10 }}
+        transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+        className="mt-4 pt-3 border-t border-border/30"
       >
-        <div className="w-2 h-2 rounded-full bg-primary/60" />
-        <span className="text-xs text-muted-foreground">{t('fonctionnalites.animations.fixedChargesIdentified')}</span>
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.fixedExpensesTotal')}</span>
+          <motion.span 
+            key={`total-${currentMonth}`}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-sm font-bold text-muted-foreground"
+          >
+            {currentData.total} € / {income} €
+          </motion.span>
+        </div>
+        
+        {/* Progress bar showing % of income */}
+        <div className="h-2 bg-muted rounded-full overflow-hidden mb-2">
+          <motion.div 
+            className="h-full bg-primary rounded-full"
+            initial={{ width: 0 }}
+            animate={{ width: `${currentData.percentage}%` }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          />
+        </div>
+        
+        <motion.div 
+          key={`percentage-${currentMonth}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-right text-[10px] text-muted-foreground"
+        >
+          <span className="font-semibold text-primary">{currentData.percentage}%</span> {t('fonctionnalites.animations.ofIncome')}
+        </motion.div>
+      </motion.div>
+
+      {/* Evolution timeline - like patrimoine */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: step >= 5 ? 1 : 0, y: step >= 5 ? 0 : 10 }}
+        transition={{ delay: 0.2, duration: 0.35 }}
+        className="mt-4"
+      >
+        <div className="flex items-center gap-1">
+          {monthData.map((data, i) => (
+            <React.Fragment key={i}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ 
+                  opacity: currentMonth >= i ? 1 : 0.3, 
+                  scale: currentMonth === i ? 1.1 : 1 
+                }}
+                transition={{ delay: 0.1 * i }}
+                className="flex flex-col items-center"
+              >
+                <span className={`text-[7px] ${currentMonth === i ? 'text-primary font-medium' : 'text-muted-foreground/60'}`}>
+                  {months[i].name}
+                </span>
+                <motion.div 
+                  className={`w-2 h-2 rounded-full ${currentMonth === i ? 'bg-primary' : 'bg-primary/30'}`}
+                  animate={currentMonth === i ? { 
+                    boxShadow: ["0 0 0 0 hsl(var(--primary) / 0.4)", "0 0 0 4px hsl(var(--primary) / 0)", "0 0 0 0 hsl(var(--primary) / 0.4)"] 
+                  } : {}}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <span className={`text-[7px] ${currentMonth === i ? 'text-primary font-semibold' : 'text-muted-foreground/80'}`}>
+                  {data.percentage}%
+                </span>
+              </motion.div>
+              {i < monthData.length - 1 && (
+                <motion.div 
+                  className={`flex-1 h-0.5 ${currentMonth > i ? 'bg-primary/50' : 'bg-primary/20'}`}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: currentMonth > i ? 1 : 0.5 }}
+                  transition={{ duration: 0.4 }}
+                  style={{ originX: 0 }}
+                />
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+        
+        {/* Variation indicator */}
+        <AnimatePresence>
+          {currentMonth === 2 && step >= 5 && (
+            <motion.div
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="mt-2 flex items-center justify-center gap-2"
+            >
+              <span className="text-[9px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
+                -20 € ({t('fonctionnalites.animations.streamingCanceled')})
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       {/* Closing text */}
       <motion.p
         initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 5 ? 1 : 0 }}
+        animate={{ opacity: step >= 6 ? 1 : 0 }}
         transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
         className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
       >
