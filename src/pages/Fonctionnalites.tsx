@@ -232,7 +232,7 @@ const OnboardingAnimation = ({
   );
 };
 
-// Budget hierarchy animation - Structure de budget mensuel (4 colonnes : Labels | Avril | Mai | Juin)
+// Budget hierarchy animation - Structure de budget mensuel (4 colonnes : Catégories | Avril | Mai | Juin)
 const BudgetAnimation = ({
   isOpen,
   t
@@ -247,17 +247,26 @@ const BudgetAnimation = ({
       setStep(0);
       return;
     }
-    // Animation progressive : en-têtes → catégories → total → clôture
+    // Animation progressive : en-têtes → revenu → catégories → total → reste → clôture
     const timers = [
       setTimeout(() => setStep(1), 400),   // En-têtes mois
-      setTimeout(() => setStep(2), 1000),  // Logement
-      setTimeout(() => setStep(3), 1800),  // Alimentation
-      setTimeout(() => setStep(4), 2600),  // Loisirs
-      setTimeout(() => setStep(5), 3400),  // Ligne Total
-      setTimeout(() => setStep(6), 4200)   // Texte de clôture
+      setTimeout(() => setStep(2), 800),   // Revenu
+      setTimeout(() => setStep(3), 1400),  // Logement
+      setTimeout(() => setStep(4), 2000),  // Alimentation
+      setTimeout(() => setStep(5), 2600),  // Loisirs
+      setTimeout(() => setStep(6), 3200),  // Ligne Total
+      setTimeout(() => setStep(7), 3800),  // Ligne Reste disponible
+      setTimeout(() => setStep(8), 4400)   // Texte de clôture
     ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
+
+  // Revenu constant
+  const income = {
+    april: "2 100 €",
+    may: "2 100 €",
+    june: "2 100 €"
+  };
 
   // Structure des données avec Avril, Mai et Juin
   const budgetData = [
@@ -295,11 +304,18 @@ const BudgetAnimation = ({
     }
   ];
 
-  // Totaux
+  // Totaux dépenses
   const totals = {
     april: "1 500 €",
     may: "1 870 €",
     june: "1 870 €"
+  };
+
+  // Reste disponible (revenu - total)
+  const remaining = {
+    april: "600 €",
+    may: "230 €",
+    june: "230 €"
   };
 
   return (
@@ -315,29 +331,50 @@ const BudgetAnimation = ({
           duration: 0.3,
           ease: [0.25, 0.1, 0.25, 1]
         }}
-        className="grid grid-cols-[1fr_auto_auto_auto] gap-x-3 mb-3 pb-2 border-b border-border/30"
+        className="grid grid-cols-[80px_1fr_1fr_1fr] gap-x-2 mb-3 pb-2 border-b border-border/30"
       >
-        <div></div>
-        <span className="text-xs font-semibold text-primary text-center min-w-[50px]">
+        <span className="text-xs font-semibold text-muted-foreground">
+          {t('fonctionnalites.animations.categories')}
+        </span>
+        <span className="text-xs font-semibold text-primary text-center">
           {t('fonctionnalites.animations.april')}
         </span>
-        <span className="text-xs font-semibold text-primary text-center min-w-[50px]">
+        <span className="text-xs font-semibold text-primary text-center">
           {t('fonctionnalites.animations.may')}
         </span>
-        <span className="text-xs font-semibold text-primary text-center min-w-[50px]">
+        <span className="text-xs font-semibold text-primary text-center">
           {t('fonctionnalites.animations.june')}
         </span>
       </motion.div>
 
-      {/* Catégories et montants */}
+      {/* Ligne Revenu */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{
+          opacity: step >= 2 ? 1 : 0,
+          y: step >= 2 ? 0 : 8
+        }}
+        transition={{
+          duration: 0.35,
+          ease: [0.25, 0.1, 0.25, 1]
+        }}
+        className="grid grid-cols-[80px_1fr_1fr_1fr] gap-x-2 items-center bg-emerald-500/10 rounded-lg px-3 py-1.5 mb-3"
+      >
+        <span className="font-medium text-emerald-600 dark:text-emerald-400 text-xs">{t('fonctionnalites.animations.income')}</span>
+        <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs text-center">{income.april}</span>
+        <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs text-center">{income.may}</span>
+        <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs text-center">{income.june}</span>
+      </motion.div>
+
+      {/* Catégories et montants (dépenses en rouge doux) */}
       <div className="space-y-2">
         {budgetData.map((cat, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 8 }}
             animate={{
-              opacity: step >= i + 2 ? 1 : 0,
-              y: step >= i + 2 ? 0 : 8
+              opacity: step >= i + 3 ? 1 : 0,
+              y: step >= i + 3 ? 0 : 8
             }}
             transition={{
               duration: 0.35,
@@ -345,13 +382,13 @@ const BudgetAnimation = ({
             }}
           >
             {/* Catégorie principale */}
-            <div className="grid grid-cols-[1fr_auto_auto_auto] gap-x-3 items-center bg-primary/10 rounded-lg px-3 py-1.5">
-              <span className="font-medium text-foreground text-xs">{cat.category}</span>
-              <span className="text-primary font-bold text-xs text-right min-w-[50px]">{cat.april}</span>
-              <span className={`font-bold text-xs text-right min-w-[50px] ${cat.changed ? 'text-primary' : 'text-primary'}`}>
+            <div className="grid grid-cols-[80px_1fr_1fr_1fr] gap-x-2 items-center bg-rose-500/10 rounded-lg px-3 py-1.5">
+              <span className="font-medium text-foreground text-xs truncate">{cat.category}</span>
+              <span className="text-rose-500 dark:text-rose-400 font-bold text-xs text-center">{cat.april}</span>
+              <span className={`font-bold text-xs text-center ${cat.changed ? 'text-rose-600 dark:text-rose-300' : 'text-rose-500 dark:text-rose-400'}`}>
                 {cat.may}
               </span>
-              <span className={`font-bold text-xs text-right min-w-[50px] ${cat.changed ? 'text-primary' : 'text-primary'}`}>
+              <span className={`font-bold text-xs text-center ${cat.changed ? 'text-rose-600 dark:text-rose-300' : 'text-rose-500 dark:text-rose-400'}`}>
                 {cat.june}
               </span>
             </div>
@@ -359,7 +396,7 @@ const BudgetAnimation = ({
             {/* Sous-catégories */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: step >= i + 2 ? 1 : 0 }}
+              animate={{ opacity: step >= i + 3 ? 1 : 0 }}
               transition={{
                 duration: 0.25,
                 delay: 0.15,
@@ -370,14 +407,14 @@ const BudgetAnimation = ({
               {cat.subs.map((sub, j) => (
                 <div
                   key={j}
-                  className="grid grid-cols-[1fr_auto_auto_auto] gap-x-3 items-center text-[11px] px-3 py-0.5"
+                  className="grid grid-cols-[80px_1fr_1fr_1fr] gap-x-2 items-center text-[11px] px-3 py-0.5"
                 >
-                  <span className="text-muted-foreground pl-2">{sub.label}</span>
-                  <span className="text-foreground/70 text-right min-w-[50px]">{sub.april}</span>
-                  <span className={`text-right min-w-[50px] ${sub.changed ? 'text-primary font-medium' : 'text-foreground/70'}`}>
+                  <span className="text-muted-foreground pl-1 truncate">{sub.label}</span>
+                  <span className="text-rose-400/70 text-center">{sub.april}</span>
+                  <span className={`text-center ${sub.changed ? 'text-rose-500 font-medium' : 'text-rose-400/70'}`}>
                     {sub.may}
                   </span>
-                  <span className={`text-right min-w-[50px] ${sub.changed ? 'text-primary font-medium' : 'text-foreground/70'}`}>
+                  <span className={`text-center ${sub.changed ? 'text-rose-500 font-medium' : 'text-rose-400/70'}`}>
                     {sub.june}
                   </span>
                 </div>
@@ -391,28 +428,47 @@ const BudgetAnimation = ({
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{
-          opacity: step >= 5 ? 1 : 0,
-          y: step >= 5 ? 0 : 8
+          opacity: step >= 6 ? 1 : 0,
+          y: step >= 6 ? 0 : 8
         }}
         transition={{
           duration: 0.35,
           ease: [0.25, 0.1, 0.25, 1]
         }}
-        className="grid grid-cols-[1fr_auto_auto_auto] gap-x-3 items-center mt-3 pt-2 border-t border-border/30 px-3"
+        className="grid grid-cols-[80px_1fr_1fr_1fr] gap-x-2 items-center mt-3 pt-2 border-t border-border/30 px-3"
       >
-        <span className="font-semibold text-foreground text-sm">{t('fonctionnalites.animations.total')}</span>
-        <span className="text-primary font-bold text-sm text-right min-w-[50px]">{totals.april}</span>
-        <span className="text-primary font-bold text-sm text-right min-w-[50px]">{totals.may}</span>
-        <span className="text-primary font-bold text-sm text-right min-w-[50px]">{totals.june}</span>
+        <span className="font-semibold text-foreground text-xs">{t('fonctionnalites.animations.total')}</span>
+        <span className="text-rose-500 dark:text-rose-400 font-bold text-xs text-center">{totals.april}</span>
+        <span className="text-rose-500 dark:text-rose-400 font-bold text-xs text-center">{totals.may}</span>
+        <span className="text-rose-500 dark:text-rose-400 font-bold text-xs text-center">{totals.june}</span>
+      </motion.div>
+
+      {/* Ligne Reste disponible */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{
+          opacity: step >= 7 ? 1 : 0,
+          y: step >= 7 ? 0 : 8
+        }}
+        transition={{
+          duration: 0.35,
+          ease: [0.25, 0.1, 0.25, 1]
+        }}
+        className="grid grid-cols-[80px_1fr_1fr_1fr] gap-x-2 items-center mt-2 bg-primary/10 rounded-lg px-3 py-1.5"
+      >
+        <span className="font-semibold text-primary text-xs">{t('fonctionnalites.animations.remaining')}</span>
+        <span className="text-primary font-bold text-xs text-center">{remaining.april}</span>
+        <span className="text-primary font-bold text-xs text-center">{remaining.may}</span>
+        <span className="text-primary font-bold text-xs text-center">{remaining.june}</span>
       </motion.div>
 
       {/* Texte de clôture */}
       <motion.p
         initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 6 ? 1 : 0 }}
+        animate={{ opacity: step >= 8 ? 1 : 0 }}
         transition={{
           duration: 0.3,
-          delay: step >= 6 ? 0.2 : 0,
+          delay: step >= 8 ? 0.2 : 0,
           ease: "easeOut"
         }}
         className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
