@@ -2456,11 +2456,12 @@ const Fonctionnalites = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white/10 hover:text-white rounded-full px-8 py-4 h-auto bg-transparent">
-                  <Link to="/pourquoi-steero">
-                    {t('common.discoverApproach')}
-                  </Link>
-                </Button>
+                <Link 
+                  to="/pourquoi-steero"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-white text-white font-semibold hover:bg-white/10 transition-all duration-300"
+                >
+                  {t('common.discoverApproach')}
+                </Link>
               </motion.div>
             </div>
           </motion.div>
