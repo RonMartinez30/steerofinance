@@ -9,11 +9,11 @@ const Footer = () => {
   const productLinks = [
     { to: "/pourquoi-steero", labelKey: "header.whySteero" },
     { to: "/fonctionnalites", labelKey: "header.features" },
-    { to: "/faq", labelKey: "header.faq" },
+    { to: "/faq", labelKey: "FAQ" },
   ];
 
   const resourceLinks = [
-    { to: "/blog", labelKey: "header.blog" },
+    { to: "/blog", labelKey: "Blog" },
     { href: "mailto:contact@steero.fr", labelKey: "footer.contact" },
   ];
 
@@ -45,9 +45,7 @@ const Footer = () => {
             <Link to="/" className="inline-block mb-4">
               <img src={steeroLogo} alt="Steero" className="h-12 w-auto object-contain" />
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              {t('footer.tagline')}
-            </p>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">{t("footer.tagline")}</p>
           </motion.div>
 
           {/* Column 2 - Product */}
@@ -57,7 +55,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <h4 className="text-sm font-semibold text-foreground mb-4">{t('footer.product')}</h4>
+            <h4 className="text-sm font-semibold text-foreground mb-4">{t("footer.product")}</h4>
             <nav className="flex flex-col gap-3">
               {productLinks.map((link) => (
                 <Link
@@ -78,10 +76,10 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h4 className="text-sm font-semibold text-foreground mb-4">{t('footer.resources')}</h4>
+            <h4 className="text-sm font-semibold text-foreground mb-4">{t("footer.resources")}</h4>
             <nav className="flex flex-col gap-3">
-              {resourceLinks.map((link) => (
-                'to' in link ? (
+              {resourceLinks.map((link) =>
+                "to" in link ? (
                   <Link
                     key={link.to}
                     to={link.to}
@@ -97,8 +95,8 @@ const Footer = () => {
                   >
                     {t(link.labelKey)}
                   </a>
-                )
-              ))}
+                ),
+              )}
             </nav>
           </motion.div>
 
@@ -109,7 +107,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.25 }}
           >
-            <h4 className="text-sm font-semibold text-foreground mb-4">{t('footer.legal')}</h4>
+            <h4 className="text-sm font-semibold text-foreground mb-4">{t("footer.legal")}</h4>
             <nav className="flex flex-col gap-3">
               {legalLinks.map((link) => (
                 <Link
@@ -132,12 +130,8 @@ const Footer = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 pt-8 border-t border-border/50"
         >
-          <p className="text-center text-muted-foreground text-sm mb-4">
-            {t('footer.closingPhrase')}
-          </p>
-          <p className="text-center text-xs text-muted-foreground/70">
-            {t('footer.copyright')}
-          </p>
+          <p className="text-center text-muted-foreground text-sm mb-4">{t("footer.closingPhrase")}</p>
+          <p className="text-center text-xs text-muted-foreground/70">{t("footer.copyright")}</p>
         </motion.div>
       </div>
     </footer>
