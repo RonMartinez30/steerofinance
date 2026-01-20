@@ -232,7 +232,7 @@ const OnboardingAnimation = ({
   );
 };
 
-// Budget hierarchy animation - Structure de budget mensuel (Avril & Mai côte à côte)
+// Budget hierarchy animation - Structure de budget mensuel (3 colonnes : Labels | Avril | Mai)
 const BudgetAnimation = ({
   isOpen,
   t
@@ -247,145 +247,119 @@ const BudgetAnimation = ({
       setStep(0);
       return;
     }
-    // Animation progressive : mois → catégories → sous-catégories → 2ème mois
-    // Durée totale : ~6 secondes
+    // Animation progressive : en-têtes → catégories une par une → clôture
+    // Durée totale : ~5 secondes
     const timers = [
-      setTimeout(() => setStep(1), 400),   // Mois Avril apparaît
-      setTimeout(() => setStep(2), 1000),  // 1ère catégorie
-      setTimeout(() => setStep(3), 1600),  // 2ème catégorie
-      setTimeout(() => setStep(4), 2200),  // 3ème catégorie
-      setTimeout(() => setStep(5), 3000),  // Mois Mai apparaît
-      setTimeout(() => setStep(6), 3600),  // Catégories Mai
-      setTimeout(() => setStep(7), 4800)   // Texte de clôture
+      setTimeout(() => setStep(1), 400),   // En-têtes mois
+      setTimeout(() => setStep(2), 1000),  // Logement
+      setTimeout(() => setStep(3), 1800),  // Alimentation
+      setTimeout(() => setStep(4), 2600),  // Loisirs
+      setTimeout(() => setStep(5), 3800)   // Texte de clôture
     ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
 
-  // Données Avril
-  const aprilCategories = [
+  // Structure des données avec Avril et Mai
+  const budgetData = [
     {
-      name: t('fonctionnalites.animations.housing'),
-      amount: "800 €",
+      category: t('fonctionnalites.animations.housing'),
+      aprilTotal: "800 €",
+      mayTotal: "800 €",
       subs: [
-        { label: t('fonctionnalites.animations.rent'), amount: "750 €" },
-        { label: t('fonctionnalites.animations.insurance'), amount: "50 €" }
+        { label: t('fonctionnalites.animations.rent'), april: "750 €", may: "750 €" },
+        { label: t('fonctionnalites.animations.insurance'), april: "50 €", may: "50 €" }
       ]
     },
     {
-      name: t('fonctionnalites.animations.food'),
-      amount: "400 €",
+      category: t('fonctionnalites.animations.food'),
+      aprilTotal: "400 €",
+      mayTotal: "600 €",
+      changed: true,
       subs: [
-        { label: t('fonctionnalites.animations.groceries'), amount: "300 €" },
-        { label: t('fonctionnalites.animations.restaurant'), amount: "100 €" }
+        { label: t('fonctionnalites.animations.groceries'), april: "300 €", may: "300 €" },
+        { label: t('fonctionnalites.animations.restaurant'), april: "100 €", may: "300 €", changed: true }
       ]
     },
     {
-      name: t('fonctionnalites.animations.leisure'),
-      amount: "150 €",
+      category: t('fonctionnalites.animations.leisure'),
+      aprilTotal: "300 €",
+      mayTotal: "470 €",
+      changed: true,
       subs: [
-        { label: t('fonctionnalites.animations.sports'), amount: "50 €" },
-        { label: t('fonctionnalites.animations.outings'), amount: "100 €" }
+        { label: t('fonctionnalites.animations.sports'), april: "50 €", may: "170 €", changed: true },
+        { label: t('fonctionnalites.animations.outings'), april: "250 €", may: "300 €", changed: true }
       ]
     }
   ];
 
-  // Données Mai (avec variations sur resto, sport, sorties)
-  const mayCategories = [
-    {
-      name: t('fonctionnalites.animations.housing'),
-      amount: "800 €",
-      subs: [
-        { label: t('fonctionnalites.animations.rent'), amount: "750 €" },
-        { label: t('fonctionnalites.animations.insurance'), amount: "50 €" }
-      ]
-    },
-    {
-      name: t('fonctionnalites.animations.food'),
-      amount: "450 €",
-      subs: [
-        { label: t('fonctionnalites.animations.groceries'), amount: "300 €" },
-        { label: t('fonctionnalites.animations.restaurant'), amount: "150 €", changed: true }
-      ]
-    },
-    {
-      name: t('fonctionnalites.animations.leisure'),
-      amount: "200 €",
-      subs: [
-        { label: t('fonctionnalites.animations.sports'), amount: "80 €", changed: true },
-        { label: t('fonctionnalites.animations.outings'), amount: "120 €", changed: true }
-      ]
-    }
-  ];
-
-  const renderMonth = (
-    monthKey: string, 
-    categories: typeof aprilCategories, 
-    showCondition: number, 
-    catShowCondition: number
-  ) => (
-    <div className="flex-1 min-w-0">
-      {/* En-tête du mois */}
+  return (
+    <div className="mt-4 mb-2">
+      {/* En-têtes des colonnes */}
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{
-          opacity: step >= showCondition ? 1 : 0,
-          y: step >= showCondition ? 0 : -8
+          opacity: step >= 1 ? 1 : 0,
+          y: step >= 1 ? 0 : -8
         }}
         transition={{
           duration: 0.3,
           ease: [0.25, 0.1, 0.25, 1]
         }}
-        className="text-center mb-3"
+        className="grid grid-cols-[1fr_auto_auto] gap-x-4 mb-3 pb-2 border-b border-border/30"
       >
-        <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
-          {t(`fonctionnalites.animations.${monthKey}`)}
+        <div></div>
+        <span className="text-xs font-semibold text-primary text-center min-w-[60px]">
+          {t('fonctionnalites.animations.april')}
+        </span>
+        <span className="text-xs font-semibold text-primary text-center min-w-[60px]">
+          {t('fonctionnalites.animations.may')}
         </span>
       </motion.div>
 
-      {/* Catégories */}
-      <div className="space-y-2">
-        {categories.map((cat, i) => (
+      {/* Catégories et montants */}
+      <div className="space-y-3">
+        {budgetData.map((cat, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: -8 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{
-              opacity: step >= catShowCondition + i ? 1 : 0,
-              x: step >= catShowCondition + i ? 0 : -8
+              opacity: step >= i + 2 ? 1 : 0,
+              y: step >= i + 2 ? 0 : 8
             }}
             transition={{
-              duration: 0.3,
+              duration: 0.35,
               ease: [0.25, 0.1, 0.25, 1]
             }}
           >
             {/* Catégorie principale */}
-            <div className="flex justify-between items-center bg-primary/10 rounded-lg px-2 py-1.5">
-              <span className="font-medium text-foreground text-xs">{cat.name}</span>
-              <span className="text-primary font-bold text-xs">{cat.amount}</span>
+            <div className="grid grid-cols-[1fr_auto_auto] gap-x-4 items-center bg-primary/10 rounded-lg px-3 py-2">
+              <span className="font-medium text-foreground text-sm">{cat.category}</span>
+              <span className="text-primary font-bold text-sm text-right min-w-[60px]">{cat.aprilTotal}</span>
+              <span className={`font-bold text-sm text-right min-w-[60px] ${cat.changed ? 'text-primary' : 'text-primary'}`}>
+                {cat.mayTotal}
+              </span>
             </div>
 
             {/* Sous-catégories */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: step >= catShowCondition + i ? 1 : 0 }}
+              animate={{ opacity: step >= i + 2 ? 1 : 0 }}
               transition={{
                 duration: 0.25,
-                delay: 0.1,
+                delay: 0.15,
                 ease: "easeOut"
               }}
-              className="ml-2 mt-1 space-y-0.5"
+              className="mt-1.5 space-y-1"
             >
               {cat.subs.map((sub, j) => (
                 <div
                   key={j}
-                  className={`flex justify-between items-center text-[10px] rounded px-2 py-1 ${
-                    (sub as any).changed 
-                      ? 'bg-primary/5 text-primary' 
-                      : 'bg-muted/30 text-muted-foreground'
-                  }`}
+                  className="grid grid-cols-[1fr_auto_auto] gap-x-4 items-center text-xs px-3 py-1"
                 >
-                  <span>{sub.label}</span>
-                  <span className={`font-medium ${(sub as any).changed ? 'text-primary' : 'text-foreground/70'}`}>
-                    {sub.amount}
+                  <span className="text-muted-foreground pl-3">{sub.label}</span>
+                  <span className="text-foreground/70 text-right min-w-[60px]">{sub.april}</span>
+                  <span className={`text-right min-w-[60px] font-medium ${sub.changed ? 'text-primary' : 'text-foreground/70'}`}>
+                    {sub.may}
                   </span>
                 </div>
               ))}
@@ -393,24 +367,14 @@ const BudgetAnimation = ({
           </motion.div>
         ))}
       </div>
-    </div>
-  );
-
-  return (
-    <div className="mt-4 mb-2">
-      {/* Deux mois côte à côte */}
-      <div className="flex gap-3">
-        {renderMonth('april', aprilCategories, 1, 2)}
-        {renderMonth('may', mayCategories, 5, 6)}
-      </div>
 
       {/* Texte de clôture */}
       <motion.p
         initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 7 ? 1 : 0 }}
+        animate={{ opacity: step >= 5 ? 1 : 0 }}
         transition={{
           duration: 0.3,
-          delay: step >= 7 ? 0.2 : 0,
+          delay: step >= 5 ? 0.2 : 0,
           ease: "easeOut"
         }}
         className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
