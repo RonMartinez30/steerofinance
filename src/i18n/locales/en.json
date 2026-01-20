@@ -417,8 +417,10 @@
       "tiersRestaurant": "Saturday dinner",
       "tiersGroupGift": "Group gift",
       "tiersAdvances": "Pending advances",
-      "tiersAdvancesDetail": "Expense reports; employer",
-      "tiersTreasuryBalance": "Treasury impact"
+      "tiersEmployer": "My employer",
+      "tiersExpenseReports": "Expense reports",
+      "tiersTreasuryBalance": "Treasury impact",
+      "tiersClosing": "I know where my money is, even when it's not in my account."
     }
   },
   "blog": {

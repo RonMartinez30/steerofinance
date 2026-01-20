@@ -417,8 +417,10 @@
       "tiersRestaurant": "Restaurante sábado",
       "tiersGroupGift": "Regalo grupo",
       "tiersAdvances": "Anticipos en curso",
-      "tiersAdvancesDetail": "Notas de gastos; empleador",
-      "tiersTreasuryBalance": "Impacto tesorería"
+      "tiersEmployer": "Mi empleador",
+      "tiersExpenseReports": "Notas de gastos",
+      "tiersTreasuryBalance": "Impacto tesorería",
+      "tiersClosing": "Sé dónde está mi dinero, incluso cuando no está en mi cuenta."
     }
   },
   "blog": {
