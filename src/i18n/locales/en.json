@@ -344,6 +344,7 @@
     "futureSubtitle": "Other dimensions to explore, coming soon.",
     "ctaTitle": "Ready to steer your finances?",
     "ctaSubtitle": "Join the waitlist and be among the first to try Steero.",
+    "ctaDescription": "Join the waitlist and be among the first to try Steero.",
     "features": {
       "onboarding": {
         "title": "Personalized Path",
@@ -504,6 +505,8 @@
     "articlesFound": "article(s) found",
     "readFullArticle": "Read full article",
     "readyToTransform": "Ready to transform your financial management?",
+    "ctaTitle": "Ready to steer your finances?",
+    "ctaDescription": "Join the waitlist and be among the first to try Steero.",
     "joinWaitlist": "Join the waitlist",
     "linkCopied": "Link copied!",
     "share": "Share",

@@ -344,6 +344,7 @@
     "futureSubtitle": "Otras dimensiones por explorar, pronto disponibles.",
     "ctaTitle": "¿Listo para pilotar tus finanzas?",
     "ctaSubtitle": "Únete a la lista de espera y sé de los primeros en probar Steero.",
+    "ctaDescription": "Únete a la lista de espera y sé de los primeros en probar Steero.",
     "features": {
       "onboarding": {
         "title": "Trayectoria personalizada",
@@ -504,6 +505,8 @@
     "articlesFound": "artículo(s) encontrado(s)",
     "readFullArticle": "Leer el artículo completo",
     "readyToTransform": "¿Listo para transformar tu gestión financiera?",
+    "ctaTitle": "¿Listo para pilotar tus finanzas?",
+    "ctaDescription": "Únete a la lista de espera y sé de los primeros en probar Steero.",
     "joinWaitlist": "Unirse a la lista de espera",
     "linkCopied": "¡Enlace copiado!",
     "share": "Compartir",

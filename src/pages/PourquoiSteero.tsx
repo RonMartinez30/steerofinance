@@ -1400,29 +1400,49 @@ const PourquoiSteero = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div initial={{
-          opacity: 0,
-          y: 30
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }}>
-            <h2 className="text-3xl font-bold text-foreground mb-4">{t('whySteero.ctaTitle')}</h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{t('whySteero.ctaDescription')}</p>
-            <motion.button whileHover={{
-            scale: 1.05
-          }} whileTap={{
-            scale: 0.98
-          }} className="btn-primary group">
-              {t('common.joinWaitlist')}
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </motion.button>
+      <section className="py-20 bg-primary relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -left-20 top-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+          <div className="absolute -right-20 bottom-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }} 
+            transition={{ duration: 0.6 }} 
+            className="text-center max-w-2xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+              {t('whySteero.ctaTitle')}
+            </h2>
+            <p className="text-lg text-primary-foreground/90 mb-8 max-w-xl mx-auto">
+              {t('whySteero.ctaDescription')}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.a 
+                href="/#cta"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
+              >
+                {t('common.joinWaitlist')}
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </motion.a>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link 
+                  to="/fonctionnalites"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-white text-white font-semibold hover:bg-white/10 transition-all duration-300"
+                >
+                  {t('common.discoverFeatures')}
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
