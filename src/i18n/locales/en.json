@@ -429,6 +429,8 @@
       "dailyClosing": "A simple and intuitive way to create your favorite one-time operations: everything is pre-filled, just validate!",
       "budgetResto": "Restaurant Budget",
       "gaugeClosing": "Each expense shows you immediately where you stand, allowing you to adjust your financial behavior.",
+      "newExpense": "New expense",
+      "gaugeEachEntry": "This indicator appears with each entry",
       "projectVacances": "Vacation",
       "projectLodging": "Accommodation",
       "projectTransport": "Transportation",
