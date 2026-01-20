@@ -1530,106 +1530,104 @@ const Fonctionnalites = () => {
               sounds={sounds}
               t={t}
               animation={
-                <div className="relative h-40 w-full flex flex-col items-center justify-start pt-2">
-                  <div className="flex gap-4 items-end">
-                    {/* Actifs column */}
-                    <motion.div
-                      initial={{ opacity: 0, scaleY: 0 }}
-                      animate={{ opacity: 1, scaleY: 1 }}
-                      transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-                      style={{ originY: 1 }}
-                      className="flex flex-col items-center"
-                    >
-                      <motion.div
-                        className="w-14 rounded-t-lg overflow-hidden"
-                        initial={{ height: 0 }}
-                        animate={{ height: 70 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                      >
-                        <div className="h-full bg-gradient-to-t from-primary to-primary/80 flex flex-col items-center justify-end pb-1">
-                          <motion.span 
-                            className="text-[8px] text-primary-foreground font-medium"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                          >
-                            12 500€
-                          </motion.span>
-                        </div>
-                      </motion.div>
-                      <motion.div 
-                        className="mt-1 flex flex-col items-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                      >
-                        <span className="text-[9px] font-medium text-foreground/70">Actifs</span>
-                        <div className="flex gap-0.5 mt-0.5">
-                          <span className="text-[7px] text-muted-foreground">💰🏦📈</span>
-                        </div>
-                      </motion.div>
-                    </motion.div>
-
-                    {/* VS separator */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.4, type: "spring", stiffness: 150, damping: 20 }}
-                      className="text-[10px] text-muted-foreground/50 font-medium pb-8"
-                    >
-                      vs
-                    </motion.div>
-
-                    {/* Passifs column */}
-                    <motion.div
-                      initial={{ opacity: 0, scaleY: 0 }}
-                      animate={{ opacity: 1, scaleY: 1 }}
-                      transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                      style={{ originY: 1 }}
-                      className="flex flex-col items-center"
-                    >
-                      <motion.div
-                        className="w-14 rounded-t-lg overflow-hidden"
-                        initial={{ height: 0 }}
-                        animate={{ height: 40 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                      >
-                        <div className="h-full bg-gradient-to-t from-destructive to-destructive/80 flex flex-col items-center justify-end pb-1">
-                          <motion.span 
-                            className="text-[8px] text-destructive-foreground font-medium"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.7 }}
-                          >
-                            4 200€
-                          </motion.span>
-                        </div>
-                      </motion.div>
-                      <motion.div 
-                        className="mt-1 flex flex-col items-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6 }}
-                      >
-                        <span className="text-[9px] font-medium text-foreground/70">Passifs</span>
-                        <div className="flex gap-0.5 mt-0.5">
-                          <span className="text-[7px] text-muted-foreground">💳🏠</span>
-                        </div>
-                      </motion.div>
-                    </motion.div>
-                  </div>
-
-                  {/* Net worth indicator - positioned below the chart */}
+                <div className="relative w-full flex flex-col gap-3">
+                  {/* Section: Actifs */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9 }}
-                    className="mt-3 bg-primary/10 border border-primary/20 rounded-full px-3 py-1"
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                    className="space-y-1.5"
                   >
-                    <span className="text-[9px] text-primary font-medium">
-                      Patrimoine net: +8 300€
-                    </span>
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-[10px] font-medium text-foreground/70">{t('fonctionnalites.animations.patrimoineAssets')}</p>
+                      <span className="text-[10px] font-semibold text-primary">+185 000 €</span>
+                    </div>
+                    
+                    {/* Appartement */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -15 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="flex items-center justify-between bg-primary/5 rounded-lg px-3 py-1.5 border border-primary/20"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm">🏠</span>
+                        <div>
+                          <p className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.patrimoineApartment')}</p>
+                          <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.patrimoineRealEstate')}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-primary">+180 000 €</span>
+                    </motion.div>
+
+                    {/* Actions & ETF */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -15 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="flex items-center justify-between bg-primary/5 rounded-lg px-3 py-1.5 border border-primary/20"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm">📈</span>
+                        <div>
+                          <p className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.patrimoineStocksETF')}</p>
+                          <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.patrimoineInvestments')}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-primary">+5 000 €</span>
+                    </motion.div>
                   </motion.div>
+
+                  {/* Section: Passifs */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.4 }}
+                    className="space-y-1.5"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-[10px] font-medium text-foreground/70">{t('fonctionnalites.animations.patrimoineLiabilities')}</p>
+                      <span className="text-[10px] font-semibold text-destructive">-120 000 €</span>
+                    </div>
+                    
+                    {/* Crédit immobilier */}
+                    <motion.div
+                      initial={{ opacity: 0, x: 15 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="flex items-center justify-between bg-destructive/5 rounded-lg px-3 py-1.5 border border-destructive/20"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm">🏦</span>
+                        <div>
+                          <p className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.patrimoineMortgage')}</p>
+                          <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.patrimoineApartmentDebt')}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-destructive">-120 000 €</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Patrimoine net */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                    className="flex justify-between items-center pt-2 border-t border-border/30"
+                  >
+                    <span className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.patrimoineNetWorth')}</span>
+                    <span className="text-sm font-bold text-primary">+65 000 €</span>
+                  </motion.div>
+
+                  {/* Texte de clôture */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.9 }}
+                    className="text-[11px] text-center text-muted-foreground/80 italic px-2"
+                  >
+                    {t('fonctionnalites.animations.patrimoineClosing')}
+                  </motion.p>
                 </div>
               }
             />
