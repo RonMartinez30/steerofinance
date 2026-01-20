@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGrid, RefreshCcw, ClipboardList, Gauge, type LucideIcon } from "lucide-react";
+import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGrid, RefreshCcw, ClipboardList, Gauge, CalendarCheck, BarChart3, type LucideIcon } from "lucide-react";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useTranslation } from "react-i18next";
 
@@ -1087,7 +1087,7 @@ const Fonctionnalites = () => {
     label: t('fonctionnalites.step3'),
     title: t('fonctionnalites.adjustLast'),
     features: [{
-      emoji: "🎯",
+      icon: CalendarCheck,
       title: t('fonctionnalites.features.rituals.title'),
       microPromise: t('fonctionnalites.features.rituals.microPromise'),
       details: t('fonctionnalites.features.rituals.details'),
@@ -1097,7 +1097,7 @@ const Fonctionnalites = () => {
       animation: "rituals",
       animationDirection: "pulse"
     }, {
-      emoji: "📊",
+      icon: BarChart3,
       title: t('fonctionnalites.features.indicators.title'),
       microPromise: t('fonctionnalites.features.indicators.microPromise'),
       details: t('fonctionnalites.features.indicators.details'),
