@@ -1540,7 +1540,7 @@ const Fonctionnalites = () => {
                   >
                     <div className="flex items-center justify-between mb-1">
                       <p className="text-[10px] font-medium text-foreground/70">{t('fonctionnalites.animations.patrimoineAssets')}</p>
-                      <span className="text-[10px] font-semibold text-primary">+185 000 €</span>
+                      <span className="text-[10px] font-semibold text-primary">+192 630 €</span>
                     </div>
                     
                     {/* Appartement */}
@@ -1560,11 +1560,28 @@ const Fonctionnalites = () => {
                       <span className="text-xs font-semibold text-primary">+180 000 €</span>
                     </motion.div>
 
-                    {/* Actions & ETF */}
+                    {/* Comptes courants et épargnes */}
                     <motion.div
                       initial={{ opacity: 0, x: -15 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 }}
+                      className="flex items-center justify-between bg-primary/5 rounded-lg px-3 py-1.5 border border-primary/20"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm">💰</span>
+                        <div>
+                          <p className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.patrimoineAccounts')}</p>
+                          <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.patrimoineLiquidity')}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-primary">+7 630 €</span>
+                    </motion.div>
+
+                    {/* Actions & ETF */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -15 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 }}
                       className="flex items-center justify-between bg-primary/5 rounded-lg px-3 py-1.5 border border-primary/20"
                     >
                       <div className="flex items-center gap-2">
@@ -1582,19 +1599,19 @@ const Fonctionnalites = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.4 }}
+                    transition={{ duration: 0.3, delay: 0.5 }}
                     className="space-y-1.5"
                   >
                     <div className="flex items-center justify-between mb-1">
                       <p className="text-[10px] font-medium text-foreground/70">{t('fonctionnalites.animations.patrimoineLiabilities')}</p>
-                      <span className="text-[10px] font-semibold text-destructive">-120 000 €</span>
+                      <span className="text-[10px] font-semibold text-destructive">-156 000 €</span>
                     </div>
                     
                     {/* Crédit immobilier */}
                     <motion.div
                       initial={{ opacity: 0, x: 15 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 }}
+                      transition={{ delay: 0.6 }}
                       className="flex items-center justify-between bg-destructive/5 rounded-lg px-3 py-1.5 border border-destructive/20"
                     >
                       <div className="flex items-center gap-2">
@@ -1604,7 +1621,7 @@ const Fonctionnalites = () => {
                           <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.patrimoineApartmentDebt')}</p>
                         </div>
                       </div>
-                      <span className="text-xs font-semibold text-destructive">-120 000 €</span>
+                      <span className="text-xs font-semibold text-destructive">-156 000 €</span>
                     </motion.div>
                   </motion.div>
 
@@ -1612,11 +1629,11 @@ const Fonctionnalites = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7 }}
+                    transition={{ delay: 0.8 }}
                     className="flex justify-between items-center pt-2 border-t border-border/30"
                   >
                     <span className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.patrimoineNetWorth')}</span>
-                    <span className="text-sm font-bold text-primary">+65 000 €</span>
+                    <span className="text-sm font-bold text-primary">+36 630 €</span>
                   </motion.div>
 
                   {/* Texte de clôture */}

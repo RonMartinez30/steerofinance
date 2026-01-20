@@ -420,6 +420,8 @@
       "patrimoineLiabilities": "Passifs",
       "patrimoineApartment": "Appartement",
       "patrimoineRealEstate": "Immobilier",
+      "patrimoineAccounts": "Comptes courants et épargnes",
+      "patrimoineLiquidity": "Liquidités",
       "patrimoineStocksETF": "Actions & ETF",
       "patrimoineInvestments": "Investissements",
       "patrimoineMortgage": "Crédit immobilier",
