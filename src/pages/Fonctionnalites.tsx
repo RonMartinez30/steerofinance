@@ -1625,15 +1625,75 @@ const Fonctionnalites = () => {
                     </motion.div>
                   </motion.div>
 
-                  {/* Patrimoine net */}
+                  {/* Patrimoine net avec évolution */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
-                    className="flex justify-between items-center pt-2 border-t border-border/30"
+                    className="pt-2 border-t border-border/30"
                   >
-                    <span className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.patrimoineNetWorth')}</span>
-                    <span className="text-sm font-bold text-primary">+36 630 €</span>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.patrimoineNetWorth')}</span>
+                      <motion.span 
+                        className="text-sm font-bold text-primary"
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        +36 630 €
+                      </motion.span>
+                    </div>
+                    
+                    {/* Timeline d'évolution */}
+                    <div className="flex items-center gap-1 mt-2">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 1.0 }}
+                        className="flex flex-col items-center"
+                      >
+                        <span className="text-[7px] text-muted-foreground/60">2024</span>
+                        <div className="w-2 h-2 rounded-full bg-primary/30" />
+                        <span className="text-[7px] text-muted-foreground/80">+12k</span>
+                      </motion.div>
+                      <motion.div 
+                        className="flex-1 h-0.5 bg-gradient-to-r from-primary/30 to-primary/50"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ delay: 1.1, duration: 0.4 }}
+                        style={{ originX: 0 }}
+                      />
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 1.2 }}
+                        className="flex flex-col items-center"
+                      >
+                        <span className="text-[7px] text-muted-foreground/60">2025</span>
+                        <div className="w-2 h-2 rounded-full bg-primary/50" />
+                        <span className="text-[7px] text-muted-foreground/80">+24k</span>
+                      </motion.div>
+                      <motion.div 
+                        className="flex-1 h-0.5 bg-gradient-to-r from-primary/50 to-primary"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ delay: 1.3, duration: 0.4 }}
+                        style={{ originX: 0 }}
+                      />
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 1.4, type: "spring", stiffness: 200 }}
+                        className="flex flex-col items-center"
+                      >
+                        <span className="text-[7px] text-primary font-medium">2026</span>
+                        <motion.div 
+                          className="w-3 h-3 rounded-full bg-primary"
+                          animate={{ boxShadow: ["0 0 0 0 hsl(var(--primary) / 0.4)", "0 0 0 4px hsl(var(--primary) / 0)", "0 0 0 0 hsl(var(--primary) / 0.4)"] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        />
+                        <span className="text-[7px] text-primary font-semibold">+37k</span>
+                      </motion.div>
+                    </div>
                   </motion.div>
 
                   {/* Texte de clôture */}
