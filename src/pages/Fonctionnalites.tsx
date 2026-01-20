@@ -1491,15 +1491,13 @@ const Fonctionnalites = () => {
                     
                     {/* Employeur - Notes de frais */}
                     <motion.div
-                      initial={{ opacity: 0, x: 15 }}
+                      initial={{ opacity: 0, x: -15 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.7 }}
                       className="flex items-center justify-between bg-accent/10 rounded-lg px-3 py-1.5 border border-accent/30"
                     >
                       <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center">
-                          <Building2 className="w-3.5 h-3.5 text-accent-foreground/70" />
-                        </div>
+                        <span className="text-sm">🏢</span>
                         <div>
                           <p className="text-[10px] font-medium text-foreground/80">{t('fonctionnalites.animations.tiersEmployer')}</p>
                           <p className="text-[8px] text-muted-foreground">{t('fonctionnalites.animations.tiersExpenseReports')}</p>
