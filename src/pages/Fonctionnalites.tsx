@@ -707,20 +707,11 @@ const FutureFeatureCard = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
-    if (isOpen) {
-      sounds.playCloseSound();
-    } else {
-      sounds.playOpenSound();
-    }
     setIsOpen(!isOpen);
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
+    <div
       onClick={handleToggle}
       className={`group bg-card/60 border border-border/50 rounded-xl p-6 relative overflow-hidden transition-all duration-300 cursor-pointer ${
         isOpen ? 'shadow-lg shadow-primary/10 border-primary/30 h-auto' : 'hover:shadow-lg hover:shadow-primary/5 h-[160px]'
@@ -818,7 +809,7 @@ const FutureFeatureCard = ({
       >
         {t('fonctionnalites.clickForPreview')}
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -920,16 +911,11 @@ const FeatureCard = ({
   t: (key: string) => string;
 }) => {
   const handleClick = () => {
-    if (isOpen) {
-      sounds.playCloseSound();
-    } else {
-      sounds.playOpenSound();
-    }
     onToggle();
   };
   const variants = getCardAnimationVariants(feature.animationDirection);
   const closedHeight = isLarge ? 'h-[140px]' : 'h-[130px]';
-  return <motion.div onClick={handleClick} className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} ${isLarge ? 'p-8' : 'p-6'} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] relative ${isExplored && !isOpen ? 'saturate-[0.7] opacity-90' : ''} ${isOpen ? 'h-auto' : closedHeight}`}>
+  return <div onClick={handleClick} className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} ${isLarge ? 'p-8' : 'p-6'} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] relative ${isExplored && !isOpen ? 'saturate-[0.7] opacity-90' : ''} ${isOpen ? 'h-auto' : closedHeight}`}>
       {/* Badge "Découvert" */}
       <AnimatePresence>
         {isExplored && !isOpen && <motion.div initial={{
@@ -1014,7 +1000,7 @@ const FeatureCard = ({
             </p>
           </motion.div>}
       </AnimatePresence>
-    </motion.div>;
+    </div>;
 };
 const Fonctionnalites = () => {
   const { t } = useTranslation();
