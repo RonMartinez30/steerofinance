@@ -1844,7 +1844,7 @@ const Fonctionnalites = () => {
               duration: 0.7,
               ease: "easeOut"
             }} className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              {t('fonctionnalites.heroTitle')}
+              {t('fonctionnalites.heroTitle')} <span className="text-gradient">{t('fonctionnalites.heroTitleHighlight')}</span>
             </motion.h1>
             <motion.p initial={{
               opacity: 0,
