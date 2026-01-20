@@ -314,7 +314,7 @@
     "follow": "Track",
     "adjustLast": "Adjust & Sustain",
     "discovered": "Discovered",
-    "clickForPreview": "Click to see preview",
+    "clickForPreview": "See details",
     "comingSoon": "Coming soon",
     "futureTitle": "And when you want to go further",
     "futureSubtitle": "Other dimensions to explore, coming soon.",
@@ -322,38 +322,38 @@
     "ctaSubtitle": "Join the waitlist and be among the first to try Steero.",
     "features": {
       "onboarding": {
-        "title": "Onboarding Journey",
-        "microPromise": "Set up your starting point",
-        "details": "A guided and intuitive journey to configure your financial profile. Step by step, you define your goals, income, and priorities so that Steero adapts perfectly to your situation."
+        "title": "Personalized Path",
+        "microPromise": "Set the foundations of your financial direction.",
+        "details": "A guided journey that helps you define your goals, income, fixed expenses, and priorities. No jargon, no complexity: just the right questions to create your financial framework."
       },
       "budget": {
-        "title": "Budget Management",
-        "microPromise": "Define your monthly framework",
-        "details": "Organize your finances with a hierarchical category system. Your budget evolves with you, adapts to each month, and allows you to refine your management over time."
+        "title": "Budget Structure",
+        "microPromise": "Organize your resources by priority.",
+        "details": "Create categories and subcategories that reflect your real life. Organize your expenses hierarchically for a clear vision of what really matters."
       },
       "fixed": {
         "title": "Fixed Transactions",
-        "microPromise": "Anticipate what comes back each month",
-        "details": "Centralize all your deductions, subscriptions, and recurring income. Clearly visualize what comes in and goes out each month, with the exact dates of each transaction."
+        "microPromise": "Anticipate your recurring flows.",
+        "details": "Plan your income, expenses, and deadlines for the month. Anticipate when your cash flow will be tight and keep a clear calendar of your movements."
       },
       "daily": {
-        "title": "Daily Transactions",
-        "microPromise": "Log effortlessly every day",
-        "details": "Save time with customizable transaction templates. Your recurring purchases are pre-filled for quick and frictionless entry."
+        "title": "Templates & Quick Entry",
+        "microPromise": "Record your expenses in an instant.",
+        "details": "Create templates for your frequent transactions: coffee, groceries, gas... One tap is enough to record, the system learns your habits."
       },
       "level": {
         "title": "The Level",
-        "microPromise": "See where you stand at a glance",
+        "microPromise": "Visualize your margin in real time.",
         "details": "With each entry, instantly visualize: what has already been spent, what the current expense represents, and what will remain available in your budget."
       },
       "rituals": {
         "title": "Ritual Tracking",
-        "microPromise": "Track what really matters",
+        "microPromise": "Anchor habits that last.",
         "details": "A ritual system that guides you on what to do, what to look at, and what questions to ask yourself. Develop lasting financial habits."
       },
       "indicators": {
         "title": "Playful Indicators",
-        "microPromise": "Measure your progress over time",
+        "microPromise": "Measure your progress at a glance.",
         "details": "Clear and engaging visualizations that transform your data into actionable insights. Quickly understand your situation through indicators designed to facilitate your decisions."
       }
     },

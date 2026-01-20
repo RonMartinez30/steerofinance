@@ -310,7 +310,7 @@
     "follow": "Suivre",
     "adjustLast": "Ajuster & durer",
     "discovered": "Découvert",
-    "clickForPreview": "Cliquer pour voir l'aperçu",
+    "clickForPreview": "Voir le détail",
     "comingSoon": "À venir",
     "futureTitle": "Et quand tu voudras aller plus loin",
     "futureSubtitle": "D'autres dimensions à explorer, bientôt disponibles.",
@@ -318,38 +318,38 @@
     "ctaSubtitle": "Rejoins la liste d'attente et sois parmi les premiers à essayer Steero.",
     "features": {
       "onboarding": {
-        "title": "Parcours d'initialisation",
-        "microPromise": "Configurer ton point de départ",
-        "details": "Un parcours guidé et intuitif pour configurer ton profil financier. Étape par étape, tu définis tes objectifs, tes revenus et tes priorités pour que Steero s'adapte parfaitement à ta situation."
+        "title": "Trajectoire personnalisée",
+        "microPromise": "Pose les bases de ta direction financière.",
+        "details": "Un parcours guidé qui t'aide à définir tes objectifs, tes revenus, tes charges fixes et tes priorités. Pas de jargon, pas de complexité : juste les bonnes questions pour créer ton cadre financier."
       },
       "budget": {
-        "title": "Gestion du budget",
-        "microPromise": "Définir ton cadre mensuel",
-        "details": "Organise tes finances avec un système de catégories hiérarchiques. Ton budget évolue avec toi, s'adapte à chaque mois et te permet d'affiner ta gestion au fil du temps."
+        "title": "Structure de budget",
+        "microPromise": "Organise tes ressources selon tes priorités.",
+        "details": "Crée des catégories et sous-catégories qui reflètent ta vie réelle. Organise tes dépenses de manière hiérarchique pour avoir une vision claire de ce qui compte vraiment."
       },
       "fixed": {
-        "title": "Transactions fixes",
-        "microPromise": "Anticiper ce qui revient chaque mois",
-        "details": "Centralise tous tes prélèvements, abonnements et revenus récurrents. Visualise clairement ce qui rentre et ce qui sort chaque mois, avec les dates exactes de chaque transaction."
+        "title": "Opérations fixes",
+        "microPromise": "Anticipe tes flux récurrents.",
+        "details": "Prévois tes revenus, charges et échéances pour le mois. Anticipe les moments où ta trésorerie sera tendue et garde un calendrier clair de tes mouvements."
       },
       "daily": {
-        "title": "Transactions du quotidien",
-        "microPromise": "Saisir sans effort au quotidien",
-        "details": "Gagne du temps grâce aux modèles de transactions personnalisables. Tes achats récurrents sont pré-renseignés pour une saisie rapide et sans friction."
+        "title": "Modèles et saisie rapide",
+        "microPromise": "Enregistre tes dépenses en un instant.",
+        "details": "Crée des modèles pour tes opérations fréquentes : café, courses, essence... Un tap suffit pour enregistrer, le système apprend tes habitudes."
       },
       "level": {
         "title": "Le Niveau",
-        "microPromise": "Voir où tu en es en un coup d'œil",
+        "microPromise": "Visualise ta marge en temps réel.",
         "details": "Lors de chaque saisie, visualise instantanément : ce qui a déjà été dépensé, ce que représente la dépense en cours, et ce qu'il te restera disponible dans ton budget."
       },
       "rituals": {
         "title": "Suivi des rituels",
-        "microPromise": "Suivre ce qui compte vraiment",
+        "microPromise": "Ancre des habitudes qui durent.",
         "details": "Un système de rituels qui te guide sur ce que tu dois faire, regarder, et quelles questions te poser. Développe des habitudes financières durables."
       },
       "indicators": {
         "title": "Indicateurs ludiques",
-        "microPromise": "Mesurer tes progrès dans le temps",
+        "microPromise": "Mesure tes progrès en un coup d'œil.",
         "details": "Des visualisations claires et engageantes qui transforment tes données en insights actionnables. Comprends rapidement ta situation grâce à des indicateurs pensés pour faciliter tes décisions."
       }
     },
