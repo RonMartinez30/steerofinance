@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGrid, RefreshCcw, ClipboardList, Gauge, CalendarCheck, BarChart3, type LucideIcon } from "lucide-react";
+import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGrid, RefreshCcw, ClipboardList, Gauge, CalendarCheck, BarChart3, Landmark, Wallet, Receipt, RotateCcw, type LucideIcon } from "lucide-react";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useTranslation } from "react-i18next";
 
@@ -127,10 +127,10 @@ const OnboardingAnimation = ({
 }) => {
   const [step, setStep] = useState(0);
   const steps = [
-    { label: t('fonctionnalites.animations.banks'), icon: "🏦" },
-    { label: t('fonctionnalites.animations.income'), icon: "💰" },
-    { label: t('fonctionnalites.animations.fixedExpenses'), icon: "📋" },
-    { label: t('fonctionnalites.animations.rituals'), icon: "🔄" }
+    { label: t('fonctionnalites.animations.banks'), Icon: Landmark },
+    { label: t('fonctionnalites.animations.income'), Icon: Wallet },
+    { label: t('fonctionnalites.animations.fixedExpenses'), Icon: Receipt },
+    { label: t('fonctionnalites.animations.rituals'), Icon: RotateCcw }
   ];
 
   useEffect(() => {
@@ -152,23 +152,25 @@ const OnboardingAnimation = ({
     <div className="mt-4 mb-2">
       {/* Liste des étapes avec apparition progressive */}
       <div className="space-y-2">
-        {steps.map((stepItem, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: -12 }}
-            animate={{
-              opacity: step > i ? 1 : 0.25,
-              x: step > i ? 0 : -12
-            }}
-            transition={{
-              duration: 0.35,
-              ease: [0.25, 0.1, 0.25, 1]
-            }}
-            className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${
-              step > i ? 'bg-primary/10' : 'bg-muted/50'
-            }`}
-          >
-            <span className="text-lg">{stepItem.icon}</span>
+        {steps.map((stepItem, i) => {
+          const StepIcon = stepItem.Icon;
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -12 }}
+              animate={{
+                opacity: step > i ? 1 : 0.25,
+                x: step > i ? 0 : -12
+              }}
+              transition={{
+                duration: 0.35,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
+              className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${
+                step > i ? 'bg-primary/10' : 'bg-muted/50'
+              }`}
+            >
+              <StepIcon className={`w-5 h-5 ${step > i ? 'text-primary' : 'text-muted-foreground'}`} />
             <span className={`flex-1 text-sm font-medium ${
               step > i ? 'text-foreground' : 'text-muted-foreground'
             }`}>
@@ -189,7 +191,8 @@ const OnboardingAnimation = ({
               <Check className="w-4 h-4 text-primary" />
             </motion.div>
           </motion.div>
-        ))}
+          );
+        })}
       </div>
 
       {/* État final : Profil complété */}
