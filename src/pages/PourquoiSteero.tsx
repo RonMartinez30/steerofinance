@@ -656,6 +656,58 @@ const EmotionalConnectionAnimation = ({
   return (
     <div className="flex flex-col gap-3 py-3">
       <div className="bg-muted/20 rounded-lg p-3 border border-border/30">
+        {/* Budget Resto header */}
+        <div className="flex items-center justify-between mb-2 pb-2 border-b border-border/30">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-medium text-foreground">{t('animations.budgetResto')}</span>
+            <span className="text-[9px] text-muted-foreground">300 €</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="text-[9px] text-muted-foreground">{t('animations.spent')}:</span>
+            <motion.span
+              animate={{ 
+                opacity: phase !== 'input' ? 1 : 0.5
+              }}
+              className="text-[10px] font-medium text-foreground"
+            >
+              {phase === 'input' ? '165 €' : '199,90 €'}
+            </motion.span>
+          </div>
+        </div>
+
+        {/* Budget gauge */}
+        <div className="mb-3">
+          <div className="h-2 bg-muted/40 rounded-full overflow-hidden">
+            <motion.div
+              animate={{ 
+                width: phase === 'input' ? '55%' : '66.6%'
+              }}
+              transition={{ duration: 0.5 }}
+              className="h-full bg-primary/70 rounded-full relative"
+            >
+              {/* In-progress portion */}
+              <motion.div
+                animate={{ 
+                  opacity: phase === 'input' ? 0 : 1,
+                  width: phase !== 'input' ? '17.5%' : '0%'
+                }}
+                transition={{ duration: 0.4 }}
+                className="absolute right-0 top-0 h-full bg-primary rounded-r-full"
+              />
+            </motion.div>
+          </div>
+          <div className="flex justify-between mt-1">
+            <span className="text-[8px] text-muted-foreground">{t('animations.spent')}</span>
+            <motion.span
+              animate={{ opacity: phase !== 'input' ? 1 : 0 }}
+              className="text-[8px] text-primary font-medium"
+            >
+              +34,90 €
+            </motion.span>
+            <span className="text-[8px] text-muted-foreground">{t('animations.remaining')}: {phase === 'input' ? '135 €' : '100,10 €'}</span>
+          </div>
+        </div>
+
         {/* Transaction input simulation */}
         <div className="flex items-center gap-3 mb-3">
           <motion.div

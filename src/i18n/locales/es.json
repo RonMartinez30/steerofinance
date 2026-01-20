@@ -240,9 +240,10 @@
     "weeklyRitual": "Ritual semanal",
     "ritualComplete": "Semana completa",
     "habitFormed": "Los hábitos se forman con la repetición",
-    "emotionalReaction": "¿Es esto realmente necesario?",
-    "consciousDecision": "Decisión consciente tomada",
+    "emotionalReaction": "¿Era esto realmente necesario?",
+    "consciousDecision": "Decisión consciente tomada: Evolución del comportamiento",
     "realAwareness": "La fricción crea conciencia",
+    "budgetResto": "Presupuesto Restaurante",
     "learn": "Aprender",
     "understand": "Comprender",
     "master": "Dominar",
@@ -253,7 +254,9 @@
     "restaurant": "Restaurante",
     "mastery": "Dominio",
     "effort": "Esfuerzo",
-    "ritual": "Ritual"
+    "ritual": "Ritual",
+    "spent": "Consumido",
+    "remaining": "Restante"
   },
   "faq": {
     "title": "Preguntas frecuentes",
