@@ -1103,7 +1103,7 @@ const Blog = () => {
                     transition={{ duration: 0.6 }}
                   >
                     <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                      {t('blog.title')}
+                      <span className="text-gradient">Steero</span> Blog
                     </h1>
                     <p className="text-muted-foreground mb-6">
                       {t('blog.subtitle')}
