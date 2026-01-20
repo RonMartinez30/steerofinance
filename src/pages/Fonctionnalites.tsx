@@ -232,7 +232,7 @@ const OnboardingAnimation = ({
   );
 };
 
-// Budget hierarchy animation - Structure de budget mensuel (3 colonnes : Labels | Avril | Mai)
+// Budget hierarchy animation - Structure de budget mensuel (4 colonnes : Labels | Avril | Mai | Juin)
 const BudgetAnimation = ({
   isOpen,
   t
@@ -247,50 +247,60 @@ const BudgetAnimation = ({
       setStep(0);
       return;
     }
-    // Animation progressive : en-têtes → catégories une par une → clôture
-    // Durée totale : ~5 secondes
+    // Animation progressive : en-têtes → catégories → total → clôture
     const timers = [
       setTimeout(() => setStep(1), 400),   // En-têtes mois
       setTimeout(() => setStep(2), 1000),  // Logement
       setTimeout(() => setStep(3), 1800),  // Alimentation
       setTimeout(() => setStep(4), 2600),  // Loisirs
-      setTimeout(() => setStep(5), 3800)   // Texte de clôture
+      setTimeout(() => setStep(5), 3400),  // Ligne Total
+      setTimeout(() => setStep(6), 4200)   // Texte de clôture
     ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
 
-  // Structure des données avec Avril et Mai
+  // Structure des données avec Avril, Mai et Juin
   const budgetData = [
     {
       category: t('fonctionnalites.animations.housing'),
-      aprilTotal: "800 €",
-      mayTotal: "800 €",
+      april: "800 €",
+      may: "800 €",
+      june: "800 €",
       subs: [
-        { label: t('fonctionnalites.animations.rent'), april: "750 €", may: "750 €" },
-        { label: t('fonctionnalites.animations.insurance'), april: "50 €", may: "50 €" }
+        { label: t('fonctionnalites.animations.rent'), april: "750 €", may: "750 €", june: "750 €" },
+        { label: t('fonctionnalites.animations.insurance'), april: "50 €", may: "50 €", june: "50 €" }
       ]
     },
     {
       category: t('fonctionnalites.animations.food'),
-      aprilTotal: "400 €",
-      mayTotal: "600 €",
+      april: "400 €",
+      may: "600 €",
+      june: "600 €",
       changed: true,
       subs: [
-        { label: t('fonctionnalites.animations.groceries'), april: "300 €", may: "300 €" },
-        { label: t('fonctionnalites.animations.restaurant'), april: "100 €", may: "300 €", changed: true }
+        { label: t('fonctionnalites.animations.groceries'), april: "300 €", may: "300 €", june: "300 €" },
+        { label: t('fonctionnalites.animations.restaurant'), april: "100 €", may: "300 €", june: "300 €", changed: true }
       ]
     },
     {
       category: t('fonctionnalites.animations.leisure'),
-      aprilTotal: "300 €",
-      mayTotal: "470 €",
+      april: "300 €",
+      may: "470 €",
+      june: "470 €",
       changed: true,
       subs: [
-        { label: t('fonctionnalites.animations.sports'), april: "50 €", may: "170 €", changed: true },
-        { label: t('fonctionnalites.animations.outings'), april: "250 €", may: "300 €", changed: true }
+        { label: t('fonctionnalites.animations.sports'), april: "50 €", may: "170 €", june: "170 €", changed: true },
+        { label: t('fonctionnalites.animations.outings'), april: "250 €", may: "300 €", june: "300 €", changed: true }
       ]
     }
   ];
+
+  // Totaux
+  const totals = {
+    april: "1 500 €",
+    may: "1 870 €",
+    june: "1 870 €"
+  };
 
   return (
     <div className="mt-4 mb-2">
@@ -305,19 +315,22 @@ const BudgetAnimation = ({
           duration: 0.3,
           ease: [0.25, 0.1, 0.25, 1]
         }}
-        className="grid grid-cols-[1fr_auto_auto] gap-x-4 mb-3 pb-2 border-b border-border/30"
+        className="grid grid-cols-[1fr_auto_auto_auto] gap-x-3 mb-3 pb-2 border-b border-border/30"
       >
         <div></div>
-        <span className="text-xs font-semibold text-primary text-center min-w-[60px]">
+        <span className="text-xs font-semibold text-primary text-center min-w-[50px]">
           {t('fonctionnalites.animations.april')}
         </span>
-        <span className="text-xs font-semibold text-primary text-center min-w-[60px]">
+        <span className="text-xs font-semibold text-primary text-center min-w-[50px]">
           {t('fonctionnalites.animations.may')}
+        </span>
+        <span className="text-xs font-semibold text-primary text-center min-w-[50px]">
+          {t('fonctionnalites.animations.june')}
         </span>
       </motion.div>
 
       {/* Catégories et montants */}
-      <div className="space-y-3">
+      <div className="space-y-2">
         {budgetData.map((cat, i) => (
           <motion.div
             key={i}
@@ -332,11 +345,14 @@ const BudgetAnimation = ({
             }}
           >
             {/* Catégorie principale */}
-            <div className="grid grid-cols-[1fr_auto_auto] gap-x-4 items-center bg-primary/10 rounded-lg px-3 py-2">
-              <span className="font-medium text-foreground text-sm">{cat.category}</span>
-              <span className="text-primary font-bold text-sm text-right min-w-[60px]">{cat.aprilTotal}</span>
-              <span className={`font-bold text-sm text-right min-w-[60px] ${cat.changed ? 'text-primary' : 'text-primary'}`}>
-                {cat.mayTotal}
+            <div className="grid grid-cols-[1fr_auto_auto_auto] gap-x-3 items-center bg-primary/10 rounded-lg px-3 py-1.5">
+              <span className="font-medium text-foreground text-xs">{cat.category}</span>
+              <span className="text-primary font-bold text-xs text-right min-w-[50px]">{cat.april}</span>
+              <span className={`font-bold text-xs text-right min-w-[50px] ${cat.changed ? 'text-primary' : 'text-primary'}`}>
+                {cat.may}
+              </span>
+              <span className={`font-bold text-xs text-right min-w-[50px] ${cat.changed ? 'text-primary' : 'text-primary'}`}>
+                {cat.june}
               </span>
             </div>
 
@@ -349,17 +365,20 @@ const BudgetAnimation = ({
                 delay: 0.15,
                 ease: "easeOut"
               }}
-              className="mt-1.5 space-y-1"
+              className="mt-1 space-y-0.5"
             >
               {cat.subs.map((sub, j) => (
                 <div
                   key={j}
-                  className="grid grid-cols-[1fr_auto_auto] gap-x-4 items-center text-xs px-3 py-1"
+                  className="grid grid-cols-[1fr_auto_auto_auto] gap-x-3 items-center text-[11px] px-3 py-0.5"
                 >
-                  <span className="text-muted-foreground pl-3">{sub.label}</span>
-                  <span className="text-foreground/70 text-right min-w-[60px]">{sub.april}</span>
-                  <span className={`text-right min-w-[60px] font-medium ${sub.changed ? 'text-primary' : 'text-foreground/70'}`}>
+                  <span className="text-muted-foreground pl-2">{sub.label}</span>
+                  <span className="text-foreground/70 text-right min-w-[50px]">{sub.april}</span>
+                  <span className={`text-right min-w-[50px] ${sub.changed ? 'text-primary font-medium' : 'text-foreground/70'}`}>
                     {sub.may}
+                  </span>
+                  <span className={`text-right min-w-[50px] ${sub.changed ? 'text-primary font-medium' : 'text-foreground/70'}`}>
+                    {sub.june}
                   </span>
                 </div>
               ))}
@@ -368,13 +387,32 @@ const BudgetAnimation = ({
         ))}
       </div>
 
+      {/* Ligne Total */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{
+          opacity: step >= 5 ? 1 : 0,
+          y: step >= 5 ? 0 : 8
+        }}
+        transition={{
+          duration: 0.35,
+          ease: [0.25, 0.1, 0.25, 1]
+        }}
+        className="grid grid-cols-[1fr_auto_auto_auto] gap-x-3 items-center mt-3 pt-2 border-t border-border/30 px-3"
+      >
+        <span className="font-semibold text-foreground text-sm">{t('fonctionnalites.animations.total')}</span>
+        <span className="text-primary font-bold text-sm text-right min-w-[50px]">{totals.april}</span>
+        <span className="text-primary font-bold text-sm text-right min-w-[50px]">{totals.may}</span>
+        <span className="text-primary font-bold text-sm text-right min-w-[50px]">{totals.june}</span>
+      </motion.div>
+
       {/* Texte de clôture */}
       <motion.p
         initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 5 ? 1 : 0 }}
+        animate={{ opacity: step >= 6 ? 1 : 0 }}
         transition={{
           duration: 0.3,
-          delay: step >= 5 ? 0.2 : 0,
+          delay: step >= 6 ? 0.2 : 0,
           ease: "easeOut"
         }}
         className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
