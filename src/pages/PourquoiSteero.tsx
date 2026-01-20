@@ -184,41 +184,49 @@ const CognitiveEffortAnimation = ({
     return () => clearInterval(interval);
   }, [isOpen]);
 
-  // Data packets for animation
-  const DataPacket = ({ 
-    delay, 
-    flowType 
-  }: { 
-    delay: number; 
-    flowType: 'auto' | 'processed';
-  }) => {
-    const isProcessed = flowType === 'processed';
-    
-    return (
-      <motion.div
-        key={`${flowType}-${cycle}`}
-        initial={{ x: 0, opacity: 0 }}
-        animate={{
-          x: isProcessed ? [0, 45, 45, 90] : [0, 90],
-          opacity: isProcessed ? [0, 1, 1, 1] : [0, 1, 0.3, 0],
-          scale: isProcessed ? [1, 1, 1.15, 1] : [1, 1, 0.8, 0.5]
-        }}
-        transition={{
-          duration: isProcessed ? 2.8 : 1.8,
-          delay,
-          times: isProcessed ? [0, 0.35, 0.6, 1] : [0, 0.3, 0.7, 1],
-          ease: "easeInOut"
-        }}
-        className={`absolute left-0 w-2 h-2 rounded-full ${
-          isProcessed ? 'bg-primary/70' : 'bg-muted-foreground/50'
-        }`}
-      />
-    );
-  };
+  // Auto flow packet - starts slightly larger, fades before halfway
+  const AutoPacket = ({ delay }: { delay: number }) => (
+    <motion.div
+      key={`auto-${cycle}-${delay}`}
+      initial={{ left: '0%', opacity: 0, scale: 1.3 }}
+      animate={{
+        left: ['0%', '35%', '45%'],
+        opacity: [0, 0.7, 0],
+        scale: [1.3, 1, 0.4]
+      }}
+      transition={{
+        duration: 2,
+        delay,
+        times: [0, 0.5, 1],
+        ease: "easeOut"
+      }}
+      className="absolute w-2 h-2 rounded-full bg-muted-foreground/60 -translate-x-1/2"
+    />
+  );
+
+  // Processed flow packet - goes all the way, amplifies at the end
+  const ProcessedPacket = ({ delay }: { delay: number }) => (
+    <motion.div
+      key={`processed-${cycle}-${delay}`}
+      initial={{ left: '0%', opacity: 0, scale: 0.8 }}
+      animate={{
+        left: ['0%', '45%', '50%', '100%'],
+        opacity: [0, 1, 1, 1],
+        scale: [0.8, 1, 1.2, 1.8]
+      }}
+      transition={{
+        duration: 3,
+        delay,
+        times: [0, 0.35, 0.5, 1],
+        ease: "easeInOut"
+      }}
+      className="absolute w-2 h-2 rounded-full bg-primary/70 -translate-x-1/2"
+    />
+  );
 
   return (
     <div className="flex flex-col gap-3 py-3">
-      {/* Flow A: Automatic - data passes through and fades */}
+      {/* Flow A: Automatic - data fades before halfway */}
       <div className="bg-muted/20 rounded-lg p-3 border border-border/30">
         <div className="flex items-center gap-2 mb-2">
           <Zap className="w-3 h-3 text-muted-foreground/50" />
@@ -227,19 +235,21 @@ const CognitiveEffortAnimation = ({
         <div className="relative h-6 flex items-center">
           {/* Track */}
           <div className="absolute inset-x-0 h-0.5 bg-muted/40 rounded" />
-          {/* End zone - faded */}
-          <div className="absolute right-0 w-6 h-4 bg-gradient-to-l from-muted/30 to-transparent rounded-r flex items-center justify-end pr-1">
-            <span className="text-[8px] text-muted-foreground/40">?</span>
+          {/* Fade zone indicator - before middle */}
+          <div className="absolute left-[40%] w-px h-3 bg-muted/30" />
+          {/* End zone - never reached */}
+          <div className="absolute right-0 w-6 h-4 bg-muted/10 rounded-r flex items-center justify-end pr-1">
+            <span className="text-[8px] text-muted-foreground/30">?</span>
           </div>
           {/* Data packets */}
-          <DataPacket delay={0} flowType="auto" />
-          <DataPacket delay={0.4} flowType="auto" />
-          <DataPacket delay={0.8} flowType="auto" />
+          <AutoPacket delay={0} />
+          <AutoPacket delay={0.5} />
+          <AutoPacket delay={1} />
         </div>
         <p className="text-[9px] text-muted-foreground/50 mt-1.5 text-right">{t('animations.dataForgotten')}</p>
       </div>
 
-      {/* Flow B: Processed - data pauses at filter then anchors */}
+      {/* Flow B: Processed - goes to the end with amplification */}
       <div className="bg-primary/5 rounded-lg p-3 border border-primary/20">
         <div className="flex items-center gap-2 mb-2">
           <Brain className="w-3 h-3 text-primary/60" />
@@ -251,21 +261,21 @@ const CognitiveEffortAnimation = ({
           {/* Filter/pause zone - middle */}
           <motion.div 
             animate={{ 
-              opacity: [0.4, 0.8, 0.4],
-              scale: [1, 1.05, 1]
+              opacity: [0.3, 0.7, 0.3],
+              scale: [1, 1.1, 1]
             }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 2.5, repeat: Infinity }}
             className="absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center"
           >
             <div className="w-1.5 h-1.5 rounded-full bg-primary/50" />
           </motion.div>
-          {/* End zone - anchored */}
-          <div className="absolute right-0 w-6 h-4 bg-primary/15 rounded-r flex items-center justify-end pr-1">
-            <Check className="w-2.5 h-2.5 text-primary/60" />
+          {/* End zone - amplified knowledge */}
+          <div className="absolute right-0 w-8 h-5 bg-primary/15 rounded-r flex items-center justify-end pr-1">
+            <Check className="w-3 h-3 text-primary/70" />
           </div>
           {/* Data packets */}
-          <DataPacket delay={0.2} flowType="processed" />
-          <DataPacket delay={0.7} flowType="processed" />
+          <ProcessedPacket delay={0.2} />
+          <ProcessedPacket delay={0.8} />
         </div>
         <p className="text-[9px] text-primary/60 mt-1.5 text-right">{t('animations.dataAnchored')}</p>
       </div>
