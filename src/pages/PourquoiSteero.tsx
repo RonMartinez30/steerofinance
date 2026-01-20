@@ -163,7 +163,7 @@ const behavioralElementsData: BehavioralElement[] = [
     referenceKey: "whySteero.behavioral.learning.reference",
   }
 ];
-// Animation 1: Cognitive Effort - Manual entry vs passive viewing
+// Animation 1: Cognitive Effort - Two data flows comparison
 const CognitiveEffortAnimation = ({
   isOpen,
   t
@@ -171,99 +171,113 @@ const CognitiveEffortAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [phase, setPhase] = useState<'passive' | 'active' | 'result'>('passive');
+  const [cycle, setCycle] = useState(0);
   
   useEffect(() => {
     if (!isOpen) {
-      setPhase('passive');
+      setCycle(0);
       return;
     }
-    const timers = [
-      setTimeout(() => setPhase('active'), 1500),
-      setTimeout(() => setPhase('result'), 3500)
-    ];
-    const loop = setInterval(() => {
-      setPhase('passive');
-      setTimeout(() => setPhase('active'), 1500);
-      setTimeout(() => setPhase('result'), 3500);
-    }, 6000);
-    return () => {
-      timers.forEach(clearTimeout);
-      clearInterval(loop);
-    };
+    const interval = setInterval(() => {
+      setCycle(c => c + 1);
+    }, 3500);
+    return () => clearInterval(interval);
   }, [isOpen]);
+
+  // Data packets for animation
+  const DataPacket = ({ 
+    delay, 
+    flowType 
+  }: { 
+    delay: number; 
+    flowType: 'auto' | 'processed';
+  }) => {
+    const isProcessed = flowType === 'processed';
+    
+    return (
+      <motion.div
+        key={`${flowType}-${cycle}`}
+        initial={{ x: 0, opacity: 0 }}
+        animate={{
+          x: isProcessed ? [0, 45, 45, 90] : [0, 90],
+          opacity: isProcessed ? [0, 1, 1, 1] : [0, 1, 0.3, 0],
+          scale: isProcessed ? [1, 1, 1.15, 1] : [1, 1, 0.8, 0.5]
+        }}
+        transition={{
+          duration: isProcessed ? 2.8 : 1.8,
+          delay,
+          times: isProcessed ? [0, 0.35, 0.6, 1] : [0, 0.3, 0.7, 1],
+          ease: "easeInOut"
+        }}
+        className={`absolute left-0 w-2 h-2 rounded-full ${
+          isProcessed ? 'bg-primary/70' : 'bg-muted-foreground/50'
+        }`}
+      />
+    );
+  };
 
   return (
     <div className="flex flex-col gap-3 py-3">
-      <div className="grid grid-cols-2 gap-3">
-        {/* Passive: Auto-sync data */}
-        <motion.div
-          animate={{
-            opacity: phase === 'passive' ? 1 : 0.4,
-            scale: phase === 'passive' ? 1 : 0.98
-          }}
-          transition={{ duration: 0.4 }}
-          className="relative bg-muted/30 rounded-lg p-3 border border-border/40"
-        >
-          <div className="flex items-center gap-2 mb-2">
-            <Zap className="w-3 h-3 text-muted-foreground/50" />
-            <span className="text-[10px] text-muted-foreground/60 font-medium">{t('animations.autoSync')}</span>
+      {/* Flow A: Automatic - data passes through and fades */}
+      <div className="bg-muted/20 rounded-lg p-3 border border-border/30">
+        <div className="flex items-center gap-2 mb-2">
+          <Zap className="w-3 h-3 text-muted-foreground/50" />
+          <span className="text-[10px] text-muted-foreground/60 font-medium">{t('animations.flowAuto')}</span>
+        </div>
+        <div className="relative h-6 flex items-center">
+          {/* Track */}
+          <div className="absolute inset-x-0 h-0.5 bg-muted/40 rounded" />
+          {/* End zone - faded */}
+          <div className="absolute right-0 w-6 h-4 bg-gradient-to-l from-muted/30 to-transparent rounded-r flex items-center justify-end pr-1">
+            <span className="text-[8px] text-muted-foreground/40">?</span>
           </div>
-          <div className="space-y-1.5">
-            <div className="h-1.5 bg-muted/60 rounded w-full" />
-            <div className="h-1.5 bg-muted/60 rounded w-4/5" />
-            <div className="h-1.5 bg-muted/60 rounded w-3/5" />
-          </div>
-          <motion.div
-            animate={{ opacity: phase === 'passive' ? 0.6 : 0 }}
-            className="absolute -bottom-1 left-1/2 -translate-x-1/2"
-          >
-            <Eye className="w-3 h-3 text-muted-foreground/40" />
-          </motion.div>
-        </motion.div>
-
-        {/* Active: Manual entry */}
-        <motion.div
-          animate={{
-            opacity: phase !== 'passive' ? 1 : 0.4,
-            scale: phase !== 'passive' ? 1 : 0.98
-          }}
-          transition={{ duration: 0.4 }}
-          className="relative bg-primary/5 rounded-lg p-3 border border-primary/20"
-        >
-          <div className="flex items-center gap-2 mb-2">
-            <PenLine className="w-3 h-3 text-primary/70" />
-            <span className="text-[10px] text-primary/70 font-medium">{t('animations.manualEntry')}</span>
-          </div>
-          <div className="space-y-1.5">
-            <motion.div
-              animate={{ width: phase === 'active' ? '100%' : phase === 'result' ? '100%' : '0%' }}
-              transition={{ duration: 0.8 }}
-              className="h-1.5 bg-primary/30 rounded"
-            />
-            <motion.div
-              animate={{ width: phase === 'active' ? '75%' : phase === 'result' ? '75%' : '0%' }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-1.5 bg-primary/30 rounded"
-            />
-          </div>
-          <motion.div
-            animate={{ opacity: phase === 'result' ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute -bottom-1 left-1/2 -translate-x-1/2"
-          >
-            <Brain className="w-3 h-3 text-primary/60" />
-          </motion.div>
-        </motion.div>
+          {/* Data packets */}
+          <DataPacket delay={0} flowType="auto" />
+          <DataPacket delay={0.4} flowType="auto" />
+          <DataPacket delay={0.8} flowType="auto" />
+        </div>
+        <p className="text-[9px] text-muted-foreground/50 mt-1.5 text-right">{t('animations.dataForgotten')}</p>
       </div>
 
-      {/* Result label */}
+      {/* Flow B: Processed - data pauses at filter then anchors */}
+      <div className="bg-primary/5 rounded-lg p-3 border border-primary/20">
+        <div className="flex items-center gap-2 mb-2">
+          <Brain className="w-3 h-3 text-primary/60" />
+          <span className="text-[10px] text-primary/70 font-medium">{t('animations.flowProcessed')}</span>
+        </div>
+        <div className="relative h-6 flex items-center">
+          {/* Track */}
+          <div className="absolute inset-x-0 h-0.5 bg-primary/20 rounded" />
+          {/* Filter/pause zone - middle */}
+          <motion.div 
+            animate={{ 
+              opacity: [0.4, 0.8, 0.4],
+              scale: [1, 1.05, 1]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center"
+          >
+            <div className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+          </motion.div>
+          {/* End zone - anchored */}
+          <div className="absolute right-0 w-6 h-4 bg-primary/15 rounded-r flex items-center justify-end pr-1">
+            <Check className="w-2.5 h-2.5 text-primary/60" />
+          </div>
+          {/* Data packets */}
+          <DataPacket delay={0.2} flowType="processed" />
+          <DataPacket delay={0.7} flowType="processed" />
+        </div>
+        <p className="text-[9px] text-primary/60 mt-1.5 text-right">{t('animations.dataAnchored')}</p>
+      </div>
+
+      {/* Key insight */}
       <motion.p
-        animate={{ opacity: phase === 'result' ? 0.8 : 0 }}
-        transition={{ duration: 0.3 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{ delay: 1, duration: 0.4 }}
         className="text-center text-xs text-muted-foreground/70"
       >
-        {t('animations.activeConnections')}
+        {t('animations.effortCreatesStep')}
       </motion.p>
     </div>
   );

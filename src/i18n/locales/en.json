@@ -218,6 +218,11 @@
     "ctaDescription": "Join Steero and start 2026 in the best conditions"
   },
   "animations": {
+    "flowAuto": "Automatic flow",
+    "flowProcessed": "Processed flow",
+    "dataForgotten": "Data forgotten",
+    "dataAnchored": "Data anchored",
+    "effortCreatesStep": "Effort creates an additional cognitive step",
     "activeConnections": "Effort creates understanding",
     "realUnderstanding": "True understanding",
     "understood": "Understood",
