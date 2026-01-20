@@ -8,10 +8,9 @@
     "close": "Fermer"
   },
   "header": {
+    "home": "Accueil",
     "whySteero": "Pourquoi Steero",
-    "features": "Fonctionnalités",
-    "blog": "Blog",
-    "faq": "FAQ"
+    "features": "Fonctionnalités"
   },
   "footer": {
     "tagline": "Un cadre simple pour comprendre et piloter ses finances dans la durée.",

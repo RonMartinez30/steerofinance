@@ -8,10 +8,9 @@
     "close": "Cerrar"
   },
   "header": {
+    "home": "Inicio",
     "whySteero": "Por qué Steero",
-    "features": "Funcionalidades",
-    "blog": "Blog",
-    "faq": "FAQ"
+    "features": "Funcionalidades"
   },
   "footer": {
     "tagline": "Un marco sencillo para entender y gestionar tus finanzas a largo plazo.",
