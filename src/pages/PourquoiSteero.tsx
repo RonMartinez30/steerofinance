@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import { ArrowRight, Check, Star, ChevronDown, Hexagon, Circle, Triangle, Square, Octagon, BookOpen } from "lucide-react";
+import { ArrowRight, Check, Star, ChevronDown, Brain, Compass, RotateCcw, Heart, GraduationCap, BookOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
@@ -113,7 +113,7 @@ const alternativesData: Alternative[] = [
 ];
 
 interface BehavioralElement {
-  icon: typeof Hexagon;
+  icon: typeof Brain;
   principleNumber: string;
   titleKey: string;
   subtitleKey: string;
@@ -123,7 +123,7 @@ interface BehavioralElement {
 
 const behavioralElementsData: BehavioralElement[] = [
   {
-    icon: Hexagon,
+    icon: Brain,
     principleNumber: "01",
     titleKey: "whySteero.behavioral.cognitive.title",
     subtitleKey: "whySteero.behavioral.cognitive.subtitle",
@@ -131,7 +131,7 @@ const behavioralElementsData: BehavioralElement[] = [
     referenceKey: "whySteero.behavioral.cognitive.reference",
   },
   {
-    icon: Circle,
+    icon: Compass,
     principleNumber: "02",
     titleKey: "whySteero.behavioral.illusion.title",
     subtitleKey: "whySteero.behavioral.illusion.subtitle",
@@ -139,7 +139,7 @@ const behavioralElementsData: BehavioralElement[] = [
     referenceKey: "whySteero.behavioral.illusion.reference",
   },
   {
-    icon: Triangle,
+    icon: RotateCcw,
     principleNumber: "03",
     titleKey: "whySteero.behavioral.ritual.title",
     subtitleKey: "whySteero.behavioral.ritual.subtitle",
@@ -147,7 +147,7 @@ const behavioralElementsData: BehavioralElement[] = [
     referenceKey: "whySteero.behavioral.ritual.reference",
   },
   {
-    icon: Square,
+    icon: Heart,
     principleNumber: "04",
     titleKey: "whySteero.behavioral.emotional.title",
     subtitleKey: "whySteero.behavioral.emotional.subtitle",
@@ -155,7 +155,7 @@ const behavioralElementsData: BehavioralElement[] = [
     referenceKey: "whySteero.behavioral.emotional.reference",
   },
   {
-    icon: Octagon,
+    icon: GraduationCap,
     principleNumber: "05",
     titleKey: "whySteero.behavioral.learning.title",
     subtitleKey: "whySteero.behavioral.learning.subtitle",
@@ -207,7 +207,7 @@ const CognitiveEffortAnimation = ({
       <div className="relative h-20 bg-muted/20 rounded-lg overflow-hidden border border-border/30">
         {/* Central node - static */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-border/40 flex items-center justify-center z-10 bg-background">
-          <Hexagon className="w-4 h-4 text-muted-foreground/60" />
+          <Brain className="w-4 h-4 text-muted-foreground/60" />
         </div>
         
         {/* Network nodes */}
@@ -368,7 +368,7 @@ const RitualCycleAnimation = ({
         duration: 0.5,
         ease: "easeOut"
       }} className="absolute">
-          <Triangle className="w-2.5 h-2.5 text-muted-foreground/40" />
+          <RotateCcw className="w-3 h-3 text-muted-foreground/40" />
         </motion.div>
       </div>
       
@@ -406,7 +406,7 @@ const EmotionalConnectionAnimation = ({
       }} transition={{
         duration: 0.4
       }} className="w-7 h-7 rounded border border-border/40 bg-muted/20 flex items-center justify-center">
-          <Square className="w-2.5 h-2.5 text-muted-foreground/50" />
+          <span className="text-[10px] text-muted-foreground/50 font-medium">€</span>
         </motion.div>
         
         {/* Arrow */}
@@ -422,7 +422,7 @@ const EmotionalConnectionAnimation = ({
       }} transition={{
         duration: 0.4,
       }} className="w-9 h-9 rounded-full border border-border/30 bg-muted/15 flex items-center justify-center">
-          <Circle className="w-3.5 h-3.5 text-muted-foreground/40" />
+          <Heart className="w-3.5 h-3.5 text-muted-foreground/40" />
         </motion.div>
         
         {/* Arrow */}
