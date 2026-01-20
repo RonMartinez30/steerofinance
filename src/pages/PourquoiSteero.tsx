@@ -293,7 +293,7 @@ const CognitiveEffortAnimation = ({
   );
 };
 
-// Animation 2: Control Illusion - Beautiful dashboard but no understanding
+// Animation 2: Control Illusion - Dense vs Simple view
 const ControlIllusionAnimation = ({
   isOpen,
   t
@@ -301,105 +301,159 @@ const ControlIllusionAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [phase, setPhase] = useState<'dashboard' | 'question' | 'reality'>('dashboard');
+  const [phase, setPhase] = useState<'dense' | 'static' | 'simple'>('dense');
+  const [simpleValue, setSimpleValue] = useState(0);
   
   useEffect(() => {
     if (!isOpen) {
-      setPhase('dashboard');
+      setPhase('dense');
+      setSimpleValue(0);
       return;
     }
+    
     const timers = [
-      setTimeout(() => setPhase('question'), 2000),
-      setTimeout(() => setPhase('reality'), 4000)
+      setTimeout(() => setPhase('static'), 2500),
+      setTimeout(() => setPhase('simple'), 4500)
     ];
+    
+    // Animate the simple indicator when in simple phase
+    const valueInterval = setInterval(() => {
+      setSimpleValue(v => {
+        if (phase === 'simple') {
+          return v < 100 ? v + 5 : 0;
+        }
+        return 0;
+      });
+    }, 150);
+    
     const loop = setInterval(() => {
-      setPhase('dashboard');
-      setTimeout(() => setPhase('question'), 2000);
-      setTimeout(() => setPhase('reality'), 4000);
-    }, 7000);
+      setPhase('dense');
+      setSimpleValue(0);
+      setTimeout(() => setPhase('static'), 2500);
+      setTimeout(() => setPhase('simple'), 4500);
+    }, 8000);
+    
     return () => {
       timers.forEach(clearTimeout);
       clearInterval(loop);
+      clearInterval(valueInterval);
     };
-  }, [isOpen]);
+  }, [isOpen, phase]);
 
   return (
     <div className="flex flex-col gap-3 py-3">
-      <div className="relative h-24 bg-muted/20 rounded-lg border border-border/30 p-3 overflow-hidden">
-        {/* Dashboard mockup */}
-        <div className="flex gap-2 h-full">
-          {/* Fake chart */}
-          <div className="flex-1 flex items-end gap-0.5">
-            {[40, 65, 45, 80, 55, 70, 50].map((h, i) => (
-              <motion.div
+      <div className="grid grid-cols-2 gap-3">
+        {/* Dense dashboard - lots of data, nothing changes */}
+        <motion.div
+          animate={{
+            opacity: phase !== 'simple' ? 1 : 0.3,
+            scale: phase !== 'simple' ? 1 : 0.95
+          }}
+          transition={{ duration: 0.4 }}
+          className="bg-muted/20 rounded-lg p-2 border border-border/30"
+        >
+          <div className="flex items-center gap-1 mb-1.5">
+            <Zap className="w-2.5 h-2.5 text-muted-foreground/40" />
+            <span className="text-[8px] text-muted-foreground/50">{t('animations.denseView')}</span>
+          </div>
+          {/* Mini cards grid - static */}
+          <div className="grid grid-cols-3 gap-1">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="h-4 bg-muted/40 rounded" />
+            ))}
+          </div>
+          {/* Mini chart - static bars */}
+          <div className="flex items-end gap-0.5 h-6 mt-1.5">
+            {[35, 55, 40, 65, 45, 50, 38].map((h, i) => (
+              <div
                 key={i}
-                animate={{ height: `${h}%`, opacity: phase === 'dashboard' ? 0.6 : 0.2 }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="flex-1 bg-muted-foreground/30 rounded-t"
+                style={{ height: `${h}%` }}
+                className="flex-1 bg-muted-foreground/20 rounded-t"
               />
             ))}
           </div>
-          {/* Fake metrics */}
-          <div className="w-16 space-y-1.5">
-            <motion.div
-              animate={{ opacity: phase === 'dashboard' ? 0.7 : 0.2 }}
-              className="h-2 bg-muted/60 rounded w-full"
-            />
-            <motion.div
-              animate={{ opacity: phase === 'dashboard' ? 0.7 : 0.2 }}
-              className="h-2 bg-muted/60 rounded w-3/4"
-            />
-            <motion.div
-              animate={{ opacity: phase === 'dashboard' ? 0.7 : 0.2 }}
-              className="h-2 bg-muted/60 rounded w-1/2"
-            />
-          </div>
-        </div>
-
-        {/* Question overlay */}
-        <motion.div
-          animate={{
-            opacity: phase === 'question' ? 1 : 0,
-            scale: phase === 'question' ? 1 : 0.9
-          }}
-          transition={{ duration: 0.3 }}
-          className="absolute inset-0 bg-background/80 flex items-center justify-center"
-        >
-          <div className="text-center">
-            <AlertCircle className="w-5 h-5 text-muted-foreground/60 mx-auto mb-1" />
-            <p className="text-[10px] text-muted-foreground/70">{t('animations.whereMoneyGoes')}</p>
-          </div>
+          {/* Static indicator */}
+          <motion.p
+            animate={{ opacity: phase === 'static' ? 1 : 0 }}
+            className="text-[8px] text-muted-foreground/50 text-center mt-1.5"
+          >
+            {t('animations.nothingChanges')}
+          </motion.p>
         </motion.div>
 
-        {/* Reality overlay */}
+        {/* Simple view - one indicator that evolves */}
         <motion.div
           animate={{
-            opacity: phase === 'reality' ? 1 : 0,
-            scale: phase === 'reality' ? 1 : 0.9
+            opacity: phase === 'simple' ? 1 : 0.3,
+            scale: phase === 'simple' ? 1 : 0.95
           }}
-          transition={{ duration: 0.3 }}
-          className="absolute inset-0 bg-background/90 flex items-center justify-center"
+          transition={{ duration: 0.4 }}
+          className="bg-primary/5 rounded-lg p-2 border border-primary/20"
         >
-          <div className="text-center">
-            <Compass className="w-5 h-5 text-primary/60 mx-auto mb-1" />
-            <p className="text-[10px] text-primary/70 font-medium">{t('animations.realUnderstanding')}</p>
+          <div className="flex items-center gap-1 mb-1.5">
+            <Compass className="w-2.5 h-2.5 text-primary/50" />
+            <span className="text-[8px] text-primary/60">{t('animations.simpleView')}</span>
           </div>
+          {/* Single evolving indicator */}
+          <div className="flex flex-col items-center justify-center h-16">
+            <motion.div
+              animate={{ 
+                scale: phase === 'simple' ? [1, 1.05, 1] : 1
+              }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="relative w-12 h-12 rounded-full border-2 border-primary/30 flex items-center justify-center"
+            >
+              {/* Progress ring */}
+              <svg className="absolute inset-0 w-full h-full -rotate-90">
+                <circle
+                  cx="24"
+                  cy="24"
+                  r="20"
+                  fill="none"
+                  stroke="hsl(var(--primary) / 0.2)"
+                  strokeWidth="3"
+                />
+                <motion.circle
+                  cx="24"
+                  cy="24"
+                  r="20"
+                  fill="none"
+                  stroke="hsl(var(--primary))"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeDasharray={126}
+                  animate={{ strokeDashoffset: 126 - (simpleValue / 100) * 126 }}
+                  transition={{ duration: 0.15 }}
+                />
+              </svg>
+              <span className="text-xs font-medium text-primary/80">
+                {phase === 'simple' ? `${simpleValue}%` : '—'}
+              </span>
+            </motion.div>
+          </div>
+          {/* Evolving indicator */}
+          <motion.p
+            animate={{ opacity: phase === 'simple' ? 1 : 0 }}
+            className="text-[8px] text-primary/60 text-center"
+          >
+            {t('animations.indicatorEvolves')}
+          </motion.p>
         </motion.div>
       </div>
 
-      {/* Label */}
+      {/* Key insight */}
       <motion.p
-        animate={{ opacity: phase === 'reality' ? 0.8 : 0 }}
+        animate={{ opacity: phase === 'simple' ? 0.8 : 0 }}
         transition={{ duration: 0.3 }}
         className="text-center text-xs text-muted-foreground/70"
       >
-        {t('animations.controlVsUnderstanding')}
+        {t('animations.seeingNotUnderstanding')}
       </motion.p>
     </div>
   );
 };
 
-// Animation 3: Ritual Cycle - Calendar with regular moments
+// Animation 3: Ritual - Simple timeline with regular points
 const RitualCycleAnimation = ({
   isOpen,
   t
@@ -407,108 +461,121 @@ const RitualCycleAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [activeDay, setActiveDay] = useState(0);
-  const [weekComplete, setWeekComplete] = useState(false);
+  const [activePoint, setActivePoint] = useState(-1);
+  const [adjustments, setAdjustments] = useState<number[]>([]);
   
   useEffect(() => {
     if (!isOpen) {
-      setActiveDay(0);
-      setWeekComplete(false);
+      setActivePoint(-1);
+      setAdjustments([]);
       return;
     }
     
-    const dayTimers = [0, 1, 2, 3, 4, 5, 6].map((day, i) =>
-      setTimeout(() => setActiveDay(day + 1), 600 + i * 400)
-    );
-    const completeTimer = setTimeout(() => setWeekComplete(true), 3600);
+    const points = 7;
+    let currentPoint = -1;
     
-    const loop = setInterval(() => {
-      setActiveDay(0);
-      setWeekComplete(false);
-      [0, 1, 2, 3, 4, 5, 6].forEach((day, i) => {
-        setTimeout(() => setActiveDay(day + 1), 600 + i * 400);
-      });
-      setTimeout(() => setWeekComplete(true), 3600);
-    }, 5500);
+    const interval = setInterval(() => {
+      currentPoint++;
+      if (currentPoint >= points) {
+        currentPoint = -1;
+        setAdjustments([]);
+      }
+      setActivePoint(currentPoint);
+      if (currentPoint >= 0) {
+        setAdjustments(prev => [...prev, currentPoint]);
+      }
+    }, 600);
     
-    return () => {
-      dayTimers.forEach(clearTimeout);
-      clearTimeout(completeTimer);
-      clearInterval(loop);
-    };
+    return () => clearInterval(interval);
   }, [isOpen]);
 
-  const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-  const ritualDays = [0, 2, 6]; // Lundi, Mercredi, Dimanche
+  const points = 7;
 
   return (
     <div className="flex flex-col gap-3 py-3">
-      {/* Week calendar */}
-      <div className="bg-muted/20 rounded-lg p-3 border border-border/30">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
-            <Calendar className="w-3.5 h-3.5 text-muted-foreground/60" />
-            <span className="text-[10px] text-muted-foreground/60 font-medium">{t('animations.weeklyRitual')}</span>
-          </div>
+      <div className="bg-muted/20 rounded-lg p-4 border border-border/30">
+        {/* Simple timeline */}
+        <div className="relative">
+          {/* Continuous line */}
+          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-muted/40 -translate-y-1/2" />
+          
+          {/* Progress line */}
           <motion.div
-            animate={{ opacity: weekComplete ? 1 : 0 }}
-            className="flex items-center gap-1"
-          >
-            <Check className="w-3 h-3 text-primary/70" />
-            <span className="text-[9px] text-primary/70">{t('animations.ritualComplete')}</span>
-          </motion.div>
+            animate={{ width: `${((activePoint + 1) / points) * 100}%` }}
+            transition={{ duration: 0.4 }}
+            className="absolute top-1/2 left-0 h-0.5 bg-primary/50 -translate-y-1/2"
+          />
+          
+          {/* Regular points */}
+          <div className="relative flex justify-between">
+            {[...Array(points)].map((_, i) => {
+              const isActive = i <= activePoint;
+              const isCurrent = i === activePoint;
+              const hasAdjustment = adjustments.includes(i);
+              
+              return (
+                <div key={i} className="flex flex-col items-center">
+                  {/* Point */}
+                  <motion.div
+                    animate={{
+                      scale: isCurrent ? 1.4 : isActive ? 1.1 : 1,
+                      backgroundColor: isActive 
+                        ? 'hsl(var(--primary))' 
+                        : 'hsl(var(--muted))'
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="w-2.5 h-2.5 rounded-full border-2 border-background"
+                  />
+                  
+                  {/* Micro-adjustment indicator */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{
+                      opacity: hasAdjustment && isActive ? 1 : 0,
+                      y: hasAdjustment && isActive ? 0 : -4
+                    }}
+                    transition={{ duration: 0.25, delay: 0.1 }}
+                    className="mt-1.5"
+                  >
+                    <div className="flex items-center gap-0.5">
+                      <RotateCcw className="w-2 h-2 text-primary/60" />
+                      <span className="text-[7px] text-primary/60">+1</span>
+                    </div>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
         </div>
         
-        <div className="flex justify-between gap-1">
-          {days.map((day, i) => {
-            const isRitualDay = ritualDays.includes(i);
-            const isPast = activeDay > i;
-            const isCurrent = activeDay === i + 1;
-            
-            return (
+        {/* No dates, just rhythm indicator */}
+        <motion.div
+          animate={{ opacity: activePoint >= 3 ? 0.8 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="flex items-center justify-center gap-2 mt-4"
+        >
+          <div className="flex gap-1">
+            {[...Array(3)].map((_, i) => (
               <motion.div
                 key={i}
                 animate={{
-                  opacity: isPast || isCurrent ? 1 : 0.4,
-                  scale: isCurrent ? 1.1 : 1
+                  opacity: activePoint >= i * 2 ? 0.8 : 0.2
                 }}
-                transition={{ duration: 0.3 }}
-                className={`flex-1 flex flex-col items-center gap-1 py-1.5 rounded ${
-                  isRitualDay && isPast
-                    ? 'bg-primary/15'
-                    : isPast
-                    ? 'bg-muted/40'
-                    : ''
-                }`}
-              >
-                <span className={`text-[9px] font-medium ${
-                  isRitualDay && isPast ? 'text-primary/80' : 'text-muted-foreground/60'
-                }`}>
-                  {day}
-                </span>
-                <motion.div
-                  animate={{
-                    backgroundColor: isRitualDay && isPast
-                      ? 'hsl(var(--primary))'
-                      : isPast
-                      ? 'hsl(var(--muted-foreground) / 0.3)'
-                      : 'hsl(var(--muted) / 0.4)'
-                  }}
-                  className="w-2 h-2 rounded-full"
-                />
-              </motion.div>
-            );
-          })}
-        </div>
+                className="w-1 h-1 rounded-full bg-primary/60"
+              />
+            ))}
+          </div>
+          <span className="text-[9px] text-muted-foreground/60">{t('animations.regularRhythm')}</span>
+        </motion.div>
       </div>
 
-      {/* Label */}
+      {/* Key insight */}
       <motion.p
-        animate={{ opacity: weekComplete ? 0.8 : 0 }}
+        animate={{ opacity: activePoint >= points - 1 ? 0.8 : 0 }}
         transition={{ duration: 0.3 }}
         className="text-center text-xs text-muted-foreground/70"
       >
-        {t('animations.habitFormed')}
+        {t('animations.repetitionTransforms')}
       </motion.p>
     </div>
   );
