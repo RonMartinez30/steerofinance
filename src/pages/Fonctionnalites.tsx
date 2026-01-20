@@ -915,93 +915,98 @@ const FeatureCard = ({
     onToggle();
   };
   const variants = getCardAnimationVariants(feature.animationDirection);
-  const closedHeight = isLarge ? 'h-[140px]' : 'h-[130px]';
-  return <div onClick={handleClick} className={`cursor-pointer rounded-2xl border-2 ${feature.borderColor} ${feature.bgColor} ${isLarge ? 'p-8' : 'p-6'} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] relative ${isExplored && !isOpen ? 'saturate-[0.7] opacity-90' : ''} ${isOpen ? 'h-auto' : closedHeight}`}>
-      {/* Badge "Découvert" */}
+  
+  // Hauteur uniforme pour toutes les cartes fermées
+  const closedHeight = 'h-[120px]';
+  
+  return (
+    <div 
+      onClick={handleClick} 
+      className={`cursor-pointer rounded-2xl border ${isOpen ? 'border-primary/30 shadow-lg' : 'border-border/40 hover:border-border/60'} bg-card ${isLarge ? 'p-6' : 'p-5'} transition-all duration-300 hover:shadow-md relative ${isExplored && !isOpen ? 'opacity-90' : ''} ${isOpen ? 'h-auto' : closedHeight}`}
+    >
+      {/* Badge "Découvert" - plus subtil */}
       <AnimatePresence>
-        {isExplored && !isOpen && <motion.div initial={{
-        opacity: 0,
-        scale: 0.8,
-        y: -10
-      }} animate={{
-        opacity: 1,
-        scale: 1,
-        y: 0
-      }} exit={{
-        opacity: 0,
-        scale: 0.8
-      }} transition={{
-        duration: 0.3
-      }} className="absolute -top-2 -right-2 flex items-center gap-1 bg-primary/90 text-primary-foreground text-xs font-medium px-2 py-1 rounded-full shadow-md">
-            <Check className="w-3 h-3" />
+        {isExplored && !isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-3 right-3 flex items-center gap-1 bg-muted text-muted-foreground text-[10px] font-medium px-2 py-0.5 rounded-full"
+          >
+            <Check className="w-2.5 h-2.5" />
             <span>{t('fonctionnalites.discovered')}</span>
-          </motion.div>}
+          </motion.div>
+        )}
       </AnimatePresence>
       
-      <div className="flex items-center gap-4">
-        <div className={`${isLarge ? 'text-5xl md:text-6xl' : 'text-4xl md:text-5xl'} relative flex-shrink-0`}>
+      <div className="flex items-start gap-4">
+        {/* Emoji - taille réduite et cohérente */}
+        <div className="text-3xl flex-shrink-0 mt-0.5">
           {feature.emoji}
-          {/* Checkmark overlay when explored */}
-          <AnimatePresence>
-            {isExplored && !isOpen && <motion.div initial={{
-            opacity: 0,
-            scale: 0
-          }} animate={{
-            opacity: 1,
-            scale: 1
-          }} exit={{
-            opacity: 0,
-            scale: 0
-          }} transition={{
-            duration: 0.2,
-            type: "spring",
-            stiffness: 300
-          }} className="absolute -bottom-1 -right-1 w-5 h-5 bg-primary rounded-full flex items-center justify-center shadow-sm">
-                <Check className="w-3 h-3 text-primary-foreground" />
-              </motion.div>}
-          </AnimatePresence>
         </div>
+        
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <h3 className={`${isLarge ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'} font-semibold ${feature.textColor}`}>
+          {/* Header : titre + chevron */}
+          <div className="flex items-center justify-between gap-2">
+            <h3 className="text-base font-semibold text-foreground leading-tight">
               {feature.title}
             </h3>
-            {/* Chevron arrow next to title */}
+            
+            {/* Chevron avec affordance renforcée */}
             <motion.div 
               animate={{ rotate: isOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
-              className={`${feature.textColor} opacity-50 flex-shrink-0`}
+              className="flex-shrink-0 text-muted-foreground/60"
             >
-              <svg width="16" height="16" viewBox="0 0 12 12" fill="none">
+              <svg width="18" height="18" viewBox="0 0 12 12" fill="none">
                 <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </motion.div>
           </div>
+          
+          {/* Micro-promesse - visible uniquement en état fermé */}
           <motion.p 
             animate={{
               opacity: isOpen ? 0 : 1,
               height: isOpen ? 0 : 'auto'
             }}
             transition={{ duration: 0.2 }}
-            className={`text-sm ${feature.textColor} opacity-70 mt-1 overflow-hidden`}
+            className="text-sm text-muted-foreground mt-1.5 leading-relaxed overflow-hidden"
           >
             {feature.microPromise}
           </motion.p>
+          
+          {/* Indice d'interaction - uniquement en état fermé */}
+          <motion.span
+            animate={{ opacity: isOpen ? 0 : 0.5 }}
+            className="text-[10px] text-muted-foreground/50 mt-2 block"
+          >
+            {t('fonctionnalites.clickForPreview')}
+          </motion.span>
         </div>
       </div>
       
+      {/* Contenu déplié */}
       <AnimatePresence mode="wait">
-        {isOpen && <motion.div variants={variants} initial="hidden" animate="visible" exit="exit" transition={{
-        duration: 0.3,
-        ease: "easeInOut"
-      }} className="overflow-hidden">
+        {isOpen && (
+          <motion.div 
+            variants={variants} 
+            initial="hidden" 
+            animate="visible" 
+            exit="exit" 
+            transition={{ duration: 0.3, ease: "easeInOut" }} 
+            className="overflow-hidden"
+          >
             <FeatureAnimation type={feature.animation} isOpen={isOpen} t={t} />
-            <p className="mt-4 text-muted-foreground leading-relaxed pt-4 border-t border-current/10">
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed pt-4 border-t border-border/30">
               {feature.details}
             </p>
-          </motion.div>}
+          </motion.div>
+        )}
       </AnimatePresence>
-    </div>;
+    </div>
+  );
 };
 const Fonctionnalites = () => {
   const { t } = useTranslation();

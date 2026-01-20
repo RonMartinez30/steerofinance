@@ -314,7 +314,7 @@
     "follow": "Seguir",
     "adjustLast": "Ajustar y durar",
     "discovered": "Descubierto",
-    "clickForPreview": "Clic para ver la vista previa",
+    "clickForPreview": "Ver el detalle",
     "comingSoon": "Próximamente",
     "futureTitle": "Y cuando quieras ir más lejos",
     "futureSubtitle": "Otras dimensiones por explorar, pronto disponibles.",
@@ -322,38 +322,38 @@
     "ctaSubtitle": "Únete a la lista de espera y sé de los primeros en probar Steero.",
     "features": {
       "onboarding": {
-        "title": "Recorrido de inicialización",
-        "microPromise": "Configurar tu punto de partida",
-        "details": "Un recorrido guiado e intuitivo para configurar tu perfil financiero. Paso a paso, defines tus objetivos, tus ingresos y tus prioridades para que Steero se adapte perfectamente a tu situación."
+        "title": "Trayectoria personalizada",
+        "microPromise": "Establece las bases de tu dirección financiera.",
+        "details": "Un recorrido guiado que te ayuda a definir tus objetivos, ingresos, gastos fijos y prioridades. Sin jerga, sin complejidad: solo las preguntas adecuadas para crear tu marco financiero."
       },
       "budget": {
-        "title": "Gestión del presupuesto",
-        "microPromise": "Definir tu marco mensual",
-        "details": "Organiza tus finanzas con un sistema de categorías jerárquicas. Tu presupuesto evoluciona contigo, se adapta a cada mes y te permite afinar tu gestión con el tiempo."
+        "title": "Estructura de presupuesto",
+        "microPromise": "Organiza tus recursos según tus prioridades.",
+        "details": "Crea categorías y subcategorías que reflejen tu vida real. Organiza tus gastos de forma jerárquica para tener una visión clara de lo que realmente importa."
       },
       "fixed": {
-        "title": "Transacciones fijas",
-        "microPromise": "Anticipar lo que vuelve cada mes",
-        "details": "Centraliza todos tus cargos, suscripciones e ingresos recurrentes. Visualiza claramente lo que entra y lo que sale cada mes, con las fechas exactas de cada transacción."
+        "title": "Operaciones fijas",
+        "microPromise": "Anticipa tus flujos recurrentes.",
+        "details": "Planifica tus ingresos, gastos y plazos del mes. Anticipa cuándo tu tesorería estará ajustada y mantén un calendario claro de tus movimientos."
       },
       "daily": {
-        "title": "Transacciones del día a día",
-        "microPromise": "Registrar sin esfuerzo en el día a día",
-        "details": "Gana tiempo gracias a los modelos de transacciones personalizables. Tus compras recurrentes están pre-rellenadas para un registro rápido y sin fricción."
+        "title": "Plantillas y registro rápido",
+        "microPromise": "Registra tus gastos en un instante.",
+        "details": "Crea plantillas para tus operaciones frecuentes: café, compras, gasolina... Un toque basta para registrar, el sistema aprende tus hábitos."
       },
       "level": {
         "title": "El Nivel",
-        "microPromise": "Ver dónde estás de un vistazo",
+        "microPromise": "Visualiza tu margen en tiempo real.",
         "details": "En cada registro, visualiza instantáneamente: lo que ya se ha gastado, lo que representa el gasto en curso, y lo que te quedará disponible en tu presupuesto."
       },
       "rituals": {
         "title": "Seguimiento de rituales",
-        "microPromise": "Seguir lo que realmente importa",
+        "microPromise": "Ancla hábitos que perduran.",
         "details": "Un sistema de rituales que te guía sobre lo que debes hacer, mirar, y qué preguntas hacerte. Desarrolla hábitos financieros duraderos."
       },
       "indicators": {
         "title": "Indicadores lúdicos",
-        "microPromise": "Medir tus progresos en el tiempo",
+        "microPromise": "Mide tus progresos de un vistazo.",
         "details": "Visualizaciones claras y atractivas que transforman tus datos en insights accionables. Comprende rápidamente tu situación gracias a indicadores pensados para facilitar tus decisiones."
       }
     },
