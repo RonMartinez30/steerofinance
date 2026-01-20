@@ -864,8 +864,15 @@ const ReadingProgressBar = ({ contentRef }: { contentRef: React.RefObject<HTMLDi
   );
 };
 
-const ArticleCard = ({ article, t }: { article: Article; t: (key: string, options?: Record<string, unknown>) => string }) => {
-  const [isOpen, setIsOpen] = useState(false);
+interface ArticleCardProps {
+  article: Article;
+  t: (key: string, options?: Record<string, unknown>) => string;
+  isOpen: boolean;
+  onToggle: () => void;
+  cardRef?: React.RefObject<HTMLDivElement>;
+}
+
+const ArticleCard = ({ article, t, isOpen, onToggle, cardRef }: ArticleCardProps) => {
   const [copied, setCopied] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const hook = t(article.hookKey);
@@ -884,16 +891,20 @@ const ArticleCard = ({ article, t }: { article: Article; t: (key: string, option
 
   return (
     <motion.div
+      ref={cardRef}
       layout
-      onClick={() => setIsOpen(!isOpen)}
-      className={`cursor-pointer rounded-xl border transition-all duration-300 ${
+      data-article-id={article.id}
+      className={`rounded-xl border transition-all duration-300 ${
         isOpen 
           ? "border-primary/30 bg-card shadow-md" 
-          : "border-border bg-card hover:border-primary/30 hover:shadow-sm"
+          : "border-border bg-card hover:border-primary/30 hover:shadow-sm cursor-pointer"
       }`}
     >
-      {/* Header - compact version */}
-      <div className="p-4">
+      {/* Header - sticky when open */}
+      <div 
+        onClick={() => !isOpen && onToggle()}
+        className={`p-4 ${isOpen ? 'sticky top-16 z-20 bg-card rounded-t-xl border-b border-border/30' : 'cursor-pointer'}`}
+      >
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
             {/* Tags and reading time inline */}
@@ -918,13 +929,24 @@ const ArticleCard = ({ article, t }: { article: Article; t: (key: string, option
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="text-muted-foreground flex-shrink-0 mt-1"
+            className="text-muted-foreground flex-shrink-0 mt-1 cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggle();
+            }}
           >
             <svg width="16" height="16" viewBox="0 0 12 12" fill="none">
               <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </motion.div>
         </div>
+        
+        {/* Progress bar - only when open */}
+        {isOpen && (
+          <div className="mt-3">
+            <ReadingProgressBar contentRef={contentRef} />
+          </div>
+        )}
         
         {/* Hook - truncated when closed */}
         {!isOpen && (
@@ -943,11 +965,6 @@ const ArticleCard = ({ article, t }: { article: Article; t: (key: string, option
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            {/* Sticky progress bar container */}
-            <div className="sticky top-16 z-20 bg-card px-4 pt-2 pb-3 border-b border-border/30">
-              <ReadingProgressBar contentRef={contentRef} />
-            </div>
-            
             <div ref={contentRef} className="px-4 pb-4">
               {/* Hook full text */}
               <div className="py-3 border-b border-border/50">
@@ -956,30 +973,19 @@ const ArticleCard = ({ article, t }: { article: Article; t: (key: string, option
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-border/50">
+              <div className="pt-3">
                 {/* Mobile: TOC inline at top */}
                 <div className="lg:hidden mb-6">
                   <TableOfContents sections={extractSectionTitles(article.content, article.id)} />
                 </div>
                 
-                {/* Desktop: Two-column layout with sticky TOC */}
-                <div className="lg:flex lg:gap-6 lg:items-start">
-                  {/* Main content */}
-                  <div className="flex-1 min-w-0 text-sm">
-                    {formatContent(article.content, article.id)}
-                  </div>
-                  
-                  {/* Sticky TOC on the right - desktop only */}
-                  <aside className="hidden lg:block w-64 flex-shrink-0 self-start sticky top-24">
-                    <TableOfContents 
-                      sections={extractSectionTitles(article.content, article.id)} 
-                      isSticky={true}
-                    />
-                  </aside>
+                {/* Main content - full width on desktop (TOC is in sidebar) */}
+                <div className="text-sm">
+                  {formatContent(article.content, article.id)}
                 </div>
               </div>
               
-              {/* CTA Button - more compact */}
+              {/* CTA Button */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -997,7 +1003,7 @@ const ArticleCard = ({ article, t }: { article: Article; t: (key: string, option
                 </Button>
               </motion.div>
               
-              {/* Actions row - compact */}
+              {/* Actions row */}
               <div className="mt-4 flex items-center gap-3">
                 <motion.button
                   initial={{ opacity: 0 }}
@@ -1025,7 +1031,7 @@ const ArticleCard = ({ article, t }: { article: Article; t: (key: string, option
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    setIsOpen(false);
+                    onToggle();
                   }}
                   className="text-muted-foreground text-xs font-medium flex items-center gap-1.5 hover:text-foreground transition-colors"
                 >
@@ -1047,9 +1053,71 @@ const Blog = () => {
   const { t } = useTranslation();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [openArticles, setOpenArticles] = useState<Set<number>>(new Set());
+  const [visibleArticleId, setVisibleArticleId] = useState<number | null>(null);
+  const articleRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   
   const articles = getArticles(t);
   const allTags = Array.from(new Set(articles.flatMap(article => t(article.tagsKey, { returnObjects: true }) as string[])));
+
+  // Track which open article is most visible
+  useEffect(() => {
+    const openArticleIds = Array.from(openArticles);
+    if (openArticleIds.length === 0) {
+      setVisibleArticleId(null);
+      return;
+    }
+
+    const handleScroll = () => {
+      let maxVisibleArea = 0;
+      let mostVisibleId: number | null = null;
+
+      openArticleIds.forEach(id => {
+        const element = articleRefs.current.get(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          
+          // Calculate visible area
+          const visibleTop = Math.max(0, rect.top);
+          const visibleBottom = Math.min(windowHeight, rect.bottom);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          
+          if (visibleHeight > maxVisibleArea) {
+            maxVisibleArea = visibleHeight;
+            mostVisibleId = id;
+          }
+        }
+      });
+
+      setVisibleArticleId(mostVisibleId);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [openArticles]);
+
+  const toggleArticle = (id: number) => {
+    setOpenArticles(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
+
+  const setArticleRef = (id: number, element: HTMLDivElement | null) => {
+    if (element) {
+      articleRefs.current.set(id, element);
+    } else {
+      articleRefs.current.delete(id);
+    }
+  };
 
   const toggleTag = (tag: string) => {
     setSelectedTags(prev => 
@@ -1068,11 +1136,8 @@ const Blog = () => {
     const tags = t(article.tagsKey, { returnObjects: true }) as string[];
     const title = t(article.titleKey) as string;
     const hook = t(article.hookKey) as string;
-    // Filter by tags
     const matchesTags = selectedTags.length === 0 || 
       selectedTags.some(tag => tags.includes(tag));
-    
-    // Filter by search query
     const matchesSearch = searchQuery === "" || 
       title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       hook.toLowerCase().includes(searchQuery.toLowerCase());
@@ -1081,6 +1146,10 @@ const Blog = () => {
   });
 
   const hasActiveFilters = selectedTags.length > 0 || searchQuery !== "";
+
+  // Get sections for the most visible article
+  const visibleArticle = visibleArticleId ? articles.find(a => a.id === visibleArticleId) : null;
+  const visibleSections = visibleArticle ? extractSectionTitles(visibleArticle.content, visibleArticle.id) : [];
 
   return (
     <div className="min-h-screen">
@@ -1099,7 +1168,7 @@ const Blog = () => {
             <div className="flex flex-col lg:flex-row gap-10 lg:gap-12">
               {/* Left side - Sticky */}
               <div className="lg:w-1/3">
-                <div className="lg:sticky lg:top-32">
+                <div className="lg:sticky lg:top-24">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1174,6 +1243,21 @@ const Blog = () => {
                         {filteredArticles.length} {t('blog.articlesFound')}
                       </motion.p>
                     )}
+
+                    {/* Dynamic TOC - appears when an article is open */}
+                    <AnimatePresence>
+                      {visibleSections.length > 0 && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.3 }}
+                          className="mt-6 hidden lg:block"
+                        >
+                          <TableOfContents sections={visibleSections} isSticky={true} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 </div>
               </div>
@@ -1190,8 +1274,14 @@ const Blog = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.3, delay: index * 0.05 }}
+                        ref={(el) => setArticleRef(article.id, el)}
                       >
-                        <ArticleCard article={article} t={t} />
+                        <ArticleCard 
+                          article={article} 
+                          t={t}
+                          isOpen={openArticles.has(article.id)}
+                          onToggle={() => toggleArticle(article.id)}
+                        />
                       </motion.div>
                     ))}
                   </AnimatePresence>
