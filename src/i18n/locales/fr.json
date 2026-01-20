@@ -356,14 +356,17 @@
     "futureFeatures": {
       "projects": {
         "title": "Gestion de projets",
+        "promise": "Relie plusieurs budgets autour d'un même objectif.",
         "description": "Regroupe plusieurs budgets sous un même objectif avec une temporalité définie. Que ce soit un voyage, une rénovation ou un événement : visualise ta progression et garde une vision transversale sur les ressources allouées."
       },
       "tiers": {
         "title": "Gestion des tiers & de la trésorerie",
+        "promise": "Clarifie ce que tu dois, ce qu'on te doit, et l'impact réel sur ta trésorerie.",
         "description": "Suis ce que tu dois et ce qu'on te doit. Notes de frais, avances entre amis, remboursements attendus : cette vue te permet de clarifier ta trésorerie réelle et d'anticiper les flux à venir."
       },
       "patrimoine": {
         "title": "Gestion du patrimoine",
+        "promise": "Comprends ta situation financière globale en un coup d'œil.",
         "description": "Identifie tes actifs (épargne, investissements, biens) et tes passifs (crédits, dettes). Comprends ton patrimoine net comme un indicateur clé de ta situation financière globale."
       }
     },
@@ -427,7 +430,7 @@
       "patrimoineMortgage": "Crédit immobilier",
       "patrimoineApartmentDebt": "Emprunt appartement",
       "patrimoineNetWorth": "Patrimoine net",
-      "patrimoineClosing": "J'ai un bilan global et synthétique de mon patrimoine."
+      "patrimoineClosing": "J'ai un bilan global, synthétique et évolutif de mon patrimoine."
     }
   },
   "blog": {

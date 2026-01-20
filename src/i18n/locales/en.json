@@ -360,14 +360,17 @@
     "futureFeatures": {
       "projects": {
         "title": "Project Management",
+        "promise": "Link multiple budgets around a single objective.",
         "description": "Group multiple budgets under a single objective with a defined timeline. Whether it's a trip, renovation, or event: track your progress and maintain a cross-cutting view of allocated resources."
       },
       "tiers": {
         "title": "Third-Party & Cash Flow Management",
+        "promise": "Clarify what you owe, what's owed to you, and the real impact on your cash flow.",
         "description": "Track what you owe and what's owed to you. Expense reports, advances between friends, expected reimbursements: this view clarifies your real cash flow and helps anticipate incoming and outgoing transactions."
       },
       "patrimoine": {
         "title": "Net Worth Management",
+        "promise": "Understand your overall financial situation at a glance.",
         "description": "Identify your assets (savings, investments, property) and liabilities (loans, debts). Understand your net worth as a key indicator of your overall financial situation."
       }
     },
@@ -431,7 +434,7 @@
       "patrimoineMortgage": "Mortgage",
       "patrimoineApartmentDebt": "Apartment loan",
       "patrimoineNetWorth": "Net worth",
-      "patrimoineClosing": "I have a global and synthetic overview of my net worth."
+      "patrimoineClosing": "I have a global, synthetic, and evolving overview of my net worth."
     }
   },
   "blog": {
