@@ -359,16 +359,16 @@
     },
     "futureFeatures": {
       "projects": {
-        "title": "Proyectos",
-        "description": "Planifica tus objetivos financieros a medio y largo plazo."
+        "title": "Gestión de proyectos",
+        "description": "Agrupa varios presupuestos bajo un mismo objetivo con una temporalidad definida. Ya sea un viaje, una renovación o un evento: visualiza tu progreso y mantén una visión transversal de los recursos asignados."
       },
       "tiers": {
-        "title": "Terceros",
-        "description": "Gestiona las personas y entidades con las que intercambias."
+        "title": "Gestión de terceros y tesorería",
+        "description": "Sigue lo que debes y lo que te deben. Notas de gastos, adelantos entre amigos, reembolsos esperados: esta vista te permite clarificar tu tesorería real y anticipar los flujos futuros."
       },
       "patrimoine": {
-        "title": "Patrimonio",
-        "description": "Visualiza la evolución de tu patrimonio global."
+        "title": "Gestión del patrimonio",
+        "description": "Identifica tus activos (ahorros, inversiones, bienes) y tus pasivos (créditos, deudas). Comprende tu patrimonio neto como un indicador clave de tu situación financiera global."
       }
     },
     "animations": {

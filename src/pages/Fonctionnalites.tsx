@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, FolderKanban, Users, Building2 } from "lucide-react";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useTranslation } from "react-i18next";
 
@@ -688,7 +688,7 @@ const IndicatorsAnimation = ({
 
 // Future Feature Card component with expandable animation
 const FutureFeatureCard = ({
-  emoji,
+  icon,
   title,
   description,
   delay,
@@ -696,7 +696,7 @@ const FutureFeatureCard = ({
   animation,
   t
 }: {
-  emoji: string;
+  icon: "folder-kanban" | "users" | "building-2";
   title: string;
   description: string;
   delay: number;
@@ -709,6 +709,8 @@ const FutureFeatureCard = ({
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
+
+  const IconComponent = icon === "folder-kanban" ? FolderKanban : icon === "users" ? Users : Building2;
 
   return (
     <div
@@ -745,16 +747,15 @@ const FutureFeatureCard = ({
             animate={{ rotate: isOpen ? [0, 5, -5, 0] : 0 }}
             transition={{ type: "spring", stiffness: 150, damping: 25 }}
           >
-            <motion.span
-              className="text-lg opacity-60"
+            <motion.div
               animate={{ 
                 opacity: isOpen ? 1 : 0.6,
                 scale: isOpen ? 1.1 : 1
               }}
               transition={{ duration: 0.3 }}
             >
-              {emoji}
-            </motion.span>
+              <IconComponent className="w-5 h-5 text-muted-foreground" />
+            </motion.div>
           </motion.div>
 
           <div className="flex items-center gap-2">
@@ -1286,7 +1287,7 @@ const Fonctionnalites = () => {
           <div className="grid gap-6 grid-cols-1 md:grid-cols-3 items-start">
             {/* Projets financiers */}
             <FutureFeatureCard
-              emoji="🧳"
+              icon="folder-kanban"
               title={t('fonctionnalites.futureFeatures.projects.title')}
               description={t('fonctionnalites.futureFeatures.projects.description')}
               delay={0.1}
@@ -1413,7 +1414,7 @@ const Fonctionnalites = () => {
 
             {/* Tiers & avances */}
             <FutureFeatureCard
-              emoji="👥"
+              icon="users"
               title={t('fonctionnalites.futureFeatures.tiers.title')}
               description={t('fonctionnalites.futureFeatures.tiers.description')}
               delay={0.2}
@@ -1507,7 +1508,7 @@ const Fonctionnalites = () => {
 
             {/* Patrimoine */}
             <FutureFeatureCard
-              emoji="🏠"
+              icon="building-2"
               title={t('fonctionnalites.futureFeatures.patrimoine.title')}
               description={t('fonctionnalites.futureFeatures.patrimoine.description')}
               delay={0.3}

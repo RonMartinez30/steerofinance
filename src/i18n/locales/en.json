@@ -359,16 +359,16 @@
     },
     "futureFeatures": {
       "projects": {
-        "title": "Projects",
-        "description": "Plan your medium and long-term financial goals."
+        "title": "Project Management",
+        "description": "Group multiple budgets under a single objective with a defined timeline. Whether it's a trip, renovation, or event: track your progress and maintain a cross-cutting view of allocated resources."
       },
       "tiers": {
-        "title": "Contacts",
-        "description": "Manage people and entities you exchange with."
+        "title": "Third-Party & Cash Flow Management",
+        "description": "Track what you owe and what's owed to you. Expense reports, advances between friends, expected reimbursements: this view clarifies your real cash flow and helps anticipate incoming and outgoing transactions."
       },
       "patrimoine": {
-        "title": "Net Worth",
-        "description": "Visualize the evolution of your global assets."
+        "title": "Net Worth Management",
+        "description": "Identify your assets (savings, investments, property) and liabilities (loans, debts). Understand your net worth as a key indicator of your overall financial situation."
       }
     },
     "animations": {
