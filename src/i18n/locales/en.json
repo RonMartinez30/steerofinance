@@ -8,10 +8,9 @@
     "close": "Close"
   },
   "header": {
+    "home": "Home",
     "whySteero": "Why Steero",
-    "features": "Features",
-    "blog": "Blog",
-    "faq": "FAQ"
+    "features": "Features"
   },
   "footer": {
     "tagline": "A simple framework to understand and manage your finances over time.",

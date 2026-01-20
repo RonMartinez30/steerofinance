@@ -27,17 +27,14 @@ const Header = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">
+          <Link to="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            {t('header.home')}
+          </Link>
           <Link to="/pourquoi-steero" className="text-sm text-muted-foreground hover:text-primary transition-colors">
             {t('header.whySteero')}
           </Link>
           <Link to="/fonctionnalites" className="text-sm text-muted-foreground hover:text-primary transition-colors">
             {t('header.features')}
-          </Link>
-          <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-            {t('header.blog')}
-          </Link>
-          <Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-            {t('header.faq')}
           </Link>
         </nav>
 
@@ -74,6 +71,13 @@ const Header = () => {
               className="container mx-auto px-6 py-4 flex flex-col gap-4"
             >
               <Link 
+                to="/" 
+                className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t('header.home')}
+              </Link>
+              <Link 
                 to="/pourquoi-steero" 
                 className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
@@ -86,20 +90,6 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('header.features')}
-              </Link>
-              <Link 
-                to="/blog" 
-                className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t('header.blog')}
-              </Link>
-              <Link 
-                to="/faq" 
-                className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t('header.faq')}
               </Link>
               <Button 
                 className="btn-primary text-xs w-full mt-2"
