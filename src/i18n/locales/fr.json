@@ -415,7 +415,17 @@
       "tiersEmployer": "Mon employeur",
       "tiersExpenseReports": "Notes de frais",
       "tiersTreasuryBalance": "Impact trésorerie",
-      "tiersClosing": "Je sais où est mon argent, même quand il n'est pas sur mon compte."
+      "tiersClosing": "Je sais où est mon argent, même quand il n'est pas sur mon compte.",
+      "patrimoineAssets": "Actifs",
+      "patrimoineLiabilities": "Passifs",
+      "patrimoineApartment": "Appartement",
+      "patrimoineRealEstate": "Immobilier",
+      "patrimoineStocksETF": "Actions & ETF",
+      "patrimoineInvestments": "Investissements",
+      "patrimoineMortgage": "Crédit immobilier",
+      "patrimoineApartmentDebt": "Emprunt appartement",
+      "patrimoineNetWorth": "Patrimoine net",
+      "patrimoineClosing": "J'ai un bilan global et synthétique de mon patrimoine."
     }
   },
   "blog": {

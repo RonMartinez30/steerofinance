@@ -419,7 +419,17 @@
       "tiersEmployer": "My employer",
       "tiersExpenseReports": "Expense reports",
       "tiersTreasuryBalance": "Treasury impact",
-      "tiersClosing": "I know where my money is, even when it's not in my account."
+      "tiersClosing": "I know where my money is, even when it's not in my account.",
+      "patrimoineAssets": "Assets",
+      "patrimoineLiabilities": "Liabilities",
+      "patrimoineApartment": "Apartment",
+      "patrimoineRealEstate": "Real estate",
+      "patrimoineStocksETF": "Stocks & ETF",
+      "patrimoineInvestments": "Investments",
+      "patrimoineMortgage": "Mortgage",
+      "patrimoineApartmentDebt": "Apartment loan",
+      "patrimoineNetWorth": "Net worth",
+      "patrimoineClosing": "I have a global and synthetic overview of my net worth."
     }
   },
   "blog": {

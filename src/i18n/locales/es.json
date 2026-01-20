@@ -419,7 +419,17 @@
       "tiersEmployer": "Mi empleador",
       "tiersExpenseReports": "Notas de gastos",
       "tiersTreasuryBalance": "Impacto tesorería",
-      "tiersClosing": "Sé dónde está mi dinero, incluso cuando no está en mi cuenta."
+      "tiersClosing": "Sé dónde está mi dinero, incluso cuando no está en mi cuenta.",
+      "patrimoineAssets": "Activos",
+      "patrimoineLiabilities": "Pasivos",
+      "patrimoineApartment": "Apartamento",
+      "patrimoineRealEstate": "Inmobiliario",
+      "patrimoineStocksETF": "Acciones y ETF",
+      "patrimoineInvestments": "Inversiones",
+      "patrimoineMortgage": "Hipoteca",
+      "patrimoineApartmentDebt": "Préstamo apartamento",
+      "patrimoineNetWorth": "Patrimonio neto",
+      "patrimoineClosing": "Tengo un balance global y sintético de mi patrimonio."
     }
   },
   "blog": {
