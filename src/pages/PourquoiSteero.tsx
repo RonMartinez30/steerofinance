@@ -163,7 +163,7 @@ const behavioralElementsData: BehavioralElement[] = [
     referenceKey: "whySteero.behavioral.learning.reference",
   }
 ];
-// Animation 1: Cognitive Effort - Two data flows comparison
+// Animation 1: Cognitive Effort - Two data flows comparison (plays once)
 const CognitiveEffortAnimation = ({
   isOpen,
   t
@@ -171,29 +171,28 @@ const CognitiveEffortAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [cycle, setCycle] = useState(0);
+  const [hasPlayed, setHasPlayed] = useState(false);
   
   useEffect(() => {
-    if (!isOpen) {
-      setCycle(0);
-      return;
+    if (isOpen && !hasPlayed) {
+      setHasPlayed(true);
     }
-    const interval = setInterval(() => {
-      setCycle(c => c + 1);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, [isOpen]);
+    if (!isOpen) {
+      setHasPlayed(false);
+    }
+  }, [isOpen, hasPlayed]);
+
+  const shouldAnimate = isOpen && hasPlayed;
 
   // Auto flow packet - starts slightly larger, fades before halfway
   const AutoPacket = ({ delay }: { delay: number }) => (
     <motion.div
-      key={`auto-${cycle}-${delay}`}
       initial={{ left: '0%', opacity: 0, scale: 1.3 }}
-      animate={{
-        left: ['0%', '35%', '45%'],
+      animate={shouldAnimate ? {
+        left: '45%',
         opacity: [0, 0.7, 0],
         scale: [1.3, 1, 0.4]
-      }}
+      } : {}}
       transition={{
         duration: 2,
         delay,
@@ -207,17 +206,15 @@ const CognitiveEffortAnimation = ({
   // Processed flow packet - goes all the way, amplifies at the end
   const ProcessedPacket = ({ delay }: { delay: number }) => (
     <motion.div
-      key={`processed-${cycle}-${delay}`}
       initial={{ left: '0%', opacity: 0, scale: 0.8 }}
-      animate={{
-        left: ['0%', '45%', '50%', '100%'],
-        opacity: [0, 1, 1, 1],
-        scale: [0.8, 1, 1.2, 1.8]
-      }}
+      animate={shouldAnimate ? {
+        left: '100%',
+        opacity: 1,
+        scale: 1.8
+      } : {}}
       transition={{
         duration: 3,
         delay,
-        times: [0, 0.35, 0.5, 1],
         ease: "easeInOut"
       }}
       className="absolute w-2 h-2 rounded-full bg-primary/70 -translate-x-1/2"
@@ -259,16 +256,9 @@ const CognitiveEffortAnimation = ({
           {/* Track */}
           <div className="absolute inset-x-0 h-0.5 bg-primary/20 rounded" />
           {/* Filter/pause zone - middle */}
-          <motion.div 
-            animate={{ 
-              opacity: [0.3, 0.7, 0.3],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ duration: 2.5, repeat: Infinity }}
-            className="absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center"
-          >
+          <div className="absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center">
             <div className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-          </motion.div>
+          </div>
           {/* End zone - amplified knowledge */}
           <div className="absolute right-0 w-8 h-5 bg-primary/15 rounded-r flex items-center justify-end pr-1">
             <Check className="w-3 h-3 text-primary/70" />
@@ -283,8 +273,8 @@ const CognitiveEffortAnimation = ({
       {/* Key insight */}
       <motion.p
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ delay: 1, duration: 0.4 }}
+        animate={{ opacity: shouldAnimate ? 0.8 : 0 }}
+        transition={{ delay: 3.5, duration: 0.4 }}
         className="text-center text-xs text-muted-foreground/70"
       >
         {t('animations.effortCreatesStep')}
@@ -293,7 +283,7 @@ const CognitiveEffortAnimation = ({
   );
 };
 
-// Animation 2: Control Illusion - Dense vs Simple view
+// Animation 2: Control Illusion - Dense vs Simple view (plays once)
 const ControlIllusionAnimation = ({
   isOpen,
   t
@@ -301,7 +291,7 @@ const ControlIllusionAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [phase, setPhase] = useState<'dense' | 'static' | 'simple'>('dense');
+  const [phase, setPhase] = useState<'dense' | 'static' | 'simple' | 'done'>('dense');
   const [simpleValue, setSimpleValue] = useState(0);
   
   useEffect(() => {
@@ -312,33 +302,29 @@ const ControlIllusionAnimation = ({
     }
     
     const timers = [
-      setTimeout(() => setPhase('static'), 2500),
-      setTimeout(() => setPhase('simple'), 4500)
+      setTimeout(() => setPhase('static'), 2000),
+      setTimeout(() => setPhase('simple'), 3500)
     ];
     
-    // Animate the simple indicator when in simple phase
-    const valueInterval = setInterval(() => {
+    return () => timers.forEach(clearTimeout);
+  }, [isOpen]);
+
+  // Animate the simple indicator when in simple phase
+  useEffect(() => {
+    if (phase !== 'simple') return;
+    
+    const interval = setInterval(() => {
       setSimpleValue(v => {
-        if (phase === 'simple') {
-          return v < 100 ? v + 5 : 0;
+        if (v >= 100) {
+          setPhase('done');
+          return 100;
         }
-        return 0;
+        return v + 5;
       });
-    }, 150);
+    }, 80);
     
-    const loop = setInterval(() => {
-      setPhase('dense');
-      setSimpleValue(0);
-      setTimeout(() => setPhase('static'), 2500);
-      setTimeout(() => setPhase('simple'), 4500);
-    }, 8000);
-    
-    return () => {
-      timers.forEach(clearTimeout);
-      clearInterval(loop);
-      clearInterval(valueInterval);
-    };
-  }, [isOpen, phase]);
+    return () => clearInterval(interval);
+  }, [phase]);
 
   return (
     <div className="flex flex-col gap-3 py-3">
@@ -346,8 +332,8 @@ const ControlIllusionAnimation = ({
         {/* Dense dashboard - lots of data, nothing changes */}
         <motion.div
           animate={{
-            opacity: phase !== 'simple' ? 1 : 0.3,
-            scale: phase !== 'simple' ? 1 : 0.95
+            opacity: phase === 'simple' || phase === 'done' ? 0.3 : 1,
+            scale: phase === 'simple' || phase === 'done' ? 0.95 : 1
           }}
           transition={{ duration: 0.4 }}
           className="bg-muted/20 rounded-lg p-2 border border-border/30"
@@ -384,8 +370,8 @@ const ControlIllusionAnimation = ({
         {/* Simple view - one indicator that evolves */}
         <motion.div
           animate={{
-            opacity: phase === 'simple' ? 1 : 0.3,
-            scale: phase === 'simple' ? 1 : 0.95
+            opacity: phase === 'simple' || phase === 'done' ? 1 : 0.3,
+            scale: phase === 'simple' || phase === 'done' ? 1 : 0.95
           }}
           transition={{ duration: 0.4 }}
           className="bg-primary/5 rounded-lg p-2 border border-primary/20"
@@ -396,13 +382,7 @@ const ControlIllusionAnimation = ({
           </div>
           {/* Single evolving indicator */}
           <div className="flex flex-col items-center justify-center h-16">
-            <motion.div
-              animate={{ 
-                scale: phase === 'simple' ? [1, 1.05, 1] : 1
-              }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="relative w-12 h-12 rounded-full border-2 border-primary/30 flex items-center justify-center"
-            >
+            <div className="relative w-12 h-12 rounded-full border-2 border-primary/30 flex items-center justify-center">
               {/* Progress ring */}
               <svg className="absolute inset-0 w-full h-full -rotate-90">
                 <circle
@@ -413,7 +393,7 @@ const ControlIllusionAnimation = ({
                   stroke="hsl(var(--primary) / 0.2)"
                   strokeWidth="3"
                 />
-                <motion.circle
+                <circle
                   cx="24"
                   cy="24"
                   r="20"
@@ -422,18 +402,18 @@ const ControlIllusionAnimation = ({
                   strokeWidth="3"
                   strokeLinecap="round"
                   strokeDasharray={126}
-                  animate={{ strokeDashoffset: 126 - (simpleValue / 100) * 126 }}
-                  transition={{ duration: 0.15 }}
+                  strokeDashoffset={126 - (simpleValue / 100) * 126}
+                  style={{ transition: 'stroke-dashoffset 0.1s' }}
                 />
               </svg>
               <span className="text-xs font-medium text-primary/80">
-                {phase === 'simple' ? `${simpleValue}%` : '—'}
+                {phase === 'simple' || phase === 'done' ? `${simpleValue}%` : '—'}
               </span>
-            </motion.div>
+            </div>
           </div>
           {/* Evolving indicator */}
           <motion.p
-            animate={{ opacity: phase === 'simple' ? 1 : 0 }}
+            animate={{ opacity: phase === 'simple' || phase === 'done' ? 1 : 0 }}
             className="text-[8px] text-primary/60 text-center"
           >
             {t('animations.indicatorEvolves')}
@@ -443,7 +423,7 @@ const ControlIllusionAnimation = ({
 
       {/* Key insight */}
       <motion.p
-        animate={{ opacity: phase === 'simple' ? 0.8 : 0 }}
+        animate={{ opacity: phase === 'done' ? 0.8 : 0 }}
         transition={{ duration: 0.3 }}
         className="text-center text-xs text-muted-foreground/70"
       >
@@ -453,7 +433,7 @@ const ControlIllusionAnimation = ({
   );
 };
 
-// Animation 3: Ritual - Simple timeline with regular points
+// Animation 3: Ritual - Simple timeline with growing points (plays once)
 const RitualCycleAnimation = ({
   isOpen,
   t
@@ -462,12 +442,12 @@ const RitualCycleAnimation = ({
   t: (key: string) => string;
 }) => {
   const [activePoint, setActivePoint] = useState(-1);
-  const [adjustments, setAdjustments] = useState<number[]>([]);
+  const [isComplete, setIsComplete] = useState(false);
   
   useEffect(() => {
     if (!isOpen) {
       setActivePoint(-1);
-      setAdjustments([]);
+      setIsComplete(false);
       return;
     }
     
@@ -477,25 +457,28 @@ const RitualCycleAnimation = ({
     const interval = setInterval(() => {
       currentPoint++;
       if (currentPoint >= points) {
-        currentPoint = -1;
-        setAdjustments([]);
+        clearInterval(interval);
+        setIsComplete(true);
+        return;
       }
       setActivePoint(currentPoint);
-      if (currentPoint >= 0) {
-        setAdjustments(prev => [...prev, currentPoint]);
-      }
-    }, 600);
+    }, 500);
     
     return () => clearInterval(interval);
   }, [isOpen]);
 
   const points = 7;
+  // Each point grows progressively larger (base size + increment per point)
+  const getPointSize = (index: number, isActive: boolean) => {
+    if (!isActive) return 6; // 6px base for inactive
+    return 8 + index * 2; // 8px base + 2px per index for active (8, 10, 12, 14, 16, 18, 20)
+  };
 
   return (
     <div className="flex flex-col gap-3 py-3">
       <div className="bg-muted/20 rounded-lg p-4 border border-border/30">
         {/* Simple timeline */}
-        <div className="relative">
+        <div className="relative h-8">
           {/* Continuous line */}
           <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-muted/40 -translate-y-1/2" />
           
@@ -506,53 +489,60 @@ const RitualCycleAnimation = ({
             className="absolute top-1/2 left-0 h-0.5 bg-primary/50 -translate-y-1/2"
           />
           
-          {/* Regular points */}
-          <div className="relative flex justify-between">
+          {/* Regular points - growing progressively */}
+          <div className="relative flex justify-between items-center h-full">
             {[...Array(points)].map((_, i) => {
               const isActive = i <= activePoint;
               const isCurrent = i === activePoint;
-              const hasAdjustment = adjustments.includes(i);
+              const size = getPointSize(i, isActive);
               
               return (
-                <div key={i} className="flex flex-col items-center">
-                  {/* Point */}
-                  <motion.div
-                    animate={{
-                      scale: isCurrent ? 1.4 : isActive ? 1.1 : 1,
-                      backgroundColor: isActive 
-                        ? 'hsl(var(--primary))' 
-                        : 'hsl(var(--muted))'
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="w-2.5 h-2.5 rounded-full border-2 border-background"
-                  />
-                  
-                  {/* Micro-adjustment indicator */}
-                  <motion.div
-                    initial={{ opacity: 0, y: -4 }}
-                    animate={{
-                      opacity: hasAdjustment && isActive ? 1 : 0,
-                      y: hasAdjustment && isActive ? 0 : -4
-                    }}
-                    transition={{ duration: 0.25, delay: 0.1 }}
-                    className="mt-1.5"
-                  >
-                    <div className="flex items-center gap-0.5">
-                      <RotateCcw className="w-2 h-2 text-primary/60" />
-                      <span className="text-[7px] text-primary/60">+1</span>
-                    </div>
-                  </motion.div>
-                </div>
+                <motion.div
+                  key={i}
+                  animate={{
+                    width: size,
+                    height: size,
+                    scale: isCurrent ? 1.2 : 1,
+                    backgroundColor: isActive 
+                      ? 'hsl(var(--primary))' 
+                      : 'hsl(var(--muted))'
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-full border-2 border-background"
+                  style={{ minWidth: size, minHeight: size }}
+                />
               );
             })}
           </div>
         </div>
         
-        {/* No dates, just rhythm indicator */}
+        {/* Micro-adjustment indicators below timeline */}
+        <div className="flex justify-between mt-2">
+          {[...Array(points)].map((_, i) => {
+            const isActive = i <= activePoint;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: -4 }}
+                animate={{
+                  opacity: isActive ? 1 : 0,
+                  y: isActive ? 0 : -4
+                }}
+                transition={{ duration: 0.25, delay: 0.1 }}
+                className="flex items-center justify-center"
+                style={{ width: getPointSize(i, true) }}
+              >
+                <span className="text-[7px] text-primary/60 font-medium">+{i + 1}</span>
+              </motion.div>
+            );
+          })}
+        </div>
+        
+        {/* Rhythm indicator */}
         <motion.div
           animate={{ opacity: activePoint >= 3 ? 0.8 : 0 }}
           transition={{ duration: 0.3 }}
-          className="flex items-center justify-center gap-2 mt-4"
+          className="flex items-center justify-center gap-2 mt-3"
         >
           <div className="flex gap-1">
             {[...Array(3)].map((_, i) => (
@@ -571,7 +561,7 @@ const RitualCycleAnimation = ({
 
       {/* Key insight */}
       <motion.p
-        animate={{ opacity: activePoint >= points - 1 ? 0.8 : 0 }}
+        animate={{ opacity: isComplete ? 0.8 : 0 }}
         transition={{ duration: 0.3 }}
         className="text-center text-xs text-muted-foreground/70"
       >
@@ -581,7 +571,7 @@ const RitualCycleAnimation = ({
   );
 };
 
-// Animation 4: Emotional Connection - Manual entry creates awareness
+// Animation 4: Emotional Connection - Manual entry creates awareness (plays once)
 const EmotionalConnectionAnimation = ({
   isOpen,
   t
@@ -589,7 +579,7 @@ const EmotionalConnectionAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [phase, setPhase] = useState<'input' | 'feel' | 'decide'>('input');
+  const [phase, setPhase] = useState<'input' | 'feel' | 'decide' | 'done'>('input');
   
   useEffect(() => {
     if (!isOpen) {
@@ -597,18 +587,11 @@ const EmotionalConnectionAnimation = ({
       return;
     }
     const timers = [
-      setTimeout(() => setPhase('feel'), 1800),
-      setTimeout(() => setPhase('decide'), 3600)
+      setTimeout(() => setPhase('feel'), 1500),
+      setTimeout(() => setPhase('decide'), 3000),
+      setTimeout(() => setPhase('done'), 4500)
     ];
-    const loop = setInterval(() => {
-      setPhase('input');
-      setTimeout(() => setPhase('feel'), 1800);
-      setTimeout(() => setPhase('decide'), 3600);
-    }, 6000);
-    return () => {
-      timers.forEach(clearTimeout);
-      clearInterval(loop);
-    };
+    return () => timers.forEach(clearTimeout);
   }, [isOpen]);
 
   return (
@@ -645,9 +628,9 @@ const EmotionalConnectionAnimation = ({
         {/* Emotional reaction */}
         <motion.div
           animate={{
-            opacity: phase === 'feel' ? 1 : 0,
-            height: phase === 'feel' ? 'auto' : 0,
-            marginBottom: phase === 'feel' ? 8 : 0
+            opacity: phase === 'feel' || phase === 'decide' || phase === 'done' ? 1 : 0,
+            height: phase === 'feel' || phase === 'decide' || phase === 'done' ? 'auto' : 0,
+            marginBottom: phase === 'feel' || phase === 'decide' || phase === 'done' ? 8 : 0
           }}
           transition={{ duration: 0.3 }}
           className="overflow-hidden"
@@ -661,8 +644,8 @@ const EmotionalConnectionAnimation = ({
         {/* Conscious decision */}
         <motion.div
           animate={{
-            opacity: phase === 'decide' ? 1 : 0,
-            height: phase === 'decide' ? 'auto' : 0
+            opacity: phase === 'decide' || phase === 'done' ? 1 : 0,
+            height: phase === 'decide' || phase === 'done' ? 'auto' : 0
           }}
           transition={{ duration: 0.3 }}
           className="overflow-hidden"
@@ -676,7 +659,7 @@ const EmotionalConnectionAnimation = ({
 
       {/* Label */}
       <motion.p
-        animate={{ opacity: phase === 'decide' ? 0.8 : 0 }}
+        animate={{ opacity: phase === 'done' ? 0.8 : 0 }}
         transition={{ duration: 0.3 }}
         className="text-center text-xs text-muted-foreground/70"
       >
@@ -686,7 +669,7 @@ const EmotionalConnectionAnimation = ({
   );
 };
 
-// Animation 5: Learning First - Understanding before automation
+// Animation 5: Learning First - Understanding before automation (plays once)
 const LearningFirstAnimation = ({
   isOpen,
   t
@@ -694,7 +677,7 @@ const LearningFirstAnimation = ({
   isOpen: boolean;
   t: (key: string) => string;
 }) => {
-  const [phase, setPhase] = useState<'learn' | 'understand' | 'master' | 'auto'>('learn');
+  const [phase, setPhase] = useState<'learn' | 'understand' | 'master' | 'auto' | 'done'>('learn');
   
   useEffect(() => {
     if (!isOpen) {
@@ -702,20 +685,12 @@ const LearningFirstAnimation = ({
       return;
     }
     const timers = [
-      setTimeout(() => setPhase('understand'), 1500),
-      setTimeout(() => setPhase('master'), 3000),
-      setTimeout(() => setPhase('auto'), 4500)
+      setTimeout(() => setPhase('understand'), 1200),
+      setTimeout(() => setPhase('master'), 2400),
+      setTimeout(() => setPhase('auto'), 3600),
+      setTimeout(() => setPhase('done'), 4800)
     ];
-    const loop = setInterval(() => {
-      setPhase('learn');
-      setTimeout(() => setPhase('understand'), 1500);
-      setTimeout(() => setPhase('master'), 3000);
-      setTimeout(() => setPhase('auto'), 4500);
-    }, 7000);
-    return () => {
-      timers.forEach(clearTimeout);
-      clearInterval(loop);
-    };
+    return () => timers.forEach(clearTimeout);
   }, [isOpen]);
 
   const phases = [
@@ -725,7 +700,7 @@ const LearningFirstAnimation = ({
     { key: 'auto', label: t('animations.thenAutomate'), icon: Zap }
   ];
 
-  const currentIndex = phases.findIndex(p => p.key === phase);
+  const currentIndex = phase === 'done' ? 3 : phases.findIndex(p => p.key === phase);
 
   return (
     <div className="flex flex-col gap-3 py-3">
@@ -764,7 +739,7 @@ const LearningFirstAnimation = ({
                 <motion.span
                   animate={{ opacity: isActive ? 0.8 : 0.35 }}
                   className={`text-[9px] text-center font-medium ${
-                    isCurrent ? 'text-foreground' : 'text-muted-foreground'
+                    isCurrent || (phase === 'done' && i === 3) ? 'text-foreground' : 'text-muted-foreground'
                   }`}
                 >
                   {p.label}
@@ -780,7 +755,7 @@ const LearningFirstAnimation = ({
             animate={{ width: `${((currentIndex + 1) / phases.length) * 100}%` }}
             transition={{ duration: 0.5 }}
             className={`h-full rounded-full ${
-              phase === 'auto' ? 'bg-emerald-500/60' : 'bg-primary/50'
+              phase === 'auto' || phase === 'done' ? 'bg-emerald-500/60' : 'bg-primary/50'
             }`}
           />
         </div>
@@ -788,12 +763,12 @@ const LearningFirstAnimation = ({
 
       {/* Status message */}
       <motion.p
-        animate={{ opacity: phase === 'auto' ? 0.8 : 0.6 }}
+        animate={{ opacity: phase === 'done' ? 0.8 : 0.6 }}
         className={`text-center text-xs ${
-          phase === 'auto' ? 'text-emerald-600/80' : 'text-muted-foreground/70'
+          phase === 'auto' || phase === 'done' ? 'text-emerald-600/80' : 'text-muted-foreground/70'
         }`}
       >
-        {phase === 'auto' 
+        {phase === 'auto' || phase === 'done'
           ? t('animations.autoCanBeConsidered')
           : phase === 'learn'
           ? t('animations.autoTooEarly')
