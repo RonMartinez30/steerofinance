@@ -220,8 +220,8 @@
   "animations": {
     "flowAuto": "Flujo automático",
     "flowProcessed": "Flujo procesado",
-    "dataForgotten": "Datos olvidados",
-    "dataAnchored": "Datos anclados",
+    "dataForgotten": "Poco o ningún dominio",
+    "dataAnchored": "Dominio reforzado",
     "effortCreatesStep": "El esfuerzo crea un paso cognitivo adicional",
     "denseView": "Vista densa",
     "simpleView": "Vista simple",
