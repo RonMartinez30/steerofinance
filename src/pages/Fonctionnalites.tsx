@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, FolderKanban, Users, Building2 } from "lucide-react";
+import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGrid, RefreshCcw, ClipboardList, Gauge, type LucideIcon } from "lucide-react";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useTranslation } from "react-i18next";
 
@@ -98,7 +98,8 @@ const ProgressSidebar = ({
 type AnimationType = "onboarding" | "budget" | "fixed" | "daily" | "gauge" | "rituals" | "indicators";
 type AnimationDirection = "horizontal" | "vertical" | "pulse";
 interface Feature {
-  emoji: string;
+  icon?: LucideIcon;
+  emoji?: string;
   title: string;
   microPromise: string;
   details: string;
@@ -919,6 +920,9 @@ const FeatureCard = ({
   // Hauteur uniforme pour toutes les cartes fermées
   const closedHeight = 'h-[120px]';
   
+  // Icône Lucide ou emoji de fallback
+  const IconComponent = feature.icon;
+  
   return (
     <div 
       onClick={handleClick} 
@@ -941,9 +945,13 @@ const FeatureCard = ({
       </AnimatePresence>
       
       <div className="flex items-start gap-4">
-        {/* Emoji - taille réduite et cohérente */}
-        <div className="text-3xl flex-shrink-0 mt-0.5">
-          {feature.emoji}
+        {/* Icône Lucide professionnelle ou emoji de fallback */}
+        <div className="flex-shrink-0 mt-0.5 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+          {IconComponent ? (
+            <IconComponent className="w-5 h-5 text-primary" strokeWidth={1.5} />
+          ) : (
+            <span className="text-2xl">{feature.emoji}</span>
+          )}
         </div>
         
         <div className="flex-1 min-w-0">
@@ -1021,7 +1029,7 @@ const Fonctionnalites = () => {
     title: t('fonctionnalites.start'),
     isLarge: true,
     features: [{
-      emoji: "🧭",
+      icon: Crosshair,
       title: t('fonctionnalites.features.onboarding.title'),
       microPromise: t('fonctionnalites.features.onboarding.microPromise'),
       details: t('fonctionnalites.features.onboarding.details'),
@@ -1031,7 +1039,7 @@ const Fonctionnalites = () => {
       animation: "onboarding",
       animationDirection: "horizontal"
     }, {
-      emoji: "💰",
+      icon: LayoutGrid,
       title: t('fonctionnalites.features.budget.title'),
       microPromise: t('fonctionnalites.features.budget.microPromise'),
       details: t('fonctionnalites.features.budget.details'),
@@ -1045,7 +1053,7 @@ const Fonctionnalites = () => {
     label: t('fonctionnalites.step2'),
     title: t('fonctionnalites.follow'),
     features: [{
-      emoji: "📅",
+      icon: RefreshCcw,
       title: t('fonctionnalites.features.fixed.title'),
       microPromise: t('fonctionnalites.features.fixed.microPromise'),
       details: t('fonctionnalites.features.fixed.details'),
@@ -1055,7 +1063,7 @@ const Fonctionnalites = () => {
       animation: "fixed",
       animationDirection: "vertical"
     }, {
-      emoji: "🧾",
+      icon: ClipboardList,
       title: t('fonctionnalites.features.daily.title'),
       microPromise: t('fonctionnalites.features.daily.microPromise'),
       details: t('fonctionnalites.features.daily.details'),
@@ -1065,7 +1073,7 @@ const Fonctionnalites = () => {
       animation: "daily",
       animationDirection: "vertical"
     }, {
-      emoji: "⚖️",
+      icon: Gauge,
       title: t('fonctionnalites.features.level.title'),
       microPromise: t('fonctionnalites.features.level.microPromise'),
       details: t('fonctionnalites.features.level.details'),
