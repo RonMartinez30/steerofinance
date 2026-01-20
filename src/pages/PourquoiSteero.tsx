@@ -474,11 +474,29 @@ const RitualCycleAnimation = ({
     return 8 + index * 2; // 8px base + 2px per index for active (8, 10, 12, 14, 16, 18, 20)
   };
 
+  // Inverse size for effort: starts large, ends small
+  const getEffortSize = (index: number, isActive: boolean) => {
+    if (!isActive) return 6;
+    return 20 - index * 2; // 20, 18, 16, 14, 12, 10, 8 - inverse of mastery
+  };
+
   return (
     <div className="flex flex-col gap-3 py-3">
       <div className="bg-muted/20 rounded-lg p-4 border border-border/30">
-        {/* Simple timeline */}
-        <div className="relative h-8">
+        {/* Legend */}
+        <div className="flex items-center justify-center gap-6 mb-4">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-primary" />
+            <span className="text-[10px] text-muted-foreground">{t('animations.mastery')}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-orange-500" />
+            <span className="text-[10px] text-muted-foreground">{t('animations.effort')}</span>
+          </div>
+        </div>
+
+        {/* Mastery timeline */}
+        <div className="relative h-8 mb-1">
           {/* Continuous line */}
           <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-muted/40 -translate-y-1/2" />
           
@@ -489,7 +507,7 @@ const RitualCycleAnimation = ({
             className="absolute top-1/2 left-0 h-0.5 bg-primary/50 -translate-y-1/2"
           />
           
-          {/* Regular points - growing progressively */}
+          {/* Mastery points - growing progressively */}
           <div className="relative flex justify-between items-center h-full">
             {[...Array(points)].map((_, i) => {
               const isActive = i <= activePoint;
@@ -515,34 +533,61 @@ const RitualCycleAnimation = ({
             })}
           </div>
         </div>
-        
-        {/* Micro-adjustment indicators below timeline */}
-        <div className="flex justify-between mt-2">
-          {[...Array(points)].map((_, i) => {
-            const isActive = i <= activePoint;
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: -4 }}
-                animate={{
-                  opacity: isActive ? 1 : 0,
-                  y: isActive ? 0 : -4
-                }}
-                transition={{ duration: 0.25, delay: 0.1 }}
-                className="flex items-center justify-center"
-                style={{ width: getPointSize(i, true) }}
-              >
-                <span className="text-[7px] text-primary/60 font-medium">+{i + 1}</span>
-              </motion.div>
-            );
-          })}
+
+        {/* Mastery label */}
+        <div className="text-center mb-3">
+          <span className="text-[9px] text-primary/70 font-medium">{t('animations.mastery')}</span>
+        </div>
+
+        {/* Effort timeline - inverse sizes */}
+        <div className="relative h-8 mb-1">
+          {/* Continuous line */}
+          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-orange-500/30 -translate-y-1/2" />
+          
+          {/* Progress line */}
+          <motion.div
+            animate={{ width: `${((activePoint + 1) / points) * 100}%` }}
+            transition={{ duration: 0.4 }}
+            className="absolute top-1/2 left-0 h-0.5 bg-orange-500/50 -translate-y-1/2"
+          />
+          
+          {/* Effort points - shrinking progressively */}
+          <div className="relative flex justify-between items-center h-full">
+            {[...Array(points)].map((_, i) => {
+              const isActive = i <= activePoint;
+              const isCurrent = i === activePoint;
+              const size = getEffortSize(i, isActive);
+              
+              return (
+                <motion.div
+                  key={i}
+                  animate={{
+                    width: size,
+                    height: size,
+                    scale: isCurrent ? 1.2 : 1,
+                    backgroundColor: isActive 
+                      ? 'hsl(25 95% 53%)' 
+                      : 'hsl(var(--muted))'
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-full border-2 border-background"
+                  style={{ minWidth: size, minHeight: size }}
+                />
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Effort label */}
+        <div className="text-center mb-3">
+          <span className="text-[9px] text-orange-500/70 font-medium">{t('animations.effort')}</span>
         </div>
         
         {/* Rhythm indicator */}
         <motion.div
           animate={{ opacity: activePoint >= 3 ? 0.8 : 0 }}
           transition={{ duration: 0.3 }}
-          className="flex items-center justify-center gap-2 mt-3"
+          className="flex items-center justify-center gap-2 mt-2"
         >
           <div className="flex gap-1">
             {[...Array(3)].map((_, i) => (

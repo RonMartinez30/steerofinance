@@ -250,7 +250,9 @@
     "autoTooEarly": "Automatizar demasiado pronto = probable fracaso",
     "understandingGrows": "La comprensión se instala...",
     "autoCanBeConsidered": "La automatización puede ser considerada",
-    "restaurant": "Restaurante"
+    "restaurant": "Restaurante",
+    "mastery": "Dominio",
+    "effort": "Esfuerzo"
   },
   "faq": {
     "title": "Preguntas frecuentes",
