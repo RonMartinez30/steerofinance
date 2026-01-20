@@ -413,8 +413,10 @@
       "tiersRestaurant": "Restaurant samedi",
       "tiersGroupGift": "Cadeau groupe",
       "tiersAdvances": "Avances en cours",
-      "tiersAdvancesDetail": "Notes de frais ; employeur",
-      "tiersTreasuryBalance": "Impact trésorerie"
+      "tiersEmployer": "Mon employeur",
+      "tiersExpenseReports": "Notes de frais",
+      "tiersTreasuryBalance": "Impact trésorerie",
+      "tiersClosing": "Je sais où est mon argent, même quand il n'est pas sur mon compte."
     }
   },
   "blog": {
