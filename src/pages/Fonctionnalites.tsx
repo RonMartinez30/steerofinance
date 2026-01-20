@@ -232,7 +232,7 @@ const OnboardingAnimation = ({
   );
 };
 
-// Budget hierarchy animation - Structure de budget mensuel
+// Budget hierarchy animation - Structure de budget mensuel (Avril & Mai côte à côte)
 const BudgetAnimation = ({
   isOpen,
   t
@@ -247,19 +247,22 @@ const BudgetAnimation = ({
       setStep(0);
       return;
     }
-    // Animation progressive : mois → catégories → sous-catégories
-    // Durée totale : ~5 secondes
+    // Animation progressive : mois → catégories → sous-catégories → 2ème mois
+    // Durée totale : ~6 secondes
     const timers = [
-      setTimeout(() => setStep(1), 400),  // Mois apparaît
-      setTimeout(() => setStep(2), 1200), // 1ère catégorie + sous-catégories
-      setTimeout(() => setStep(3), 2200), // 2ème catégorie + sous-catégories
-      setTimeout(() => setStep(4), 3200), // 3ème catégorie + sous-catégories
-      setTimeout(() => setStep(5), 4200)  // Texte de clôture
+      setTimeout(() => setStep(1), 400),   // Mois Avril apparaît
+      setTimeout(() => setStep(2), 1000),  // 1ère catégorie
+      setTimeout(() => setStep(3), 1600),  // 2ème catégorie
+      setTimeout(() => setStep(4), 2200),  // 3ème catégorie
+      setTimeout(() => setStep(5), 3000),  // Mois Mai apparaît
+      setTimeout(() => setStep(6), 3600),  // Catégories Mai
+      setTimeout(() => setStep(7), 4800)   // Texte de clôture
     ];
     return () => timers.forEach(clearTimeout);
   }, [isOpen]);
 
-  const categories = [
+  // Données Avril
+  const aprilCategories = [
     {
       name: t('fonctionnalites.animations.housing'),
       amount: "800 €",
@@ -286,92 +289,128 @@ const BudgetAnimation = ({
     }
   ];
 
-  return (
-    <div className="mt-4 mb-2">
+  // Données Mai (avec variations sur resto, sport, sorties)
+  const mayCategories = [
+    {
+      name: t('fonctionnalites.animations.housing'),
+      amount: "800 €",
+      subs: [
+        { label: t('fonctionnalites.animations.rent'), amount: "750 €" },
+        { label: t('fonctionnalites.animations.insurance'), amount: "50 €" }
+      ]
+    },
+    {
+      name: t('fonctionnalites.animations.food'),
+      amount: "450 €",
+      subs: [
+        { label: t('fonctionnalites.animations.groceries'), amount: "300 €" },
+        { label: t('fonctionnalites.animations.restaurant'), amount: "150 €", changed: true }
+      ]
+    },
+    {
+      name: t('fonctionnalites.animations.leisure'),
+      amount: "200 €",
+      subs: [
+        { label: t('fonctionnalites.animations.sports'), amount: "80 €", changed: true },
+        { label: t('fonctionnalites.animations.outings'), amount: "120 €", changed: true }
+      ]
+    }
+  ];
+
+  const renderMonth = (
+    monthKey: string, 
+    categories: typeof aprilCategories, 
+    showCondition: number, 
+    catShowCondition: number
+  ) => (
+    <div className="flex-1 min-w-0">
       {/* En-tête du mois */}
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{
-          opacity: step >= 1 ? 1 : 0,
-          y: step >= 1 ? 0 : -8
+          opacity: step >= showCondition ? 1 : 0,
+          y: step >= showCondition ? 0 : -8
         }}
         transition={{
           duration: 0.3,
           ease: [0.25, 0.1, 0.25, 1]
         }}
-        className="text-center mb-4"
+        className="text-center mb-3"
       >
-        <span className="text-sm font-semibold text-primary bg-primary/10 px-4 py-1.5 rounded-full">
-          {t('fonctionnalites.animations.month')} : {t('fonctionnalites.animations.april')}
+        <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
+          {t(`fonctionnalites.animations.${monthKey}`)}
         </span>
       </motion.div>
 
-      {/* Catégories avec sous-catégories */}
-      <div className="space-y-3">
+      {/* Catégories */}
+      <div className="space-y-2">
         {categories.map((cat, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: -12 }}
+            initial={{ opacity: 0, x: -8 }}
             animate={{
-              opacity: step >= i + 2 ? 1 : 0,
-              x: step >= i + 2 ? 0 : -12
+              opacity: step >= catShowCondition + i ? 1 : 0,
+              x: step >= catShowCondition + i ? 0 : -8
             }}
             transition={{
-              duration: 0.35,
+              duration: 0.3,
               ease: [0.25, 0.1, 0.25, 1]
             }}
           >
             {/* Catégorie principale */}
-            <div className="flex justify-between items-center bg-primary/10 rounded-lg px-3 py-2">
-              <span className="font-medium text-foreground text-sm">{cat.name}</span>
-              <span className="text-primary font-bold text-sm">{cat.amount}</span>
+            <div className="flex justify-between items-center bg-primary/10 rounded-lg px-2 py-1.5">
+              <span className="font-medium text-foreground text-xs">{cat.name}</span>
+              <span className="text-primary font-bold text-xs">{cat.amount}</span>
             </div>
 
             {/* Sous-catégories */}
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{
-                opacity: step >= i + 2 ? 1 : 0,
-                height: step >= i + 2 ? "auto" : 0
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: step >= catShowCondition + i ? 1 : 0 }}
               transition={{
-                duration: 0.3,
-                delay: step >= i + 2 ? 0.15 : 0,
-                ease: [0.25, 0.1, 0.25, 1]
+                duration: 0.25,
+                delay: 0.1,
+                ease: "easeOut"
               }}
-              className="ml-4 mt-1.5 space-y-1 overflow-hidden"
+              className="ml-2 mt-1 space-y-0.5"
             >
               {cat.subs.map((sub, j) => (
-                <motion.div
+                <div
                   key={j}
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{
-                    opacity: step >= i + 2 ? 1 : 0,
-                    x: step >= i + 2 ? 0 : -8
-                  }}
-                  transition={{
-                    duration: 0.25,
-                    delay: step >= i + 2 ? 0.2 + j * 0.1 : 0,
-                    ease: "easeOut"
-                  }}
-                  className="flex justify-between items-center text-xs text-muted-foreground bg-muted/30 rounded px-2.5 py-1.5"
+                  className={`flex justify-between items-center text-[10px] rounded px-2 py-1 ${
+                    (sub as any).changed 
+                      ? 'bg-primary/5 text-primary' 
+                      : 'bg-muted/30 text-muted-foreground'
+                  }`}
                 >
                   <span>{sub.label}</span>
-                  <span className="text-foreground/70 font-medium">{sub.amount}</span>
-                </motion.div>
+                  <span className={`font-medium ${(sub as any).changed ? 'text-primary' : 'text-foreground/70'}`}>
+                    {sub.amount}
+                  </span>
+                </div>
               ))}
             </motion.div>
           </motion.div>
         ))}
       </div>
+    </div>
+  );
+
+  return (
+    <div className="mt-4 mb-2">
+      {/* Deux mois côte à côte */}
+      <div className="flex gap-3">
+        {renderMonth('april', aprilCategories, 1, 2)}
+        {renderMonth('may', mayCategories, 5, 6)}
+      </div>
 
       {/* Texte de clôture */}
       <motion.p
         initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 5 ? 1 : 0 }}
+        animate={{ opacity: step >= 7 ? 1 : 0 }}
         transition={{
           duration: 0.3,
-          delay: step >= 5 ? 0.2 : 0,
+          delay: step >= 7 ? 0.2 : 0,
           ease: "easeOut"
         }}
         className="mt-4 text-xs text-muted-foreground text-center leading-relaxed"
