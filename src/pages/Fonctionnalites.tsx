@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGrid, RefreshCcw, ClipboardList, Gauge, CalendarCheck, BarChart3, Landmark, Wallet, Receipt, RotateCcw, type LucideIcon } from "lucide-react";
+import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGrid, RefreshCcw, ClipboardList, Gauge, CalendarCheck, BarChart3, Landmark, Wallet, Receipt, RotateCcw, ClipboardCheck, Flame, Plane, type LucideIcon } from "lucide-react";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useTranslation } from "react-i18next";
 
@@ -1083,7 +1083,8 @@ const RitualsAnimation = ({
         transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         className="mb-4"
       >
-        <div className="text-xs text-foreground font-medium mb-2 text-center">
+        <div className="text-xs text-foreground font-medium mb-2 text-center flex items-center justify-center gap-1.5">
+          <ClipboardCheck className="w-3.5 h-3.5 text-primary" />
           {t('fonctionnalites.animations.dailyRitual')}
         </div>
         <div className="flex justify-center gap-2">
@@ -1118,8 +1119,9 @@ const RitualsAnimation = ({
         <motion.div 
           animate={{ opacity: step >= 2 && completedCount >= 7 ? 1 : 0 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="mt-3 text-center text-xs text-primary font-medium"
+          className="mt-3 text-center text-xs text-primary font-medium flex items-center justify-center gap-1.5"
         >
+          <Flame className="w-3.5 h-3.5" />
           {t('fonctionnalites.animations.consecutiveDays')}
         </motion.div>
       </motion.div>
@@ -2011,7 +2013,7 @@ const Fonctionnalites = () => {
                     {/* Header avec titre et montant */}
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-xl">✈️</span>
+                        <Plane className="w-5 h-5 text-primary" />
                         <span className="text-sm font-semibold text-foreground">{t('fonctionnalites.animations.projectVacances')}</span>
                       </div>
                       <motion.span 
