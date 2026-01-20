@@ -396,7 +396,15 @@
       "consecutiveDays": "🔥 5 jours consécutifs !",
       "budgetUsed": "Budget utilisé",
       "savings": "Épargne",
-      "rituals": "Rituels"
+      "rituals": "Rituels",
+      "projectVacances": "Vacances",
+      "projectLodging": "Logement",
+      "projectTransport": "Transport",
+      "projectOnSite": "Dépenses sur place",
+      "budgetLeisure": "Budget loisirs",
+      "budgetTransport": "Budget transport",
+      "budgetDaily": "Budget quotidien",
+      "projectClosing": "Le projet n'est pas un budget de plus : c'est ta vue transversale."
     }
   },
   "blog": {

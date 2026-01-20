@@ -400,7 +400,15 @@
       "consecutiveDays": "🔥 5 consecutive days!",
       "budgetUsed": "Budget used",
       "savings": "Savings",
-      "rituals": "Rituals"
+      "rituals": "Rituals",
+      "projectVacances": "Vacation",
+      "projectLodging": "Accommodation",
+      "projectTransport": "Transportation",
+      "projectOnSite": "On-site expenses",
+      "budgetLeisure": "Leisure budget",
+      "budgetTransport": "Transport budget",
+      "budgetDaily": "Daily budget",
+      "projectClosing": "A project isn't just another budget: it's your cross-functional view."
     }
   },
   "blog": {
