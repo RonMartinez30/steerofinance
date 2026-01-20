@@ -340,6 +340,7 @@
     "futureSubtitle": "D'autres dimensions à explorer, bientôt disponibles.",
     "ctaTitle": "Prêt à piloter tes finances ?",
     "ctaSubtitle": "Rejoins la liste d'attente et sois parmi les premiers à essayer Steero.",
+    "ctaDescription": "Rejoins la liste d'attente et sois parmi les premiers à essayer Steero.",
     "features": {
       "onboarding": {
         "title": "Trajectoire personnalisée",
@@ -500,6 +501,8 @@
     "articlesFound": "article(s) trouvé(s)",
     "readFullArticle": "Lire l'article complet",
     "readyToTransform": "Prêt à transformer ta gestion financière ?",
+    "ctaTitle": "Prêt à piloter tes finances ?",
+    "ctaDescription": "Rejoins la liste d'attente et sois parmi les premiers à essayer Steero.",
     "joinWaitlist": "Rejoindre la liste d'attente",
     "linkCopied": "Lien copié !",
     "share": "Partager",

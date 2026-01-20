@@ -2456,7 +2456,7 @@ const Fonctionnalites = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button asChild variant="outline" size="lg" className="border-white/30 text-primary-foreground hover:bg-white/10 hover:text-primary-foreground rounded-full px-8 py-4 h-auto">
+                <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white/10 hover:text-white rounded-full px-8 py-4 h-auto bg-transparent">
                   <Link to="/pourquoi-steero">
                     {t('common.discoverApproach')}
                   </Link>
