@@ -17,20 +17,18 @@ const Pricing = () => {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("quarterly");
 
   const isAnnual = billingPeriod === "annual";
-  const discountPercent = 17;
   const quarterlyPrice = 7.90;
+  const annualPrice = 6.30;
+  const discountPercent = 20;
 
   // Total amounts
   const quarterlyTotal = (quarterlyPrice * 3).toFixed(2).replace('.', ',');
-  const yearlyWithoutDiscount = quarterlyPrice * 12;
-  const yearlyWithDiscount = yearlyWithoutDiscount * (1 - discountPercent / 100);
-  const annualTotal = yearlyWithDiscount.toFixed(2).replace('.', ',');
-  const annualSavings = (yearlyWithoutDiscount - yearlyWithDiscount).toFixed(2).replace('.', ',');
+  const annualTotal = (annualPrice * 12).toFixed(2).replace('.', ',');
+  const annualSavings = ((quarterlyPrice - annualPrice) * 12).toFixed(2).replace('.', ',');
 
   const getPrice = () => {
     if (isAnnual) {
-      const annualPrice = (quarterlyPrice * (1 - discountPercent / 100)).toFixed(2).replace('.', ',');
-      return `${annualPrice}€`;
+      return `${annualPrice.toFixed(2).replace('.', ',')}€`;
     }
     return `${quarterlyPrice.toFixed(2).replace('.', ',')}€`;
   };
