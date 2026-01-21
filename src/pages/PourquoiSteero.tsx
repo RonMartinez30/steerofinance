@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useWaitlist } from "@/contexts/WaitlistContext";
 // Progress sidebar component for behavioral principles
 const BehavioralProgressSidebar = ({
   elements,
@@ -1102,6 +1103,7 @@ const BehavioralCard = ({
 };
 const PourquoiSteero = () => {
   const { t } = useTranslation();
+  const { openWaitlist } = useWaitlist();
   const [openCardIndex, setOpenCardIndex] = useState<number | null>(null);
   const [exploredCards, setExploredCards] = useState<Set<number>>(new Set());
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -1422,15 +1424,15 @@ const PourquoiSteero = () => {
               {t('whySteero.ctaDescription')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a 
-                href="/#cta"
+              <motion.button 
+                onClick={openWaitlist}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
                 {t('common.joinWaitlist')}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </motion.a>
+              </motion.button>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}

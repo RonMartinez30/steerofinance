@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useTranslation } from "react-i18next";
+import { useWaitlist } from "@/contexts/WaitlistContext";
 
 interface FAQItem {
   question: string;
@@ -21,6 +22,7 @@ interface FAQSection {
 
 const FAQ = () => {
   const { t } = useTranslation();
+  const { openWaitlist } = useWaitlist();
 
   const faqSections: FAQSection[] = [{
     title: t('faq.sections.understand.title'),
@@ -117,9 +119,9 @@ const FAQ = () => {
                         {t('faq.discoverApproach')}
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                       </Link>
-                      <a href="#waitlist" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-border bg-card text-foreground font-medium transition-all hover:bg-muted">
+                      <button onClick={openWaitlist} className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-border bg-card text-foreground font-medium transition-all hover:bg-muted">
                         {t('faq.joinWaitlist')}
-                      </a>
+                      </button>
                     </div>
                   </motion.div>
                 </div>
@@ -189,15 +191,15 @@ const FAQ = () => {
               {t('faq.ctaDescription')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a 
-                href="/#cta"
+              <motion.button 
+                onClick={openWaitlist}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
                 {t('common.joinWaitlist')}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </motion.a>
+              </motion.button>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
