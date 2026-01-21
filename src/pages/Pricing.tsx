@@ -2,19 +2,39 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import SEO from "@/components/SEO";
+
+type BillingPeriod = "quarterly" | "annual";
 
 const Pricing = () => {
   const { t } = useTranslation();
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("quarterly");
+
+  const isAnnual = billingPeriod === "annual";
+  const discountPercent = 20;
+
+  const getPrice = (quarterlyPrice: number) => {
+    if (quarterlyPrice === 0) return "0€";
+    if (isAnnual) {
+      const annualPrice = Math.round(quarterlyPrice * (1 - discountPercent / 100));
+      return `${annualPrice}€`;
+    }
+    return `${quarterlyPrice}€`;
+  };
+
+  const getOriginalPrice = (quarterlyPrice: number) => {
+    if (quarterlyPrice === 0 || !isAnnual) return null;
+    return `${quarterlyPrice}€`;
+  };
 
   const plans = [
     {
       name: t("pricing.free.name"),
-      price: "0€",
-      period: t("pricing.perMonth"),
+      quarterlyPrice: 0,
       description: t("pricing.free.description"),
       features: [
         t("pricing.free.feature1"),
@@ -27,8 +47,7 @@ const Pricing = () => {
     },
     {
       name: t("pricing.pro.name"),
-      price: "9€",
-      period: t("pricing.perMonth"),
+      quarterlyPrice: 9,
       description: t("pricing.pro.description"),
       features: [
         t("pricing.pro.feature1"),
@@ -42,8 +61,7 @@ const Pricing = () => {
     },
     {
       name: t("pricing.family.name"),
-      price: "14€",
-      period: t("pricing.perMonth"),
+      quarterlyPrice: 14,
       description: t("pricing.family.description"),
       features: [
         t("pricing.family.feature1"),
@@ -77,9 +95,40 @@ const Pricing = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               {t("pricing.title")}
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground mb-8">
               {t("pricing.subtitle")}
             </p>
+
+            {/* Billing Toggle */}
+            <div className="inline-flex items-center gap-2 bg-muted rounded-full p-1">
+              <button
+                onClick={() => setBillingPeriod("quarterly")}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                  !isAnnual
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {t("pricing.quarterly")}
+              </button>
+              <button
+                onClick={() => setBillingPeriod("annual")}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
+                  isAnnual
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {t("pricing.annual")}
+                <span className={`text-xs px-2 py-0.5 rounded-full ${
+                  isAnnual 
+                    ? "bg-white/20 text-primary-foreground" 
+                    : "bg-accent text-accent-foreground"
+                }`}>
+                  -{discountPercent}%
+                </span>
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -111,12 +160,37 @@ const Pricing = () => {
                 </h3>
 
                 <div className="mb-4">
-                  <span className={`text-4xl font-bold ${plan.highlighted ? "text-primary-foreground" : "text-foreground"}`}>
-                    {plan.price}
-                  </span>
-                  <span className={`text-sm ${plan.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
-                    /{plan.period}
-                  </span>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={billingPeriod}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="flex items-baseline gap-2"
+                    >
+                      <span className={`text-4xl font-bold ${plan.highlighted ? "text-primary-foreground" : "text-foreground"}`}>
+                        {getPrice(plan.quarterlyPrice)}
+                      </span>
+                      {getOriginalPrice(plan.quarterlyPrice) && (
+                        <span className={`text-lg line-through ${plan.highlighted ? "text-primary-foreground/50" : "text-muted-foreground"}`}>
+                          {getOriginalPrice(plan.quarterlyPrice)}
+                        </span>
+                      )}
+                      <span className={`text-sm ${plan.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                        /{t("pricing.perMonth")}
+                      </span>
+                    </motion.div>
+                  </AnimatePresence>
+                  {isAnnual && plan.quarterlyPrice > 0 && (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className={`text-xs mt-1 ${plan.highlighted ? "text-primary-foreground/70" : "text-muted-foreground"}`}
+                    >
+                      {t("pricing.billedAnnually")}
+                    </motion.p>
+                  )}
                 </div>
 
                 <p className={`text-sm mb-6 ${plan.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"}`}>

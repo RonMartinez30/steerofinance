@@ -855,6 +855,9 @@
     "title": "Simple and transparent pricing",
     "subtitle": "Choose the plan that fits your needs. Start for free, upgrade at your own pace.",
     "perMonth": "month",
+    "quarterly": "Quarterly",
+    "annual": "Annual",
+    "billedAnnually": "Billed annually",
     "popular": "Most popular",
     "free": {
       "name": "Free",
