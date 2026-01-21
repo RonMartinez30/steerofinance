@@ -163,8 +163,8 @@ const Pricing = () => {
                         {t("pricing.totalBilled")} {getTotalBilled()}
                       </p>
                       {isAnnual && (
-                        <p className="text-xs text-accent font-medium">
-                          {t("pricing.savings")} {annualSavings}€
+                        <p className="text-sm font-semibold text-white bg-white/20 rounded-full px-4 py-1">
+                          🎉 {t("pricing.savings")} {annualSavings}€
                         </p>
                       )}
                     </motion.div>
