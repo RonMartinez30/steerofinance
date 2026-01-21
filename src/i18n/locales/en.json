@@ -10,7 +10,8 @@
   "header": {
     "home": "Home",
     "whySteero": "Why Steero",
-    "features": "Features"
+    "features": "Features",
+    "pricing": "Pricing"
   },
   "footer": {
     "tagline": "A simple framework to understand and manage your finances over time.",
@@ -847,5 +848,45 @@
         }
       }
     }
+  },
+  "pricing": {
+    "seoTitle": "Pricing - Steero",
+    "seoDescription": "Discover Steero plans: free to start, Pro to go further, Family to share.",
+    "title": "Simple and transparent pricing",
+    "subtitle": "Choose the plan that fits your needs. Start for free, upgrade at your own pace.",
+    "perMonth": "month",
+    "popular": "Most popular",
+    "free": {
+      "name": "Free",
+      "description": "To discover Steero and lay the foundation.",
+      "feature1": "1 personal account",
+      "feature2": "Unlimited budgets",
+      "feature3": "Manual entry",
+      "feature4": "Basic rituals",
+      "cta": "Get started for free"
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "For those who want to go further.",
+      "feature1": "Everything in Free",
+      "feature2": "Financial goals",
+      "feature3": "Advanced dashboard",
+      "feature4": "Custom rituals",
+      "feature5": "Priority support",
+      "cta": "Upgrade to Pro"
+    },
+    "family": {
+      "name": "Family",
+      "description": "To manage finances together.",
+      "feature1": "Everything in Pro",
+      "feature2": "Up to 5 members",
+      "feature3": "Shared budgets",
+      "feature4": "Consolidated view",
+      "feature5": "Permission management",
+      "cta": "Choose Family"
+    },
+    "faqTitle": "Have questions?",
+    "faqDescription": "Check out our FAQ to learn more about Steero.",
+    "faqCta": "View FAQ"
   }
 }

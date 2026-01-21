@@ -10,7 +10,8 @@
   "header": {
     "home": "Inicio",
     "whySteero": "Por qué Steero",
-    "features": "Funcionalidades"
+    "features": "Funcionalidades",
+    "pricing": "Precios"
   },
   "footer": {
     "tagline": "Un marco sencillo para entender y gestionar tus finanzas a largo plazo.",
@@ -846,5 +847,45 @@
         }
       }
     }
+  },
+  "pricing": {
+    "seoTitle": "Precios - Steero",
+    "seoDescription": "Descubre los planes de Steero: gratis para empezar, Pro para ir más lejos, Familia para compartir.",
+    "title": "Precios simples y transparentes",
+    "subtitle": "Elige el plan que se adapte a tus necesidades. Empieza gratis, evoluciona a tu ritmo.",
+    "perMonth": "mes",
+    "popular": "Más popular",
+    "free": {
+      "name": "Gratis",
+      "description": "Para descubrir Steero y poner las bases.",
+      "feature1": "1 cuenta personal",
+      "feature2": "Presupuestos ilimitados",
+      "feature3": "Entrada manual",
+      "feature4": "Rituales básicos",
+      "cta": "Empezar gratis"
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Para quienes quieren ir más lejos.",
+      "feature1": "Todo el plan Gratis",
+      "feature2": "Objetivos financieros",
+      "feature3": "Tablero avanzado",
+      "feature4": "Rituales personalizados",
+      "feature5": "Soporte prioritario",
+      "cta": "Pasar a Pro"
+    },
+    "family": {
+      "name": "Familia",
+      "description": "Para gestionar las finanzas juntos.",
+      "feature1": "Todo el plan Pro",
+      "feature2": "Hasta 5 miembros",
+      "feature3": "Presupuestos compartidos",
+      "feature4": "Vista consolidada",
+      "feature5": "Gestión de permisos",
+      "cta": "Elegir Familia"
+    },
+    "faqTitle": "¿Tienes preguntas?",
+    "faqDescription": "Consulta nuestra FAQ para saber más sobre Steero.",
+    "faqCta": "Ver FAQ"
   }
 }

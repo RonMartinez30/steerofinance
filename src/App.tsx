@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import FAQ from "./pages/FAQ";
 import PourquoiSteero from "./pages/PourquoiSteero";
 import Fonctionnalites from "./pages/Fonctionnalites";
+import Pricing from "./pages/Pricing";
 import Blog from "./pages/Blog";
 import MentionsLegales from "./pages/MentionsLegales";
 import CGS from "./pages/CGS";
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/faq" element={<FAQ />} />
             <Route path="/pourquoi-steero" element={<PourquoiSteero />} />
             <Route path="/fonctionnalites" element={<Fonctionnalites />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="/cgs" element={<CGS />} />
