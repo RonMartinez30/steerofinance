@@ -88,11 +88,31 @@ export function WaitlistForm({ onSuccess }: WaitlistFormProps) {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      // TODO: Connect to Supabase when Cloud is enabled
-      // const { error } = await supabase.from("waitlist").insert([{...data}]);
-      
-      console.log("Waitlist submission:", data);
-      
+   const { error } = await supabase.from("waitlist").insert([
+        {
+          first_name: data.first_name,
+          last_name: data.last_name,
+          email: data.email,
+          date_of_birth: data.date_of_birth,
+          country: data.country,
+          language: data.language,
+          currency: data.currency,
+          terms_accepted: data.terms_accepted,
+        },
+      ]);
+
+      if (error?.message?.includes("waitlist_email_key")) {
+        toast.error(
+          t("waitlist.errors.emailExists") || "Email already registered",
+          {
+            style: { color: "black" },
+            descriptionClassName: "text-black",
+          }
+        );
+        setIsSubmitting(false);
+        return;
+      }
+          
       toast.success(t("waitlist.successTitle"), {
         description: t("waitlist.successMessage"),
       });
