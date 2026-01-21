@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
+import { useWaitlist } from "@/contexts/WaitlistContext";
 
 interface Article {
   id: number;
@@ -870,9 +871,10 @@ interface ArticleCardProps {
   isOpen: boolean;
   onToggle: () => void;
   cardRef?: React.RefObject<HTMLDivElement>;
+  openWaitlist: () => void;
 }
 
-const ArticleCard = ({ article, t, isOpen, onToggle, cardRef }: ArticleCardProps) => {
+const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist }: ArticleCardProps) => {
   const [copied, setCopied] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const hook = t(article.hookKey);
@@ -995,11 +997,9 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef }: ArticleCardProps
                 <p className="text-sm text-foreground font-medium mb-3">
                   {t('blog.readyToTransform')}
                 </p>
-                <Button asChild size="sm" className="group">
-                  <Link to="/#cta">
+                <Button size="sm" className="group" onClick={openWaitlist}>
                     {t('blog.joinWaitlist')}
                     <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </Link>
                 </Button>
               </motion.div>
               
@@ -1051,6 +1051,7 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef }: ArticleCardProps
 
 const Blog = () => {
   const { t } = useTranslation();
+  const { openWaitlist } = useWaitlist();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [openArticles, setOpenArticles] = useState<Set<number>>(new Set());
@@ -1281,6 +1282,7 @@ const Blog = () => {
                           t={t}
                           isOpen={openArticles.has(article.id)}
                           onToggle={() => toggleArticle(article.id)}
+                          openWaitlist={openWaitlist}
                         />
                       </motion.div>
                     ))}
@@ -1333,15 +1335,15 @@ const Blog = () => {
               {t('blog.ctaDescription')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a 
-                href="/#cta"
+              <motion.button 
+                onClick={openWaitlist}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
                 {t('common.joinWaitlist')}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </motion.a>
+              </motion.button>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}

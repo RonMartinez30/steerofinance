@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGrid, RefreshCcw, ClipboardList, Gauge, CalendarCheck, BarChart3, Landmark, Wallet, Receipt, RotateCcw, ClipboardCheck, Flame, Plane, type LucideIcon } from "lucide-react";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useTranslation } from "react-i18next";
+import { useWaitlist } from "@/contexts/WaitlistContext";
 
 // Progress sidebar component
 const ProgressSidebar = ({
@@ -1838,6 +1839,7 @@ const FeatureCard = ({
 };
 const Fonctionnalites = () => {
   const { t } = useTranslation();
+  const { openWaitlist } = useWaitlist();
   const sounds = useSoundEffects();
   const [openCardId, setOpenCardId] = useState<string | null>(null);
   const [exploredCards, setExploredCards] = useState<Set<string>>(new Set());
@@ -2579,15 +2581,15 @@ const Fonctionnalites = () => {
               {t('fonctionnalites.ctaSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a 
-                href="/#cta"
+              <motion.button 
+                onClick={openWaitlist}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
                 {t('common.joinWaitlist')}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </motion.a>
+              </motion.button>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
