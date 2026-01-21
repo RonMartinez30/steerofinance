@@ -917,6 +917,7 @@
           "question": "Une question sur tes données ?",
           "tempEmail": "(Mail temporaire)"
         }
+      }
     }
   },
   "pricing": {
@@ -925,6 +926,9 @@
     "title": "Des tarifs simples et transparents",
     "subtitle": "Choisis l'offre qui correspond à tes besoins. Commence gratuitement, évolue à ton rythme.",
     "perMonth": "mois",
+    "quarterly": "Trimestriel",
+    "annual": "Annuel",
+    "billedAnnually": "Facturé annuellement",
     "popular": "Le plus populaire",
     "free": {
       "name": "Gratuit",
@@ -959,5 +963,4 @@
     "faqDescription": "Consulte notre FAQ pour en savoir plus sur Steero.",
     "faqCta": "Voir la FAQ"
   }
-}
 }

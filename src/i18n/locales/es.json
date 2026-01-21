@@ -854,6 +854,9 @@
     "title": "Precios simples y transparentes",
     "subtitle": "Elige el plan que se adapte a tus necesidades. Empieza gratis, evoluciona a tu ritmo.",
     "perMonth": "mes",
+    "quarterly": "Trimestral",
+    "annual": "Anual",
+    "billedAnnually": "Facturado anualmente",
     "popular": "Más popular",
     "free": {
       "name": "Gratis",
