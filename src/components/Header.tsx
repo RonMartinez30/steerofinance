@@ -36,6 +36,9 @@ const Header = () => {
           <Link to="/fonctionnalites" className="text-sm text-muted-foreground hover:text-primary transition-colors">
             {t('header.features')}
           </Link>
+          <Link to="/pricing" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            {t('header.pricing')}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -90,6 +93,13 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('header.features')}
+              </Link>
+              <Link 
+                to="/pricing" 
+                className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t('header.pricing')}
               </Link>
               <Button 
                 className="btn-primary text-xs w-full mt-2"
