@@ -22,7 +22,10 @@ const Pricing = () => {
 
   // Total amounts
   const quarterlyTotal = (quarterlyPrice * 3).toFixed(2).replace('.', ',');
-  const annualTotal = (quarterlyPrice * 12 * (1 - discountPercent / 100)).toFixed(2).replace('.', ',');
+  const yearlyWithoutDiscount = quarterlyPrice * 12;
+  const yearlyWithDiscount = yearlyWithoutDiscount * (1 - discountPercent / 100);
+  const annualTotal = yearlyWithDiscount.toFixed(2).replace('.', ',');
+  const annualSavings = (yearlyWithoutDiscount - yearlyWithDiscount).toFixed(2).replace('.', ',');
 
   const getPrice = () => {
     if (isAnnual) {
@@ -46,7 +49,6 @@ const Pricing = () => {
     t("pricing.feature2"),
     t("pricing.feature3"),
     t("pricing.feature4"),
-    t("pricing.feature5"),
   ];
 
   return (
@@ -151,16 +153,23 @@ const Pricing = () => {
                     </motion.p>
                   </AnimatePresence>
                   <AnimatePresence mode="wait">
-                    <motion.p
+                    <motion.div
                       key={`total-${billingPeriod}`}
                       initial={{ opacity: 0, y: 5 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -5 }}
                       transition={{ duration: 0.2 }}
-                      className="text-sm mt-3 font-medium text-primary-foreground/90 bg-white/10 rounded-full px-4 py-1.5 inline-block"
+                      className="flex flex-col items-center gap-2 mt-3"
                     >
-                      {t("pricing.totalBilled")} {getTotalBilled()}
-                    </motion.p>
+                      <p className="text-sm font-medium text-primary-foreground/90 bg-white/10 rounded-full px-4 py-1.5">
+                        {t("pricing.totalBilled")} {getTotalBilled()}
+                      </p>
+                      {isAnnual && (
+                        <p className="text-xs text-accent font-medium">
+                          {t("pricing.savings")} {annualSavings}€
+                        </p>
+                      )}
+                    </motion.div>
                   </AnimatePresence>
                 </div>
 
