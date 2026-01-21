@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
+import { supabase } from "@/lib/supabase";
 
 interface WaitlistFormProps {
   onSuccess?: () => void;
