@@ -7,6 +7,35 @@
     "readMore": "Leer más",
     "close": "Cerrar"
   },
+  "waitlist": {
+    "modalTitle": "Únete a la lista de espera",
+    "modalDescription": "Sé de los primeros en probar Steero y transformar tu relación con el dinero.",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Email",
+    "dateOfBirth": "Fecha de nacimiento",
+    "selectDate": "Seleccionar una fecha",
+    "country": "País",
+    "selectCountry": "Seleccionar un país",
+    "language": "Idioma",
+    "selectLanguage": "Seleccionar un idioma",
+    "currency": "Moneda",
+    "selectCurrency": "Seleccionar una moneda",
+    "popularCurrencies": "Monedas populares",
+    "allCurrencies": "Todas las monedas",
+    "termsText": "Acepto los",
+    "termsLink": "Términos de uso",
+    "submit": "Unirme a la lista de espera",
+    "submitting": "Enviando...",
+    "successTitle": "¡Registro exitoso! 🎉",
+    "successMessage": "Ya estás en la lista de espera de Steero. ¡Te mantendremos informado!",
+    "errors": {
+      "required": "Este campo es obligatorio",
+      "email": "Dirección de email inválida",
+      "terms": "Debes aceptar los términos y condiciones",
+      "emailExists": "Este email ya está registrado"
+    }
+  },
   "header": {
     "home": "Inicio",
     "whySteero": "Por qué Steero",

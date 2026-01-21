@@ -7,6 +7,35 @@
     "readMore": "Lire plus",
     "close": "Fermer"
   },
+  "waitlist": {
+    "modalTitle": "Rejoins la liste d'attente",
+    "modalDescription": "Sois parmi les premiers à essayer Steero et à transformer ta relation à l'argent.",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Email",
+    "dateOfBirth": "Date de naissance",
+    "selectDate": "Sélectionner une date",
+    "country": "Pays",
+    "selectCountry": "Sélectionner un pays",
+    "language": "Langue",
+    "selectLanguage": "Sélectionner une langue",
+    "currency": "Devise",
+    "selectCurrency": "Sélectionner une devise",
+    "popularCurrencies": "Devises populaires",
+    "allCurrencies": "Toutes les devises",
+    "termsText": "J'accepte les",
+    "termsLink": "Conditions Générales d'Utilisation",
+    "submit": "Rejoindre la liste d'attente",
+    "submitting": "Inscription en cours...",
+    "successTitle": "Inscription réussie ! 🎉",
+    "successMessage": "Tu fais désormais partie de la liste d'attente Steero. On te tient informé !",
+    "errors": {
+      "required": "Ce champ est requis",
+      "email": "Adresse email invalide",
+      "terms": "Tu dois accepter les conditions générales",
+      "emailExists": "Cette adresse email est déjà inscrite"
+    }
+  },
   "header": {
     "home": "Accueil",
     "whySteero": "Pourquoi Steero",

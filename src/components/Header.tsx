@@ -6,10 +6,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import steeroLogo from "@/assets/steero-logo.png";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useWaitlist } from "@/contexts/WaitlistContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useTranslation();
+  const { openWaitlist } = useWaitlist();
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -43,7 +45,7 @@ const Header = () => {
 
         <div className="flex items-center gap-4">
           <LanguageSwitcher />
-          <Button className="btn-primary text-xs sm:text-sm hidden sm:inline-flex">{t('common.joinWaitlist')}</Button>
+          <Button className="btn-primary text-xs sm:text-sm hidden sm:inline-flex" onClick={openWaitlist}>{t('common.joinWaitlist')}</Button>
           
           {/* Hamburger button */}
           <button
@@ -103,7 +105,10 @@ const Header = () => {
               </Link>
               <Button 
                 className="btn-primary text-xs w-full mt-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  openWaitlist();
+                }}
               >
                 {t('common.joinWaitlist')}
               </Button>

@@ -2,11 +2,13 @@ import { ArrowRight, Shield, Users, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useWaitlist } from "@/contexts/WaitlistContext";
 
 const targetDate = new Date("2026-03-20T12:00:00+01:00");
 
 const CTA = () => {
   const { t } = useTranslation();
+  const { openWaitlist } = useWaitlist();
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   function calculateTimeLeft() {
@@ -79,6 +81,7 @@ const CTA = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
+            onClick={openWaitlist}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group mb-12"
           >
             {t('common.joinWaitlist')}
