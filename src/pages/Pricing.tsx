@@ -20,6 +20,10 @@ const Pricing = () => {
   const discountPercent = 17;
   const quarterlyPrice = 7.90;
 
+  // Total amounts
+  const quarterlyTotal = (quarterlyPrice * 3).toFixed(2).replace('.', ',');
+  const annualTotal = (quarterlyPrice * 12 * (1 - discountPercent / 100)).toFixed(2).replace('.', ',');
+
   const getPrice = () => {
     if (isAnnual) {
       const annualPrice = (quarterlyPrice * (1 - discountPercent / 100)).toFixed(2).replace('.', ',');
@@ -31,6 +35,10 @@ const Pricing = () => {
   const getOriginalPrice = () => {
     if (!isAnnual) return null;
     return `${quarterlyPrice.toFixed(2).replace('.', ',')}€`;
+  };
+
+  const getTotalBilled = () => {
+    return isAnnual ? `${annualTotal}€` : `${quarterlyTotal}€`;
   };
 
   const features = [
@@ -60,7 +68,7 @@ const Pricing = () => {
               className="text-center"
             >
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                {t("pricing.title")}
+                {t("pricing.titlePart1")} <span className="text-primary">{t("pricing.titleHighlight")}</span>
               </h1>
               <p className="text-lg text-muted-foreground mb-10">
                 {t("pricing.subtitle")}
@@ -131,24 +139,29 @@ const Pricing = () => {
                       </span>
                     </motion.div>
                   </AnimatePresence>
-                  {isAnnual && (
+                  <AnimatePresence mode="wait">
                     <motion.p
+                      key={`billing-${billingPeriod}`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
                       className="text-xs mt-2 text-primary-foreground/70"
                     >
-                      {t("pricing.billedAnnually")}
+                      {isAnnual ? t("pricing.billedAnnually") : t("pricing.billedQuarterly")}
                     </motion.p>
-                  )}
-                  {!isAnnual && (
+                  </AnimatePresence>
+                  <AnimatePresence mode="wait">
                     <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="text-xs mt-2 text-primary-foreground/70"
+                      key={`total-${billingPeriod}`}
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-sm mt-3 font-medium text-primary-foreground/90 bg-white/10 rounded-full px-4 py-1.5 inline-block"
                     >
-                      {t("pricing.billedQuarterly")}
+                      {t("pricing.totalBilled")} {getTotalBilled()}
                     </motion.p>
-                  )}
+                  </AnimatePresence>
                 </div>
 
                 <p className="text-sm mb-6 text-primary-foreground/80">
