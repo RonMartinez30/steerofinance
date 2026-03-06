@@ -47,7 +47,16 @@ const Footer = () => {
             <Link to="/" className="inline-block mb-4">
               <img src={steeroLogo} alt="Steero" className="h-12 w-auto object-contain" />
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">{t("footer.tagline")}</p>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-4">{t("footer.tagline")}</p>
+            <a
+              href="https://www.linkedin.com/company/steero-osfinance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={18} />
+            </a>
           </motion.div>
 
           {/* Column 2 - Product */}
