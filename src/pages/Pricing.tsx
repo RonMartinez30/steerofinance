@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -8,35 +9,45 @@ import { useState } from "react";
 import SEO from "@/components/SEO";
 import { useWaitlist } from "@/contexts/WaitlistContext";
 
-type BillingPeriod = "monthly" | "annual";
+type BillingPeriod = "quarterly" | "annual";
 
 const Pricing = () => {
   const { t } = useTranslation();
   const { openWaitlist } = useWaitlist();
-  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("quarterly");
 
   const isAnnual = billingPeriod === "annual";
-  const monthlyPrice = 8;
-  const annualTotal = 64;
-  const annualMonthly = annualTotal / 12;
-  const discountPercent = Math.round((1 - annualTotal / (monthlyPrice * 12)) * 100);
-  const annualSavings = (monthlyPrice * 12 - annualTotal).toFixed(2).replace('.', ',');
+  const quarterlyPrice = 7.90;
+  const annualPrice = 6.30;
+  const discountPercent = 20;
+
+  // Total amounts
+  const quarterlyTotal = (quarterlyPrice * 3).toFixed(2).replace('.', ',');
+  const annualTotal = (annualPrice * 12).toFixed(2).replace('.', ',');
+  const annualSavings = ((quarterlyPrice - annualPrice) * 12).toFixed(2).replace('.', ',');
 
   const getPrice = () => {
     if (isAnnual) {
-      return `${annualMonthly.toFixed(2).replace('.', ',')}€`;
+      return `${annualPrice.toFixed(2).replace('.', ',')}€`;
     }
-    return `${monthlyPrice}€`;
+    return `${quarterlyPrice.toFixed(2).replace('.', ',')}€`;
   };
 
   const getOriginalPrice = () => {
     if (!isAnnual) return null;
-    return `${monthlyPrice}€`;
+    return `${quarterlyPrice.toFixed(2).replace('.', ',')}€`;
   };
 
   const getTotalBilled = () => {
-    return isAnnual ? `${annualTotal}€` : `${monthlyPrice}€`;
+    return isAnnual ? `${annualTotal}€` : `${quarterlyTotal}€`;
   };
+
+  const features = [
+    t("pricing.feature1"),
+    t("pricing.feature2"),
+    t("pricing.feature3"),
+    t("pricing.feature4"),
+  ];
 
   return (
     <div className="min-h-screen">
@@ -46,7 +57,7 @@ const Pricing = () => {
       />
       <Header />
 
-      {/* Hero Section */}
+      {/* Hero Section - Harmonized with other pages */}
       <main className="pt-32 pb-16 bg-hero-gradient">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
@@ -66,14 +77,14 @@ const Pricing = () => {
               {/* Billing Toggle */}
               <div className="inline-flex items-center gap-2 bg-muted rounded-full p-1 mb-12">
                 <button
-                  onClick={() => setBillingPeriod("monthly")}
+                  onClick={() => setBillingPeriod("quarterly")}
                   className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                     !isAnnual
                       ? "bg-primary text-primary-foreground shadow-sm"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {t("pricing.monthly")}
+                  {t("pricing.quarterly")}
                 </button>
                 <button
                   onClick={() => setBillingPeriod("annual")}
@@ -136,7 +147,7 @@ const Pricing = () => {
                       exit={{ opacity: 0 }}
                       className="text-xs mt-2 text-primary-foreground/70"
                     >
-                      {isAnnual ? t("pricing.billedAnnually") : t("pricing.billedMonthly")}
+                      {isAnnual ? t("pricing.billedAnnually") : t("pricing.billedQuarterly")}
                     </motion.p>
                   </AnimatePresence>
                   <AnimatePresence mode="wait">
@@ -160,22 +171,20 @@ const Pricing = () => {
                   </AnimatePresence>
                 </div>
 
-                {/* Tarif de lancement */}
-                <div className="mb-6 bg-white/10 rounded-xl p-4">
-                  <p className="text-sm font-semibold text-primary-foreground mb-2">
-                    {t("pricing.launchPriceLabel")}
-                  </p>
-                  <p className="text-xs text-primary-foreground/80 leading-relaxed">
-                    {t("pricing.launchPriceText")}
-                  </p>
-                  <p className="text-xs text-primary-foreground/90 font-medium mt-2">
-                    {t("pricing.launchPriceAdvantage")}
-                  </p>
-                </div>
-
                 <p className="text-sm mb-6 text-primary-foreground/80">
                   {t("pricing.description")}
                 </p>
+
+                <ul className="space-y-3 mb-8 text-left">
+                  {features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 shrink-0 mt-0.5 text-primary-foreground" />
+                      <span className="text-sm text-primary-foreground/90">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
 
                 <Button
                   onClick={openWaitlist}
@@ -188,32 +197,6 @@ const Pricing = () => {
           </div>
         </div>
       </main>
-
-      {/* Early Adopters */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl mx-auto text-center"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-              {t("pricing.earlyTitle")}
-            </h2>
-            <div className="bg-card border border-border rounded-2xl p-8 space-y-4 text-muted-foreground text-sm leading-relaxed">
-              <p>{t("pricing.earlyText")}</p>
-              <p className="font-medium text-foreground">{t("pricing.earlyCta")}</p>
-              <div className="pt-2">
-                <Button onClick={openWaitlist} className="rounded-full">
-                  {t("pricing.cta")}
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Plan Impact */}
       <section className="py-16 bg-muted/30">
