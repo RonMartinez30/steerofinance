@@ -971,6 +971,16 @@
     "cta": "Rejoindre la liste d'attente",
     "faqTitle": "Des questions ?",
     "faqDescription": "Consulte notre FAQ pour en savoir plus sur Steero.",
-    "faqCta": "Voir la FAQ"
+    "faqCta": "Voir la FAQ",
+    "impactTitle": "Le Plan Impact",
+    "impactIntro": "Parce que certaines personnes très motivées n'ont pas toujours les moyens d'accéder à ce type d'outils, nous avons créé le",
+    "impactName": "Plan Impact",
+    "impactLimited": "Chaque année, un nombre limité de places est réservé à des utilisateurs déterminés qui souhaitent reprendre le contrôle de leurs finances mais dont les ressources sont limitées.",
+    "impactEligibility": "Si vous êtes étudiant, en début de carrière ou dans une situation financière temporairement difficile, vous pouvez faire une demande de",
+    "impactDiscount": "remise de 50\u00a0%",
+    "impactDuration": "pour la durée d'une année renouvelable.",
+    "impactReview": "Les candidatures sont étudiées individuellement.",
+    "impactGoal": "Notre objectif est simple\u00a0: permettre à ceux qui sont prêts à faire l'effort de progresser d'avoir accès aux bons outils.",
+    "impactCta": "Candidater"
   }
 }
