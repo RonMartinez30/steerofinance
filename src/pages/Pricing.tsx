@@ -77,14 +77,14 @@ const Pricing = () => {
               {/* Billing Toggle */}
               <div className="inline-flex items-center gap-2 bg-muted rounded-full p-1 mb-12">
                 <button
-                  onClick={() => setBillingPeriod("quarterly")}
+                  onClick={() => setBillingPeriod("monthly")}
                   className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                     !isAnnual
                       ? "bg-primary text-primary-foreground shadow-sm"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {t("pricing.quarterly")}
+                  {t("pricing.monthly")}
                 </button>
                 <button
                   onClick={() => setBillingPeriod("annual")}
