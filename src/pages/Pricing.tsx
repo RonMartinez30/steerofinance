@@ -209,21 +209,19 @@ const Pricing = () => {
             className="max-w-2xl mx-auto"
           >
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">
-              Le Plan Impact
+              {t("pricing.impactTitle")}
             </h2>
             <div className="bg-card border border-border rounded-2xl p-8 space-y-4 text-muted-foreground text-sm leading-relaxed">
               <p>
-                Parce que certaines personnes très motivées n'ont pas toujours les moyens d'accéder à ce type d'outils, nous avons créé le <span className="font-semibold text-foreground">Plan Impact</span>.
+                {t("pricing.impactIntro")} <span className="font-semibold text-foreground">{t("pricing.impactName")}</span>.
               </p>
+              <p>{t("pricing.impactLimited")}</p>
               <p>
-                Chaque année, un nombre limité de places est réservé à des utilisateurs déterminés qui souhaitent reprendre le contrôle de leurs finances mais dont les ressources sont limitées.
+                {t("pricing.impactEligibility")} <span className="font-semibold text-foreground">{t("pricing.impactDiscount")}</span> {t("pricing.impactDuration")}
               </p>
-              <p>
-                Si vous êtes étudiant, en début de carrière ou dans une situation financière temporairement difficile, vous pouvez faire une demande de <span className="font-semibold text-foreground">remise de 50&nbsp;%</span> pour la durée d'une année renouvelable.
-              </p>
-              <p>Les candidatures sont étudiées individuellement.</p>
+              <p>{t("pricing.impactReview")}</p>
               <p className="font-medium text-foreground">
-                Notre objectif est simple&nbsp;: permettre à ceux qui sont prêts à faire l'effort de progresser d'avoir accès aux bons outils.
+                {t("pricing.impactGoal")}
               </p>
               <div className="pt-2 text-center">
                 <a
@@ -232,7 +230,7 @@ const Pricing = () => {
                   rel="noopener noreferrer"
                 >
                   <Button variant="outline" className="rounded-full">
-                    Candidater
+                    {t("pricing.impactCta")}
                   </Button>
                 </a>
               </div>
