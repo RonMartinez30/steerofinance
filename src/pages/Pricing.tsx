@@ -198,8 +198,51 @@ const Pricing = () => {
         </div>
       </main>
 
-      {/* FAQ Teaser */}
+      {/* Plan Impact */}
       <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-2xl mx-auto"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">
+              Le Plan Impact
+            </h2>
+            <div className="bg-card border border-border rounded-2xl p-8 space-y-4 text-muted-foreground text-sm leading-relaxed">
+              <p>
+                Parce que certaines personnes très motivées n'ont pas toujours les moyens d'accéder à ce type d'outils, nous avons créé le <span className="font-semibold text-foreground">Plan Impact</span>.
+              </p>
+              <p>
+                Chaque année, un nombre limité de places est réservé à des utilisateurs déterminés qui souhaitent reprendre le contrôle de leurs finances mais dont les ressources sont limitées.
+              </p>
+              <p>
+                Si vous êtes étudiant, en début de carrière ou dans une situation financière temporairement difficile, vous pouvez faire une demande de <span className="font-semibold text-foreground">remise de 50&nbsp;%</span> pour la durée d'une année renouvelable.
+              </p>
+              <p>Les candidatures sont étudiées individuellement.</p>
+              <p className="font-medium text-foreground">
+                Notre objectif est simple&nbsp;: permettre à ceux qui sont prêts à faire l'effort de progresser d'avoir accès aux bons outils.
+              </p>
+              <div className="pt-2 text-center">
+                <a
+                  href="https://www.notion.so/68ab0233fa764fee9a8845d05af589e7?v=319020d992408096af72000cb7be3444&source=copy_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" className="rounded-full">
+                    Candidater
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Teaser */}
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
