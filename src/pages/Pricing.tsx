@@ -193,6 +193,49 @@ const Pricing = () => {
                   {t("pricing.cta")}
                 </Button>
               </motion.div>
+
+              {/* Prix fondateur */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="max-w-md mx-auto mt-10 bg-card border border-border rounded-2xl p-6 text-left space-y-3"
+              >
+                <h3 className="text-lg font-bold text-foreground">{t("pricing.founderTitle")}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {t("pricing.founderText1")}
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {t("pricing.founderText2")}
+                </p>
+              </motion.div>
+
+              {/* Early Adopters */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="max-w-md mx-auto mt-8 bg-orange-50 border-2 border-orange-300 rounded-2xl p-6 text-left space-y-4"
+              >
+                <span className="inline-block bg-orange-500 text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full">
+                  {t("pricing.earlyBadge")}
+                </span>
+                <p className="text-sm text-foreground leading-relaxed">
+                  {t("pricing.earlyText1")}
+                </p>
+                <p className="text-sm text-foreground font-medium leading-relaxed">
+                  {t("pricing.earlyText2")}
+                </p>
+                <Button
+                  onClick={openWaitlist}
+                  className="w-full rounded-full bg-orange-500 text-white hover:bg-orange-600"
+                >
+                  {t("pricing.earlyCta")}
+                </Button>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  *{t("pricing.earlyDisclaimer")}
+                </p>
+              </motion.div>
             </motion.div>
           </div>
         </div>
