@@ -8,12 +8,12 @@ import { useState } from "react";
 import SEO from "@/components/SEO";
 import { useWaitlist } from "@/contexts/WaitlistContext";
 
-type BillingPeriod = "monthly" | "annual";
+type BillingPeriod = "quarterly" | "annual";
 
 const Pricing = () => {
   const { t } = useTranslation();
   const { openWaitlist } = useWaitlist();
-  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("quarterly");
 
   const isAnnual = billingPeriod === "annual";
   const monthlyPrice = 8.00;
@@ -21,7 +21,7 @@ const Pricing = () => {
   const discountPercent = 25;
 
   // Total amounts
-  const monthlyTotal = (monthlyPrice * 1).toFixed(2).replace('.', ',');
+  const quarterlyTotal = (monthlyPrice * 3).toFixed(2).replace('.', ',');
   const annualTotal = 72;
   const annualSavings = 24;
 
@@ -38,7 +38,7 @@ const Pricing = () => {
   };
 
   const getTotalBilled = () => {
-    return isAnnual ? `${annualTotal},00€` : `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
+    return isAnnual ? `${annualTotal},00€` : `${quarterlyTotal}€`;
   };
 
 
@@ -70,14 +70,14 @@ const Pricing = () => {
               {/* Billing Toggle */}
               <div className="inline-flex items-center gap-2 bg-muted rounded-full p-1 mb-12">
                 <button
-                  onClick={() => setBillingPeriod("monthly")}
+                  onClick={() => setBillingPeriod("quarterly")}
                   className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                     !isAnnual
                       ? "bg-primary text-primary-foreground shadow-sm"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {t("pricing.monthly")}
+                  {t("pricing.quarterly")}
                 </button>
                 <button
                   onClick={() => setBillingPeriod("annual")}
@@ -140,7 +140,7 @@ const Pricing = () => {
                       exit={{ opacity: 0 }}
                       className="text-xs mt-2 text-primary-foreground/70"
                     >
-                      {isAnnual ? t("pricing.billedAnnually") : t("pricing.billedMonthly")}
+                      {isAnnual ? t("pricing.billedAnnually") : t("pricing.billedQuarterly")}
                     </motion.p>
                   </AnimatePresence>
                   <AnimatePresence mode="wait">
