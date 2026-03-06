@@ -38,7 +38,7 @@ const Pricing = () => {
   };
 
   const getTotalBilled = () => {
-    return isAnnual ? `${annualTotal},00€` : `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
+    return isAnnual ? `${annualTotal},00€` : `${quarterlyTotal}€`;
   };
 
 
