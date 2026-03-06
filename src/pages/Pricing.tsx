@@ -30,16 +30,16 @@ const Pricing = () => {
     if (isAnnual) {
       return `${annualPrice.toFixed(2).replace('.', ',')}€`;
     }
-    return `${quarterlyPrice.toFixed(2).replace('.', ',')}€`;
+    return `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
   };
 
   const getOriginalPrice = () => {
     if (!isAnnual) return null;
-    return `${quarterlyPrice.toFixed(2).replace('.', ',')}€`;
+    return `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
   };
 
   const getTotalBilled = () => {
-    return isAnnual ? `${annualTotal}€` : `${quarterlyTotal}€`;
+    return isAnnual ? `${annualTotal},00€` : `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
   };
 
   const features = [
