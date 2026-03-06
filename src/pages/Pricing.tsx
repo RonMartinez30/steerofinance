@@ -9,22 +9,22 @@ import { useState } from "react";
 import SEO from "@/components/SEO";
 import { useWaitlist } from "@/contexts/WaitlistContext";
 
-type BillingPeriod = "quarterly" | "annual";
+type BillingPeriod = "monthly" | "annual";
 
 const Pricing = () => {
   const { t } = useTranslation();
   const { openWaitlist } = useWaitlist();
-  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("quarterly");
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
 
   const isAnnual = billingPeriod === "annual";
-  const quarterlyPrice = 7.90;
-  const annualPrice = 6.30;
-  const discountPercent = 20;
+  const monthlyPrice = 8.00;
+  const annualPrice = 6.00;
+  const discountPercent = 25;
 
   // Total amounts
-  const quarterlyTotal = (quarterlyPrice * 3).toFixed(2).replace('.', ',');
-  const annualTotal = (annualPrice * 12).toFixed(2).replace('.', ',');
-  const annualSavings = ((quarterlyPrice - annualPrice) * 12).toFixed(2).replace('.', ',');
+  const monthlyTotal = (monthlyPrice * 1).toFixed(2).replace('.', ',');
+  const annualTotal = 72;
+  const annualSavings = 24;
 
   const getPrice = () => {
     if (isAnnual) {
