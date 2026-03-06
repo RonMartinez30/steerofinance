@@ -8,7 +8,7 @@ import { useState } from "react";
 import SEO from "@/components/SEO";
 import { useWaitlist } from "@/contexts/WaitlistContext";
 
-type BillingPeriod = "monthly" | "annual";
+type BillingPeriod = "quarterly" | "annual";
 
 const Pricing = () => {
   const { t } = useTranslation();
