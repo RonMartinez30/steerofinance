@@ -147,7 +147,7 @@ const Pricing = () => {
                       exit={{ opacity: 0 }}
                       className="text-xs mt-2 text-primary-foreground/70"
                     >
-                      {isAnnual ? t("pricing.billedAnnually") : t("pricing.billedQuarterly")}
+                      {isAnnual ? t("pricing.billedAnnually") : t("pricing.billedMonthly")}
                     </motion.p>
                   </AnimatePresence>
                   <AnimatePresence mode="wait">
