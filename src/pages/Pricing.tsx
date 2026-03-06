@@ -13,7 +13,7 @@ type BillingPeriod = "quarterly" | "annual";
 const Pricing = () => {
   const { t } = useTranslation();
   const { openWaitlist } = useWaitlist();
-  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("quarterly");
 
   const isAnnual = billingPeriod === "annual";
   const monthlyPrice = 8.00;
@@ -21,7 +21,7 @@ const Pricing = () => {
   const discountPercent = 25;
 
   // Total amounts
-  const monthlyTotal = (monthlyPrice * 1).toFixed(2).replace('.', ',');
+  const quarterlyTotal = (monthlyPrice * 3).toFixed(2).replace('.', ',');
   const annualTotal = 72;
   const annualSavings = 24;
 
