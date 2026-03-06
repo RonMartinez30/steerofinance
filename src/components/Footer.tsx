@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Linkedin } from "lucide-react";
 import steeroLogo from "@/assets/steero-logo.png";
 
 const Footer = () => {
