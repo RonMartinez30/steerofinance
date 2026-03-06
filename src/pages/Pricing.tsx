@@ -164,7 +164,7 @@ const Pricing = () => {
                       </p>
                       {isAnnual && (
                         <p className="text-sm font-semibold text-white bg-white/20 rounded-full px-4 py-1">
-                          🎉 {t("pricing.savings")} {annualSavings}€
+                          🎉 {t("pricing.savings")} {annualSavings},00€
                         </p>
                       )}
                     </motion.div>
