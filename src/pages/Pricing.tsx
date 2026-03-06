@@ -41,12 +41,6 @@ const Pricing = () => {
     return isAnnual ? `${annualTotal},00€` : `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
   };
 
-  const features = [
-    t("pricing.feature1"),
-    t("pricing.feature2"),
-    t("pricing.feature3"),
-    t("pricing.feature4"),
-  ];
 
   return (
     <div className="min-h-screen">
