@@ -9,37 +9,37 @@ import { useState } from "react";
 import SEO from "@/components/SEO";
 import { useWaitlist } from "@/contexts/WaitlistContext";
 
-type BillingPeriod = "quarterly" | "annual";
+type BillingPeriod = "monthly" | "annual";
 
 const Pricing = () => {
   const { t } = useTranslation();
   const { openWaitlist } = useWaitlist();
-  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("quarterly");
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
 
   const isAnnual = billingPeriod === "annual";
-  const quarterlyPrice = 7.90;
-  const annualPrice = 6.30;
-  const discountPercent = 20;
+  const monthlyPrice = 8.00;
+  const annualPrice = 6.00;
+  const discountPercent = 25;
 
   // Total amounts
-  const quarterlyTotal = (quarterlyPrice * 3).toFixed(2).replace('.', ',');
-  const annualTotal = (annualPrice * 12).toFixed(2).replace('.', ',');
-  const annualSavings = ((quarterlyPrice - annualPrice) * 12).toFixed(2).replace('.', ',');
+  const monthlyTotal = (monthlyPrice * 1).toFixed(2).replace('.', ',');
+  const annualTotal = 72;
+  const annualSavings = 24;
 
   const getPrice = () => {
     if (isAnnual) {
       return `${annualPrice.toFixed(2).replace('.', ',')}€`;
     }
-    return `${quarterlyPrice.toFixed(2).replace('.', ',')}€`;
+    return `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
   };
 
   const getOriginalPrice = () => {
     if (!isAnnual) return null;
-    return `${quarterlyPrice.toFixed(2).replace('.', ',')}€`;
+    return `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
   };
 
   const getTotalBilled = () => {
-    return isAnnual ? `${annualTotal}€` : `${quarterlyTotal}€`;
+    return isAnnual ? `${annualTotal},00€` : `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
   };
 
   const features = [
@@ -77,14 +77,14 @@ const Pricing = () => {
               {/* Billing Toggle */}
               <div className="inline-flex items-center gap-2 bg-muted rounded-full p-1 mb-12">
                 <button
-                  onClick={() => setBillingPeriod("quarterly")}
+                  onClick={() => setBillingPeriod("monthly")}
                   className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                     !isAnnual
                       ? "bg-primary text-primary-foreground shadow-sm"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {t("pricing.quarterly")}
+                  {t("pricing.monthly")}
                 </button>
                 <button
                   onClick={() => setBillingPeriod("annual")}
@@ -147,7 +147,7 @@ const Pricing = () => {
                       exit={{ opacity: 0 }}
                       className="text-xs mt-2 text-primary-foreground/70"
                     >
-                      {isAnnual ? t("pricing.billedAnnually") : t("pricing.billedQuarterly")}
+                      {isAnnual ? t("pricing.billedAnnually") : t("pricing.billedMonthly")}
                     </motion.p>
                   </AnimatePresence>
                   <AnimatePresence mode="wait">
@@ -164,7 +164,7 @@ const Pricing = () => {
                       </p>
                       {isAnnual && (
                         <p className="text-sm font-semibold text-white bg-white/20 rounded-full px-4 py-1">
-                          🎉 {t("pricing.savings")} {annualSavings}€
+                          🎉 {t("pricing.savings")} {annualSavings},00€
                         </p>
                       )}
                     </motion.div>
@@ -192,6 +192,49 @@ const Pricing = () => {
                 >
                   {t("pricing.cta")}
                 </Button>
+              </motion.div>
+
+              {/* Prix fondateur */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="max-w-md mx-auto mt-10 bg-card border border-border rounded-2xl p-6 text-left space-y-3"
+              >
+                <h3 className="text-lg font-bold text-foreground">{t("pricing.founderTitle")}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {t("pricing.founderText1")}
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {t("pricing.founderText2")}
+                </p>
+              </motion.div>
+
+              {/* Early Adopters */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="max-w-md mx-auto mt-8 bg-orange-50 border-2 border-orange-300 rounded-2xl p-6 text-left space-y-4"
+              >
+                <span className="inline-block bg-orange-500 text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full">
+                  {t("pricing.earlyBadge")}
+                </span>
+                <p className="text-sm text-foreground leading-relaxed">
+                  {t("pricing.earlyText1")}
+                </p>
+                <p className="text-sm text-foreground font-medium leading-relaxed">
+                  {t("pricing.earlyText2")}
+                </p>
+                <Button
+                  onClick={openWaitlist}
+                  className="w-full rounded-full bg-orange-500 text-white hover:bg-orange-600"
+                >
+                  {t("pricing.earlyCta")}
+                </Button>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  *{t("pricing.earlyDisclaimer")}
+                </p>
               </motion.div>
             </motion.div>
           </div>
