@@ -40,14 +40,24 @@ const Differentiation = () => {
   const advantages = [
     {
       titleKey: "differentiation.budget.title",
-      descriptionKey: "differentiation.budget.description",
       image: featureBudgetiser,
+      beforeAfterKeys: [
+        { before: "differentiation.budget.ba1.before", after: "differentiation.budget.ba1.after" },
+        { before: "differentiation.budget.ba2.before", after: "differentiation.budget.ba2.after" },
+        { before: "differentiation.budget.ba3.before", after: "differentiation.budget.ba3.after" },
+        { before: "differentiation.budget.ba4.before", after: "differentiation.budget.ba4.after" },
+      ],
       link: null,
     },
     {
       titleKey: "differentiation.capture.title",
-      descriptionKey: "differentiation.capture.description",
       image: featureSaisir,
+      beforeAfterKeys: [
+        { before: "differentiation.capture.ba1.before", after: "differentiation.capture.ba1.after" },
+        { before: "differentiation.capture.ba2.before", after: "differentiation.capture.ba2.after" },
+        { before: "differentiation.capture.ba3.before", after: "differentiation.capture.ba3.after" },
+        { before: "differentiation.capture.ba4.before", after: "differentiation.capture.ba4.after" },
+      ],
       link: {
         labelKey: "differentiation.capture.link",
         url: "/pourquoi-steero#fondements-comportementaux",
@@ -55,8 +65,13 @@ const Differentiation = () => {
     },
     {
       titleKey: "differentiation.ritualize.title",
-      descriptionKey: "differentiation.ritualize.description",
       image: featureRitualiser,
+      beforeAfterKeys: [
+        { before: "differentiation.ritualize.ba1.before", after: "differentiation.ritualize.ba1.after" },
+        { before: "differentiation.ritualize.ba2.before", after: "differentiation.ritualize.ba2.after" },
+        { before: "differentiation.ritualize.ba3.before", after: "differentiation.ritualize.ba3.after" },
+        { before: "differentiation.ritualize.ba4.before", after: "differentiation.ritualize.ba4.after" },
+      ],
       link: {
         labelKey: "differentiation.ritualize.link",
         url: "/pourquoi-steero#fondements-comportementaux",
