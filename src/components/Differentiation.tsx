@@ -135,11 +135,23 @@ const Differentiation = () => {
 
                     {/* Content */}
                     <div className="p-8 md:p-10">
-                      <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+                      <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6">
                         {t(adv.titleKey)}
                       </h3>
-                      <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
-                        {t(adv.descriptionKey)}
+                      <div className="space-y-4">
+                        {adv.beforeAfterKeys.map((ba, i) => (
+                          <div key={i} className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                            <div className="flex items-start gap-2 flex-1">
+                              <span className="shrink-0 mt-1 w-5 h-5 rounded-full bg-muted-foreground/20 flex items-center justify-center text-xs text-muted-foreground font-medium">✗</span>
+                              <p className="text-muted-foreground text-sm md:text-base leading-relaxed line-through decoration-muted-foreground/40">{t(ba.before)}</p>
+                            </div>
+                            <div className="flex items-start gap-2 flex-1">
+                              <span className="shrink-0 mt-1 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-xs text-primary font-medium">✓</span>
+                              <p className="text-foreground text-sm md:text-base leading-relaxed font-medium">{t(ba.after)}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                       </p>
                       {adv.link && (
                         <Link
