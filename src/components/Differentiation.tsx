@@ -152,7 +152,6 @@ const Differentiation = () => {
                           </div>
                         ))}
                       </div>
-                      </p>
                       {adv.link && (
                         <Link
                           to={adv.link.url}
