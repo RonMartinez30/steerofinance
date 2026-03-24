@@ -112,7 +112,10 @@
     },
     "capture": {
       "title": "Log",
-      "ba1": { "before": "You spend without really realizing it", "after": "Every expense becomes a conscious decision" },
+      "ba1": {
+        "before": "You spend without really realizing it",
+        "after": "Every expense becomes a conscious decision"
+      },
       "ba2": { "before": "You lose control little by little", "after": "You regain it, operation after operation" },
       "ba3": { "before": "Your habits drive you", "after": "You drive your habits" },
       "ba4": { "before": "You forget, you postpone, you avoid", "after": "You face it, simply, without friction" },
@@ -120,7 +123,10 @@
     },
     "ritualize": {
       "title": "Ritualize",
-      "ba1": { "before": "You check your accounts when it's too late", "after": "You adjust before things go off track" },
+      "ba1": {
+        "before": "You check your accounts when it's too late",
+        "after": "You adjust before things go off track"
+      },
       "ba2": { "before": "You operate in fits and starts", "after": "You move forward with consistency" },
       "ba3": { "before": "You suffer from your lack of discipline", "after": "You build natural mastery" },
       "ba4": { "before": "You react", "after": "You anticipate" },
@@ -167,11 +173,7 @@
     "missionTitle": "Our mission",
     "missionP1": "Steero was born from a simple observation: personal finance apps automate everything, but don't change your behavior.",
     "missionP2": "Our mission is to help you develop a real understanding of your financial management, not just a tool to view automatically generated charts.",
-    "missionItems": [
-      "Understand and adjust your decisions",
-      "Create lasting habits",
-      "Reach your goals"
-    ],
+    "missionItems": ["Understand and adjust your decisions", "Create lasting habits", "Reach your goals"],
     "quote": "True financial freedom comes from understanding, which is born and strengthened through action, not automation.",
     "quoteAuthor": "The Steero team",
     "alternativesTitle": "You may have already tried...",
@@ -660,27 +662,48 @@
         "s1": {
           "title": "1. Why these terms?",
           "intro": "These Terms of Service simply explain:",
-          "items": ["what the application does,", "what you can expect from it,", "what we do (and don't do),", "and how everyone is protected."],
+          "items": [
+            "what the application does,",
+            "what you can expect from it,",
+            "what we do (and don't do),",
+            "and how everyone is protected."
+          ],
           "outro": "By creating an account or using the application, you accept these terms."
         },
         "s2": {
           "title": "2. What the application is",
           "intro": "The application is a personal financial management and habit tracking tool, designed to help you:",
-          "items": ["better understand your finances,", "track your expenses, income, and budgets,", "set clear goals,", "adopt better long-term financial behaviors."],
-          "notes": ["👉 It's not a bank,", "👉 it's not a financial advisor,", "👉 and it's not an automated trading or investment tool."],
+          "items": [
+            "better understand your finances,",
+            "track your expenses, income, and budgets,",
+            "set clear goals,",
+            "adopt better long-term financial behaviors."
+          ],
+          "notes": [
+            "👉 It's not a bank,",
+            "👉 it's not a financial advisor,",
+            "👉 and it's not an automated trading or investment tool."
+          ],
           "outro": "It's a smart dashboard to help you make better decisions."
         },
         "s3": {
           "title": "3. Who is the application for?",
           "intro": "The application is intended for any adult wishing to organize their personal finances.",
           "confirm": "By using the application, you confirm that:",
-          "items": ["you are legally capable of contracting,", "you use the tool for personal use (not professional or illegal)."]
+          "items": [
+            "you are legally capable of contracting,",
+            "you use the tool for personal use (not professional or illegal)."
+          ]
         },
         "s4": {
           "title": "4. Account creation and management",
           "intro": "To use the application, you must create an account.",
           "responsible": "You are responsible for:",
-          "items": ["the information you provide,", "the confidentiality of your credentials,", "the use of your account."],
+          "items": [
+            "the information you provide,",
+            "the confidentiality of your credentials,",
+            "the use of your account."
+          ],
           "outro": "If you notice suspicious activity, contact us quickly."
         },
         "s5": {
@@ -723,7 +746,12 @@
           "title": "10. Liability",
           "intro": "The application is a support tool, not a promise of results.",
           "noLiability": "We cannot be held liable for:",
-          "items": ["input errors,", "misinterpretations,", "financial losses,", "decisions made based on displayed data."],
+          "items": [
+            "input errors,",
+            "misinterpretations,",
+            "financial losses,",
+            "decisions made based on displayed data."
+          ],
           "outro": "You keep control. Always."
         },
         "s11": {
@@ -793,7 +821,12 @@
           "title": "1. Why this policy?",
           "intro": "Your privacy is important to us.",
           "explains": "This privacy policy explains:",
-          "items": ["what data we collect,", "why we collect it,", "how we use and protect it,", "and what your rights are."],
+          "items": [
+            "what data we collect,",
+            "why we collect it,",
+            "how we use and protect it,",
+            "and what your rights are."
+          ],
           "outro": "It applies to all application users."
         },
         "s2": {
@@ -802,7 +835,7 @@
           "company": "Steero",
           "legalForm": "[Legal form] – [RCS] / Being created",
           "address": "Registered office: 295 rue Lecourbe",
-          "contact": "📧 Contact: steerofinance@gmail.com (Temporary email)"
+          "contact": "📧 Contact: steerofinance@gmail.com"
         },
         "s3": {
           "title": "3. What data do we collect?",
@@ -813,24 +846,45 @@
           "financialItems": ["budgets (Goals)", "transactions", "income", "habits", "custom categories"],
           "note": "👉 No banking data is collected without your explicit voluntary action.",
           "technical": "🔹 Technical data",
-          "technicalItems": ["Device type and browser", "IP address", "Connection logs", "Anonymized usage data (to improve the product)"]
+          "technicalItems": [
+            "Device type and browser",
+            "IP address",
+            "Connection logs",
+            "Anonymized usage data (to improve the product)"
+          ]
         },
         "s4": {
           "title": "4. Why do we use this data?",
           "intro": "Your data is used to:",
-          "items": ["Provide and operate the application", "Save and display your information", "Calculate statistics and visualizations", "Improve user experience", "Ensure security and prevent fraud", "Manage subscriptions and billing", "Respond to your support requests"],
+          "items": [
+            "Provide and operate the application",
+            "Save and display your information",
+            "Calculate statistics and visualizations",
+            "Improve user experience",
+            "Ensure security and prevent fraud",
+            "Manage subscriptions and billing",
+            "Respond to your support requests"
+          ],
           "noProfiling": "We do not do any advertising profiling."
         },
         "s5": {
           "title": "5. Legal basis for processing (GDPR)",
           "intro": "In accordance with GDPR, processing is based on:",
-          "items": ["Contract execution (normal use of the application)", "Your consent (e.g., non-essential communications)", "Our legitimate interest (security, product improvement)"]
+          "items": [
+            "Contract execution (normal use of the application)",
+            "Your consent (e.g., non-essential communications)",
+            "Our legitimate interest (security, product improvement)"
+          ]
         },
         "s6": {
           "title": "6. Data sharing",
           "noSell": "We never sell your data. Never.",
           "shared": "Your data may only be shared with:",
-          "items": ["trusted technical providers (hosting, payment, emails),", "strictly within the scope of application operation,", "with contractual guarantees compliant with GDPR."],
+          "items": [
+            "trusted technical providers (hosting, payment, emails),",
+            "strictly within the scope of application operation,",
+            "with contractual guarantees compliant with GDPR."
+          ],
           "outro": "No data is transmitted to third parties for commercial purposes."
         },
         "s7": {
@@ -851,7 +905,15 @@
         "s10": {
           "title": "10. Your rights (GDPR)",
           "intro": "In accordance with GDPR, you have the following rights:",
-          "items": ["Right to access your data", "Right to rectification", "Right to erasure (right to be forgotten)", "Right to restriction of processing", "Right to data portability", "Right to object", "Right to withdraw your consent at any time"],
+          "items": [
+            "Right to access your data",
+            "Right to rectification",
+            "Right to erasure (right to be forgotten)",
+            "Right to restriction of processing",
+            "Right to data portability",
+            "Right to object",
+            "Right to withdraw your consent at any time"
+          ],
           "exercise": "📩 To exercise your rights: Contact us at",
           "response": "We respond within 30 days maximum."
         },
@@ -876,7 +938,10 @@
         "s14": {
           "title": "14. Complaint",
           "intro": "If you believe your rights are not being respected, you can:",
-          "items": ["contact us directly,", "or file a complaint with the competent supervisory authority (e.g., CNIL in France)."]
+          "items": [
+            "contact us directly,",
+            "or file a complaint with the competent supervisory authority (e.g., CNIL in France)."
+          ]
         },
         "s15": {
           "title": "15. Contact",
