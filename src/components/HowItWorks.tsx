@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import steeroBanner from "@/assets/steero-banner-3.png";
 
 const containerVariants = {
   hidden: {},
