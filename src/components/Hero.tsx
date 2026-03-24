@@ -38,7 +38,12 @@ const Hero = () => {
     }
   ];
 
-  return <section ref={sectionRef} className="relative min-h-screen bg-hero-gradient pt-24 pb-16 overflow-hidden">
+  return <section ref={sectionRef} className="relative min-h-screen pt-24 pb-16 overflow-hidden">
+      {/* Banner background image */}
+      <div className="absolute inset-0 z-0">
+        <img src={bannerBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-background/75 backdrop-blur-sm" />
+      </div>
       {/* Decorative elements with parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div initial={{
