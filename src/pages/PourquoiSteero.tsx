@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useWaitlist } from "@/contexts/WaitlistContext";
+import steeroBanner from "@/assets/steero-banner-3.png";
 // Progress sidebar component for behavioral principles
 const BehavioralProgressSidebar = ({
   elements,
@@ -1149,8 +1150,12 @@ const PourquoiSteero = () => {
       </AnimatePresence>
 
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-hero-gradient overflow-hidden">
-        <div className="container mx-auto px-6">
+      <section className="pt-32 pb-16 bg-hero-gradient overflow-hidden relative">
+        <div className="absolute inset-0">
+          <img src={steeroBanner} alt="" className="w-full h-full object-cover opacity-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background/95" />
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h1 initial={{
             opacity: 0,

@@ -2,6 +2,7 @@ import { ArrowRight, Shield, Users, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useWaitlist } from "@/contexts/WaitlistContext";
+import steeroBanner from "@/assets/steero-banner-3.png";
 
 const CTA = () => {
   const { t } = useTranslation();
@@ -15,6 +16,11 @@ const CTA = () => {
 
   return (
     <section className="py-20 bg-primary relative overflow-hidden">
+      {/* Background banner image */}
+      <div className="absolute inset-0">
+        <img src={steeroBanner} alt="" className="w-full h-full object-cover opacity-20" />
+        <div className="absolute inset-0 bg-primary/70" />
+      </div>
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -left-20 top-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
