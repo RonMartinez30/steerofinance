@@ -93,7 +93,7 @@ const Differentiation = () => {
             {t("differentiation.title")}
           </h2>
           <p className="text-muted-foreground text-lg">
-            {t("differentiation.description")}
+            Modèles, favoris et raccourcis éliminent la friction. Tu te concentres sur ce qui compte : <span className="font-bold text-primary">comprendre tes décisions</span>.
           </p>
         </motion.div>
 
