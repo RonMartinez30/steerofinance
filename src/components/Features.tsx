@@ -37,7 +37,7 @@ const Features = () => {
             {t('features.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {t('features.description')}
+            Modèles, favoris et raccourcis éliminent la friction. Tu te concentres sur ce qui compte : <span className="font-bold text-primary">comprendre tes décisions</span>.
           </p>
         </motion.div>
 
