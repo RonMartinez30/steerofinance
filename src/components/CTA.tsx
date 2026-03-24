@@ -1,43 +1,11 @@
 import { ArrowRight, Shield, Users, Zap } from "lucide-react";
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useWaitlist } from "@/contexts/WaitlistContext";
 
-const targetDate = new Date("2026-04-17T11:00:00+02:00");
-
 const CTA = () => {
   const { t } = useTranslation();
   const { openWaitlist } = useWaitlist();
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-  function calculateTimeLeft() {
-    const now = new Date();
-    const difference = targetDate.getTime() - now.getTime();
-    if (difference <= 0) {
-      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-    }
-    return {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
-    };
-  }
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const timeUnits = [
-    { value: timeLeft.days, label: t('cta.days') },
-    { value: timeLeft.hours, label: t('cta.hours') },
-    { value: timeLeft.minutes, label: t('cta.minutes') },
-    { value: timeLeft.seconds, label: t('cta.seconds') },
-  ];
 
   const features = [
     { icon: Users, text: t('cta.features.free') },
