@@ -2,6 +2,7 @@ import { ArrowRight, Shield, Users, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useWaitlist } from "@/contexts/WaitlistContext";
+import steeroBanner from "@/assets/steero-banner-3.png";
 
 const CTA = () => {
   const { t } = useTranslation();
