@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import steeroBanner from "@/assets/steero-banner-3.png";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
