@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/hero-dashboard.webp";
+import bannerBg from "@/assets/steero-banner.png";
 
 const Hero = () => {
   const { t } = useTranslation();
