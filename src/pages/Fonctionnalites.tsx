@@ -1,4 +1,5 @@
 import React from "react";
+import steeroBanner from "@/assets/steero-banner-3.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";

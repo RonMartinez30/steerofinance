@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import steeroBanner from "@/assets/steero-banner-3.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, ArrowRight, Lightbulb, AlertCircle, Share2, Check, List, Search, X } from "lucide-react";
 import { Link } from "react-router-dom";
