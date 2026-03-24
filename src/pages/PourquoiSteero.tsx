@@ -1152,8 +1152,8 @@ const PourquoiSteero = () => {
       {/* Hero */}
       <section className="pt-32 pb-16 bg-hero-gradient overflow-hidden relative">
         <div className="absolute inset-0">
-          <img src={steeroBanner} alt="" className="w-full h-full object-cover opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 to-background/90" />
+          <img src={steeroBanner} alt="" className="w-full h-full object-cover opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 to-background/70" />
         </div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
