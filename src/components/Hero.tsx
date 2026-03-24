@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/hero-dashboard.webp";
-import bannerBg from "@/assets/steero-banner.png";
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -38,12 +37,7 @@ const Hero = () => {
     }
   ];
 
-  return <section ref={sectionRef} className="relative min-h-screen pt-24 pb-16 overflow-hidden">
-      {/* Banner background image */}
-      <div className="absolute inset-0 z-0">
-        <img src={bannerBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/75 backdrop-blur-sm" />
-      </div>
+  return <section ref={sectionRef} className="relative min-h-screen bg-hero-gradient pt-24 pb-16 overflow-hidden">
       {/* Decorative elements with parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div initial={{
