@@ -56,37 +56,8 @@ const CTA = () => {
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </motion.button>
 
-          {/* Countdown intégré */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-10 p-6 rounded-2xl bg-primary-foreground/10 backdrop-blur-sm"
-          >
-            <p className="text-primary-foreground/80 mb-4 text-sm">
-              {t('cta.launchDate')}
-            </p>
-            <div className="flex justify-center gap-3 md:gap-6">
-              {timeUnits.map((unit, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-background flex items-center justify-center shadow-lg">
-                    <span className="text-xl md:text-2xl font-bold text-primary">
-                      {String(unit.value).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-xs text-primary-foreground/70">{unit.label}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+
+
 
           <motion.div 
             initial={{ opacity: 0 }}
