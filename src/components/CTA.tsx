@@ -18,8 +18,8 @@ const CTA = () => {
     <section className="py-20 bg-primary relative overflow-hidden">
       {/* Background banner image */}
       <div className="absolute inset-0">
-        <img src={steeroBanner} alt="" className="w-full h-full object-cover opacity-20" />
-        <div className="absolute inset-0 bg-primary/70" />
+        <img src={steeroBanner} alt="" className="w-full h-full object-cover opacity-35" />
+        <div className="absolute inset-0 bg-primary/50" />
       </div>
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">

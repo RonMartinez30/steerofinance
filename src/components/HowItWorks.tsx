@@ -71,8 +71,8 @@ const HowItWorks = () => {
     <section ref={sectionRef} className="py-24 bg-primary/5 relative overflow-hidden">
       {/* Background banner image */}
       <div className="absolute inset-0">
-        <img src={steeroBanner} alt="" className="w-full h-full object-cover opacity-[0.07]" />
-        <div className="absolute inset-0 bg-background/85" />
+        <img src={steeroBanner} alt="" className="w-full h-full object-cover opacity-15" />
+        <div className="absolute inset-0 bg-background/70" />
       </div>
       {/* Decorative background elements with parallax */}
       <div className="absolute inset-0 overflow-hidden">
