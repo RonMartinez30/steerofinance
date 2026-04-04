@@ -87,18 +87,11 @@ const Header = () => {
                 {t('header.whySteero')}
               </Link>
               <Link 
-                to="/fonctionnalites" 
+                to="/blog" 
                 className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {t('header.features')}
-              </Link>
-              <Link 
-                to="/pricing" 
-                className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t('header.pricing')}
+                Blog
               </Link>
               <Button 
                 className="btn-primary text-xs w-full mt-2"
