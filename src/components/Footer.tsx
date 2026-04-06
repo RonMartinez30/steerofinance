@@ -16,6 +16,7 @@ const Footer = () => {
 
   const resourceLinks = [
     { to: "/blog", labelKey: "Blog" },
+    { to: "/blog", labelKey: "footer.freeResources" },
     { href: "mailto:contact@steero.fr", labelKey: "footer.contact" },
   ];
 
