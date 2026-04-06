@@ -42,8 +42,8 @@ const Header = () => {
 
         <div className="flex items-center gap-4">
           <LanguageSwitcher />
-          <Button variant="outline" className="text-xs sm:text-sm hidden sm:inline-flex border-primary text-primary hover:bg-primary/10" onClick={() => {}}>Connexion</Button>
-          <Button className="btn-primary text-xs sm:text-sm hidden sm:inline-flex" onClick={openWaitlist}>{t('common.joinWaitlist')}</Button>
+          <Button variant="outline" className="text-xs sm:text-sm hidden sm:inline-flex rounded-full border-primary text-primary hover:bg-primary/10 px-6" onClick={() => {}}>Connexion</Button>
+          <Button className="btn-primary text-xs sm:text-sm hidden sm:inline-flex rounded-full px-6" onClick={openWaitlist}>{t('common.joinWaitlist')}</Button>
           
           {/* Hamburger button */}
           <button
