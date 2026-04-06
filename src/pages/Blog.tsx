@@ -1384,6 +1384,9 @@ const Blog = () => {
               {/* Right side - Scrollable articles */}
               <div className="lg:w-2/3">
                 <div className="space-y-4">
+                  {/* Featured article card - always at the top */}
+                  {!hasActiveFilters && <FeaturedArticleCard />}
+                  
                   <AnimatePresence mode="popLayout">
                     {filteredArticles.map((article, index) => (
                       <motion.div
