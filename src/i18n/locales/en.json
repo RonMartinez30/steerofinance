@@ -51,8 +51,16 @@
     "cgs": "Terms of Service",
     "privacy": "Privacy",
     "contact": "Contact",
+    "freeResources": "Free resources",
     "closingPhrase": "Build your financial peace of mind, one ritual at a time.",
     "copyright": "© 2026 Steero. All rights reserved."
+  },
+  "freeResources": {
+    "badge": "📥 Free resource",
+    "title": "Free monthly budget template",
+    "description": "A simple, ready-to-use spreadsheet to lay the foundation of your financial management. Income, expenses, savings — at a glance.",
+    "download": "Download",
+    "learnMore": "Learn more on the blog →"
   },
   "hero": {
     "badge": "The app that reconnects you to your spending",

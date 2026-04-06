@@ -51,8 +51,16 @@
     "cgs": "Términos de uso",
     "privacy": "Privacidad",
     "contact": "Contacto",
+    "freeResources": "Recursos gratuitos",
     "closingPhrase": "Construye tu tranquilidad financiera, un ritual a la vez.",
     "copyright": "© 2026 Steero. Todos los derechos reservados."
+  },
+  "freeResources": {
+    "badge": "📥 Recurso gratuito",
+    "title": "Plantilla de presupuesto mensual gratuita",
+    "description": "Una hoja de cálculo simple y lista para usar para sentar las bases de tu gestión financiera. Ingresos, gastos, ahorro — de un vistazo.",
+    "download": "Descargar",
+    "learnMore": "Saber más en el blog →"
   },
   "hero": {
     "badge": "La aplicación que te reconecta con tus gastos",
