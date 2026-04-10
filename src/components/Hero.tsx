@@ -10,6 +10,14 @@ const heroImages = [heroSlide1, heroSlide2];
 const Hero = () => {
   const { t } = useTranslation();
   const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
   const sectionRef = useRef<HTMLElement>(null);
   const {
     scrollYProgress
