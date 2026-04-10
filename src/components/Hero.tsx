@@ -159,8 +159,9 @@ const Hero = () => {
           y: imageY
         }} className="relative lg:pl-8">
             <div className="relative transform hover:rotate-0 transition-transform duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl transform rotate-6 scale-105" />
-              <img src={heroImage} alt="Finances calmes et claires" className="relative rounded-3xl shadow-image w-full object-contain" />
+              <div className="absolute -inset-3 bg-gradient-to-br from-primary/15 to-primary/5 rounded-[2rem] blur-xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl transform rotate-3 scale-[1.03]" />
+              <img src={heroImage} alt="Finances calmes et claires" className="relative rounded-3xl shadow-2xl ring-1 ring-border/10 w-full object-contain" />
             </div>
           </motion.div>
         </div>
