@@ -1,8 +1,9 @@
 import { Sparkles, Timer, Eye, ShieldCheck } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import heroImage from "@/assets/hero-dashboard.webp";
+import heroSlide1 from "@/assets/hero-slide-1.png";
+import heroSlide2 from "@/assets/hero-slide-2.png";
 
 const Hero = () => {
   const { t } = useTranslation();
