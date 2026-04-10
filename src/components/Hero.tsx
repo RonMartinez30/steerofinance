@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import heroSlide1 from "@/assets/hero-slide-1.png";
 import heroSlide2 from "@/assets/hero-slide-2.png";
 
+const heroImages = [heroSlide1, heroSlide2];
+
 const Hero = () => {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
