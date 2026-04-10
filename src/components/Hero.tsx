@@ -2,7 +2,7 @@ import { Sparkles, Timer, Eye, ShieldCheck } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import heroImage from "@/assets/hero-dashboard.webp";
+const heroImage = "/assets/flux_financiers_HD.png";
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -161,7 +161,21 @@ const Hero = () => {
             <div className="relative transform hover:rotate-0 transition-transform duration-500">
               <div className="absolute -inset-3 bg-gradient-to-br from-primary/15 to-primary/5 rounded-[2rem] blur-xl" />
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl transform rotate-3 scale-[1.03]" />
-              <img src={heroImage} alt="Finances calmes et claires" className="relative rounded-3xl shadow-2xl ring-1 ring-border/10 w-full object-contain" />
+              <div style={{ overflow: 'hidden', borderRadius: '12px' }}>
+                <img
+                  src={heroImage}
+                  srcSet="/assets/flux_financiers_HD.png 2x"
+                  alt="Finances calmes et claires"
+                  style={{
+                    width: '100%',
+                    maxWidth: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    imageRendering: 'crisp-edges',
+                  }}
+                  className="relative shadow-2xl ring-1 ring-border/10"
+                />
+              </div>
             </div>
           </motion.div>
         </div>

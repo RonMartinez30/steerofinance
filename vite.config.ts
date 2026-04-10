@@ -64,6 +64,9 @@ export default defineConfig(({ mode }) => ({
       },
     }),
   ].filter(Boolean),
+  build: {
+    assetsInlineLimit: 0,
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
