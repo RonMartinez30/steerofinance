@@ -1,23 +1,11 @@
 import { Sparkles, Timer, Eye, ShieldCheck } from "lucide-react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import heroSlide1 from "@/assets/hero-slide-1.png";
-import heroSlide2 from "@/assets/hero-slide-2.png";
-
-const heroImages = [heroSlide1, heroSlide2];
+import heroImage from "@/assets/hero-dashboard.webp";
 
 const Hero = () => {
   const { t } = useTranslation();
-  const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 10000);
-    return () => clearInterval(interval);
-  }, []);
-
   const sectionRef = useRef<HTMLElement>(null);
   const {
     scrollYProgress
@@ -170,20 +158,9 @@ const Hero = () => {
         }} style={{
           y: imageY
         }} className="relative lg:pl-8">
-            <div className="relative overflow-hidden rounded-3xl aspect-[4/3]">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl transform rotate-6 scale-105 z-10 pointer-events-none" />
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentImage}
-                  src={heroImages[currentImage]}
-                  alt="Steero dashboard"
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                  className="absolute inset-0 w-full h-full object-cover rounded-3xl shadow-image"
-                />
-              </AnimatePresence>
+            <div className="relative transform hover:rotate-0 transition-transform duration-500">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl transform rotate-6 scale-105" />
+              <img src={heroImage} alt="Finances calmes et claires" className="relative rounded-3xl shadow-image w-full object-cover aspect-[4/3]" />
             </div>
           </motion.div>
         </div>
