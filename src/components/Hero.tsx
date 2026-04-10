@@ -160,7 +160,7 @@ const Hero = () => {
         }} className="relative lg:pl-8">
             <div className="relative transform hover:rotate-0 transition-transform duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl transform rotate-6 scale-105" />
-              <img src={heroImage} alt="Finances calmes et claires" className="relative rounded-3xl shadow-image w-full object-cover aspect-[4/3]" />
+              <img src={heroImage} alt="Finances calmes et claires" className="relative rounded-3xl shadow-image w-full object-contain" />
             </div>
           </motion.div>
         </div>
