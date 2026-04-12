@@ -21,6 +21,145 @@ interface Article {
 // Article content is kept in French as the main content - titles/hooks are translated
 const getArticles = (t: (key: string, options?: Record<string, unknown>) => string): Article[] => [
   {
+    id: 3,
+    titleKey: "blog.articles.3.title",
+    hookKey: "blog.articles.3.hook",
+    tagsKey: "blog.articles.3.tags",
+    content: `La majorité des apps de finance personnelle sont des rétroviseurs
+
+Finary, Bankin, Linxo, ces outils font une chose très bien : te montrer où est allé ton argent. Ils agrègent, catégorisent, affichent. Automatiquement, proprement, joliment.
+
+Le problème : un rétroviseur te montre la route que tu viens de parcourir. Pas celle devant toi.
+
+Conduire en regardant uniquement le rétroviseur, ça finit dans le fossé. Et c'est exactement ce qui se passe avec ces outils. Tu consultes ton bilan en fin de mois, quand la dérive est déjà installée depuis trois semaines, quand il est trop tard pour corriger quoi que ce soit. Résultat : Tu subis l'information au lieu de piloter avec.
+
+Ce n'est pas un défaut de l'outil. C'est une erreur de paradigme. Ces apps ont été conçues pour observer le passé, pas pour piloter l'avenir.
+
+Un rituel n'est pas un bilan mensuel
+
+Quand on parle de rituel financier, la plupart imaginent une session Excel de deux heures, un dimanche soir, avec une calculatrice et un café froid. C'est exactement ce qu'un rituel n'est pas.
+
+Un rituel, c'est une action courte, répétée à fréquence fixe, qui donne un feedback immédiat. Pas une corvée mais un geste. La différence entre les deux n'est pas la durée. C'est la régularité et la clarté de ce qu'on cherche à voir.
+
+Un suivi parfait mais rare ne crée aucune maîtrise durable, c'est même pire, c'est anxiogène. Sans rituel régulier, on regarde ses comptes après une mauvaise surprise, sous charge émotionnelle, en mode pompier. L'argent devient une source de stress, pas un levier. Et plus le stress monte, plus l'évitement s'installe. C'est un cercle fermé.
+
+La régularité, elle, agit comme un tampon. Elle neutralise la surprise. Elle transforme la gestion financière d'une épreuve à une compétence.
+
+Pourquoi les rituels financiers échouent avant de commencer
+
+Trois raisons expliquent l'abandon systématique :
+• Ils prennent trop de temps : incompatibles avec une semaine chargée
+• Ils demandent un effort cognitif trop important : trop de décisions, trop de données à interpréter
+• Et ils ne donnent pas de feedback immédiat : sans résultat visible, la motivation s'évapore en dix jours.
+
+Un bon rituel doit satisfaire trois critères non négociables : être rapide, être clair, et être utile dès la première utilisation.
+
+Si l'un des trois manque, l'abandon est inévitable. Pas parce que tu manques de sérieux, mais parce que le cerveau humain abandonne tout comportement qui consomme plus qu'il ne produit.
+
+Le système TEMPO : cinq rituels, cinq fréquences, un seul cap
+
+Piloter ses finances, c'est exactement comme piloter une équipe. Tu ne gères pas une équipe avec une réunion annuelle. Tu as des points quotidiens, des bilans hebdomadaires, des revues mensuelles, des comités trimestriels, et une direction annuelle. Chaque fréquence répond à une question différente. Ensemble, elles forment un système.
+
+C'est ce que le système TEMPO structure pour tes finances personnelles.
+
+Tracer — quotidien, 5 minutes. Enregistrer ses opérations récentes, vérifier le classement, observer l'impact sur la trésorerie. Aucune analyse attendue juste le geste de saisir. Et ce geste compte : noter une dépense, c'est déjà en prendre conscience. C'est là que le comportement change, en amont, avant que la décision soit prise.
+
+Examiner — hebdomadaire, 10 minutes. Comparer ce qu'on avait prévu à ce qui s'est passé. Identifier les écarts avant qu'ils s'installent. Ajuster une catégorie si nécessaire. Ce rituel est le pont entre l'opérationnel et la décision mensuelle, il t'évite l'effet "je verrai en fin de mois" qui est systématiquement trop tard.
+
+Maîtriser — mensuel, 15 minutes. Analyser revenus vs dépenses, budget prévu vs réel, évolution de la trésorerie. Décider consciemment où va l'argent le mois suivant. Ce n'est pas un bilan subi mais bien un acte de pilotage. La question n'est pas "où est passé mon argent ?" mais "est-ce que je choisis où il va ?"
+
+Positionner — trimestriel, 30 minutes. Prendre de la hauteur. Ne plus regarder les dépenses mais regarder la direction. Est-ce que ma trésorerie évolue dans le bon sens ? Est-ce que mes finances soutiennent ce que je veux construire ? Ce rituel sort du transactionnel pour entrer dans le stratégique.
+
+Orienter — annuel, 60 minutes. Bilan global. Évolution du patrimoine, discipline installée, habitudes ancrées ou abandonnées. Et surtout : définir les grandes orientations. Ce rituel ne gère pas — il décide de la direction. C'est lui qui donne du sens à tous les autres.
+
+Ce que ça change concrètement
+
+Le premier effet visible arrive en 7 à 10 jours. Pas un gain financier spectaculaire, une clarté mentale. Tu sais où tu en es. Tu sais quoi faire. Tu ne devines plus.
+
+Après un mois, les décisions changent naturellement. Pas parce que tu te forces mais parce que tu vois. Et voir change le comportement en amont, avant la dépense, pas après.
+
+Après trois mois, le pilotage est installé. Les rituels ne sont plus un effort mais un réflexe. Et la charge mentale liée à l'argent a significativement diminué.
+
+Le seul outil qui fonctionne est celui qu'on utilise régulièrement
+
+C'est la règle la plus simple et la plus ignorée.
+
+L'outil parfait qu'on n'ouvre plus au bout de deux semaines ne vaut rien. Un rituel imparfait mais tenu vaut tout.
+
+C'est pour ça que Steero est construit autour de la méthode TEMPO. Les cinq niveaux de rituels sont intégrés directement dans l'outil. La saisie quotidienne se fait en quelques secondes avec des modèles préremplis, sans supprimer le geste conscient d'enregistrer. Et chaque niveau du système s'ouvre naturellement quand le précédent est ancré.
+
+Ce n'est pas un outil de plus. C'est le premier outil construit pour que tu l'utilises vraiment.
+
+Installe le rituel. L'outil suit.`
+  },
+  {
+    id: 2,
+    titleKey: "blog.articles.2.title",
+    hookKey: "blog.articles.2.hook",
+    tagsKey: "blog.articles.2.tags",
+    content: `Subir ou piloter : la seule distinction qui compte
+
+Regarder son solde de temps en temps, payer ses factures, épargner quand il reste quelque chose en fin de mois c'est subir ses finances. Pas les gérer mal. Les subir. La différence est subtile mais elle change tout.
+
+Subir, c'est réagir. Une mauvaise surprise en fin de mois, une dépense imprévue qui déséquilibre tout, une décision prise sous pression faute de vision claire. L'argent est une source de stress latent, pas parce qu'il manque mais parce qu'il reste flou.
+
+Piloter, c'est anticiper. Avoir une vision claire de sa situation en temps réel, identifier une dérive avant qu'elle s'installe, décider consciemment où va chaque euro. Un pilote ne regarde pas ses instruments une fois par mois, il les consulte en continu et à des fréquences différentes, pour des questions différentes.
+
+La différence entre les deux n'est pas le revenu. C'est le niveau de compétence financière. Et ce niveau se développe par étapes.
+
+Étape 1 : Observer sans juger (niveau Tracer)
+
+Avant le budget, avant l'épargne, avant n'importe quelle optimisation : l'observation.
+
+Voir ses revenus et ses dépenses tels qu'ils sont. Identifier ses grandes catégories. Comprendre ses habitudes réelles et non celles qu'on croit avoir.
+
+Sans jugement. Sans culpabilité. Juste les faits.
+
+Tant que l'argent reste flou, aucune décision solide n'est possible. On ne peut pas corriger ce qu'on ne voit pas. Et on ne peut pas voir clairement ce qu'on ne regarde que rarement.
+
+C'est le niveau T du système TEMPO : Tracer. Cinq minutes par jour pour rester connecté à sa situation réelle. Pas pour analyser. Juste pour voir.
+
+Étape 2 : Structurer pour transformer des chiffres en information (niveau Examiner)
+
+Une fois les flux visibles, la structuration devient possible. Organiser ses dépenses par catégories, poser des budgets simples par poste, distinguer ce qui est fixe de ce qui est variable. Cette étape transforme des chiffres isolés en information exploitable.
+
+C'est ici qu'on commence à comparer ce qu'on avait prévu face à ce qui s'est passé. Et c'est là que les premières décisions conscientes apparaissent.
+
+C'est le niveau E pour Examiner. Dix minutes par semaine pour regarder la semaine écoulée et corriger la trajectoire avant qu'il soit trop tard. Pas un bilan global : une vérification de cap.
+
+Étape 3 : Comprendre les écarts pour reprendre la main (niveau Maîtriser)
+
+Un budget parfait n'existe pas. Les écarts sont normaux avec parfois un mois plus chargé que prévu, une priorité qui change, une dépense imprévue. Le problème n'est pas l'écart. C'est de ne pas le voir.
+
+Comprendre ses écarts, c'est passer de la réaction à la décision. Au lieu de subir le bilan en fin de mois, on l'analyse consciemment : où a-t-on dépassé et pourquoi ? est-ce que c'était un choix ou une dérive ? Cette lecture régulière développe progressivement un instinct financier et la capacité à anticiper ses propres comportements.
+
+C'est le niveau M pour Maîtriser. Quinze minutes par mois pour décider où va l'argent le mois suivant. Pas subir son budget mais pour le construire.
+
+Étape 4 : Aligner finances et objectifs (niveaux Positionner et Orienter)
+
+C'est ici que la gestion financière devient réellement utile. Quand elle cesse d'être une contrainte pour devenir un levier. Quand la vision est suffisamment claire pour arbitrer sans stress, aligner ses dépenses avec ses projets, donner un rôle précis à chaque euro.
+
+À ce niveau, l'argent n'est plus une source d'anxiété. C'est un outil au service de ce qu'on veut construire. Un apport immobilier, une transition professionnelle, une liberté financière à horizon cinq ans : ces objectifs deviennent pilotables parce qu'on a installé les niveaux précédents.
+
+C'est le niveau P puis O du système TEMPO pour Positionner trimestriellement et Orienter annuellement. Prendre de la hauteur pour vérifier que la direction est juste, pas seulement que les chiffres sont bons.
+
+Pourquoi la montée en compétences échoue avant d'avoir commencé
+
+La majorité des gens abandonnent dans les premières semaines. Pas par manque de sérieux mais par manque de cadre adapté. Les outils disponibles sont pensés pour des gens qui savent déjà piloter, pas pour ceux qui apprennent. Le suivi demande trop de temps. L'effort cognitif est trop important. Et surtout : le feedback n'est pas immédiat et sans résultat visible rapidement, la motivation s'effondre.
+
+Un bon système de montée en compétences doit être progressif, pas tout ou rien. On n'installe pas les cinq niveaux TEMPO en même temps. On commence par Tracer quotidiennement, ça prend cinq minutes maximum. On installe l'habitude avant d'installer la méthode. Et on monte d'un niveau quand le précédent est ancré.
+
+La tendance prime sur la perfection. Un rituel imparfait mais tenu vaut infiniment plus qu'un système parfait abandonné.
+
+Le pilotage s'apprend. Comme n'importe quelle compétence.
+
+Personne ne naît en sachant piloter ses finances. C'est une compétence qui s'apprend par exposition régulière, par répétition consciente, par feedback progressif. Exactement comme piloter un projet, manager une équipe ou maîtriser un outil professionnel.
+
+La différence entre quelqu'un qui subit ses finances et quelqu'un qui les pilote n'est pas le revenu, ni la discipline, ni l'intelligence financière. C'est l'existence d'un système. Un cadre clair, des fréquences définies, des questions simples auxquelles répondre régulièrement.
+
+Steero est construit autour de cette logique de progression. Les cinq niveaux TEMPO sont intégrés dans l'outil, pas comme des fonctionnalités à découvrir, mais comme une structure de pilotage à installer progressivement. Tu commences par Tracer. Le reste suit naturellement.`
+  },
+  {
     id: 1,
     titleKey: "blog.articles.1.title",
     hookKey: "blog.articles.1.hook",
@@ -138,145 +277,6 @@ Tu ne dépenses pas trop. Tu pilotes trop rarement.
 Cinq minutes par jour et quinze minutes par mois changent plus une situation financière que n'importe quelle règle d'austérité. Pas parce qu'ils révèlent des fuites magiques — mais parce qu'ils installent une conscience active de là où va ton argent. Et cette conscience change les décisions, en amont, avant que la dépense soit faite.
 
 Le système TEMPO est la méthode. Steero est l'outil construit pour l'implémenter — avec la friction juste, les rituels structurés, et la vision dont tu as besoin pour piloter, pas juste suivre.`
-  },
-  {
-    id: 2,
-    titleKey: "blog.articles.2.title",
-    hookKey: "blog.articles.2.hook",
-    tagsKey: "blog.articles.2.tags",
-    content: `Subir ou piloter : la seule distinction qui compte
-
-Regarder son solde de temps en temps, payer ses factures, épargner quand il reste quelque chose en fin de mois c'est subir ses finances. Pas les gérer mal. Les subir. La différence est subtile mais elle change tout.
-
-Subir, c'est réagir. Une mauvaise surprise en fin de mois, une dépense imprévue qui déséquilibre tout, une décision prise sous pression faute de vision claire. L'argent est une source de stress latent, pas parce qu'il manque mais parce qu'il reste flou.
-
-Piloter, c'est anticiper. Avoir une vision claire de sa situation en temps réel, identifier une dérive avant qu'elle s'installe, décider consciemment où va chaque euro. Un pilote ne regarde pas ses instruments une fois par mois, il les consulte en continu et à des fréquences différentes, pour des questions différentes.
-
-La différence entre les deux n'est pas le revenu. C'est le niveau de compétence financière. Et ce niveau se développe par étapes.
-
-Étape 1 : Observer sans juger (niveau Tracer)
-
-Avant le budget, avant l'épargne, avant n'importe quelle optimisation : l'observation.
-
-Voir ses revenus et ses dépenses tels qu'ils sont. Identifier ses grandes catégories. Comprendre ses habitudes réelles et non celles qu'on croit avoir.
-
-Sans jugement. Sans culpabilité. Juste les faits.
-
-Tant que l'argent reste flou, aucune décision solide n'est possible. On ne peut pas corriger ce qu'on ne voit pas. Et on ne peut pas voir clairement ce qu'on ne regarde que rarement.
-
-C'est le niveau T du système TEMPO : Tracer. Cinq minutes par jour pour rester connecté à sa situation réelle. Pas pour analyser. Juste pour voir.
-
-Étape 2 : Structurer pour transformer des chiffres en information (niveau Examiner)
-
-Une fois les flux visibles, la structuration devient possible. Organiser ses dépenses par catégories, poser des budgets simples par poste, distinguer ce qui est fixe de ce qui est variable. Cette étape transforme des chiffres isolés en information exploitable.
-
-C'est ici qu'on commence à comparer ce qu'on avait prévu face à ce qui s'est passé. Et c'est là que les premières décisions conscientes apparaissent.
-
-C'est le niveau E pour Examiner. Dix minutes par semaine pour regarder la semaine écoulée et corriger la trajectoire avant qu'il soit trop tard. Pas un bilan global : une vérification de cap.
-
-Étape 3 : Comprendre les écarts pour reprendre la main (niveau Maîtriser)
-
-Un budget parfait n'existe pas. Les écarts sont normaux avec parfois un mois plus chargé que prévu, une priorité qui change, une dépense imprévue. Le problème n'est pas l'écart. C'est de ne pas le voir.
-
-Comprendre ses écarts, c'est passer de la réaction à la décision. Au lieu de subir le bilan en fin de mois, on l'analyse consciemment : où a-t-on dépassé et pourquoi ? est-ce que c'était un choix ou une dérive ? Cette lecture régulière développe progressivement un instinct financier et la capacité à anticiper ses propres comportements.
-
-C'est le niveau M pour Maîtriser. Quinze minutes par mois pour décider où va l'argent le mois suivant. Pas subir son budget mais pour le construire.
-
-Étape 4 : Aligner finances et objectifs (niveaux Positionner et Orienter)
-
-C'est ici que la gestion financière devient réellement utile. Quand elle cesse d'être une contrainte pour devenir un levier. Quand la vision est suffisamment claire pour arbitrer sans stress, aligner ses dépenses avec ses projets, donner un rôle précis à chaque euro.
-
-À ce niveau, l'argent n'est plus une source d'anxiété. C'est un outil au service de ce qu'on veut construire. Un apport immobilier, une transition professionnelle, une liberté financière à horizon cinq ans : ces objectifs deviennent pilotables parce qu'on a installé les niveaux précédents.
-
-C'est le niveau P puis O du système TEMPO pour Positionner trimestriellement et Orienter annuellement. Prendre de la hauteur pour vérifier que la direction est juste, pas seulement que les chiffres sont bons.
-
-Pourquoi la montée en compétences échoue avant d'avoir commencé
-
-La majorité des gens abandonnent dans les premières semaines. Pas par manque de sérieux mais par manque de cadre adapté. Les outils disponibles sont pensés pour des gens qui savent déjà piloter, pas pour ceux qui apprennent. Le suivi demande trop de temps. L'effort cognitif est trop important. Et surtout : le feedback n'est pas immédiat et sans résultat visible rapidement, la motivation s'effondre.
-
-Un bon système de montée en compétences doit être progressif, pas tout ou rien. On n'installe pas les cinq niveaux TEMPO en même temps. On commence par Tracer quotidiennement, ça prend cinq minutes maximum. On installe l'habitude avant d'installer la méthode. Et on monte d'un niveau quand le précédent est ancré.
-
-La tendance prime sur la perfection. Un rituel imparfait mais tenu vaut infiniment plus qu'un système parfait abandonné.
-
-Le pilotage s'apprend. Comme n'importe quelle compétence.
-
-Personne ne naît en sachant piloter ses finances. C'est une compétence qui s'apprend par exposition régulière, par répétition consciente, par feedback progressif. Exactement comme piloter un projet, manager une équipe ou maîtriser un outil professionnel.
-
-La différence entre quelqu'un qui subit ses finances et quelqu'un qui les pilote n'est pas le revenu, ni la discipline, ni l'intelligence financière. C'est l'existence d'un système. Un cadre clair, des fréquences définies, des questions simples auxquelles répondre régulièrement.
-
-Steero est construit autour de cette logique de progression. Les cinq niveaux TEMPO sont intégrés dans l'outil, pas comme des fonctionnalités à découvrir, mais comme une structure de pilotage à installer progressivement. Tu commences par Tracer. Le reste suit naturellement.`
-  },
-  {
-    id: 3,
-    titleKey: "blog.articles.3.title",
-    hookKey: "blog.articles.3.hook",
-    tagsKey: "blog.articles.3.tags",
-    content: `La majorité des apps de finance personnelle sont des rétroviseurs
-
-Finary, Bankin, Linxo, ces outils font une chose très bien : te montrer où est allé ton argent. Ils agrègent, catégorisent, affichent. Automatiquement, proprement, joliment.
-
-Le problème : un rétroviseur te montre la route que tu viens de parcourir. Pas celle devant toi.
-
-Conduire en regardant uniquement le rétroviseur, ça finit dans le fossé. Et c'est exactement ce qui se passe avec ces outils. Tu consultes ton bilan en fin de mois, quand la dérive est déjà installée depuis trois semaines, quand il est trop tard pour corriger quoi que ce soit. Résultat : Tu subis l'information au lieu de piloter avec.
-
-Ce n'est pas un défaut de l'outil. C'est une erreur de paradigme. Ces apps ont été conçues pour observer le passé, pas pour piloter l'avenir.
-
-Un rituel n'est pas un bilan mensuel
-
-Quand on parle de rituel financier, la plupart imaginent une session Excel de deux heures, un dimanche soir, avec une calculatrice et un café froid. C'est exactement ce qu'un rituel n'est pas.
-
-Un rituel, c'est une action courte, répétée à fréquence fixe, qui donne un feedback immédiat. Pas une corvée mais un geste. La différence entre les deux n'est pas la durée. C'est la régularité et la clarté de ce qu'on cherche à voir.
-
-Un suivi parfait mais rare ne crée aucune maîtrise durable, c'est même pire, c'est anxiogène. Sans rituel régulier, on regarde ses comptes après une mauvaise surprise, sous charge émotionnelle, en mode pompier. L'argent devient une source de stress, pas un levier. Et plus le stress monte, plus l'évitement s'installe. C'est un cercle fermé.
-
-La régularité, elle, agit comme un tampon. Elle neutralise la surprise. Elle transforme la gestion financière d'une épreuve à une compétence.
-
-Pourquoi les rituels financiers échouent avant de commencer
-
-Trois raisons expliquent l'abandon systématique :
-• Ils prennent trop de temps : incompatibles avec une semaine chargée
-• Ils demandent un effort cognitif trop important : trop de décisions, trop de données à interpréter
-• Et ils ne donnent pas de feedback immédiat : sans résultat visible, la motivation s'évapore en dix jours.
-
-Un bon rituel doit satisfaire trois critères non négociables : être rapide, être clair, et être utile dès la première utilisation.
-
-Si l'un des trois manque, l'abandon est inévitable. Pas parce que tu manques de sérieux, mais parce que le cerveau humain abandonne tout comportement qui consomme plus qu'il ne produit.
-
-Le système TEMPO : cinq rituels, cinq fréquences, un seul cap
-
-Piloter ses finances, c'est exactement comme piloter une équipe. Tu ne gères pas une équipe avec une réunion annuelle. Tu as des points quotidiens, des bilans hebdomadaires, des revues mensuelles, des comités trimestriels, et une direction annuelle. Chaque fréquence répond à une question différente. Ensemble, elles forment un système.
-
-C'est ce que le système TEMPO structure pour tes finances personnelles.
-
-Tracer — quotidien, 5 minutes. Enregistrer ses opérations récentes, vérifier le classement, observer l'impact sur la trésorerie. Aucune analyse attendue juste le geste de saisir. Et ce geste compte : noter une dépense, c'est déjà en prendre conscience. C'est là que le comportement change, en amont, avant que la décision soit prise.
-
-Examiner — hebdomadaire, 10 minutes. Comparer ce qu'on avait prévu à ce qui s'est passé. Identifier les écarts avant qu'ils s'installent. Ajuster une catégorie si nécessaire. Ce rituel est le pont entre l'opérationnel et la décision mensuelle, il t'évite l'effet "je verrai en fin de mois" qui est systématiquement trop tard.
-
-Maîtriser — mensuel, 15 minutes. Analyser revenus vs dépenses, budget prévu vs réel, évolution de la trésorerie. Décider consciemment où va l'argent le mois suivant. Ce n'est pas un bilan subi mais bien un acte de pilotage. La question n'est pas "où est passé mon argent ?" mais "est-ce que je choisis où il va ?"
-
-Positionner — trimestriel, 30 minutes. Prendre de la hauteur. Ne plus regarder les dépenses mais regarder la direction. Est-ce que ma trésorerie évolue dans le bon sens ? Est-ce que mes finances soutiennent ce que je veux construire ? Ce rituel sort du transactionnel pour entrer dans le stratégique.
-
-Orienter — annuel, 60 minutes. Bilan global de l'année. Évolution du patrimoine, habitudes installées, arbitrages à venir. Et surtout : définir les grandes orientations : épargne, investissements, projets de vie. Choisir l'avenir, pas juste gérer le présent.
-
-Cinq niveaux. De l'opérationnel au stratégique. Chaque rituel donne du sens aux autres — le quotidien alimente le mensuel, le mensuel prépare le trimestriel, le trimestriel oriente l'annuel.
-
-Ce que ça change concrètement
-
-Un rituel régulier ne te rend pas soudainement plus riche. Il te rend plus lucide et la lucidité change les décisions avant qu'elles soient prises.
-
-Tu arrêtes de subir les fins de mois pour commencer à les anticiper. Tu passes de spectateur à pilote. Et progressivement, la compétence financière se construit, non pas par intensité mais par répétition consciente.
-
-C'est ça, la maîtrise. Pas un tableau de bord parfait consulté une fois par an. Un regard régulier, structuré, sur une situation qui évolue.
-
-Steero est construit autour de cette logique. La saisie y est manuelle et intentionnelle parce qu'enregistrer une dépense, c'est déjà l'acte de pilotage. Des modèles préremplis réduisent la friction à quelques secondes sans supprimer le geste. Et les cinq niveaux du système TEMPO sont structurés directement dans l'outil, pour que chaque rituel trouve sa place naturellement dans ta semaine.
-
-Le seul outil qui fonctionne est celui qu'on utilise régulièrement
-
-Aucun outil, aussi bien conçu soit-il, ne remplace la régularité. La maîtrise financière ne vient pas de l'intensité d'un bilan mensuel mais de la constance d'un regard régulier.
-
-La question n'est pas "quel outil utiliser ?" Elle est "quelle cadence installer ?"
-
-Installe le rituel. L'outil suit.`
   },
   {
     id: 4,
@@ -938,122 +938,6 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist }: Ar
   );
 };
 
-// Featured article card - visually distinct intro card
-const FeaturedArticleCard = () => {
-  const { t } = useTranslation();
-  const { openWaitlist } = useWaitlist();
-
-  const whyItems = [
-    t('blog.featured.why1'),
-    t('blog.featured.why2'),
-    t('blog.featured.why3'),
-  ];
-
-  const containsItems = [
-    t('blog.featured.contains1'),
-    t('blog.featured.contains2'),
-    t('blog.featured.contains3'),
-    t('blog.featured.contains4'),
-  ];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="relative rounded-2xl overflow-hidden border-2 border-primary/30 bg-gradient-to-br from-primary/5 via-card to-primary/5 shadow-lg mb-6"
-    >
-      {/* Decorative accent */}
-      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-primary/80 to-primary" />
-
-      <div className="p-6 md:p-8">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-5"
-        >
-          <FileSpreadsheet className="w-4 h-4" />
-          {t('blog.featured.badge')}
-        </motion.div>
-
-        {/* Title */}
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-          {t('blog.featured.title')}
-        </h2>
-        <p className="text-base text-primary font-medium mb-4">
-          {t('blog.featured.subtitle')}
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-          {t('blog.featured.description')}
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          {/* Why */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide flex items-center gap-2">
-              <Lightbulb className="w-4 h-4 text-primary" />
-              {t('blog.featured.whyTitle')}
-            </h3>
-            {whyItems.map((item, i) => (
-              <div key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Contains */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide flex items-center gap-2">
-              <FileSpreadsheet className="w-4 h-4 text-primary" />
-              {t('blog.featured.containsTitle')}
-            </h3>
-            {containsItems.map((item, i) => (
-              <div key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Limitations */}
-        <div className="p-4 bg-muted/50 rounded-xl border border-border/50 mb-8">
-          <h4 className="text-sm font-semibold text-foreground mb-2">{t('blog.featured.limitTitle')}</h4>
-          <p className="text-sm text-muted-foreground mb-1">{t('blog.featured.limit1')}</p>
-          <p className="text-sm text-muted-foreground italic">{t('blog.featured.limit2')}</p>
-        </div>
-
-        {/* Download CTA */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <motion.a
-            href="/steero-budget-mensuel.xlsx"
-            download
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold shadow-soft hover:shadow-lg transition-all duration-300 group"
-          >
-            <Download className="w-5 h-5" />
-            {t('blog.featured.downloadBtn')}
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </motion.a>
-          <span className="text-xs text-muted-foreground">{t('blog.featured.downloadFormat')}</span>
-        </div>
-
-        {/* Go further */}
-        <div className="mt-6 pt-6 border-t border-border/50 flex items-center justify-between">
-          <span className="text-sm font-medium text-foreground">{t('blog.featured.goFurther')}</span>
-          <Button size="sm" variant="outline" className="group rounded-full" onClick={openWaitlist}>
-            {t('common.joinWaitlist')}
-            <ArrowUpRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Button>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
 
 const Blog = () => {
   const { t } = useTranslation();
@@ -1272,8 +1156,6 @@ const Blog = () => {
               {/* Right side - Scrollable articles */}
               <div className="lg:w-2/3">
                 <div className="space-y-4">
-                  {/* Featured article card - always at the top */}
-                  {!hasActiveFilters && <FeaturedArticleCard />}
                   
                   <AnimatePresence mode="popLayout">
                     {filteredArticles.map((article, index) => (
