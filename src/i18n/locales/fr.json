@@ -799,6 +799,23 @@
           "Alors pourquoi ne pas rester sur Excel ?",
           "Le bon diagnostic change tout"
         ]
+      },
+      "8": {
+        "title": "Économiser 500€ ce mois-ci : ce que personne ne te dit vraiment",
+        "tags": [
+          "Pilotage",
+          "Budget",
+          "Méthode"
+        ],
+        "hook": "Tu veux économiser 500€ ce mois-ci. La plupart des articles vont te répondre avec une liste : supprime Netflix, prépare tes repas, arrête le café à emporter, évite les achats impulsifs.\n\nTu connais déjà cette liste. Elle ne t'a pas aidé. Parce qu'elle répond à la mauvaise question.\n\nLa question n'est pas \"comment dépenser moins ?\" Elle est \"où partent déjà ces 500€ sans que tu le voies ?\"",
+        "sections": [
+          "Les 500€ sont probablement déjà là",
+          "Pourquoi les coupes budgétaires ne fonctionnent pas seules",
+          "Le vrai travail : cartographier avant de couper",
+          "Le niveau M de TEMPO : l'endroit où les 500€ apparaissent",
+          "Ce que tu peux faire dès cette semaine",
+          "500€ d'économies ou 500€ de choix ?"
+        ]
       }
     }
   },

@@ -523,6 +523,83 @@ Définis quand tu l'ouvres. Définis ce que tu y fais à chaque ouverture. Défi
 Commence petit. Trois fois par semaine à minima. Cinq minutes. Sans ambition d'exhaustivité au début.
 
 L'outil suit le rituel. Jamais l'inverse.`
+  },
+  {
+    id: 8,
+    titleKey: "blog.articles.8.title",
+    hookKey: "blog.articles.8.hook",
+    tagsKey: "blog.articles.8.tags",
+    content: `Les 500€ sont probablement déjà là
+
+Voilà ce que les articles de conseil financier ne te disent jamais : pour la grande majorité des cadres et actifs urbains qui gagnent correctement leur vie, les 500€ d'économies potentielles existent déjà dans leurs dépenses actuelles. Ils ne sont pas cachés dans un sacrifice futur mais sont dispersés dans des dépenses présentes qu'on ne voit pas parce qu'on ne les regarde pas avec suffisamment de granularité.
+
+Les études comportementales sur la perception des dépenses sont sans appel : la plupart des gens sous-estiment leurs dépenses mensuelles réelles de 20 à 30%. Pas parce qu'ils se mentent à eux mêmes mais parce que la mémoire financière est sélective : on retient les gros postes, on oublie les petits débits qui s'accumulent silencieusement entre le 5 et le 25 du mois.
+
+Avant de couper quoi que ce soit, il faut savoir précisément ce qu'on dépense. Pas approximativement. Précisément.
+
+Pourquoi les coupes budgétaires ne fonctionnent pas seules
+
+La logique de la coupe est séduisante : identifie une dépense, supprime la, économise le montant. Propre, simple, immédiat.
+
+Le problème : cette logique traite les symptômes, pas la cause. Si tu ne comprends pas pourquoi une dépense existe, si elle est choisie ou subie, récurrente ou exceptionnelle, compressible ou structurelle, tu risques de couper au hasard. Parfois tu élimines quelque chose qui comptait vraiment. Souvent tu laisses intact ce qui draine silencieusement.
+
+Et surtout : sans système de suivi en place, la dépense supprimée revient sous une autre forme trois semaines plus tard. Le comportement financier ne change pas par décision ponctuelle. Il change par compréhension progressive de ses propres habitudes.
+
+La coupe sans diagnostic est une rustine. Elle tient un mois. Rarement deux.
+
+Le vrai travail : cartographier avant de couper
+
+Économiser 500€ durablement commence par une seule action : regarder précisément où part l'argent sur les 60 à 90 derniers jours. Pas le solde de fin de mois. Les dépenses réelles, catégorisées, dans le détail.
+
+Cet exercice révèle systématiquement quatre types de fuites que personne ne voit venir.
+
+Les abonnements zombies. Ils sont débités entre J+10 et J+20, rarement au même moment, souvent pour des services qu'on n'utilise plus ou qu'on a oubliés. Chaque montant unitaire est faible : 9,99€, 14,99€, 4,99€. Ensemble, ils représentent fréquemment 60 à 120€ par mois chez un actif urbain abonné à une dizaine de services numériques ou autres.
+
+Les dépenses sociales non budgétées. Le dîner de dernière minute, le weekend improvisé, le cadeau oublié, le verre après le bureau. Chaque occurrence semble exceptionnelle. Sur trois mois, elles forment une catégorie à part entière.
+
+Le lissage mental. Le cerveau mémorise les bons mois et efface les mauvais. Résultat : on croit dépenser en moyenne 1 800€ par mois alors qu'on dépense 2 100€. Cet écart de 300€ est invisible jusqu'à ce qu'on le mesure sur trois mois consécutifs.
+
+Les dépenses de confort invisibles. Pas les grandes décisions, les petites frictions quotidiennes qu'on ne conscientise jamais. Le taxi au lieu du métro parce qu'on est en retard. La livraison parce qu'on n'a pas anticipé le repas. Le parking parce qu'on est arrivé trop tard pour trouver gratuit. Individuellement anodines. Collectivement significatives.
+
+Le niveau M de TEMPO : l'endroit où les 500€ apparaissent
+
+C'est précisément pour ça qu'existe le niveau M du système TEMPO — Maîtriser, quinze minutes par mois.
+
+Ce rituel mensuel n'est pas un bilan comptable. C'est un moment de décision consciente. Tu analyses les revenus vs les dépenses, le budget prévu vs le réel, l'évolution de ta trésorerie. Et tu poses trois questions précises : où est allé mon argent ce mois-ci ? Est-ce que c'était choisi ou subi ? Où est-ce que je veux qu'il aille le mois prochain ?
+
+C'est dans ce moment et seulement dans ce moment précis que les 500€ deviennent visibles. Pas avant. Pas en cherchant quoi couper abstraitement. En regardant ce qui s'est réellement passé, catégorie par catégorie, et en décidant consciemment ce qui change.
+
+Mais le niveau M ne fonctionne que si les niveaux T et E sont en place. Sans saisie régulière des dépenses, le niveau T (Tracer) cinq minutes plusieurs fois par semaine, le bilan mensuel repose sur des données incomplètes. Sans revue hebdomadaire, le niveau E (Examiner) dix minutes dans le week-end, les écarts ont eu trois semaines pour s'installer avant d'être vus.
+
+Les 500€ d'économies ne se trouvent pas dans une liste de conseils. Ils se trouvent dans tes propres données financières à condition de les avoir collectées.
+
+Ce que tu peux faire dès cette semaine
+
+Ne commence pas par chercher quoi couper. Commence par regarder.
+
+Trois actions concrètes dans cet ordre :
+
+1. Saisir toutes tes dépenses des deux dernières semaines en les catégorisant précisément, pas en les regroupant dans un "divers" qui ne dit rien.
+
+2. Identifier tes abonnements actifs : tous, y compris ceux débités sur une carte secondaire ou un compte joint.
+
+3. Noter les trois postes de dépenses qui te surprennent le plus : ceux dont le total réel est supérieur à ce que tu aurais estimé spontanément.
+
+Ces trois postes surprenants sont presque toujours là où se trouvent tes 500€.
+
+Steero structure ce travail avec la capture de tous tes abonnements, une vue prévu/réel par catégorie qui rend les écarts immédiatement lisibles sans avoir à construire toi-même les formules ni à maintenir un tableau à jour. La saisie est manuelle et intentionnelle : noter une dépense, c'est déjà commencer à la questionner.
+
+Et le niveau M est intégré directement dans l'outil comme moment de décision mensuelle, pas comme bilan subi.
+
+500€ d'économies ou 500€ de choix ?
+
+La vraie question derrière "comment économiser 500€" n'est pas financière. Elle est comportementale. Est-ce que tu veux économiser 500€ par restriction en te privant de quelque chose ou par lucidité en arrêtant de financer des choses que tu n'as pas vraiment choisies ?
+
+La restriction demande de la discipline. Elle s'épuise. La lucidité demande de l'information. Elle se construit.
+
+Un mois de regard précis sur tes dépenses réelles change plus ta situation financière que six mois de bonnes intentions. Pas parce que tu vas trouver des coupes magiques mais parce que comprendre où part son argent change les décisions en amont, avant que la dépense soit faite.
+
+Les 500€ sont probablement déjà là. Il manque juste le regard pour les voir.`
   }
 ];
 
@@ -615,6 +692,14 @@ const articleSections: Record<number, string[]> = {
     "Le rituel qui fait vivre n'importe quel outil",
     "Alors pourquoi ne pas rester sur Excel ?",
     "Le bon diagnostic change tout"
+  ],
+  8: [
+    "Les 500€ sont probablement déjà là",
+    "Pourquoi les coupes budgétaires ne fonctionnent pas seules",
+    "Le vrai travail : cartographier avant de couper",
+    "Le niveau M de TEMPO : l'endroit où les 500€ apparaissent",
+    "Ce que tu peux faire dès cette semaine",
+    "500€ d'économies ou 500€ de choix ?"
   ]
 };
 
@@ -847,7 +932,8 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist }: Ar
   const contentRef = useRef<HTMLDivElement>(null);
   const hook = t(article.hookKey);
   const title = t(article.titleKey);
-  const tags = t(article.tagsKey, { returnObjects: true }) as unknown as string[];
+  const rawTags = t(article.tagsKey, { returnObjects: true });
+  const tags = Array.isArray(rawTags) ? rawTags as string[] : [];
   const readingTime = calculateReadingTime(hook + article.content);
 
   const handleShare = (e: React.MouseEvent) => {
@@ -1028,7 +1114,10 @@ const Blog = () => {
   const articleRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   
   const articles = getArticles(t);
-  const allTags = Array.from(new Set(articles.flatMap(article => t(article.tagsKey, { returnObjects: true }) as string[])));
+  const allTags = Array.from(new Set(articles.flatMap(article => {
+    const raw = t(article.tagsKey, { returnObjects: true });
+    return Array.isArray(raw) ? raw as string[] : [];
+  })));
 
   // Track which open article is most visible
   useEffect(() => {
@@ -1103,7 +1192,8 @@ const Blog = () => {
   };
 
   const filteredArticles = articles.filter(article => {
-    const tags = t(article.tagsKey, { returnObjects: true }) as string[];
+    const rawTags = t(article.tagsKey, { returnObjects: true });
+    const tags = Array.isArray(rawTags) ? rawTags as string[] : [];
     const title = t(article.titleKey) as string;
     const hook = t(article.hookKey) as string;
     const matchesTags = selectedTags.length === 0 || 
