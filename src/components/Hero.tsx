@@ -62,7 +62,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground"
+              className="text-4xl md:text-5xl font-bold leading-tight text-foreground lg:text-6xl"
             >
               {t('hero.title')}<br />
               <span className="text-primary">{t('hero.titleHighlight')}</span>
