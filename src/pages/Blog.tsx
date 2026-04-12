@@ -25,83 +25,119 @@ const getArticles = (t: (key: string, options?: Record<string, unknown>) => stri
     titleKey: "blog.articles.1.title",
     hookKey: "blog.articles.1.hook",
     tagsKey: "blog.articles.1.tags",
-    content: `Pourquoi la gestion des finances personnelles n'est pas innée
+    content: `Ce n'est pas que tu dépenses trop. C'est que tu regardes trop rarement.
 
-Contrairement aux idées reçues, être à l'aise avec l'argent n'est pas une question de talent ou de chance.
+La dérive financière ne se construit pas en un jour. Elle s'installe progressivement puis se découvre en fin de mois quand il est trop tard pour corriger.
 
-La gestion financière personnelle est une compétence acquise, qui repose sur :
-• la compréhension de ses revenus et dépenses,
-• la capacité à structurer un budget,
-• et la prise de décisions conscientes dans le temps.
+Les études comportementales sur la perception des dépenses le confirment : la plupart des gens sous-estiment leurs dépenses mensuelles de 20 à 30 %. Pas parce qu'ils se mentent mais parce que la mémoire financière est sélective : on retient les bons mois et on oublie les mauvais. On mémorise les gros postes, on oublie les petits débits qui s'accumulent.
 
-Sans méthode claire, beaucoup fonctionnent au ressenti, à l'urgence, ou en évitant le sujet financier. Ce flou est la principale source de stress financier.
+Le résultat : une vision déformée de sa situation réelle, et des décisions prises sur des bases fausses.
 
-Comprendre son argent pour reprendre le contrôle financier
+Le problème n'est pas l'argent que tu gagnes. C'est la fréquence à laquelle tu regardes où il va.
 
-Un mythe également très répandu consiste à penser que le problème vient uniquement du niveau de revenu, bien souvent gagner plus d'argent ne suffit pas à mieux gérer ses finances car en réalité :
-• plus de revenus = plus de décisions financières,
-• plus de flux = plus de complexité,
-• plus de comptes = plus de confusion… sans cadre adapté.
+Les 4 fuites invisibles qui plombent un budget cadre
 
-Sans compréhension financière :
-• les dépenses augmentent avec les revenus,
-• l'épargne reste irrégulière,
-• les objectifs financiers sont repoussés.
+Avant de construire un système, il faut nommer ce qu'on cherche à corriger.
 
-Ce n'est pas le montant gagné qui sécurise, mais la capacité à piloter ses finances personnelles.
+Les abonnements zombies. Ils sont débités entre J+10 et J+20, jamais au même moment, souvent pour des services qu'on n'utilise plus. Invisibles parce que le montant unitaire est faible. Dévastateurs parce qu'ils s'accumulent.
 
-Comprendre ses finances personnelles, ce n'est pas devenir expert en finance.
+Les dépenses sociales non budgétées. Le dîner de dernière minute, le week-end improvisé, le cadeau oublié. Chaque occurrence semble exceptionnelle. Ensemble, elles représentent souvent 15 à 20 % des dépenses réelles d'un cadre actif en grande métropole.
 
-C'est savoir :
-• combien on gagne réellement,
-• combien on dépense,
-• et comment ces choix impactent le futur.
+Le lissage mental. Ce mécanisme cognitif te fait inconsciemment moyenner tes dépenses sur les "bons mois" pour justifier les mauvais. "En janvier j'avais bien géré, donc février c'est rattrapable." Ce raisonnement est faux et coûteux.
 
-Une bonne compréhension financière permet :
-• de réduire le stress lié à l'argent,
-• de prendre de meilleures décisions budgétaires,
-• d'aligner ses dépenses avec ses priorités de vie.
+La catégorie "divers". C'est la poubelle budgétaire. Tout ce qu'on ne veut pas regarder de trop près atterrit là. Une catégorie "divers" qui grossit est toujours le signe d'un pilotage qui s'effondre.
 
-La clarté financière est le premier pas vers la liberté financière.
+Pourquoi les bonnes résolutions ne fonctionnent pas
 
-La finance personnelle est une compétence qui se développe avec le temps
+"Je vais faire plus attention ce mois-ci." Cette phrase a une durée de vie moyenne de 11 jours. Pas parce que tu manques de volonté mais parce qu'une intention sans structure est condamnée au premier imprévu.
 
-Apprendre à gérer son argent ne se fait pas en un jour. La montée en compétences financières suit généralement plusieurs étapes :
+Une résolution n'a pas de fréquence. Pas de moment dédié. Pas de feedback régulier. Elle repose entièrement sur ta motivation du moment, soit la ressource la plus volatile qui soit.
 
-1. Observer ses finances sans jugement
-2. Structurer ses budgets et catégories
-3. Analyser les écarts entre prévu et réel
-4. Décider en fonction de ses objectifs
+Ce qui fonctionne, ce n'est pas une règle. C'est un système. Et un système se compose de rituels, pas de bonnes intentions.
 
-L'essentiel n'est pas d'être parfait, mais d'avoir un cadre simple et évolutif alors comment Steero t'aide à mieux comprendre tes finances personnelles ?
+La vraie solution : un système de pilotage à 5 niveaux
 
-Steero a été conçu pour répondre à un besoin simple : rendre la gestion financière compréhensible, structurée et accessible.
+C'est ici que la plupart des conseils financiers s'arrêtent à mi-chemin. Ils te disent de "faire un budget". Mais un budget sans cadence de révision est un document mort.
 
-Contrairement aux outils complexes ou trop techniques, Steero permet :
-• une vision claire de ses finances globales,
-• une structuration budgétaire flexible,
-• un suivi ritualisé, rapide et durable,
-• une montée en compétences progressive.
+Le pilotage financier efficace fonctionne exactement comme le pilotage professionnel : des niveaux d'analyse différents, des fréquences différentes, des questions différentes. Du quotidien opérationnel au stratégique annuel.
 
-L'objectif n'est pas seulement de suivre des chiffres, mais de comprendre pour mieux décider.
+C'est ce qu'on appelle le système TEMPO.
 
-Conclusion : apprendre à gérer son argent change durablement la relation à l'argent
+Tracer (quotidien, 5 minutes)
 
-La gestion des finances personnelles n'est pas réservée aux experts. C'est une compétence accessible à tous, à condition d'avoir :
-• un cadre clair,
-• un outil adapté,
-• et un rituel simple.
+Objectif : garder le lien. Éviter la dérive invisible.
 
-Avant d'optimiser, d'investir ou de chercher plus de rendement, il faut d'abord comprendre ses finances.
+Chaque jour ou trois fois par semaine au minimum tu enregistres tes opérations récentes, tu vérifies le classement de chaque dépense, et tu observes l'impact sur ta trésorerie.
 
-Tu souhaites mieux comprendre et gérer tes finances personnelles ?
+Aucune analyse n'est attendue ici. Il s'agit de saisir, observer, valider.
 
-Steero t'aide à :
-• clarifier ton budget,
-• structurer tes finances,
-• et monter en compétences à ton rythme.
+La clé : la saisie est manuelle et intentionnelle. Pas par contrainte technique, mais par choix comportemental. Enregistrer une dépense, c'est déjà en prendre conscience. C'est l'acte de pilotage le plus simple et le plus puissant. C'est là que la discipline s'installe, pas dans les grandes décisions de fin de mois.
 
-Commence par poser des bases solides pour ton avenir financier.`
+Steero est construit sur ce principe : des modèles de saisie préremplis réduisent la friction à quelques secondes, sans supprimer le geste conscient d'enregistrer. Tu saisis vite et tu restes acteur.
+
+La règle d'or : si tu n'as pas envie d'y passer 5 minutes par jour, commence par 3 fois par semaine. La régularité prime sur la fréquence parfaite.
+
+Examiner (hebdomadaire, 10 minutes)
+
+Objectif : corriger la trajectoire avant qu'il soit trop tard.
+
+Chaque semaine, tu passes en revue les dépenses de la semaine écoulée. Tu identifies les écarts, les dépenses inhabituelles, et tu ajustes les catégories si nécessaire.
+
+Trois questions suffisent : Ai-je dépensé comme prévu ? Qu'est-ce qui mérite d'être ajusté ? Que puis-je anticiper la semaine prochaine ?
+
+Ce rituel est le pont entre le quotidien opérationnel et la décision mensuelle. Il t'évite l'effet "je verrai en fin de mois" qui est systématiquement trop tard. Il transforme un spectateur passif en pilote actif.
+
+Maîtriser (mensuel, 15 minutes)
+
+Objectif : reprendre la main sur tes choix financiers.
+
+Une fois par mois, tu analyses : revenus vs dépenses, budget prévu vs réel, évolution de ta trésorerie. Tu ajustes les catégories et les montants budgétés. Et surtout, tu décides consciemment où va ton argent le mois suivant.
+
+Ce n'est pas un bilan subi. C'est une décision active.
+
+La question centrale n'est pas "où est passé mon argent ?" mais "est-ce que je choisis consciemment où il va ?" Ce déplacement de perspective change tout.
+
+Steero structure ce moment avec une vue consolidée budget prévu / réel par catégorie pour que la décision soit basée sur des données, pas sur une impression.
+
+Un mois imparfait n'est pas un problème. Un mois non regardé, oui.
+
+Positionner (trimestriel, 30 minutes)
+
+Objectif : aligner finances et objectifs de vie.
+
+Tous les trois mois, tu prends de la hauteur. Tu ne regardes plus les dépenses mais regardes la direction. Est-ce que ma trésorerie évolue dans le bon sens ? Est-ce que mes finances soutiennent ce que je veux construire ? Qu'est-ce qui doit changer dans mes grandes catégories ?
+
+Ce rituel évite la gestion automatique sans sens. Il renforce ton attachement à tes finances non pas comme une contrainte, mais comme un levier. C'est le niveau où tu passes du pilotage tactique à la stratégie personnelle.
+
+Orienter (annuel, 60 minutes)
+
+Objectif : choisir l'avenir, pas juste gérer le présent.
+
+Une fois par an, tu fais le bilan global. Évolution du patrimoine, discipline installée, habitudes ancrées ou abandonnées. Et surtout : tu définis les grandes orientations : épargne, investissements, projets de vie.
+
+Trois questions fondamentales : Qu'est-ce que je veux vraiment construire avec mon argent ? Quelle vie est-ce que je soutiens par mes décisions financières ? Qu'est-ce qui mérite mon énergie cette année et qu'est-ce qui n'en mérite plus ?
+
+Une direction claire vaut mieux qu'un plan parfait.
+
+Par où commencer quand on part de zéro
+
+Ne commence pas par les cinq niveaux en même temps. C'est le meilleur moyen d'abandonner au bout de dix jours.
+
+L'ordre logique : installe d'abord le T. Tracer, idéalement de manière quotidienne et à minima trois fois par semaine (Exemple : mardis, jeudis, samedis). Juste ça. Pendant trois semaines, sans ajouter autre chose.
+
+Une fois que le geste est ancré, ajoute le E. Un quart d'heure le week-end.
+
+Puis le M en fin de premier mois complet.
+
+Le système TEMPO n'est pas un outil qu'on configure une fois, c'est une cadence qu'on installe progressivement. La tendance prime sur la perfection. Rater un rituel n'est pas un échec. Ne jamais le faire est le seul vrai problème.
+
+Ce que tu vas changer cette semaine
+
+Tu ne dépenses pas trop. Tu pilotes trop rarement.
+
+Cinq minutes par jour et quinze minutes par mois changent plus une situation financière que n'importe quelle règle d'austérité. Pas parce qu'ils révèlent des fuites magiques — mais parce qu'ils installent une conscience active de là où va ton argent. Et cette conscience change les décisions, en amont, avant que la dépense soit faite.
+
+Le système TEMPO est la méthode. Steero est l'outil construit pour l'implémenter — avec la friction juste, les rituels structurés, et la vision dont tu as besoin pour piloter, pas juste suivre.`
   },
   {
     id: 2,

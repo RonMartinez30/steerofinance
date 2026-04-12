@@ -682,17 +682,20 @@
     },
     "articles": {
       "1": {
-        "title": "Entender tus finanzas personales: por qué es una competencia esencial hoy",
+        "title": "Gastas demasiado cada mes: aquí está el porqué (y cómo pararlo)",
         "tags": [
-          "Principiante",
-          "Competencias"
+          "Pilotaje",
+          "Método",
+          "Ritual"
         ],
-        "hook": "La gestión de las finanzas personales rara vez se enseña en la escuela. Sin embargo, entender tu dinero es hoy una competencia esencial, al igual que saber organizar tu tiempo o desarrollar tus competencias profesionales.\n\nMuchas personas ganan correctamente su vida, pero les cuesta:\n• entender a dónde va su dinero,\n• tomar decisiones financieras serenas,\n• o alcanzar sus objetivos financieros.\n\n¿La buena noticia? Las finanzas personales se aprenden.",
+        "hook": "Terminas el mes en rojo o justo en equilibrio sin poder explicar exactamente por qué. No hiciste ninguna locura ni te volaste un presupuesto de fin de semana extravagante y sin embargo, los números no cuadran. No es un problema de disciplina. Es un problema de frecuencia de observación.",
         "sections": [
-          "Por qué la gestión de finanzas personales no es innata",
-          "Entender tu dinero para retomar el control financiero",
-          "Las finanzas personales son una competencia que se desarrolla con el tiempo",
-          "Conclusión: aprender a gestionar tu dinero cambia duraderamente la relación con el dinero"
+          "No es que gastes demasiado. Es que miras con poca frecuencia.",
+          "Las 4 fugas invisibles que hunden un presupuesto profesional",
+          "Por qué las buenas resoluciones no funcionan",
+          "La verdadera solución: un sistema de pilotaje de 5 niveles",
+          "Por dónde empezar cuando se parte de cero",
+          "Lo que vas a cambiar esta semana"
         ]
       },
       "2": {
