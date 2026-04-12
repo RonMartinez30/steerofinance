@@ -88,6 +88,16 @@
       "o": { "letter": "O", "name": "Orientar", "desc": "Balance global, grandes orientaciones, arbitrajes estratégicos. Elegir el futuro.", "freq": "Anual", "time": "60 min" }
     }
   },
+  "whySteeroSection": {
+    "label": "POR QUÉ STEERO",
+    "title": "Lo que realmente nos diferencia.",
+    "description": "No la agregación automática. No los gráficos circulares. La conciencia y la regularidad.",
+    "card1": { "title": "El registro es intencional", "desc": "Registrar un gasto ya es tomar conciencia. Las plantillas prellenadas reducen la fricción a unos segundos — sin eliminar el gesto." },
+    "card2": { "title": "Un ritual, no un panel", "desc": "Steero está construido alrededor de frecuencias, no de funcionalidades. El sistema TEMPO te da un marco de pilotaje — como un manager pilota su equipo." },
+    "card3": { "title": "De lo operativo a lo estratégico", "desc": "5 minutos al día para no dejar nada a la deriva. 60 minutos al año para decidir la dirección. Los dos niveles en la misma herramienta." },
+    "quote": "\"Quiero una visión clara, en tiempo real, de mi situación.\"",
+    "quoteCaption": "Lo que dicen nuestros usuarios. Lo que Steero construye."
+  },
   "features": {
     "title": "Sin automatización que te convierta en un simple espectador",
     "description": "Con Steero, te conviertes en el piloto: comprendes, ajustas y ritualizas tu trayectoria financiera para alcanzar el destino que has elegido.",

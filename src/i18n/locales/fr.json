@@ -88,6 +88,16 @@
       "o": { "letter": "O", "name": "Orienter", "desc": "Bilan global, grandes orientations, arbitrages stratégiques. Choisir l'avenir.", "freq": "Annuel", "time": "60 min" }
     }
   },
+  "whySteeroSection": {
+    "label": "POURQUOI STEERO",
+    "title": "Ce qui nous différencie vraiment.",
+    "description": "Pas l'agrégation automatique. Pas les graphiques en camembert. La conscience et la régularité.",
+    "card1": { "title": "La saisie est intentionnelle", "desc": "Enregistrer une dépense, c'est déjà en prendre conscience. Des modèles préremplis réduisent la friction à quelques secondes — sans supprimer le geste." },
+    "card2": { "title": "Un rituel, pas un tableau", "desc": "Steero est construit autour de fréquences, pas de features. Le système TEMPO te donne un cadre de pilotage — comme un manager pilote son équipe." },
+    "card3": { "title": "De l'opérationnel au stratégique", "desc": "5 minutes par jour pour ne rien laisser dériver. 60 minutes par an pour décider de la direction. Les deux niveaux dans le même outil." },
+    "quote": "\"Je veux une vision claire, en temps réel, de ma situation.\"",
+    "quoteCaption": "Ce que disent nos utilisateurs. Ce que Steero construit."
+  },
   "features": {
     "title": "Moins de friction. Plus de maîtrise",
     "description": "Modèles, favoris et raccourcis éliminent la friction. Tu te concentres sur ce qui compte : comprendre tes décisions.",

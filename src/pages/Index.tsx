@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import RealProblem from "@/components/RealProblem";
 import HowItWorks from "@/components/HowItWorks";
+import WhySteero from "@/components/WhySteero";
 import Differentiation from "@/components/Differentiation";
 import DiscoverFeatures from "@/components/DiscoverFeatures";
 import FreeResources from "@/components/FreeResources";
@@ -15,6 +16,7 @@ const Index = () => {
       <Hero />
       <RealProblem />
       <HowItWorks />
+      <WhySteero />
       <Differentiation />
       <DiscoverFeatures />
       <FreeResources />

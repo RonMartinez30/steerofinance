@@ -88,6 +88,16 @@
       "o": { "letter": "O", "name": "Orient", "desc": "Global review, major directions, strategic trade-offs. Choose the future.", "freq": "Yearly", "time": "60 min" }
     }
   },
+  "whySteeroSection": {
+    "label": "WHY STEERO",
+    "title": "What truly sets us apart.",
+    "description": "Not automatic aggregation. Not pie charts. Awareness and consistency.",
+    "card1": { "title": "Input is intentional", "desc": "Recording a transaction is already becoming aware of it. Pre-filled templates reduce friction to a few seconds — without removing the gesture." },
+    "card2": { "title": "A ritual, not a dashboard", "desc": "Steero is built around frequencies, not features. The TEMPO system gives you a management framework — like a manager pilots their team." },
+    "card3": { "title": "From operational to strategic", "desc": "5 minutes a day to prevent drift. 60 minutes a year to decide direction. Both levels in the same tool." },
+    "quote": "\"I want a clear, real-time view of my situation.\"",
+    "quoteCaption": "What our users say. What Steero builds."
+  },
   "features": {
     "title": "No automation that turns you into a mere spectator",
     "description": "With Steero, you become the pilot: you understand, adjust, and ritualize your financial trajectory to reach the destination you've chosen.",
