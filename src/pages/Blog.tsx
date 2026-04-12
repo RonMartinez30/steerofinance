@@ -334,88 +334,65 @@ Ce n'est pas le temps qui manque pour gérer ses finances. C'est la structure.`
     titleKey: "blog.articles.5.title",
     hookKey: "blog.articles.5.hook",
     tagsKey: "blog.articles.5.tags",
-    content: `Pourquoi regarder ses finances est souvent vécu comme une punition
+    content: `Si regarder tes finances te met mal à l'aise, ce n'est probablement pas à cause des chiffres. C'est à cause de ce qu'ils semblent dire sur toi.
 
-Dans l'imaginaire collectif, suivre son argent signifie souvent :
-• pointer ce qui ne va pas,
-• repérer les excès,
-• chercher ce qu'il aurait fallu mieux faire.
+Pour beaucoup, ouvrir son application bancaire en fin de mois ressemble à recevoir un bulletin scolaire. On cherche instinctivement les erreurs, les excès, ce qu'on aurait dû mieux faire. Et quand on en trouve, ce qui arrive toujours, la réaction est prévisible : culpabilité, puis évitement, puis déconnexion progressive. Jusqu'au mois suivant, où le cycle recommence.
 
-Résultat :
-• on repousse le moment de regarder,
-• on évite quand on doute,
-• on consulte uniquement en cas de problème.
+Ce n'est pas un problème de discipline. C'est un problème de posture.
 
-Le problème n'est pas l'information, mais la manière dont on l'interprète.
+Le rétroviseur ne te juge pas. Ton cerveau, si.
 
-Un tableau de bord n'est pas là pour juger, mais pour informer
+Quand un pilote regarde ses instruments de bord, il ne se demande pas s'il est un bon ou un mauvais pilote. Il lit une information : altitude, vitesse, cap; et prend une décision en conséquence. L'instrument est neutre. La lecture est factuelle. La réponse est immédiate.
 
-Dans un avion ou une voiture, le tableau de bord ne te juge pas. Il t'indique simplement ta vitesse, ton niveau de carburant et d'éventuelles alertes.
+Tes finances devraient fonctionner exactement comme ça. Un tableau de bord ne dit pas "tu as mal fait". Il dit "voilà où tu en es". La distinction est simple à formuler et radicalement difficile à intérioriser quand on a passé des années à lire ses relevés bancaires avec une charge émotionnelle.
 
-Il ne dit jamais : « tu es nul ».
-Il dit : « voilà où tu en es ».
+Le problème n'est pas l'information. C'est le cadre interprétatif dans lequel on la reçoit.
 
-Tes finances devraient fonctionner exactement de la même manière, mais alors que change une vision "tableau de bord" ?
+Pourquoi l'évitement financier s'installe
 
-Quand tu regardes tes finances comme un tableau de bord :
-• tu observes au lieu de culpabiliser,
-• tu ajustes au lieu de te restreindre,
-• tu décides au lieu de subir.
+L'évitement n'est pas une faiblesse de caractère. C'est une réponse rationnelle du cerveau à une source de stress récurrente. Si chaque fois que tu regardes tes finances tu te sens mal, ton cerveau finit par associer le geste au malaise et il évite le geste.
 
-Les chiffres deviennent neutres, utiles et actionnables. Ils ne racontent pas qui tu es mais t'aident simplement à savoir où tu vas.
+Le mécanisme est précis : on repousse le moment de regarder, on consulte uniquement en cas de problème, on arrive en fin de mois sans avoir rien vu venir. Et là, sous pression émotionnelle, on prend de mauvaises décisions pas parce qu'on manque d'intelligence financière, mais parce qu'on réagit au lieu de piloter.
 
-Pourquoi la visualisation est un levier si puissant
+L'évitement crée exactement la situation qu'il cherche à éviter. C'est le paradoxe central de la mauvaise relation à l'argent.
 
-Le cerveau humain comprend mieux ce qu'il peut voir clairement.
+La posture de pilotage : observer sans juger
 
-Une bonne visualisation permet :
-• d'identifier rapidement une dérive,
-• de confirmer que tout est sous contrôle,
-• de prendre une décision sans surcharge mentale.
+Changer de posture ne demande pas de changer de personnalité. Ça demande de changer la question qu'on pose en ouvrant ses finances.
 
-À l'inverse, quand tout est dispersé ou peu lisible :
-• l'information fatigue,
-• la décision est repoussée,
-• le stress augmente.
+La question punitive : "Qu'est-ce que j'ai mal fait ce mois-ci ?" La question de pilotage : "Où en suis-je ? Qu'est-ce que je décide maintenant ?"
 
-Voir clair, c'est déjà décider mieux.
+Ce déplacement est minimal en apparence. Il est massif dans ses effets. La première question cherche une faute, spoiler : elle en trouve toujours une; et elle génère de la culpabilité qui mène à l'évitement. La seconde cherche une information, elle en trouve aussi, et elle génère une décision qui maintient le contrôle.
 
-De la sanction au pilotage : un changement de posture
+Un pilote qui voit son niveau de carburant descendre ne se reproche pas d'avoir consommé de l'essence. Il cherche la prochaine station.
 
-La différence entre une gestion punitive et une gestion pilotée ne tient pas aux chiffres. Elle tient à la posture.
+Voir clair, c'est déjà décider mieux
 
-Posture punitive :
-"J'ai mal fait."
+Le cerveau humain prend de meilleures décisions face à une information claire et organisée que face à une masse de données floues et émotionnellement chargées. Ce n'est pas une question d'intelligence mais de la neurologie basique.
 
-Posture de pilotage :
-"Voilà où j'en suis. Que fais-je maintenant ?"
+Une bonne visualisation financière permet trois choses distinctes. Identifier rapidement une dérive avant qu'elle s'installe. Confirmer que la trajectoire est cohérente, ce qui réduit l'anxiété de fond. Et prendre une décision sans surcharge mentale parce que l'information est là, lisible, disponible.
 
-Ce simple changement transforme complètement la relation à l'argent.
+À l'inverse, quand les données sont dispersées sur trois banques, un compte joint, un broker ou de l'espèce quand rien n'est catégorisé, quand le dernier regard remonte à trois semaines : l'information fatigue avant d'informer. La décision est repoussée. Le stress monte.
 
-Comment Steero t'aide à adopter cette logique de tableau de bord
+Ce n'est pas un manque de sérieux. C'est l'absence d'un tableau de bord lisible.
 
-Steero a été pensé pour que tu ne craignes pas de regarder.
+De l'observation à la décision : le rôle des rituels
 
-L'objectif n'est pas de tout analyser, optimiser ou contrôler mais de te donner une vision claire, lisible et rassurante de ta situation.
+Changer de posture ne suffit pas si on ne change pas la fréquence à laquelle on regarde. Un tableau de bord consulté une fois par mois n'est pas un tableau de bord, c'est un bilan. Et un bilan, par définition, arrive trop tard pour piloter.
 
-Tu viens prendre l'information dont tu as besoin pour avancer.
+Le niveau T du système TEMPO — Tracer, cinq minutes par jour — existe précisément pour ça. Pas pour analyser. Pas pour décider. Juste pour maintenir un contact régulier avec sa situation réelle. Ce contact régulier neutralise progressivement la charge émotionnelle : quand on regarde souvent, chaque regard est petit. Quand on évite, chaque regard devient une confrontation.
 
-Conclusion : regarder tes finances ne devrait jamais faire peur
+C'est là que Steero intervient, pas pour te montrer où tu as failli, mais pour que regarder devienne un réflexe neutre. La saisie est manuelle et intentionnelle : enregistrer une dépense, c'est simplement noter un fait. Pas le juger. Le voir.
 
-Tes finances ne sont pas un bulletin de notes mais un système vivant, qui évolue avec toi.
+Et le niveau M — Maîtriser, quinze minutes par mois — est le moment où l'observation devient décision. Pas un bilan subi. Un choix actif sur où va l'argent le mois suivant.
 
-Quand tu les regardes avec des indicateurs pertinents :
-• tu enlèves la charge émotionnelle,
-• tu simplifies les décisions,
-• tu reprends le contrôle.
+Ce que change une lecture factuelle de ses finances
 
-La clarté remplace la culpabilité et c'est là que tout change.
+Quand les chiffres cessent d'être un jugement pour devenir une information, trois choses se produisent progressivement. La charge émotionnelle diminue — regarder ses finances devient aussi neutre que vérifier la météo avant de sortir. Les décisions s'améliorent — prises à froid, avec de l'information claire, elles sont structurellement meilleures. Et la régularité s'installe — parce qu'on n'évite plus ce qui ne fait plus peur.
 
-Et si regarder tes finances devenait un réflexe simple, pas une source de stress ?
+Tes finances ne sont pas un bulletin de notes. Elles ne disent rien sur ta valeur, ta discipline ou ton intelligence. Elles indiquent simplement où tu en es, et dans quelle direction tu vas.
 
-Steero t'aide à visualiser clairement ta situation, piloter sans te juger et décider avec sérénité.
-
-Moins de pression. Plus de clarté. Plus de maîtrise.`
+La clarté remplace la culpabilité. C'est là que tout change.`
   },
   {
     id: 6,
@@ -563,12 +540,12 @@ const articleSections: Record<number, string[]> = {
     "Ce que change une architecture de rituels"
   ],
   5: [
-    "Pourquoi regarder ses finances est souvent vécu comme une punition",
-    "Un tableau de bord n'est pas là pour juger, mais pour informer",
-    "Pourquoi la visualisation est un levier si puissant",
-    "De la sanction au pilotage : un changement de posture",
-    "Comment Steero t'aide à adopter cette logique de tableau de bord",
-    "Conclusion : regarder tes finances ne devrait jamais faire peur"
+    "Le rétroviseur ne te juge pas. Ton cerveau, si.",
+    "Pourquoi l'évitement financier s'installe",
+    "La posture de pilotage : observer sans juger",
+    "Voir clair, c'est déjà décider mieux",
+    "De l'observation à la décision : le rôle des rituels",
+    "Ce que change une lecture factuelle de ses finances"
   ],
   6: [
     "Pourquoi la règle des 50 / 30 / 20 est si populaire",
