@@ -76,20 +76,16 @@
     "card2": "You intend to \"manage better\" but have no dedicated time or structure.",
     "card3": "You underestimate your real spending by 20 to 30% — financial memory is selective."
   },
-  "howItWorks": {
-    "title": "How does it work?",
-    "description": "A simple 3-step process to take back control of your finances",
-    "step1": {
-      "title": "Observe your habits",
-      "description": "Understand where your money goes without judgment. Steero helps you visualize, with each entry, what you've already spent and what remains in your budget"
-    },
-    "step2": {
-      "title": "Ritualize your tracking",
-      "description": "With regular financial rituals designed to support you, take a moment once a week, month, or quarter to understand, adjust, and plan."
-    },
-    "step3": {
-      "title": "Move towards your goals",
-      "description": "Each small decision accumulates to build the future with serenity and aligned with your goals: Build wealth, create your business, or travel."
+  "tempo": {
+    "label": "THE TEMPO SYSTEM",
+    "title": "5 rituals. From daily to yearly.",
+    "description": "A pilot doesn't check their instruments once a month. Steero is built around 5 rituals at different frequencies — from operational to strategic.",
+    "rituals": {
+      "t": { "letter": "T", "name": "Track", "desc": "Record your transactions, stay connected, avoid invisible drift.", "freq": "Daily", "time": "5 min" },
+      "e": { "letter": "E", "name": "Examine", "desc": "Compare planned vs actual. Correct course before it's too late.", "freq": "Weekly", "time": "10 min" },
+      "m": { "letter": "M", "name": "Master", "desc": "Consciously decide where your money goes. Take back control of your choices.", "freq": "Monthly", "time": "15 min" },
+      "p": { "letter": "P", "name": "Position", "desc": "Align finances and life goals. Move beyond transactions.", "freq": "Quarterly", "time": "30 min" },
+      "o": { "letter": "O", "name": "Orient", "desc": "Global review, major directions, strategic trade-offs. Choose the future.", "freq": "Yearly", "time": "60 min" }
     }
   },
   "features": {
