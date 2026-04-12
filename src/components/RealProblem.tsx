@@ -38,7 +38,7 @@ const RealProblem = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg text-[hsl(215,20%,70%)] mb-14 max-w-2xl leading-relaxed"
+          className="text-lg text-[hsl(215,20%,70%)] mb-14 max-w-none leading-relaxed"
         >
           {t("realProblem.description")}
         </motion.p>
