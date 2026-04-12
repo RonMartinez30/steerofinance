@@ -4,7 +4,7 @@ import RealProblem from "@/components/RealProblem";
 import HowItWorks from "@/components/HowItWorks";
 import WhySteero from "@/components/WhySteero";
 import Differentiation from "@/components/Differentiation";
-import FreeResources from "@/components/FreeResources";
+
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
