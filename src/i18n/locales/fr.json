@@ -76,20 +76,16 @@
     "card2": "Tu as l'intention de \"mieux gérer\" mais pas de moment ni de structure dédiée.",
     "card3": "Tu sous-estimes tes dépenses réelles de 20 à 30% — la mémoire financière est sélective."
   },
-  "howItWorks": {
-    "title": "Comment ça marche ?",
-    "description": "Un processus simple en 3 étapes pour reprendre le contrôle de tes finances",
-    "step1": {
-      "title": "Observe tes habitudes",
-      "description": "Comprends où va ton argent sans jugement. Steero t'aide à visualiser, à chaque saisie, ce que tu as déjà consommé et ce qu'il te reste dans ton budget"
-    },
-    "step2": {
-      "title": "Ritualise ton suivi",
-      "description": "Avec des rituels financiers réguliers conçus pour t'accompagner, prend un moment une fois par semaine, mois ou trimestre pour comprendre, ajuster et planifier."
-    },
-    "step3": {
-      "title": "Avance vers tes objectifs",
-      "description": "Chaque petite décision s'accumule pour construire l'avenir avec sérénité et aligné avec tes objectifs : Constituer un patrimoine, créer ton entreprise ou voyager."
+  "tempo": {
+    "label": "LE SYSTÈME TEMPO",
+    "title": "5 rituels. Du quotidien à l'annuel.",
+    "description": "Un pilote ne regarde pas ses instruments une fois par mois. Steero est structuré autour de 5 rituels à fréquences différentes — de l'opérationnel au stratégique.",
+    "rituals": {
+      "t": { "letter": "T", "name": "Tracer", "desc": "Enregistrer ses opérations, garder le lien, éviter la dérive invisible.", "freq": "Quotidien", "time": "5 min" },
+      "e": { "letter": "E", "name": "Examiner", "desc": "Comparer prévu vs réel. Corriger la trajectoire avant qu'il soit trop tard.", "freq": "Hebdomadaire", "time": "10 min" },
+      "m": { "letter": "M", "name": "Maîtriser", "desc": "Décider consciemment où va ton argent. Reprendre la main sur tes choix.", "freq": "Mensuel", "time": "15 min" },
+      "p": { "letter": "P", "name": "Positionner", "desc": "Aligner finances et objectifs de vie. Sortir du transactionnel.", "freq": "Trimestriel", "time": "30 min" },
+      "o": { "letter": "O", "name": "Orienter", "desc": "Bilan global, grandes orientations, arbitrages stratégiques. Choisir l'avenir.", "freq": "Annuel", "time": "60 min" }
     }
   },
   "features": {
