@@ -42,7 +42,7 @@ const HowItWorks = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-muted-foreground mb-12 max-w-2xl"
+          className="text-muted-foreground mb-12 max-w-2xl whitespace-pre-line"
         >
           {t("tempo.description")}
         </motion.p>
