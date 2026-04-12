@@ -78,8 +78,8 @@
   },
   "tempo": {
     "label": "LE SYSTÈME TEMPO",
-    "title": "5 rituels. Du quotidien à l'annuel.",
-    "description": "Un pilote ne regarde pas ses instruments une fois par mois. Steero est structuré autour de 5 rituels à fréquences différentes — de l'opérationnel au stratégique.",
+    "title": "5 rituels : Du quotidien à l'annuel",
+    "description": "Un pilote ne regarde pas ses instruments une fois par mois. \n\nSteero est structuré autour de 5 rituels à fréquences différentes qui t'accompagne de d'une approche opérationnel à une vision stratégique.",
     "rituals": {
       "t": {
         "letter": "T",
