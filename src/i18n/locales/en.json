@@ -767,20 +767,20 @@
         ]
       },
       "6": {
-        "title": "The 50/30/20 rule: good foundation or false promise?",
+        "title": "The 50/30/20 rule: why it reassures but changes nothing",
         "tags": [
           "Budget",
-          "Beginner"
+          "Method",
+          "Mindset"
         ],
-        "hook": "If you're at all interested in budget management, you've surely come across this rule:\n• 50% for needs,\n• 30% for wants,\n• 20% for savings.\n\nSimple. Clear. Reassuring. But one question deserves to be asked: is it a real solution... or just a starting point?",
+        "hook": "50% for needs. 30% for wants. 20% for savings. Simple, clear, reassuring. And practically useless if you stop there.\n\nIt's not that the rule is wrong. It's that it answers the wrong question.",
         "sections": [
-          "Why the 50/30/20 rule is so popular",
-          "Why the rule can become guilt-inducing",
-          "The real question to ask (that the rule doesn't ask)",
-          "The rule as a benchmark, not a goal",
-          "Adapt rather than apply: the key to a lasting budget",
-          "How Steero helps you go beyond the rule without throwing it away",
-          "Conclusion: a good rule never replaces understanding"
+          "Why this rule is so popular and why it's a problem",
+          "The real problem: the rule tells you where to go, not how to get there",
+          "The rule as a rearview mirror",
+          "Why the rule becomes guilt-inducing without meaning to",
+          "What you need instead: an adaptive system",
+          "Use the rule as a starting point, not a destination"
         ]
       }
     }

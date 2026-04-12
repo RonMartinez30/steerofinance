@@ -767,20 +767,20 @@
         ]
       },
       "6": {
-        "title": "La règle des 50 / 30 / 20 : bonne base ou fausse promesse ?",
+        "title": "La règle des 50/30/20 : pourquoi elle rassure mais ne change rien",
         "tags": [
           "Budget",
-          "Débutant"
+          "Méthode",
+          "Mindset"
         ],
-        "hook": "Si tu t'intéresses un peu à la gestion de budget, tu as forcément déjà croisé cette règle :\n• 50 % pour les besoins,\n• 30 % pour les envies,\n• 20 % pour l'épargne.\n\nSimple. Claire. Rassurante. Mais une question mérite d'être posée : est-ce une vraie solution… ou juste un point de départ ?",
+        "hook": "50% pour les besoins. 30% pour les envies. 20% pour l'épargne. Simple, clair, rassurant. Et pratiquement inutile si on s'arrête là.\n\nCe n'est pas que la règle soit fausse. C'est qu'elle répond à la mauvaise question.",
         "sections": [
-          "Pourquoi la règle des 50 / 30 / 20 est si populaire",
-          "Pourquoi la règle peut devenir culpabilisante",
-          "La vraie question à se poser (et que la règle ne pose pas)",
-          "La règle comme repère, pas comme objectif",
-          "Adapter plutôt qu'appliquer : la clé d'un budget durable",
-          "Comment Steero t'aide à dépasser la règle sans la jeter",
-          "Conclusion : une bonne règle ne remplace jamais la compréhension"
+          "Pourquoi cette règle est si populaire et pourquoi c'est un problème",
+          "Le problème réel : la règle te dit où aller, pas comment y arriver",
+          "La règle comme rétroviseur",
+          "Pourquoi la règle devient culpabilisante sans le vouloir",
+          "Ce qu'il faut à la place : un système adaptatif",
+          "Utilise la règle comme point de départ, pas comme destination"
         ]
       }
     }

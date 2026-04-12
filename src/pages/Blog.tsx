@@ -399,77 +399,59 @@ La clarté remplace la culpabilité. C'est là que tout change.`
     titleKey: "blog.articles.6.title",
     hookKey: "blog.articles.6.hook",
     tagsKey: "blog.articles.6.tags",
-    content: `Pourquoi la règle des 50 / 30 / 20 est si populaire
+     content: `50% pour les besoins. 30% pour les envies. 20% pour l'épargne. Simple, clair, rassurant. Et pratiquement inutile si on s'arrête là.
 
-Cette règle a un énorme avantage : elle simplifie. Elle permet de donner un cadre clair, éviter de partir de zéro et de comprendre qu'un budget doit être équilibré.
+Ce n'est pas que la règle soit fausse. C'est qu'elle répond à la mauvaise question.
 
-Pour quelqu'un qui débute, c'est souvent la première fois que l'argent est structuré autrement que "ce qu'il reste à la fin du mois".
+Pourquoi cette règle est si populaire et pourquoi c'est un problème
 
-En ce sens, la règle joue parfaitement son rôle pédagogique toutefois cette règle simple appliquée à des vies complexes n'est pas toujours évident parce que dans la vraie vie :
-• les loyers ne font pas 50 % partout,
-• les revenus varient,
-• les situations personnelles sont très différentes.
+La règle des 50/30/20 a un avantage massif : elle simplifie. Pour quelqu'un qui n'a jamais structuré son budget, elle offre un cadre immédiat, trois catégories claires, l'impression rassurante d'avoir un système. C'est pédagogiquement utile comme pour les petites roues d'un vélo d'apprentissage.
 
-Famille, célibat, ville chère, projets personnels, phases de vie…
+Le problème, c'est qu'on ne garde pas les petites roues d'apprentissage toute sa vie. Et beaucoup de gens restent bloqués là, convaincus d'avoir un système parce qu'ils ont une règle.
 
-Vouloir faire entrer toutes les réalités dans une seule règle rigide peut créer plus de frustration que de clarté.
+Une règle n'est pas un système. C'est un repère statique. Et un repère statique ne s'adapte pas à une vie qui change.
 
-Pourquoi la règle peut devenir culpabilisante
+Le problème réel : la règle te dit où aller, pas comment y arriver
 
-Quand la règle est présentée comme une norme, elle peut devenir un piège. Si tu n'es pas à 20 % d'épargne tu as l'impression de mal faire, tu te compares et tu culpabilises.
+Prenons la réalité d'un cadre parisien à 70k brut. Son loyer représente probablement 35 à 40% de son salaire net, soit les deux tiers de ce que la règle alloue aux "besoins". Avant d'avoir payé ses charges, ses transports et son alimentation, il a déjà explosé le ratio. Il n'a pas mal géré. Il vit dans une grande métropole avec des prix immobiliers qui rendent la règle structurellement inapplicable.
 
-Mais une règle n'a jamais été faite pour juger mais pour aider à réfléchir.
+Même chose pour un entrepreneur en phase de lancement qui réinvestit l'essentiel de ses revenus dans son activité. Ou un cadre qui traverse une période de transition professionnelle. Ou n'importe qui dont la vie ne rentre pas dans trois cases préformatées.
 
-Le problème n'est pas l'écart, mais l'absence de compréhension derrière cet écart.
+La règle des 50/30/20 a été pensée pour une vie médiane américaine des années 2000. Elle ne connaît pas ta ville, ton projet, tes priorités, ta phase de vie. Elle te donne des pourcentages et non une direction.
 
-La vraie question à se poser (et que la règle ne pose pas)
+La règle comme rétroviseur
 
-La règle des 50 / 30 / 20 ne répond pas à la question la plus importante : Pourquoi dépenses-tu comme tu dépenses ?
+C'est là que l'analogie est exacte. La règle des 50/30/20 fonctionne comme un rétroviseur puisqu'elle te montre où ton argent aurait dû aller selon une norme externe. Et comme tous les rétroviseurs, elle est utile pour un regard rapide, inutile pour piloter.
 
-Un bon budget ne cherche pas à faire rentrer la réalité dans des pourcentages ou d'atteindre un chiffre "idéal", il cherche à refléter ta vie, respecter tes contraintes et surtout soutenir tes objectifs.
+Piloter, ce n'est pas vérifier si tes dépenses correspondent à un ratio théorique. C'est savoir où tu en es maintenant, décider consciemment où va ton argent le mois prochain, et vérifier régulièrement que ta trajectoire financière soutient ce que tu veux construire. Pas ce qu'une règle dit que tu devrais construire.
 
-La règle comme repère, pas comme objectif
+La question pertinente n'est pas "est-ce que je respecte le 50/30/20 ?" Elle est "est-ce que mes dépenses reflètent mes vraies priorités ?"
 
-Utilisée intelligemment, la règle des 50 / 30 / 20 peut être très utile, non pas comme une obligation, mais comme un point de comparaison, un outil de lecture et un déclencheur de questions. Par exemple :
-• Pourquoi mes besoins sont-ils si élevés ?
-• Est-ce temporaire ou structurel ?
-• Quelle part de mes dépenses reflète vraiment mes priorités ?
+Pourquoi la règle devient culpabilisante sans le vouloir
 
-C'est là que la règle devient intéressante.
+Quand un outil de gestion est présenté comme une norme, il devient automatiquement un instrument de jugement. Si tu n'épargnes pas 20%, tu as l'impression de mal faire et ce, même si tu traverses une phase de dépenses exceptionnelles parfaitement justifiées, même si tu rembourses un crédit à taux élevé qui vaut mieux que toute épargne, même si tu investis dans une formation qui va doubler tes revenus dans deux ans.
 
-Adapter plutôt qu'appliquer : la clé d'un budget durable
+Le problème n'est pas l'écart avec la règle. Le problème, c'est d'avoir une règle rigide à la place d'une compréhension de sa propre situation.
 
-Un budget qui fonctionne est un budget : adaptable, évolutif, et aligné avec ta réalité.
+Un écart compris est une décision. Un écart subi est une dérive. La règle ne fait pas cette distinction. Un système de pilotage, si.
 
-Tu peux très bien :
-• épargner moins aujourd'hui pour un projet précis,
-• dépenser plus sur certaines envies sans culpabilité,
-• ajuster tes ratios selon les périodes de ta vie.
+Ce qu'il faut à la place : un système adaptatif
 
-La cohérence compte plus que le pourcentage.
+Un budget qui fonctionne durablement n'est pas un budget qui respecte des ratios fixes. C'est un budget qui évolue avec toi, qui reflète tes priorités actuelles, et qui te permet de décider consciemment où va chaque euro, pas de vérifier si tu colles à une norme externe.
 
-Comment Steero t'aide à dépasser la règle sans la jeter
+C'est ce que structure le niveau M du système TEMPO — Maîtriser, quinze minutes par mois. Pas pour vérifier si tu es à 20% d'épargne. Pour répondre à trois questions : où est allé mon argent ce mois-ci ? Est-ce que c'était choisi ou subi ? Où est-ce que je veux qu'il aille le mois prochain ?
 
-Steero ne te demande pas de rentrer dans une règle toute faite mais t'aide à structurer ton budget, visualiser tes répartitions, et comprendre ce qui est choisi et ce qui est subi.
+Et le niveau P — Positionner, trimestriellement — pour une question plus large : est-ce que ma trajectoire financière globale soutient ce que je veux construire ? Pas un ratio. Une direction.
 
-La règle des 50 / 30 / 20 peut devenir un point de départ, un repère visuel et un outil de réflexion mais jamais une injonction.
+Utilise la règle comme point de départ, pas comme destination
 
-Conclusion : une bonne règle ne remplace jamais la compréhension
+La règle des 50/30/20 a une vraie utilité : elle force une première structuration. Si tu n'as jamais catégorisé tes dépenses, elle te donne un cadre pour commencer. C'est un déclencheur de questions tel que : pourquoi mes besoins dépassent-ils 50% ? Est-ce structurel ou temporaire ? Quelle part de mes dépenses reflète vraiment mes priorités ?
 
-La règle des 50 / 30 / 20 n'est ni bonne ni mauvaise. Elle est incomplète si elle est utilisée seule.
+Ces questions sont bonnes. La règle comme réponse définitive ne l'est pas.
 
-Ce qui fait la différence, ce n'est pas le respect parfait d'un ratio, mais la capacité à comprendre, ajuster et décider en conscience.
+Steero ne te demande pas de rentrer dans des cases préformatées. Il structure tes catégories selon ta réalité, te montre l'écart entre ce que tu avais prévu et ce qui s'est passé, et te donne le cadre pour décider pas pour te conformer.
 
-Un bon budget ne te dit pas ce que tu dois faire. Il t'aide à faire des choix alignés avec ta vie.
-
-Et si ton budget s'adaptait enfin à ta réalité, plutôt que l'inverse ?
-
-Steero t'aide à :
-• structurer ton budget sans rigidité,
-• comprendre tes arbitrages,
-• et piloter ton argent sans culpabilité.
-
-Des repères clairs. Des choix conscients. Une gestion qui te ressemble.`
+La règle des 50/30/20 peut être ton point de départ. Le système TEMPO est ce qui fait que tu n'en as plus besoin.`
   }
 ];
 
@@ -548,13 +530,12 @@ const articleSections: Record<number, string[]> = {
     "Ce que change une lecture factuelle de ses finances"
   ],
   6: [
-    "Pourquoi la règle des 50 / 30 / 20 est si populaire",
-    "Pourquoi la règle peut devenir culpabilisante",
-    "La vraie question à se poser (et que la règle ne pose pas)",
-    "La règle comme repère, pas comme objectif",
-    "Adapter plutôt qu'appliquer : la clé d'un budget durable",
-    "Comment Steero t'aide à dépasser la règle sans la jeter",
-    "Conclusion : une bonne règle ne remplace jamais la compréhension"
+    "Pourquoi cette règle est si populaire et pourquoi c'est un problème",
+    "Le problème réel : la règle te dit où aller, pas comment y arriver",
+    "La règle comme rétroviseur",
+    "Pourquoi la règle devient culpabilisante sans le vouloir",
+    "Ce qu'il faut à la place : un système adaptatif",
+    "Utilise la règle comme point de départ, pas comme destination"
   ]
 };
 
