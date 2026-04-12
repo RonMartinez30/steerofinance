@@ -782,6 +782,23 @@
           "Lo que necesitas en su lugar: un sistema adaptativo",
           "Usa la regla como punto de partida, no como destino"
         ]
+      },
+      "7": {
+        "title": "Por qué tu hoja de cálculo Excel de presupuesto nunca dura más de 3 semanas",
+        "tags": [
+          "Método",
+          "Ritual",
+          "Presupuesto"
+        ],
+        "hook": "Buscaste \"hoja de cálculo Excel presupuesto gratis\". Descargaste una, quizás varias. La abriste, la configuraste, la llenaste con dedicación durante unos días. Y tres semanas después, no la volviste a tocar.\n\nNo es un problema de Excel. No es un problema de hoja de cálculo. Y definitivamente no es un problema de disciplina.\n\nEs un problema de sistema.",
+        "sections": [
+          "Excel no es el culpable",
+          "La mecánica de abandono en 3 semanas",
+          "Lo que falta en todas las hojas Excel de presupuesto",
+          "El ritual que mantiene viva cualquier herramienta",
+          "Entonces, ¿por qué no quedarse con Excel?",
+          "El diagnóstico correcto lo cambia todo"
+        ]
       }
     }
   },

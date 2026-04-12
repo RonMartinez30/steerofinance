@@ -782,6 +782,23 @@
           "Ce qu'il faut à la place : un système adaptatif",
           "Utilise la règle comme point de départ, pas comme destination"
         ]
+      },
+      "7": {
+        "title": "Pourquoi ton tableau Excel budget ne tient jamais plus de 3 semaines",
+        "tags": [
+          "Méthode",
+          "Rituel",
+          "Budget"
+        ],
+        "hook": "Tu as cherché \"tableau Excel budget gratuit\". Tu en as téléchargé un, peut-être même plusieurs. Tu l'as ouvert, configuré, rempli consciencieusement pendant quelques jours. Et trois semaines plus tard, tu ne l'as plus touché.\n\nCe n'est pas un problème d'Excel. Ce n'est pas un problème de tableau. Et ce n'est surtout pas un problème de discipline.\n\nC'est un problème de système.",
+        "sections": [
+          "Excel n'est pas le coupable",
+          "La mécanique d'abandon en 3 semaines",
+          "Ce qui manque dans tous les tableaux Excel budget",
+          "Le rituel qui fait vivre n'importe quel outil",
+          "Alors pourquoi ne pas rester sur Excel ?",
+          "Le bon diagnostic change tout"
+        ]
       }
     }
   },
