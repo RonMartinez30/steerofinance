@@ -28,7 +28,7 @@ const RealProblem = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl md:text-4xl font-bold leading-tight mb-6 text-[hsl(0,0%,100%)]"
+          className="text-3xl md:text-4xl font-bold leading-tight mb-6 text-[hsl(0,0%,100%)] max-w-none"
         >
           {t("realProblem.title")}
         </motion.h2>
