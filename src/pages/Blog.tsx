@@ -452,6 +452,77 @@ Ces questions sont bonnes. La règle comme réponse définitive ne l'est pas.
 Steero ne te demande pas de rentrer dans des cases préformatées. Il structure tes catégories selon ta réalité, te montre l'écart entre ce que tu avais prévu et ce qui s'est passé, et te donne le cadre pour décider pas pour te conformer.
 
 La règle des 50/30/20 peut être ton point de départ. Le système TEMPO est ce qui fait que tu n'en as plus besoin.`
+  },
+  {
+    id: 7,
+    titleKey: "blog.articles.7.title",
+    hookKey: "blog.articles.7.hook",
+    tagsKey: "blog.articles.7.tags",
+    content: `Excel n'est pas le coupable
+
+Soyons clairs : Excel est un excellent outil de gestion budgétaire. Flexible, personnalisable, gratuit, accessible. Des milliers de personnes pilotent leurs finances avec une feuille de calcul et elles le font efficacement depuis des années.
+
+Ce n'est pas l'outil qui échoue. C'est ce qu'on fait ou ne fait pas autour de l'outil.
+
+Chercher un meilleur tableau, un template plus complet, une formule plus élaborée, c'est répondre à la mauvaise question. C'est comme chercher un meilleur agenda quand le problème c'est qu'on ne l'ouvre jamais. L'outil n'est pas en cause. Le rituel autour de l'outil l'est.
+
+La mécanique d'abandon en 3 semaines
+
+Elle est prévisible et elle se déroule toujours de la même façon.
+
+Semaine 1 — l'enthousiasme. Tu télécharges le tableau, tu le personnalises, tu saisis tes premières dépenses avec une rigueur exemplaire. La motivation est haute, l'effort est faible, le résultat semble prometteur.
+
+Semaine 2 — la friction. Une journée chargée, tu oublies de saisir deux dépenses. Puis trois. Le tableau commence à avoir des trous. Rattraper le retard demande plus d'effort que la saisie quotidienne — tu repousses.
+
+Semaine 3 — le découragement. Le tableau est incomplet. Tu ne sais plus si les chiffres sont fiables. L'information partielle est pire qu'inutile et elle donne une fausse impression de contrôle. Tu fermes l'onglet. Pour de bon.
+
+Ce cycle n'a rien à voir avec ta motivation initiale. Il est structurel. Sans rituel défini autour de l'outil, l'abandon est inévitable. Pas parce que tu manques de sérieux, mais parce que le cerveau humain abandonne systématiquement tout comportement sans fréquence fixe et sans feedback immédiat.
+
+Ce qui manque dans tous les tableaux Excel budget
+
+Un tableau Excel, même parfaitement conçu, ne te dit pas quand l'ouvrir. Il ne te rappelle pas que tu as oublié de saisir hier. Il ne te donne pas de signal quand tu dérapes. Il ne te pose pas les bonnes questions au bon moment.
+
+Il attend. Passivement. Que tu penses à lui.
+
+C'est là le problème fondamental de tous les outils sans rituel intégré, ils supposent que l'utilisateur va s'organiser lui-même autour de l'outil. Dans la réalité, une semaine chargée suffit à briser l'habitude. Et une habitude brisée à la semaine 2 ne se reconstruit presque jamais.
+
+Ce qu'il manque dans ton tableau Excel, ce n'est pas une colonne supplémentaire. C'est une cadence. Un moment défini, une fréquence fixe, une question précise à laquelle répondre à chaque ouverture.
+
+Le rituel qui fait vivre n'importe quel outil
+
+La solution n'est pas de changer d'outil. C'est d'installer un rituel autour de l'outil que tu as déjà.
+
+Et ce rituel a une structure précise. Le niveau T du système TEMPO : Tracer; Te donne le cadre minimal pour qu'un outil budgétaire survive au-delà de trois semaines.
+
+Cinq minutes, tous les jours et à minima trois fois par semaine (Exemple : les mardis, jeudis, samedis) juste assez pour que les trous ne s'accumulent pas au point de rendre le rattrapage décourageant. À chaque session, une seule question : qu'est-ce qui s'est passé depuis la dernière fois ? Tu saisis, tu vérifies le classement, tu observes l'impact sur ta trésorerie. Rien de plus.
+
+Ce geste simple, régulier, court, sans ambition d'analyse est ce qui fait la différence entre un tableau vivant et un onglet oublié.
+
+Puis le niveau E — Examiner — dix minutes dans le week-end. Comparer ce qui était prévu à ce qui s'est passé. Identifier les écarts avant qu'ils s'installent. Ce rituel hebdomadaire transforme la saisie quotidienne en information exploitable.
+
+Avec ces deux niveaux en place, n'importe quel outil, Excel inclus, devient fonctionnel durablement.
+
+Alors pourquoi ne pas rester sur Excel ?
+
+Tu peux. Sérieusement. Si tu installes le rituel, Excel fait le travail.
+
+Mais Excel a trois limites structurelles qu'aucun template ne résout. Il n'a pas de mémoire de tes catégories habituelles, chaque saisie part de zéro. Il ne te propose pas de comparaison automatique prévu/réel, tu dois la construire toi-même à chaque mois. Et il n'a aucune logique de fréquence intégrée : il ne sait pas que tu aurais dû l'ouvrir hier.
+
+Ces limites ne sont pas rédhibitoires si tu es rigoureux. Elles deviennent des points de friction qui s'accumulent et les points de friction, sur la durée, tuent les rituels.
+
+Un outil pensé autour du rituel réduit ces frictions sans supprimer le geste conscient de saisir. Des modèles de saisie préremplis pour tes dépenses récurrentes. Une structure prévu/réel intégrée par défaut. Une architecture qui correspond aux cinq niveaux TEMPO : du quotidien à l'annuel.
+
+C'est ce que Steero a été construit pour faire. Pas pour remplacer ta rigueur mais pour que ta rigueur ne s'épuise pas sur des frictions techniques.
+
+Le bon diagnostic change tout
+
+Si ton tableau Excel budget n'a pas tenu, ne cherche pas un meilleur tableau. Cherche le rituel qui manquait autour.
+
+Définis quand tu l'ouvres. Définis ce que tu y fais à chaque ouverture. Définis la question à laquelle tu dois répondre. Pas "comment optimiser mes finances" mais simplement "qu'est-ce qui s'est passé depuis hier ?"
+
+Commence petit. Trois fois par semaine à minima. Cinq minutes. Sans ambition d'exhaustivité au début.
+
+L'outil suit le rituel. Jamais l'inverse.`
   }
 ];
 
@@ -536,6 +607,14 @@ const articleSections: Record<number, string[]> = {
     "Pourquoi la règle devient culpabilisante sans le vouloir",
     "Ce qu'il faut à la place : un système adaptatif",
     "Utilise la règle comme point de départ, pas comme destination"
+  ],
+  7: [
+    "Excel n'est pas le coupable",
+    "La mécanique d'abandon en 3 semaines",
+    "Ce qui manque dans tous les tableaux Excel budget",
+    "Le rituel qui fait vivre n'importe quel outil",
+    "Alors pourquoi ne pas rester sur Excel ?",
+    "Le bon diagnostic change tout"
   ]
 };
 
