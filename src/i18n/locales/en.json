@@ -782,6 +782,23 @@
           "What you need instead: an adaptive system",
           "Use the rule as a starting point, not a destination"
         ]
+      },
+      "7": {
+        "title": "Why your Excel budget spreadsheet never lasts more than 3 weeks",
+        "tags": [
+          "Method",
+          "Ritual",
+          "Budget"
+        ],
+        "hook": "You searched for \"free budget Excel spreadsheet\". You downloaded one, maybe several. You opened it, configured it, filled it in diligently for a few days. And three weeks later, you never touched it again.\n\nIt's not an Excel problem. It's not a spreadsheet problem. And it's definitely not a discipline problem.\n\nIt's a system problem.",
+        "sections": [
+          "Excel is not the culprit",
+          "The 3-week abandonment cycle",
+          "What's missing in every Excel budget spreadsheet",
+          "The ritual that keeps any tool alive",
+          "So why not stick with Excel?",
+          "The right diagnosis changes everything"
+        ]
       }
     }
   },
