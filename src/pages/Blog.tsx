@@ -574,10 +574,12 @@ const MythBlock = ({ children }: { children: React.ReactNode }) => (
 // Define explicit section titles for each article (matching the document)
 const articleSections: Record<number, string[]> = {
   1: [
-    "Pourquoi la gestion des finances personnelles n'est pas innée",
-    "Comprendre son argent pour reprendre le contrôle financier",
-    "La finance personnelle est une compétence qui se développe avec le temps",
-    "Conclusion : apprendre à gérer son argent change durablement la relation à l'argent"
+    "Ce n'est pas que tu dépenses trop. C'est que tu regardes trop rarement.",
+    "Les 4 fuites invisibles qui plombent un budget cadre",
+    "Pourquoi les bonnes résolutions ne fonctionnent pas",
+    "La vraie solution : un système de pilotage à 5 niveaux",
+    "Par où commencer quand on part de zéro",
+    "Ce que tu vas changer cette semaine"
   ],
   2: [
     "Subir ou piloter : la seule distinction qui compte",
