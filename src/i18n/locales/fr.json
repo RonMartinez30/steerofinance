@@ -124,11 +124,11 @@
     "description": "Pas l'agrégation automatique. Pas les graphiques en camembert. La conscience et la régularité.",
     "card1": {
       "title": "La saisie est intentionnelle",
-      "desc": "Enregistrer une dépense, c'est déjà en prendre conscience. Des modèles préremplis réduisent la friction à quelques secondes — sans supprimer le geste."
+      "desc": "Enregistrer une dépense, c'est déjà en prendre conscience. Des modèles préremplis réduisent la friction à quelques secondes  sans supprimer le geste."
     },
     "card2": {
       "title": "Un rituel, pas un tableau",
-      "desc": "Steero est construit autour de fréquences, pas de features. Le système TEMPO te donne un cadre de pilotage — comme un manager pilote son équipe."
+      "desc": "Steero est construit autour de fréquences, pas de features. Le système TEMPO te donne un cadre de pilotage comme un manager pilote son équipe."
     },
     "card3": {
       "title": "De l'opérationnel au stratégique",
