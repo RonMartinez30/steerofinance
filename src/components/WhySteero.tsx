@@ -9,20 +9,20 @@ const WhySteero = () => {
     {
       icon: PenLine,
       iconColor: "text-amber-500",
-      title: t("whySteero.card1.title"),
-      desc: t("whySteero.card1.desc"),
+      title: t("whySteeroSection.card1.title"),
+      desc: t("whySteeroSection.card1.desc"),
     },
     {
       icon: Target,
       iconColor: "text-emerald-600",
-      title: t("whySteero.card2.title"),
-      desc: t("whySteero.card2.desc"),
+      title: t("whySteeroSection.card2.title"),
+      desc: t("whySteeroSection.card2.desc"),
     },
     {
       icon: ArrowUpRight,
       iconColor: "text-foreground",
-      title: t("whySteero.card3.title"),
-      desc: t("whySteero.card3.desc"),
+      title: t("whySteeroSection.card3.title"),
+      desc: t("whySteeroSection.card3.desc"),
     },
   ];
 
@@ -37,7 +37,7 @@ const WhySteero = () => {
           transition={{ duration: 0.5 }}
           className="text-sm font-semibold tracking-widest text-muted-foreground mb-4"
         >
-          {t("whySteero.label")}
+          {t("whySteeroSection.label")}
         </motion.p>
 
         <motion.h2
@@ -47,7 +47,7 @@ const WhySteero = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-3xl md:text-4xl font-bold leading-tight text-foreground mb-4"
         >
-          {t("whySteero.title")}
+          {t("whySteeroSection.title")}
         </motion.h2>
 
         <motion.p
@@ -57,7 +57,7 @@ const WhySteero = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-muted-foreground text-lg mb-12 max-w-2xl"
         >
-          {t("whySteero.description")}
+          {t("whySteeroSection.description")}
         </motion.p>
 
         {/* 3 cards */}
@@ -97,10 +97,10 @@ const WhySteero = () => {
         >
           <div className="border-l-4 border-primary pl-6">
             <blockquote className="text-xl md:text-2xl font-bold italic text-foreground mb-2">
-              {t("whySteero.quote")}
+              {t("whySteeroSection.quote")}
             </blockquote>
             <p className="text-muted-foreground text-sm">
-              {t("whySteero.quoteCaption")}
+              {t("whySteeroSection.quoteCaption")}
             </p>
           </div>
         </motion.div>
