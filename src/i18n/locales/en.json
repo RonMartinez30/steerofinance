@@ -816,6 +816,24 @@
           "What you can do this week",
           "€500 in savings or €500 in choices?"
         ]
+      },
+      "9": {
+        "title": "The best app to manage your money isn't the one you think",
+        "tags": [
+          "Method",
+          "Mindset",
+          "Management"
+        ],
+        "hook": "You're looking for the best app to manage your money. You'll find dozens of comparisons — top 10 lists, feature tables, App Store ratings, user reviews. They'll all answer your question.\n\nNone of them will question whether it's the right question.",
+        "sections": [
+          "The personal finance app market has a structural problem",
+          "What comparisons never measure",
+          "The automatic rearview mirror vs the conscious windshield",
+          "What an app really needs to do to change your situation",
+          "Why total automation doesn't deliver on its promise",
+          "The criteria that really matter when choosing an app",
+          "The paradox of the best app"
+        ]
       }
     }
   },

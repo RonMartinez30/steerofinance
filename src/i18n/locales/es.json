@@ -816,6 +816,24 @@
           "Lo que puedes hacer esta semana",
           "¿500€ de ahorro o 500€ de decisiones?"
         ]
+      },
+      "9": {
+        "title": "La mejor app para gestionar tu dinero no es la que crees",
+        "tags": [
+          "Método",
+          "Mindset",
+          "Gestión"
+        ],
+        "hook": "Buscas la mejor app para gestionar tu dinero. Encontrarás decenas de comparativas — top 10, tablas de funcionalidades, valoraciones en la App Store, opiniones de usuarios. Todas responderán a tu pregunta.\n\nNinguna cuestionará si es la pregunta correcta.",
+        "sections": [
+          "El mercado de apps de finanzas personales tiene un problema estructural",
+          "Lo que las comparativas nunca miden",
+          "El retrovisor automático vs el parabrisas consciente",
+          "Lo que una app debe hacer realmente para cambiar tu situación",
+          "Por qué la automatización total no cumple su promesa",
+          "Los criterios que realmente importan al elegir una app",
+          "La paradoja de la mejor app"
+        ]
       }
     }
   },

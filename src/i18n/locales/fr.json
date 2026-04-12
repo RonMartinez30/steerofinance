@@ -816,6 +816,24 @@
           "Ce que tu peux faire dès cette semaine",
           "500€ d'économies ou 500€ de choix ?"
         ]
+      },
+      "9": {
+        "title": "La meilleure app pour gérer son argent n'est pas celle que tu crois",
+        "tags": [
+          "Méthode",
+          "Mindset",
+          "Pilotage"
+        ],
+        "hook": "Tu cherches la meilleure app pour gérer ton argent. Tu vas trouver des dizaines de comparatifs comme des top 10, tableaux de features, notes sur l'App Store, avis d'utilisateurs. Ils vont tous répondre à ta question.\n\nAucun ne va remettre en question si c'est la bonne question.",
+        "sections": [
+          "Le marché des apps finance personnelle a un problème structurel",
+          "Ce que les comparatifs ne mesurent jamais",
+          "Le rétroviseur automatique vs le pare-brise conscient",
+          "Ce qu'une app doit vraiment faire pour changer ta situation",
+          "Pourquoi l'automatisation totale ne tient pas sa promesse",
+          "Les critères qui comptent vraiment pour choisir une app",
+          "Le paradoxe de la meilleure app"
+        ]
       }
     }
   },
