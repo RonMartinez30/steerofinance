@@ -1192,7 +1192,8 @@ const Blog = () => {
   };
 
   const filteredArticles = articles.filter(article => {
-    const tags = t(article.tagsKey, { returnObjects: true }) as string[];
+    const rawTags = t(article.tagsKey, { returnObjects: true });
+    const tags = Array.isArray(rawTags) ? rawTags as string[] : [];
     const title = t(article.titleKey) as string;
     const hook = t(article.hookKey) as string;
     const matchesTags = selectedTags.length === 0 || 
