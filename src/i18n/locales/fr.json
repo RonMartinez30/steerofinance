@@ -145,7 +145,7 @@
       "description": "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l'avenir. Bien les définir est essentiel. Créé des budgets clairs, grâce à la trajectoire, notre outil intuitif qui t'accompagne pour définir ta destination."
     },
     "capture": {
-      "title": "Saisir",
+      "title": "Etape #2 : Comprend tes comportements d'achats",
       "description": "Contrairement à d'autres applications, Steero ne fait pas à ta place. La saisie manuelle crée un lien émotionnel : ce qui améliore significativement l'autorégulation… Nous l'avons amélioré grâce au Niveau - La jauge budgétaire qui indique le consommé, consommé avec la dépense saisie et le restant"
     },
     "ritualize": {
@@ -176,7 +176,7 @@
       }
     },
     "capture": {
-      "title": "Saisir",
+      "title": "Etape #2 : Comprend tes comportements d'achats",
       "ba1": {
         "before": "Tu dépenses sans vraiment t'en rendre compte",
         "after": "Chaque dépense devient une décision consciente"
