@@ -984,10 +984,10 @@ const BehavioralCard = ({
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground/60 mb-1 block">
+                <span className="text-[10px] font-mono uppercase tracking-wider mb-1 block text-primary font-bold">
                   Principe {element.principleNumber}
                 </span>
-                <h3 className="font-medium text-foreground leading-tight">
+                <h3 className="text-foreground leading-tight font-bold">
                   {t(element.titleKey)}
                 </h3>
                 <p className="text-sm text-muted-foreground mt-0.5">
@@ -1240,7 +1240,7 @@ const PourquoiSteero = () => {
               delay: 0.2
             }} className="bg-primary/5 rounded-3xl p-8">
                 <blockquote className="text-xl italic text-foreground">"{t('whySteero.quote')}"</blockquote>
-                <p className="mt-4 text-muted-foreground">{t('whySteero.quoteAuthor')}</p>
+                <p className="mt-4 text-primary font-thin">{t('whySteero.quoteAuthor')}</p>
               </motion.div>
             </div>
           </div>
