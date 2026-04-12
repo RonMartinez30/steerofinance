@@ -53,7 +53,7 @@ const RealProblem = () => {
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
               className="rounded-2xl bg-[hsl(222,40%,16%)] border border-[hsl(217,33%,24%)] p-7"
             >
-              <span className="text-xs font-bold tracking-wider text-primary mb-4 block">
+              <span className="text-2xl font-bold text-[hsl(0,0%,100%)] mb-4 block">
                 {card.num}
               </span>
               <p className="text-[hsl(210,30%,88%)] text-[15px] leading-relaxed">
