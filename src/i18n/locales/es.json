@@ -63,18 +63,18 @@
     "learnMore": "Saber más en el blog →"
   },
   "hero": {
-    "badge": "La aplicación que te reconecta con tus gastos",
-    "title": "(Re)Toma el control de tus finanzas con",
-    "titleHighlight": "simplicidad",
-    "description": "Un tablero simple para seguir tus presupuestos, gastos y anclar hábitos que importan. Descubre el primer Sistema Operativo personal que conecta finanzas y hábitos para cambiar de forma duradera.",
-    "features": {
-      "time": "Simplicidad",
-      "timeDesc": "Un ritual de seguimiento en menos de 2 minutos por día",
-      "clarity": "Claridad",
-      "clarityDesc": "Sabes exactamente por qué gastas y hacia dónde vas",
-      "security": "Serenidad",
-      "securityDesc": "Sin más sorpresas a fin de mes"
-    }
+    "badge": "Sistema de pilotaje financiero personal",
+    "title": "Construir un sistema.",
+    "titleHighlight": "No solo seguir tus gastos.",
+    "description": "La mayoría de la gente no gestiona mal su dinero. Simplemente no tiene un sistema para pilotarlo. Steero te da uno — con rituales claros, de lo operativo a lo estratégico."
+  },
+  "realProblem": {
+    "label": "EL VERDADERO PROBLEMA",
+    "title": "No gastas demasiado. Pilotas muy poco.",
+    "description": "La deriva financiera no se construye en un día. Se instala durante tres semanas sin mirar, y se descubre a fin de mes — cuando ya es demasiado tarde para corregir. No es falta de disciplina. Es la ausencia de un sistema de pilotaje regular.",
+    "card1": "Miras tus cuentas una vez al mes, cuando el daño ya está hecho.",
+    "card2": "Tienes la intención de \"gestionar mejor\" pero no tienes un momento ni una estructura dedicada.",
+    "card3": "Subestimas tus gastos reales en un 20 a 30% — la memoria financiera es selectiva."
   },
   "howItWorks": {
     "title": "¿Cómo funciona?",
