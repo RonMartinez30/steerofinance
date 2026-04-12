@@ -63,18 +63,18 @@
     "learnMore": "En savoir plus sur le blog →"
   },
   "hero": {
-    "badge": "L'application qui te reconnecte à tes dépenses",
-    "title": "(Re)Prends le contrôle de tes finances avec",
-    "titleHighlight": "simplicité",
-    "description": "Un tableau de bord simple pour suivre tes budgets, bien gérer tes dépenses et ancrer des habitudes qui comptent. Découvre le premier système d'exploitation personnel qui relie finances et habitudes pour changer durablement.",
-    "features": {
-      "time": "Simplicité",
-      "timeDesc": "Un rituel de suivi en moins de 2 minutes par jour",
-      "clarity": "Clarté",
-      "clarityDesc": "Tu sais exactement pourquoi tu dépenses et où tu vas",
-      "security": "Sérénité",
-      "securityDesc": "Plus de surprises en fin de mois"
-    }
+    "badge": "Système de pilotage financier personnel",
+    "title": "Construire un système.",
+    "titleHighlight": "Pas juste suivre ses dépenses.",
+    "description": "La plupart des gens ne gèrent pas mal leur argent. Ils n'ont pas de système pour le piloter. Steero t'en donne un — avec des rituels clairs, de l'opérationnel au stratégique."
+  },
+  "realProblem": {
+    "label": "LE VRAI PROBLÈME",
+    "title": "Tu ne dépenses pas trop. Tu pilotes trop rarement.",
+    "description": "La dérive financière ne se construit pas en un jour. Elle s'installe sur trois semaines de non-regard, puis se découvre en fin de mois — quand il est trop tard pour corriger. Ce n'est pas un manque de discipline. C'est l'absence d'un système de pilotage régulier.",
+    "card1": "Tu regardes tes comptes une fois par mois, quand les dégâts sont déjà faits.",
+    "card2": "Tu as l'intention de \"mieux gérer\" mais pas de moment ni de structure dédiée.",
+    "card3": "Tu sous-estimes tes dépenses réelles de 20 à 30% — la mémoire financière est sélective."
   },
   "howItWorks": {
     "title": "Comment ça marche ?",

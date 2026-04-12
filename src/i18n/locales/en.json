@@ -63,18 +63,18 @@
     "learnMore": "Learn more on the blog →"
   },
   "hero": {
-    "badge": "The app that reconnects you to your spending",
-    "title": "(Re)Take control of your finances with",
-    "titleHighlight": "simplicity",
-    "description": "A simple dashboard to track your budgets, manage your expenses, and anchor habits that matter. Discover the first personal Operating System that connects finances and habits for lasting change.",
-    "features": {
-      "time": "Simplicity",
-      "timeDesc": "A tracking ritual in less than 2 minutes per day",
-      "clarity": "Clarity",
-      "clarityDesc": "You know exactly why you spend and where you're going",
-      "security": "Serenity",
-      "securityDesc": "No more surprises at the end of the month"
-    }
+    "badge": "Personal financial management system",
+    "title": "Build a system.",
+    "titleHighlight": "Not just track your spending.",
+    "description": "Most people don't manage their money badly. They just don't have a system to steer it. Steero gives you one — with clear rituals, from operational to strategic."
+  },
+  "realProblem": {
+    "label": "THE REAL PROBLEM",
+    "title": "You don't spend too much. You steer too rarely.",
+    "description": "Financial drift doesn't happen in a day. It settles in over three weeks of not looking, then reveals itself at the end of the month — when it's too late to correct. It's not a lack of discipline. It's the absence of a regular steering system.",
+    "card1": "You check your accounts once a month, when the damage is already done.",
+    "card2": "You intend to \"manage better\" but have no dedicated time or structure.",
+    "card3": "You underestimate your real spending by 20 to 30% — financial memory is selective."
   },
   "howItWorks": {
     "title": "How does it work?",
