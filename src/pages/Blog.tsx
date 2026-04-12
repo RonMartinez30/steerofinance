@@ -283,94 +283,51 @@ Installe le rituel. L'outil suit.`
     titleKey: "blog.articles.4.title",
     hookKey: "blog.articles.4.hook",
     tagsKey: "blog.articles.4.tags",
-    content: `Pourquoi la gestion financière paraît toujours trop lourde
+    content: `Le vrai problème : on essaie de tout faire d'un coup
 
-Le problème n'est pas la finance. Le problème, c'est l'absence de structure.
+La gestion financière paraît lourde parce qu'elle est pensée comme un bloc monolithique. Un bilan mensuel de deux heures, ou rien. Un tableau Excel complet, ou abandon. Tout comprendre, tout analyser, tout décider en une seule session.
 
-Beaucoup essaient de :
-• tout suivre en même temps,
-• tout comprendre au même moment,
-• tout décider d'un seul coup.
+Ce mode de fonctionnement génère trois problèmes qui se renforcent mutuellement. La surcharge mentale d'abord avec trop de décisions à prendre en même temps qui épuise. La confusion ensuite, quand tout est mélangé, rien n'est clair. L'abandon enfin, un système trop lourd ne tient jamais.
 
-Résultat :
-• surcharge mentale,
-• confusion,
-• abandon.
+La solution n'est pas de réduire le temps. C'est de séparer les rôles.
 
-Sans séparation claire des rôles, la gestion financière devient pesante.
+Un rituel, une question. Pas plus.
 
-Le principe clé : un rituel = une vocation
+Un rituel financier efficace ne cherche jamais à tout faire. Il répond à une seule question, à une fréquence précise, en un temps défini. C'est cette séparation qui rend le système tenable et durable.
 
-Un rituel financier efficace n'essaie jamais de tout faire.
+C'est exactement la logique d'un pilote. Il ne fait pas le bilan de vol, la vérification des instruments, la planification de la prochaine destination et la communication avec la tour de contrôle en même temps. Chaque action a son moment, sa fréquence, son objectif. Ensemble, elles forment un système de pilotage cohérent.
 
-Chaque rituel a :
-• un horizon temporel,
-• un objectif précis,
-• une vocation claire.
+Pour les finances personnelles, c'est identique. Le système TEMPO structure cinq niveaux de rituels : chacun avec une vocation précise, une durée adaptée, une question centrale.
 
-C'est cette répartition qui rend la gestion financière fluide et durable.
+Les 5 niveaux du système TEMPO
 
-Les rituels financiers : une architecture, pas une contrainte
+Tracer — quotidien, 5 minutes. La question : est-ce que je vois ce qui se passe en ce moment ? Le rôle : maintenir le lien avec sa situation réelle. Enregistrer les opérations récentes, vérifier le classement, observer l'impact sur la trésorerie. Pas d'analyse — juste la conscience. C'est ce rituel qui évite la déconnexion progressive, les mauvaises surprises et l'évitement émotionnel. Il ne décide pas. Il voit.
 
-Dans l'approche Steero, la gestion financière repose sur plusieurs rituels, chacun jouant un rôle spécifique dans le pilotage global.
+Examiner — hebdomadaire, 10 minutes. La question : est-ce que je suis sur la trajectoire prévue ? Le rôle : corriger avant que l'écart devienne une dérive. Comparer la semaine réelle à la semaine prévue, identifier ce qui a dérapé, ajuster une catégorie si nécessaire. Ce rituel est le pont entre le quotidien et la décision mensuelle — il t'évite d'arriver en fin de mois sans avoir rien vu venir.
 
-Le rituel court terme pour rester connecté
-Son rôle est simple : maintenir le lien avec tes finances. Il évite l'évitement, la surprise et la perte de contrôle. Ce rituel n'est pas là pour décider, mais pour voir.
+Maîtriser — mensuel, 15 minutes. La question : est-ce que je décide consciemment où va mon argent ? Le rôle : passer de la réaction à la décision. Analyser revenus vs dépenses, comprendre les écarts, construire le budget du mois suivant. Ce n'est pas un bilan subi — c'est un acte de pilotage. La nuance change tout.
 
-Le rituel de pilotage pour garder le cap
-Il permet de vérifier que la trajectoire est cohérente avec ce qui a été prévu. C'est un moment d'ajustement léger, sans remise en question profonde. On ne refait pas le plan, on corrige la trajectoire.
+Positionner — trimestriel, 30 minutes. La question : est-ce que mes finances avancent dans la bonne direction ? Le rôle : sortir du transactionnel pour entrer dans le stratégique. Observer les tendances sur trois mois, évaluer la cohérence globale, identifier ce qui doit évoluer. Ce rituel donne du recul là où les trois premiers donnent de la précision.
 
-Le rituel d'analyse pour comprendre
-Ici, on cherche à donner du sens : comprendre les écarts, observer les habitudes, améliorer la structure existante. Ce rituel transforme les chiffres en apprentissages.
+Orienter — annuel, 60 minutes. La question : quelle vie est-ce que je soutiens par mes décisions financières ? Le rôle : aligner finances et objectifs de vie. Bilan global de l'année, grandes orientations pour la suivante, arbitrages stratégiques. C'est le rituel de sens — celui qui donne de la valeur à tous les autres.
 
-Le rituel de recul pour prendre de la hauteur
-Il permet d'observer les tendances, les évolutions et la cohérence globale. On sort du quotidien pour regarder le système dans son ensemble. C'est le rituel de la lucidité stratégique.
+Alors, 2 minutes : mythe ou réalité ?
 
-Le rituel d'alignement pour donner du sens
-Le plus rare, mais le plus structurant. Il permet de réaligner les finances avec :
-• les objectifs de vie,
-• les priorités personnelles,
-• la direction souhaitée.
+Ni l'un ni l'autre. Le rituel quotidien de Tracer peut tenir en moins 5 minutes quand le système est en place et la saisie fluide. Mais cette rapidité n'est pas une promesse de facilité, c'est le résultat d'une structure installée.
 
-Pourquoi le rituel en 2 minutes est non seulement possible, mais essentiel
+Ce qui est un mythe : croire qu'on peut gérer ses finances sérieusement avec 2 minutes par semaine sans cadre. Ce qui est réel : un rituel quotidien de 5 minutes, ancré dans une architecture cohérente, change durablement le rapport à l'argent pas parce qu'il prend peu de temps, mais parce qu'il est régulier.
 
-Le rituel en 2 minutes n'est pas censé remplacer les autres, il est plus régulier et est le point d'entrée du système.
+La régularité bat l'intensité. Toujours.
 
-Son rôle :
-• maintenir la conscience financière,
-• éviter la déconnexion,
-• rendre les autres rituels naturels et non subis.
+Ce que change une architecture de rituels
 
-Ce sont ces micro-rituels qui rendent :
-• le pilotage fluide,
-• l'analyse pertinente,
-• et la vision long terme sereine.
+Quand chaque rituel a une vocation claire et une fréquence définie, trois choses se produisent. La charge mentale diminue et on ne cherche plus à tout traiter en même temps. La régularité s'installe puisque chaque rituel est adapté pour ne pas être repoussé. Et les décisions sont prises au bon moment avec la bonne information et pas sous pression.
 
-Ce que change une approche structurée par rituels
+La gestion financière cesse d'être une tâche redoutée. Elle devient un système de pilotage discret, régulier et efficace.
 
-Quand chaque rituel a une vocation claire :
-• la charge mentale diminue,
-• la gestion devient plus régulière,
-• les décisions sont prises au bon moment.
+Steero est structuré autour de cette architecture. Les cinq niveaux TEMPO sont intégrés directement dans l'outil. La saisie quotidienne se fait en quelques secondes avec des modèles préremplis sans supprimer le geste conscient d'enregistrer. Et chaque niveau du système s'ouvre naturellement quand le précédent est ancré.
 
-La finance cesse d'être une tâche lourde. Elle devient un système de pilotage simple et progressif.
-
-Conclusion : ce n'est pas le temps qui manque, c'est la structure
-
-Un rituel financier en 2 minutes n'est pas un mythe. Ce qui est irréaliste, c'est de vouloir tout gérer au même moment.
-
-La clé d'une gestion financière durable, ce n'est pas l'intensité, mais une architecture de rituels, chacun avec un objectif clair.
-
-C'est cette structure qui transforme la contrainte en sérénité.
-
-Et si ta gestion financière reposait enfin sur les bons rituels, au bon moment ?
-
-Steero t'aide à :
-• structurer ton approche financière,
-• clarifier chaque temps de décision,
-• et garder le contrôle sans surcharge mentale.
-
-Moins d'effort. Plus de clarté. Une vision durable.`
+Ce n'est pas le temps qui manque pour gérer ses finances. C'est la structure.`
   },
   {
     id: 5,
@@ -599,12 +556,11 @@ const articleSections: Record<number, string[]> = {
     "Le seul outil qui fonctionne est celui qu'on utilise régulièrement"
   ],
   4: [
-    "Pourquoi la gestion financière paraît toujours trop lourde",
-    "Le principe clé : un rituel = une vocation",
-    "Les rituels financiers : une architecture, pas une contrainte",
-    "Pourquoi le rituel en 2 minutes est non seulement possible, mais essentiel",
-    "Ce que change une approche structurée par rituels",
-    "Conclusion : ce n'est pas le temps qui manque, c'est la structure"
+    "Le vrai problème : on essaie de tout faire d'un coup",
+    "Un rituel, une question. Pas plus.",
+    "Les 5 niveaux du système TEMPO",
+    "Alors, 2 minutes : mythe ou réalité ?",
+    "Ce que change une architecture de rituels"
   ],
   5: [
     "Pourquoi regarder ses finances est souvent vécu comme une punition",
