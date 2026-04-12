@@ -237,8 +237,8 @@
     }
   },
   "cta": {
-    "title": "Installe ton système TEMPO et transforme ta relation à l'argent.",
-    "description": "Rejoins Steero et reprends le contrôle de tes finances avec une méthode structurée.",
+    "title": "Installe ton système TEMPO",
+    "description": "14 jours pour tester la méthode puis un abonnement accessible pour transformer ta relation à l'argent ",
     "launchDate": "Lancement prévu le 17 avril 2026",
     "days": "Jours",
     "hours": "Heures",
@@ -246,7 +246,7 @@
     "seconds": "Secondes",
     "features": {
       "free": "Gratuit pour commencer",
-      "noCard": "Gestions des habitudes financières",
+      "noCard": "Aucune intégration bancaire requise",
       "cancel": "Données sécurisées"
     }
   },
