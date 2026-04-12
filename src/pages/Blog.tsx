@@ -615,6 +615,14 @@ const articleSections: Record<number, string[]> = {
     "Le rituel qui fait vivre n'importe quel outil",
     "Alors pourquoi ne pas rester sur Excel ?",
     "Le bon diagnostic change tout"
+  ],
+  8: [
+    "Les 500€ sont probablement déjà là",
+    "Pourquoi les coupes budgétaires ne fonctionnent pas seules",
+    "Le vrai travail : cartographier avant de couper",
+    "Le niveau M de TEMPO : l'endroit où les 500€ apparaissent",
+    "Ce que tu peux faire dès cette semaine",
+    "500€ d'économies ou 500€ de choix ?"
   ]
 };
 
@@ -847,7 +855,8 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist }: Ar
   const contentRef = useRef<HTMLDivElement>(null);
   const hook = t(article.hookKey);
   const title = t(article.titleKey);
-  const tags = t(article.tagsKey, { returnObjects: true }) as unknown as string[];
+  const rawTags = t(article.tagsKey, { returnObjects: true });
+  const tags = Array.isArray(rawTags) ? rawTags as string[] : [];
   const readingTime = calculateReadingTime(hook + article.content);
 
   const handleShare = (e: React.MouseEvent) => {
@@ -1028,7 +1037,10 @@ const Blog = () => {
   const articleRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   
   const articles = getArticles(t);
-  const allTags = Array.from(new Set(articles.flatMap(article => t(article.tagsKey, { returnObjects: true }) as string[])));
+  const allTags = Array.from(new Set(articles.flatMap(article => {
+    const raw = t(article.tagsKey, { returnObjects: true });
+    return Array.isArray(raw) ? raw as string[] : [];
+  })));
 
   // Track which open article is most visible
   useEffect(() => {

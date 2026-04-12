@@ -799,6 +799,23 @@
           "So why not stick with Excel?",
           "The right diagnosis changes everything"
         ]
+      },
+      "8": {
+        "title": "Save €500 this month: what nobody really tells you",
+        "tags": [
+          "Management",
+          "Budget",
+          "Method"
+        ],
+        "hook": "You want to save €500 this month. Most articles will answer with a list: cancel Netflix, meal prep, stop takeaway coffee, avoid impulse buys.\n\nYou already know that list. It hasn't helped. Because it answers the wrong question.\n\nThe question isn't \"how to spend less?\" It's \"where are those €500 already going without you seeing it?\"",
+        "sections": [
+          "The €500 is probably already there",
+          "Why budget cuts alone don't work",
+          "The real work: map before you cut",
+          "TEMPO level M: where the €500 appears",
+          "What you can do this week",
+          "€500 in savings or €500 in choices?"
+        ]
       }
     }
   },

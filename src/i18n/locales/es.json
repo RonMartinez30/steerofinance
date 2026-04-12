@@ -799,6 +799,23 @@
           "Entonces, ¿por qué no quedarse con Excel?",
           "El diagnóstico correcto lo cambia todo"
         ]
+      },
+      "8": {
+        "title": "Ahorrar 500€ este mes: lo que nadie te dice realmente",
+        "tags": [
+          "Gestión",
+          "Presupuesto",
+          "Método"
+        ],
+        "hook": "Quieres ahorrar 500€ este mes. La mayoría de los artículos te responderán con una lista: cancela Netflix, cocina en casa, deja el café para llevar, evita las compras impulsivas.\n\nYa conoces esa lista. No te ha ayudado. Porque responde a la pregunta equivocada.\n\nLa pregunta no es \"¿cómo gastar menos?\" Es \"¿a dónde van ya esos 500€ sin que lo veas?\"",
+        "sections": [
+          "Los 500€ probablemente ya están ahí",
+          "Por qué los recortes presupuestarios solos no funcionan",
+          "El verdadero trabajo: cartografiar antes de recortar",
+          "El nivel M de TEMPO: donde aparecen los 500€",
+          "Lo que puedes hacer esta semana",
+          "¿500€ de ahorro o 500€ de decisiones?"
+        ]
       }
     }
   },
