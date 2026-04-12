@@ -70,7 +70,7 @@
   },
   "realProblem": {
     "label": "LE VRAI PROBLÈME",
-    "title": "Tu ne dépenses pas trop. Tu pilotes trop rarement.",
+    "title": "Tu ne dépenses pas trop. \nTu pilotes trop rarement.",
     "description": "La dérive financière ne se construit pas en un jour. Elle s'installe sur plusieurs jours puis semaines et se découvre en fin de mois : quand il est trop tard pour corriger. \nCe n'est pas un manque de discipline mais l'absence d'un système de pilotage régulier.",
     "card1": "Tu regardes tes comptes une fois par mois, quand les dégâts sont déjà faits.",
     "card2": "Tu as l'intention de \"mieux gérer\" mais pas de moment ni de structure dédiée.",
