@@ -11,14 +11,14 @@ const RealProblem = () => {
   ];
 
   return (
-    <section className="py-20 bg-foreground text-background">
+    <section className="py-24 bg-[hsl(222,47%,11%)] text-[hsl(210,40%,98%)]">
       <div className="container mx-auto px-6 max-w-4xl">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-sm font-semibold tracking-widest text-muted-foreground mb-4"
+          className="text-sm font-semibold tracking-widest text-[hsl(215,20%,65%)] mb-4 uppercase"
         >
           {t("realProblem.label")}
         </motion.p>
@@ -28,7 +28,7 @@ const RealProblem = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl md:text-4xl font-bold leading-tight mb-6"
+          className="text-3xl md:text-4xl font-bold leading-tight mb-6 text-[hsl(0,0%,100%)]"
         >
           {t("realProblem.title")}
         </motion.h2>
@@ -38,12 +38,12 @@ const RealProblem = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg text-muted-foreground mb-12 max-w-2xl"
+          className="text-lg text-[hsl(215,20%,70%)] mb-14 max-w-2xl leading-relaxed"
         >
           {t("realProblem.description")}
         </motion.p>
 
-        <div className="grid sm:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-3 gap-5">
           {cards.map((card, i) => (
             <motion.div
               key={i}
@@ -51,12 +51,12 @@ const RealProblem = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-              className="rounded-2xl bg-card/10 backdrop-blur-sm border border-border/20 p-6"
+              className="rounded-2xl bg-[hsl(222,40%,16%)] border border-[hsl(217,33%,24%)] p-7"
             >
-              <span className="text-sm font-semibold text-muted-foreground mb-3 block">
+              <span className="text-xs font-bold tracking-wider text-primary mb-4 block">
                 {card.num}
               </span>
-              <p className="text-background/90 text-sm leading-relaxed">
+              <p className="text-[hsl(210,30%,88%)] text-[15px] leading-relaxed">
                 {card.text}
               </p>
             </motion.div>
