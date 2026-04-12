@@ -17,7 +17,7 @@ const Index = () => {
       <HowItWorks />
       <WhySteero />
       <Differentiation />
-      <FreeResources />
+      
       <CTA />
       <Footer />
     </div>
