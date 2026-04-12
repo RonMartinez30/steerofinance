@@ -108,111 +108,67 @@ Commence par poser des bases solides pour ton avenir financier.`
     titleKey: "blog.articles.2.title",
     hookKey: "blog.articles.2.hook",
     tagsKey: "blog.articles.2.tags",
-    content: `De la gestion subie au pilotage financier
+    content: `Subir ou piloter : la seule distinction qui compte
 
-On peut schématiser la relation à l'argent en deux grandes situations :
+Regarder son solde de temps en temps, payer ses factures, épargner quand il reste quelque chose en fin de mois c'est subir ses finances. Pas les gérer mal. Les subir. La différence est subtile mais elle change tout.
 
-Subir ses finances
-Argent flou, décisions réactives, stress latent.
+Subir, c'est réagir. Une mauvaise surprise en fin de mois, une dépense imprévue qui déséquilibre tout, une décision prise sous pression faute de vision claire. L'argent est une source de stress latent, pas parce qu'il manque mais parce qu'il reste flou.
 
-Piloter ses finances
-Vision claire, arbitrages conscients, décisions alignées avec ses objectifs.
+Piloter, c'est anticiper. Avoir une vision claire de sa situation en temps réel, identifier une dérive avant qu'elle s'installe, décider consciemment où va chaque euro. Un pilote ne regarde pas ses instruments une fois par mois, il les consulte en continu et à des fréquences différentes, pour des questions différentes.
 
-La différence entre les deux n'est pas le revenu, mais le niveau de compétence financière.
+La différence entre les deux n'est pas le revenu. C'est le niveau de compétence financière. Et ce niveau se développe par étapes.
 
-Étape 1 : Observer ses finances sans jugement
+Étape 1 : Observer sans juger (niveau Tracer)
 
-La première étape n'est ni le budget, ni l'épargne, ni l'investissement. C'est l'observation.
+Avant le budget, avant l'épargne, avant n'importe quelle optimisation : l'observation.
 
-Observer, c'est :
-• voir ses revenus et ses dépenses,
-• identifier les grandes catégories,
-• comprendre ses habitudes financières.
+Voir ses revenus et ses dépenses tels qu'ils sont. Identifier ses grandes catégories. Comprendre ses habitudes réelles et non celles qu'on croit avoir.
 
-Sans jugement, sans culpabilité.
+Sans jugement. Sans culpabilité. Juste les faits.
 
-Tant que l'argent reste flou, aucune décision solide n'est possible.
+Tant que l'argent reste flou, aucune décision solide n'est possible. On ne peut pas corriger ce qu'on ne voit pas. Et on ne peut pas voir clairement ce qu'on ne regarde que rarement.
 
-Étape 2 : Structurer pour donner du sens aux chiffres
+C'est le niveau T du système TEMPO : Tracer. Cinq minutes par jour pour rester connecté à sa situation réelle. Pas pour analyser. Juste pour voir.
 
-Une fois les flux visibles, vient la structuration.
+Étape 2 : Structurer pour transformer des chiffres en information (niveau Examiner)
 
-Structurer ses finances, c'est :
-• organiser ses dépenses par catégories,
-• poser des budgets simples,
-• distinguer l'essentiel du variable.
+Une fois les flux visibles, la structuration devient possible. Organiser ses dépenses par catégories, poser des budgets simples par poste, distinguer ce qui est fixe de ce qui est variable. Cette étape transforme des chiffres isolés en information exploitable.
 
-Cette étape transforme des chiffres isolés en information exploitable.
+C'est ici qu'on commence à comparer ce qu'on avait prévu face à ce qui s'est passé. Et c'est là que les premières décisions conscientes apparaissent.
 
-Étape 3 : Comprendre les écarts pour mieux décider
+C'est le niveau E pour Examiner. Dix minutes par semaine pour regarder la semaine écoulée et corriger la trajectoire avant qu'il soit trop tard. Pas un bilan global : une vérification de cap.
 
-Un budget parfait n'existe pas.
+Étape 3 : Comprendre les écarts pour reprendre la main (niveau Maîtriser)
 
-Les écarts sont normaux :
-• un mois plus cher que prévu,
-• une dépense imprévue,
-• une priorité qui change.
+Un budget parfait n'existe pas. Les écarts sont normaux avec parfois un mois plus chargé que prévu, une priorité qui change, une dépense imprévue. Le problème n'est pas l'écart. C'est de ne pas le voir.
 
-Le problème n'est pas l'écart, mais le fait de ne pas le voir.
+Comprendre ses écarts, c'est passer de la réaction à la décision. Au lieu de subir le bilan en fin de mois, on l'analyse consciemment : où a-t-on dépassé et pourquoi ? est-ce que c'était un choix ou une dérive ? Cette lecture régulière développe progressivement un instinct financier et la capacité à anticiper ses propres comportements.
 
-Comprendre ses écarts permet :
-• d'ajuster ses décisions,
-• d'éviter les mauvaises surprises,
-• de reprendre le contrôle sans se restreindre.
+C'est le niveau M pour Maîtriser. Quinze minutes par mois pour décider où va l'argent le mois suivant. Pas subir son budget mais pour le construire.
 
-Étape 4 : Décider en fonction de ses objectifs
+Étape 4 : Aligner finances et objectifs (niveaux Positionner et Orienter)
 
-C'est ici que la gestion financière devient réellement utile. Quand la vision est claire, on peut :
-• arbitrer sans stress,
-• aligner ses dépenses avec ses objectifs,
-• donner un rôle précis à chaque euro.
+C'est ici que la gestion financière devient réellement utile. Quand elle cesse d'être une contrainte pour devenir un levier. Quand la vision est suffisamment claire pour arbitrer sans stress, aligner ses dépenses avec ses projets, donner un rôle précis à chaque euro.
 
-L'argent cesse d'être une source d'anxiété pour devenir un outil au service de ses projets.
+À ce niveau, l'argent n'est plus une source d'anxiété. C'est un outil au service de ce qu'on veut construire. Un apport immobilier, une transition professionnelle, une liberté financière à horizon cinq ans : ces objectifs deviennent pilotables parce qu'on a installé les niveaux précédents.
 
-Pourquoi la montée en compétences financières échoue souvent
+C'est le niveau P puis O du système TEMPO pour Positionner trimestriellement et Orienter annuellement. Prendre de la hauteur pour vérifier que la direction est juste, pas seulement que les chiffres sont bons.
 
-Beaucoup abandonnent à cette étape pour trois raisons principales :
+Pourquoi la montée en compétences échoue avant d'avoir commencé
 
-1. Des outils trop complexes
-Pensés pour des experts, pas pour progresser.
+La majorité des gens abandonnent dans les premières semaines. Pas par manque de sérieux mais par manque de cadre adapté. Les outils disponibles sont pensés pour des gens qui savent déjà piloter, pas pour ceux qui apprennent. Le suivi demande trop de temps. L'effort cognitif est trop important. Et surtout : le feedback n'est pas immédiat et sans résultat visible rapidement, la motivation s'effondre.
 
-2. Un suivi trop lourd
-Trop chronophage pour durer.
+Un bon système de montée en compétences doit être progressif, pas tout ou rien. On n'installe pas les cinq niveaux TEMPO en même temps. On commence par Tracer quotidiennement, ça prend cinq minutes maximum. On installe l'habitude avant d'installer la méthode. Et on monte d'un niveau quand le précédent est ancré.
 
-3. Aucun cadre évolutif
-Tout ou rien, sans progression naturelle.
+La tendance prime sur la perfection. Un rituel imparfait mais tenu vaut infiniment plus qu'un système parfait abandonné.
 
-Résultat : motivation au départ, abandon quelques semaines plus tard.
+Le pilotage s'apprend. Comme n'importe quelle compétence.
 
-Comment Steero accompagne la montée en compétences financières
+Personne ne naît en sachant piloter ses finances. C'est une compétence qui s'apprend par exposition régulière, par répétition consciente, par feedback progressif. Exactement comme piloter un projet, manager une équipe ou maîtriser un outil professionnel.
 
-Steero a été conçu comme un parcours, pas comme un simple outil de suivi te permettant :
-• d'observer ses finances simplement,
-• de structurer progressivement ses budgets,
-• de visualiser les écarts sans culpabilité,
-• de ritualiser le suivi pour durer dans le temps.
+La différence entre quelqu'un qui subit ses finances et quelqu'un qui les pilote n'est pas le revenu, ni la discipline, ni l'intelligence financière. C'est l'existence d'un système. Un cadre clair, des fréquences définies, des questions simples auxquelles répondre régulièrement.
 
-L'objectif n'est pas de devenir expert en finance, mais de monter en compétences à son rythme, avec un cadre clair.
-
-Conclusion : piloter ses finances est une compétence accessible
-
-Personne ne naît en sachant gérer son argent. Mais tout le monde peut apprendre à le piloter.
-
-La montée en compétences financières repose sur :
-• la clarté,
-• la régularité,
-• et des outils pensés pour accompagner, pas pour complexifier.
-
-Passer du flou au pilotage, c'est reprendre le contrôle de son avenir financier.
-
-Tu souhaites passer du flou au pilotage de tes finances ?
-
-Steero t'aide à :
-• comprendre tes finances,
-• structurer ton budget,
-• et progresser étape par étape.
-
-Commence par voir clair. Le reste suivra.`
+Steero est construit autour de cette logique de progression. Les cinq niveaux TEMPO sont intégrés dans l'outil, pas comme des fonctionnalités à découvrir, mais comme une structure de pilotage à installer progressivement. Tu commences par Tracer. Le reste suit naturellement.`
   },
   {
     id: 3,
@@ -588,14 +544,13 @@ const articleSections: Record<number, string[]> = {
     "Conclusion : apprendre à gérer son argent change durablement la relation à l'argent"
   ],
   2: [
-    "De la gestion subie au pilotage financier",
-    "Étape 1 : Observer ses finances sans jugement",
-    "Étape 2 : Structurer pour donner du sens aux chiffres",
-    "Étape 3 : Comprendre les écarts pour mieux décider",
-    "Étape 4 : Décider en fonction de ses objectifs",
-    "Pourquoi la montée en compétences financières échoue souvent",
-    "Comment Steero accompagne la montée en compétences financières",
-    "Conclusion : piloter ses finances est une compétence accessible"
+    "Subir ou piloter : la seule distinction qui compte",
+    "Étape 1 : Observer sans juger (niveau Tracer)",
+    "Étape 2 : Structurer pour transformer des chiffres en information (niveau Examiner)",
+    "Étape 3 : Comprendre les écarts pour reprendre la main (niveau Maîtriser)",
+    "Étape 4 : Aligner finances et objectifs (niveaux Positionner et Orienter)",
+    "Pourquoi la montée en compétences échoue avant d'avoir commencé",
+    "Le pilotage s'apprend. Comme n'importe quelle compétence."
   ],
   3: [
     "La majorité des apps de finance personnelle sont des rétroviseurs",
