@@ -682,17 +682,20 @@
     },
     "articles": {
       "1": {
-        "title": "Comprendre ses finances personnelles : pourquoi c'est une compétence essentielle aujourd'hui",
+        "title": "Tu dépenses trop chaque mois : voici pourquoi (et comment l'arrêter)",
         "tags": [
-          "Débutant",
-          "Compétences"
+          "Pilotage",
+          "Méthode",
+          "Rituel"
         ],
-        "hook": "La gestion des finances personnelles est rarement enseignée à l'école. Pourtant, comprendre son argent est aujourd'hui une compétence essentielle, au même titre que savoir organiser son temps ou développer ses compétences professionnelles.\n\nBeaucoup de personnes gagnent correctement leur vie, mais peinent à :\n• comprendre où part leur argent,\n• prendre des décisions financières sereines,\n• ou atteindre leurs objectifs financiers.\n\nLa bonne nouvelle ? La finance personnelle s'apprend.",
+        "hook": "Tu finis le mois dans le rouge ou tout juste à l'équilibre sans pouvoir expliquer exactement pourquoi. Tu n'as pas fait de folie ou claqué un budget week-end extravagant et pourtant, les chiffres ne sont pas là. Ce n'est pas un problème de discipline. C'est un problème de fréquence de regard.",
         "sections": [
-          "Pourquoi la gestion des finances personnelles n'est pas innée",
-          "Comprendre son argent pour reprendre le contrôle financier",
-          "La finance personnelle est une compétence qui se développe avec le temps",
-          "Conclusion : apprendre à gérer son argent change durablement la relation à l'argent"
+          "Ce n'est pas que tu dépenses trop. C'est que tu regardes trop rarement.",
+          "Les 4 fuites invisibles qui plombent un budget cadre",
+          "Pourquoi les bonnes résolutions ne fonctionnent pas",
+          "La vraie solution : un système de pilotage à 5 niveaux",
+          "Par où commencer quand on part de zéro",
+          "Ce que tu vas changer cette semaine"
         ]
       },
       "2": {
