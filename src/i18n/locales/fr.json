@@ -81,20 +81,59 @@
     "title": "5 rituels. Du quotidien à l'annuel.",
     "description": "Un pilote ne regarde pas ses instruments une fois par mois. Steero est structuré autour de 5 rituels à fréquences différentes — de l'opérationnel au stratégique.",
     "rituals": {
-      "t": { "letter": "T", "name": "Tracer", "desc": "Enregistrer ses opérations, garder le lien, éviter la dérive invisible.", "freq": "Quotidien", "time": "5 min" },
-      "e": { "letter": "E", "name": "Examiner", "desc": "Comparer prévu vs réel. Corriger la trajectoire avant qu'il soit trop tard.", "freq": "Hebdomadaire", "time": "10 min" },
-      "m": { "letter": "M", "name": "Maîtriser", "desc": "Décider consciemment où va ton argent. Reprendre la main sur tes choix.", "freq": "Mensuel", "time": "15 min" },
-      "p": { "letter": "P", "name": "Positionner", "desc": "Aligner finances et objectifs de vie. Sortir du transactionnel.", "freq": "Trimestriel", "time": "30 min" },
-      "o": { "letter": "O", "name": "Orienter", "desc": "Bilan global, grandes orientations, arbitrages stratégiques. Choisir l'avenir.", "freq": "Annuel", "time": "60 min" }
+      "t": {
+        "letter": "T",
+        "name": "Tracer",
+        "desc": "Enregistrer ses opérations, garder le lien, éviter la dérive invisible.",
+        "freq": "Quotidien",
+        "time": "5 min"
+      },
+      "e": {
+        "letter": "E",
+        "name": "Examiner",
+        "desc": "Comparer prévu vs réel. Corriger la trajectoire avant qu'il soit trop tard.",
+        "freq": "Hebdomadaire",
+        "time": "10 min"
+      },
+      "m": {
+        "letter": "M",
+        "name": "Maîtriser",
+        "desc": "Décider consciemment où va ton argent. Reprendre la main sur tes choix.",
+        "freq": "Mensuel",
+        "time": "15 min"
+      },
+      "p": {
+        "letter": "P",
+        "name": "Positionner",
+        "desc": "Aligner finances et objectifs de vie. Sortir du transactionnel.",
+        "freq": "Trimestriel",
+        "time": "30 min"
+      },
+      "o": {
+        "letter": "O",
+        "name": "Orienter",
+        "desc": "Bilan global, grandes orientations, arbitrages stratégiques. Choisir l'avenir.",
+        "freq": "Annuel",
+        "time": "60 min"
+      }
     }
   },
   "whySteeroSection": {
     "label": "POURQUOI STEERO",
     "title": "Ce qui nous différencie vraiment.",
     "description": "Pas l'agrégation automatique. Pas les graphiques en camembert. La conscience et la régularité.",
-    "card1": { "title": "La saisie est intentionnelle", "desc": "Enregistrer une dépense, c'est déjà en prendre conscience. Des modèles préremplis réduisent la friction à quelques secondes — sans supprimer le geste." },
-    "card2": { "title": "Un rituel, pas un tableau", "desc": "Steero est construit autour de fréquences, pas de features. Le système TEMPO te donne un cadre de pilotage — comme un manager pilote son équipe." },
-    "card3": { "title": "De l'opérationnel au stratégique", "desc": "5 minutes par jour pour ne rien laisser dériver. 60 minutes par an pour décider de la direction. Les deux niveaux dans le même outil." },
+    "card1": {
+      "title": "La saisie est intentionnelle",
+      "desc": "Enregistrer une dépense, c'est déjà en prendre conscience. Des modèles préremplis réduisent la friction à quelques secondes — sans supprimer le geste."
+    },
+    "card2": {
+      "title": "Un rituel, pas un tableau",
+      "desc": "Steero est construit autour de fréquences, pas de features. Le système TEMPO te donne un cadre de pilotage — comme un manager pilote son équipe."
+    },
+    "card3": {
+      "title": "De l'opérationnel au stratégique",
+      "desc": "5 minutes par jour pour ne rien laisser dériver. 60 minutes par an pour décider de la direction. Les deux niveaux dans le même outil."
+    },
     "quote": "\"Je veux une vision claire, en temps réel, de ma situation.\"",
     "quoteCaption": "Ce que disent nos utilisateurs. Ce que Steero construit."
   },
@@ -119,25 +158,61 @@
     "description": "Modèles, favoris et raccourcis éliminent la friction. Tu te concentres sur ce qui compte : comprendre tes décisions.",
     "budget": {
       "title": "Budgétiser",
-      "ba1": { "before": "Tu te demandes où est passé ton argent", "after": "Tu sais exactement où il va — et pourquoi" },
-      "ba2": { "before": "Tu subis tes dépenses", "after": "Tu les anticipes et tu les diriges" },
-      "ba3": { "before": "Ton argent disparaît sans structure", "after": "Chaque euro sert une intention claire" },
-      "ba4": { "before": "Tu avances à l'aveugle", "after": "Tu sais où tu vas, chaque mois" }
+      "ba1": {
+        "before": "Tu te demandes où est passé ton argent",
+        "after": "Tu sais exactement où il va — et pourquoi"
+      },
+      "ba2": {
+        "before": "Tu subis tes dépenses",
+        "after": "Tu les anticipes et tu les diriges"
+      },
+      "ba3": {
+        "before": "Ton argent disparaît sans structure",
+        "after": "Chaque euro sert une intention claire"
+      },
+      "ba4": {
+        "before": "Tu avances à l'aveugle",
+        "after": "Tu sais où tu vas, chaque mois"
+      }
     },
     "capture": {
       "title": "Saisir",
-      "ba1": { "before": "Tu dépenses sans vraiment t'en rendre compte", "after": "Chaque dépense devient une décision consciente" },
-      "ba2": { "before": "Tu perds le contrôle petit à petit", "after": "Tu le reprends, opération après opération" },
-      "ba3": { "before": "Tes habitudes te pilotent", "after": "C'est toi qui pilotes tes habitudes" },
-      "ba4": { "before": "Tu oublies, tu repousses, tu évites", "after": "Tu fais face, simplement, sans friction" },
+      "ba1": {
+        "before": "Tu dépenses sans vraiment t'en rendre compte",
+        "after": "Chaque dépense devient une décision consciente"
+      },
+      "ba2": {
+        "before": "Tu perds le contrôle petit à petit",
+        "after": "Tu le reprends, opération après opération"
+      },
+      "ba3": {
+        "before": "Tes habitudes te pilotent",
+        "after": "C'est toi qui pilotes tes habitudes"
+      },
+      "ba4": {
+        "before": "Tu oublies, tu repousses, tu évites",
+        "after": "Tu fais face, simplement, sans friction"
+      },
       "link": "Les fondements comportementaux de Steero"
     },
     "ritualize": {
       "title": "Ritualiser",
-      "ba1": { "before": "Tu regardes tes comptes quand il est trop tard", "after": "Tu ajustes avant que ça dérape" },
-      "ba2": { "before": "Tu fonctionnes par à-coups", "after": "Tu avances avec régularité" },
-      "ba3": { "before": "Tu subis ton manque de discipline", "after": "Tu installes une maîtrise naturelle" },
-      "ba4": { "before": "Tu réagis", "after": "Tu anticipes" },
+      "ba1": {
+        "before": "Tu regardes tes comptes quand il est trop tard",
+        "after": "Tu ajustes avant que ça dérape"
+      },
+      "ba2": {
+        "before": "Tu fonctionnes par à-coups",
+        "after": "Tu avances avec régularité"
+      },
+      "ba3": {
+        "before": "Tu subis ton manque de discipline",
+        "after": "Tu installes une maîtrise naturelle"
+      },
+      "ba4": {
+        "before": "Tu réagis",
+        "after": "Tu anticipes"
+      },
       "link": "Les fondements comportementaux de Steero"
     }
   },
@@ -162,8 +237,8 @@
     }
   },
   "cta": {
-    "title": "Prêt à transformer ta relation à l'argent ?",
-    "description": "Rejoins Steero et commence reprends le contrôle de tes finances.",
+    "title": "Installe ton système TEMPO et transforme ta relation à l'argent.",
+    "description": "Rejoins Steero et reprends le contrôle de tes finances avec une méthode structurée.",
     "launchDate": "Lancement prévu le 17 avril 2026",
     "days": "Jours",
     "hours": "Heures",
@@ -181,7 +256,11 @@
     "missionTitle": "Notre mission",
     "missionP1": "Steero est né d'un constat simple : les applications de finances personnelles automatisent tout, mais ne changent rien à tes comportements.",
     "missionP2": "Notre mission est de t'aider à développer une véritable compréhension de ta gestion financière, pas simplement un outil pour consulter des graphiques générés automatiquement.",
-    "missionItems": ["Comprends et ajuste tes décisions", "Créé des habitudes durables", "Atteinds tes objectifs"],
+    "missionItems": [
+      "Comprends et ajuste tes décisions",
+      "Créé des habitudes durables",
+      "Atteinds tes objectifs"
+    ],
     "quote": "La vraie liberté financière vient de la compréhension, qui naît et se renforce par l'action et non par l'automatisation.",
     "quoteAuthor": "L'équipe Steero",
     "alternativesTitle": "Tu as peut-être déjà essayé...",
@@ -604,7 +683,10 @@
     "articles": {
       "1": {
         "title": "Comprendre ses finances personnelles : pourquoi c'est une compétence essentielle aujourd'hui",
-        "tags": ["Débutant", "Compétences"],
+        "tags": [
+          "Débutant",
+          "Compétences"
+        ],
         "hook": "La gestion des finances personnelles est rarement enseignée à l'école. Pourtant, comprendre son argent est aujourd'hui une compétence essentielle, au même titre que savoir organiser son temps ou développer ses compétences professionnelles.\n\nBeaucoup de personnes gagnent correctement leur vie, mais peinent à :\n• comprendre où part leur argent,\n• prendre des décisions financières sereines,\n• ou atteindre leurs objectifs financiers.\n\nLa bonne nouvelle ? La finance personnelle s'apprend.",
         "sections": [
           "Pourquoi la gestion des finances personnelles n'est pas innée",
@@ -615,7 +697,10 @@
       },
       "2": {
         "title": "La montée en compétences financières : passer du flou au pilotage de son argent",
-        "tags": ["Pilotage", "Compétences"],
+        "tags": [
+          "Pilotage",
+          "Compétences"
+        ],
         "hook": "Beaucoup de personnes ont l'impression de \"mal gérer\" leur argent. En réalité, la plupart ne gèrent pas mal : elles ne pilotent pas.\n\nElles regardent parfois leur solde, paient leurs factures, épargnent quand il reste quelque chose… mais sans vision globale ni méthode claire.\n\nLa bonne nouvelle ?\nLa gestion financière n'est pas binaire. Elle se construit par étapes, comme une véritable montée en compétences.",
         "sections": [
           "De la gestion subie au pilotage financier",
@@ -630,7 +715,10 @@
       },
       "3": {
         "title": "Pourquoi sans rituel, aucun outil financier ne fonctionne",
-        "tags": ["Rituel", "Mindset"],
+        "tags": [
+          "Rituel",
+          "Mindset"
+        ],
         "hook": "Télécharger une application de gestion financière est facile. La consulter régulièrement… beaucoup moins.\n\nCe n'est pas un manque de motivation. Ce n'est pas non plus un problème d'intelligence financière. Le véritable point de rupture, c'est l'absence de rituel.\n\nSans rituel, même le meilleur outil finit oublié. Avec un rituel simple, la gestion financière devient enfin durable.",
         "sections": [
           "Le vrai problème des outils financiers modernes",
@@ -642,7 +730,10 @@
       },
       "4": {
         "title": "Le rituel financier en 2 minutes : mythe ou réalité ?",
-        "tags": ["Rituel", "Méthode"],
+        "tags": [
+          "Rituel",
+          "Méthode"
+        ],
         "hook": "Quand on parle de gestion financière, beaucoup imaginent encore :\n• des tableurs complexes,\n• des heures d'analyse,\n• une discipline difficile à tenir.\n\nAlors l'idée d'un rituel financier en 2 minutes semble irréaliste. Pas parce que 2 minutes ne suffisent pas… mais parce que la gestion financière est souvent pensée comme un bloc unique, au lieu d'un ensemble de rituels complémentaires.",
         "sections": [
           "Pourquoi la gestion financière paraît toujours trop lourde",
@@ -655,7 +746,10 @@
       },
       "5": {
         "title": "Comprendre tes finances comme un tableau de bord, pas comme une punition",
-        "tags": ["Mindset", "Psychologie"],
+        "tags": [
+          "Mindset",
+          "Psychologie"
+        ],
         "hook": "Si gérer ton argent te met mal à l'aise, ce n'est probablement pas à cause des chiffres. C'est à cause de ce qu'ils représentent émotionnellement.\n\nPour beaucoup, regarder ses finances, c'est :\n• se confronter à des erreurs passées,\n• ressentir de la culpabilité,\n• ou avoir l'impression de se faire \"gronder\".\n\nMais si tu changeais complètement de perspective ? Et si tes finances devenaient un tableau de bord, pas un jugement ?",
         "sections": [
           "Pourquoi regarder ses finances est souvent vécu comme une punition",
@@ -668,7 +762,10 @@
       },
       "6": {
         "title": "La règle des 50 / 30 / 20 : bonne base ou fausse promesse ?",
-        "tags": ["Budget", "Débutant"],
+        "tags": [
+          "Budget",
+          "Débutant"
+        ],
         "hook": "Si tu t'intéresses un peu à la gestion de budget, tu as forcément déjà croisé cette règle :\n• 50 % pour les besoins,\n• 30 % pour les envies,\n• 20 % pour l'épargne.\n\nSimple. Claire. Rassurante. Mais une question mérite d'être posée : est-ce une vraie solution… ou juste un point de départ ?",
         "sections": [
           "Pourquoi la règle des 50 / 30 / 20 est si populaire",
@@ -738,7 +835,10 @@
         "s5": {
           "title": "5. Fonctionnalités et évolutions",
           "intro": "Les fonctionnalités disponibles dépendent :",
-          "items": ["de la version de l'application,", "de ton abonnement éventuel."],
+          "items": [
+            "de la version de l'application,",
+            "de ton abonnement éventuel."
+          ],
           "evolution": "L'application évolue en continu : nous pouvons ajouter, modifier ou améliorer certaines fonctionnalités pour offrir une meilleure expérience.",
           "outro": "Nous faisons toujours de notre mieux pour que ces évolutions restent cohérentes et bénéfiques."
         },
@@ -773,7 +873,11 @@
         "s9": {
           "title": "9. Disponibilité et sécurité",
           "intro": "Nous mettons tout en œuvre pour :",
-          "items": ["assurer un service fiable,", "protéger tes données,", "maintenir l'application accessible."]
+          "items": [
+            "assurer un service fiable,",
+            "protéger tes données,",
+            "maintenir l'application accessible."
+          ]
         },
         "s10": {
           "title": "10. Responsabilité",
@@ -791,13 +895,22 @@
           "title": "11. Propriété intellectuelle",
           "intro": "Tout ce qui compose l'application (design, code, textes, marque, structure) nous appartient ou est utilisé avec autorisation.",
           "usage": "Tu peux utiliser l'application normalement, mais pas :",
-          "items": ["la copier,", "la revendre,", "la modifier,", "ou l'exploiter sans accord écrit."]
+          "items": [
+            "la copier,",
+            "la revendre,",
+            "la modifier,",
+            "ou l'exploiter sans accord écrit."
+          ]
         },
         "s12": {
           "title": "12. Résiliation",
           "userDelete": "Tu peux supprimer ton compte à tout moment, simplement.",
           "ourSide": "De notre côté, nous pouvons suspendre ou fermer un compte en cas :",
-          "items": ["d'usage abusif,", "de fraude,", "ou de non-respect des présentes conditions."]
+          "items": [
+            "d'usage abusif,",
+            "de fraude,",
+            "ou de non-respect des présentes conditions."
+          ]
         },
         "s13": {
           "title": "13. Loi applicable",
@@ -874,7 +987,11 @@
           "title": "3. Quelles données collectons-nous ?",
           "intro": "Nous collectons uniquement les données nécessaires au fonctionnement de l'application.",
           "voluntary": "🔹 Données que tu fournis volontairement",
-          "voluntaryItems": ["Adresse email", "Mot de passe (chiffré)", "Informations de profil (facultatives)"],
+          "voluntaryItems": [
+            "Adresse email",
+            "Mot de passe (chiffré)",
+            "Informations de profil (facultatives)"
+          ],
           "financial": "Données financières saisies manuellement :",
           "financialItems": [
             "budgets (Objectifs)",
@@ -965,24 +1082,36 @@
           "title": "11. Suppression du compte",
           "intro": "Tu peux supprimer ton compte directement depuis l'application.",
           "result": "Cette action entraîne :",
-          "items": ["la suppression de tes données personnelles,", "sauf obligations légales de conservation."]
+          "items": [
+            "la suppression de tes données personnelles,",
+            "sauf obligations légales de conservation."
+          ]
         },
         "s12": {
           "title": "12. Cookies et traceurs",
           "intro": "L'application peut utiliser :",
-          "items": ["des cookies strictement nécessaires,", "des outils de mesure anonymisés."],
+          "items": [
+            "des cookies strictement nécessaires,",
+            "des outils de mesure anonymisés."
+          ],
           "outro": "Aucun cookie publicitaire sans consentement explicite."
         },
         "s13": {
           "title": "13. Modifications de la politique",
           "intro": "Cette politique peut évoluer pour :",
-          "items": ["rester conforme à la loi,", "refléter l'évolution du produit."],
+          "items": [
+            "rester conforme à la loi,",
+            "refléter l'évolution du produit."
+          ],
           "outro": "En cas de changement majeur, tu seras informé."
         },
         "s14": {
           "title": "14. Réclamation",
           "intro": "Si tu estimes que tes droits ne sont pas respectés, tu peux :",
-          "items": ["nous contacter directement,", "ou saisir l'autorité de contrôle compétente (ex : CNIL en France)."]
+          "items": [
+            "nous contacter directement,",
+            "ou saisir l'autorité de contrôle compétente (ex : CNIL en France)."
+          ]
         },
         "s15": {
           "title": "15. Contact",
@@ -1028,10 +1157,10 @@
     "impactName": "Plan Impact",
     "impactLimited": "Chaque année, un nombre limité de places est réservé à des utilisateurs déterminés qui souhaitent reprendre le contrôle de leurs finances mais dont les ressources sont limitées.",
     "impactEligibility": "Si vous êtes étudiant, en début de carrière ou dans une situation financière temporairement difficile, vous pouvez faire une demande de",
-    "impactDiscount": "remise de 50\u00a0%",
+    "impactDiscount": "remise de 50 %",
     "impactDuration": "pour la durée d'une année renouvelable.",
     "impactReview": "Les candidatures sont étudiées individuellement.",
-    "impactGoal": "Notre objectif est simple\u00a0: permettre à ceux qui sont prêts à faire l'effort de progresser d'avoir accès aux bons outils.",
+    "impactGoal": "Notre objectif est simple : permettre à ceux qui sont prêts à faire l'effort de progresser d'avoir accès aux bons outils.",
     "impactCta": "Candidater"
   }
 }
