@@ -834,6 +834,27 @@
           "Les critères qui comptent vraiment pour choisir une app",
           "Le paradoxe de la meilleure app"
         ]
+      },
+      "10": {
+        "title": "Ta carte bancaire t'a rendu financièrement anesthésié",
+        "tags": [
+          "Psychologie",
+          "Méthode",
+          "Pilotage"
+        ],
+        "hook": "Tu gagnes bien ta vie. Tu n'as pas de comportements irrationnels. Et pourtant, chaque fin de mois, il manque quelque chose. Ce n'est pas un problème de revenus. C'est un problème de perception. Et ta carte bancaire en est directement responsable.",
+        "sections": [
+          "Payer fait, ou ne fait plus mal : ce que la recherche dit vraiment",
+          "Pourquoi la carte découple l'achat de la douleur",
+          "La comptabilité mentale : comment ton cerveau classe et déforme l'argent",
+          "Ce que ça change concrètement dans tes fins de mois",
+          "L'anesthésie de l'argent numérique : ce que les apps automatiques aggravent",
+          "Le rétroviseur ne fait pas mal : c'est son problème",
+          "La saisie manuelle comme acte de conscience : pourquoi c'est un choix de design",
+          "C'est exactement ce que Steero a choisi de ne pas automatiser",
+          "Comment installer ce mécanisme dans ta vie : le rituel T de TEMPO",
+          "Ce que ça change au bout de 3 semaines"
+        ]
       }
     }
   },
