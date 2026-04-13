@@ -1305,6 +1305,13 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist, onOp
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                       <span>Pourquoi sans rituel, aucun outil financier ne fonctionne</span>
                     </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(10); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Ta carte bancaire t'a rendu financièrement anesthésié</span>
+                    </button>
                   </div>
                 </div>
               )}
@@ -1426,6 +1433,13 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist, onOp
                     >
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                       <span>Pourquoi sans rituel aucun outil financier ne fonctionne</span>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(10); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Ta carte bancaire t'a rendu financièrement anesthésié</span>
                     </button>
                     <a
                       href="https://thedecisionlab.com/fr/insights/consumer-insights/this-is-your-brain-on-money"
