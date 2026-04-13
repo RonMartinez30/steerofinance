@@ -675,6 +675,99 @@ Steero a été construit à rebours de la tendance du marché. La saisie y est m
 Pas une app de plus à consulter passivement. Un système de pilotage à installer activement.
 
 La différence n'est pas dans les features. Elle est dans ce que tu deviens après six mois d'utilisation.`
+  },
+  {
+    id: 10,
+    titleKey: "blog.articles.10.title",
+    hookKey: "blog.articles.10.hook",
+    tagsKey: "blog.articles.10.tags",
+    content: `Payer fait, ou ne fait plus mal : ce que la recherche dit vraiment
+
+L'expérience qui a tout changé
+
+En 2001, deux chercheurs du MIT, Drazen Prelec et Duncan Simester, publient une étude qui va devenir une référence en économie comportementale. Leur question est simple : est-ce qu'on dépense différemment selon qu'on paie en cash ou par carte ?
+
+Leur protocole : une enchère pour des billets de matchs très demandés. Une moitié des participants paie en cash. L'autre par carte de crédit. Résultat : les participants payant par carte étaient prêts à dépenser près du double de ceux qui payaient en liquide. À valeur perçue identique, le mode de paiement avait quasiment doublé le consentement à payer.
+
+Ce n'est pas une question de pouvoir d'achat. C'est une question de câblage cognitif.
+
+Pourquoi la carte découple l'achat de la douleur
+
+Prelec et Simester introduisent un concept précis : le pain of paying, la douleur de payer. Quand tu sors un billet de 50€ de ton portefeuille, ton cerveau enregistre une perte immédiate. Tu la vois. Tu la tiens. Tu la lâches. Cette friction sensorielle active les mêmes zones neurologiques que la douleur physique et c'est documenté par imagerie cérébrale.
+
+Quand tu paies par carte, ce mécanisme est court-circuité. Le geste est identique qu'il s'agisse de 12€ ou de 1 200€. Il n'y a pas de perte visible. Pas de friction. L'achat et le paiement sont découplés, séparés dans le temps et dans la perception. Ton cerveau traite une transaction, pas une perte.
+
+Et ça change tout ce qui suit.
+
+La comptabilité mentale : comment ton cerveau classe et déforme l'argent
+
+L'argent du casino et l'argent du salaire ne sont pas le même argent
+
+Richard Thaler, prix Nobel d'économie, a formalisé un concept que tu vis sans le nommer : la comptabilité mentale. Ton cerveau ne traite pas l'argent comme une masse homogène. Il le classe dans des comptes séparés selon sa source, sa destination, son format.
+
+L'argent gagné à un jeu est dépensé plus facilement que l'argent du salaire. Un remboursement inattendu part plus vite qu'une prime attendue. Et le solde affiché sur ton écran de banque semble moins réel que les billets dans ton portefeuille même si le montant est identique.
+
+Ce n'est pas de l'irresponsabilité. C'est de la cognition.
+
+Ce que ça change concrètement dans tes fins de mois
+
+L'effet est direct : quand l'argent n'a pas de forme physique, il perd de son poids mental. Les micro-dépenses s'accumulent sans que ton cerveau les comptabilise vraiment. Un abonnement prélevé automatiquement ? Invisible.
+
+Un paiement sans contact à 8h du matin ? Inexistant dans ta mémoire de la journée. Un achat sur app, un clic, une livraison : zéro friction, zéro trace cognitive.
+
+Ce n'est pas que tu dépenses trop. C'est que tu dépenses sans le ressentir. Et ce que tu ne ressens pas, tu ne le pilotes pas.
+
+L'anesthésie de l'argent numérique : ce que les apps automatiques aggravent
+
+Quand tout est agrégé, rien ne compte
+
+Les apps d'agrégation bancaire celles qui connectent tes comptes et catégorisent tout automatiquement ont résolu un problème réel : la visibilité. Tu peux voir où est allé ton argent le mois dernier. C'est utile.
+
+Mais elles ont introduit un problème plus silencieux : elles ont supprimé le dernier moment de conscience qui restait dans le parcours de dépense. Tu n'as pas eu à noter. Pas eu à te souvenir. Pas eu à faire face. L'app a tout absorbé à ta place.
+
+Le résultat : tu observes le passé sans jamais avoir vécu le présent. Tu regardes un rapport de dépenses comme tu regardes un relevé météo d'une semaine que tu n'as pas vécue. C'est de l'information. Pas de la conscience. C'est exactement ce que Steero a choisi de ne pas reproduire.
+
+Le rétroviseur ne fait pas mal : c'est son problème
+
+Un agrégateur automatique, c'est un rétroviseur parfaitement net. Il te montre tout ce qui s'est passé derrière toi, avec précision. Mais regarder un rétroviseur ne change pas la trajectoire. Ça ne fait pas mal. Et ce qui ne fait pas mal ne modifie pas le comportement.
+
+La douleur de payer même atténuée, même symbolique, est une information. C'est ton cerveau qui te dit : quelque chose a changé dans ta situation. Quand cette information disparaît, le comportement dérive. Pas d'un coup. Progressivement. Imperceptiblement. Jusqu'à la fin de mois que tu n'arrives pas à expliquer.
+
+La saisie manuelle comme acte de conscience : pourquoi c'est un choix de design
+
+Enregistrer une dépense, c'est la ressentir
+
+Quand tu saisis manuellement une dépense : 34€ au restaurant, 12€ d'abonnement, 80€ de courses; Tu fais exactement ce que le cash forçait à faire : tu reconnectes l'achat à la perte. Pas de façon dramatique. Pas douloureusement. Mais consciemment.
+
+Ce geste simple réintroduit la friction que la carte a supprimée. Il force un micro-moment d'attention : tu as dépensé ça. Maintenant tu le sais. Maintenant ça compte.
+
+C'est neuro scientifiquement cohérent avec ce que Prelec et Simester ont documenté : la saillance du paiement avec sa visibilité, sa présence dans la conscience qui modifie directement le comportement de dépense. Pas après. Pendant. Et surtout : avant la prochaine fois.
+
+C'est exactement ce que Steero a choisi de ne pas automatiser
+
+Steero ne connecte pas tes comptes pour agréger à ta place. C'est une décision de design, pas une limitation technique. La saisie manuelle est le mécanisme. C'est elle qui réinstalle la douleur de payer dans un monde où tout a été fait pour la supprimer.
+
+Et parce que la vie financière ne se résume pas à un compte courant : espèces, Ticket Restaurant, solde Vinted, compte commun, cagnotte; Steero permet de tout tracer dans un seul endroit, quel que soit le portefeuille. Pas pour automatiser. Pour centraliser la conscience. C'est exactement ce que permet Steero : tenir un registre de tout ce qui sort, quelle qu'en soit la forme, pour que rien ne disparaisse dans l'angle mort cognitif.
+
+Comment installer ce mécanisme dans ta vie : le rituel T de TEMPO
+
+5 minutes par jour : Pas pour noter, pour ressentir
+
+Le premier niveau du système TEMPO, c'est Tracer. Quotidien. 5 minutes. L'idée n'est pas de tenir une comptabilité à la virgule près. C'est de maintenir le lien entre toi et ta situation financière réelle.
+
+Concrètement : chaque soir, ou dans le moment, tu saisis ce qui est sorti. Ce que tu as mangé, payé, abonné, transféré. Pas pour te juger. Pour ne pas laisser la carte faire ce qu'elle fait par défaut rendre la dépense invisible.
+
+Ce rituel ne demande pas de discipline extraordinaire. Il demande 5 minutes et la décision de ne pas déléguer ta conscience financière à un algorithme.
+
+Ce que ça change au bout de 3 semaines
+
+La plupart des gens qui passent à la saisie manuelle régulière rapportent la même chose : ce n'est pas qu'ils dépensent moins mais ils savent pourquoi ils dépensent. La décision devient consciente. Le glissement invisible s'arrête. Pas parce qu'ils se sont imposé des règles strictes. Parce qu'ils ont réintroduit la friction que le système financier moderne avait soigneusement effacée.
+
+C'est ça, piloter. Pas observer le passé. Ressentir le présent pour choisir l'avenir.
+
+Ton cerveau a été conçu pour ressentir la dépense. La carte lui a volé ce signal. La saisie manuelle le lui rend.
+
+C'est exactement pour ça que Steero ne t'agrège rien automatiquement. Essaie 14 jours et remarque ce que tu ressens la première fois que tu saisis une dépense.`
   }
 ];
 
@@ -784,6 +877,18 @@ const articleSections: Record<number, string[]> = {
     "Pourquoi l'automatisation totale ne tient pas sa promesse",
     "Les critères qui comptent vraiment pour choisir une app",
     "Le paradoxe de la meilleure app"
+  ],
+  10: [
+    "Payer fait, ou ne fait plus mal : ce que la recherche dit vraiment",
+    "Pourquoi la carte découple l'achat de la douleur",
+    "La comptabilité mentale : comment ton cerveau classe et déforme l'argent",
+    "Ce que ça change concrètement dans tes fins de mois",
+    "L'anesthésie de l'argent numérique : ce que les apps automatiques aggravent",
+    "Le rétroviseur ne fait pas mal : c'est son problème",
+    "La saisie manuelle comme acte de conscience : pourquoi c'est un choix de design",
+    "C'est exactement ce que Steero a choisi de ne pas automatiser",
+    "Comment installer ce mécanisme dans ta vie : le rituel T de TEMPO",
+    "Ce que ça change au bout de 3 semaines"
   ]
 };
 
@@ -1364,6 +1469,39 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist, onOp
                     >
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       <span>Nir Eyal, Hooked — sur les mécanismes d'engagement des produits numériques</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              {/* Related links section - Article 10 (Carte bancaire douleur de payer) */}
+              {article.id === 10 && (
+                <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
+                  <h4 className="text-sm font-semibold text-foreground mb-4">Ces articles pourraient t'intéresser :</h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(3); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Pourquoi sans rituel aucun outil financier ne fonctionne</span>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(5); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Tes finances ne sont pas un bulletin de notes. Arrête de les lire comme tel.</span>
+                    </button>
+                    <a
+                      href="https://cdn1.nyt.com/packages/pdf/Alwaysleavehome-2.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span>Prelec, D. & Simester, D. (2001). Always leaving home without it. Marketing Letters</span>
                     </a>
                   </div>
                 </div>

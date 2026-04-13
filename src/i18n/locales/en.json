@@ -834,6 +834,27 @@
           "The criteria that really matter when choosing an app",
           "The paradox of the best app"
         ]
+      },
+      "10": {
+        "title": "Your bank card has made you financially numb",
+        "tags": [
+          "Psychology",
+          "Method",
+          "Management"
+        ],
+        "hook": "You earn well. You don't have irrational spending habits. And yet, every end of the month, something is missing. It's not a revenue problem. It's a perception problem. And your bank card is directly responsible.",
+        "sections": [
+          "Paying hurts, or doesn't anymore: what research really says",
+          "Why cards decouple purchasing from pain",
+          "Mental accounting: how your brain classifies and distorts money",
+          "What it concretely changes in your end of month",
+          "The anesthesia of digital money: what automatic apps make worse",
+          "The rearview mirror doesn't hurt: that's the problem",
+          "Manual entry as an act of awareness: why it's a design choice",
+          "This is exactly what Steero chose not to automate",
+          "How to install this mechanism in your life: the T ritual of TEMPO",
+          "What changes after 3 weeks"
+        ]
       }
     }
   },

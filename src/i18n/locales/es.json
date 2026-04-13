@@ -834,6 +834,27 @@
           "Los criterios que realmente importan al elegir una app",
           "La paradoja de la mejor app"
         ]
+      },
+      "10": {
+        "title": "Tu tarjeta bancaria te ha anestesiado financieramente",
+        "tags": [
+          "Psicología",
+          "Método",
+          "Gestión"
+        ],
+        "hook": "Ganas bien. No tienes comportamientos irracionales. Y sin embargo, cada fin de mes falta algo. No es un problema de ingresos. Es un problema de percepción. Y tu tarjeta bancaria es directamente responsable.",
+        "sections": [
+          "Pagar duele, o ya no: lo que dice realmente la investigación",
+          "Por qué la tarjeta desacopla la compra del dolor",
+          "Contabilidad mental: cómo tu cerebro clasifica y distorsiona el dinero",
+          "Lo que cambia concretamente en tus finales de mes",
+          "La anestesia del dinero digital: lo que las apps automáticas agravan",
+          "El retrovisor no duele: ese es el problema",
+          "El registro manual como acto de consciencia: por qué es una decisión de diseño",
+          "Esto es exactamente lo que Steero eligió no automatizar",
+          "Cómo instalar este mecanismo en tu vida: el ritual T de TEMPO",
+          "Lo que cambia después de 3 semanas"
+        ]
       }
     }
   },
