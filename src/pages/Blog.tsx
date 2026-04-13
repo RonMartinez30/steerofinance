@@ -1284,6 +1284,18 @@ const Blog = () => {
     });
   };
 
+  const openSpecificArticle = (id: number) => {
+    setOpenArticles(prev => {
+      const newSet = new Set(prev);
+      newSet.add(id);
+      return newSet;
+    });
+    setTimeout(() => {
+      const el = articleRefs.current.get(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
   const setArticleRef = (id: number, element: HTMLDivElement | null) => {
     if (element) {
       articleRefs.current.set(id, element);
@@ -1457,6 +1469,7 @@ const Blog = () => {
                           isOpen={openArticles.has(article.id)}
                           onToggle={() => toggleArticle(article.id)}
                           openWaitlist={openWaitlist}
+                          onOpenArticle={openSpecificArticle}
                         />
                       </motion.div>
                     ))}
