@@ -1153,20 +1153,7 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist, onOp
                     </a>
                   </div>
                 </div>
-              )}
-                    <a
-                      href="https://medium.com/essentiels/bj-fogg-cr%C3%A9ez-un-changement-durable-avec-de-petites-habitudes-5086dc9d9d37"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
-                    >
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      <span>Étude sur la formation des habitudes (BJ Fogg, Tiny Habits)</span>
-                    </a>
-                  </div>
-                </div>
-              )}
+              )
               
               {/* CTA Button */}
               <motion.div
