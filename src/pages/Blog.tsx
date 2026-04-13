@@ -1154,6 +1154,121 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist, onOp
                   </div>
                 </div>
               )}
+
+              {/* Related links section - Article 2 (La montée en compétences) */}
+              {article.id === 2 && (
+                <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
+                  <h4 className="text-sm font-semibold text-foreground mb-4">Ces articles pourraient t'intéresser :</h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(3); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Pourquoi sans rituel aucun outil financier ne fonctionne</span>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(1); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Tu dépenses trop chaque mois : voici pourquoi (et comment l'arrêter)</span>
+                    </button>
+                    <a
+                      href="https://www.youtube.com/watch?v=Ss8yEyijZ8k"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span>James Clear, Atomic Habits — sur la formation des habitudes par étapes</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              {/* Related links section - Article 1 (Tu dépenses trop) */}
+              {article.id === 1 && (
+                <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
+                  <h4 className="text-sm font-semibold text-foreground mb-4">Ces articles pourraient t'intéresser :</h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(3); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Pourquoi sans rituel, aucun outil financier ne fonctionne</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Related links section - Article 4 (5 minutes par jour) */}
+              {article.id === 4 && (
+                <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
+                  <h4 className="text-sm font-semibold text-foreground mb-4">Ces articles pourraient t'intéresser :</h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(3); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Pourquoi sans rituel aucun outil financier ne fonctionne</span>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(1); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Tu dépenses trop chaque mois</span>
+                    </button>
+                    <a
+                      href="https://des-livres-pour-changer-de-vie.com/changer-vie-methode-petites-habitudes/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span>BJ Fogg, Tiny Habits — sur l'ancrage des micro-comportements</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              {/* Related links section - Article 5 (Finances vs bulletin de notes) */}
+              {article.id === 5 && (
+                <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
+                  <h4 className="text-sm font-semibold text-foreground mb-4">Ces articles pourraient t'intéresser :</h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(3); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Pourquoi sans rituel aucun outil financier ne fonctionne</span>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(4); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>5 minutes par jour pour ne plus jamais subir sa fin de mois</span>
+                    </button>
+                    <a
+                      href="https://thedecisionlab.com/fr/thinkers/economics/daniel-kahneman"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span>Daniel Kahneman, Thinking Fast and Slow — sur les biais émotionnels dans la prise de décision</span>
+                    </a>
+                  </div>
+                </div>
+              )}
               
               {/* CTA Button */}
               <motion.div
