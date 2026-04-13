@@ -1237,6 +1237,138 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist, onOp
                 </div>
               )}
 
+              {/* Related links section - Article 6 (Règle 50/30/20) */}
+              {article.id === 6 && (
+                <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
+                  <h4 className="text-sm font-semibold text-foreground mb-4">Ces articles pourraient t'intéresser :</h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(3); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Pourquoi sans rituel aucun outil financier ne fonctionne</span>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(1); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Tu dépenses trop chaque mois</span>
+                    </button>
+                    <a
+                      href="https://www.youtube.com/watch?v=DmMSG7Lzopk"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span>Elizabeth Warren, All Your Worth — origine de la règle 50/30/20 et son contexte d'origine</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              {/* Related links section - Article 7 (Tableau Excel budget) */}
+              {article.id === 7 && (
+                <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
+                  <h4 className="text-sm font-semibold text-foreground mb-4">Ces articles pourraient t'intéresser :</h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(3); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Pourquoi sans rituel aucun outil financier ne fonctionne</span>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(4); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>5 minutes par jour pour ne plus jamais subir sa fin de mois</span>
+                    </button>
+                    <a
+                      href="https://medium.com/essentiels/bj-fogg-cr%C3%A9ez-un-changement-durable-avec-de-petites-habitudes-5086dc9d9d37"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span>BJ Fogg, Tiny Habits — sur la construction des habitudes par ancrage comportemental</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              {/* Related links section - Article 8 (Économiser 500€) */}
+              {article.id === 8 && (
+                <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
+                  <h4 className="text-sm font-semibold text-foreground mb-4">Ces articles pourraient t'intéresser :</h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(1); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Tu dépenses trop chaque mois</span>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(3); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Pourquoi sans rituel aucun outil financier ne fonctionne</span>
+                    </button>
+                    <a
+                      href="https://thedecisionlab.com/fr/insights/consumer-insights/this-is-your-brain-on-money"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span>Étude comportementale sur la sous-estimation des dépenses — Journal of Consumer Research</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              {/* Related links section - Article 9 (Meilleure app) */}
+              {article.id === 9 && (
+                <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
+                  <h4 className="text-sm font-semibold text-foreground mb-4">Ces articles pourraient t'intéresser :</h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(3); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Pourquoi sans rituel aucun outil financier ne fonctionne</span>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onOpenArticle?.(2); }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>La montée en compétences financières</span>
+                    </button>
+                    <a
+                      href="https://des-livres-pour-changer-de-vie.com/hooked/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span>Nir Eyal, Hooked — sur les mécanismes d'engagement des produits numériques</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+
               {/* Related links section - Article 5 (Finances vs bulletin de notes) */}
               {article.id === 5 && (
                 <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
