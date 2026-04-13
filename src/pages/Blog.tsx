@@ -1153,7 +1153,7 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist, onOp
                     </a>
                   </div>
                 </div>
-              )
+              )}
               
               {/* CTA Button */}
               <motion.div
