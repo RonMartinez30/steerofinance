@@ -1124,6 +1124,40 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist }: Ar
                   {formatContent(article.content, article.id)}
                 </div>
               </div>
+
+              {/* Related links section - Article 3 */}
+              {article.id === 3 && (
+                <div className="mt-8 p-5 bg-muted/50 rounded-xl border border-primary/10">
+                  <h4 className="text-sm font-semibold text-foreground mb-4">Ces articles pourraient t'intéresser :</h4>
+                  <div className="space-y-2">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const articleEl = document.querySelector('[data-article-id="1"]');
+                        if (articleEl) {
+                          articleEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          const toggleEvent = new CustomEvent('toggle-article', { detail: { id: 1 } });
+                          window.dispatchEvent(toggleEvent);
+                        }
+                      }}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <span>Tu dépenses trop chaque mois : voici pourquoi</span>
+                    </button>
+                    <a
+                      href="https://medium.com/essentiels/bj-fogg-cr%C3%A9ez-un-changement-durable-avec-de-petites-habitudes-5086dc9d9d37"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span>Étude sur la formation des habitudes (BJ Fogg, Tiny Habits)</span>
+                    </a>
+                  </div>
+                </div>
+              )}
               
               {/* CTA Button */}
               <motion.div
