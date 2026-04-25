@@ -107,7 +107,7 @@ const PourquoiSteero = () => {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </motion.button>
             <p className="text-xs text-muted-foreground mt-4">
-              Sans engagement — carte requise à l'issue de la période
+              Sans engagement
             </p>
           </div>
         </div>
