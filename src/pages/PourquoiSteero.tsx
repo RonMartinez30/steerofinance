@@ -50,6 +50,15 @@ const PourquoiSteero = () => {
     { letter: "O", name: "Orienter", desc: "Grandes orientations. Arbitrages stratégiques.", freq: "Annuel", time: "60 min" },
   ];
 
+  // Couleurs TEMPO partagées avec la home (HowItWorks)
+  const tempoLetterColors: Record<string, string> = {
+    T: "bg-green-600 text-white",
+    E: "bg-yellow-600 text-white",
+    M: "bg-emerald-700 text-white",
+    P: "bg-primary text-primary-foreground",
+    O: "bg-amber-700 text-white",
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEO
@@ -312,7 +321,9 @@ const PourquoiSteero = () => {
                 {tempo.map((row, i) => (
                   <tr key={row.letter} className={i !== 0 ? "border-t border-border/60" : ""}>
                     <td className="p-4 align-top">
-                      <span className="text-3xl font-bold text-primary leading-none">
+                      <span
+                        className={`inline-flex items-center justify-center w-11 h-11 rounded-full text-lg font-bold ring-4 ring-background ${tempoLetterColors[row.letter] || 'bg-primary text-primary-foreground'}`}
+                      >
                         {row.letter}
                       </span>
                     </td>

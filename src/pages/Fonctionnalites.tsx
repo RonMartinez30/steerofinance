@@ -1687,6 +1687,15 @@ const getCardAnimationVariants = (direction: AnimationDirection, isFuture: boole
       };
   }
 };
+// Couleurs TEMPO partagées avec la home (HowItWorks)
+const tempoLetterColors: Record<string, string> = {
+  T: "bg-green-600 text-white",
+  E: "bg-yellow-600 text-white",
+  M: "bg-emerald-700 text-white",
+  P: "bg-primary text-primary-foreground",
+  O: "bg-amber-700 text-white",
+};
+
 const FeatureCard = ({
   feature,
   isOpen,
@@ -1724,35 +1733,44 @@ const FeatureCard = ({
       }}
       className={`cursor-pointer rounded-xl border ${isOpen ? 'border-primary/30 shadow-md bg-card' : 'border-border/50 hover:border-primary/30 bg-card'} ${isLarge ? 'p-5' : 'p-5'} transition-all duration-250 hover:shadow-sm relative ${isOpen ? '' : closedHeight}`}
     >
-      {/* TEMPO letter badges - top right */}
+      {/* TEMPO letter badges - top right (couleurs cohérentes avec la home) */}
       {feature.letters && feature.letters.length > 0 && (
         <div className="absolute top-3 right-3 flex items-center gap-1">
           {feature.letters.map((letter, i) => (
             <span
               key={i}
-              className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-primary/10 text-primary text-[11px] font-bold"
+              className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-[11px] font-bold ${tempoLetterColors[letter] || 'bg-primary/10 text-primary'}`}
             >
               {letter}
             </span>
           ))}
         </div>
       )}
-      
-      <div className="pr-16">
-        <h3 className="text-base md:text-lg font-semibold text-foreground leading-tight">
-          {feature.title}
-        </h3>
 
-        <motion.p
-          animate={{
-            opacity: isOpen ? 0 : 1,
-            height: isOpen ? 0 : 'auto'
-          }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-          className="text-sm text-muted-foreground mt-1.5 leading-relaxed overflow-hidden"
-        >
-          {feature.microPromise}
-        </motion.p>
+      <div className="flex items-start gap-4 pr-16">
+        {/* Icône Lucide à gauche, style home (bg-primary/10) */}
+        {IconComponent && (
+          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+            <IconComponent className="w-5 h-5 text-primary" strokeWidth={1.75} />
+          </div>
+        )}
+
+        <div className="flex-1 min-w-0">
+          <h3 className="text-base md:text-lg font-semibold text-foreground leading-tight">
+            {feature.title}
+          </h3>
+
+          <motion.p
+            animate={{
+              opacity: isOpen ? 0 : 1,
+              height: isOpen ? 0 : 'auto'
+            }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="text-sm text-muted-foreground mt-1.5 leading-relaxed overflow-hidden"
+          >
+            {feature.microPromise}
+          </motion.p>
+        </div>
       </div>
       
       {/* Contenu déplié - animations calmes et progressives */}
@@ -2088,7 +2106,7 @@ const Fonctionnalites = () => {
                   <span className="text-[10px] font-semibold tracking-[0.15em] text-muted-foreground uppercase bg-muted px-2 py-1 rounded">
                     Bientôt
                   </span>
-                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-primary/10 text-primary text-[11px] font-bold">
+                  <span className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-[11px] font-bold ${tempoLetterColors[f.letter] || 'bg-primary/10 text-primary'}`}>
                     {f.letter}
                   </span>
                 </div>
