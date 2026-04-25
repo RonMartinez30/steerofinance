@@ -369,7 +369,7 @@ const PourquoiSteero = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-lg text-primary-foreground/90 mb-10"
             >
-              14 jours pour tester le pilotage actif de tes finances. Aucun automatisme — une discipline.
+              14 jours pour tester le pilotage actif de tes finances.
             </motion.p>
             <motion.button
               initial={{ opacity: 0, scale: 0.9 }}
@@ -384,9 +384,7 @@ const PourquoiSteero = () => {
               Commencer gratuitement
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </motion.button>
-            <p className="text-xs text-primary-foreground/70 mt-4">
-              Carte bancaire requise à l'issue des 14 jours.
-            </p>
+            <p className="text-xs text-primary-foreground/70 mt-4"> </p>
           </div>
         </div>
       </section>
