@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Check, Sparkles, ShieldCheck, ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
 import { useWaitlist } from "@/contexts/WaitlistContext";
 
@@ -16,199 +17,234 @@ const Pricing = () => {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("quarterly");
 
   const isAnnual = billingPeriod === "annual";
-  const monthlyPrice = 8.00;
-  const annualPrice = 6.00;
+  const monthlyPrice = 8.0;
+  const annualPrice = 6.0;
   const discountPercent = 25;
 
-  // Total amounts
-  const quarterlyTotal = (monthlyPrice * 3).toFixed(2).replace('.', ',');
+  const quarterlyTotal = (monthlyPrice * 3).toFixed(2).replace(".", ",");
   const annualTotal = 72;
   const annualSavings = 24;
 
-  const getPrice = () => {
-    if (isAnnual) {
-      return `${annualPrice.toFixed(2).replace('.', ',')}€`;
-    }
-    return `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
-  };
+  const getPrice = () =>
+    isAnnual
+      ? `${annualPrice.toFixed(2).replace(".", ",")}€`
+      : `${monthlyPrice.toFixed(2).replace(".", ",")}€`;
 
-  const getOriginalPrice = () => {
-    if (!isAnnual) return null;
-    return `${monthlyPrice.toFixed(2).replace('.', ',')}€`;
-  };
+  const getOriginalPrice = () =>
+    isAnnual ? `${monthlyPrice.toFixed(2).replace(".", ",")}€` : null;
 
-  const getTotalBilled = () => {
-    return isAnnual ? `${annualTotal},00€` : `${quarterlyTotal}€`;
-  };
+  const getTotalBilled = () =>
+    isAnnual ? `${annualTotal},00€` : `${quarterlyTotal}€`;
 
+  const features = [
+    t("pricing.feature1"),
+    t("pricing.feature2"),
+    t("pricing.feature3"),
+    t("pricing.feature4"),
+  ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <SEO
         title={t("pricing.seoTitle")}
         description={t("pricing.seoDescription")}
       />
       <Header />
 
-      {/* Hero Section - Harmonized with other pages */}
-      <main className="pt-32 pb-16 bg-hero-gradient">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                {t("pricing.titlePart1")} <span className="text-primary">{t("pricing.titleHighlight")}</span>
-              </h1>
-              <p className="text-lg text-muted-foreground mb-10">
-                {t("pricing.subtitle")}
-              </p>
+      {/* Hero épuré + carte premium */}
+      <main className="relative pt-32 pb-24 overflow-hidden">
+        {/* Soft background ambience */}
+        <div className="absolute inset-0 bg-hero-gradient -z-10" />
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl -z-10" />
 
-              {/* Billing Toggle */}
-              <div className="inline-flex items-center gap-2 bg-muted rounded-full p-1 mb-12">
-                <button
-                  onClick={() => setBillingPeriod("quarterly")}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                    !isAnnual
-                      ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {t("pricing.quarterly")}
-                </button>
-                <button
-                  onClick={() => setBillingPeriod("annual")}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
+        <div className="container mx-auto px-6">
+          {/* Hero */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mx-auto text-center mb-14"
+          >
+            <h1
+              className="text-5xl md:text-6xl font-normal text-foreground mb-6 leading-[1.1] tracking-tight"
+              style={{ fontFamily: "'DM Serif Display', serif" }}
+            >
+              {t("pricing.titlePart1")}{" "}
+              <span className="italic text-primary">
+                {t("pricing.titleHighlight")}
+              </span>
+            </h1>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              {t("pricing.subtitle")}
+            </p>
+          </motion.div>
+
+          {/* Billing toggle */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="flex justify-center mb-10"
+          >
+            <div className="inline-flex items-center gap-1 bg-card border border-border rounded-full p-1 shadow-soft">
+              <button
+                onClick={() => setBillingPeriod("quarterly")}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                  !isAnnual
+                    ? "bg-foreground text-background"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {t("pricing.quarterly")}
+              </button>
+              <button
+                onClick={() => setBillingPeriod("annual")}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
+                  isAnnual
+                    ? "bg-foreground text-background"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {t("pricing.annual")}
+                <span
+                  className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
                     isAnnual
-                      ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "bg-background/15 text-background"
+                      : "bg-primary/10 text-primary"
                   }`}
                 >
-                  {t("pricing.annual")}
-                  <span className={`text-xs px-2 py-0.5 rounded-full ${
-                    isAnnual 
-                      ? "bg-white/20 text-primary-foreground" 
-                      : "bg-accent text-accent-foreground"
-                  }`}>
-                    -{discountPercent}%
-                  </span>
-                </button>
+                  −{discountPercent}%
+                </span>
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Premium pricing card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="max-w-lg mx-auto"
+          >
+            <div className="relative bg-card border border-border rounded-3xl p-8 md:p-10 shadow-card">
+              {/* Top accent */}
+              <div className="absolute -top-px left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground">
+                  {t("pricing.planName")}
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+                  <Sparkles className="w-3 h-3" />
+                  {t("pricing.founderTitle")}
+                </span>
               </div>
 
-              {/* Single Pricing Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-primary text-primary-foreground rounded-2xl p-8 md:p-10 shadow-2xl max-w-md mx-auto"
-              >
-                <h3 className="text-2xl font-bold text-primary-foreground mb-2">
-                  {t("pricing.planName")}
-                </h3>
-
-                <div className="mb-4">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={billingPeriod}
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="flex items-baseline justify-center gap-2"
+              {/* Price */}
+              <div className="mb-8">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={billingPeriod}
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex items-baseline gap-2"
+                  >
+                    <span
+                      className="text-6xl md:text-7xl text-foreground tracking-tight"
+                      style={{ fontFamily: "'DM Serif Display', serif" }}
                     >
-                      <span className="text-5xl font-bold text-primary-foreground">
-                        {getPrice()}
+                      {getPrice()}
+                    </span>
+                    {getOriginalPrice() && (
+                      <span className="text-xl line-through text-muted-foreground/60">
+                        {getOriginalPrice()}
                       </span>
-                      {getOriginalPrice() && (
-                        <span className="text-lg line-through text-primary-foreground/50">
-                          {getOriginalPrice()}
-                        </span>
-                      )}
-                      <span className="text-sm text-primary-foreground/80">
-                        /{t("pricing.perMonth")}
+                    )}
+                    <span className="text-sm text-muted-foreground ml-1">
+                      /{t("pricing.perMonth")}
+                    </span>
+                  </motion.div>
+                </AnimatePresence>
+
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={`billing-${billingPeriod}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="text-sm text-muted-foreground mt-3"
+                  >
+                    {isAnnual
+                      ? t("pricing.billedAnnually")
+                      : t("pricing.billedQuarterly")}{" "}
+                    · {t("pricing.totalBilled")} {getTotalBilled()}
+                    {isAnnual && (
+                      <span className="text-primary font-medium">
+                        {" "}
+                        — {t("pricing.savings")} {annualSavings},00€
                       </span>
-                    </motion.div>
-                  </AnimatePresence>
-                  <AnimatePresence mode="wait">
-                    <motion.p
-                      key={`billing-${billingPeriod}`}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="text-xs mt-2 text-primary-foreground/70"
-                    >
-                      {isAnnual ? t("pricing.billedAnnually") : t("pricing.billedQuarterly")}
-                    </motion.p>
-                  </AnimatePresence>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={`total-${billingPeriod}`}
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -5 }}
-                      transition={{ duration: 0.2 }}
-                      className="flex flex-col items-center gap-2 mt-3"
-                    >
-                      <p className="text-sm font-medium text-primary-foreground/90 bg-white/10 rounded-full px-4 py-1.5">
-                        {t("pricing.totalBilled")} {getTotalBilled()}
-                      </p>
-                      {isAnnual && (
-                        <p className="text-sm font-semibold text-white bg-white/20 rounded-full px-4 py-1">
-                          🎉 {t("pricing.savings")} {annualSavings},00€
-                        </p>
-                      )}
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
+                    )}
+                  </motion.p>
+                </AnimatePresence>
+              </div>
 
-                <p className="text-sm mb-6 text-primary-foreground/80">
-                  {t("pricing.description")}
-                </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                {t("pricing.description")}
+              </p>
 
-                {/* Prix fondateur */}
-                <div className="mb-6 bg-white/10 rounded-xl p-4 text-left space-y-2">
-                  <h4 className="text-sm font-bold text-primary-foreground">{t("pricing.founderTitle")}</h4>
-                  <p className="text-xs text-primary-foreground/80 leading-relaxed">
-                    {t("pricing.founderText1")}
-                  </p>
-                  <p className="text-xs text-primary-foreground/80 leading-relaxed">
-                    {t("pricing.founderText2")}
-                  </p>
-                </div>
+              {/* Feature list */}
+              <ul className="space-y-3 mb-8">
+                {features.map((feat, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.4 + i * 0.05 }}
+                    className="flex items-start gap-3 text-sm text-foreground"
+                  >
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
+                      <Check className="w-3 h-3 text-primary" strokeWidth={3} />
+                    </span>
+                    {feat}
+                  </motion.li>
+                ))}
+              </ul>
 
-                {/* Early Adopters */}
-                <div className="mb-6 bg-orange-500/20 border border-orange-400/40 rounded-xl p-4 text-left space-y-2">
-                  <span className="inline-block bg-orange-500 text-white text-[10px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full">
-                    {t("pricing.earlyBadge")}
+              {/* Early Adopters — refined */}
+              <div className="mb-8 rounded-2xl border border-primary/15 bg-primary/5 p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+                    {t("pricing.earlyBadge")} · 200 places
                   </span>
-                  <p className="text-xs text-primary-foreground/90 leading-relaxed">
-                    {t("pricing.earlyText1")}
-                  </p>
-                  <p className="text-xs text-primary-foreground font-medium leading-relaxed">
-                    {t("pricing.earlyText2")}
-                  </p>
-                  <p className="text-[10px] text-primary-foreground/60 leading-relaxed">
-                    *{t("pricing.earlyDisclaimer")}
-                  </p>
                 </div>
+                <p className="text-xs text-foreground/80 leading-relaxed">
+                  {t("pricing.earlyText1")}
+                </p>
+              </div>
 
-                <Button
-                  onClick={openWaitlist}
-                  className="w-full rounded-full bg-white text-primary hover:bg-white/90"
-                >
-                  {t("pricing.cta")}
-                </Button>
-              </motion.div>
-            </motion.div>
-          </div>
+              <Button
+                onClick={openWaitlist}
+                size="lg"
+                className="w-full rounded-full group"
+              >
+                {t("pricing.cta")}
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+
+              <div className="mt-5 flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>14 jours d'essai · Sans carte bancaire</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </main>
 
       {/* Plan Impact */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-20 bg-muted/30 border-t border-border">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -217,22 +253,39 @@ const Pricing = () => {
             transition={{ duration: 0.5 }}
             className="max-w-2xl mx-auto"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">
-              {t("pricing.impactTitle")}
-            </h2>
-            <div className="bg-card border border-border rounded-2xl p-8 space-y-4 text-muted-foreground text-sm leading-relaxed">
+            <div className="text-center mb-8">
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-3 inline-block">
+                {t("pricing.impactName")}
+              </span>
+              <h2
+                className="text-3xl md:text-4xl text-foreground"
+                style={{ fontFamily: "'DM Serif Display', serif" }}
+              >
+                {t("pricing.impactTitle")}
+              </h2>
+            </div>
+
+            <div className="bg-card border border-border rounded-2xl p-8 space-y-4 text-muted-foreground text-sm leading-relaxed shadow-soft">
               <p>
-                {t("pricing.impactIntro")} <span className="font-semibold text-foreground">{t("pricing.impactName")}</span>.
+                {t("pricing.impactIntro")}{" "}
+                <span className="font-semibold text-foreground">
+                  {t("pricing.impactName")}
+                </span>
+                .
               </p>
               <p>{t("pricing.impactLimited")}</p>
               <p>
-                {t("pricing.impactEligibility")} <span className="font-semibold text-foreground">{t("pricing.impactDiscount")}</span> {t("pricing.impactDuration")}
+                {t("pricing.impactEligibility")}{" "}
+                <span className="font-semibold text-foreground">
+                  {t("pricing.impactDiscount")}
+                </span>{" "}
+                {t("pricing.impactDuration")}
               </p>
               <p>{t("pricing.impactReview")}</p>
               <p className="font-medium text-foreground">
                 {t("pricing.impactGoal")}
               </p>
-              <div className="pt-2 text-center">
+              <div className="pt-3 text-center">
                 <a
                   href="https://www.notion.so/68ab0233fa764fee9a8845d05af589e7?v=319020d992408096af72000cb7be3444&source=copy_link"
                   target="_blank"
@@ -249,23 +302,28 @@ const Pricing = () => {
       </section>
 
       {/* FAQ Teaser */}
-      <section className="py-16 bg-background">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="max-w-xl mx-auto"
           >
-            <h2 className="text-2xl font-bold text-foreground mb-4">
+            <h2
+              className="text-3xl md:text-4xl text-foreground mb-3"
+              style={{ fontFamily: "'DM Serif Display', serif" }}
+            >
               {t("pricing.faqTitle")}
             </h2>
             <p className="text-muted-foreground mb-6">
               {t("pricing.faqDescription")}
             </p>
             <Link to="/faq">
-              <Button variant="outline" className="rounded-full">
+              <Button variant="outline" className="rounded-full group">
                 {t("pricing.faqCta")}
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
           </motion.div>
