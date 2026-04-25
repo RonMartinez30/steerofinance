@@ -100,16 +100,21 @@ const PourquoiSteero = () => {
               Les apps qui agrègent tes données te montrent où est allé ton argent. Steero t'aide à décider où il va aller.
             </motion.p>
 
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              onClick={openWaitlist}
-              className="btn-primary rounded-full px-8 py-3.5 group"
+              className="inline-block"
             >
-              Commencer 14 jours gratuits
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </motion.button>
+              <Button
+                size="lg"
+                onClick={openWaitlist}
+                className="rounded-full px-8 group"
+              >
+                Commencer 14 jours gratuits
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </motion.div>
             <p className="text-xs text-muted-foreground mt-4">
               Sans engagement
             </p>
