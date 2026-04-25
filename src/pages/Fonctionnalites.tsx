@@ -1834,6 +1834,8 @@ const Fonctionnalites = () => {
   const featureGroups: FeatureGroup[] = [
     {
       label: "T · E — Quotidien & hebdo",
+      labelLetters: ["T", "E"],
+      labelText: "Quotidien & hebdo",
       title: "Tracer & Examiner",
       description: "Saisir, observer, maintenir le lien avec sa situation réelle.",
       features: [
