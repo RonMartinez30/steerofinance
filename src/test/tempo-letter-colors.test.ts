@@ -108,9 +108,30 @@ describe("TEMPO letter badges use shared tempoLetterColors mapping", () => {
   });
 
   it("every dynamic TEMPO badge references tempoLetterColors", () => {
+    // Pré-calcule, par fichier, les variables locales qui dérivent de tempoLetterColors
+    // (ex: const colorClass = tempoLetterColors[letter] || "...")
+    const derivedVarsByFile = new Map<string, Set<string>>();
+    for (const f of files) {
+      const content = readFileSync(f, "utf8");
+      const set = new Set<string>();
+      const re =
+        /(?:const|let|var)\s+([A-Za-z_]\w*)\s*=\s*[^;\n]*tempoLetterColors\s*\[/g;
+      let mm: RegExpExecArray | null;
+      while ((mm = re.exec(content)) !== null) set.add(mm[1]);
+      derivedVarsByFile.set(f, set);
+    }
+
     const offenders = allBadges
       .filter((b) => b.source === "letter-variable")
-      .filter((b) => !b.className.includes("tempoLetterColors"));
+      .filter((b) => {
+        if (b.className.includes("tempoLetterColors")) return false;
+        // Tolérance : interpolation `${var}` où var est dérivée de tempoLetterColors
+        const interp = [...b.className.matchAll(/\$\{([A-Za-z_]\w*)\}/g)].map(
+          (m) => m[1]
+        );
+        const derived = derivedVarsByFile.get(b.file) ?? new Set();
+        return !interp.some((v) => derived.has(v));
+      });
 
     if (offenders.length > 0) {
       const msg = offenders
