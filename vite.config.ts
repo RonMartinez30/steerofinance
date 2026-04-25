@@ -58,6 +58,7 @@ export default defineConfig(({ mode }) => ({
         "/fonctionnalites": 0.9,
         "/pricing": 0.9,
         "/blog": 0.8,
+        ...Object.fromEntries(blogArticleSlugs.map((s) => [`/blog/${s}`, 0.7])),
         "/faq": 0.7,
         "/mentions-legales": 0.3,
         "/cgs": 0.3,
@@ -68,6 +69,7 @@ export default defineConfig(({ mode }) => ({
       changefreq: {
         "/": "weekly",
         "/blog": "weekly",
+        ...Object.fromEntries(blogArticleSlugs.map((s) => [`/blog/${s}`, "monthly" as const])),
         "/pourquoi-steero": "monthly",
         "/fonctionnalites": "monthly",
         "/pricing": "monthly",
