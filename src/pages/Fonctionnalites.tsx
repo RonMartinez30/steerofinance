@@ -1687,6 +1687,15 @@ const getCardAnimationVariants = (direction: AnimationDirection, isFuture: boole
       };
   }
 };
+// Couleurs TEMPO partagées avec la home (HowItWorks)
+const tempoLetterColors: Record<string, string> = {
+  T: "bg-green-600 text-white",
+  E: "bg-yellow-600 text-white",
+  M: "bg-emerald-700 text-white",
+  P: "bg-primary text-primary-foreground",
+  O: "bg-amber-700 text-white",
+};
+
 const FeatureCard = ({
   feature,
   isOpen,
