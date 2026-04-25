@@ -274,7 +274,7 @@ const PourquoiSteero = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl md:text-4xl font-bold leading-tight text-foreground mb-6"
           >
-            TEMPO — cinq rituels, une discipline.
+            TEMPO : Cinq rituels, une discipline.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
