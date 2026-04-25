@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import steeroBanner from "@/assets/steero-banner-3.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, ArrowRight, Lightbulb, AlertCircle, Share2, Check, List, Search, X, Download, FileSpreadsheet, CheckCircle2, ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -12,6 +12,7 @@ import { useWaitlist } from "@/contexts/WaitlistContext";
 
 interface Article {
   id: number;
+  slug: string;
   titleKey: string;
   hookKey: string;
   content: string;
