@@ -1738,56 +1738,21 @@ const FeatureCard = ({
         </div>
       )}
       
-      <div className="flex items-start gap-4">
-        {/* Icône Lucide professionnelle ou emoji de fallback */}
-        <div className="flex-shrink-0 mt-0.5 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-          {IconComponent ? (
-            <IconComponent className="w-5 h-5 text-primary" strokeWidth={1.5} />
-          ) : (
-            <span className="text-2xl">{feature.emoji}</span>
-          )}
-        </div>
-        
-        <div className="flex-1 min-w-0">
-          {/* Header : titre + chevron */}
-          <div className="flex items-center justify-between gap-2">
-            <h3 className="text-base font-semibold text-foreground leading-tight">
-              {feature.title}
-            </h3>
-            
-            {/* Chevron avec rotation calme */}
-            <motion.div 
-              animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-              className="flex-shrink-0 text-muted-foreground/60"
-            >
-              <svg width="18" height="18" viewBox="0 0 12 12" fill="none">
-                <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </motion.div>
-          </div>
-          
-          {/* Micro-promesse - visible uniquement en état fermé */}
-          <motion.p 
-            animate={{
-              opacity: isOpen ? 0 : 1,
-              height: isOpen ? 0 : 'auto'
-            }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="text-sm text-muted-foreground mt-1.5 leading-relaxed overflow-hidden"
-          >
-            {feature.microPromise}
-          </motion.p>
-          
-          {/* Indice d'interaction - uniquement en état fermé */}
-          <motion.span
-            animate={{ opacity: isOpen ? 0 : 0.4 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
-            className="text-[10px] text-muted-foreground/50 mt-2 block"
-          >
-            {t('fonctionnalites.clickForPreview')}
-          </motion.span>
-        </div>
+      <div className="pr-16">
+        <h3 className="text-base md:text-lg font-semibold text-foreground leading-tight">
+          {feature.title}
+        </h3>
+
+        <motion.p
+          animate={{
+            opacity: isOpen ? 0 : 1,
+            height: isOpen ? 0 : 'auto'
+          }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="text-sm text-muted-foreground mt-1.5 leading-relaxed overflow-hidden"
+        >
+          {feature.microPromise}
+        </motion.p>
       </div>
       
       {/* Contenu déplié - animations calmes et progressives */}
