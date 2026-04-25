@@ -141,7 +141,7 @@
     "title": "Moins de friction. Plus de maîtrise",
     "description": "Modèles, favoris et raccourcis éliminent la friction. Tu te concentres sur ce qui compte : comprendre tes décisions.",
     "budget": {
-      "title": "Etape #1 : Défini tes objectifs",
+      "title": "Etape #1 : Fixe toi des objectifs et la voie pour y arriver",
       "description": "Tes ressources sont limitées : elles te permettent de construire le présent et de préparer l'avenir. Bien les définir est essentiel. Créé des budgets clairs, grâce à la trajectoire, notre outil intuitif qui t'accompagne pour définir ta destination."
     },
     "capture": {
@@ -157,10 +157,10 @@
     "title": "Moins de friction. Plus de maîtrise",
     "description": "Modèles, favoris et raccourcis éliminent la friction. Tu te concentres sur ce qui compte : comprendre tes décisions.",
     "budget": {
-      "title": "Etape #1 : Défini tes objectifs",
+      "title": "Etape #1 : Fixe toi des objectifs et la voie pour y arriver",
       "ba1": {
         "before": "Tu te demandes où est passé ton argent",
-        "after": "Tu sais exactement où il va — et pourquoi"
+        "after": "Tu sais exactement où il va et pourquoi"
       },
       "ba2": {
         "before": "Tu subis tes dépenses",
