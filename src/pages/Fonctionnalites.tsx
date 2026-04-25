@@ -11,6 +11,7 @@ import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGri
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useTranslation } from "react-i18next";
 import { useWaitlist } from "@/contexts/WaitlistContext";
+import { TempoLetter } from "@/components/TempoLetter";
 
 // Progress sidebar component
 const ProgressSidebar = ({
