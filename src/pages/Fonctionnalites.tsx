@@ -115,6 +115,8 @@ interface Feature {
 }
 interface FeatureGroup {
   label: string;
+  labelLetters?: string[]; // pastilles TEMPO colorées
+  labelText?: string;      // suffixe textuel (ex: "Quotidien & hebdo")
   title: string;
   description?: string;
   features: Feature[];
