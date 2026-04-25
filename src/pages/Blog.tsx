@@ -1784,13 +1784,22 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen">
-      <SEO
-        title="Blog - Conseils pour bien gérer son argent"
-        description="Articles et conseils pour apprendre à gérer son argent. Comment mieux gérer son budget sans Excel ? Découvrez nos guides pratiques sur les finances personnelles et les rituels financiers."
-        keywords="blog finances personnelles, comment gérer son argent, conseils budget, mieux gérer son argent, gestion budget personnel, alternative excel finances"
-        canonical="/blog"
-        ogType="blog"
-      />
+      {slugArticle ? (
+        <SEO
+          title={`${t(slugArticle.titleKey)} | Steero Blog`}
+          description={(t(slugArticle.hookKey) as string).split('\n')[0].slice(0, 158)}
+          canonical={`/blog/${slugArticle.slug}`}
+          ogType="article"
+        />
+      ) : (
+        <SEO
+          title="Blog - Conseils pour bien gérer son argent"
+          description="Articles et conseils pour apprendre à gérer son argent. Comment mieux gérer son budget sans Excel ? Découvrez nos guides pratiques sur les finances personnelles et les rituels financiers."
+          keywords="blog finances personnelles, comment gérer son argent, conseils budget, mieux gérer son argent, gestion budget personnel, alternative excel finances"
+          canonical="/blog"
+          ogType="blog"
+        />
+      )}
       <Header />
       
       <main className="pt-32 pb-16 bg-hero-gradient">
