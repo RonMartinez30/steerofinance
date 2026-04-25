@@ -275,43 +275,36 @@ const Pricing = () => {
             transition={{ duration: 0.5 }}
             className="max-w-2xl mx-auto"
           >
-            <div className="text-center mb-8">
-              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-3 inline-block">
-                {t("pricing.impactName")}
-              </span>
-              <h2
-                className="text-3xl md:text-4xl text-foreground"
-                style={{ fontFamily: "'DM Serif Display', serif" }}
-              >
-                {t("pricing.impactTitle")}
-              </h2>
-            </div>
-
-            <div className="bg-card border border-border rounded-2xl p-8 space-y-4 text-muted-foreground text-sm leading-relaxed shadow-soft">
-              <p>
-                {t("pricing.impactIntro")}{" "}
-                <span className="font-semibold text-foreground">
-                  {t("pricing.impactName")}
+            <div className="bg-card border border-border rounded-2xl shadow-soft overflow-hidden">
+              <div className="p-8">
+                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-4 block">
+                  {t("pricing.impactSection")}
                 </span>
-                .
-              </p>
-              <p>{t("pricing.impactLimited")}</p>
-              <p>
-                {t("pricing.impactEligibility")}{" "}
-                <span className="font-semibold text-foreground">
-                  {t("pricing.impactDiscount")}
-                </span>{" "}
-                {t("pricing.impactDuration")}
-              </p>
-              <p>{t("pricing.impactReview")}</p>
-              <p className="font-medium text-foreground">
-                {t("pricing.impactGoal")}
-              </p>
-              <div className="pt-3 text-center">
+                <h2
+                  className="text-2xl md:text-3xl text-foreground mb-4 leading-tight"
+                  style={{ fontFamily: "'DM Serif Display', serif" }}
+                >
+                  {t("pricing.impactTitle")}
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {t("pricing.impactIntro")}
+                </p>
+              </div>
+
+              <div className="border-t border-border bg-muted/40 p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+                <div className="flex-1">
+                  <p className="text-xs font-semibold text-foreground mb-1.5">
+                    {t("pricing.impactConditionsTitle")}
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {t("pricing.impactConditionsText")}
+                  </p>
+                </div>
                 <a
                   href="https://www.notion.so/68ab0233fa764fee9a8845d05af589e7?v=319020d992408096af72000cb7be3444&source=copy_link"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex-shrink-0"
                 >
                   <Button variant="outline" className="rounded-full">
                     {t("pricing.impactCta")}
