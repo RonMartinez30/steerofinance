@@ -4,6 +4,8 @@ import SEO from "@/components/SEO";
 import { Info, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useWaitlist } from "@/contexts/WaitlistContext";
+import { Button } from "@/components/ui/button";
+import { TempoLetter } from "@/components/TempoLetter";
 
 const PourquoiSteero = () => {
   const { openWaitlist } = useWaitlist();
