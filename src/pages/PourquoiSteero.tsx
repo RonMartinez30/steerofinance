@@ -316,11 +316,7 @@ const PourquoiSteero = () => {
                 {tempo.map((row, i) => (
                   <tr key={row.letter} className={i !== 0 ? "border-t border-border/60" : ""}>
                     <td className="p-4 align-top">
-                      <span
-                        className={`inline-flex items-center justify-center w-11 h-11 rounded-full text-lg font-bold ring-4 ring-background ${tempoLetterColors[row.letter] || 'bg-primary text-primary-foreground'}`}
-                      >
-                        {row.letter}
-                      </span>
+                      <TempoLetter letter={row.letter} size="lg" />
                     </td>
                     <td className="p-4 align-top">
                       <p className="font-semibold text-foreground text-sm mb-1">{row.name}</p>
