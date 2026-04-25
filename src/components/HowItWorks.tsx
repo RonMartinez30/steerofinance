@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-const letterColors: Record<string, string> = {
+const tempoLetterColors: Record<string, string> = {
   T: "bg-green-600 text-white",
   E: "bg-yellow-600 text-white",
   M: "bg-emerald-700 text-white",
@@ -61,7 +61,7 @@ const HowItWorks = () => {
           <div className="space-y-4 relative z-10">
             {rituals.map((key, i) => {
               const letter = t(`tempo.rituals.${key}.letter`);
-              const colorClass = letterColors[letter] || "bg-primary text-primary-foreground";
+              const colorClass = tempoLetterColors[letter] || "bg-primary text-primary-foreground";
 
               return (
                 <motion.div
