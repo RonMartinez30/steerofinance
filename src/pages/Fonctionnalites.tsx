@@ -1891,6 +1891,8 @@ const Fonctionnalites = () => {
     },
     {
       label: "M · P — Mensuel & trimestriel",
+      labelLetters: ["M", "P"],
+      labelText: "Mensuel & trimestriel",
       title: "Maîtriser & Positionner",
       description: "Décider consciemment. Aligner finances et objectifs de vie.",
       features: [
