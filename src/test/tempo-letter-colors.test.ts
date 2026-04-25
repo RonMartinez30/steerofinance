@@ -90,6 +90,22 @@ function findTempoBadges(file: string, content: string): Pastille[] {
     });
   }
 
+  // Cherche les usages du composant partagé <TempoLetter ... /> qui sont
+  // conformes par construction (mapping centralisé + gabarit canonique).
+  const componentRe = /<TempoLetter\b[^/>]*\/?>/g;
+  while ((m = componentRe.exec(content)) !== null) {
+    const before = content.slice(0, m.index);
+    const line = before.split("\n").length;
+    results.push({
+      file,
+      line,
+      letter: "(component)",
+      className: "tempoLetterColors", // marqueur de conformité
+      source: "tempo-letter-component",
+      snippet: lines[line - 1]?.trim() ?? "",
+    });
+  }
+
   return results;
 }
 
