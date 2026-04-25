@@ -23,6 +23,7 @@ interface Article {
 const getArticles = (t: (key: string, options?: Record<string, unknown>) => string): Article[] => [
   {
     id: 3,
+    slug: "pourquoi-sans-rituel-aucun-outil-financier-ne-fonctionne",
     titleKey: "blog.articles.3.title",
     hookKey: "blog.articles.3.hook",
     tagsKey: "blog.articles.3.tags",
@@ -95,6 +96,7 @@ Installe le rituel. L'outil suit.`
   },
   {
     id: 2,
+    slug: "montee-en-competences-financieres-du-flou-au-pilotage",
     titleKey: "blog.articles.2.title",
     hookKey: "blog.articles.2.hook",
     tagsKey: "blog.articles.2.tags",
@@ -162,6 +164,7 @@ Steero est construit autour de cette logique de progression. Les cinq niveaux TE
   },
   {
     id: 1,
+    slug: "tu-depenses-trop-chaque-mois-voici-pourquoi",
     titleKey: "blog.articles.1.title",
     hookKey: "blog.articles.1.hook",
     tagsKey: "blog.articles.1.tags",
@@ -281,6 +284,7 @@ Le système TEMPO est la méthode. Steero est l'outil construit pour l'implémen
   },
   {
     id: 4,
+    slug: "5-minutes-par-jour-pour-ne-plus-subir-sa-fin-de-mois",
     titleKey: "blog.articles.4.title",
     hookKey: "blog.articles.4.hook",
     tagsKey: "blog.articles.4.tags",
@@ -332,6 +336,7 @@ Ce n'est pas le temps qui manque pour gérer ses finances. C'est la structure.`
   },
   {
     id: 5,
+    slug: "tes-finances-ne-sont-pas-un-bulletin-de-notes",
     titleKey: "blog.articles.5.title",
     hookKey: "blog.articles.5.hook",
     tagsKey: "blog.articles.5.tags",
@@ -397,6 +402,7 @@ La clarté remplace la culpabilité. C'est là que tout change.`
   },
   {
     id: 6,
+    slug: "regle-50-30-20-limites-alternative",
     titleKey: "blog.articles.6.title",
     hookKey: "blog.articles.6.hook",
     tagsKey: "blog.articles.6.tags",
@@ -456,6 +462,7 @@ La règle des 50/30/20 peut être ton point de départ. Le système TEMPO est ce
   },
   {
     id: 7,
+    slug: "pourquoi-tableau-excel-budget-ne-tient-pas",
     titleKey: "blog.articles.7.title",
     hookKey: "blog.articles.7.hook",
     tagsKey: "blog.articles.7.tags",
@@ -527,6 +534,7 @@ L'outil suit le rituel. Jamais l'inverse.`
   },
   {
     id: 8,
+    slug: "economiser-500-euros-ce-mois-ci",
     titleKey: "blog.articles.8.title",
     hookKey: "blog.articles.8.hook",
     tagsKey: "blog.articles.8.tags",
@@ -604,6 +612,7 @@ Les 500€ sont probablement déjà là. Il manque juste le regard pour les voir
   },
   {
     id: 9,
+    slug: "meilleure-app-pour-gerer-son-argent",
     titleKey: "blog.articles.9.title",
     hookKey: "blog.articles.9.hook",
     tagsKey: "blog.articles.9.tags",
@@ -679,6 +688,7 @@ La différence n'est pas dans les features. Elle est dans ce que tu deviens apr�
   },
   {
     id: 10,
+    slug: "carte-bancaire-douleur-de-payer-saisie-manuelle",
     titleKey: "blog.articles.10.title",
     hookKey: "blog.articles.10.hook",
     tagsKey: "blog.articles.10.tags",
