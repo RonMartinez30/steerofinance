@@ -52,6 +52,8 @@ const Pricing = () => {
       <SEO
         title={t("pricing.seoTitle")}
         description={t("pricing.seoDescription")}
+        keywords="tarifs steero, prix application budget, abonnement gestion budget, app finances personnelles prix"
+        canonical="/pricing"
       />
       <Header />
 
