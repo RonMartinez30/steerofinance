@@ -4,6 +4,20 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import Sitemap from "vite-plugin-sitemap";
 
+// Blog article slugs (kept in sync with src/pages/Blog.tsx)
+const blogArticleSlugs = [
+  "pourquoi-sans-rituel-aucun-outil-financier-ne-fonctionne",
+  "montee-en-competences-financieres-du-flou-au-pilotage",
+  "tu-depenses-trop-chaque-mois-voici-pourquoi",
+  "5-minutes-par-jour-pour-ne-plus-subir-sa-fin-de-mois",
+  "tes-finances-ne-sont-pas-un-bulletin-de-notes",
+  "regle-50-30-20-limites-alternative",
+  "pourquoi-tableau-excel-budget-ne-tient-pas",
+  "economiser-500-euros-ce-mois-ci",
+  "meilleure-app-pour-gerer-son-argent",
+  "carte-bancaire-douleur-de-payer-saisie-manuelle",
+];
+
 // Define all routes for the sitemap
 const dynamicRoutes = [
   "/",
@@ -11,6 +25,7 @@ const dynamicRoutes = [
   "/fonctionnalites",
   "/pricing",
   "/blog",
+  ...blogArticleSlugs.map((s) => `/blog/${s}`),
   "/faq",
   "/mentions-legales",
   "/cgs",
