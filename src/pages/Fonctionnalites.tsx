@@ -115,6 +115,7 @@ interface Feature {
 interface FeatureGroup {
   label: string;
   title: string;
+  description?: string;
   features: Feature[];
   isLarge?: boolean;
 }
