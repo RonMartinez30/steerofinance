@@ -31,7 +31,7 @@ interface Pastille {
   line: number;
   letter: string;
   className: string;
-  source: "literal-letter" | "letter-variable";
+  source: "literal-letter" | "letter-variable" | "tempo-letter-component";
   snippet: string;
 }
 
@@ -90,13 +90,32 @@ function findTempoBadges(file: string, content: string): Pastille[] {
     });
   }
 
+  // Cherche les usages du composant partagé <TempoLetter ... /> qui sont
+  // conformes par construction (mapping centralisé + gabarit canonique).
+  const componentRe = /<TempoLetter\b[^/>]*\/?>/g;
+  while ((m = componentRe.exec(content)) !== null) {
+    const before = content.slice(0, m.index);
+    const line = before.split("\n").length;
+    results.push({
+      file,
+      line,
+      letter: "(component)",
+      className: "tempoLetterColors", // marqueur de conformité
+      source: "tempo-letter-component",
+      snippet: lines[line - 1]?.trim() ?? "",
+    });
+  }
+
   return results;
 }
 
 const STATIC_COLOR_RE = /\b(bg|text|ring|border)-(?!primary\/10\b)(red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|slate|gray|zinc|neutral|stone|primary|secondary|accent|muted|destructive|foreground)(-\d{2,3})?\b/;
 
 describe("TEMPO letter badges use shared tempoLetterColors mapping", () => {
-  const files = walk(SRC_DIR);
+  // Exclut le composant partagé qui EST la source de vérité du mapping
+  // (sa pastille référence `color` dérivé de tempoLetterColors).
+  const SHARED_COMPONENT = join(SRC_DIR, "components", "TempoLetter.tsx");
+  const files = walk(SRC_DIR).filter((f) => f !== SHARED_COMPONENT);
   const allBadges: Pastille[] = [];
   for (const f of files) {
     const content = readFileSync(f, "utf8");
@@ -174,7 +193,9 @@ describe("TEMPO letter badges use shared tempoLetterColors mapping", () => {
 
   it("the shared tempoLetterColors mapping is consistent across all files that define it", () => {
     const definitions: { file: string; body: string }[] = [];
-    for (const f of files) {
+    // Inclut le composant partagé (source de vérité) dans le scan.
+    const filesForMapping = walk(SRC_DIR);
+    for (const f of filesForMapping) {
       const content = readFileSync(f, "utf8");
       const m = content.match(
         /tempoLetterColors\s*:\s*Record<string,\s*string>\s*=\s*\{([\s\S]*?)\}/
@@ -182,9 +203,12 @@ describe("TEMPO letter badges use shared tempoLetterColors mapping", () => {
       if (m) definitions.push({ file: f, body: m[1] });
     }
 
+    // Le mapping de référence vit désormais dans le composant partagé.
+    // Au moins une définition doit exister (idéalement uniquement celle de
+    // src/components/TempoLetter.tsx).
     expect(definitions.length).toBeGreaterThan(0);
 
-    // Normalise (espaces/quotes) et compare
+    // Normalise (espaces/quotes) et compare toutes les définitions entre elles.
     const normalised = definitions.map((d) => ({
       file: d.file,
       body: d.body.replace(/\s+/g, " ").trim(),
@@ -208,5 +232,38 @@ describe("TEMPO letter badges use shared tempoLetterColors mapping", () => {
     for (const L of TEMPO_LETTERS) {
       expect(reference).toMatch(new RegExp(`\\b${L}\\s*:`));
     }
+  });
+
+  it("TEMPO badges have a harmonised size & shape (rounded-md sm OR rounded-full lg)", () => {
+    // Tolère deux gabarits canoniques :
+    //   sm : w-7 h-7 rounded-md text-xs
+    //   lg : w-11 h-11 rounded-full text-lg ring-4 ring-background
+    // Les pastilles utilisant le composant <TempoLetter /> sont, par construction, conformes.
+    const allowedSm = ["w-7", "h-7", "rounded-md"];
+    const allowedLg = ["w-11", "h-11", "rounded-full"];
+
+    const offenders = allBadges.filter((b) => {
+      const cls = b.className;
+      // Détecte un gabarit explicite si w-* présent
+      const hasW = /\bw-\d+\b/.test(cls);
+      const hasH = /\bh-\d+\b/.test(cls);
+      if (!hasW && !hasH) return false; // pas de gabarit en dur ⇒ ignore
+      const isSm = allowedSm.every((c) => cls.includes(c));
+      const isLg = allowedLg.every((c) => cls.includes(c));
+      return !(isSm || isLg);
+    });
+
+    if (offenders.length > 0) {
+      const msg = offenders
+        .map(
+          (o) =>
+            `  • ${o.file.replace(SRC_DIR + "/", "src/")}:${o.line}\n      className: ${o.className}\n      → ${o.snippet}`
+        )
+        .join("\n");
+      throw new Error(
+        `Pastilles TEMPO avec gabarit non harmonisé :\n${msg}\n\nUtiliser <TempoLetter size="sm" /> (w-7 h-7 rounded-md) ou <TempoLetter size="lg" /> (w-11 h-11 rounded-full).`
+      );
+    }
+    expect(offenders).toEqual([]);
   });
 });

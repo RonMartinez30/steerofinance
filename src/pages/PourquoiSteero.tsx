@@ -4,6 +4,8 @@ import SEO from "@/components/SEO";
 import { Info, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useWaitlist } from "@/contexts/WaitlistContext";
+import { Button } from "@/components/ui/button";
+import { TempoLetter } from "@/components/TempoLetter";
 
 const PourquoiSteero = () => {
   const { openWaitlist } = useWaitlist();
@@ -50,14 +52,7 @@ const PourquoiSteero = () => {
     { letter: "O", name: "Orienter", desc: "Grandes orientations. Arbitrages stratégiques.", freq: "Annuel", time: "60 min" },
   ];
 
-  // Couleurs TEMPO partagées avec la home (HowItWorks)
-  const tempoLetterColors: Record<string, string> = {
-    T: "bg-green-600 text-white",
-    E: "bg-yellow-600 text-white",
-    M: "bg-emerald-700 text-white",
-    P: "bg-primary text-primary-foreground",
-    O: "bg-amber-700 text-white",
-  };
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -105,16 +100,21 @@ const PourquoiSteero = () => {
               Les apps qui agrègent tes données te montrent où est allé ton argent. Steero t'aide à décider où il va aller.
             </motion.p>
 
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              onClick={openWaitlist}
-              className="btn-primary rounded-full px-8 py-3.5 group"
+              className="inline-block"
             >
-              Commencer 14 jours gratuits
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </motion.button>
+              <Button
+                size="lg"
+                onClick={openWaitlist}
+                className="rounded-full px-8 group"
+              >
+                Commencer 14 jours gratuits
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </motion.div>
             <p className="text-xs text-muted-foreground mt-4">
               Sans engagement
             </p>
@@ -321,11 +321,7 @@ const PourquoiSteero = () => {
                 {tempo.map((row, i) => (
                   <tr key={row.letter} className={i !== 0 ? "border-t border-border/60" : ""}>
                     <td className="p-4 align-top">
-                      <span
-                        className={`inline-flex items-center justify-center w-11 h-11 rounded-full text-lg font-bold ring-4 ring-background ${tempoLetterColors[row.letter] || 'bg-primary text-primary-foreground'}`}
-                      >
-                        {row.letter}
-                      </span>
+                      <TempoLetter letter={row.letter} size="lg" />
                     </td>
                     <td className="p-4 align-top">
                       <p className="font-semibold text-foreground text-sm mb-1">{row.name}</p>
@@ -382,19 +378,24 @@ const PourquoiSteero = () => {
             >
               14 jours pour tester le pilotage actif de tes finances.
             </motion.p>
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              onClick={openWaitlist}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="inline-block"
             >
-              Commencer gratuitement
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </motion.button>
+              <Button
+                size="lg"
+                onClick={openWaitlist}
+                className="rounded-full px-8 bg-white text-primary hover:bg-white/90 shadow-lg hover:shadow-xl group"
+              >
+                Commencer gratuitement
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </motion.div>
             <p className="text-xs text-primary-foreground/70 mt-4"> </p>
           </div>
         </div>

@@ -11,6 +11,7 @@ import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGri
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useTranslation } from "react-i18next";
 import { useWaitlist } from "@/contexts/WaitlistContext";
+import { TempoLetter } from "@/components/TempoLetter";
 
 // Progress sidebar component
 const ProgressSidebar = ({
@@ -1689,14 +1690,7 @@ const getCardAnimationVariants = (direction: AnimationDirection, isFuture: boole
       };
   }
 };
-// Couleurs TEMPO partagées avec la home (HowItWorks)
-const tempoLetterColors: Record<string, string> = {
-  T: "bg-green-600 text-white",
-  E: "bg-yellow-600 text-white",
-  M: "bg-emerald-700 text-white",
-  P: "bg-primary text-primary-foreground",
-  O: "bg-amber-700 text-white",
-};
+
 
 const FeatureCard = ({
   feature,
@@ -1739,12 +1733,7 @@ const FeatureCard = ({
       {feature.letters && feature.letters.length > 0 && (
         <div className="absolute top-3 right-3 flex items-center gap-1">
           {feature.letters.map((letter, i) => (
-            <span
-              key={i}
-              className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-[11px] font-bold ${tempoLetterColors[letter] || 'bg-primary/10 text-primary'}`}
-            >
-              {letter}
-            </span>
+            <TempoLetter key={i} letter={letter} size="sm" />
           ))}
         </div>
       )}
@@ -2025,12 +2014,7 @@ const Fonctionnalites = () => {
                 <div className="inline-flex items-center gap-2 self-start mb-3 md:mb-0 whitespace-nowrap">
                   <div className="flex items-center gap-1">
                     {(group.labelLetters ?? []).map((letter, li) => (
-                      <span
-                        key={li}
-                        className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-[11px] font-bold ${tempoLetterColors[letter] || 'bg-primary/10 text-primary'}`}
-                      >
-                        {letter}
-                      </span>
+                      <TempoLetter key={li} letter={letter} size="sm" />
                     ))}
                   </div>
                   {group.labelText && (
@@ -2126,9 +2110,7 @@ const Fonctionnalites = () => {
                   <span className="text-[10px] font-semibold tracking-[0.15em] text-muted-foreground uppercase bg-muted px-2 py-1 rounded">
                     Bientôt
                   </span>
-                  <span className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-[11px] font-bold ${tempoLetterColors[f.letter] || 'bg-primary/10 text-primary'}`}>
-                    {f.letter}
-                  </span>
+                  <TempoLetter letter={f.letter} size="sm" />
                 </div>
                 <h3 className="text-base font-semibold text-foreground mb-2 leading-snug">
                   {f.title}
