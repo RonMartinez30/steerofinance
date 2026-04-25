@@ -1,13 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { TempoLetter } from "@/components/TempoLetter";
 
-const tempoLetterColors: Record<string, string> = {
-  T: "bg-green-600 text-white",
-  E: "bg-yellow-600 text-white",
-  M: "bg-emerald-700 text-white",
-  P: "bg-primary text-primary-foreground",
-  O: "bg-amber-700 text-white",
-};
 
 const HowItWorks = () => {
   const { t } = useTranslation();
