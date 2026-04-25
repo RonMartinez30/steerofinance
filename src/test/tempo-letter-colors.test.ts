@@ -31,7 +31,7 @@ interface Pastille {
   line: number;
   letter: string;
   className: string;
-  source: "literal-letter" | "letter-variable";
+  source: "literal-letter" | "letter-variable" | "tempo-letter-component";
   snippet: string;
 }
 
