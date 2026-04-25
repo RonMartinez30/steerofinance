@@ -337,8 +337,8 @@ const PourquoiSteero = () => {
           >
             <Info className="w-4 h-4 shrink-0 mt-0.5 text-primary" />
             <p className="text-sm text-muted-foreground leading-relaxed">
-              <span className="font-semibold text-foreground">Import de relevé bancaire à venir.</span>{" "}
-              La prochaine évolution de Steero permettra d'importer tes relevés pour pré-remplir les transactions. La validation reste un acte humain. L'outil suggère — toi tu décides. Toujours.
+              <span className="font-semibold text-foreground">Intégration bancaire à venir.</span>{" "}
+              Steero se connectera à tes comptes, pas pour automatiser mais pour te présenter tes transactions à valider. Tu catégorises, tu confirmes, tu décides. La friction administrative disparaît. La friction utile, elle, reste entière.
             </p>
           </motion.div>
         </div>
