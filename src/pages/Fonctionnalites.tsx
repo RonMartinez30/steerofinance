@@ -2014,12 +2014,7 @@ const Fonctionnalites = () => {
                 <div className="inline-flex items-center gap-2 self-start mb-3 md:mb-0 whitespace-nowrap">
                   <div className="flex items-center gap-1">
                     {(group.labelLetters ?? []).map((letter, li) => (
-                      <span
-                        key={li}
-                        className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-[11px] font-bold ${tempoLetterColors[letter] || 'bg-primary/10 text-primary'}`}
-                      >
-                        {letter}
-                      </span>
+                      <TempoLetter key={li} letter={letter} size="sm" />
                     ))}
                   </div>
                   {group.labelText && (
