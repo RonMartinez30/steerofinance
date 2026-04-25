@@ -61,6 +61,8 @@ const PourquoiSteero = () => {
       <SEO
         title="Pourquoi Steero — Tu as besoin d'un pare-brise"
         description="Steero n'est pas un agrégateur de plus. C'est un système de pilotage actif qui t'aide à décider où va ton argent."
+        keywords="pourquoi steero, pilotage financier, alternative agrégateur bancaire, rituel TEMPO, contrôle budget"
+        canonical="/pourquoi-steero"
       />
       <Header />
 
