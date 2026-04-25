@@ -111,6 +111,7 @@ interface Feature {
   textColor: string;
   animation: AnimationType;
   animationDirection: AnimationDirection;
+  letters?: string[]; // TEMPO letters: T, E, M, P, O
 }
 interface FeatureGroup {
   label: string;
