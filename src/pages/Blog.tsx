@@ -1709,8 +1709,17 @@ const Blog = () => {
       const newSet = new Set(prev);
       if (newSet.has(id)) {
         newSet.delete(id);
+        // If we close the article currently shown in the URL, fall back to /blog
+        const closedArticle = articles.find(a => a.id === id);
+        if (closedArticle && slug === closedArticle.slug) {
+          navigate('/blog', { replace: true });
+        }
       } else {
         newSet.add(id);
+        const openedArticle = articles.find(a => a.id === id);
+        if (openedArticle && slug !== openedArticle.slug) {
+          navigate(`/blog/${openedArticle.slug}`, { replace: false });
+        }
       }
       return newSet;
     });
@@ -1722,6 +1731,10 @@ const Blog = () => {
       newSet.add(id);
       return newSet;
     });
+    const target = articles.find(a => a.id === id);
+    if (target && slug !== target.slug) {
+      navigate(`/blog/${target.slug}`, { replace: false });
+    }
     setTimeout(() => {
       const el = articleRefs.current.get(id);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
