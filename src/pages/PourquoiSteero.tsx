@@ -378,19 +378,24 @@ const PourquoiSteero = () => {
             >
               14 jours pour tester le pilotage actif de tes finances.
             </motion.p>
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              onClick={openWaitlist}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="inline-block"
             >
-              Commencer gratuitement
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </motion.button>
+              <Button
+                size="lg"
+                onClick={openWaitlist}
+                className="rounded-full px-8 bg-white text-primary hover:bg-white/90 shadow-lg hover:shadow-xl group"
+              >
+                Commencer gratuitement
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </motion.div>
             <p className="text-xs text-primary-foreground/70 mt-4"> </p>
           </div>
         </div>
