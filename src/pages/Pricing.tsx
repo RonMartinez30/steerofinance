@@ -71,7 +71,7 @@ const Pricing = () => {
             className="max-w-2xl mx-auto text-center mb-12"
           >
             <h1
-              className="text-5xl md:text-6xl font-normal text-foreground mb-6 leading-[1.1] tracking-tight"
+              className="font-serif text-5xl md:text-6xl font-normal text-foreground mb-6 leading-[1.1] tracking-tight"
             >
               {t("pricing.titlePart1")}
               <br />
@@ -148,7 +148,7 @@ const Pricing = () => {
                     className="flex items-baseline gap-2 mb-3"
                   >
                     <span
-                      className="text-6xl md:text-7xl text-foreground tracking-tight"
+                      className="font-serif text-6xl md:text-7xl text-foreground tracking-tight"
                     >
                       {getPrice()}
                     </span>
@@ -281,7 +281,7 @@ const Pricing = () => {
                   {t("pricing.impactSection")}
                 </span>
                 <h2
-                  className="text-2xl md:text-3xl text-foreground mb-4 leading-tight"
+                  className="font-serif text-2xl md:text-3xl text-foreground mb-4 leading-tight"
                 >
                   {t("pricing.impactTitle")}
                 </h2>
@@ -326,7 +326,7 @@ const Pricing = () => {
             className="max-w-xl mx-auto"
           >
             <h2
-              className="text-3xl md:text-4xl text-foreground mb-3"
+              className="font-serif text-3xl md:text-4xl text-foreground mb-3"
             >
               {t("pricing.faqTitle")}
             </h2>
