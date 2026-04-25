@@ -1978,10 +1978,9 @@ const Fonctionnalites = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-[1.1]"
-              style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               Chaque fonctionnalité a sa place dans le{" "}
-              <em className="text-primary not-italic" style={{ fontFamily: "'DM Serif Display', serif", fontStyle: "italic" }}>
+              <em className="text-primary not-italic" style={{ fontStyle: "italic" }}>
                 système.
               </em>
             </motion.h1>
@@ -2026,7 +2025,6 @@ const Fonctionnalites = () => {
                 <div>
                   <h2
                     className="text-2xl md:text-3xl font-bold text-foreground leading-tight"
-                    style={{ fontFamily: "'DM Serif Display', serif" }}
                   >
                     {group.title}
                   </h2>
@@ -2083,7 +2081,6 @@ const Fonctionnalites = () => {
             </p>
             <h2
               className="text-2xl md:text-3xl font-bold text-foreground mb-3"
-              style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               Le système continue de se construire.
             </h2>
