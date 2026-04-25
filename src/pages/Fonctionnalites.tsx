@@ -1724,21 +1724,19 @@ const FeatureCard = ({
       }}
       className={`cursor-pointer rounded-2xl border ${isOpen ? 'border-primary/30 shadow-md' : 'border-border/40 hover:border-border/60'} bg-card ${isLarge ? 'p-6' : 'p-5'} transition-colors duration-250 hover:shadow-sm relative ${isExplored && !isOpen ? 'opacity-90' : ''} ${isOpen ? '' : closedHeight}`}
     >
-      {/* Badge "Découvert" - plus subtil */}
-      <AnimatePresence>
-        {isExplored && !isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
-            className="absolute top-3 right-3 flex items-center gap-1 bg-muted text-muted-foreground text-[10px] font-medium px-2 py-0.5 rounded-full"
-          >
-            <Check className="w-2.5 h-2.5" />
-            <span>{t('fonctionnalites.discovered')}</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* TEMPO letter badges - top right */}
+      {feature.letters && feature.letters.length > 0 && (
+        <div className="absolute top-3 right-3 flex items-center gap-1">
+          {feature.letters.map((letter, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-primary/10 text-primary text-[11px] font-bold"
+            >
+              {letter}
+            </span>
+          ))}
+        </div>
+      )}
       
       <div className="flex items-start gap-4">
         {/* Icône Lucide professionnelle ou emoji de fallback */}
