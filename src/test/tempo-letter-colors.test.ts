@@ -182,9 +182,12 @@ describe("TEMPO letter badges use shared tempoLetterColors mapping", () => {
       if (m) definitions.push({ file: f, body: m[1] });
     }
 
+    // Le mapping de référence vit désormais dans le composant partagé.
+    // Au moins une définition doit exister (idéalement uniquement celle de
+    // src/components/TempoLetter.tsx).
     expect(definitions.length).toBeGreaterThan(0);
 
-    // Normalise (espaces/quotes) et compare
+    // Normalise (espaces/quotes) et compare toutes les définitions entre elles.
     const normalised = definitions.map((d) => ({
       file: d.file,
       body: d.body.replace(/\s+/g, " ").trim(),
@@ -208,5 +211,38 @@ describe("TEMPO letter badges use shared tempoLetterColors mapping", () => {
     for (const L of TEMPO_LETTERS) {
       expect(reference).toMatch(new RegExp(`\\b${L}\\s*:`));
     }
+  });
+
+  it("TEMPO badges have a harmonised size & shape (rounded-md sm OR rounded-full lg)", () => {
+    // Tolère deux gabarits canoniques :
+    //   sm : w-7 h-7 rounded-md text-xs
+    //   lg : w-11 h-11 rounded-full text-lg ring-4 ring-background
+    // Les pastilles utilisant le composant <TempoLetter /> sont, par construction, conformes.
+    const allowedSm = ["w-7", "h-7", "rounded-md"];
+    const allowedLg = ["w-11", "h-11", "rounded-full"];
+
+    const offenders = allBadges.filter((b) => {
+      const cls = b.className;
+      // Détecte un gabarit explicite si w-* présent
+      const hasW = /\bw-\d+\b/.test(cls);
+      const hasH = /\bh-\d+\b/.test(cls);
+      if (!hasW && !hasH) return false; // pas de gabarit en dur ⇒ ignore
+      const isSm = allowedSm.every((c) => cls.includes(c));
+      const isLg = allowedLg.every((c) => cls.includes(c));
+      return !(isSm || isLg);
+    });
+
+    if (offenders.length > 0) {
+      const msg = offenders
+        .map(
+          (o) =>
+            `  • ${o.file.replace(SRC_DIR + "/", "src/")}:${o.line}\n      className: ${o.className}\n      → ${o.snippet}`
+        )
+        .join("\n");
+      throw new Error(
+        `Pastilles TEMPO avec gabarit non harmonisé :\n${msg}\n\nUtiliser <TempoLetter size="sm" /> (w-7 h-7 rounded-md) ou <TempoLetter size="lg" /> (w-11 h-11 rounded-full).`
+      );
+    }
+    expect(offenders).toEqual([]);
   });
 });
