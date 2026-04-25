@@ -1733,12 +1733,7 @@ const FeatureCard = ({
       {feature.letters && feature.letters.length > 0 && (
         <div className="absolute top-3 right-3 flex items-center gap-1">
           {feature.letters.map((letter, i) => (
-            <span
-              key={i}
-              className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-[11px] font-bold ${tempoLetterColors[letter] || 'bg-primary/10 text-primary'}`}
-            >
-              {letter}
-            </span>
+            <TempoLetter key={i} letter={letter} size="sm" />
           ))}
         </div>
       )}
