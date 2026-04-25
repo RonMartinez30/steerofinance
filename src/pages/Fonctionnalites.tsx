@@ -2106,7 +2106,7 @@ const Fonctionnalites = () => {
                   <span className="text-[10px] font-semibold tracking-[0.15em] text-muted-foreground uppercase bg-muted px-2 py-1 rounded">
                     Bientôt
                   </span>
-                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-primary/10 text-primary text-[11px] font-bold">
+                  <span className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-[11px] font-bold ${tempoLetterColors[f.letter] || 'bg-primary/10 text-primary'}`}>
                     {f.letter}
                   </span>
                 </div>
