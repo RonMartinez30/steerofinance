@@ -1710,19 +1710,19 @@ const FeatureCard = ({
   const variants = getCardAnimationVariants(feature.animationDirection);
   
   // Hauteur uniforme pour toutes les cartes fermées
-  const closedHeight = 'h-[120px]';
-  
+  const closedHeight = 'min-h-[88px]';
+
   // Icône Lucide ou emoji de fallback
   const IconComponent = feature.icon;
-  
+
   return (
-    <motion.div 
-      onClick={handleClick} 
+    <motion.div
+      onClick={handleClick}
       layout
       transition={{
         layout: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
       }}
-      className={`cursor-pointer rounded-2xl border ${isOpen ? 'border-primary/30 shadow-md' : 'border-border/40 hover:border-border/60'} bg-card ${isLarge ? 'p-6' : 'p-5'} transition-colors duration-250 hover:shadow-sm relative ${isExplored && !isOpen ? 'opacity-90' : ''} ${isOpen ? '' : closedHeight}`}
+      className={`cursor-pointer rounded-xl border ${isOpen ? 'border-primary/30 shadow-md bg-card' : 'border-border/50 hover:border-primary/30 bg-card'} ${isLarge ? 'p-5' : 'p-5'} transition-all duration-250 hover:shadow-sm relative ${isOpen ? '' : closedHeight}`}
     >
       {/* TEMPO letter badges - top right */}
       {feature.letters && feature.letters.length > 0 && (
