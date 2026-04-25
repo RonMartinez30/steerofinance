@@ -96,7 +96,10 @@ function findTempoBadges(file: string, content: string): Pastille[] {
 const STATIC_COLOR_RE = /\b(bg|text|ring|border)-(?!primary\/10\b)(red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|slate|gray|zinc|neutral|stone|primary|secondary|accent|muted|destructive|foreground)(-\d{2,3})?\b/;
 
 describe("TEMPO letter badges use shared tempoLetterColors mapping", () => {
-  const files = walk(SRC_DIR);
+  // Exclut le composant partagé qui EST la source de vérité du mapping
+  // (sa pastille référence `color` dérivé de tempoLetterColors).
+  const SHARED_COMPONENT = join(SRC_DIR, "components", "TempoLetter.tsx");
+  const files = walk(SRC_DIR).filter((f) => f !== SHARED_COMPONENT);
   const allBadges: Pastille[] = [];
   for (const f of files) {
     const content = readFileSync(f, "utf8");
