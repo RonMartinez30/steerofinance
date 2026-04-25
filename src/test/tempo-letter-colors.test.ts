@@ -177,7 +177,9 @@ describe("TEMPO letter badges use shared tempoLetterColors mapping", () => {
 
   it("the shared tempoLetterColors mapping is consistent across all files that define it", () => {
     const definitions: { file: string; body: string }[] = [];
-    for (const f of files) {
+    // Inclut le composant partagé (source de vérité) dans le scan.
+    const filesForMapping = walk(SRC_DIR);
+    for (const f of filesForMapping) {
       const content = readFileSync(f, "utf8");
       const m = content.match(
         /tempoLetterColors\s*:\s*Record<string,\s*string>\s*=\s*\{([\s\S]*?)\}/
