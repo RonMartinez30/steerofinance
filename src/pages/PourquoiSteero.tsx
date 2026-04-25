@@ -52,14 +52,7 @@ const PourquoiSteero = () => {
     { letter: "O", name: "Orienter", desc: "Grandes orientations. Arbitrages stratégiques.", freq: "Annuel", time: "60 min" },
   ];
 
-  // Couleurs TEMPO partagées avec la home (HowItWorks)
-  const tempoLetterColors: Record<string, string> = {
-    T: "bg-green-600 text-white",
-    E: "bg-yellow-600 text-white",
-    M: "bg-emerald-700 text-white",
-    P: "bg-primary text-primary-foreground",
-    O: "bg-amber-700 text-white",
-  };
+
 
   return (
     <div className="min-h-screen bg-background">
