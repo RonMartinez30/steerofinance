@@ -2020,11 +2020,25 @@ const Fonctionnalites = () => {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="border-t border-border/60 pt-12 pb-4 mt-12 first:mt-0"
             >
-              {/* Header de groupe : badge label + titre éditorial */}
+              {/* Header de groupe : pastilles TEMPO + titre éditorial */}
               <div className="flex flex-col md:flex-row md:items-baseline md:gap-6 mb-8">
-                <span className="inline-flex items-center text-[11px] font-semibold tracking-[0.15em] text-primary uppercase bg-primary/10 px-3 py-1.5 rounded-md self-start mb-3 md:mb-0 whitespace-nowrap">
-                  {group.label}
-                </span>
+                <div className="inline-flex items-center gap-2 self-start mb-3 md:mb-0 whitespace-nowrap">
+                  <div className="flex items-center gap-1">
+                    {(group.labelLetters ?? []).map((letter, li) => (
+                      <span
+                        key={li}
+                        className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-[11px] font-bold ${tempoLetterColors[letter] || 'bg-primary/10 text-primary'}`}
+                      >
+                        {letter}
+                      </span>
+                    ))}
+                  </div>
+                  {group.labelText && (
+                    <span className="text-[11px] font-semibold tracking-[0.15em] text-muted-foreground uppercase">
+                      — {group.labelText}
+                    </span>
+                  )}
+                </div>
                 <div>
                   <h2
                     className="text-2xl md:text-3xl font-bold text-foreground leading-tight"
