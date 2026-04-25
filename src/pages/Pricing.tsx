@@ -72,7 +72,6 @@ const Pricing = () => {
           >
             <h1
               className="text-5xl md:text-6xl font-normal text-foreground mb-6 leading-[1.1] tracking-tight"
-              style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               {t("pricing.titlePart1")}
               <br />
@@ -150,7 +149,6 @@ const Pricing = () => {
                   >
                     <span
                       className="text-6xl md:text-7xl text-foreground tracking-tight"
-                      style={{ fontFamily: "'DM Serif Display', serif" }}
                     >
                       {getPrice()}
                     </span>
@@ -284,7 +282,6 @@ const Pricing = () => {
                 </span>
                 <h2
                   className="text-2xl md:text-3xl text-foreground mb-4 leading-tight"
-                  style={{ fontFamily: "'DM Serif Display', serif" }}
                 >
                   {t("pricing.impactTitle")}
                 </h2>
@@ -330,7 +327,6 @@ const Pricing = () => {
           >
             <h2
               className="text-3xl md:text-4xl text-foreground mb-3"
-              style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               {t("pricing.faqTitle")}
             </h2>
