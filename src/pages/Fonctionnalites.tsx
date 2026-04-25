@@ -2124,43 +2124,56 @@ const Fonctionnalites = () => {
         </div>
       </section>
 
-      {/* CTA final — éditorial, conserve l'ADN */}
-      <section className="py-20 border-t border-border/60">
-        <div className="container mx-auto px-6 max-w-2xl text-center">
+      {/* CTA FINAL — pattern canonique Home / Blog / PourquoiSteero */}
+      <section className="py-20 bg-primary relative overflow-hidden">
+        {/* Background banner image */}
+        <div className="absolute inset-0">
+          <img src={steeroBanner} alt="" className="w-full h-full object-cover opacity-35" />
+          <div className="absolute inset-0 bg-primary/50" />
+        </div>
+        {/* Decorative halos */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -left-20 top-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+          <div className="absolute -right-20 bottom-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="text-center max-w-2xl mx-auto"
           >
-            <h2
-              className="text-3xl md:text-4xl font-bold text-foreground mb-4"
-              style={{ fontFamily: "'DM Serif Display', serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
               Prêt à piloter tes finances ?
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground mb-8">
-              Rejoins Steero pour changer d'approche et atteindre tes objectifs.
+            <p className="text-lg text-primary-foreground/90 mb-8">
+              14 jours pour tester le pilotage actif de tes finances.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button
-                size="lg"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.button
                 onClick={openWaitlist}
-                className="rounded-full px-8 group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
                 Commencer gratuitement
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="rounded-full px-8"
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </motion.button>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <Link to="/pourquoi-steero">Découvrir l'approche Steero</Link>
-              </Button>
+                <Link
+                  to="/pourquoi-steero"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-white text-white font-semibold hover:bg-white/10 transition-all duration-300"
+                >
+                  Découvrir l'approche Steero
+                </Link>
+              </motion.div>
             </div>
-            <p className="text-xs text-muted-foreground mt-6">
+            <p className="text-xs text-primary-foreground/80 mt-6">
               14 jours gratuits — sans engagement
             </p>
           </motion.div>
