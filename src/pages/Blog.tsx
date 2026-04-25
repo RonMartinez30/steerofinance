@@ -1631,6 +1631,8 @@ const ArticleCard = ({ article, t, isOpen, onToggle, cardRef, openWaitlist, onOp
 const Blog = () => {
   const { t } = useTranslation();
   const { openWaitlist } = useWaitlist();
+  const { slug } = useParams<{ slug?: string }>();
+  const navigate = useNavigate();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [openArticles, setOpenArticles] = useState<Set<number>>(new Set());
@@ -1642,6 +1644,26 @@ const Blog = () => {
     const raw = t(article.tagsKey, { returnObjects: true });
     return Array.isArray(raw) ? raw as string[] : [];
   })));
+
+  // Article matching the URL slug (if any)
+  const slugArticle = slug ? articles.find(a => a.slug === slug) : null;
+
+  // Open the article matching the URL slug & scroll to it
+  useEffect(() => {
+    if (slugArticle) {
+      setOpenArticles(prev => {
+        if (prev.has(slugArticle.id)) return prev;
+        const newSet = new Set(prev);
+        newSet.add(slugArticle.id);
+        return newSet;
+      });
+      setTimeout(() => {
+        const el = articleRefs.current.get(slugArticle.id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
 
   // Track which open article is most visible
   useEffect(() => {
