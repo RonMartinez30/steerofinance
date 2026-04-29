@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGrid, RefreshCcw, ClipboardList, Gauge, CalendarCheck, BarChart3, Landmark, Wallet, Receipt, RotateCcw, ClipboardCheck, Flame, Plane, type LucideIcon } from "lucide-react";
+import { ArrowRight, Check, FolderKanban, Users, Building2, Crosshair, LayoutGrid, RefreshCcw, ClipboardList, Gauge, CalendarCheck, BarChart3, Landmark, Wallet, Receipt, RotateCcw, ClipboardCheck, Flame, Plane, Sparkles, type LucideIcon } from "lucide-react";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useTranslation } from "react-i18next";
 import { useWaitlist } from "@/contexts/WaitlistContext";
@@ -1962,33 +1962,37 @@ const Fonctionnalites = () => {
       <Header />
 
       {/* Hero éditorial */}
-      <section className="pt-32 pb-16 bg-background">
-        <div className="container mx-auto px-6">
+      <section className="relative bg-hero-gradient pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -left-20 top-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute -right-20 bottom-1/4 w-80 h-80 rounded-full bg-primary/5 blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-xs font-semibold tracking-[0.2em] text-primary uppercase mb-6"
-            >
-              Le système TEMPO
-            </motion.p>
-            <motion.h1
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-[1.1]"
+              transition={{ duration: 0.6 }}
+              className="badge-sparkle mb-8"
+            >
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span>Le système TEMPO</span>
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6"
             >
               Chaque fonctionnalité a sa place dans le{" "}
-              <em className="text-primary not-italic" style={{ fontStyle: "italic" }}>
-                système.
-              </em>
+              <span className="text-primary italic">système.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-              className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto"
             >
               Pas une liste de features. Une progression — du rituel quotidien aux arbitrages stratégiques.
             </motion.p>
